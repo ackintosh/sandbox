@@ -1,7 +1,6 @@
-use std::net::{ToSocketAddrs, IpAddr};
+use std::net::ToSocketAddrs;
 use trust_dns_resolver::Resolver;
 use trust_dns_resolver::config::{ResolverConfig, ResolverOpts, LookupIpStrategy};
-use std::time::Duration;
 
 fn main() {
     ipv4();
