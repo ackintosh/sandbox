@@ -69,6 +69,8 @@ fn txt() {
 
     let name_server = "8.8.8.8:53".parse().unwrap();
     let conn = UdpClientConnection::new(name_server).unwrap();
+
+    // 同期処理のクライアント
     let client = SyncClient::new(conn);
 
     // TXTレコードを取得する
