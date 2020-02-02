@@ -4,7 +4,7 @@ use trust_dns_resolver::config::{ResolverConfig, ResolverOpts, LookupIpStrategy}
 
 fn main() {
     libstd();
-//    trust_dns_resolver();
+    trust_dns_resolver();
 }
 
 // 名前解決は標準ライブラリで可能
@@ -37,19 +37,18 @@ fn libstd() {
 //
 // Can't create custom ResolverOpts · Issue #1004 · bluejekyll/trust-dns
 // https://github.com/bluejekyll/trust-dns/issues/1004
-//fn trust_dns_resolver() {
-//    // FQDN(末尾にドット)を指定する
-//    let host = "example.com.";
-//
-//    let resolver = Resolver::new(
-//        ResolverConfig::default(),
-//        ResolverOpts {
-//            ip_strategy: LookupIpStrategy::Ipv6Only, // IPv6だけを取る
-//            ..ResolverOpts::default()
-//        }
-//    ).unwrap();
-//    let response = resolver.lookup_ip(host).unwrap();
-//    let address = response.iter().next().expect("no addresses returned!");
-//
-//    println!("{:?}", address);
-//}
+fn trust_dns_resolver() {
+    // FQDN(末尾にドット)を指定する
+    let host = "example.com.";
+
+    let mut opts = ResolverOpts::default();
+    opts.ip_strategy = LookupIpStrategy::Ipv6Only;
+    let resolver = Resolver::new(
+        ResolverConfig::default(),
+        opts
+    ).unwrap();
+    let response = resolver.lookup_ip(host).unwrap();
+    let address = response.iter().next().expect("no addresses returned!");
+
+    println!("{:?}", address);
+}
