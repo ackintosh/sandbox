@@ -25,6 +25,7 @@ fn flatten() {
     println!("/// flatten ///");
     // flatten
     // https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.flatten
+    // ｛イテレータを返すイテレータ｝に対して、｛返されたイテレータを繋げたイテレータ｝を返す
     let iter = vec![vec![0, 1, 2], vec![3, 4]].into_iter();
 
     println!("{:?}", iter.clone().flatten().collect::<Vec<_>>()); // [0, 1, 2, 3, 4]
