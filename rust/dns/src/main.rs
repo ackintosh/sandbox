@@ -79,6 +79,7 @@ fn txt() {
     // println!("{:?}", response);
     let answers: &[Record] = response.answers();
 
+    // *素朴にループする*
     for answer in answers.iter() {
         if let &RData::TXT(ref txt) = answer.rdata() {
             for d in txt.iter() {
@@ -88,4 +89,27 @@ fn txt() {
             assert!(false, "unexpected result");
         }
     }
+
+    // *txtレコードの文字列をベクターにまとめる*
+    let txt_record_strs = answers.iter()
+        .filter_map(|record| {
+            if let RData::TXT(txt) = record.rdata() {
+                Some(txt.iter())
+            } else {
+                None
+            }
+        })
+        .flatten()
+        .map(|a| {
+            // println!("{}", std::str::from_utf8(a).unwrap());
+            std::str::from_utf8(a).unwrap()
+        })
+        .collect::<Vec<_>>();
+     println!("{:?}", txt_record_strs);
+     // [
+     //   "dnsaddr=/dnsaddr/ams-2.bootstrap.libp2p.io/tcp/4001/ipfs/QmbLHAnMoJPWSCR5Zhtx6BHJX9KiKNN6tpvbUcqanj75Nb",
+     //   "dnsaddr=/dnsaddr/ewr-1.bootstrap.libp2p.io/tcp/4001/ipfs/QmQCU2EcMqAqQPR2i9bChDtGNJchTbq5TbXJJ16u19uLTa",
+     //   "dnsaddr=/dnsaddr/nrt-1.bootstrap.libp2p.io/tcp/4001/ipfs/QmcZf59bWwK5XFi76CZX8cbJ4BhTzzA3gU1ZjYZcYW3dwt",
+     //   "dnsaddr=/dnsaddr/sjc-1.bootstrap.libp2p.io/tcp/4001/ipfs/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN"
+     // ]
 }
