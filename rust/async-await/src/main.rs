@@ -1,4 +1,4 @@
-use futures::executor::{ThreadPool, block_on};
+use futures::executor::ThreadPool;
 use futures::task::SpawnExt;
 
 // async関数
@@ -22,15 +22,22 @@ async fn print_async_fn_result() {
 // awaitはasync関数またはブロックの中でしか呼べないので、
 // main関数から呼び出すために futures クレートを使う
 fn main() {
-    // ////////////////////////////////////////////////////////
-    // main関数と同じスレッドで呼び出す
-    // ////////////////////////////////////////////////////////
+    block_on();
+    thread_pool();
+    async_blocks_have_their_own_types();
+}
+
+// ////////////////////////////////////////////////////////
+// main関数と同じスレッドで呼び出す
+// ////////////////////////////////////////////////////////
+fn block_on() {
     futures::executor::block_on(print_async_fn_result());
+}
 
-
-    // ////////////////////////////////////////////////////////
-    // thread poolを使って非同期に処理する
-    // ////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////
+// thread poolを使って非同期に処理する
+// ////////////////////////////////////////////////////////
+fn thread_pool() {
     let thread_pool = ThreadPool::builder()
         .pool_size(5)
         .create()
@@ -46,6 +53,22 @@ fn main() {
     }
 
     // すべてのスレッドの処理が終わるのを待つ
-    block_on(futures::future::join_all(futures));
+    futures::executor::block_on(futures::future::join_all(futures));
 }
 
+// ////////////////////////////////////////////////////////
+// asyncブロックはそれぞれに独自の型を持つ
+// ////////////////////////////////////////////////////////
+fn async_blocks_have_their_own_types() {
+    // https://users.rust-lang.org/t/storing-futures/34564
+    let f1 = async { println!("f1") };
+    let f2 = async { println!("f2") };
+
+    // asyncブロックはそれぞれに独自の型を持つので、コンパイルエラーになる
+    // let futures = vec![f1, f2];
+    // 67 |     let futures = vec![f1, f2];
+    //    |                            ^^ expected generator, found a different generator
+    //    |
+    //    = note: expected type `impl core::future::future::Future` (generator)
+    //               found type `impl core::future::future::Future` (generator)
+}
