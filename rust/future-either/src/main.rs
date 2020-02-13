@@ -9,6 +9,8 @@ fn main() {
     let mut tokio_runtime = tokio::runtime::Runtime::new().unwrap();
     tokio_runtime.block_on(futures_ordered());
     tokio_runtime.block_on(futures_unordered());
+
+    futures::executor::block_on(futures_boxed(11));
 }
 
 async fn either(n: u32) {
@@ -84,4 +86,38 @@ async fn futures_unordered() {
     }).await;
     // ***出力例***
     // ["futures_unordered: 3", "futures_unordered: 4", "futures_unordered: 1", "futures_unordered: 2", "futures_unordered: 5"]
+}
+
+async fn futures_boxed(n: i32) {
+    println!("/// futures_boxed ///");
+    // 各asyncブロックはそれぞれ異なる型を持つので、型不一致のエラーになってしまう
+    // let f = if n > 10 {
+    //     async { true }
+    // } else {
+    //     async { false }
+    // };
+
+    // ** incompatible types エラー **
+    // 17 |       let f = if n > 10 {
+    //    |  _____________-
+    // 18 | |         async { true }
+    //    | |         -------------- expected because of this
+    // 19 | |     } else {
+    // 20 | |         async { false }
+    //    | |         ^^^^^^^^^^^^^^^ expected generator, found a different generator
+    // 21 | |     };
+    //    | |_____- if and else have incompatible types
+    //       |
+    //    = note: expected type `impl core::future::future::Future` (generator)
+    //               found type `impl core::future::future::Future` (generator)
+
+    // boxed() を使うことで、Type erasing できる
+    let f = if n > 10 {
+        async { true }.boxed()
+    } else {
+        async { false }.boxed()
+    };
+
+    println!("f: {:?}", f.await);
+    // f: true
 }
