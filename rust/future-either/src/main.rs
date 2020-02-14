@@ -1,5 +1,5 @@
 use futures::{FutureExt, StreamExt};
-use futures::future::Either;
+use futures::future::{Either, BoxFuture};
 use rand::Rng;
 
 fn main() {
@@ -11,6 +11,8 @@ fn main() {
     tokio_runtime.block_on(futures_unordered());
 
     futures::executor::block_on(futures_boxed(11));
+    futures::executor::block_on(futures_ordered_boxed());
+
 }
 
 async fn either(n: u32) {
@@ -120,4 +122,21 @@ async fn futures_boxed(n: i32) {
 
     println!("f: {:?}", f.await);
     // f: true
+}
+
+async fn futures_ordered_boxed() {
+    println!("/// futures_ordered_boxed ///");
+    let mut futures_ordered: futures::stream::FuturesOrdered<BoxFuture<i32>> = futures::stream::FuturesOrdered::new();
+    futures_ordered.push(async { 1 }.boxed());
+    futures_ordered.push(async { 2 }.boxed());
+    futures_ordered.push(async { 3 }.boxed());
+    futures_ordered.push(async { 4 }.boxed());
+    futures_ordered.push(async { 5 }.boxed());
+
+    futures_ordered.collect::<Vec<i32>>().then(|numbers| {
+        async move {
+            println!("{:?}", numbers);
+        }
+    }).await;
+    // [1, 2, 3, 4, 5]
 }
