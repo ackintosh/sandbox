@@ -1,6 +1,7 @@
 fn main() {
     filter_map();
     flatten();
+    take_remains_from_iter();
 }
 
 fn filter_map() {
@@ -39,4 +40,25 @@ fn flatten() {
             .flat_map(|x| x)
             .collect::<Vec<_>>(),
     );
+}
+
+// イテレータの残りの要素を取る
+fn take_remains_from_iter() {
+    println!("/// take_remains_from_iter ///");
+    let nums = vec![0, 1, 2, 3, 4, 5];
+    for (i, n) in nums.iter().enumerate() {
+        println!("i: {}, n: {}", i, n);
+
+        if i == 3 {
+            // `i: 3` 番目の要素以降を取得する
+            println!("{:?}", nums.get(i..));
+        }
+    }
+    // i: 0, n: 0
+    // i: 1, n: 1
+    // i: 2, n: 2
+    // i: 3, n: 3
+    // Some([3, 4, 5])
+    // i: 4, n: 4
+    // i: 5, n: 5
 }
