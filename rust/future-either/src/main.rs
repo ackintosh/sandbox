@@ -1,17 +1,21 @@
 use futures::{FutureExt, StreamExt};
 use futures::future::{Either, BoxFuture};
 use rand::Rng;
+use futures::stream::FuturesOrdered;
 
 fn main() {
-    futures::executor::block_on(either(1));
-    futures::executor::block_on(either(11));
+   futures::executor::block_on(either(1));
+   futures::executor::block_on(either(11));
 
-    let mut tokio_runtime = tokio::runtime::Runtime::new().unwrap();
-    tokio_runtime.block_on(futures_ordered());
-    tokio_runtime.block_on(futures_unordered());
+   let e = EitherTest {};
+   futures::executor::block_on(e.either_functions(vec![0, 1, 2, 3, 4, 5]));
 
-    futures::executor::block_on(futures_boxed(11));
-    futures::executor::block_on(futures_ordered_boxed());
+   let mut tokio_runtime = tokio::runtime::Runtime::new().unwrap();
+   tokio_runtime.block_on(futures_ordered());
+   tokio_runtime.block_on(futures_unordered());
+
+   futures::executor::block_on(futures_boxed(11));
+   futures::executor::block_on(futures_ordered_boxed());
 
 }
 
@@ -32,6 +36,50 @@ async fn either(n: u32) {
         println!("boolean: {:?}", boolean);
         assert_eq!(boolean, false);
     }
+}
+
+struct EitherTest {
+}
+
+impl EitherTest {
+    async fn either_functions(self, nums: Vec<i32>) -> Either<BoxFuture<'static, String>, BoxFuture<'static, String>> {
+        let mut futures_ordered
+            = FuturesOrdered::new();
+
+        for (_i, n) in nums.clone().iter().enumerate() {
+            let f = match n {
+                1..=3 => {
+                    f_plus1(n.clone()).left_future()
+                },
+                4..=5 => {
+                    // f_plus1000 は f_plus1 と返り値の型は同じだけど、下記エラーでコンパイルできない
+                    // "expected opaque type, found a different opaque type"
+                    // f_plus1000(n.clone()).left_future()
+
+                    f_plus1(n.clone()).left_future()
+                },
+                0 => futures::future::ready(Ok(999)).right_future(),
+                _ => unreachable!()
+            };
+            futures_ordered.push(f);
+        }
+
+        let a = futures_ordered.collect::<Vec<_>>()
+            .then(|a| async move {
+                println!("{:?}", a);
+                "FOO".to_owned()
+            });
+
+        a.boxed().right_future()
+    }
+}
+
+async fn f_plus1(n: i32) -> Result<i32, ()> {
+    Ok(n + 1)
+}
+#[allow(dead_code)]
+async fn f_plus1000(n: i32) -> Result<i32, ()> {
+    Ok(n + 1000)
 }
 
 async fn futures_ordered() {
