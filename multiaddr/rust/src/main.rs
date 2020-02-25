@@ -1,4 +1,8 @@
-use parity_multiaddr::Multiaddr;
+use parity_multiaddr::{Multiaddr, Protocol};
+use futures::prelude::stream::FuturesOrdered;
+use futures::{Future, FutureExt};
+use futures::future::BoxFuture;
+use futures::stream::StreamExt;
 
 fn main() {
     let mut addr: Multiaddr = "/ip4/127.0.0.1/tcp/2000".parse().unwrap();
@@ -28,4 +32,51 @@ fn main() {
     });
     println!("{:?}", concat);
     // "/ip4/127.0.0.1/tcp/2000/udt/sctp/5678"
+
+    test_struct();
+}
+
+
+fn test_struct() {
+    let s = TestStruct::new(100);
+    let addr: Multiaddr = "/ip4/127.0.0.1/tcp/2000".parse().unwrap();
+    s.test(addr);
+}
+
+struct TestStruct {
+    inner: i32,
+}
+
+impl TestStruct {
+    fn new(inner: i32) -> Self {
+        Self { inner }
+    }
+
+    fn test(self, addr: Multiaddr) -> BoxFuture<'static, Vec<Multiaddr>> {
+        let mut futs = FuturesOrdered::new();
+        for (_i, n) in addr.iter().enumerate() {
+            let f = match n {
+                Protocol::Ip4(_) => {
+                    println!("{:?}", n);
+                    test_future()
+                }
+                cmp => {
+                    println!("{:?}", addr);
+                    test_future()
+                }
+            };
+            futs.push(f);
+        }
+        let t = futs.collect::<Vec<_>>().then(|a| {
+            println!("{:?}", a);
+            async move {
+                a
+            }
+        });
+       t.boxed()
+    }
+}
+
+async fn test_future() -> Multiaddr {
+    Multiaddr::empty()
 }
