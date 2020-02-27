@@ -1,4 +1,4 @@
-use futures::{FutureExt, StreamExt};
+use futures::{FutureExt, StreamExt, TryFutureExt};
 use futures::future::{Either, BoxFuture};
 use rand::Rng;
 use futures::stream::FuturesOrdered;
@@ -17,6 +17,7 @@ fn main() {
    futures::executor::block_on(futures_boxed(11));
    futures::executor::block_on(futures_ordered_boxed());
 
+    futures::executor::block_on(then());
 }
 
 async fn either(n: u32) {
@@ -188,3 +189,31 @@ async fn futures_ordered_boxed() {
     }).await;
     // [1, 2, 3, 4, 5]
 }
+
+async fn then() {
+    ///////////////////////////////////////////////////////////////////////////
+    // then()
+    ///////////////////////////////////////////////////////////////////////////
+    {
+        let f = async { 1 };
+        assert_eq!(f.then(|x| async move { x + 100 }).await, 101);
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // and_then()
+    ///////////////////////////////////////////////////////////////////////////
+    {
+        let f = async { Ok::<i32, i32>(1) };
+        // f は Ok を返すので and_then() が実行される
+        let f = f.and_then(|x| async move { Ok::<i32, i32>(x + 3) });
+        assert_eq!(f.await, Ok(4));
+    }
+
+    {
+        let f = async { Err::<i32, i32>(1) };
+        // f は Err を返すので and_then() は実行されない
+        let f = f.and_then(|x| async move { Ok::<i32, i32>(x + 3) });
+        assert_eq!(f.await, Err(1));
+    }
+}
+
