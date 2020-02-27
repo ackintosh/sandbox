@@ -4,18 +4,18 @@ use rand::Rng;
 use futures::stream::FuturesOrdered;
 
 fn main() {
-   futures::executor::block_on(either(1));
-   futures::executor::block_on(either(11));
+    futures::executor::block_on(either(1));
+    futures::executor::block_on(either(11));
 
-   let e = EitherTest {};
-   futures::executor::block_on(e.either_functions(vec![0, 1, 2, 3, 4, 5]));
+    let e = EitherTest {};
+    futures::executor::block_on(e.either_functions(vec![0, 1, 2, 3, 4, 5]));
 
-   let mut tokio_runtime = tokio::runtime::Runtime::new().unwrap();
-   tokio_runtime.block_on(futures_ordered());
-   tokio_runtime.block_on(futures_unordered());
+    let mut tokio_runtime = tokio::runtime::Runtime::new().unwrap();
+    tokio_runtime.block_on(futures_ordered());
+    tokio_runtime.block_on(futures_unordered());
 
-   futures::executor::block_on(futures_boxed(11));
-   futures::executor::block_on(futures_ordered_boxed());
+    futures::executor::block_on(futures_boxed(11));
+    futures::executor::block_on(futures_ordered_boxed());
 
     futures::executor::block_on(then());
 }
