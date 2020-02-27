@@ -215,5 +215,21 @@ async fn then() {
         let f = f.and_then(|x| async move { Ok::<i32, i32>(x + 3) });
         assert_eq!(f.await, Err(1));
     }
+
+    {
+        async fn f1(n: i32) -> Result<i32, i32> {
+            if n == 1 {
+                Ok(1)
+            } else {
+                Err(2)
+            }
+        }
+        async fn f2(n: i32) -> Result<i32, i32> {
+            Ok(n + 100)
+        }
+
+        let f = f1(1).and_then(|x| f2(x));
+        assert_eq!(f.await, Ok(101));
+    }
 }
 
