@@ -50,8 +50,12 @@ fn trust_dns_resolver() {
     // FQDN(末尾にドット)を指定する
     let host = "example.com.";
 
-    let mut opts = ResolverOpts::default();
-    opts.ip_strategy = LookupIpStrategy::Ipv6Only;
+
+    let opts = ResolverOpts {
+        ip_strategy: LookupIpStrategy::Ipv6Only,
+        ..ResolverOpts::default()
+    };
+
     let resolver = Resolver::new(
         ResolverConfig::default(),
         opts
