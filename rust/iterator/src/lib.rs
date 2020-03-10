@@ -1,4 +1,5 @@
-fn main() {
+#[test]
+fn test() {
     filter_map();
     flatten();
     take_remains_from_iter();

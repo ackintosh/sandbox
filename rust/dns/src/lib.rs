@@ -1,15 +1,20 @@
 use std::str::FromStr;
 use std::net::ToSocketAddrs;
+// use futures::TryFutureExt;
 use trust_dns_resolver::{Resolver, Name};
 use trust_dns_resolver::config::{ResolverConfig, ResolverOpts, LookupIpStrategy};
-use trust_dns_client::udp::UdpClientConnection;
-use trust_dns_client::client::{SyncClient, Client};
+use trust_dns_client::udp::{UdpClientConnection, UdpClientStream};
+use trust_dns_client::client::{SyncClient, Client, AsyncClient, ClientHandle};
 use trust_dns_resolver::proto::rr::{DNSClass, RecordType, Record, RData};
+use trust_dns_resolver::proto::op::Message;
 
-fn main() {
+#[test]
+fn test() {
     libstd();
     trust_dns_resolver();
     txt();
+    // async_usage();
+    // async_usage2();
 }
 
 // 名前解決は標準ライブラリで可能
@@ -117,3 +122,34 @@ fn txt() {
      //   "dnsaddr=/dnsaddr/sjc-1.bootstrap.libp2p.io/tcp/4001/ipfs/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN"
      // ]
 }
+
+// fn async_usage() {
+//     // let name_server = "8.8.8.8:53".parse().unwrap();
+//     let stream = UdpClientStream::<tokio::net::UdpSocket>::new(([8,8,8,8], 53).into());
+//     let client = AsyncClient::connect(stream);
+//
+//     let mut runtime = tokio::runtime::Runtime::new().unwrap();
+//     let (mut client, bg) = runtime.block_on(client).expect("connection failed");
+//
+//     runtime.spawn(bg);
+//
+//     let name = Name::from_str("_dnsaddr.bootstrap.libp2p.io").unwrap();
+//     let query = client.query(name, DNSClass::IN, RecordType::TXT);
+//
+//     let response = runtime.block_on(query).unwrap();
+//
+//     println!("{:?}", response);
+// }
+//
+// fn async_usage2() {
+//     let stream = UdpClientStream::<tokio::net::UdpSocket>::new(([8,8,8,8], 53).into());
+//     let client = AsyncClient::connect(stream)
+//         .and_then(|(async_client, dns_exchange_background)| async {
+//             let m: Message = s.into();
+//             println!("{:?}", m);
+//             Ok(s)
+//         });
+//
+//     let mut runtime = tokio::runtime::Runtime::new().unwrap();
+//     runtime.block_on(client);
+// }

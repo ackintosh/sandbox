@@ -4,7 +4,8 @@ use futures::FutureExt;
 
 // https://crates.io/crates/futures
 // M:Nモデルのスレッドプール
-fn main() {
+#[test]
+fn test() {
     handle();
     tx_rx();
 }

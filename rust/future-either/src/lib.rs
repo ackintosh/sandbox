@@ -3,7 +3,8 @@ use futures::future::{Either, BoxFuture};
 use rand::Rng;
 use futures::stream::FuturesOrdered;
 
-fn main() {
+#[test]
+fn test() {
     futures::executor::block_on(either(1));
     futures::executor::block_on(either(11));
 

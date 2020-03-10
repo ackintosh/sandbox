@@ -9,3 +9,6 @@ edition = "2018"
 [dependencies]
 trust-dns-resolver = "0.19.3"
 trust-dns-client = "0.19.3"
+
+# used in async usage
+tokio = { version = "0.2", features = ["full"] }

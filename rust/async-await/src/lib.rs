@@ -21,7 +21,8 @@ async fn print_async_fn_result() {
 
 // awaitはasync関数またはブロックの中でしか呼べないので、
 // main関数から呼び出すために futures クレートを使う
-fn main() {
+#[test]
+fn test() {
     block_on();
     thread_pool();
     async_blocks_have_their_own_types();
