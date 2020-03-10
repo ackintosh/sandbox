@@ -13,7 +13,7 @@ fn test() {
     libstd();
     trust_dns_resolver();
     txt();
-    // async_usage();
+    async_usage();
     // async_usage2();
 }
 
@@ -123,24 +123,23 @@ fn txt() {
      // ]
 }
 
-// fn async_usage() {
-//     // let name_server = "8.8.8.8:53".parse().unwrap();
-//     let stream = UdpClientStream::<tokio::net::UdpSocket>::new(([8,8,8,8], 53).into());
-//     let client = AsyncClient::connect(stream);
-//
-//     let mut runtime = tokio::runtime::Runtime::new().unwrap();
-//     let (mut client, bg) = runtime.block_on(client).expect("connection failed");
-//
-//     runtime.spawn(bg);
-//
-//     let name = Name::from_str("_dnsaddr.bootstrap.libp2p.io").unwrap();
-//     let query = client.query(name, DNSClass::IN, RecordType::TXT);
-//
-//     let response = runtime.block_on(query).unwrap();
-//
-//     println!("{:?}", response);
-// }
-//
+fn async_usage() {
+    let stream = UdpClientStream::<tokio::net::UdpSocket>::new(([8,8,8,8], 53).into());
+    let client = AsyncClient::connect(stream);
+
+    let mut runtime = tokio::runtime::Runtime::new().unwrap();
+    let (mut client, bg) = runtime.block_on(client).expect("connection failed");
+
+    runtime.spawn(bg);
+
+    let name = Name::from_str("_dnsaddr.bootstrap.libp2p.io").unwrap();
+    let query = client.query(name, DNSClass::IN, RecordType::TXT);
+
+    let response = runtime.block_on(query).unwrap();
+
+    println!("{:?}", response);
+}
+
 // fn async_usage2() {
 //     let stream = UdpClientStream::<tokio::net::UdpSocket>::new(([8,8,8,8], 53).into());
 //     let client = AsyncClient::connect(stream)
