@@ -3,10 +3,7 @@
 1. 起動する
 1. GraphiQLでクエリを発行してみる http://localhost:8080/graphiql
 
-### 参考
-* [Spring Boot + GraphQLでAPIを作成してみよう！ - Yahoo! JAPAN Tech Blog](https://techblog.yahoo.co.jp/advent-calendar-2018/create-springbook-graphql-api/)
-
-### Resolverの実装
+#### Resolverの実装
 * [Resolvers and Data Classes - GraphQL Java Kickstart](https://www.graphql-java-kickstart.com/tools/schema-definition/#resolvers-and-data-classes)
 
 ## Schema設計の参考URL
