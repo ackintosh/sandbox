@@ -1,0 +1,11 @@
+{
+  "name": "graphql-api",
+  "scripts": {
+    "postinstall": "graphql-codegen"
+  },
+  "dependencies": {
+    "graphql": "14.6.0",
+    "@graphql-codegen/cli": "1.13.1",
+    "@graphql-codegen/kotlin": "1.13.1"
+  }
+}

@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.targets.js.yarn.yarn
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -5,6 +6,9 @@ plugins {
 	id("io.spring.dependency-management") version "1.0.9.RELEASE"
 	kotlin("jvm") version "1.3.61"
 	kotlin("plugin.spring") version "1.3.61"
+
+	// yarnを実行するプラグイン
+	id("com.moowork.node") version "1.3.1"
 }
 
 group = "com.github.ackintosh"
@@ -29,6 +33,16 @@ dependencies {
 	//////////////////////////////
 	implementation("com.graphql-java-kickstart:graphql-spring-boot-starter:6.0.1")
 	implementation("com.graphql-java-kickstart:graphiql-spring-boot-starter:6.0.1")
+}
+
+tasks {
+	"build" {
+		// スキーマに定義した型のクラスを自動生成する
+		// see codegen.yml
+		// NOTE: Kotlinのクラスが生成されないのでひとまずコメントアウト
+		//       (TypeScriptだと生成されたので、Kotlinジェネレータの問題?)
+		// dependsOn(yarn)
+	}
 }
 
 tasks.withType<Test> {
