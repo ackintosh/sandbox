@@ -11,7 +11,13 @@ class RecommendRepository {
             2 to Recommend(2, "わけあり商品！")
     )
 
-    fun all() = recommends.values
+    fun all(): Collection<Recommend> {
+        println("RecommendRepository::all()")
+        return recommends.values
+    }
 
-    fun find(id: Int) = recommends[id]
+    fun find(id: Int) : Recommend? {
+        println("RecommendRepository::find()")
+        return recommends[id]
+    }
 }

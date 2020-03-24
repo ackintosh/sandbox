@@ -12,5 +12,5 @@ class ItemRepository {
             2 to listOf(Item(3, "折りたたみテーブル"), Item(4, "ホワイトボード"))
     )
 
-    fun find(recommend: Recommend) = recommendToItems[recommend.id]
+    fun find(recommend: Recommend) = recommendToItems.getOrDefault(recommend.id, emptyList())
 }
