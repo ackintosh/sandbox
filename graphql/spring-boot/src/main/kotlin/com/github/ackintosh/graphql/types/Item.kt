@@ -1,6 +1,6 @@
 package com.github.ackintosh.graphql.types
 
-data class Author(
+data class Item(
         val id: Int = 0,
         val name: String = ""
 )

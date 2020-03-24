@@ -1,15 +1,15 @@
 type Query {
-    version: String!
-    getAuthorById(id: ID!): Author
+    getRecommend(id: ID!): Recommend
+    getRecommends: [Recommend]
 }
 
-type Author {
+type Recommend {
     id: ID!
     name: String!
-    books: [Book]
+    items: [Item!]
 }
 
-type Book {
+type Item {
     id: ID!
     name: String!
 }
