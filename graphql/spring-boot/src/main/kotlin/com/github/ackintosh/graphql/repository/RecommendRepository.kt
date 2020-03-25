@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component
 class RecommendRepository {
     // 取り急ぎデータはメモリに持っておくだけ
     private val recommends = mapOf(
-            1 to Recommend(1, "テレワークにお役立ちのアイテム集合！"),
-            2 to Recommend(2, "わけあり商品！")
+            1 to Recommend(1, "テレワークにお役立ちのアイテム集合！", listOf(1, 2)),
+            2 to Recommend(2, "わけあり商品！", listOf(3, 4))
     )
 
     fun all(): Collection<Recommend> {
