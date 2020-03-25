@@ -87,7 +87,7 @@
 * 実装したDataloaderを登録しておく ([CustomGraphQLContextBuilder](https://github.com/ackintosh/sandbox/blob/master/graphql/spring-boot/src/main/kotlin/com/github/ackintosh/graphql/CustomGraphQLContextBuilder.kt))
 * ItemDataloaderを通して商品情報を取得する ([ItemResolver](https://github.com/ackintosh/sandbox/blob/master/graphql/spring-boot/src/main/kotlin/com/github/ackintosh/graphql/resolver/ItemResolver.kt))
 
-![image](https://user-images.githubusercontent.com/1885716/77497714-5561af80-6e91-11ea-874b-ed9b82cdedc0.png)
+![image](https://user-images.githubusercontent.com/1885716/77498560-4845c000-6e93-11ea-897b-16522e5af5f4.png)
 
 ## Schema設計の参考URL
 
