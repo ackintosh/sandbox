@@ -11,9 +11,9 @@ class RecommendRepository {
             2 to Recommend(2, "わけあり商品！", listOf(3, 4))
     )
 
-    fun all(): Collection<Recommend> {
+    fun all(): List<Recommend> {
         println("RecommendRepository::all()")
-        return recommends.values
+        return recommends.values.toList()
     }
 
     fun find(id: Int) : Recommend? {

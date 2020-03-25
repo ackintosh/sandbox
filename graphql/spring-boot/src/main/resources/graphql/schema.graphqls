@@ -1,6 +1,6 @@
 type Query {
-    getRecommend(id: ID!): Recommend
-    getRecommends: [Recommend]
+    recommend(id: ID!): Recommend
+    recommends: [Recommend]
 }
 
 type Recommend {
