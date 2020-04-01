@@ -1,0 +1,12 @@
+schema: src/main/resources/graphql/schema.graphqls
+generates:
+  src/main/generated/Types.kt:
+    config:
+      package: com.ackintosh.sandbox.graphql
+      listType: List
+      skipTypename: true
+      scalars:
+        ID: String
+        Long: Long
+    plugins:
+      - kotlin
