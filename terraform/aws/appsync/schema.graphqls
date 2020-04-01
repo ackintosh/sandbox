@@ -1,0 +1,12 @@
+type Query {
+	weather: Weather
+}
+
+type Weather {
+	title: String!
+	link: String!
+}
+
+schema {
+	query: Query
+}

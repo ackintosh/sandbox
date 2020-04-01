@@ -1,0 +1,13 @@
+{
+  "version": "2018-05-29",
+  "method": "GET",
+  ## E.G. if full path is https://api.xxxxxxxxx.com/posts then resourcePath would be /posts **
+  "resourcePath": "/forecast/webservice/json/v1",
+  "params":{
+      "query": {"city": "400040"},
+      ## "query":$util.toJson($ctx.args),
+      "headers": {
+          "Authorization": "$ctx.request.headers.Authorization"
+      }
+  }
+}
