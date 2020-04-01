@@ -3,7 +3,7 @@
 ///////////////////////////////////////////////////////////////////////
 // EC2
 module "web_server" {
-  source = "./http_server"
+  source = "./modules/http_server"
   // モジュールの入力パラメータ `instance_type` を指定
   instance_type = local.example_instance_type // ローカル変数を使用
 }
