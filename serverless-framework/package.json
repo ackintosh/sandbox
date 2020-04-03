@@ -1,0 +1,15 @@
+{
+  "name": "serverless-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "serverless": "1.67.0",
+    "serverless-appsync-plugin": "1.1.2",
+    "serverless-appsync-offline": "1.4.0",
+    "serverless-dynamodb-local": "0.2.39"
+  },
+  "scripts": {},
+  "author": "",
+  "license": "UNLICENSED"
+}
