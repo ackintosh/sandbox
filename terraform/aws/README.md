@@ -17,3 +17,8 @@ $ tfenv install
 $ terraform get
 $ terraform apply
 ```
+
+## AppSync
+
+* リゾルバのマッピングテンプレート
+  * https://docs.aws.amazon.com/ja_jp/appsync/latest/devguide/resolver-mapping-template-reference.html
