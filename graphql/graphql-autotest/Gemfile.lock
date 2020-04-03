@@ -1,0 +1,15 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    graphql (1.10.5)
+    graphql-autotest (0.1.2)
+      graphql
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  graphql-autotest
+
+BUNDLED WITH
+   2.1.4

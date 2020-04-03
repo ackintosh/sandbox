@@ -1,0 +1,15 @@
+type Query {
+    recommend(id: ID!): Recommend
+    recommends: [Recommend]
+}
+
+type Recommend {
+    id: ID!
+    name: String!
+    items: [Item!]
+}
+
+type Item {
+    id: ID!
+    name: String!
+}
