@@ -8,7 +8,7 @@ describe('GraphQL endpoint', () => {
     request.post('/graphql')
       .send({ query: '{ user(id: "id-3") { id name } }'})
       .set('content-type', 'application/json')
-      // API$BG'>Z%-!<(B: $BI,?\$@$1$I!"%-!<$OE,Ev$GNI$$(B
+      // API認証キー: 必須だけど、キーは適当で良い
       .set('x-api-key', 'test-api-key')
       .expect(200)
       .end((error, response) => {
