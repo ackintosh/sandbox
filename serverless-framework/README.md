@@ -8,10 +8,13 @@
 # 動作に必要なモジュールをインストールする
 $ npm i -g serverless
 $ yarn install
+
 # DynamoDBに入れるseedを生成する
 $ yarn dynamodb-generate-seed-data
+
 # ローカル版DynamoDBをインストールする
 $ sls dynamodb install
+
 # 起動する
 $ sls offline start
 ```
