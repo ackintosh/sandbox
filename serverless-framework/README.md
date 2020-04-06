@@ -30,7 +30,26 @@ $ curl -X POST \
 {"data":{"user":{"id":"id-3","name":"Savannah1"}}}
 ```
 
-### バージョンの組み合わせでエラー?
+### テスト
+
+```bash
+$ yarn test
+yarn run v1.22.4
+
+  GraphQL endpoint
+    ✓ Should return User
+
+
+  1 passing (33ms)
+
+✨  Done in 0.58s.
+```
+
+<details>
+
+<summary> TODO </summary>
+
+#### 依存モジュールのコンフリクト
 
 ※メモ: 現状、一旦serverless-appsync-pluginのバージョンを下げて回避している
 
@@ -64,6 +83,9 @@ serverless-framework@1.0.0 /Users/***
 npm ERR! peer dep missing: graphql@^0.10.5 || ^0.11.3 || ^0.12.0 || ^0.13.0, required by graphql-subscriptions@0.5.8
 npm ERR! peer dep missing: graphql@^0.13.0, required by graphql-tools@3.1.1
 ```
+
+</details>
+
 
 ##### [resolutions](https://classic.yarnpkg.com/ja/docs/selective-version-resolutions/)でVelocityjsを指定している理由
 

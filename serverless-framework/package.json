@@ -12,11 +12,17 @@
     "serverless-dynamodb-local": "0.2.39",
     "serverless-offline": "6.1.4"
   },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^3.4.2",
+    "supertest": "^4.0.2"
+  },
   "resolutions": {
     "serverless-appsync-offline/@conduitvc/appsync-emulator-serverless/velocityjs": "^2.0.0"
   },
   "scripts": {
-    "dynamodb-generate-seed-data": "cd seed-data && node create_seed_data.js"
+    "dynamodb-generate-seed-data": "cd seed-data && node create_seed_data.js",
+    "test": "yarn mocha tests"
   },
   "author": "",
   "license": "UNLICENSED"
