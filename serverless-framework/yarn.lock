@@ -613,9 +613,9 @@
     shortid "^2.2.14"
 
 "@serverless/components@^2.22.3":
-  version "2.27.0"
-  resolved "https://registry.yarnpkg.com/@serverless/components/-/components-2.27.0.tgz#dc8027334fdf09e532451d966e5f200bc6ce9af0"
-  integrity sha512-QuIaZ7kKQl4xpI3EFgV+UNDKM/mcp/m9P76K/4pnr/reieeLdrRVR7gZskKBWyqQPtAQGQmPM+f8NM+OgxZ0bQ==
+  version "2.28.0"
+  resolved "https://registry.yarnpkg.com/@serverless/components/-/components-2.28.0.tgz#dc43e46c135096dedba925f0bfae2551cd459814"
+  integrity sha512-AF5pY/WGIPNUvPfYfDm2JnOFKE9CtY71FMAcrFlL7pDuurAvh4yDhN2DTkZnuclw1ri6bPDhEe5oIIZjIt9PGQ==
   dependencies:
     "@serverless/platform-client" latest
     "@serverless/platform-sdk" "^2.3.0"
@@ -651,9 +651,9 @@
     semver "^6.1.1"
 
 "@serverless/enterprise-plugin@^3.5.0":
-  version "3.6.3"
-  resolved "https://registry.yarnpkg.com/@serverless/enterprise-plugin/-/enterprise-plugin-3.6.3.tgz#12946fceeddceced7742efb7e60d8c47cea2fc27"
-  integrity sha512-8Lb8/daybGUflWYTGD6U4p3tmiJDN/pVrAvGwKkBU1RnYTkyO/ncVYf0dVwdimBG5dLN8WgBOKGO8DR9/5VTnA==
+  version "3.6.4"
+  resolved "https://registry.yarnpkg.com/@serverless/enterprise-plugin/-/enterprise-plugin-3.6.4.tgz#5c40c9ffd3be6bac5c169651fa243f5ddf93d44a"
+  integrity sha512-ap/aFG9zrWt2wBrMGWsuBaSIEpJoOCEVgHoIteuzrswK7iRV6bq6fgMzcuW4HNtKLEAXQeqY981zMzFQcdiD0g==
   dependencies:
     "@serverless/event-mocks" "^1.1.1"
     "@serverless/platform-client" "^0.24.0"
@@ -1194,9 +1194,9 @@ atob@^2.1.2:
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
 aws-sdk@^2.238.1, aws-sdk@^2.254.1, aws-sdk@^2.404.0, aws-sdk@^2.559.0, aws-sdk@^2.642.0, aws-sdk@^2.7.0:
-  version "2.652.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.652.0.tgz#00a4dd3a4ce588448895c42d25e967f2a23b487c"
-  integrity sha512-THMlf3CX/IKMh+jizDQ+XCf5LSp1x+rIl+4uIRJjMj+zHNes7zJy3DSkuu5gux5aG5x4God996vPdCus+F22JA==
+  version "2.653.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.653.0.tgz#53fa0b8cd5c05fb2244df262f2a01de526376543"
+  integrity sha512-vtpHfoAKoudNa5kknUgQeXzdnmkI63hqKYHuk5u7mx0HelP8iybTxmKfKENlOvkfKtBdCEbcmJRa3DxZUbQPHQ==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -1611,12 +1611,12 @@ check-error@^1.0.2:
   integrity sha1-V00xLt2Iu13YkS6Sht1sCu1KrII=
 
 child-process-ext@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/child-process-ext/-/child-process-ext-2.1.0.tgz#b75333ccaef2f26183c91cdb5d0910d1cdd37280"
-  integrity sha512-SGyUp8OVf0KgafShpiCKgCMWQoDL5nkqNc6RKXVyFwA4V1cbgIREi0r/B2xjdbgrIa0G1+2MGtxkndsvIwrBhw==
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/child-process-ext/-/child-process-ext-2.1.1.tgz#f7cf4e68fef60c4c8ee911e1b402413191467dc3"
+  integrity sha512-0UQ55f51JBkOFa+fvR76ywRzxiPwQS3Xe8oe5bZRphpv+dIMeerW5Zn5e4cUy4COJwVtJyU0R79RMnw+aCqmGA==
   dependencies:
     cross-spawn "^6.0.5"
-    es5-ext "^0.10.51"
+    es5-ext "^0.10.53"
     log "^6.0.0"
     split2 "^3.1.1"
     stream-promise "^3.2.0"
@@ -2606,7 +2606,7 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-es5-ext@^0.10.12, es5-ext@^0.10.35, es5-ext@^0.10.45, es5-ext@^0.10.46, es5-ext@^0.10.47, es5-ext@^0.10.49, es5-ext@^0.10.50, es5-ext@^0.10.51, es5-ext@~0.10.14, es5-ext@~0.10.2, es5-ext@~0.10.46:
+es5-ext@^0.10.12, es5-ext@^0.10.35, es5-ext@^0.10.45, es5-ext@^0.10.46, es5-ext@^0.10.47, es5-ext@^0.10.49, es5-ext@^0.10.50, es5-ext@^0.10.51, es5-ext@^0.10.53, es5-ext@~0.10.14, es5-ext@~0.10.2, es5-ext@~0.10.46:
   version "0.10.53"
   resolved "https://registry.yarnpkg.com/es5-ext/-/es5-ext-0.10.53.tgz#93c5a3acfdbef275220ad72644ad02ee18368de1"
   integrity sha512-Xs2Stw6NiNHWypzRTY1MtaG/uJlwCk8kH81920ma8mvN8Xq1gsfhZvpkImLQArw8AHnv8MT2I45J3c0R8slE+Q==
@@ -4241,9 +4241,9 @@ is-installed-globally@^0.1.0:
     is-path-inside "^1.0.0"
 
 is-installed-globally@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/is-installed-globally/-/is-installed-globally-0.3.1.tgz#679afef819347a72584617fd19497f010b8ed35f"
-  integrity sha512-oiEcGoQbGc+3/iijAijrK2qFpkNoNjsHOm/5V5iaeydyrS/hnwaRCEgH5cpW0P3T1lSjV5piB7S5b5lEugNLhg==
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/is-installed-globally/-/is-installed-globally-0.3.2.tgz#fd3efa79ee670d1187233182d5b0a1dd00313141"
+  integrity sha512-wZ8x1js7Ia0kecP/CHM/3ABkAmujX7WPvQk6uu3Fly/Mk44pySulQpnHG46OMjHGXApINnV4QhY3SWnECO2z5g==
   dependencies:
     global-dirs "^2.0.1"
     is-path-inside "^3.0.1"
@@ -4899,9 +4899,9 @@ levn@~0.3.0:
     type-check "~0.3.2"
 
 libphonenumber-js@^1.7.16:
-  version "1.7.49"
-  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.7.49.tgz#dab6878458a67aaa057110b8141ca1cb5acc5ed0"
-  integrity sha512-AthHsii6+s+TBNMCUvKRzjscxMJAUD9rjDYZNj8rCVKBX9w1TzRbsmv+f4/pSuoHeKoNI64rcOV0Xb+7hoHudw==
+  version "1.7.50"
+  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.7.50.tgz#4e08663e3868aadc4a6145fba1d0344ec0e820ae"
+  integrity sha512-FmdA2WvwdTgu1X05zBnAE+3UAA09o3hFxEaqR0J+x7tGPAt1AD7Dj54L58PTJodrFBve/AIThFtC/UGqfSLbBw==
   dependencies:
     minimist "^1.2.5"
     xml2js "^0.4.17"
@@ -5356,10 +5356,17 @@ mixin-deep@^1.2.0:
     for-in "^1.0.2"
     is-extendable "^1.0.1"
 
-mkdirp@0.5.4, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@^0.5.3:
+mkdirp@0.5.4:
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.4.tgz#fd01504a6797ec5c9be81ff43d204961ed64a512"
   integrity sha512-iG9AK/dJLtJ0XNgTuDbSyNS3zECqDlAhnQW4CsNxBG3LQJBbHmRX1egw39DmtOdCAqY+dKXV+sgPgilNWUKMVw==
+  dependencies:
+    minimist "^1.2.5"
+
+mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@^0.5.3:
+  version "0.5.5"
+  resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.5.tgz#d91cefd62d1436ca0f41620e251288d420099def"
+  integrity sha512-NKmAlESf6jMGym1++R0Ra7wvhV+wFW63FaSOFPwRahvea0gMUcGUhVeAg/0BC0wiv9ih5NYPB1Wn1UEI1/L+xQ==
   dependencies:
     minimist "^1.2.5"
 
@@ -5904,9 +5911,9 @@ p-limit@^1.1.0:
     p-try "^1.0.0"
 
 p-limit@^2.0.0, p-limit@^2.2.2:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-2.2.2.tgz#61279b67721f5287aa1c13a9a7fbbc48c9291b1e"
-  integrity sha512-WGR+xHecKTr7EbUEhyLSh5Dube9JtdiG78ufaeLxTgpudf/20KqyMioIUZJAezlTIi6evxuoUs9YXc11cU+yzQ==
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-2.3.0.tgz#3dd33c647a214fdfffd835933eb086da0dc21db1"
+  integrity sha512-//88mFWSJx8lxCzwdAABTJL2MyWB12+eIY7MDL2SqLmAkeKU9qxRvWuSyTjm3FUmpBEMuFfckAIqEaVGUDxb6w==
   dependencies:
     p-try "^2.0.0"
 

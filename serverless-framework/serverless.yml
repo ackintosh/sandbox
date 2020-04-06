@@ -12,7 +12,8 @@ plugins:
 
 # プラグイン関連の設定
 custom:
-  # Offline support
+  # AppSync Offline Plugin
+  # https://github.com/aheissenberger/serverless-appsync-offline
   appsync-offline:
     port: 62222
     dynamodb:
@@ -36,30 +37,18 @@ custom:
   # Serverless-AppSync-Plugin
   # https://github.com/sid88in/serverless-appsync-plugin#configuring-the-plugin
   appSync:
-    # エンドポイントの名前を指定します
+    # エンドポイントの名
     name: appsync-serverless-sample
-    # AppSyncの認証方法を指定します
+    # AppSyncの認証方法
     authenticationType: API_KEY
-    # ここではCognitoによる認証方法を指定しています
-    # Cogtnitoによる認証方法の場合、Cognito側の情報を指定する必要があります
-    #userPoolConfig:
-    #  # Cognitoが存在するリージョンを指定します
-    #  # デフォルトだとproviderのregionで指定した値になります
-    #  awsRegion: ap-northeast-1
-    #  # CognitoのユーザープールのIDを指定します
-    #  userPoolId: ap-northeast-1_U0e7zFRLQ
-    #  # スキーマ定義で認証設定が記述されていない場合の挙動を指定します
-    #  # DENYを指定すると、認証されたいかなるユーザーも認可エラーに倒します
-    #  defaultAction: DENY
     schema: schema.graphql
     # マッピングテンプレートのVTLファイルの格納先
     # デフォルトはmapping-templates
     mappingTemplatesLocation: mapping-templates
     # リゾルバー定義
-    # ※ここではPipeline Resolverの例
     mappingTemplates:
       - type: Query
-        # リゾルバーを紐づけるスキーマ中のフィールド名を指定します
+        # リゾルバーを紐づけるスキーマのフィールド名
         field: user
         kind: UNIT # UNIT|PIPELINE (デフォルトはUNIT)
         dataSource: dynamo_db_users
@@ -68,32 +57,13 @@ custom:
         request: 'GetUser.req.vtl'
         # レスポンスマッピングテンプレートのパス
         response: 'GetUser.res.vtl'
-        # kind == PIPELINEの場合は使用する関数を定義する
-        #functions:
-        #  - GetUser
-    # 関数定義
-    #functionConfigurations:
-    #    # ユーザー一覧取得
-    #    # 関数で扱うデータソース名を指定します
-    #  - dataSource: dynamo_user
-    #    # 関数名を指定します
-    #    name: 'GetUser'
-    #    # 関数のリクエストマッピングテンプレートのファイルパスを指定します
-    #    # ファイルパスはmappingTemplatesLocationで指定したパスからの相対パスになります
-    #    request: 'GetUser.req.vtl'
-    #    # 関数のレスポンスマッピングテンプレートのファイルパスを指定します
-    #    response: 'GetUser.res.vtl'
     # データソースを指定(複数指定可能)
     dataSources:
       - type: AMAZON_DYNAMODB
         name: dynamo_db_users
         description: 'ユーザー情報テーブル'
         config:
-          tableName: { Ref: Users }
-          # データソースのロールARN
-          serviceRoleArn: arn:aws:iam::999999999999:role/sample_role_arn
-          # デフォルトだとproviderのregionで指定した値になる
-          region: ap-northeast-1
+          tableName: Users
 
 resources:
   Resources:
@@ -107,7 +77,7 @@ resources:
         AttributeDefinitions:
           -
             AttributeName: id
-            AttributeType: N
+            AttributeType: S
         ProvisionedThroughput:
           ReadCapacityUnits: 10
           WriteCapacityUnits: 10

@@ -1,16 +1,43 @@
-```bash
-#npm i
-#./node_modules/.bin/serverless
+# Serverless Framework
 
+### AppSync + DynamoDBをローカルで起動する
+
+- 起動
+
+```bash
+# 動作に必要なモジュールをインストールする
 $ npm i -g serverless
 $ yarn install
-$ sls appsync-offline start
+# DynamoDBに入れるseedを生成する
+$ yarn dynamodb-generate-seed-data
+# ローカル版DynamoDBをインストールする
+$ sls dynamodb install
+# 起動する
+$ sls offline start
 ```
+
+- 動作確認
+
+```bash
+$ curl -X POST \
+  http://localhost:62222/graphql \
+  -H 'Content-Type: application/json' \
+  -H 'x-api-key: APIKEY' \
+  -d '{
+  "query": "{ user(id: \"id-3\") { id, name } }"
+}'
+
+{"data":{"user":{"id":"id-3","name":"Savannah1"}}}
+``
 
 ### バージョンの組み合わせでエラー?
 
+※メモ: 現状、一旦serverless-appsync-pluginのバージョンを下げて回避している
+
+```
 ├─┬ serverless-appsync-offline@1.4.0
 └─┬ serverless-appsync-plugin@1.2.0
+```
 
 
 ```bash

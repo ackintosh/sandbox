@@ -8,7 +8,7 @@ faker.seed(1000);
 
 for (let i = 1; i <= numUsers; i++) {
   const user = {
-    id: i,
+    id: "id-" + i,
     name: faker.internet.userName(),
   };
   udata.push(user);

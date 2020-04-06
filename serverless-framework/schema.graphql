@@ -3,15 +3,11 @@ type User {
   name: String
 }
 
-type UserResponse {
-  user: User
-}
-
 input GetUserInput {
   id: ID!
 }
 
-# ユーザー1件取得
 type Query {
-  user(id: ID!): UserResponse
+  # ユーザー1件取得
+  user(id: ID!): User
 }

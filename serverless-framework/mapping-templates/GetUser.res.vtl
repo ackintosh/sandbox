@@ -2,5 +2,4 @@
   $util.error($ctx.error.message, $ctx.error.type)
 #end
 
-#set($res = { "user": $ctx.result })
-$util.toJson($res)
+$util.toJson($ctx.result)
