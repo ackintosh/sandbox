@@ -13,7 +13,7 @@
     "serverless-offline": "6.1.4"
   },
   "resolutions": {
-    "@conduitvc/appsync-emulator-serverless/velocityjs": "^2.0.0"
+    "serverless-appsync-offline/@conduitvc/appsync-emulator-serverless/velocityjs": "^2.0.0"
   },
   "scripts": {
     "dynamodb-generate-seed-data": "cd seed-data && node create_seed_data.js"
