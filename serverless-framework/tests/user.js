@@ -17,6 +17,7 @@ describe('GraphQL endpoint', () => {
         }
 
         expect(response.body.data.user).have.property('id')
+        expect(response.body.data.user.id).to.equal('id-3')
         expect(response.body.data.user).have.property('name')
         done()
       })
