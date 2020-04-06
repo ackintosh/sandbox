@@ -7,9 +7,15 @@
     "serverless": "1.67.0",
     "serverless-appsync-plugin": "1.1.2",
     "serverless-appsync-offline": "1.4.0",
-    "serverless-dynamodb-local": "0.2.39"
+    "serverless-dynamodb-local": "0.2.39",
+    "serverless-offline": "6.1.4",
+    "faker": "^4.1.0",
+    "jsonfile": "^4.0.0"
   },
-  "scripts": {},
+  "scripts": {
+    "start": "yarn dynamodb-generate-seed-data && sls dynamodb install && sls offline start",
+    "dynamodb-generate-seed-data": "cd seed-data && node create_seed_data.js"
+  },
   "author": "",
   "license": "UNLICENSED"
 }

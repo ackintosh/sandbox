@@ -1,19 +1,16 @@
-# サービス名
 service: appsync-sample-with-serverless
 provider:
   name: aws
-  # ステージ、デプロイ先を開発、運用などで分けたい場合はココを切り替えます
-  stage: production
-  # デプロイ先のリージョンです
+  stage: test
   region: ap-northeast-1
-# AppSyncのプラグインを指定します
+
 plugins:
+  - serverless-dynamodb-local
   - serverless-appsync-plugin
   - serverless-appsync-offline
-  - serverless-dynamodb-local
-    #- serverless-offline
+  - serverless-offline
 
-# プラグイン関連の設定はcustomで行います
+# プラグイン関連の設定
 custom:
   # Offline support
   appsync-offline:
@@ -26,16 +23,18 @@ custom:
     start:
       port: 8000
       inMemory: true
-      #migrate: true
-      #seed: true
-    #seed:
-    #  test:
-    #    sources:
-    #      - table: Users
-    #        sources: [seed-data/Users.json]	
-    #      - table: Tweets
-    #        sources: [seed-data/Tweets.json]
-  # ここでAppSyncの設定を行います
+      migrate: true
+      seed: true
+    stages:
+      - test
+    seed:
+      test:
+        sources:
+          - table: Users
+            sources: [seed-data/generated/Users.json]
+
+  # Serverless-AppSync-Plugin
+  # https://github.com/sid88in/serverless-appsync-plugin#configuring-the-plugin
   appSync:
     # エンドポイントの名前を指定します
     name: appsync-serverless-sample
@@ -52,58 +51,64 @@ custom:
     #  # スキーマ定義で認証設定が記述されていない場合の挙動を指定します
     #  # DENYを指定すると、認証されたいかなるユーザーも認可エラーに倒します
     #  defaultAction: DENY
-    # AppSyncのスキーマ定義ファイルのパスを指定します
-    # デフォルトだとschema.graphqlです
     schema: schema.graphql
-    # データソースを指定します(複数指定可能)
-    dataSources:
-      # データソースの型を指定します
-      # 以下が指定できます
-      # AMAZON_DYNAMODB ・・・DynamoDB
-      # AMAZON_ELASTICSEARCH ・・・Elasticsearch
-      # AWS_LAMBDA ・・・Lambda関数
-      - type: AMAZON_DYNAMODB
-        # データソース名を指定します
-        name: dynamo_user
-        # DynamoDBのテーブルの説明を指定します
-        description: 'ユーザー情報テーブル'
-        config:
-          # 参照するテーブル名を指定します
-          tableName: dynamo_user
-          # データソースのロールARNを指定します
-          serviceRoleArn: arn:aws:iam::999999999999:role/sample_role_arn
-          # データソースのリージョンを指定します
-          # デフォルトだとproviderのregionで指定した値になります
-          region: ap-northeast-1
-    # マッピングテンプレートのVTLファイルの格納先を指定します
-    # デフォルトはmapping-templatesです
+    # マッピングテンプレートのVTLファイルの格納先
+    # デフォルトはmapping-templates
     mappingTemplatesLocation: mapping-templates
-    # リゾルバー定義を指定します
-    # ※ここではPipeline Resolverの例を示します
+    # リゾルバー定義
+    # ※ここではPipeline Resolverの例
     mappingTemplates:
-        # リゾルバーの方を指定します
       - type: Query
         # リゾルバーを紐づけるスキーマ中のフィールド名を指定します
         field: user
-        # Pipeline Resolverを使い場合、以下を指定します
-        kind: PIPELINE
-        # リクエストマッピングテンプレートのファイルパスを指定します
-        # ファイルパスはmappingTemplatesLocationで指定したパスからの相対パスになります
-        request: 'start.vtl'
-        # レスポンスマッピングテンプレートのファイルパスを指定します
-        response: 'end.vtl'
-        # リゾルバーで使う関数を実行順に指定します
-        functions:
-          - GetUser
-    # 関数定義を指定します
-    functionConfigurations:
-        # ユーザー一覧取得
-        # 関数で扱うデータソース名を指定します
-      - dataSource: dynamo_user
-        # 関数名を指定します
-        name: 'GetUser'
-        # 関数のリクエストマッピングテンプレートのファイルパスを指定します
-        # ファイルパスはmappingTemplatesLocationで指定したパスからの相対パスになります
+        kind: UNIT # UNIT|PIPELINE (デフォルトはUNIT)
+        dataSource: dynamo_db_users
+        # リクエストマッピングテンプレートのパス
+        # ファイルパスはmappingTemplatesLocationで指定したパスからの相対パス
         request: 'GetUser.req.vtl'
-        # 関数のレスポンスマッピングテンプレートのファイルパスを指定します
+        # レスポンスマッピングテンプレートのパス
         response: 'GetUser.res.vtl'
+        # kind == PIPELINEの場合は使用する関数を定義する
+        #functions:
+        #  - GetUser
+    # 関数定義
+    #functionConfigurations:
+    #    # ユーザー一覧取得
+    #    # 関数で扱うデータソース名を指定します
+    #  - dataSource: dynamo_user
+    #    # 関数名を指定します
+    #    name: 'GetUser'
+    #    # 関数のリクエストマッピングテンプレートのファイルパスを指定します
+    #    # ファイルパスはmappingTemplatesLocationで指定したパスからの相対パスになります
+    #    request: 'GetUser.req.vtl'
+    #    # 関数のレスポンスマッピングテンプレートのファイルパスを指定します
+    #    response: 'GetUser.res.vtl'
+    # データソースを指定(複数指定可能)
+    dataSources:
+      - type: AMAZON_DYNAMODB
+        name: dynamo_db_users
+        description: 'ユーザー情報テーブル'
+        config:
+          tableName: { Ref: Users }
+          # データソースのロールARN
+          serviceRoleArn: arn:aws:iam::999999999999:role/sample_role_arn
+          # デフォルトだとproviderのregionで指定した値になる
+          region: ap-northeast-1
+
+resources:
+  Resources:
+    UserTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: N
+        ProvisionedThroughput:
+          ReadCapacityUnits: 10
+          WriteCapacityUnits: 10
+        TableName: 'Users'
