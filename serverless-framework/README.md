@@ -28,7 +28,7 @@ $ curl -X POST \
 }'
 
 {"data":{"user":{"id":"id-3","name":"Savannah1"}}}
-``
+```
 
 ### バージョンの組み合わせでエラー?
 
