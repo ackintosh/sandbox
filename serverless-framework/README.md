@@ -2,6 +2,8 @@
 
 ### AppSync + DynamoDBをローカルで起動する
 
+（AppSyncをTerraformで管理するコードは[こちら](https://github.com/ackintosh/sandbox/tree/master/terraform/aws/appsync)）
+
 - 起動
 
 ```bash
