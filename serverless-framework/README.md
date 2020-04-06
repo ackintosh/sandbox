@@ -65,6 +65,9 @@ npm ERR! peer dep missing: graphql@^0.10.5 || ^0.11.3 || ^0.12.0 || ^0.13.0, req
 npm ERR! peer dep missing: graphql@^0.13.0, required by graphql-tools@3.1.1
 ```
 
+##### [resolutions](https://classic.yarnpkg.com/ja/docs/selective-version-resolutions/)でVelocityjsを指定している理由
+
+* https://github.com/aheissenberger/serverless-appsync-offline/issues/40#issuecomment-550290055
 
 ##### 参考URL
 * [Serverless AppSync Plugin: Top 10 New Features - HackerNoon.com - Medium](https://medium.com/hackernoon/serverless-appsync-plugin-top-10-new-features-3faaf6789480)
