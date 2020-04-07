@@ -50,6 +50,44 @@ yarn run v1.22.4
 ✨  Done in 0.58s.
 ```
 
+##### DynamoDBのデータを確認する方法
+
+http://localhost:8000/shell/
+
+```js
+/////////////////////////////
+// テーブルのリスト
+/////////////////////////////
+
+var params = {
+    // ExclusiveStartTableName: 'table_name', // optional (for pagination, returned as LastEvaluatedTableName)
+    // Limit: 0, // optional (to further limit the number of table names returned per page)
+};
+dynamodb.listTables(params, function(err, data) {
+    if (err) ppJson(err); // an error occurred
+    else ppJson(data); // successful response
+});
+
+
+
+/////////////////////////////
+// Usersテーブルのリスト
+/////////////////////////////
+
+var params = {
+    TableName: 'Users',
+    Select: 'ALL_ATTRIBUTES', // optional (ALL_ATTRIBUTES | ALL_PROJECTED_ATTRIBUTES | 
+                              //           SPECIFIC_ATTRIBUTES | COUNT)
+    ConsistentRead: false, // optional (true | false)
+};
+dynamodb.scan(params, function(err, data) {
+    if (err) ppJson(err); // an error occurred
+    else ppJson(data); // successful response
+});
+```
+
+##### TODO
+
 <details>
 
 <summary> TODO </summary>
