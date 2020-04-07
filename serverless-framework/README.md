@@ -50,7 +50,7 @@ yarn run v1.22.4
 ✨  Done in 0.58s.
 ```
 
-##### DynamoDBのデータを確認する方法
+### DynamoDBのデータを確認する方法
 
 http://localhost:8000/shell/
 
@@ -85,6 +85,8 @@ dynamodb.scan(params, function(err, data) {
     else ppJson(data); // successful response
 });
 ```
+
+### その他
 
 ##### TODO
 
