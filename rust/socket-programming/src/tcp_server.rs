@@ -6,6 +6,8 @@ pub fn serve(address: &str) -> Result<(), failure::Error> {
     let listener = TcpListener::bind(address)?;
 
     loop {
+        // TCPではコネクションを張ることで特定のクライアントとの通信には1つのソケットを占有する
+        // そのためスレッドを新しく起動する必要がある
         let (stream, _) = listener.accept()?;
         std::thread::spawn(move || {
             handler(stream).unwrap_or_else(|error| {

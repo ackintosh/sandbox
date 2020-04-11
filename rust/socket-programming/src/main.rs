@@ -4,6 +4,8 @@ extern crate log;
 
 mod tcp_client;
 mod tcp_server;
+mod udp_client;
+mod udp_server;
 
 fn main() {
     println!("Hello, socket programming!");
@@ -23,11 +25,13 @@ fn main() {
     match protocol {
         "tcp" => match role {
             "server" => {
+                // cargo run tcp server 127.0.0.1:3000
                 tcp_server::serve(address).unwrap_or_else(|error| {
                     error!("{}", error);
                 });
             }
             "client" => {
+                // cargo run tcp client 127.0.0.1:3000
                 tcp_client::connect(address).unwrap_or_else(|error| {
                     error!("{}", error);
                 });
@@ -38,10 +42,14 @@ fn main() {
         },
         "udp" => match role {
             "server" => {
-                todo!("UDPサーバの呼び出し")
+                udp_server::serve(address).unwrap_or_else(|error| {
+                    error!("{}", error);
+                });
             }
             "client" => {
-                todo!("UDPクライアントの呼び出し")
+                udp_client::communicate(address).unwrap_or_else(|error| {
+                    error!("{}", error);
+                })
             }
             _ => {
                 missing_role();
