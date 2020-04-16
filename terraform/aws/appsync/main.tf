@@ -48,4 +48,14 @@ resource "aws_appsync_resolver" "example_resolver" {
   // マッピングテンプレート
   request_template = file("./resolver/request_template.vm")
   response_template = file("./resolver/response_template.vm")
+
+  // キャッシュの設定ができるようにPRを出しているところ
+  // https://github.com/terraform-providers/terraform-provider-aws/pull/12747
+  // caching_config {
+  //   caching_keys = [
+  //     "$context.identity.sub",
+  //     "$context.arguments.id"
+  //   ]
+  //   ttl = 120
+  // }
 }
