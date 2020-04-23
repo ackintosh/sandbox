@@ -41,5 +41,6 @@ fn main(n: u64, r: Vec<u64>) -> i64 {
 
 #[test]
 fn test() {
+    assert_eq!(main(6, vec![5, 3, 1, 3, 4, 3]), 3);
     assert_eq!(main(3, vec![4, 3, 2]), -1);
 }
