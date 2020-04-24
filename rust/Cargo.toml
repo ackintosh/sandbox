@@ -1,0 +1,18 @@
+# 配下のパッケージでCargo.tomlを分けたい & IntelliJのプロジェクトは分けたくないので、
+# 各パッケージをワークスペースにまとめる
+# <Cargoのワークスペース>
+# https://doc.rust-jp.rs/book/second-edition/ch14-03-cargo-workspaces.html
+# * `Cargo.lock` は親ディレクトリ(rust)に集約される（各パッケージで共有する）
+# * `target` ディレクトリ(出力ディレクトリ)も親ディレクトリに集約される
+[workspace]
+members = [
+  "arithmetic",
+  "async-await",
+  "dns",
+  "future-either",
+  "iterator",
+  "procon",
+  "socket-programming",
+  "thread-pool",
+]
+
