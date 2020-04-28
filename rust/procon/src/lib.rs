@@ -1,8 +1,6 @@
+mod alds1_1_a_insertion_sort;
 mod part2_alds1_1_d_maximum_profit;
 
-fn foo() {
-    println!( "foo");
-}
 
 #[cfg(test)]
 mod tests {
