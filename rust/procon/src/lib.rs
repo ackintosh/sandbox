@@ -1,4 +1,4 @@
-mod alds1_1_d_maximum_profit;
+mod part2_alds1_1_d_maximum_profit;
 
 fn foo() {
     println!( "foo");
