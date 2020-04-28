@@ -1,6 +1,5 @@
-mod alds1_1_a_insertion_sort;
-mod part2_alds1_1_d_maximum_profit;
-
+mod p46_alds1_1_d_maximum_profit;
+mod p54_alds1_1_a_insertion_sort;
 
 #[cfg(test)]
 mod tests {
