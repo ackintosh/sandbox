@@ -1,6 +1,8 @@
 // プロコンのためのアルゴリズムとデータ構造
 // 3.2 挿入ソート
+
 use std::convert::TryFrom;
+use crate::{u8_to_usize, i8_to_usize};
 
 fn insertion_sort(array: Vec<u8>, n: u8) -> Vec<Vec<u8>> {
     let mut a = array.clone();
@@ -25,14 +27,6 @@ fn insertion_sort(array: Vec<u8>, n: u8) -> Vec<Vec<u8>> {
     }
 
     result
-}
-
-fn u8_to_usize(n: u8) -> usize {
-    usize::try_from(n).expect("should be converted to usize")
-}
-
-fn i8_to_usize(n: i8) -> usize {
-    usize::try_from(n).expect("should be converted to usize")
 }
 
 #[test]
