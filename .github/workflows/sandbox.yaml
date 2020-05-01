@@ -191,3 +191,18 @@ jobs:
           echo ${{ github.workflow }} &&
           echo ${{ github.repository }} &&
           echo ${{ github.sha }}
+
+  #####################################################################
+  # プラットフォームやバージョンを変えながら同じ処理を実行する
+  # * build matrix
+  #####################################################################
+  buildMatrix:
+    name: use matrix
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        version: [1, 2, 3]
+    steps:
+      - name: print the version
+        run: echo ${{ matrix.version }}
+
