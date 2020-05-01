@@ -15,8 +15,8 @@ name: Workflow for sandbox
 
 # 環境変数
 env:
-  message1: "Hello"
-  message2: "GitHub Actions"
+  MESSAGE1: "Hello"
+  MESSAGE2: "GitHub Actions"
 
 ###################################
 # on (*必須要素)
@@ -58,11 +58,14 @@ on: push
 
 ###################################
 # 実行する処理
+# * 定義されたジョブは基本的に並列に事項される
+# * ジョブの依存関係は `jobs.＜ジョブID＞.needs` で定義する
+#   * https://help.github.com/ja/actions/reference/workflow-syntax-for-github-actions#
 ###################################
 jobs:
   # ジョブID
   # ジョブを参照するときに使われる一意な文字列
-  sandboxjob:
+  sandboxJob:
     # ジョブ名
     # 管理画面などに表示される
     name: sandbox job name
@@ -75,8 +78,28 @@ jobs:
     ###################################
     runs-on: ubuntu-18.04
     # 各ジョブで実行する処理
+    # 指定された順序で実行される
     steps:
       - name: name for step1
-        run: echo Hello
+        run: echo $MESSAGE1
       - name: name for step2
-        run: echo GitHub Actions
+        run: sleep 3
+      - name: name for step3
+        run: echo $MESSAGE2
+  # ジョブの依存関係を指定していないので `sandboxJob` と並列に実行される
+  runsConcurrently:
+    name: this job shows that the jobs are run concurrently
+    steps:
+      - name: name for step1
+        run: echo $MESSAGE1
+      - name: name for step2
+        run: sleep 3
+      - name: name for step3
+        run: echo $MESSAGE2 from "runsConcurrently"
+  # `needs` で依存関係を指定したジョブ
+  dependsOnSandboxJob:
+    name: depends on sandboxJob
+    needs: sandboxJob # `sandboxJob` に依存する
+    steps:
+      - name: name for step1
+        run: echo Hello from dependsOnSandboxJob
