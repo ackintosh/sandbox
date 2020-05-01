@@ -12,7 +12,9 @@ type Output = (Vec<u8>, u8);
 // 1: 数列の長さを表す整数N
 // 2: N個の数列
 fn bubble_sort(n: u8, mut array: Vec<u8>) -> Output {
+    // ソートで行われた交換回数
     let mut num_of_swapped = 0u8;
+
     let mut should_continue = true;
     let mut i = 0u8;
 

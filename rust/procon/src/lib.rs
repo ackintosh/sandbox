@@ -1,6 +1,7 @@
 mod p46_alds1_1_d_maximum_profit;
 mod p54_alds1_1_a_insertion_sort;
 mod p60_alds1_2_a_bubble_sort;
+mod p65_alds1_2_b_selection_sort;
 
 use std::convert::TryFrom;
 
