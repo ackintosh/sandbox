@@ -214,4 +214,4 @@ jobs:
         version: [1, 2, 3]
     steps:
       - name: print the combination
-        run: echo os: ${{ matrix.os}},  version: ${{ matrix.version }}
+        run: echo os: ${{ matrix.os }},  version: ${{ matrix.version }}
