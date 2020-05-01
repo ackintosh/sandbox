@@ -144,5 +144,23 @@ jobs:
     steps:
       - name: greetings
         run: echo $MESSAGE
-
+  # 各ステップとは並列に動作するコンテナを起動する
+  # * `jobs.＜ジョブID＞.services`
+  # * テスト用のデータベースなどを起動しておく
+  runServices:
+    name: A job using Redis service
+    runs-on: ubuntu-18.04
+    services:
+      redis-service: # サービス名
+        # 以下のパラメータは `container` と同じ
+        image: redis:latest
+    steps:
+      - name: set a greeting message to the Redis server
+        uses: docker://redis:latest
+        with:
+          args: echo "SET greetings Hello!" | redis-cli -h redis-service -p 6379
+      - name: get the greeting message which is set by the previous step
+        uses: docker://redis:latest
+        with:
+          args: echo "GET greetings" | redis-cli -h redis-service -p 6379
 
