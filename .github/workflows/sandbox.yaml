@@ -131,6 +131,9 @@ jobs:
   # * `jobs.＜ジョブID＞.container` でコンテナを指定する
   runInContainer:
     name: this job runs in container that specified in the `container` parameter
+    runs-on: ubuntu-18.04
+    # コンテナを指定する
+    # * 各ステップで明示的にコンテナが指定されない限り、ここで指定したコンテナ内で各ステップの処理が実行される
     container:
       image: busybox:latest
       env:
