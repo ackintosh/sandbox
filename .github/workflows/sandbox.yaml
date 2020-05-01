@@ -18,14 +18,14 @@ env:
   MESSAGE1: "Hello"
   MESSAGE2: "GitHub Actions"
 
-###################################
+#################################################################################################################
 # on (*必須要素)
 # 
 # 指定できるイベント:
 # * https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows
 #   → GitHub Webhookで定義されているイベントと同じものが指定可能
 #     https://developer.github.com/webhooks/#events
-###################################
+#################################################################################################################
 on: push
 
 # <リスト形式で複数のイベントを指定できる>
@@ -56,36 +56,54 @@ on: push
 #     - cron: '30 * * * *' # 毎時30分にワークフローを実行する
 
 
-###################################
+#################################################################################################################
 # 実行する処理
 # * 定義されたジョブは基本的に並列に事項される
 # * ジョブの依存関係は `jobs.＜ジョブID＞.needs` で定義する
 #   * https://help.github.com/ja/actions/reference/workflow-syntax-for-github-actions#
-###################################
+#################################################################################################################
 jobs:
-  # ジョブID
-  # ジョブを参照するときに使われる一意な文字列
+  # <ジョブID>
+  # * ジョブを参照するときに使われる一意な文字列
   sandboxJob:
-    # ジョブ名
-    # 管理画面などに表示される
+    # <ジョブ名>
+    # * 管理画面などに表示される
     name: sandbox job name
-    ###################################
-    # runs-on (*必須要素)
+    # <実行する仮想マシンを指定する>
+    # (*必須要素)
     #
     # 指定できる仮想マシン:
     # * 下記の `runs-on` を参照
     # * https://github.com/github/actions-cheat-sheet/blob/master/actions-cheat-sheet.pdf
-    ###################################
     runs-on: ubuntu-18.04
-    # 各ジョブで実行する処理
-    # 指定された順序で実行される
+    # <各ジョブで実行する処理>
+    # * 指定された順序で実行される
     steps:
       - name: name for step1
         run: echo $MESSAGE1
+        # シェルを指定
+        shell: bash # デフォルトで `bash`、Windowsの場合は `PowerShell`
       - name: name for step2
         run: sleep 3
       - name: name for step3
         run: echo $MESSAGE2
+      # <`uses` で、任意のActionを実行する>
+      # * 実行するActionを「＜オーナー＞/＜リポジトリ＞/＜パス＞@＜タグ|ブランチ|リファレンス＞」の形で指定する
+      #   * (パスや@以下については省略可能)
+      # * `uses`を指定する場合、`name`を省略することが多い
+      #   * その場合はAction名が名前として指定されたことになる
+      - uses: actions/checkout@v2
+        # `with` でActionsに渡すパラメータを指定する
+        # リポジトリ内のfooブランチをチェックアウトする場合
+        # with:
+        #   ref: foo
+      # <`uses` で、特定のコンテナ内で処理を実行する>
+      - name: run busybox
+        uses: docker://busybox:latest
+        with:
+          # `entrypoint` や `args` でコンテナを実行する際のエントリーポイントや引数を指定する
+          entrypoint: echo Hello from busybox
+          # args: foo
   # ジョブの依存関係を指定していないので `sandboxJob` と並列に実行される
   runsConcurrently:
     name: this job shows that the jobs are run concurrently
@@ -104,4 +122,8 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - name: name for step1
-        run: echo Hello from dependsOnSandboxJob
+        # 複数行のコマンドを実行する場合はYAMLのブロックスタイル式 `|` の記述をする
+        run: |
+          echo Hello \
+               from \
+               dependsOnSandboxJob
