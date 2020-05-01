@@ -80,7 +80,7 @@ jobs:
     # * 指定された順序で実行される
     steps:
       - name: name for step1
-        run: echo $MESSAGE1
+        run: echo $MESSAGE1 # `env` で設定した環境変数を出力する
         # シェルを指定
         shell: bash # デフォルトで `bash`、Windowsの場合は `PowerShell`
       - name: name for step2
@@ -152,7 +152,7 @@ jobs:
       # options: 
     steps:
       - name: greetings
-        run: echo $MESSAGE
+        run: echo $MESSAGE # `container.env` で設定した環境変数を出力する
 
   #####################################################################
   # 各ステップとは並列に動作するコンテナを起動する
