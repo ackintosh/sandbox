@@ -127,3 +127,19 @@ jobs:
           echo Hello \
                from \
                dependsOnSandboxJob
+  # ジョブ全体を特定のコンテナで実行する
+  # * `jobs.＜ジョブID＞.container` でコンテナを指定する
+  runInContainer:
+    name: this job runs in container that specified in the `container` parameter
+    container:
+      image: busybox:latest
+      env:
+        MESSAGE: Hello from busybox
+      # ports:
+      # volumes:
+      # options: 
+    steps:
+      - name: greetings
+        run: echo $MESSAGE
+
+
