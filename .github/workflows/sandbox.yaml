@@ -1,0 +1,82 @@
+# 参考URL
+# * https://knowledge.sakura.ad.jp/23478/
+
+# チートシート
+# * https://github.com/github/actions-cheat-sheet/blob/master/actions-cheat-sheet.pdf
+
+# Workflowのシンタックス
+# * https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions
+
+# 必須項目は `on` と `runs-on` の2つ
+
+
+# ワークフロー名
+name: Workflow for sandbox
+
+# 環境変数
+env:
+  message1: "Hello"
+  message2: "GitHub Actions"
+
+###################################
+# on (*必須要素)
+# 
+# 指定できるイベント:
+# * https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows
+#   → GitHub Webhookで定義されているイベントと同じものが指定可能
+#     https://developer.github.com/webhooks/#events
+###################################
+on: push
+
+# <リスト形式で複数のイベントを指定できる>
+#
+# on: [create, delete]
+
+# <特定のブランチやタグを対象に指定できる>
+# `*` や `**` といったワイルドカードが使える
+#
+# on:
+#   push:
+#     branches:
+#       - master
+#       - releases/* # リリースブランチを指定
+#       - !releases/**-alfa # アルファ版は除外する
+
+# <サブタイプを持つイベントもある>
+# `type` 要素を指定することで特定のサブタイプにマッチするイベントをトリガーにできる
+#
+# on:
+#   issues:
+#     types: [opened, reopened] # issueのオープン(opened)もしくは再オープン(reopened)にワークフローを実行する場合
+
+# <決まった日時にワークフローを実行できる>
+# cronと同じ形式(「<分> ＜時＞ ＜日＞ ＜月＞ ＜曜日＞」で指定する場合
+# on:
+#   schedule:
+#     - cron: '30 * * * *' # 毎時30分にワークフローを実行する
+
+
+###################################
+# 実行する処理
+###################################
+jobs:
+  # ジョブID
+  # ジョブを参照するときに使われる一意な文字列
+  sandboxjob:
+    # ジョブ名
+    # 管理画面などに表示される
+    name: sandbox job name
+    ###################################
+    # runs-on (*必須要素)
+    #
+    # 指定できる仮想マシン:
+    # * 下記の `runs-on` を参照
+    # * https://github.com/github/actions-cheat-sheet/blob/master/actions-cheat-sheet.pdf
+    ###################################
+    runs-on: ubuntu-18.04
+    # 各ジョブで実行する処理
+    steps:
+      - name: name for step1
+        run: echo Hello
+      - name: name for step2
+        run: echo GitHub Actions
