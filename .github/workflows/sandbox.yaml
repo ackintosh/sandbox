@@ -104,6 +104,7 @@ jobs:
           # `entrypoint` や `args` でコンテナを実行する際のエントリーポイントや引数を指定する
           # entrypoint: ls
           args: echo Hello from busybox
+
   # ジョブの依存関係を指定していないので `sandboxJob` と並列に実行される
   runsConcurrently:
     name: this job shows that the jobs are run concurrently
@@ -115,6 +116,7 @@ jobs:
         run: sleep 3
       - name: name for step3
         run: echo $MESSAGE2 from "runsConcurrently"
+
   # `needs` で依存関係を指定したジョブ
   dependsOnSandboxJob:
     name: depends on sandboxJob
@@ -127,6 +129,7 @@ jobs:
           echo Hello \
                from \
                dependsOnSandboxJob
+
   # ジョブ全体を特定のコンテナで実行する
   # * `jobs.＜ジョブID＞.container` でコンテナを指定する
   runInContainer:
@@ -144,6 +147,7 @@ jobs:
     steps:
       - name: greetings
         run: echo $MESSAGE
+
   # 各ステップとは並列に動作するコンテナを起動する
   # * `jobs.＜ジョブID＞.services`
   # * テスト用のデータベースなどを起動しておく
@@ -164,3 +168,16 @@ jobs:
         with:
           args: sh -c "echo 'GET greetings' | redis-cli -h redis-service -p 6379"
 
+  # 実行時の情報を利用する
+  # * `${{コンテキスト名}}` で実行時情報にアクセスできる
+  # * 利用できる情報は下記のドキュメントを参照
+  #   * https://help.github.com/en/actions/automating-your-workflow-with-github-actions/contexts-and-expression-syntax-for-github-actions
+  useContexts:
+    name: use contexts
+    runs-on: ubuntu-18.04
+    steps:
+      - name: print contexts
+        run: |
+          echo ${{ github.workflow }} &&
+          echo ${{ github.repository }} &&
+          echo ${{ github.sha }}
