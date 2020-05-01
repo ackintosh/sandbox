@@ -102,8 +102,8 @@ jobs:
         uses: docker://busybox:latest
         with:
           # `entrypoint` や `args` でコンテナを実行する際のエントリーポイントや引数を指定する
-          entrypoint: echo Hello from busybox
-          # args: foo
+          # entrypoint: ls
+          args: echo Hello from busybox
   # ジョブの依存関係を指定していないので `sandboxJob` と並列に実行される
   runsConcurrently:
     name: this job shows that the jobs are run concurrently
