@@ -89,6 +89,7 @@ jobs:
   # ジョブの依存関係を指定していないので `sandboxJob` と並列に実行される
   runsConcurrently:
     name: this job shows that the jobs are run concurrently
+    runs-on: ubuntu-18.04
     steps:
       - name: name for step1
         run: echo $MESSAGE1
@@ -100,6 +101,7 @@ jobs:
   dependsOnSandboxJob:
     name: depends on sandboxJob
     needs: sandboxJob # `sandboxJob` に依存する
+    runs-on: ubuntu-18.04
     steps:
       - name: name for step1
         run: echo Hello from dependsOnSandboxJob
