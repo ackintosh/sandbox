@@ -11,6 +11,7 @@ members = [
   "dns",
   "future-either",
   "iterator",
+  "primitives",
   "procon",
   "socket-programming",
   "thread-pool",
