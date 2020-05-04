@@ -13,6 +13,7 @@ members = [
   "iterator",
   "primitives",
   "procon",
+  "references-borrowing",
   "socket-programming",
   "thread-pool",
 ]
