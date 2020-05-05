@@ -63,6 +63,8 @@ struct Stack<T: Default + Copy + Debug> {
     // 現状、Debugトレイトが、長さ32までの配列しかサポートしていないので、32にしておく
     // https://doc.rust-lang.org/std/primitive.array.html
     haystack: [T; 32],
+    // スタックポインタ
+    // スタックの頂点（一番最後に追加された）要素を指す変数
     top: Option<usize>,
 }
 
@@ -157,4 +159,10 @@ fn test_stack() {
     }
     assert!(!stack.is_empty());
     assert!(stack.is_full());
+
+    for i in 0..32 {
+        stack.pop();
+    }
+    assert!(stack.is_empty());
+    assert!(!stack.is_full());
 }
