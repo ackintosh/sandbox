@@ -62,6 +62,7 @@ struct Stack<T: Default + Copy + Debug> {
     // 制約条件から、オペランドの数が100以下なので配列サイズは100にしたいけど、
     // 現状、Debugトレイトが、長さ32までの配列しかサポートしていないので、32にしておく
     // https://doc.rust-lang.org/std/primitive.array.html
+    // https://www.reddit.com/r/rust/comments/cwxeye/why_are_rust_arrays_limited_to_32_values/
     haystack: [T; 32],
     // スタックポインタ
     // スタックの頂点（一番最後に追加された）要素を指す変数
@@ -92,6 +93,7 @@ impl<T: Default + Copy + Debug> Stack<T> {
         println!("push({:?}) -->", v);
         print!("    elements: {:?} \n    top: {:?} \n", self.haystack, self.top);
 
+        // オーバーフロー
         if self.is_full() {
             panic!("スタックがいっぱいです");
         }
@@ -111,12 +113,14 @@ impl<T: Default + Copy + Debug> Stack<T> {
         println!("pop() -->");
         print!("    elements: {:?} \n    top: {:?} \n", self.haystack, self.top);
 
+        // アンダーフロー
         if self.top.is_none() {
             return Err(());
         }
 
         let top = self.top.unwrap();
         let v = self.haystack[top];
+        // デフォルト値を入れなくても良い(push時に上書きされる)けど、値が残っていると気持ち悪いので
         self.haystack[top] = Default::default();
 
         if top == 0 {

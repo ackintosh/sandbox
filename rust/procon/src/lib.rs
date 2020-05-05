@@ -4,6 +4,7 @@ mod p60_alds1_2_a_bubble_sort;
 mod p65_alds1_2_b_selection_sort;
 mod p70_alds1_2_c_stable_sort;
 mod p82_alds1_3_a_stack;
+mod p87_alds1_3_b_queue;
 
 use std::convert::TryFrom;
 
