@@ -14,7 +14,7 @@ fn insertion_sort(array: Vec<u8>, n: u8) -> Vec<Vec<u8>> {
     for i in 1..n {
         let mut j = i8::try_from(i).expect("should be converted to i8") - 1;
 
-        let mut v = a[u8_to_usize(i)];
+        let v = a[u8_to_usize(i)];
 
         // println!("i: {}, v: {}, a[i]: {}, a[j]: {}", i, v, a[u8_to_usize(i)], a[i8_to_usize(j)]);
         while j >= 0 && a[i8_to_usize(j)] > v {

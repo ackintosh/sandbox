@@ -23,7 +23,7 @@ fn stack(sequence: &str) -> Output {
             Ok(num) => {
                 stack.push(num);
             }
-            Err(e) => {
+            Err(_e) => {
                 println!("from_str: {:?}", term);
 
                 match term {
@@ -164,7 +164,7 @@ fn test_stack() {
     assert!(!stack.is_empty());
     assert!(stack.is_full());
 
-    for i in 0..32 {
+    for _i in 0..32 {
         stack.pop();
     }
     assert!(stack.is_empty());
