@@ -121,6 +121,8 @@ impl<T: Default + Clone> Queue<T> {
         Ok(v.expect("should have a value"))
     }
 
+    // 配列をリングバッファとみなして管理することで、
+    // enqueue, dequeueの操作を O(1) で実装できる
     fn next_index(&self, i: usize) -> usize {
         (i + 1) % self.size
     }
