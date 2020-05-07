@@ -1,5 +1,7 @@
 use std::time::Duration;
 
+mod lifetime;
+
 #[test]
 fn borrowing() {
     // 可変の変数
