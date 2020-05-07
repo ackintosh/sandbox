@@ -5,6 +5,7 @@ mod p65_alds1_2_b_selection_sort;
 mod p70_alds1_2_c_stable_sort;
 mod p82_alds1_3_a_stack;
 mod p87_alds1_3_b_queue;
+mod p95_alds1_3_c_doubly_linked_list;
 
 use std::convert::TryFrom;
 
