@@ -107,3 +107,35 @@ fn refcell() {
     //    -> これを多用するとRustでコードを書く意義が薄れてしまうのでできるだけ使わない方が良い
     ////////////////////////////////////////
 }
+
+#[test]
+fn refcell_sandbox() {
+    let num = 1;
+
+    let refcell: Rc<RefCell<i32>> = Rc::new(RefCell::new(num));
+
+    let ptr = refcell.as_ptr();
+    println!("ptr: {:?}", ptr); // ポインタのアドレスが出力される
+
+    let refcell2: Rc<RefCell<i32>> = Rc::clone(&refcell);
+    let ptr2 = refcell2.as_ptr();
+    println!("ptr2: {:?}", ptr2); // `ptr`と同じのアドレスが出力される
+
+    // 値は同じ 1 だけど、別の変数
+    let another_num = 1;
+    let another_refcell = Rc::new(RefCell::new(another_num));
+    let another_ptr = another_refcell.as_ptr();
+    println!("another_ptr: {:?}", another_ptr); // 別のアドレスが出力される
+
+    // 同じ値を指しているのでtrue
+    assert_eq!(refcell, refcell2);
+    // 同じアドレスを指すポインタなので true
+    assert_eq!(refcell.as_ptr(), refcell2.as_ptr());
+
+    // 同じ値を指しているのでtrue
+    assert_eq!(refcell, another_refcell);
+    ///////////////////////////////////////////
+    // 別のアドレスを指しているポインタなので一致しない
+    ///////////////////////////////////////////
+    assert_ne!(refcell.as_ptr(), another_refcell.as_ptr());
+}
