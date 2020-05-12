@@ -14,6 +14,7 @@ members = [
   "primitives",
   "procon",
   "references-borrowing",
+  "result",
   "socket-programming",
   "thread-pool",
 ]
