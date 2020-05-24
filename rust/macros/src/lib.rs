@@ -32,3 +32,57 @@ fn test_foo() {
     // 23 |     foo!(z => 3);
     //    |          ^ no rules expected this token in macro call
 }
+
+// パターン(pat)
+macro_rules! pat {
+    ( $e:expr , $pat:pat ) => {
+        match $e {
+            $pat => (),
+            ref e => panic!("error: {:?}", e)
+        }
+    };
+    ( $e:expr , $pat:pat => $arm:expr ) => {
+        match $e {
+            $pat => $arm,
+            ref e => panic!("error: {:?}", e)
+        }
+    };
+}
+
+#[test]
+fn test_pat() {
+    #[derive(Debug)]
+    enum Foo {
+        A,
+        B { s: String },
+        C { n: u32, s: String },
+    }
+
+    ///////////
+    // A
+    ///////////
+    let foo = Foo::A;
+    pat!(foo, Foo::A);
+
+    ///////////
+    // B
+    ///////////
+    let foo = Foo::B {s: "foo:s".to_owned()};
+    pat!(foo, Foo::B { s });
+
+    let foo = Foo::B {s: "foo:s".to_owned()};
+    let s = pat!(foo, Foo::B { s } => s);
+    assert_eq!(
+        "foo:s".to_owned(),
+        s
+    );
+
+    let foo = Foo::B {s: "foo:s".to_owned()};
+    pat!(foo, Foo::B { s } => assert!(true));
+
+    ///////////
+    // C
+    ///////////
+    let foo = Foo::C {n: 1, s: "foo:s".to_owned()};
+    pat!(foo, Foo::C { n, s } => assert!(true));
+}
