@@ -1,0 +1,46 @@
+version: "3.7"
+services:
+  sonarqube:
+    image: sonarqube
+    ports:
+        - '9000:9000'
+    environment:
+        - SONARQUBE_JDBC_USERNAME=sonar
+        - SONARQUBE_JDBC_PASSWORD=sonar
+        - SONARQUBE_JDBC_URL=jdbc:postgresql://sonarqube_db:5432/sonar
+    links:
+        - sonarqube_db
+    volumes:
+      - type: volume
+        source: sonarqube_conf
+        target: /opt/sonarqube/conf
+      - type: volume
+        source: sonarqube_data
+        target: /opt/sonarqube/data
+      - type: volume
+        source: sonarqube_extensions
+        target: /opt/sonarqube/extensions
+      - type: volume
+        source: sonarqube_bundled_plugins
+        target: /opt/sonarqube/lib/bundled-plugins
+
+  sonarqube_db:
+    image: postgres
+    environment:
+        - POSTGRES_USER=sonar
+        - POSTGRES_PASSWORD=sonar
+    volumes:
+      - type: volume
+        source: postgresql
+        target: /var/lib/postgresql
+      - type: volume
+        source: postgresql_data
+        target: /var/lib/postgresql/data
+
+volumes:
+  sonarqube_conf:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_bundled_plugins:
+  postgresql:
+  postgresql_data:
