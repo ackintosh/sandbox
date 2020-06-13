@@ -19,5 +19,6 @@ members = [
   "result",
   "socket-programming",
   "thread-pool",
+  "tower-of-hanoi"
 ]
 

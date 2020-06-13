@@ -886,6 +886,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "tower-of-hanoi"
+version = "0.1.0"
+
+[[package]]
 name = "trust-dns-client"
 version = "0.19.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
