@@ -7,6 +7,7 @@ mod p82_alds1_3_a_stack;
 mod p87_alds1_3_b_queue;
 mod p95_alds1_3_c_doubly_linked_list;
 mod p119_alds1_4_a_linear_search;
+mod p122_alds1_4_b_binary_search;
 
 use std::convert::TryFrom;
 
