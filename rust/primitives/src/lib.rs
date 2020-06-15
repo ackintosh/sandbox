@@ -1,4 +1,5 @@
 mod string_str;
+mod vector;
 
 
 #[cfg(test)]
