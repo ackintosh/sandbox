@@ -1,7 +1,9 @@
 use futures::executor::ThreadPool;
 use futures::task::SpawnExt;
 
+// ////////////////////////////////////////////////////////
 // async関数
+// ////////////////////////////////////////////////////////
 async fn get() -> u32 {
     10
 }
@@ -16,28 +18,62 @@ async fn get_and_plus_1() -> u32 {
 }
 
 async fn print_async_fn_result() {
+    // awaitはFutureが完了するのを待つ
+    // スレッドはブロックせずに、非同期に待機する
     println!("{}", get_and_plus_1().await);
-}
-
-// awaitはasync関数またはブロックの中でしか呼べないので、
-// main関数から呼び出すために futures クレートを使う
-#[test]
-fn test() {
-    block_on();
-    thread_pool();
-    async_blocks_have_their_own_types();
 }
 
 // ////////////////////////////////////////////////////////
 // main関数と同じスレッドで呼び出す
 // ////////////////////////////////////////////////////////
+#[test]
 fn block_on() {
+    // main関数から呼び出すために futures クレートを使う
     futures::executor::block_on(print_async_fn_result());
+}
+
+// ////////////////////////////////////////////////////////
+// join
+// https://rust-lang.github.io/async-book/01_getting_started/04_async_await_primer.html
+// ////////////////////////////////////////////////////////
+mod join {
+    async fn learn_song() {
+        println!("learn_song!");
+    }
+
+    async fn sing_song() {
+        println!("sing_song!");
+    }
+
+    async fn learn_and_sing() {
+        // 必ず、learn_song() のあとに sing_song() を実行する
+        learn_song().await;
+        sing_song().await;
+    }
+
+    async fn dance() {
+        println!("dance!");
+    }
+
+    async fn async_main() {
+        // learn_and_sing() と dance() は非同期に行う
+        let future1 = learn_and_sing();
+        let future2 = dance();
+
+        // join
+        futures::future::join(future1, future2);
+    }
+
+    #[test]
+    fn join() {
+        futures::executor::block_on(async_main());
+    }
 }
 
 // ////////////////////////////////////////////////////////
 // thread poolを使って非同期に処理する
 // ////////////////////////////////////////////////////////
+#[test]
 fn thread_pool() {
     let thread_pool = ThreadPool::builder()
         .pool_size(5)
@@ -60,6 +96,7 @@ fn thread_pool() {
 // ////////////////////////////////////////////////////////
 // asyncブロックはそれぞれに独自の型を持つ
 // ////////////////////////////////////////////////////////
+#[test]
 fn async_blocks_have_their_own_types() {
     // https://users.rust-lang.org/t/storing-futures/34564
     let f1 = async { println!("f1") };
