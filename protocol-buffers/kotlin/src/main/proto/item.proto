@@ -6,9 +6,26 @@ option java_package = "com.github.ackintosh.proto";
 import "google/protobuf/timestamp.proto";
 
 message Item {
-  string itemCode = 1;
-  int32 price = 2;
-  int32 weight = 3;
-  int32 size = 4;
-  google.protobuf.Timestamp releaseDate = 5;
+  string string1 = 1;
+  string string2 = 2;
+  string string3 = 3;
+  string string4 = 4;
+  string string5 = 5;
+  string string6 = 6;
+  string string7 = 7;
+  string string8 = 8;
+  string string9 = 9;
+  string string10 = 10;
+  int32 number1 = 11;
+  int32 number2 = 12;
+  int32 number3 = 13;
+  int32 number4 = 14;
+  int32 number5 = 15;
+  int32 number6 = 16;
+  int32 number7 = 17;
+  int32 number8 = 18;
+  int32 number9 = 19;
+  int32 number10 = 20;
+  google.protobuf.Timestamp timestamp1 = 21;
+  google.protobuf.Timestamp timestamp2 = 22;
 }
