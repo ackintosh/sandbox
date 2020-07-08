@@ -15,7 +15,7 @@ message Item {
   string string7 = 7;
   string string8 = 8;
   string string9 = 9;
-  string string10 = 10;
+  string string10 = 10 [deprecated=true];
   int32 number1 = 11;
   int32 number2 = 12;
   int32 number3 = 13;
