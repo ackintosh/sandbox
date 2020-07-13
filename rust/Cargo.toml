@@ -9,6 +9,7 @@ members = [
   "arithmetic",
   "async-await",
   "dns",
+  "env_logger",
   "future-either",
   "iterator",
   "level-db",
