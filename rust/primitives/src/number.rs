@@ -15,3 +15,17 @@ fn usize_isize() {
         std::mem::size_of::<isize>()
     );
 }
+
+#[test]
+fn cmp() {
+    let n = 10;
+    let m = 20;
+
+    match n.cmp(&m) {
+        std::cmp::Ordering::Equal => println!("n = m"),
+        std::cmp::Ordering::Greater => println!("n > m"),
+        std::cmp::Ordering::Less => println!("n < m"),
+    }
+
+    // n < m が出力される
+}
