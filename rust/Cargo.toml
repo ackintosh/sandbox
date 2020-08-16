@@ -10,7 +10,7 @@ members = [
   "async-await",
   "dns",
   "env_logger",
-  "future-either",
+  "tokiors",
   "iterator",
   "level-db",
   "macros",
