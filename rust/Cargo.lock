@@ -211,15 +211,6 @@ version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
-name = "future-either"
-version = "0.1.0"
-dependencies = [
- "futures 0.3.4 (registry+https://github.com/rust-lang/crates.io-index)",
- "rand 0.7.3 (registry+https://github.com/rust-lang/crates.io-index)",
- "tokio 0.2.19 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
 name = "futures"
 version = "0.3.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -903,6 +894,15 @@ dependencies = [
  "proc-macro2 1.0.10 (registry+https://github.com/rust-lang/crates.io-index)",
  "quote 1.0.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "syn 1.0.18 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "tokiors"
+version = "0.1.0"
+dependencies = [
+ "futures 0.3.4 (registry+https://github.com/rust-lang/crates.io-index)",
+ "rand 0.7.3 (registry+https://github.com/rust-lang/crates.io-index)",
+ "tokio 0.2.19 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
