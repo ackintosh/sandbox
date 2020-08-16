@@ -1,0 +1,11 @@
+proto_outdir = "./proto"
+
+[[dependencies]]
+  target = "github.com/stormcat24/protodep/protobuf"
+  branch = "master"
+
+[[dependencies]]
+  target = "github.com/grpc-ecosystem/grpc-gateway/examples/examplepb"
+  revision = "v1.2.2"
+  path = "grpc-gateway/examplepb"
+
