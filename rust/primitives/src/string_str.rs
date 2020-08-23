@@ -1,3 +1,7 @@
+/////////////////////////////////////////////////////////
+// str
+/////////////////////////////////////////////////////////
+#[test]
 fn str() {
     let str = "1 2 + 3 4 - *";
 
@@ -16,7 +20,26 @@ fn str() {
     print!("\n");
 }
 
+/////////////////////////////////////////////////////////
+// String
+/////////////////////////////////////////////////////////
 #[test]
-fn test() {
-    str();
+fn remove_all_whitespace() {
+    // 文字列からスペースを削除する
+    let mut s = "a b c".to_owned();
+    s.retain(|c| !c.is_whitespace());
+
+    assert_eq!(s, "abc".to_owned());
+}
+
+#[test]
+fn string_pos() {
+    let mut s = "aaabbbccc".to_owned();
+
+    // bbb以降を切り落とす
+    if let Some(pos) = s.find("bbb") {
+        s.replace_range(pos.., "");
+    }
+
+    assert_eq!(s, "aaa".to_owned());
 }
