@@ -19,6 +19,7 @@ members = [
   "references-borrowing",
   "result",
   "socket-programming",
+  "thread-local-storage-tls",
   "thread-pool",
   "tower-of-hanoi"
 ]

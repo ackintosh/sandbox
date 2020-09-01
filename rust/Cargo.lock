@@ -840,6 +840,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "thread-local-storage-tls"
+version = "0.1.0"
+
+[[package]]
 name = "thread-pool"
 version = "0.1.0"
 dependencies = [
