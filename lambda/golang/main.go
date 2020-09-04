@@ -13,6 +13,7 @@ import (
 func handler(ctx context.Context, sqsEvent events.SQSEvent) error {
 	for _, message := range sqsEvent.Records {
 		fmt.Printf("The message %s for event source %s = %s \n", message.MessageId, message.EventSource, message.Body)
+		fmt.Printf("The length of body: %d \n", len(message.Body))
 		fmt.Printf("Attributes: %s \n", message.Attributes)
 
 		// 現在（ミリ秒）
