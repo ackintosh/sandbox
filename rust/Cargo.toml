@@ -9,7 +9,7 @@ members = [
   "arithmetic",
   "async-await",
   "dns",
-  "env_logger",
+  "crate-env_logger",
   "tokiors",
   "iterator",
   "level-db",

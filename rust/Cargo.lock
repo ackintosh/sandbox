@@ -100,6 +100,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "crate_env_logger"
+version = "0.1.0"
+dependencies = [
+ "env_logger 0.7.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "log 0.4.8 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
 name = "data-encoding"
 version = "2.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -132,14 +140,6 @@ dependencies = [
  "proc-macro2 1.0.10 (registry+https://github.com/rust-lang/crates.io-index)",
  "quote 1.0.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "syn 1.0.18 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
-name = "env_logger"
-version = "0.1.0"
-dependencies = [
- "env_logger 0.7.1 (registry+https://github.com/rust-lang/crates.io-index)",
- "log 0.4.8 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]

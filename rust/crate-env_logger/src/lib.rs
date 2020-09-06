@@ -2,8 +2,6 @@
 #[macro_use]
 extern crate log;
 
-use env_logger::{Builder, Env};
-
 #[test]
 fn it_works() {
     env_logger::init();
@@ -13,7 +11,7 @@ fn it_works() {
 
     // $ RUST_LOG=error cargo test
     // で実行すると error ログだけが表示される
-    // [2020-07-13T09:11:51Z ERROR env_logger] errorログ: xxxxx
+    // [2020-07-13T09:11:51Z ERROR crate-env_logger] errorログ: xxxxx
 }
 
 mod builder {

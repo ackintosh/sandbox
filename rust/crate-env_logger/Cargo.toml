@@ -1,5 +1,5 @@
 [package]
-name = "env_logger"
+name = "crate_env_logger"
 version = "0.1.0"
 authors = ["ackintosh <sora.akatsuki@gmail.com>"]
 edition = "2018"
