@@ -100,6 +100,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "crate-lazy_static"
+version = "0.1.0"
+dependencies = [
+ "lazy_static 1.4.0 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
 name = "crate_env_logger"
 version = "0.1.0"
 dependencies = [

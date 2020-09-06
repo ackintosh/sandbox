@@ -10,6 +10,7 @@ members = [
   "async-await",
   "dns",
   "crate-env_logger",
+  "crate-lazy_static",
   "tokiors",
   "iterator",
   "level-db",
