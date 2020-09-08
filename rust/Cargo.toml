@@ -11,6 +11,7 @@ members = [
   "dns",
   "crate-env_logger",
   "crate-lazy_static",
+  "crate-uint",
   "tokiors",
   "iterator",
   "level-db",
