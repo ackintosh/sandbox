@@ -1,0 +1,24 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.3.72'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+
+test {
+    useJUnitPlatform()
+    // https://docs.gradle.org/current/userguide/java_testing.html#using_junit5
+    // As a reference from the documentation docs.gradle.org/current/userguide/….
+    // The code above enables JUnit5 Platform to run the tests in your JVM project.
+    // Based on the dependencies or configuration the new Jupiter engine will execute those tests or if you need backward compatibility you can inject/configure Vintage (JUnit4) engine will do it.
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.2")}
