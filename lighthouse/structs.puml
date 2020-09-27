@@ -1,0 +1,65 @@
+@startuml
+
+class Query {
+	id: QueryId
+	peer_iter: QueryPeerIter
+}
+
+Query *-- QueryPeerIter
+
+enum QueryPeerIter {
+	FindNode ( FindNodeQuery )
+	Predicate ( PredicateQuery )
+}
+
+QueryPeerIter - FindNodeQuery
+'QueryPeerIter - PredicateQuery
+
+class FindNodeQuery {
+	target_key: Key
+	progress: QueryProgress
+	closest_peers: BTreeMap<Distance, QueryPeer>
+	iterations: usize
+	num_waiting: usize
+	config: FindNodeQueryConfig
+
+	next(): QueryState
+}
+
+FindNodeQuery o-- QueryProgress
+FindNodeQuery -- QueryPeer
+
+'class PredicateQuery {
+'}
+
+enum QueryProgress {
+	Iterating
+	Stalled
+	Finished
+}
+
+class QueryPeer {
+	key: Key
+	iteration: usize
+	peers_returned: usize
+	state: QueryPeerState
+}
+
+QueryPeer o-- QueryPeerState
+
+enum QueryPeerState {
+	NotContacted
+	Waiting
+	Unresponsive
+	PendingIteration
+	Failed
+	Succeeded
+}
+
+enum QueryState {
+	Waiting
+	WaitingAtCapacity
+	Finished
+}
+
+@enduml
