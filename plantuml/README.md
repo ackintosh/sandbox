@@ -1,1 +1,2 @@
 - [PlantUML integration - Plugins | JetBrains](https://plugins.jetbrains.com/plugin/7017-plantuml-integration)
+- [Generate Plantuml · Actions · GitHub Marketplace](https://github.com/marketplace/actions/generate-plantuml)
