@@ -1,0 +1,66 @@
+@startuml
+
+package "Discv5" {
+	[service_channel: Sender] as discv5_service_channel
+	note top of discv5_service_channel: The channel to make requests from the main service.
+
+	[service_exit: oneshot::Sender] as discv5_service_exit
+	note bottom of discv5_service_exit: The exit channel to shutdown the underlying service.
+}
+
+package "Service" {
+	[discv5_recv: Receiver] as service_discv5_recv
+	note top of service_discv5_recv: The channel of messages sent by the controlling discv5 wrapper.
+	[discv5_service_channel] -> service_discv5_recv
+
+	[exit: oneshot::Receiver] as service_exit
+	[discv5_service_exit] -> service_exit
+
+	[handler_send: UnboundedSender] as service_handler_send
+	note top of service_handler_send: The channel to send messages to the handler.
+
+	[handler_recv: Receiver] as service_handler_recv
+	note bottom of service_handler_recv: The channel to receive messages from the handler.
+}
+
+package "Handler" {
+	[inbound_channel: UnboundedReceiver] as handler_inbound_channel
+	note top of handler_inbound_channel: The channel that receives requests from the application layer.
+	[service_handler_send] -> handler_inbound_channel
+
+	[outbound_channel: Sender] as handler_outbound_channel
+	note bottom of handler_outbound_channel: The channel to send responses to the application layer.
+	handler_outbound_channel -> [service_handler_recv]
+}
+
+package "Socket" {
+	[send: Sender] as socket_send
+
+	[recv: Receiver] as socket_recv
+
+	[sender_exit: oneshot::Sender] as socket_sender_exit
+
+	[recv_exit: oneshot::Sender] as socket_recv_exit
+}
+
+package "SendHandler" {
+	[handler_recv: Receiver] as send_handler_handler_recv
+	note top of send_handler_handler_recv: The channel to respond to send requests.
+	[socket_send] -> send_handler_handler_recv
+
+	[exit: oneshot::Receiver] as send_handler_exit
+	note top of send_handler_exit: Exit channel to shutdown the handler.
+	[socket_sender_exit] -> send_handler_exit
+}
+
+package "RecvHandler" {
+	[handler: Sender] as recv_handler_handler
+	note top of recv_handler_handler: The channel to send the packet handler.
+	recv_handler_handler -> [socket_recv]
+
+	[exit: oneshot::Receiver] as recv_handler_exit
+	note top of recv_handler_exit: Exit channel to shutdown the recv handler.
+	socket_recv_exit -> recv_handler_exit
+}
+
+@enduml
