@@ -1,0 +1,41 @@
+@startuml
+
+'Discv5
+Discv5 -> Service : Service::spawn()
+note left: start()
+
+'Service
+Service -> Handler : Handler::spawn()
+
+group Spawn a future
+	'Socket ---------------------------------------------------------
+	Handler -> Socket : Socket::new()
+
+	'RecvHandler ----------------------------------------------------
+	Socket -> RecvHandler : RecvHandler::spawn()
+	group Spawn a future
+		RecvHandler -> RecvHandler : RecvHandler::start()
+	end
+	RecvHandler -> Socket : * recv(Receiver) \n* recv_exit(Sender)
+
+	'SendHandler ----------------------------------------------------
+	Socket -> SendHandler : SendHandler::spawn()
+	group Spawn a future
+		SendHandler -> SendHandler : SendHandler::start()
+	end
+	SendHandler -> Socket : * send(Sender) \n* sender_exit(Sender)
+
+	Socket -> Handler : Socket
+
+Handler -> Handler : Handler::start()
+end
+
+Handler -> Service : * handler_exit(Sender) \n* handler_send(UnboundedSender) \n* handler_recv(Receiver)
+
+group Spawn a future
+Service -> Service : Service::start()
+end
+
+Service -> Discv5 : * service_exit(Sender) \n* service_channel(Sender)
+
+@enduml
