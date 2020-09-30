@@ -13,7 +13,8 @@ jobs:
       id: plantuml
       uses: grassedge/generate-plantuml-action@v1.5
       with:
-        path: discv5
+        # the default (.) saves each SVG file in the same folder as the source file it was generated from
+        path: .
         message: "Render PlantUML files for discv5"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
