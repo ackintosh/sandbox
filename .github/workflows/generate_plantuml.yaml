@@ -15,6 +15,6 @@ jobs:
       with:
         # the default (.) saves each SVG file in the same folder as the source file it was generated from
         path: .
-        message: "Render PlantUML files for discv5"
+        message: "Render PlantUML files"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
