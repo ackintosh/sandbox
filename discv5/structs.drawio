@@ -1,0 +1,148 @@
+<mxfile host="65bd71144e" modified="2020-10-17T09:15:41.376Z" agent="5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.48.2 Chrome/78.0.3904.130 Electron/7.3.2 Safari/537.36" version="13.6.5" etag="jSu_d6HwIHHjuEoAkNAv">
+    <diagram id="A8SA5iqdQammDAhF5BSR" name="Page-1">
+        <mxGraphModel dx="1339" dy="865" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="6" value="package:service" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="40" width="410" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="pub enum ServiceRequest&#10;/// The types of requests to send to the Discv5 service." style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=40;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="120" width="410" height="118" as="geometry">
+                        <mxRectangle x="90" y="140" width="90" height="26" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="8" value="StartQuery(QueryKind, oneshot::Sender&lt;Vec&lt;Enr&gt;&gt;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="7">
+                    <mxGeometry y="40" width="410" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="FindEnr(NodeContact, oneshot::Sender&lt;Option&lt;Enr&gt;&gt;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="7">
+                    <mxGeometry y="66" width="410" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="RequestEventStream(oneshot::Sender&lt;mpsc::Receiver&lt;Discv5Event&gt;&gt;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="7">
+                    <mxGeometry y="92" width="410" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="8" target="11">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="110" y="550" as="sourcePoint"/>
+                        <mxPoint x="270" y="550" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="10" y="173"/>
+                            <mxPoint x="10" y="280"/>
+                            <mxPoint x="225" y="280"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="pub enum QueryKind" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="320" width="410" height="178" as="geometry">
+                        <mxRectangle x="90" y="140" width="90" height="26" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="12" value="FindNode {&#10;        target_node: NodeId,&#10;    }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="11">
+                    <mxGeometry y="26" width="410" height="64" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="Predicate {&#10;        target_node: NodeId,&#10;        target_peer_no: usize,&#10;        predicate: Box&lt;dyn Fn(&amp;Enr) -&gt; bool + Send&gt;,&#10;    }" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="11">
+                    <mxGeometry y="90" width="410" height="88" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="package:service::query_info" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="40" width="410" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="pub struct QueryInfo&#10;/// Information about a query." style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=42;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="120" width="340" height="194" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="/// What we are querying and why.&#10;+ query_type: QueryType" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="19">
+                    <mxGeometry y="42" width="340" height="38" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="/// Temporary ENRs used when trying to reach nodes.&#10;+ untrusted_enrs: SmallVec&lt;[Enr; 16]&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="19">
+                    <mxGeometry y="80" width="340" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="/// A callback channel for the service that requested the query.&#10;+ callback: oneshot::Sender&lt;Vec&lt;Enr&gt;&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="19">
+                    <mxGeometry y="120" width="340" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="19">
+                    <mxGeometry y="160" width="340" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="19">
+                    <mxGeometry y="168" width="340" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="pub enum QueryType&#10;/// Additional information about the query." style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=40;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="400" width="550" height="80" as="geometry">
+                        <mxRectangle x="90" y="140" width="90" height="26" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="28" value="/// The user requested a `FIND_PEER` query to be performed. It should be reported when finished.&#10;FindNode(NodeId)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="27">
+                    <mxGeometry y="40" width="550" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="20" target="27">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="590" y="580" as="sourcePoint"/>
+                        <mxPoint x="750" y="580" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="490" y="181"/>
+                            <mxPoint x="490" y="370"/>
+                            <mxPoint x="795" y="370"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="34" value="package:query_pool::peers" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1160" y="40" width="410" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="pub struct FindNodeQuery&lt;TNodeId&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=42;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="1160" y="120" width="450" height="314" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="/// The target key we are looking for&#10;- target_key: Key&lt;TNodeId&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="35">
+                    <mxGeometry y="42" width="450" height="38" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="/// The current state of progress of the query.&#10;- progress: QueryProgress" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="35">
+                    <mxGeometry y="80" width="450" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="/// The closest peers to the target, ordered by increasing distance.&#10;- closest_peers: BTreeMap&lt;Distance, QueryPeer&lt;TNodeId&gt;&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="35">
+                    <mxGeometry y="120" width="450" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="/// Maximum RPC iterations per peer.&#10;- iterations: usize" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="35">
+                    <mxGeometry y="160" width="450" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="/// The number of peers for which the query is currently waiting for results.&#10;- num_waiting: usize" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="35">
+                    <mxGeometry y="200" width="450" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="/// The configuration of the query.&#10;- config: FindNodeQueryConfig" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="35">
+                    <mxGeometry y="240" width="450" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="35">
+                    <mxGeometry y="280" width="450" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="35">
+                    <mxGeometry y="288" width="450" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="pub struct FindNodeQueryConfig&#10;/// Configuration for a `Query`." style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=42;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="1160" y="520" width="520" height="414" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="    /// Allowed level of parallelism.&#10;    ///&#10;    /// The `α` parameter in the Kademlia paper. The maximum number of peers that a query&#10;    /// is allowed to wait for in parallel while iterating towards the closest&#10;    /// nodes to a target. Defaults to `3`.&#10;    pub parallelism: usize" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="45">
+                    <mxGeometry y="42" width="520" height="108" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="    /// Number of results to produce.&#10;    ///&#10;    /// The number of closest peers that a query must obtain successful results&#10;    /// for before it terminates. Defaults to the maximum number of entries in a&#10;    /// single k-bucket, i.e. the `k` parameter in the Kademlia paper.&#10;    pub num_results: usize" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="45">
+                    <mxGeometry y="150" width="520" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="    /// The timeout for a single peer.&#10;    ///&#10;    /// If a successful result is not reported for a peer within this timeout&#10;    /// window, the iterator considers the peer unresponsive and will not wait for&#10;    /// the peer when evaluating the termination conditions, until and unless a&#10;    /// result is delivered. Defaults to `10` seconds.&#10;    pub peer_timeout: Duration" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="45">
+                    <mxGeometry y="260" width="520" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="45">
+                    <mxGeometry y="380" width="520" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="+ new_from_config(config: &amp;Discv5Config) -&gt; Self" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="45">
+                    <mxGeometry y="388" width="520" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.52;entryY=-0.001;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="44" target="45">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="990" y="660" as="sourcePoint"/>
+                        <mxPoint x="1150" y="660" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="1150" y="380"/>
+                            <mxPoint x="1150" y="480"/>
+                            <mxPoint x="1430" y="480"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
