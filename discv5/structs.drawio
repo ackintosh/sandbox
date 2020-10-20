@@ -1,11 +1,11 @@
-<mxfile host="65bd71144e" modified="2020-10-18T15:30:55.477Z" agent="5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.48.2 Chrome/78.0.3904.130 Electron/7.3.2 Safari/537.36" etag="KqlZUkGDEQ2tMx2ZqItQ" version="13.6.5">
+<mxfile host="65bd71144e" modified="2020-10-20T00:19:05.082Z" agent="5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.48.2 Chrome/78.0.3904.130 Electron/7.3.2 Safari/537.36" etag="ehM0iYa6FEP94jWygFNw" version="13.6.5">
     <diagram id="A8SA5iqdQammDAhF5BSR" name="Page-1">
-        <mxGraphModel dx="2901" dy="1679" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="2166" dy="865" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="6" value="package:service" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="40" y="40" width="410" height="50" as="geometry"/>
+                    <mxGeometry x="-650" y="40" width="1100" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="7" value="pub enum ServiceRequest&#10;/// The types of requests to send to the Discv5 service." style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=40;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fontColor=#FFB570;" parent="1" vertex="1">
                     <mxGeometry x="40" y="120" width="410" height="118" as="geometry">
@@ -160,7 +160,7 @@
                     <mxGeometry x="1110" y="20" width="1140" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="121" value="pub struct QueryPool&lt;TTarget, TNodeId, TResult&gt;&#10;/// A `QueryPool` provides an aggregate state machine for driving `Query`s to completion.&#10;&#10;/// Internally, a `Query` is in turn driven by an underlying `QueryPeerIter`&#10;/// that determines the peer selection strategy, i.e. the order in which the&#10;/// peers involved in the query should be contacted.&#10;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=110;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-                    <mxGeometry x="1090" y="120" width="550" height="294" as="geometry"/>
+                    <mxGeometry x="1090" y="120" width="550" height="360" as="geometry"/>
                 </mxCell>
                 <mxCell id="122" value="next_id: usize" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="121">
                     <mxGeometry y="110" width="550" height="50" as="geometry"/>
@@ -174,8 +174,11 @@
                 <mxCell id="124" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="121">
                     <mxGeometry y="260" width="550" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="125" value="(TODO)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="121">
-                    <mxGeometry y="268" width="550" height="26" as="geometry"/>
+                <mxCell id="125" value="(WIP)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="121">
+                    <mxGeometry y="268" width="550" height="42" as="geometry"/>
+                </mxCell>
+                <mxCell id="177" value="    /// Polls the pool to advance the queries.&#10;+ poll(&amp;mut self) -&gt; QueryPoolState&lt;'_, TTarget, TNodeId, TResult&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="121">
+                    <mxGeometry y="310" width="550" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="150" value="" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fontColor=#FFB570;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="75" target="146">
                     <mxGeometry relative="1" as="geometry">
@@ -329,6 +332,18 @@
                 <mxCell id="144" value="    /// Returns a mutable reference to the query `target`.&#10;+  target_mut(&amp;mut self) -&gt; &amp;mut TTarget &#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="140">
                     <mxGeometry y="580" width="550" height="60" as="geometry"/>
                 </mxCell>
+                <mxCell id="189" value="pub struct Service" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=42;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="-630" y="120" width="550" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="190" value="(TODO)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="189">
+                    <mxGeometry y="42" width="550" height="38" as="geometry"/>
+                </mxCell>
+                <mxCell id="193" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="189">
+                    <mxGeometry y="80" width="550" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="194" value="    /// A future the maintains active queries. This returns completed and timed out queries, as&#10;    /// well as queries which need to be driven further with extra requests.&#10;- async fn query_event_poll(queries: &amp;mut QueryPool&lt;QueryInfo, NodeId, Enr&gt;) -&gt; QueryEvent" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="189">
+                    <mxGeometry y="88" width="550" height="82" as="geometry"/>
+                </mxCell>
                 <mxCell id="151" value="pub struct QueryResult&lt;TTarget, TClosest&gt; &#10;&#10;/// The result of a `Query`." style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=60;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
                     <mxGeometry x="1700" y="1130" width="550" height="194" as="geometry"/>
                 </mxCell>
@@ -452,6 +467,60 @@
                 </mxCell>
                 <mxCell id="102" value="    /// The query is finished.&#10;    ///&#10;    /// A query finishes either when it has collected `num_results` results&#10;    /// from the closest peers (not counting those that failed or are unresponsive)&#10;    /// or because the query ran out of peers that have not yet delivered&#10;    /// results (or failed).&#10;    Finished," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="99">
                     <mxGeometry y="420" width="550" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="184" value="" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fontColor=#FFB570;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="177" target="178">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1650" y="358.04999999999995" as="sourcePoint"/>
+                        <mxPoint x="1985" y="130" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="1660" y="455"/>
+                            <mxPoint x="1660" y="600"/>
+                            <mxPoint x="1365" y="600"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="178" value="pub enum QueryPoolState&lt;'a, TTarget, TNodeId, TResult&gt;&#10;&#10;/// The observable states emitted by [`QueryPool::poll`]." style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=50;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;labelBackgroundColor=none;fontColor=#FFB570;" vertex="1" parent="1">
+                    <mxGeometry x="1090" y="640" width="550" height="280" as="geometry">
+                        <mxRectangle x="90" y="140" width="90" height="26" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="179" value="    /// The pool is idle, i.e. there are no queries to process.&#10;    Idle,&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="178">
+                    <mxGeometry y="50" width="550" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="180" value="    /// At least one query is waiting for results. `Some(request)` indicates&#10;    /// that a new request is now being waited on.&#10;    Waiting(Option&lt;(&amp;'a mut Query&lt;TTarget, TNodeId, TResult&gt;, TNodeId)&gt;),&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="178">
+                    <mxGeometry y="100" width="550" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="182" value="    /// A query has finished.&#10;    Finished(Query&lt;TTarget, TNodeId, TResult&gt;),&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="178">
+                    <mxGeometry y="170" width="550" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="183" value="    /// A query has timed out.&#10;    Timeout(Query&lt;TTarget, TNodeId, TResult&gt;),&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="178">
+                    <mxGeometry y="220" width="550" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="196" value="" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=1.004;exitY=0.415;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="194" target="185">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="50" y="183" as="sourcePoint"/>
+                        <mxPoint x="235" y="330" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-78" y="240"/>
+                            <mxPoint x="-30" y="240"/>
+                            <mxPoint x="-30" y="530"/>
+                            <mxPoint x="-330" y="530"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="185" value="enum QueryEvent&#10;&#10;/// The result of the `query_event_poll` indicating an action is required to further progress an&#10;/// active query.&#10;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=89;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fontColor=#FFB570;" vertex="1" parent="1">
+                    <mxGeometry x="-610" y="590" width="560" height="270" as="geometry">
+                        <mxRectangle x="90" y="140" width="90" height="26" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="186" value="    /// The query is waiting for a peer to be contacted.&#10;    Waiting(QueryId, NodeId, RequestBody),&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="185">
+                    <mxGeometry y="89" width="560" height="64" as="geometry"/>
+                </mxCell>
+                <mxCell id="187" value="    /// The query has timed out, possible returning peers.&#10;    TimedOut(Box&lt;crate::query_pool::Query&lt;QueryInfo, NodeId, Enr&gt;&gt;),&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="185">
+                    <mxGeometry y="153" width="560" height="57" as="geometry"/>
+                </mxCell>
+                <mxCell id="188" value="    /// The query has completed successfully.&#10;    Finished(Box&lt;crate::query_pool::Query&lt;QueryInfo, NodeId, Enr&gt;&gt;),&#10;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="185">
+                    <mxGeometry y="210" width="560" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
