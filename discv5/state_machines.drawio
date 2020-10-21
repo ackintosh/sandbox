@@ -1,50 +1,111 @@
-<mxfile host="65bd71144e" modified="2020-10-20T00:19:56.807Z" agent="5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.48.2 Chrome/78.0.3904.130 Electron/7.3.2 Safari/537.36" version="13.6.5" etag="nVUyWE8coQy21eKJYBb9">
+<mxfile host="65bd71144e" modified="2020-10-21T00:41:47.162Z" agent="5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.48.2 Chrome/78.0.3904.130 Electron/7.3.2 Safari/537.36" version="13.6.5" etag="TxDYdBYijz3GTJqqJLce">
     <diagram id="QNNbduFmZcMBfbZ14_xa" name="Page-1">
         <mxGraphModel dx="1138" dy="735" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="2" value="NotContacted" style="html=1;" vertex="1" parent="1">
-                    <mxGeometry x="177.5" y="200" width="110" height="50" as="geometry"/>
+                <mxCell id="2" value="&lt;b&gt;NotContacted&lt;/b&gt;" style="html=1;" vertex="1" parent="1">
+                    <mxGeometry x="177.5" y="268" width="110" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="3" value="&amp;lt;package&amp;gt; query_pool::peers::closest" style="shape=folder;fontStyle=1;spacingTop=10;tabWidth=40;tabHeight=14;tabPosition=left;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="80" y="40" width="350" height="40" as="geometry"/>
+                    <mxGeometry x="80" y="10" width="350" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="4" value="QueryPeerState" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1" vertex="1" parent="1">
-                    <mxGeometry x="150" y="100" width="165" height="60" as="geometry"/>
+                    <mxGeometry x="150" y="60" width="165" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="5" value="Waiting" style="html=1;" vertex="1" parent="1">
-                    <mxGeometry x="177.5" y="320" width="110" height="50" as="geometry"/>
+                <mxCell id="5" value="&lt;b&gt;Waiting&lt;/b&gt;" style="html=1;" vertex="1" parent="1">
+                    <mxGeometry x="177.5" y="605" width="110" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="6" value="Unresponsive" style="html=1;" vertex="1" parent="1">
-                    <mxGeometry x="350" y="585" width="110" height="50" as="geometry"/>
+                <mxCell id="6" value="&lt;b&gt;Unresponsive&lt;/b&gt;" style="html=1;" vertex="1" parent="1">
+                    <mxGeometry x="610" y="1024.5" width="110" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="8" value="Failed" style="html=1;" vertex="1" parent="1">
-                    <mxGeometry x="30" y="500" width="110" height="50" as="geometry"/>
+                <mxCell id="8" value="&lt;b&gt;Failed&lt;/b&gt;" style="html=1;" vertex="1" parent="1">
+                    <mxGeometry x="377.5" y="1190" width="110" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="9" value="Succeeded" style="html=1;" vertex="1" parent="1">
-                    <mxGeometry x="177.5" y="600" width="110" height="50" as="geometry"/>
+                    <mxGeometry x="137.5" y="1190" width="110" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="11" value="see:&lt;br&gt;QueryPeer::new()" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
-                    <mxGeometry x="330" y="190" width="130" height="60" as="geometry"/>
+                    <mxGeometry x="260" y="130" width="130" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="12" value="see:&lt;br&gt;FindNodeQuery::next()" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
-                    <mxGeometry x="340" y="315" width="180" height="60" as="geometry"/>
+                <mxCell id="12" value="FindNodeQuery picks up the QueryPeer and update its state from &quot;NotContacted&quot; to &quot;Waiting&quot;.&lt;br&gt;&lt;br&gt;see:&lt;br&gt;* FindNodeQuery::next()&lt;br&gt;* Query::next()&lt;br&gt;* QueryPool::poll()" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="260" y="420" width="520" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="13" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="2" target="5">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="70" y="370" as="sourcePoint"/>
-                        <mxPoint x="120" y="320" as="targetPoint"/>
+                        <mxPoint x="70" y="548" as="sourcePoint"/>
+                        <mxPoint x="120" y="498" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="14" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="5">
+                <mxCell id="14" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5" target="24">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="242.5" y="390" as="sourcePoint"/>
-                        <mxPoint x="233" y="480" as="targetPoint"/>
+                        <mxPoint x="242.5" y="675" as="sourcePoint"/>
+                        <mxPoint x="233" y="765" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="15" value="Service sends a RPC request." style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
-                    <mxGeometry x="260" y="400" width="180" height="60" as="geometry"/>
+                <mxCell id="15" value="service::Service sends a RPC request." style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="270" y="700" width="230" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="ellipse;html=1;shape=startState;fillColor=#000000;strokeColor=#ff0000;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="217.5" y="130" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" source="16" parent="1" target="2">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="65" y="468" as="targetPoint"/>
+                        <mxPoint x="232.5" y="178" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="20" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#ff0000;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="417.5" y="1320" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="&lt;div&gt;&amp;nbsp; &amp;nbsp; /// The peer has not yet been contacted.&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; ///&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; /// This is the starting state for every peer known to, or discovered by, a query.&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="300" y="248" width="440" height="82" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="&lt;div&gt;&amp;nbsp; &amp;nbsp; /// The query is waiting for a result from the peer.&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="300" y="599.5" width="440" height="61" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="&lt;font color=&quot;#000000&quot;&gt;The RPC request exceeded the timeout?&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffc0;strokeColor=#ff0000;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="90" y="800" width="287.5" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="yes" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="24" parent="1" target="6">
+                    <mxGeometry x="-1" relative="1" as="geometry">
+                        <mxPoint x="540" y="840" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="490" y="850"/>
+                            <mxPoint x="490" y="1000"/>
+                            <mxPoint x="665" y="1000"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="26" value="no" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;verticalAlign=top;endArrow=open;endSize=8;strokeColor=#ff0000;" edge="1" source="24" parent="1">
+                    <mxGeometry x="-1" relative="1" as="geometry">
+                        <mxPoint x="290" y="958" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="27" value="&lt;div&gt;&amp;nbsp; &amp;nbsp; /// A result was not delivered for the peer within the configured timeout.&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; ///&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; /// The peer is not taken into account for the termination conditions&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; /// of the iterator until and unless it responds.&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="750" y="999.5" width="440" height="90.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="FindNodeQuery picks up the QueryPeer and update its state from &quot;Waiting&quot; to &quot;Unresponsive&quot; if the QueryPeer don't respond within the timeout.&lt;br&gt;&lt;br&gt;see:&lt;br&gt;* FindNodeQuery::next()&lt;br&gt;* Query::next()&lt;br&gt;* QueryPool::poll()" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="510" y="840" width="520" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="6" target="8">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="610" y="1120" as="sourcePoint"/>
+                        <mxPoint x="611.25" y="1265" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="550" y="1120"/>
+                            <mxPoint x="433" y="1120"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="30" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="8" target="20">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="662.5" y="1200" as="sourcePoint"/>
+                        <mxPoint x="430" y="1315.5" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="31" value="see:&lt;br&gt;FindNodeQuery::on_failure()" style="rounded=1;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="560" y="1120" width="230" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
