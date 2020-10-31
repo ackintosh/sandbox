@@ -1,3 +1,5 @@
+use regex::Regex;
+
 /////////////////////////////////////////////////////////
 // str
 /////////////////////////////////////////////////////////
@@ -42,4 +44,26 @@ fn string_pos() {
     }
 
     assert_eq!(s, "aaa".to_owned());
+}
+
+
+/////////////////////////////////////////////////////////
+// 分割
+/////////////////////////////////////////////////////////
+// How can I split a string (String or &str) on more than one delimiter? - Stack Overflow
+// https://stackoverflow.com/questions/29240157/how-can-i-split-a-string-string-or-str-on-more-than-one-delimiter
+#[test]
+fn split_with_regex() {
+    // r"" はraw string literal
+    // Rust: Raw string literals - rahul thakoor
+    // https://rahul-thakoor.github.io/rust-raw-string-literals/
+    let regex = Regex::new(r",|\.").unwrap();
+    let str = "aaa,bbb.ccc";
+
+    for s in regex.split(str) {
+        println!("{}", s);
+    }
+    // aaa
+    // bbb
+    // ccc
 }
