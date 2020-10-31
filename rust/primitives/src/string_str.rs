@@ -66,4 +66,28 @@ fn split_with_regex() {
     // aaa
     // bbb
     // ccc
+
+    //////////////////////////////////
+    // 配列から正規表現を作るパターン
+    //////////////////////////////////
+    let keywords: [&str; 3] = [",", ".", "|"];
+    let reg_str = keywords.iter()
+        .map(|&k| {
+            if [".", "|"].contains(&k) {
+                // エスケープが必要な文字
+                format!("\\{}", k)
+            } else {
+                String::from(k)
+            }
+        })
+        .collect::<Vec<_>>()
+        .join("|");
+    let regex = Regex::new(&reg_str).unwrap();
+    for s in regex.split("aaa,bbb.ccc|ddd") {
+        println!("{}", s);
+    }
+    // aaa
+    // bbb
+    // ccc
+    // ddd
 }
