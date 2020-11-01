@@ -43,7 +43,7 @@ mod example {
 
 
 mod example2 {
-    use std::collections::HashMap;
+    // use std::collections::HashMap;
 
     // 下記の `Introduction` にある map の例の Rust バージョン
     // Data Race Detector - The Go Programming Language
