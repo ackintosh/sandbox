@@ -27,4 +27,11 @@ fn reverse() {
     assert_eq!(&3, iter.next().unwrap());
     assert_eq!(&2, iter.next().unwrap());
     assert_eq!(&1, iter.next().unwrap());
+
+    // イテレータの rev() を使うパターン
+    let vec = vec![1, 2, 3];
+    let mut iter = vec.iter().rev();
+    assert_eq!(&3, iter.next().unwrap());
+    assert_eq!(&2, iter.next().unwrap());
+    assert_eq!(&1, iter.next().unwrap());
 }
