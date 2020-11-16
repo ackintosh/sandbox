@@ -3,6 +3,8 @@ import com.github.ackintosh.proto.Item
 import com.github.ackintosh.proto.SmallItem
 import com.google.protobuf.Timestamp
 import com.google.protobuf.util.JsonFormat
+import com.google.rpc.BadRequest
+import com.google.rpc.Status
 
 fun main() {
     ///////////////////////////////////////////////////////
@@ -30,6 +32,8 @@ fun main() {
     println(bigItem.serializedSize) // 2510 bytes
     // JSONにシリアライズしたサイズ(bytes)
     println(JsonFormat.printer().print(bigItem).toByteArray().size) // 5845 bytes
+
+    errorDetails()
 }
 
 fun smallItem() = SmallItem.newBuilder()
@@ -302,3 +306,21 @@ fun bigItem() = BigItem.newBuilder()
                 .setNanos(0)
         )
         .build()
+
+fun errorDetails() {
+    val badRequest = BadRequest.newBuilder()
+            .addFieldViolations(
+                    BadRequest.FieldViolation.newBuilder()
+                            .setField("invalid field 1")
+                            .setDescription("xxx is invalid as the field")
+                            .build()
+            )
+            .addFieldViolations(
+                    BadRequest.FieldViolation.newBuilder()
+                            .setField("invalid field 2")
+                            .setDescription("xxx is invalid as the field")
+                            .build()
+            )
+            .build()
+    println(badRequest)
+}
