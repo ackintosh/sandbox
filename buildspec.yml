@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo pre_build
+  build:
+    commands:
+      - mkdir -p dist/my-app
+      - echo test > dist/my-app/test.txt
+  post_build:
+    commands:
+      - echo post_build
+      #- tar cf /tmp/node_modules.tar node_modules
+artifacts:
+  files:
+    - '**/*'
+  base-directory: dist/my-app
