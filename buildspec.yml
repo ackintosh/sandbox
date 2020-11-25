@@ -6,12 +6,13 @@ phases:
       - echo pre_build
   build:
     commands:
-      - mkdir -p dist/my-app
-      - echo test > dist/my-app/test.txt
+      - mkdir -p dist
+      - mkdir -p my-app
+      - echo test > my-app/test.txt
   post_build:
     commands:
       - echo post_build
-      #- tar cf /tmp/node_modules.tar node_modules
+      - tar czvf dist/my-app.tar.gz my-app
 artifacts:
   files:
     - '**/*'
