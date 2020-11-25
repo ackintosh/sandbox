@@ -6,15 +6,14 @@ phases:
       - echo pre_build
   build:
     commands:
-      - mkdir -p dist
       - mkdir -p my-app
       - echo testtest > my-app/test.txt
       - echo foo > my-app/foo.txt
   post_build:
     commands:
       - echo post_build
-      - tar czvf dist/my-app.tar.gz my-app
+      #- tar czvf dist/my-app.tar.gz my-app
 artifacts:
   files:
     - '**/*'
-  base-directory: dist
+  base-directory: my-app
