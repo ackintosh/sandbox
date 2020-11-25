@@ -8,7 +8,8 @@ phases:
     commands:
       - mkdir -p dist
       - mkdir -p my-app
-      - echo test > my-app/test.txt
+      - echo testtest > my-app/test.txt
+      - echo foo > my-app/foo.txt
   post_build:
     commands:
       - echo post_build
