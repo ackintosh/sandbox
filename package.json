@@ -1,0 +1,13 @@
+{
+  "name": "sandbox",
+  "version": "0.0.1",
+  "description": "sandbox",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "consola": "2.5.6"
+  },
+  "author": "ackintosh",
+  "license": "UNLICENSED",
+  "private": true
+}
