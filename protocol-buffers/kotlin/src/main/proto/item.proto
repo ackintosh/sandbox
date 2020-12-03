@@ -246,3 +246,13 @@ message BigItem {
   google.protobuf.Timestamp timestamp4 = 204;
   google.protobuf.Timestamp timestamp5 = 205;
 }
+
+message OneOfMessage {
+  string code = 1;
+
+  oneof test_oneof {
+    string name_a = 2;
+    string name_b = 3;
+    string name_c = 4;
+  }
+}

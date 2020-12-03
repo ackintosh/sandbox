@@ -1,5 +1,6 @@
 import com.github.ackintosh.proto.BigItem
 import com.github.ackintosh.proto.Item
+import com.github.ackintosh.proto.OneOfMessage
 import com.github.ackintosh.proto.SmallItem
 import com.google.protobuf.Timestamp
 import com.google.protobuf.util.JsonFormat
@@ -34,6 +35,8 @@ fun main() {
     println(JsonFormat.printer().print(bigItem).toByteArray().size) // 5845 bytes
 
     errorDetails()
+
+    oneOf()
 }
 
 fun smallItem() = SmallItem.newBuilder()
@@ -323,4 +326,16 @@ fun errorDetails() {
             )
             .build()
     println(badRequest)
+}
+
+fun oneOf() {
+    val m = OneOfMessage.newBuilder()
+            .setNameA("name a")
+            .setNameB("name b")
+            .build()
+
+    println(m.nameA)
+    println(m.nameB)
+    println(m.nameC)
+    // name b
 }
