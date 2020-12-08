@@ -24,14 +24,15 @@ jobs:
         working-directory: php/phpunit
     steps:
       - uses: actions/checkout@v2
-      #- name: Install PHP
-      #  uses: shivammathur/setup-php@v2
-      #  with:
-      #    php-version: ${{ matrix.php-version }}
-      #    tools: composer, phpunit
-      #    # extensions: xdebug
-      #  env:
-      #    fail-fast: true
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          tools: composer, phpunit
+          # extensions: xdebug
+        env:
+          fail-fast: true
 
       - name: Install dependencies with composer
         run: echo iiii
