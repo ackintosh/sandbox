@@ -37,8 +37,8 @@ jobs:
       - name: Install dependencies with composer
         run: composer install
 
-      - name: aaa
-        run: ls -la
+      - name: Run PHPUnit
+        run: phpunit
 
           #- name: Run tests with phpunit
           #  working-directory: ./php/phpunit
