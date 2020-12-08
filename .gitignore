@@ -7,3 +7,6 @@
 .idea
 out
 build
+
+php/phpunit/vendor
+php/phpunit/composer.lock
