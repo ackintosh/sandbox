@@ -173,6 +173,9 @@ jobs:
   # * Redisサービスコンテナの作成 - GitHub Docs
   # https://docs.github.com/ja/free-pro-team@latest/actions/guides/creating-redis-service-containers
   #
+  # * PostgreSQLサービスコンテナの作成 - GitHub Docs
+  # https://docs.github.com/ja/free-pro-team@latest/actions/guides/creating-postgresql-service-containers
+  #
   # * 各種ストレージのserviceを使っている例
   # https://github.com/symfony/symfony/blob/5.x/.github/workflows/tests.yml
   #####################################################################
