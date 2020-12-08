@@ -10,6 +10,8 @@ on: [push, pull_request]
 # https://github.com/sebastianbergmann/phpunit/blob/master/.github/workflows/ci.yml
 # * Predis
 # https://github.com/predis/predis/blob/main/.github/workflows/tests.yml
+# * Symfony
+# https://github.com/symfony/symfony/blob/5.x/.github/workflows/tests.yml
 
 jobs:
   phpunit:
@@ -17,8 +19,12 @@ jobs:
     runs-on: ubuntu-latest
     services:
       redis:
-        image: redis:6
-        options: --health-cmd="redis-cli ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        image: redis
+        options: >-
+          --health-cmd="redis-cli ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
     strategy:
       matrix:
         php-version:
@@ -36,7 +42,7 @@ jobs:
         with:
           php-version: ${{ matrix.php-version }}
           tools: composer
-          # extensions: xdebug
+          extensions: redis
         env:
           fail-fast: true
 

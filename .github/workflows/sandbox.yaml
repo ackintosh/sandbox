@@ -169,6 +169,12 @@ jobs:
   # 
   # * サービスコンテナについて - GitHub Docs
   # https://docs.github.com/ja/free-pro-team@latest/actions/guides/about-service-containers
+  #
+  # * Redisサービスコンテナの作成 - GitHub Docs
+  # https://docs.github.com/ja/free-pro-team@latest/actions/guides/creating-redis-service-containers
+  #
+  # * 各種ストレージのserviceを使っている例
+  # https://github.com/symfony/symfony/blob/5.x/.github/workflows/tests.yml
   #####################################################################
   runServices:
     name: A job using Redis service
