@@ -19,10 +19,11 @@ jobs:
           - "7.4"
           - "8.0"
           - "8.1"
-            #defaults:
-            #  run:
-            #    working-directory: php/phpunit
+    defaults:
+      run:
+        working-directory: php/phpunit
     steps:
+      - uses: actions/checkout@v2
       #- name: Install PHP
       #  uses: shivammathur/setup-php@v2
       #  with:
