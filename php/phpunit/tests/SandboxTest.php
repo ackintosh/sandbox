@@ -13,4 +13,19 @@ class SandboxTest extends TestCase
         $sandbox = new Sandbox();
         self::assertSame(4, $sandbox->square(2));
     }
+
+    /**
+     * @test
+     */
+    public function redis(): void
+    {
+        if (!\extension_loaded('redis')) {
+            self::markTestSkipped('No ext-redis present');
+        }
+
+        $redis = new \Redis();
+        $redis->connect("redis", "6379");
+        $redis->set("foo", "bar");
+        self::assertSame("bar", $redis->get("foo"));
+    }
 }

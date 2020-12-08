@@ -166,6 +166,9 @@ jobs:
   # 各ステップとは並列に動作するコンテナを起動する
   # * `jobs.＜ジョブID＞.services`
   # * テスト用のデータベースなどを起動しておく
+  # 
+  # * サービスコンテナについて - GitHub Docs
+  # https://docs.github.com/ja/free-pro-team@latest/actions/guides/about-service-containers
   #####################################################################
   runServices:
     name: A job using Redis service
