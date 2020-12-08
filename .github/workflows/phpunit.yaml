@@ -29,7 +29,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
-          tools: composer, phpunit
+          tools: composer
           # extensions: xdebug
         env:
           fail-fast: true
@@ -37,9 +37,5 @@ jobs:
       - name: Install dependencies with composer
         run: composer install
 
-      - name: Run PHPUnit
+      - name: Run tests with PHPUnit
         run: vendor/bin/phpunit
-
-          #- name: Run tests with phpunit
-          #  working-directory: ./php/phpunit
-          #  run: phpunit
