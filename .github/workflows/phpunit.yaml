@@ -16,7 +16,7 @@ jobs:
     name: Tests
     runs-on: ubuntu-latest
     services:
-      redis:
+      redis-service:
         image: redis:6
         ports:
           - 6379:6379
