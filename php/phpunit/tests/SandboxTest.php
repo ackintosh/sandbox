@@ -24,7 +24,7 @@ class SandboxTest extends TestCase
         }
 
         $redis = new \Redis();
-        $redis->connect("redis-service", "6379");
+        $redis->connect("redis", "6379");
         $redis->set("foo", "bar");
         self::assertSame("bar", $redis->get("foo"));
     }
