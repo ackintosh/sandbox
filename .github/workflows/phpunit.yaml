@@ -38,7 +38,7 @@ jobs:
         run: composer install
 
       - name: Run PHPUnit
-        run: phpunit
+        run: vendor/bin/phpunit
 
           #- name: Run tests with phpunit
           #  working-directory: ./php/phpunit
