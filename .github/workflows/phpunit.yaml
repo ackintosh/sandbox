@@ -33,7 +33,7 @@ jobs:
           fail-fast: true
 
       - name: Install dependencies with composer
-        run: ls
+        run: echo iiii
       - name: aaa
         run: echo foo
 
