@@ -1,7 +1,4 @@
-import com.github.ackintosh.proto.BigItem
-import com.github.ackintosh.proto.Item
-import com.github.ackintosh.proto.OneOfMessage
-import com.github.ackintosh.proto.SmallItem
+import com.github.ackintosh.proto.*
 import com.google.protobuf.Timestamp
 import com.google.protobuf.util.JsonFormat
 import com.google.rpc.BadRequest
@@ -37,6 +34,8 @@ fun main() {
     errorDetails()
 
     oneOf()
+
+    foo()
 }
 
 fun smallItem() = SmallItem.newBuilder()
@@ -338,4 +337,21 @@ fun oneOf() {
     println(m.nameB)
     println(m.nameC)
     // name b
+}
+
+fun foo() {
+    val foo = Foo.newBuilder().setName("test foo").setBar(Bar.newBuilder().setName("test bar")).build()
+
+    println("foo ===========")
+    println(foo)
+    println(foo.hasBar())
+
+    val foo2 = Foo.newBuilder().setName("test foo").build()
+    println("foo2 ===========")
+    println(foo2)
+    println(foo2.hasBar())
+
+    val bars = Bars.newBuilder().build()
+    println("bars ===========")
+    println(bars)
 }

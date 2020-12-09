@@ -256,3 +256,16 @@ message OneOfMessage {
     string name_c = 4;
   }
 }
+
+message Foo {
+  string name = 1;
+  Bar bar = 2;
+}
+
+message Bar {
+  string name = 1;
+}
+
+message Bars {
+  repeated Bar bars = 1;
+}
