@@ -39,7 +39,7 @@ class SandboxTest extends TestCase
         }
 
         $conn = pg_connect("host=localhost port=5432 user=sandbox_user password=sandbox_password dbname=sandbox_db");
-        var_dump($conn);
-        self::assertSame("", "");
+        var_dump(pg_dbname($conn));
+        self::assertSame("sandbox_db", pg_dbname($conn));
     }
 }
