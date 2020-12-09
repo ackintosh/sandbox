@@ -27,6 +27,10 @@ jobs:
           --health-interval=10s
           --health-timeout=5s
           --health-retries=3
+      memcached:
+        image: memcached:1.6.5
+        ports:
+          - 11211:11211
       # https://docs.github.com/ja/free-pro-team@latest/actions/guides/creating-postgresql-service-containers
       postgres:
         image: postgres:13-alpine
@@ -58,7 +62,7 @@ jobs:
         with:
           php-version: ${{ matrix.php-version }}
           tools: composer
-          extensions: redis
+          extensions: redis, memcached
         env:
           fail-fast: true
 

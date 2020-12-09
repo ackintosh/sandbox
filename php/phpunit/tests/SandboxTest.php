@@ -17,6 +17,21 @@ class SandboxTest extends TestCase
     /**
      * @test
      */
+    public function memcached(): void
+    {
+        if (!extension_loaded('memcached')) {
+            self::markTestSkipped('No ext-memcached present');
+        }
+
+        $memcached = new \Memcached();
+        $memcached->addServer('localhost', 11211);
+        $memcached->set('sandbox_key', 'sandbox_value');
+        self::assertSame('sandbox_value', $memcached->get('sandbox_key'));
+    }
+
+    /**
+     * @test
+     */
     public function redis(): void
     {
         if (!\extension_loaded('redis')) {
