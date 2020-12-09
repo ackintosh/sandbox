@@ -28,4 +28,18 @@ class SandboxTest extends TestCase
         $redis->set("foo", "bar");
         self::assertSame("bar", $redis->get("foo"));
     }
+
+    /**
+     * @test
+     */
+    public function postgresql(): void
+    {
+        if (!\extension_loaded('pgsql')) {
+            self::markTestSkipped('No ext-pgsql present');
+        }
+
+        $conn = pg_connect("host=localhost port=5432 user=sandbox_user password=sandbox_password");
+        var_dump($conn);
+        self::assertSame("", "");
+    }
 }

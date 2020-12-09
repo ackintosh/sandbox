@@ -190,6 +190,8 @@ jobs:
       - name: set a greeting message to the Redis server
         uses: docker://redis:latest
         with:
+          # usersで指定したDockerコンテナからアクセスするので、`redis` で名前解決できる
+          # -> Dockerコンテナを使わず、直接ランナーマシン上で実行する場合は `localhost` でアクセスする
           args: sh -c "echo 'SET greetings Hello!' | redis-cli -h redis-service -p 6379"
       - name: get the greeting message which is set by the previous step
         uses: docker://redis:latest
