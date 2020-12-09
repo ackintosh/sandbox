@@ -38,7 +38,7 @@ class SandboxTest extends TestCase
             self::markTestSkipped('No ext-pgsql present');
         }
 
-        $conn = pg_connect("host=localhost port=5432 user=sandbox_user password=sandbox_password");
+        $conn = pg_connect("host=localhost port=5432 user=sandbox_user password=sandbox_password dbname=sandbox_db");
         var_dump($conn);
         self::assertSame("", "");
     }
