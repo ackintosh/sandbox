@@ -9,6 +9,7 @@ members = [
   "arithmetic",
   "async-await",
   "dns",
+  "crate-chrono",
   "crate-env_logger",
   "crate-lazy_static",
   "crate-uint",
