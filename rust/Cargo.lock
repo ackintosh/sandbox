@@ -1052,6 +1052,7 @@ dependencies = [
 name = "tokiors"
 version = "0.1.0"
 dependencies = [
+ "chrono",
  "futures",
  "rand 0.7.3",
  "tokio",

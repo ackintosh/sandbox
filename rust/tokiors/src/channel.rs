@@ -1,3 +1,6 @@
+use chrono::prelude::*;
+use futures::core_reexport::time::Duration;
+
 #[test]
 // #[tokio::main] // テストでは使えない
 fn test() {
@@ -12,7 +15,11 @@ fn test() {
 // mpsc -> multi-producer, single-consumerの略
 ////////////////////////////////////////////////////////////////////////////
 async fn tokio_sync_mpsc_channel() {
+    println!("////////////////////////////////////////////////");
     println!("/// tokio_sync_mpsc_channel ///");
+    println!("////////////////////////////////////////////////");
+    println!("/// {} ///", Local::now());
+    println!("/// {:?} ///", std::thread::current().id());
 
     // * バッファに 5 を設定
     //   -> もしreceiverが受信せずにバッファが一杯になったら、sendはブロックされる
@@ -21,6 +28,10 @@ async fn tokio_sync_mpsc_channel() {
     let (mut sender, mut receiver) = tokio::sync::mpsc::channel(5);
 
     tokio::spawn(async move {
+
+        // テストでsleepを入れている
+        tokio::time::delay_for(Duration::from_secs(10)).await;
+
         for i in 0..10 {
             if let Err(e) = sender.send(i).await {
                 // もしreceiverが閉じられていたらエラーが返る
@@ -28,22 +39,26 @@ async fn tokio_sync_mpsc_channel() {
                 println!("[sender] e: {:?}", e);
                 return;
             }
+            println!("{} [sender] sent a message. {:?}", Local::now(), std::thread::current().id());
         }
     });
 
+    println!("{} [receiver] ready to receive values from a sender. {:?}", Local::now(), std::thread::current().id());
     // senderが送信した順番にreceiverが受信する
     while let Some(i) = receiver.recv().await {
-        println!("[receiver] got = {}", i)
+        println!("{} [receiver] got = {}. {:?}", Local::now(), i, std::thread::current().id());
     }
 
-    println!("finished.");
+    println!("{} finished. {:?}", Local::now(), std::thread::current().id());
 }
 
 ////////////////////////////////////////////////////////////////////////////
 // tokio::sync::oneshot::channel
 ////////////////////////////////////////////////////////////////////////////
 async fn tokio_sync_oneshot_channel() {
+    println!("////////////////////////////////////////////////");
     println!("/// tokio::sync::oneshot::channel ///");
+    println!("////////////////////////////////////////////////");
     let (sender, receiver) = tokio::sync::oneshot::channel();
 
     tokio::spawn(async move {
