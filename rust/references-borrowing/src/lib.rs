@@ -1,8 +1,9 @@
 use std::time::Duration;
 
+mod trait_box;
 mod cell_refcell;
 mod lifetime;
-mod rc;
+mod trait_rc;
 
 // ミュータブルな参照
 // https://qiita.com/wada314/items/24249418983312795c08

@@ -21,7 +21,7 @@ fn rc() {
     //
     // コンパイルエラー
     // error[E0106]: missing lifetime specifier
-    //     --> references-borrowing/src/rc.rs:10:28
+    //     --> references-borrowing/src/trait_rc:10:28
     //     |
     //     10 |     fn reference_test() -> &i32 {
     //     |                            ^ help: consider giving it a 'static lifetime: `&'static`
