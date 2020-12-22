@@ -3,6 +3,7 @@ mod loops;
 mod math;
 mod number;
 mod ownership;
+mod path;
 mod result_option;
 mod string_str;
 mod vector;
