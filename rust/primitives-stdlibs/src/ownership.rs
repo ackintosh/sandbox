@@ -21,7 +21,7 @@ mod example {
         // boxedはmoveしているので使用不可能
         // println!("{}", boxed);
         // error[E0382]: borrow of moved value: `boxed`
-        //   --> primitives/src/ownership.rs:17:20
+        //   --> primitives-stdlibs/src/ownership.rs:17:20
         //    |
         // 14 |     let boxed = Box::new(5u32);
         //    |         ----- move occurs because `boxed` has type `std::boxed::Box<u32>`, which does not implement the `Copy` trait
@@ -51,7 +51,7 @@ mod example2 {
 
     // 下記のエラーでコンパイルできない
     // error[E0382]: borrow of moved value: `m`
-    //   --> primitives/src/ownership.rs:55:9
+    //   --> primitives-stdlibs/src/ownership.rs:55:9
     //    |
     // 49 |         let mut m = HashMap::new();
     //    |             ----- move occurs because `m` has type `std::collections::HashMap<&str, &str>`, which does not implement the `Copy` trait

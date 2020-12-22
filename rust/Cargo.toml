@@ -17,7 +17,7 @@ members = [
   "iterator",
   "level-db",
   "macros",
-  "primitives",
+    "primitives-stdlibs",
   "procon",
   "references-borrowing",
   "result",
