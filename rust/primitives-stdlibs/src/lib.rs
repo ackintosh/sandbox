@@ -1,4 +1,5 @@
 mod btreemap;
+mod const_static;
 mod loops;
 mod math;
 mod number;
