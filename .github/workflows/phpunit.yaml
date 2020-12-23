@@ -45,6 +45,16 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+      # * DynamoDB Local Usage Notes - Amazon DynamoDB
+      # https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.UsageNotes.html
+      # * Github Action内でDynamoDB Localを使用する
+      # https://qiita.com/sayama0402/items/014d4a325d04e54485b5
+      dynamodb:
+        image: amazon/dynamodb-local:latest
+        ports:
+          - 8000:8000
+        options: >-
+          --entrypoint java -Djava.library.path=. -jar DynamoDBLocal.jar -sharedDb -inMemory
     strategy:
       matrix:
         php-version:
