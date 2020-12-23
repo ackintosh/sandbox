@@ -53,8 +53,6 @@ jobs:
         image: amazon/dynamodb-local:latest
         ports:
           - 8000:8000
-        options: >-
-          --entrypoint java -Djava.library.path=. -jar DynamoDBLocal.jar -sharedDb -inMemory
     strategy:
       matrix:
         php-version:
