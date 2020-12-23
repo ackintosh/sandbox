@@ -89,20 +89,26 @@ jobs:
       - name: Install dependencies with composer
         run: composer install
 
+      # 実際のクレデンシャル情報を入れないとエラーになるので、このワークフローではコメントアウトする
       # https://github.com/aws-actions/configure-aws-credentials
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          # 暗号化されたシークレット - GitHub Docs
-          # https://docs.github.com/ja/free-pro-team@latest/actions/reference/encrypted-secrets
-          aws-access-key-id: ${{ secrets.TEST_AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.TEST_AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-northeast-1
+      # - name: Configure AWS credentials
+      #   uses: aws-actions/configure-aws-credentials@v1
+      #   with:
+      #     # 暗号化されたシークレット - GitHub Docs
+      #     # https://docs.github.com/ja/free-pro-team@latest/actions/reference/encrypted-secrets
+      #     aws-access-key-id: ${{ secrets.TEST_AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.TEST_AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: ap-northeast-1
 
       - name: Create tables on DynanoDB local
         # ホストランナーにはAWS CLIがデフォルトでインストールされている
         run: |
-          aws dynamodb create-table --endpoint-url http://localhost:8000 --cli-input-json "file://dynamodb-local/tables/movies.json"
+          aws dynamodb create-table --endpoint-url http://localhost:8000 --cli-input-json file://dynamodb-local/tables/movies.json
 
       - name: Run tests with PHPUnit
         run: vendor/bin/phpunit
+        # aws-actions/configure-aws-credentials は実際のクレデンシャルじゃないとエラーになるので、
+        # ダミーのクレデンシャルを入れるために環境変数に直接入れる
+        env:
+          AWS_ACCESS_KEY_ID: DUMMY_ACCESS_KEY_ID
+          AWS_SECRET_ACCESS_KEY: DUMMY_SECRET_ACCESS_KEY
