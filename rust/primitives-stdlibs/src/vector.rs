@@ -35,3 +35,29 @@ fn reverse() {
     assert_eq!(&2, iter.next().unwrap());
     assert_eq!(&1, iter.next().unwrap());
 }
+
+#[test]
+fn chunk() {
+    let vec = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+    let mut iter = vec.chunks(2);
+    assert_eq!(iter.next().unwrap(), &['a', 'b']);
+    assert_eq!(iter.next().unwrap(), &['c', 'd']);
+    assert_eq!(iter.next().unwrap(), &['e', 'f']);
+    assert_eq!(iter.next().unwrap(), &['g']);
+    assert_eq!(iter.next(), None);
+}
+
+#[test]
+fn take() {
+    let vec = vec!['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+
+    let take = vec
+        .iter()
+        .take(3)
+        .map(|v| {
+            format!("take: {}", v)
+        })
+        .collect::<Vec<String>>();
+
+    assert_eq!(take, vec!["take: a", "take: b", "take: c"]);
+}
