@@ -103,7 +103,7 @@ jobs:
       - name: Create tables on DynanoDB local
         # ホストランナーにはAWS CLIがデフォルトでインストールされている
         run: |
-          aws dynamodb create-table --endpoint-url http://localhost:8000 --cli-input-json file://dynamodb-local/tables/movies.json
+          aws dynamodb create-table --endpoint-url http://localhost:8000 --cli-input-json file://$(pwd)/dynamodb-local/tables/movies.json
 
       - name: Run tests with PHPUnit
         run: vendor/bin/phpunit

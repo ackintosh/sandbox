@@ -1,6 +1,7 @@
 <?php
 namespace Ackintosh;
 
+use Aws\DynamoDb\Marshaler;
 use Aws\Sdk;
 use PHPUnit\Framework\TestCase;
 
@@ -106,5 +107,62 @@ class SandboxTest extends TestCase
             'ACTIVE',
             $result['TableDescription']['TableStatus']
         );
+    }
+
+    /**
+     * @test
+     */
+    public function dynamoDbPutItem(): void
+    {
+        // https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/GettingStarted.PHP.03.html
+        $sdk = new Sdk([
+            'endpoint'   => 'http://localhost:8000',
+            'region'   => 'ap-northeast-1',
+            'version'  => 'latest'
+        ]);
+        $dynamoDb = $sdk->createDynamoDb();
+        $marshaler = new Marshaler();
+
+        // GitHub Actionsで作っているテーブル
+        $tableName = 'Movies';
+
+        $year = 2015;
+        $title = 'The Big New Movie';
+
+        ///////////////////////////////////////////
+        // 追加
+        ///////////////////////////////////////////
+        $item = $marshaler->marshalJson('
+    {
+        "year": ' . $year . ',
+        "title": "' . $title . '",
+        "info": {
+            "plot": "Nothing happens at all.",
+            "rating": 0
+        }
+    }
+');
+
+        $params = [
+            'TableName' => $tableName,
+            'Item' => $item
+        ];
+        $dynamoDb->putItem($params);
+
+        ///////////////////////////////////////////
+        // 取得
+        ///////////////////////////////////////////
+        $key = $marshaler->marshalJson('
+    {
+        "year": ' . $year . ', 
+        "title": "' . $title . '"
+    }
+');
+        $params = [
+            'TableName' => $tableName,
+            'Key' => $key
+        ];
+        $result = $dynamoDb->getItem($params);
+        self::assertSame($title, $result['Item']['title']['S']);
     }
 }
