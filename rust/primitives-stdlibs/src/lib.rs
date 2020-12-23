@@ -1,6 +1,7 @@
 mod btreemap;
 mod const_static;
 mod loops;
+mod macro_format;
 mod math;
 mod number;
 mod ownership;
