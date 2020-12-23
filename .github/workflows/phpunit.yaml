@@ -49,10 +49,16 @@ jobs:
       # https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.UsageNotes.html
       # * Github Action内でDynamoDB Localを使用する
       # https://qiita.com/sayama0402/items/014d4a325d04e54485b5
+      # -> 上記のActionだと、stepsの中でdynamodb-localのコンテナを立てることになる.
+      #    本来は、サービスコンテナとして立てる方が正しいと思うので、上記のActionは使わない.
       dynamodb:
         image: amazon/dynamodb-local:latest
         ports:
           - 8000:8000
+        # CMDを上書きして -sharedDb を指定したいが、現時点ではサービスコンテナのCMDを上書きすることができない
+        # (ENTRYPOINTは `options` でできる)
+        # options: >-
+        #   --entrypoint foobar # ENTRYPOINTを上書きする場合
     strategy:
       matrix:
         php-version:

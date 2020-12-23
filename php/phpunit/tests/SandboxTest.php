@@ -1,6 +1,7 @@
 <?php
 namespace Ackintosh;
 
+use Aws\Sdk;
 use PHPUnit\Framework\TestCase;
 
 class SandboxTest extends TestCase
@@ -57,5 +58,53 @@ class SandboxTest extends TestCase
         var_dump(pg_dbname($conn), pg_connection_status($conn));
         self::assertSame("sandbox_db", pg_dbname($conn));
         self::assertSame(PGSQL_CONNECTION_OK, pg_connection_status($conn));
+    }
+
+    /**
+     * @test
+     */
+    public function dynamoDb(): void
+    {
+        // https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/GettingStarted.PHP.01.html
+        $sdk = new Sdk([
+            'endpoint'   => 'http://localhost:8000',
+            'region'   => 'ap-northeast-1',
+            'version'  => 'latest'
+        ]);
+        $dynamoDb = $sdk->createDynamoDb();
+        $result = $dynamoDb->createTable([
+            'TableName' => 'Movies',
+            'KeySchema' => [
+                [
+                    'AttributeName' => 'year',
+                    'KeyType' => 'HASH'  //Partition key
+                ],
+                [
+                    'AttributeName' => 'title',
+                    'KeyType' => 'RANGE'  //Sort key
+                ]
+            ],
+            'AttributeDefinitions' => [
+                [
+                    'AttributeName' => 'year',
+                    'AttributeType' => 'N'
+                ],
+                [
+                    'AttributeName' => 'title',
+                    'AttributeType' => 'S'
+                ],
+
+            ],
+            // 必須だが、dynamodb-localでは無視される
+            'ProvisionedThroughput' => [
+                'ReadCapacityUnits' => 10,
+                'WriteCapacityUnits' => 10
+            ]
+        ]);
+
+        self::assertSame(
+            'ACTIVE',
+            $result['TableDescription']['TableStatus']
+        );
     }
 }
