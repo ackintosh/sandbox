@@ -73,7 +73,7 @@ class SandboxTest extends TestCase
         ]);
         $dynamoDb = $sdk->createDynamoDb();
         $result = $dynamoDb->createTable([
-            'TableName' => 'Movies',
+            'TableName' => 'AnotherMovies',
             'KeySchema' => [
                 [
                     'AttributeName' => 'year',
