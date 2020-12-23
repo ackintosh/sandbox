@@ -68,6 +68,12 @@ jobs:
     defaults:
       run:
         working-directory: php/phpunit
+    # aws-actions/configure-aws-credentials は実際のクレデンシャルじゃないとエラーになるので、
+    # ダミーのクレデンシャルを入れるために環境変数に直接入れる
+    env:
+      AWS_ACCESS_KEY_ID: DUMMY_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: DUMMY_SECRET_ACCESS_KEY
+      AWS_REGION: ap-northeast-1
     steps:
       - uses: actions/checkout@v2
 
@@ -109,9 +115,3 @@ jobs:
 
       - name: Run tests with PHPUnit
         run: vendor/bin/phpunit
-        # aws-actions/configure-aws-credentials は実際のクレデンシャルじゃないとエラーになるので、
-        # ダミーのクレデンシャルを入れるために環境変数に直接入れる
-        env:
-          AWS_ACCESS_KEY_ID: DUMMY_ACCESS_KEY_ID
-          AWS_SECRET_ACCESS_KEY: DUMMY_SECRET_ACCESS_KEY
-          AWS_REGION: ap-northeast-1
