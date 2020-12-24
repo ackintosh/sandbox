@@ -127,6 +127,7 @@ jobs:
 
       - name: Run sqldef
         run: >-
+          psqldef
           sandbox_db
           -U sandbox_user
           -W sandbox_password
