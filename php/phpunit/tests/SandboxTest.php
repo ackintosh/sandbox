@@ -114,6 +114,13 @@ class SandboxTest extends TestCase
      */
     public function dynamoDbPutItem(): void
     {
+        // GitHub Actionsで作っている Movies テーブルにアクセスしているので
+        // CI以外ではスキップする
+        // see https://docs.github.com/ja/free-pro-team@latest/actions/reference/environment-variables
+        if (getenv('CI') !== 'true') {
+            self::markTestSkipped('this test case runs only in CI environment');
+        }
+
         // https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/GettingStarted.PHP.03.html
         $sdk = new Sdk([
             'endpoint'   => 'http://localhost:8000',
