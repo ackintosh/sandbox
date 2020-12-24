@@ -117,6 +117,7 @@ jobs:
 
   sqldef:
     name: Create DB tables
+    runs-on: ubuntu-latest
     container:
       image: ghcr.io/ackintosh/psqldef:0.8.6-alpine
       env:
