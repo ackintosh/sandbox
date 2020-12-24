@@ -1,0 +1,30 @@
+FROM alpine:3.12 as builder
+
+# https://github.com/k0kubun/sqldef/releases
+ENV SQLDEF_VERSION 0.8.6
+
+# https://hub.docker.com/r/amothic/mysqldef/dockerfile
+RUN set -ex \
+    && apk add --no-cache curl tar \
+    && curl -fSL https://github.com/k0kubun/sqldef/releases/download/v$SQLDEF_VERSION/psqldef_linux_amd64.tar.gz -o psqldef.tar.gz \
+    && tar -zxf psqldef.tar.gz
+
+FROM alpine:3.12
+COPY --from=builder /psqldef /usr/local/bin/psqldef
+
+# https://github.com/sgerrand/alpine-pkg-glibc/releases
+ENV GLIBC_VERSION 2.32-r0
+
+# muslが原因でAlpine Linuxでは動かないのでglibcをインストールする
+# 参考: https://gitlab.com/dar/hugo/blob/feat-postCSS/Dockerfile
+# * Install glibc to work with dynamically linked libraries used by extended hugo version
+# * See https://github.com/gohugoio/hugo/issues/4961
+RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
+  &&  wget "https://github.com/sgerrand/alpine-pkg-glibc/releases/download/$GLIBC_VERSION/glibc-$GLIBC_VERSION.apk" \
+  &&  apk --no-cache add "glibc-$GLIBC_VERSION.apk" \
+  &&  rm "glibc-$GLIBC_VERSION.apk" \
+  &&  wget "https://github.com/sgerrand/alpine-pkg-glibc/releases/download/$GLIBC_VERSION/glibc-bin-$GLIBC_VERSION.apk" \
+  &&  apk --no-cache add "glibc-bin-$GLIBC_VERSION.apk" \
+  &&  rm "glibc-bin-$GLIBC_VERSION.apk"
+
+ENTRYPOINT ["psqldef"]
