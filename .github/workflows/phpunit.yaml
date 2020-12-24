@@ -76,7 +76,6 @@ jobs:
       AWS_DEFAULT_REGION: ap-northeast-1
     steps:
       - uses: actions/checkout@v2
-
       # Could not install memcached on PHP 8.0.0 · Issue #354 · shivammathur/setup-php
       # https://github.com/shivammathur/setup-php/issues/354
       - name: Install libmemcached
@@ -115,3 +114,20 @@ jobs:
 
       - name: Run tests with PHPUnit
         run: vendor/bin/phpunit
+
+  sqldef:
+    name: Create DB tables
+    container:
+      image: ghcr.io/ackintosh/psqldef:0.8.6-alpine
+      env:
+        PGSSLMODE: disable
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run sqldef
+        run: >-
+          sandbox_db
+          -U sandbox_user
+          -W sandbox_password
+          -h postgres
+          -f sqldef/sandbox_schema.sql
