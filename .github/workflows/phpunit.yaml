@@ -16,6 +16,7 @@ on: [push, pull_request]
 jobs:
   phpunit:
     name: Tests
+    needs: sqldef
     runs-on: ubuntu-latest
     services:
       redis:
@@ -112,20 +113,12 @@ jobs:
         run: |
           aws dynamodb create-table --endpoint-url http://localhost:8000 --cli-input-json file://$(pwd)/dynamodb-local/tables/movies.json
 
-      - name: Run tests with PHPUnit
-        run: vendor/bin/phpunit
-
-  sqldef:
-    name: Create DB tables
-    runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/ackintosh/psqldef:0.8.6-alpine
-      env:
-        PGSSLMODE: disable
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Run sqldef
+      - name: Create tables on PostgreSQL
+        uses: docker://ghcr.io/ackintosh/psqldef:0.8.6-alpine
+        env:
+          PGSSLMODE: disable
+        # sqldef配下のファイルをインポートするのでディレクトリを変更しておく
+        working-directory: ./
         run: >-
           psqldef
           sandbox_db
@@ -133,3 +126,6 @@ jobs:
           -W sandbox_password
           -h postgres
           -f sqldef/sandbox_schema.sql
+
+      - name: Run tests with PHPUnit
+        run: vendor/bin/phpunit
