@@ -101,6 +101,13 @@ jobs:
       # * `uses`を指定する場合、`name`を省略することが多い
       #   * その場合はAction名が名前として指定されたことになる
       - uses: actions/checkout@v2
+
+      # 別のリポジトリをチェックアウトする
+      - name: Checkout an another repository
+        uses: actions/checkout@v2
+        with:
+          repository: ackintosh/test
+
         # `with` でActionsに渡すパラメータを指定する
         # リポジトリ内のfooブランチをチェックアウトする場合
         # with:
