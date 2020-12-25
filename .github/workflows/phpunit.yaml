@@ -113,11 +113,10 @@ jobs:
           aws dynamodb create-table --endpoint-url http://localhost:8000 --cli-input-json file://$(pwd)/dynamodb-local/tables/movies.json
 
       - name: Create tables on PostgreSQL
+        # https://github.com/users/ackintosh/packages/container/package/psqldef
         uses: docker://ghcr.io/ackintosh/psqldef:0.8.6-alpine
         env:
           PGSSLMODE: disable
-        # sqldef配下のファイルをインポートするのでディレクトリを変更しておく
-        #working-directory: ./
         with:
           args: >-
             sandbox_db
