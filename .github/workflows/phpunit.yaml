@@ -119,13 +119,13 @@ jobs:
           PGSSLMODE: disable
         # sqldef配下のファイルをインポートするのでディレクトリを変更しておく
         working-directory: ./
-        run: >-
-          psqldef
-          sandbox_db
-          -U sandbox_user
-          -W sandbox_password
-          -h postgres
-          -f sqldef/sandbox_schema.sql
+        with:
+          args: >-
+            sandbox_db
+            -U sandbox_user
+            -W sandbox_password
+            -h postgres
+            -f sqldef/sandbox_schema.sql
 
       - name: Run tests with PHPUnit
         run: vendor/bin/phpunit
