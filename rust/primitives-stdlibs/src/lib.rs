@@ -1,5 +1,6 @@
 mod btreemap;
 mod const_static;
+mod drop;
 mod generics;
 mod loops;
 mod macro_format;
