@@ -16,7 +16,6 @@ on: [push, pull_request]
 jobs:
   phpunit:
     name: Tests
-    needs: sqldef
     runs-on: ubuntu-latest
     services:
       redis:

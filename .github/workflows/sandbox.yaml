@@ -115,7 +115,7 @@ jobs:
       - name: ls
         uses: docker://busybox:latest
         with:
-          entrypoint: ls -la
+          args: ls -l
 
   #####################################################################
   # ジョブの依存関係を指定していないので `sandboxJob` と並列に実行される
