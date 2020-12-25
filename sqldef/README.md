@@ -14,13 +14,16 @@ https://docs.github.com/ja/free-pro-team@latest/packages/guides/pushing-and-pull
 $ docker tag {IMAGE ID} ghcr.io/ackintosh/psqldef:0.8.6-alpine
 $ docker push ghcr.io/ackintosh/psqldef:0.8.6-alpine
 ```
+#### GitHub Actionsでの実行
 
-#### run psqldef
+- https://github.com/ackintosh/sandbox/blob/master/.github/workflows/phpunit.yaml
+
+#### ローカルでの実行
 
 ```shell
-# * `postgresql`$B%G%#%l%/%H%j$G(B `docker-compose up` $B$7$F$*$/(B
-#   * $B$=$3$G:n$i$l$k%M%C%H%o!<%/(B(postgresql_default)$B$K@\B3$7$F$$$k(B
-# * $B%F%9%HMQ$K(B PGSSLMODE=disable $B$r;XDj(B
+# * `postgresql`ディレクトリで `docker-compose up` しておく
+#   * そこで作られるネットワーク(postgresql_default)に接続している
+# * テスト用に PGSSLMODE=disable を指定
 
 $ docker run \
   --rm \
