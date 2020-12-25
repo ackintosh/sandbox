@@ -78,13 +78,13 @@ class SandboxTest extends TestCase
 
         $conn = pg_connect("host=localhost port=5432 user=sandbox_user password=sandbox_password dbname=sandbox_db");
 
-        $res = pg_insert($conn, $table_name, ['id' => 'test_id', 'label' => 'test_label']);
+        $res = pg_insert($conn, $table_name, ['id' => 'aaaa', 'label' => 'test_label']);
         self::assertNotFalse($res);
 
-        $res = pg_select($conn, $table_name, ['id' => 'test_id']);
+        $res = pg_select($conn, $table_name, ['id' => 'aaaa']);
         var_dump($res);
         self::assertCount(1, $res);
-        self::assertSame(['id' => 'test_id', 'label' => 'test_label'], $res[0]);
+        self::assertSame(['id' => 'aaaa', 'label' => 'test_label'], $res[0]);
     }
 
     /**
