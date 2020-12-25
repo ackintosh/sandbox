@@ -64,6 +64,32 @@ class SandboxTest extends TestCase
     /**
      * @test
      */
+    public function postgresqlSelect(): void
+    {
+        // GitHub Actionsでpsqldefを使って作っている sample テーブルにアクセスしているので
+        // CI以外ではスキップする
+        // see https://docs.github.com/ja/free-pro-team@latest/actions/reference/environment-variables
+        if (getenv('CI') !== 'true') {
+            self::markTestSkipped('this test case runs only in CI environment');
+        }
+
+        // GitHub Actionsでpsqldefを使って作っているテーブル
+        $table_name = 'sample';
+
+        $conn = pg_connect("host=localhost port=5432 user=sandbox_user password=sandbox_password dbname=sandbox_db");
+
+        $res = pg_insert($conn, $table_name, ['id' => 'test_id', 'label' => 'test_label']);
+        self::assertNotFalse($res);
+
+        $res = pg_select($conn, $table_name, ['id' => 'test_id']);
+        var_dump($res);
+        self::assertCount(1, $res);
+        self::assertSame(['id' => 'test_id', 'label' => 'test_label'], $res[0]);
+    }
+
+    /**
+     * @test
+     */
     public function dynamoDb(): void
     {
         // https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/GettingStarted.PHP.01.html

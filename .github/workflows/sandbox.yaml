@@ -115,6 +115,7 @@ jobs:
       - name: ls
         uses: docker://busybox:latest
         with:
+          # working-directoryがコンテナに同期されているのが確認できる
           args: ls -l
 
   #####################################################################
