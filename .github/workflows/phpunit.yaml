@@ -118,7 +118,7 @@ jobs:
         env:
           PGSSLMODE: disable
         # sqldef配下のファイルをインポートするのでディレクトリを変更しておく
-        working-directory: ./
+        #working-directory: ./
         with:
           args: >-
             sandbox_db

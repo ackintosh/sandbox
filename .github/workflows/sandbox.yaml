@@ -112,6 +112,10 @@ jobs:
           # `entrypoint` や `args` でコンテナを実行する際のエントリーポイントや引数を指定する
           # entrypoint: ls
           args: echo Hello from busybox
+      - name: ls
+        uses: docker://busybox:latest
+        with:
+          entrypoint: ls -la
 
   #####################################################################
   # ジョブの依存関係を指定していないので `sandboxJob` と並列に実行される
