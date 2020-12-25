@@ -102,11 +102,14 @@ jobs:
       #   * その場合はAction名が名前として指定されたことになる
       - uses: actions/checkout@v2
 
-      # 別のリポジトリをチェックアウトする
+      # 別のリポジトリ(private)をチェックアウトする
+      # https://github.com/actions/checkout#checkout-multiple-repos-private
       - name: Checkout an another repository
         uses: actions/checkout@v2
         with:
           repository: ackintosh/test
+          token: ${{ secrets.GitHub_PAT }}
+          path: private_test
 
         # `with` でActionsに渡すパラメータを指定する
         # リポジトリ内のfooブランチをチェックアウトする場合
