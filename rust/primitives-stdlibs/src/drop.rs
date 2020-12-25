@@ -1,6 +1,6 @@
-struct Dropable;
+struct Droppable;
 
-impl Drop for Dropable {
+impl Drop for Droppable {
     fn drop(&mut self) {
         println!("Resource will be released!");
     }
@@ -9,7 +9,7 @@ impl Drop for Dropable {
 #[test]
 fn test() {
     {
-        let _ = Dropable {};
+        let _ = Droppable {};
     }
 
     println!("スコープを外れた時点で変数はドロップされている");
