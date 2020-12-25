@@ -18,13 +18,12 @@ members = [
   "iterator",
   "level-db",
   "macros",
-    "primitives-stdlibs",
+  "primitives-stdlibs",
   "procon",
   "references-borrowing",
   "result",
   "socket-programming",
-  "thread-local-storage-tls",
-  "thread-pool",
+  "threading",
   "tower-of-hanoi"
 ]
 
