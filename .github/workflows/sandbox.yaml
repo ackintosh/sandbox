@@ -126,6 +126,7 @@ jobs:
         uses: docker://busybox:latest
         with:
           # working-directoryがコンテナに同期されているのが確認できる
+          # 前のstepでチェックアウトした private_test にもアクセスできる
           args: ls -l
 
   #####################################################################
