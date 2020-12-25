@@ -7,7 +7,8 @@ use futures::FutureExt;
 #[test]
 fn test() {
     handle();
-    tx_rx();
+    // TODO
+    // tx_rx();
 }
 
 // //////////////////////////////////////////////////////////
@@ -38,19 +39,19 @@ fn handle() {
 // //////////////////////////////////////////////////////////
 // channelでやり取りするパターン
 // //////////////////////////////////////////////////////////
-fn tx_rx() {
-    let thread_pool = futures::executor::ThreadPool::builder()
-        .pool_size(5)
-        .name_prefix("ackintosh-sandbox-")
-        .create().unwrap();
-
-    let (mut sender, receiver) = futures::channel::oneshot::channel::<String>();
-
-    thread_pool.spawn_ok(async {
-        sender.send("ok".to_owned());
-    });
-
-    let r = async {
-        receiver.await.unwrap();
-    }.left_future::<String>();
-}
+// fn tx_rx() {
+//     let thread_pool = futures::executor::ThreadPool::builder()
+//         .pool_size(5)
+//         .name_prefix("ackintosh-sandbox-")
+//         .create().unwrap();
+//
+//     let (mut sender, receiver) = futures::channel::oneshot::channel::<String>();
+//
+//     thread_pool.spawn_ok(async {
+//         sender.send("ok".to_owned());
+//     });
+//
+//     let r = async {
+//         receiver.await.unwrap();
+//     }.left_future::<String>();
+// }
