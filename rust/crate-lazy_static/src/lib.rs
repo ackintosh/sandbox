@@ -35,7 +35,7 @@ fn test_immutable_global_data() {
     // let ref mut m = app_context::MAP;
 
     // error[E0596]: cannot borrow immutable static item `MAP` as mutable
-    //   --> crate-lazy_static/src/lib.rs:33:9
+    //   --> crate-lazy_static/src/main:33:9
     //    |
     // 33 |     let ref mut m = app_context::MAP;
     //    |         ^^^^^^^^^ cannot borrow as mutable

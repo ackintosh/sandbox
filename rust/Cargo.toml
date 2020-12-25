@@ -12,6 +12,7 @@ members = [
   "crate-chrono",
   "crate-env_logger",
   "crate-lazy_static",
+  "crate-reqwest",
   "crate-uint",
   "tokiors",
   "iterator",
