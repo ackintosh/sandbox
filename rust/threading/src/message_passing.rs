@@ -21,7 +21,9 @@ fn multiplex() {
     let mut receiver_channels = vec![];
 
     for _ in 0..10 {
+        // mainから各スレッドへのチャンネル
         let (send_tx, send_rx) = std::sync::mpsc::channel();
+        // 各スレッドからmainへのチャンネル
         let (receive_tx, receive_rx) = std::sync::mpsc::channel();
 
         sender_channels.push(send_tx);
