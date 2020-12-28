@@ -9,5 +9,6 @@ mod number;
 mod ownership;
 mod path;
 mod result_option;
+mod stdlib_box;
 mod string_str;
 mod vector;
