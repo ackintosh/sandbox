@@ -70,7 +70,7 @@ async fn tokio_sync_oneshot_channel() {
         // sender.send(5);
 
         // error[E0382]: use of moved value: `sender`
-        //   --> tokiors/src/channel.rs:53:9
+        //   --> crate-tokio/src/channel.rs:53:9
         //    |
         // 49 |         if let Err(_) = sender.send(3) {
         //    |                         ------ value moved here
