@@ -11,6 +11,7 @@ members = [
   "dns",
   "crate-chrono",
   "crate-env_logger",
+  "crate-futures",
   "crate-lazy_static",
   "crate-reqwest",
   "crate-uint",

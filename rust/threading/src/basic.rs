@@ -18,7 +18,7 @@ fn move_variants() {
         handles.push(std::thread::spawn(move || {
             // printされる順番は実行するごとに変わるかもしれない
             //   -> それぞれのスレッドがどのような順番で実行されるかについて何ら保証が無いことに注意が必要
-            println!("Hello, world!: {}", x);
+            println!("Hello, world!: {}, thread: {:?}", x, std::thread::current());
         }));
     }
 
