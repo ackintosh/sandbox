@@ -1,5 +1,5 @@
 use chrono::prelude::*;
-use futures::core_reexport::time::Duration;
+use tokio::time::Duration;
 
 #[test]
 // #[tokio::main] // テストでは使えない
