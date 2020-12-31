@@ -13,6 +13,7 @@ members = [
   "crate-env_logger",
   "crate-futures",
   "crate-lazy_static",
+  "crate-parking_lot",
   "crate-reqwest",
   "crate-uint",
   "crate-tokio",
