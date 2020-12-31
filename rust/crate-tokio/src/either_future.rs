@@ -11,7 +11,7 @@ fn test() {
     let e = EitherTest {};
     futures::executor::block_on(e.either_functions(vec![0, 1, 2, 3, 4, 5]));
 
-    let mut tokio_runtime = tokio::runtime::Runtime::new().unwrap();
+    let tokio_runtime = tokio::runtime::Runtime::new().unwrap();
     tokio_runtime.block_on(futures_ordered());
     tokio_runtime.block_on(futures_unordered());
 
@@ -93,7 +93,7 @@ async fn futures_ordered() {
             async move {
                 // ランダムな時間待つ
                 let mut rng = rand::thread_rng();
-                tokio::time::delay_for(
+                tokio::time::sleep(
                     std::time::Duration::from_millis(rng.gen_range(1, 1000))
                 ).await;
 
@@ -121,7 +121,7 @@ async fn futures_unordered() {
             async move {
                 // ランダムな時間待つ
                 let mut rng = rand::thread_rng();
-                tokio::time::delay_for(
+                tokio::time::sleep(
                     std::time::Duration::from_millis(rng.gen_range(1, 1000))
                 ).await;
 

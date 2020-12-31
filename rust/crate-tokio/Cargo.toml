@@ -1,5 +1,5 @@
 [package]
-name = "tokiors"
+name = "crate-tokio"
 version = "0.1.0"
 authors = ["akihito.nakano <sora.akatsuki@gmail.com>"]
 edition = "2018"
@@ -10,4 +10,5 @@ edition = "2018"
 chrono = "0.4"
 futures = "0.3.1"
 rand = "0.7.3"
-tokio = { version = "0.2", features = ["full", "time"] }
+tokio = { version = "1.0", features = ["full", "time"] }
+tokio-stream = "0.1"

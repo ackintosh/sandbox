@@ -4,7 +4,7 @@ use tokio::time::Duration;
 #[test]
 // #[tokio::main] // テストでは使えない
 fn test() {
-    let mut runtime = tokio::runtime::Runtime::new().unwrap();
+    let runtime = tokio::runtime::Runtime::new().unwrap();
 
     runtime.block_on(tokio_sync_mpsc_channel());
     runtime.block_on(tokio_sync_oneshot_channel());
@@ -25,12 +25,12 @@ async fn tokio_sync_mpsc_channel() {
     //   -> もしreceiverが受信せずにバッファが一杯になったら、sendはブロックされる
     // * senderは複製可能
     //   -> 複数のsenderから、単一のreceiverにメッセージを送信する
-    let (mut sender, mut receiver) = tokio::sync::mpsc::channel(5);
+    let (sender, mut receiver) = tokio::sync::mpsc::channel(5);
 
     tokio::spawn(async move {
 
         // テストでsleepを入れている
-        tokio::time::delay_for(Duration::from_secs(10)).await;
+        tokio::time::sleep(Duration::from_secs(10)).await;
 
         for i in 0..10 {
             if let Err(e) = sender.send(i).await {

@@ -1,6 +1,6 @@
 #[test]
 fn test() {
-    let mut runtime = tokio::runtime::Runtime::new().unwrap();
+    let runtime = tokio::runtime::Runtime::new().unwrap();
 
     runtime.block_on(basic());
     runtime.block_on(stream());
@@ -32,11 +32,14 @@ async fn async_work2() {
 ///////////////////////////////////////////////
 // ストリーム
 ///////////////////////////////////////////////
-use tokio::stream::StreamExt; // ストリームをselectするために必要
+// tokio 1.0 で、stream が別のクレート(tokio-stream)に分離したので
+// tokio-stream が必要
+// https://docs.rs/tokio/1.0.1/tokio/stream/index.html#why-was-stream-not-included-in-tokio-10
+use tokio_stream::StreamExt; // ストリームをselectするために必要
 
 async fn stream() {
-    let mut stream1 = tokio::stream::iter(vec![1, 2, 3]);
-    let mut stream2 = tokio::stream::iter(vec![4, 5, 6]);
+    let mut stream1 = tokio_stream::iter(vec![1, 2, 3]);
+    let mut stream2 = tokio_stream::iter(vec![4, 5, 6]);
 
     let next = tokio::select! {
         v = stream1.next() => v.unwrap(),
