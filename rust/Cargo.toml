@@ -6,7 +6,6 @@
 # * `target` ディレクトリ(出力ディレクトリ)も親ディレクトリに集約される
 [workspace]
 members = [
-  "arithmetic",
   "async-await",
   "dns",
   "crate-chrono",
