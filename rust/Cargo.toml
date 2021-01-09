@@ -17,6 +17,7 @@ members = [
   "crate-uint",
   "crate-tokio",
   "iterator",
+  "leetcode",
   "level-db",
   "macros",
   "primitives-stdlibs",
