@@ -61,3 +61,19 @@ fn take() {
 
     assert_eq!(take, vec!["take: a", "take: b", "take: c"]);
 }
+
+#[test]
+fn sum() {
+    let vec = vec![1, 2, 3];
+    let n = vec.iter().sum::<i32>();
+    assert_eq!(n, 6);
+}
+
+#[test]
+fn sort() {
+    let mut vec = vec![1, 2, 3];
+    vec.sort();
+
+    // 昇順 (変わらない)
+    assert_eq!(vec, vec![1, 2, 3]);
+}

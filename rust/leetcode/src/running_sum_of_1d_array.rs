@@ -14,3 +14,9 @@ impl Solution {
         ret
     }
 }
+
+#[test]
+fn test() {
+    let running_sum = Solution::running_sum(vec![1, 2, 3]);
+    assert_eq!(vec![1, 3, 6], running_sum);
+}
