@@ -45,3 +45,16 @@ jobs:
       run: rustup update stable
     - name: Run tests
       run: cargo test --workspace
+
+  coverage-report:
+    name: coverage report
+    runs-on: ubuntu-latest
+    needs: tests
+    steps:
+    - uses: actions/checkout@v1
+    - name: Get latest version of stable Rust
+      run: rustup update stable
+    - name: Install Tarpaulin
+      run: cargo install cargo-tarpaulin
+    - name: Run
+      run: cargo tarpaulin -v
