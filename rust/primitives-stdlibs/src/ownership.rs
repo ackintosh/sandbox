@@ -12,7 +12,6 @@ mod example {
         // aはmoveしていないので利用できる
         println!("main: {}", a);
 
-
         ////////////////////////////////////////////////////////////////
         // ヒープに配置する
         let boxed = Box::new(5u32);
@@ -40,7 +39,6 @@ mod example {
         println!("take_ownership2: {}", a);
     }
 }
-
 
 mod example2 {
     // use std::collections::HashMap;

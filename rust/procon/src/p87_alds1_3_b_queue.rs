@@ -20,7 +20,7 @@
 
 #[derive(Clone, Default, Debug)]
 struct Input {
-    name: String, // プロセス名
+    name: String,         // プロセス名
     processing_time: u32, // 必要な処理時間 (ms)
 }
 
@@ -35,7 +35,7 @@ impl Input {
 
 type Output = (
     String, // プロセス名
-    u32, // 終了時刻
+    u32,    // 終了時刻
 );
 
 fn round_robin_scheduling(n: usize, quantum: u32, processes: Vec<Input>) -> Vec<Output> {
@@ -90,13 +90,11 @@ impl<T: Default + Clone> Queue<T> {
     }
 
     fn is_empty(&self) -> bool {
-        self.head == self.tail
-            && self.haystack[self.tail].is_none()
+        self.head == self.tail && self.haystack[self.tail].is_none()
     }
 
     fn is_full(&self) -> bool {
-        self.head == self.tail
-            && self.haystack[self.tail].is_some()
+        self.head == self.tail && self.haystack[self.tail].is_some()
     }
 
     fn enqueue(&mut self, v: T) {
@@ -135,11 +133,26 @@ fn test() {
             5,
             100,
             vec![
-                Input { name: "p1".to_owned(), processing_time: 150 },
-                Input { name: "p2".to_owned(), processing_time: 80 },
-                Input { name: "p3".to_owned(), processing_time: 200 },
-                Input { name: "p4".to_owned(), processing_time: 350 },
-                Input { name: "p5".to_owned(), processing_time: 20 },
+                Input {
+                    name: "p1".to_owned(),
+                    processing_time: 150
+                },
+                Input {
+                    name: "p2".to_owned(),
+                    processing_time: 80
+                },
+                Input {
+                    name: "p3".to_owned(),
+                    processing_time: 200
+                },
+                Input {
+                    name: "p4".to_owned(),
+                    processing_time: 350
+                },
+                Input {
+                    name: "p5".to_owned(),
+                    processing_time: 20
+                },
             ]
         ),
         vec![
@@ -160,10 +173,7 @@ fn test_queue() {
     q.enqueue(10);
     assert!(!q.is_empty());
 
-    assert_eq!(
-        q.dequeue(),
-        Ok(10),
-    );
+    assert_eq!(q.dequeue(), Ok(10),);
     assert!(q.is_empty());
 
     for i in 0..5 {
@@ -171,5 +181,4 @@ fn test_queue() {
     }
     assert!(!q.is_empty());
     assert!(q.is_full());
-
 }

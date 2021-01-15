@@ -46,11 +46,9 @@ fn main() {
                     error!("{}", error);
                 });
             }
-            "client" => {
-                udp_client::communicate(address).unwrap_or_else(|error| {
-                    error!("{}", error);
-                })
-            }
+            "client" => udp_client::communicate(address).unwrap_or_else(|error| {
+                error!("{}", error);
+            }),
             _ => {
                 missing_role();
             }

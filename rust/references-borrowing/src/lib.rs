@@ -1,9 +1,9 @@
 #[cfg(test)]
 use std::time::Duration;
 
-mod trait_box;
 mod cell_refcell;
 mod lifetime;
+mod trait_box;
 mod trait_rc;
 
 // ミュータブルな参照
@@ -49,7 +49,6 @@ fn mutable_reference2() {
     assert_eq!(b, 32);
 }
 
-
 #[test]
 fn borrowing() {
     // 可変の変数
@@ -71,7 +70,6 @@ fn borrowing_threading() {
     let mut s = String::from("Hello");
     // 可変の参照
     // let ref_s = &mut s;
-
 
     let handle = {
         let mut cloned_s = s.clone();
@@ -101,4 +99,3 @@ fn decorate(s: &mut String) {
     println!("{}", s);
     // Hello, world
 }
-

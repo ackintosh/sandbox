@@ -1,5 +1,5 @@
+use std::io::{BufRead, BufReader, Write};
 use std::net::TcpStream;
-use std::io::{Write, BufReader, BufRead};
 
 pub fn connect(address: &str) -> Result<(), failure::Error> {
     let mut stream = TcpStream::connect(address)?;

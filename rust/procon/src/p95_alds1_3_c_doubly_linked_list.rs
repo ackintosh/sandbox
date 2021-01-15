@@ -1,7 +1,6 @@
 // プロコンのためのアルゴリズムとデータ構造
 // 4.4 連結リスト
 
-
 // *入力*
 // n: 命令数
 // commands: 命令の配列
@@ -23,8 +22,8 @@
 // 0 <= キーの値 <= 10^9
 // 命令の過程でリストの要素数 10^6 を超えない
 
-use std::rc::Rc;
 use std::cell::RefCell;
+use std::rc::Rc;
 
 #[derive(Debug)]
 struct Node {
@@ -52,9 +51,7 @@ impl DoublyLinkedList {
             ref_sentinel.next = Some(Rc::clone(&sentinel));
         }
 
-        Self {
-            sentinel,
-        }
+        Self { sentinel }
     }
 
     fn insert(&mut self, key: u32) {
@@ -68,7 +65,14 @@ impl DoublyLinkedList {
             // 新しいNodeをリストの先頭(sentinelの直後)に入れる
             let mut ref_node = node.borrow_mut();
             ref_node.prev = Some(Rc::clone(&self.sentinel));
-            ref_node.next = Some(Rc::clone(&self.sentinel.borrow().next.as_ref().expect("should have next node")));
+            ref_node.next = Some(Rc::clone(
+                &self
+                    .sentinel
+                    .borrow()
+                    .next
+                    .as_ref()
+                    .expect("should have next node"),
+            ));
         }
 
         {
@@ -94,21 +98,20 @@ impl DoublyLinkedList {
                     return Err("sentinelは削除不可能".to_owned());
                 }
 
-                let a = Rc::clone(node.borrow().prev.as_ref().expect("should have previous node"));
+                let a = Rc::clone(
+                    node.borrow()
+                        .prev
+                        .as_ref()
+                        .expect("should have previous node"),
+                );
                 let b = Rc::clone(node.borrow().next.as_ref().expect("should have next node"));
 
-                a.borrow_mut().next = Some(Rc::clone(
-                    node.borrow().next.as_ref().unwrap()
-                ));
-                b.borrow_mut().prev = Some(Rc::clone(
-                    node.borrow().prev.as_ref().unwrap()
-                ));
+                a.borrow_mut().next = Some(Rc::clone(node.borrow().next.as_ref().unwrap()));
+                b.borrow_mut().prev = Some(Rc::clone(node.borrow().prev.as_ref().unwrap()));
 
                 Ok(())
-            },
-            None => {
-                Err("該当するkeyを持つノードが存在しない".to_owned())
-            },
+            }
+            None => Err("該当するkeyを持つノードが存在しない".to_owned()),
         }
     }
 

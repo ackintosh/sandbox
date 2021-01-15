@@ -17,7 +17,7 @@ impl Dictionary {
     fn new() -> Self {
         Self {
             size: 1024,
-            table: HashMap::new()
+            table: HashMap::new(),
         }
     }
 
@@ -28,7 +28,7 @@ impl Dictionary {
             let hash = self.hash(key, i);
             if !self.table.contains_key(&hash) {
                 self.table.insert(hash, str);
-                return
+                return;
             }
         }
     }
@@ -45,8 +45,8 @@ impl Dictionary {
                     if str == *s {
                         return true;
                     }
-                },
-                None => return false
+                }
+                None => return false,
             }
         }
 
@@ -66,7 +66,9 @@ impl Dictionary {
     }
 
     fn str_to_key(str: &String) -> u32 {
-        str.chars().into_iter().fold(0, |sum, n| sum + Self::char_to_num(&n))
+        str.chars()
+            .into_iter()
+            .fold(0, |sum, n| sum + Self::char_to_num(&n))
     }
 
     fn char_to_num(c: &char) -> u32 {
@@ -75,7 +77,7 @@ impl Dictionary {
             'C' => 2,
             'G' => 3,
             'T' => 4,
-            _ => panic!()
+            _ => panic!(),
         }
     }
 }

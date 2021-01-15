@@ -2,7 +2,7 @@
 // 5.2 線形探索
 
 #[test]
-fn test_linear_search () {
+fn test_linear_search() {
     let s = vec![1, 2, 3, 4, 5];
     let t = vec![3, 4, 1];
     let mut output = 0;

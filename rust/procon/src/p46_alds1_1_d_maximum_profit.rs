@@ -12,16 +12,12 @@ fn main(n: u64, r: Vec<u64>) -> i64 {
     let mut max_profit: Option<i64> = None;
 
     for i in 0..ii {
-        for j in (i+1..jj).rev() {
+        for j in (i + 1..jj).rev() {
             println!("i : {}", i);
             println!("j : {}", j);
 
-            let rj = i64::try_from(
-                r[usize::try_from(j).unwrap()]
-            ).unwrap();
-            let ri = i64::try_from(
-                r[usize::try_from(i).unwrap()]
-            ).unwrap();
+            let rj = i64::try_from(r[usize::try_from(j).unwrap()]).unwrap();
+            let ri = i64::try_from(r[usize::try_from(i).unwrap()]).unwrap();
             println!("rj : {}", rj);
             println!("ri : {}", ri);
 

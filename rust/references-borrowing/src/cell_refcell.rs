@@ -4,11 +4,11 @@
 //////////////////////////////////////
 
 #[cfg(test)]
-use std::rc::Rc;
-#[cfg(test)]
-use std::cell::{Cell, RefCell, Ref};
+use std::cell::{Cell, Ref, RefCell};
 #[cfg(test)]
 use std::collections::HashMap;
+#[cfg(test)]
+use std::rc::Rc;
 
 ////////////////////////////////////////////////////////////////////////////////////////
 // std::cell:Cell
@@ -86,7 +86,9 @@ fn cell_with_hashmap() {
 fn refcell() {
     // Cellとは違って、`Copy` トレイトを実装していないHashMapでも使える
     let hashmap: Rc<RefCell<HashMap<String, String>>> = Rc::new(RefCell::new(HashMap::new()));
-    hashmap.borrow_mut().insert("hello".to_owned(), "world".to_owned());
+    hashmap
+        .borrow_mut()
+        .insert("hello".to_owned(), "world".to_owned());
 
     println!("{:?}", *hashmap.borrow_mut()); // {"hello": "world"}
 

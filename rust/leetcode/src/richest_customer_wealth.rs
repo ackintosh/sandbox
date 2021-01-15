@@ -6,9 +6,7 @@ impl Solution {
     pub fn maximum_wealth(accounts: Vec<Vec<i32>>) -> i32 {
         let mut wealth_per_account = accounts
             .iter()
-            .map(|banks| {
-                banks.iter().sum::<i32>()
-            })
+            .map(|banks| banks.iter().sum::<i32>())
             .collect::<Vec<i32>>();
         wealth_per_account.sort_unstable();
         *wealth_per_account.last().unwrap()

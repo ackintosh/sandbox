@@ -54,9 +54,7 @@ fn take() {
     let take = vec
         .iter()
         .take(3)
-        .map(|v| {
-            format!("take: {}", v)
-        })
+        .map(|v| format!("take: {}", v))
         .collect::<Vec<String>>();
 
     assert_eq!(take, vec!["take: a", "take: b", "take: c"]);

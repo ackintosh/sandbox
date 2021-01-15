@@ -13,8 +13,12 @@ fn assertions() {
 // https://doc.rust-jp.rs/the-rust-programming-language-ja/1.6/book/macros.html
 #[cfg(test)]
 macro_rules! foo {
-    (x => $e:expr) => (println!("mode X: {}", $e));
-    (y => $e:expr) => (println!("mode Y: {}", $e));
+    (x => $e:expr) => {
+        println!("mode X: {}", $e)
+    };
+    (y => $e:expr) => {
+        println!("mode Y: {}", $e)
+    };
 }
 
 #[test]
@@ -40,13 +44,13 @@ macro_rules! pat {
     ( $e:expr , $pat:pat ) => {
         match $e {
             $pat => (),
-            ref e => panic!("error: {:?}", e)
+            ref e => panic!("error: {:?}", e),
         }
     };
     ( $e:expr , $pat:pat => $arm:expr ) => {
         match $e {
             $pat => $arm,
-            ref e => panic!("error: {:?}", e)
+            ref e => panic!("error: {:?}", e),
         }
     };
 }
@@ -69,22 +73,28 @@ fn test_pat() {
     ///////////
     // B
     ///////////
-    let foo = Foo::B {s: "foo:s".to_owned()};
+    let foo = Foo::B {
+        s: "foo:s".to_owned(),
+    };
     pat!(foo, Foo::B { s });
 
-    let foo = Foo::B {s: "foo:s".to_owned()};
+    let foo = Foo::B {
+        s: "foo:s".to_owned(),
+    };
     let s = pat!(foo, Foo::B { s } => s);
-    assert_eq!(
-        "foo:s".to_owned(),
-        s
-    );
+    assert_eq!("foo:s".to_owned(), s);
 
-    let foo = Foo::B {s: "foo:s".to_owned()};
+    let foo = Foo::B {
+        s: "foo:s".to_owned(),
+    };
     pat!(foo, Foo::B { s } => assert!(true));
 
     ///////////
     // C
     ///////////
-    let foo = Foo::C {n: 1, s: "foo:s".to_owned()};
+    let foo = Foo::C {
+        n: 1,
+        s: "foo:s".to_owned(),
+    };
     pat!(foo, Foo::C { n, s } => assert!(true));
 }

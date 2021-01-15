@@ -11,7 +11,7 @@ jobs:
       - name: Get latest version of stable Rust
         run: rustup update stable
       - name: Check formatting with cargo fmt
-        run: make cargo-fmt
+        run: cargo fmt --all -- --check
 
   clippy:
     name: clippy

@@ -28,7 +28,7 @@ fn test_longest() {
         let result;
         {
             let y = String::from("y"); // yのスコープの方が短い
-            // ライフタイムに問題無いので実行できる
+                                       // ライフタイムに問題無いので実行できる
             result = longest(x.as_str(), y.as_str());
             assert_eq!(result, x);
         }
@@ -44,7 +44,7 @@ fn test_longest() {
 // # 引数の参照に 必ずしもライフタイム識別子が必要なわけではない
 // * 第2引数 `y` にはライフタイム識別子を指定していない
 // * `y` のライフタイムは `x` や戻り値に関係無いので 指定する必要が無い
-fn longest_without_lifetime<'a>(x:&'a str, _y: &str) -> &'a str {
+fn longest_without_lifetime<'a>(x: &'a str, _y: &str) -> &'a str {
     // コンパイル出来る
     x // 必ず `x` を返す
 }
@@ -68,10 +68,10 @@ struct Excerpt<'a> {
 fn test_excerpt() {
     // `novel`データは、Excerptインスタンスを生成する前に存在している
     let novel = String::from("Call me Ishmael. Some years ago...");
-    let first_sentence = novel.split('.')
-        .next()
-        .expect("Should have a '.'");
+    let first_sentence = novel.split('.').next().expect("Should have a '.'");
 
     // excerptがスコープを抜けるまでは `novel` はスコープを抜けないので、excerptインスタンスは有効
-    let _excerpt = Excerpt { part: first_sentence };
+    let _excerpt = Excerpt {
+        part: first_sentence,
+    };
 }

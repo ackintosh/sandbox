@@ -3,7 +3,7 @@
 struct Solution;
 
 impl Solution {
-    pub fn maximum69_number (num: i32) -> i32 {
+    pub fn maximum69_number(num: i32) -> i32 {
         let mut result = String::new();
         let mut changed = false;
 

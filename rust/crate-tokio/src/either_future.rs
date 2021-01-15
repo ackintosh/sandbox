@@ -1,7 +1,7 @@
-use futures::{FutureExt, StreamExt, TryFutureExt};
-use futures::future::{Either, BoxFuture};
-use rand::Rng;
+use futures::future::{BoxFuture, Either};
 use futures::stream::FuturesOrdered;
+use futures::{FutureExt, StreamExt, TryFutureExt};
+use rand::Rng;
 
 #[test]
 fn test() {
@@ -40,37 +40,35 @@ async fn either(n: u32) {
     }
 }
 
-struct EitherTest {
-}
+struct EitherTest {}
 
 impl EitherTest {
-    async fn either_functions(self, nums: Vec<i32>) -> Either<BoxFuture<'static, String>, BoxFuture<'static, String>> {
-        let mut futures_ordered
-            = FuturesOrdered::new();
+    async fn either_functions(
+        self,
+        nums: Vec<i32>,
+    ) -> Either<BoxFuture<'static, String>, BoxFuture<'static, String>> {
+        let mut futures_ordered = FuturesOrdered::new();
 
         for (_i, n) in nums.clone().iter().enumerate() {
             let f = match n {
-                1..=3 => {
-                    f_plus1(n.clone()).left_future()
-                },
+                1..=3 => f_plus1(n.clone()).left_future(),
                 4..=5 => {
                     // f_plus1000 は f_plus1 と返り値の型は同じだけど、下記エラーでコンパイルできない
                     // "expected opaque type, found a different opaque type"
                     // f_plus1000(n.clone()).left_future()
 
                     f_plus1(n.clone()).left_future()
-                },
+                }
                 0 => futures::future::ready(Ok(999)).right_future(),
-                _ => unreachable!()
+                _ => unreachable!(),
             };
             futures_ordered.push(f);
         }
 
-        let a = futures_ordered.collect::<Vec<_>>()
-            .then(|a| async move {
-                println!("{:?}", a);
-                "FOO".to_owned()
-            });
+        let a = futures_ordered.collect::<Vec<_>>().then(|a| async move {
+            println!("{:?}", a);
+            "FOO".to_owned()
+        });
 
         a.boxed().right_future()
     }
@@ -88,14 +86,13 @@ async fn futures_ordered() {
     println!("/// futures_ordered ///");
     let nums = vec![1, 2, 3, 4, 5];
 
-    let futures = nums.iter()
+    let futures = nums
+        .iter()
         .map(|n| {
             async move {
                 // ランダムな時間待つ
                 let mut rng = rand::thread_rng();
-                tokio::time::sleep(
-                    std::time::Duration::from_millis(rng.gen_range(1, 1000))
-                ).await;
+                tokio::time::sleep(std::time::Duration::from_millis(rng.gen_range(1, 1000))).await;
 
                 format!("futures_ordered: {}", n)
             }
@@ -103,11 +100,12 @@ async fn futures_ordered() {
         // FuturesOrdered を使うので結果の順番が保証される
         .collect::<futures::stream::FuturesOrdered<_>>();
 
-    futures.collect::<Vec<_>>().then(|a| {
-        async move {
+    futures
+        .collect::<Vec<_>>()
+        .then(|a| async move {
             println!("{:?}", a);
-        }
-    }).await;
+        })
+        .await;
     // ***出力***
     // ["futures_ordered: 1", "futures_ordered: 2", "futures_ordered: 3", "futures_ordered: 4", "futures_ordered: 5"]
 }
@@ -116,14 +114,13 @@ async fn futures_unordered() {
     println!("/// futures_unordered ///");
     let nums = vec![1, 2, 3, 4, 5];
 
-    let futures = nums.iter()
+    let futures = nums
+        .iter()
         .map(|n| {
             async move {
                 // ランダムな時間待つ
                 let mut rng = rand::thread_rng();
-                tokio::time::sleep(
-                    std::time::Duration::from_millis(rng.gen_range(1, 1000))
-                ).await;
+                tokio::time::sleep(std::time::Duration::from_millis(rng.gen_range(1, 1000))).await;
 
                 format!("futures_unordered: {}", n)
             }
@@ -131,11 +128,12 @@ async fn futures_unordered() {
         // FuturesUnordered なので結果の順番は保証されない
         .collect::<futures::stream::FuturesUnordered<_>>();
 
-    futures.collect::<Vec<_>>().then(|a| {
-        async move {
+    futures
+        .collect::<Vec<_>>()
+        .then(|a| async move {
             println!("{:?}", a);
-        }
-    }).await;
+        })
+        .await;
     // ***出力例***
     // ["futures_unordered: 3", "futures_unordered: 4", "futures_unordered: 1", "futures_unordered: 2", "futures_unordered: 5"]
 }
@@ -176,18 +174,20 @@ async fn futures_boxed(n: i32) {
 
 async fn futures_ordered_boxed() {
     println!("/// futures_ordered_boxed ///");
-    let mut futures_ordered: futures::stream::FuturesOrdered<BoxFuture<i32>> = futures::stream::FuturesOrdered::new();
+    let mut futures_ordered: futures::stream::FuturesOrdered<BoxFuture<i32>> =
+        futures::stream::FuturesOrdered::new();
     futures_ordered.push(async { 1 }.boxed());
     futures_ordered.push(async { 2 }.boxed());
     futures_ordered.push(async { 3 }.boxed());
     futures_ordered.push(async { 4 }.boxed());
     futures_ordered.push(async { 5 }.boxed());
 
-    futures_ordered.collect::<Vec<i32>>().then(|numbers| {
-        async move {
+    futures_ordered
+        .collect::<Vec<i32>>()
+        .then(|numbers| async move {
             println!("{:?}", numbers);
-        }
-    }).await;
+        })
+        .await;
     // [1, 2, 3, 4, 5]
 }
 
@@ -233,4 +233,3 @@ async fn then() {
         assert_eq!(f.await, Ok(101));
     }
 }
-

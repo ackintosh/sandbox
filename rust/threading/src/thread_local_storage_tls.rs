@@ -30,9 +30,9 @@ fn test() {
     });
 
     // 別のスレッドを起動し、そこでも要素を追加する
-    std::thread::spawn(|| {
-        RABBITS.with(|rb| rb.borrow_mut().insert("ドワーフホト"))
-    }).join().expect("thread error"); // スレッドの終了を待つ
+    std::thread::spawn(|| RABBITS.with(|rb| rb.borrow_mut().insert("ドワーフホト")))
+        .join()
+        .expect("thread error"); // スレッドの終了を待つ
 
     // メインスレッドのRABBITにアクセスする
     RABBITS.with(|rb| {

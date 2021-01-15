@@ -42,7 +42,7 @@ fn stack(sequence: &str) -> Output {
                         let left = stack.pop().expect("should have nums");
                         stack.push(left * right);
                     }
-                    others => panic!("不明な演算子: {}", others)
+                    others => panic!("不明な演算子: {}", others),
                 }
             }
         }
@@ -91,7 +91,10 @@ impl<T: Default + Copy + Debug> Stack<T> {
 
     fn push(&mut self, v: T) {
         println!("push({:?}) -->", v);
-        print!("    elements: {:?} \n    top: {:?} \n", self.haystack, self.top);
+        print!(
+            "    elements: {:?} \n    top: {:?} \n",
+            self.haystack, self.top
+        );
 
         // オーバーフロー
         if self.is_full() {
@@ -105,13 +108,19 @@ impl<T: Default + Copy + Debug> Stack<T> {
         }
         self.haystack[self.top.unwrap()] = v;
 
-        print!("    elements: {:?} \n    top: {:?} \n", self.haystack, self.top);
+        print!(
+            "    elements: {:?} \n    top: {:?} \n",
+            self.haystack, self.top
+        );
         println!("<-- push({:?})", v);
     }
 
     fn pop(&mut self) -> Result<T, ()> {
         println!("pop() -->");
-        print!("    elements: {:?} \n    top: {:?} \n", self.haystack, self.top);
+        print!(
+            "    elements: {:?} \n    top: {:?} \n",
+            self.haystack, self.top
+        );
 
         // アンダーフロー
         if self.top.is_none() {
@@ -129,7 +138,10 @@ impl<T: Default + Copy + Debug> Stack<T> {
             self.top = Some(top - 1);
         }
 
-        print!("    elements: {:?} \n    top: {:?} \n", self.haystack, self.top);
+        print!(
+            "    elements: {:?} \n    top: {:?} \n",
+            self.haystack, self.top
+        );
         println!("<-- pop()");
 
         Ok(v)
@@ -138,10 +150,7 @@ impl<T: Default + Copy + Debug> Stack<T> {
 
 #[test]
 fn test() {
-    assert_eq!(
-        stack("1 2 + 3 4 - *"),
-        -3
-    )
+    assert_eq!(stack("1 2 + 3 4 - *"), -3)
 }
 
 #[test]

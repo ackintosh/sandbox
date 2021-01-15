@@ -13,8 +13,6 @@ fn test() {
 fn tower_of_hanoi(n: u32) -> u32 {
     match n {
         0 => 0,
-        other => {
-            tower_of_hanoi(other - 1) + 1 + tower_of_hanoi(other - 1)
-        }
+        other => tower_of_hanoi(other - 1) + 1 + tower_of_hanoi(other - 1),
     }
 }

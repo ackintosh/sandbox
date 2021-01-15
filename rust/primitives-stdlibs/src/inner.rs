@@ -4,8 +4,8 @@
 // 例
 // https://github.com/sigp/lighthouse/blob/a62dc65ca49676e4f2d812bca21294aed6ef2d9c/testing/simulator/src/local_network.rs#L24
 
-use std::sync::Arc;
 use std::ops::Deref;
+use std::sync::Arc;
 
 #[derive(Debug)]
 struct Foo {
@@ -15,9 +15,7 @@ struct Foo {
 impl Foo {
     fn new() -> Self {
         Self {
-            inner: Arc::new(Inner {
-                elements: vec![],
-            }),
+            inner: Arc::new(Inner { elements: vec![] }),
         }
     }
 }

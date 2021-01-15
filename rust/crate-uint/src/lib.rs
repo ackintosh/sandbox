@@ -33,10 +33,10 @@ fn xor() {
     let a = U256::from(4u64); // 100
     let b = U256::from(5u64); // 101
     println!("{}", a ^ b); // XOR
-    // 1 (001)
+                           // 1 (001)
 
     let a = U256::from(3u64); // 0011
     let b = U256::from(12u64); // 1100
     println!("{}", a ^ b); // XOR
-    // 15(1111)
+                           // 15(1111)
 }

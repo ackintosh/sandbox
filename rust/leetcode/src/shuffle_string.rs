@@ -27,5 +27,8 @@ impl Solution {
 
 #[test]
 fn test() {
-    assert_eq!("leetcode".to_owned(), Solution::restore_string("codeleet".to_owned(), vec![4, 5, 6, 7, 0, 2, 1, 3]));
+    assert_eq!(
+        "leetcode".to_owned(),
+        Solution::restore_string("codeleet".to_owned(), vec![4, 5, 6, 7, 0, 2, 1, 3])
+    );
 }

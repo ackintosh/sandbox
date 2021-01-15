@@ -59,21 +59,12 @@ mod underflow {
 
         // saturating_sub を使うことでunderflowを防げる
         // https://doc.rust-lang.org/std/primitive.usize.html#method.saturating_sub
-        assert_eq!(
-            ten.saturating_sub(11),
-            0
-        );
+        assert_eq!(ten.saturating_sub(11), 0);
     }
 
     #[test]
     fn checked_sub() {
-        assert_eq!(
-            10u32.checked_sub(1),
-            Some(9)
-        );
-        assert_eq!(
-            10u32.checked_sub(100),
-            None
-        );
+        assert_eq!(10u32.checked_sub(1), Some(9));
+        assert_eq!(10u32.checked_sub(100), None);
     }
 }

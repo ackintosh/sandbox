@@ -10,7 +10,7 @@ mod test {
     }
 
     fn print(s: Box<[u8]>) {
-    // fn print(s: [u8]) {
+        // fn print(s: [u8]) {
         println!("{:?}", s);
     }
 }

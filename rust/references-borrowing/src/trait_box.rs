@@ -27,19 +27,16 @@ enum Bar {
 }
 
 #[derive(Debug)]
-struct Baz {
-}
+struct Baz {}
 
 #[test]
 fn test() {
     println!(
         "{:?}",
         Foo {
-            inner: Box::new(Bar::BarWithFoo(
-                Foo {
-                    inner: Box::new(Bar::BarWithBaz(Baz{}))
-                }
-            ))
+            inner: Box::new(Bar::BarWithFoo(Foo {
+                inner: Box::new(Bar::BarWithBaz(Baz {}))
+            }))
         }
     );
 }

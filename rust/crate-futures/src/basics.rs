@@ -10,7 +10,11 @@ impl std::future::Future for CountDown {
             std::task::Poll::Ready("Zero!".to_owned())
         } else {
             // スレッドIDも確認
-            println!("poll: {}, thread: {:?}", self.0, std::thread::current().id());
+            println!(
+                "poll: {}, thread: {:?}",
+                self.0,
+                std::thread::current().id()
+            );
             self.0 -= 1;
             cx.waker().wake_by_ref();
             std::task::Poll::Pending
@@ -23,9 +27,7 @@ fn test() {
     let countdown_future1 = CountDown(10);
     let countdown_future2 = CountDown(20);
 
-    let countdown_set = futures::future::join_all(
-        vec![countdown_future1, countdown_future2]
-    );
+    let countdown_set = futures::future::join_all(vec![countdown_future1, countdown_future2]);
     // futures::executor::block_on()
     // 渡したFutureが完了になるまでブロックして待つ
     let results = futures::executor::block_on(countdown_set);
@@ -33,5 +35,4 @@ fn test() {
     for (i, s) in results.iter().enumerate() {
         println!("{}: {}", i, s);
     }
-
 }

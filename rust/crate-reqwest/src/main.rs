@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 
 #[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>>{
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let res = reqwest::get("https://httpbin.org/ip")
         .await?
         .json::<HashMap<String, String>>()

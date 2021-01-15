@@ -26,7 +26,7 @@ impl Solution {
 #[test]
 fn test() {
     assert_eq!(
-        vec![true,true,true,false,true],
-        Solution::kids_with_candies(vec![2,3,5,1,3], 3)
+        vec![true, true, true, false, true],
+        Solution::kids_with_candies(vec![2, 3, 5, 1, 3], 3)
     );
 }

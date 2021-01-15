@@ -1,5 +1,5 @@
-use futures::task::SpawnExt;
 use futures::executor::block_on;
+use futures::task::SpawnExt;
 use futures::FutureExt;
 
 // https://crates.io/crates/futures
@@ -28,9 +28,7 @@ fn handle() {
 
     let mut futures = Vec::new();
     for n in 0..4 {
-        futures.push(
-            thread_pool.spawn_with_handle(print_number(n)).unwrap()
-        );
+        futures.push(thread_pool.spawn_with_handle(print_number(n)).unwrap());
     }
     // 各スレッドの処理が終わるの待つ
     block_on(futures::future::join_all(futures));

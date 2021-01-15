@@ -36,11 +36,8 @@ fn flatten() {
 
     // .flat_map(|x| x) と同等
     assert_eq!(
-        iter.clone()
-            .flatten()
-            .collect::<Vec<_>>(),
-        iter.flat_map(|x| x)
-            .collect::<Vec<_>>(),
+        iter.clone().flatten().collect::<Vec<_>>(),
+        iter.flat_map(|x| x).collect::<Vec<_>>(),
     );
 }
 

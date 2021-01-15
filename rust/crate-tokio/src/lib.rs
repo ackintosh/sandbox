@@ -8,7 +8,7 @@ mod select;
 #[test]
 fn test() {
     let rt = Runtime::new().unwrap();
-    let h = rt.spawn_blocking( {
+    let h = rt.spawn_blocking({
         println!("aaaaaa");
     });
     // h.await.unwrap();

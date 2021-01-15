@@ -48,8 +48,8 @@ fn write() {
 
 mod local_network {
     use parking_lot::RwLock;
-    use tokio::time::Duration;
     use std::sync::Arc;
+    use tokio::time::Duration;
 
     struct LocalNetwork {
         elements: RwLock<Vec<i32>>,
@@ -91,7 +91,10 @@ mod local_network {
     fn local_network() {
         let nw = Arc::new(LocalNetwork::new());
 
-        let rt = tokio::runtime::Builder::new_current_thread().enable_all().build().unwrap();
+        let rt = tokio::runtime::Builder::new_current_thread()
+            .enable_all()
+            .build()
+            .unwrap();
         rt.block_on(async move {
             let mut handles = vec![];
             for i in 0..2 {
@@ -108,4 +111,3 @@ mod local_network {
         });
     }
 }
-

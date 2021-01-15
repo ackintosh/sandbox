@@ -77,17 +77,16 @@ mod join {
 // ////////////////////////////////////////////////////////
 #[test]
 fn thread_pool() {
-    let thread_pool = ThreadPool::builder()
-        .pool_size(5)
-        .create()
-        .unwrap();
+    let thread_pool = ThreadPool::builder().pool_size(5).create().unwrap();
 
     let mut futures = Vec::new();
 
     for _ in 0..4 {
         futures.push(
             // スレッドをjoinするために spawn_with_handle を使う
-            thread_pool.spawn_with_handle(print_async_fn_result()).unwrap()
+            thread_pool
+                .spawn_with_handle(print_async_fn_result())
+                .unwrap(),
         );
     }
 

@@ -19,4 +19,3 @@ fn test() {
     //    ランタイムの中でFutureが実行され、評価結果を得ることができる
     futures::executor::block_on(something_great_async_function());
 }
-

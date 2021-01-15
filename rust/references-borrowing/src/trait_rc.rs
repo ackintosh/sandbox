@@ -31,11 +31,10 @@ fn rc() {
     //
 
     // *RCを使う場合*
-    fn rc_test() -> Rc<i32>{
+    fn rc_test() -> Rc<i32> {
         let i = 32;
         Rc::new(i)
     }
-
 
     // 関数 rc_test のスコープを抜けたけど、ヒープにある変数 i の値はまだ参照されているのでdropされない
     let n = rc_test();
@@ -70,7 +69,7 @@ fn rc_mut() {
     assert_eq!(1, Rc::strong_count(&num)); // 参照カウントは1
 
     *Rc::make_mut(&mut num) += 1; // numの参照先に 1 を足した
-    // num = 2
+                                  // num = 2
     assert_eq!(2, *num);
     println!("num: {}", num);
 

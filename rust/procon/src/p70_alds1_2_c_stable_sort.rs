@@ -1,7 +1,6 @@
 // プロコンのためのアルゴリズムとデータ構造
 // 3.5 安定なソート
 
-
 // トランプのカードを整列する。
 // ここでは、4つの絵柄 S, H, C, Dと 9つの数字 1, 2, ..., 9 から構成される計36枚のカードを用いる。
 // 例えば、ハードの8は "H8"、ダイヤの1は "D1"と表す。
@@ -14,9 +13,9 @@ use crate::u8_to_usize;
 // *出力*
 type Output = (
     Vec<&'static str>, // バブルソートによって整列されたカード
-    bool, // この出力が安定か否か
+    bool,              // この出力が安定か否か
     Vec<&'static str>, // 選択ソートによって整列されたカード
-    bool, // この出力が安定か否か
+    bool,              // この出力が安定か否か
 );
 
 // *入力*
@@ -36,7 +35,7 @@ fn bubble_sort(n: u8, mut array: Vec<&str>) -> Vec<&str> {
         for j in ((i + 1)..n).rev() {
             let j_index = u8_to_usize(j);
 
-            if  num(array[j_index]) < num(array[j_index - 1]) {
+            if num(array[j_index]) < num(array[j_index - 1]) {
                 array.swap(j_index, j_index - 1);
             }
         }
@@ -66,8 +65,10 @@ fn selection_sort(n: u8, mut array: Vec<&str>) -> Vec<&str> {
 // "D2" -> 2u32
 fn num(s: &str) -> u32 {
     s.chars()
-        .last().expect("should have chars")
-        .to_digit(10).expect("should be converted to digit")
+        .last()
+        .expect("should have chars")
+        .to_digit(10)
+        .expect("should be converted to digit")
 }
 
 #[test]

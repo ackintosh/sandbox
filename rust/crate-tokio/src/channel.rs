@@ -28,7 +28,6 @@ async fn tokio_sync_mpsc_channel() {
     let (sender, mut receiver) = tokio::sync::mpsc::channel(5);
 
     tokio::spawn(async move {
-
         // テストでsleepを入れている
         tokio::time::sleep(Duration::from_secs(10)).await;
 
@@ -39,17 +38,34 @@ async fn tokio_sync_mpsc_channel() {
                 println!("[sender] e: {:?}", e);
                 return;
             }
-            println!("{} [sender] sent a message. {:?}", Local::now(), std::thread::current().id());
+            println!(
+                "{} [sender] sent a message. {:?}",
+                Local::now(),
+                std::thread::current().id()
+            );
         }
     });
 
-    println!("{} [receiver] ready to receive values from a sender. {:?}", Local::now(), std::thread::current().id());
+    println!(
+        "{} [receiver] ready to receive values from a sender. {:?}",
+        Local::now(),
+        std::thread::current().id()
+    );
     // senderが送信した順番にreceiverが受信する
     while let Some(i) = receiver.recv().await {
-        println!("{} [receiver] got = {}. {:?}", Local::now(), i, std::thread::current().id());
+        println!(
+            "{} [receiver] got = {}. {:?}",
+            Local::now(),
+            i,
+            std::thread::current().id()
+        );
     }
 
-    println!("{} finished. {:?}", Local::now(), std::thread::current().id());
+    println!(
+        "{} finished. {:?}",
+        Local::now(),
+        std::thread::current().id()
+    );
 }
 
 ////////////////////////////////////////////////////////////////////////////

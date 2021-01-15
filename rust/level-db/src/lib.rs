@@ -1,7 +1,7 @@
-use tempdir::TempDir;
 use leveldb::database::kv::KV;
-use leveldb::database::options::{Options, WriteOptions, ReadOptions};
+use leveldb::database::options::{Options, ReadOptions, WriteOptions};
 use leveldb::database::Database;
+use tempdir::TempDir;
 
 #[test]
 fn leveldb() {
@@ -27,6 +27,6 @@ fn leveldb() {
             assert!(data.is_some());
             assert_eq!(data, Some(vec![1]));
         }
-        Err(e) => panic!("failed reading data: {:?}", e)
+        Err(e) => panic!("failed reading data: {:?}", e),
     }
 }

@@ -12,9 +12,9 @@
 // https://maguro.dev/btree-maximum-value/
 
 #[cfg(test)]
-use std::collections::BTreeMap;
-#[cfg(test)]
 use std::collections::btree_map::Entry;
+#[cfg(test)]
+use std::collections::BTreeMap;
 
 #[test]
 fn test() {
@@ -40,6 +40,6 @@ fn test() {
             println!("{:?}", vacant_entry);
             // VacantEntry(999)
         }
-        Entry::Occupied(_) => unreachable!()
+        Entry::Occupied(_) => unreachable!(),
     }
 }
