@@ -2,6 +2,10 @@ name: Rust
 
 on: [push, pull_request]
 
+defaults:
+  run:
+    working-directory: rust
+
 jobs:
   cargo-fmt:
     name: cargo-fmt
