@@ -1,3 +1,4 @@
+#[cfg(test)]
 use std::rc::Rc;
 
 // std::rc::Rc (Reference Counted)

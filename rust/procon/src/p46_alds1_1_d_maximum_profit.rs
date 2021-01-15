@@ -30,10 +30,8 @@ fn main(n: u64, r: Vec<u64>) -> i64 {
 
             if max_profit.is_none() {
                 max_profit = Some(profit);
-            } else {
-                if profit > max_profit.unwrap() {
-                    max_profit = Some(profit);
-                }
+            } else if profit > max_profit.unwrap() {
+                max_profit = Some(profit);
             }
             println!("max_profit : {}", max_profit.unwrap());
         }
@@ -59,10 +57,8 @@ fn main2(n: u64, r: Vec<u64>) -> i64 {
 
         if max_profit.is_none() {
             max_profit = Some(result);
-        } else {
-            if result > max_profit.unwrap() {
-                max_profit = Some(result);
-            }
+        } else if result > max_profit.unwrap() {
+            max_profit = Some(result);
         }
 
         // Update `minv`

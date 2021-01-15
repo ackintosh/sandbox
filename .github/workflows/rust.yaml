@@ -1,0 +1,32 @@
+name: Rust
+
+on: [push, pull_request]
+
+jobs:
+  cargo-fmt:
+    name: cargo-fmt
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Get latest version of stable Rust
+        run: rustup update stable
+      - name: Check formatting with cargo fmt
+        run: make cargo-fmt
+
+  clippy:
+    name: clippy
+    runs-on: ubuntu-latest
+    needs: cargo-fmt
+    steps:
+      - uses: actions/checkout@v1
+      - name: Lint code for quality and style with Clippy
+        # #[test] のチェックを行うために `--tests` を指定
+        # https://github.com/rust-lang/rust-clippy/issues/1436
+        run: >-
+          cargo clippy
+          --tests
+          -p primitives
+          -p leetcode
+          -- -D warnings
+      - name: Certify Cargo.lock freshness
+        run: git diff --exit-code Cargo.lock

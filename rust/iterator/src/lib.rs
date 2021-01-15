@@ -5,6 +5,7 @@ fn test() {
     take_remains_from_iter();
 }
 
+#[cfg(test)]
 fn filter_map() {
     println!("/// filter_map ///");
     // filter_map
@@ -23,6 +24,7 @@ fn filter_map() {
     assert_eq!(None, r.next());
 }
 
+#[cfg(test)]
 fn flatten() {
     println!("/// flatten ///");
     // flatten
@@ -37,13 +39,13 @@ fn flatten() {
         iter.clone()
             .flatten()
             .collect::<Vec<_>>(),
-        iter.clone()
-            .flat_map(|x| x)
+        iter.flat_map(|x| x)
             .collect::<Vec<_>>(),
     );
 }
 
 // イテレータの残りの要素を取る
+#[cfg(test)]
 fn take_remains_from_iter() {
     println!("/// take_remains_from_iter ///");
     let nums = vec![0, 1, 2, 3, 4, 5];

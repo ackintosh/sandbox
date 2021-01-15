@@ -11,7 +11,9 @@
 // Rust の BTreeSet / BTreeMap で最大値を素早く取得する方法
 // https://maguro.dev/btree-maximum-value/
 
+#[cfg(test)]
 use std::collections::BTreeMap;
+#[cfg(test)]
 use std::collections::btree_map::Entry;
 
 #[test]

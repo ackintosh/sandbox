@@ -11,6 +11,7 @@ fn assertions() {
 
 // ドキュメントのサンプル
 // https://doc.rust-jp.rs/the-rust-programming-language-ja/1.6/book/macros.html
+#[cfg(test)]
 macro_rules! foo {
     (x => $e:expr) => (println!("mode X: {}", $e));
     (y => $e:expr) => (println!("mode Y: {}", $e));
@@ -34,6 +35,7 @@ fn test_foo() {
 }
 
 // パターン(pat)
+#[cfg(test)]
 macro_rules! pat {
     ( $e:expr , $pat:pat ) => {
         match $e {

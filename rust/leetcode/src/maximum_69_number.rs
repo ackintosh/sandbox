@@ -15,7 +15,7 @@ impl Solution {
 
             match s {
                 "6" => {
-                    result.push_str("9");
+                    result.push('9');
                     changed = true;
                 }
                 "9" => result.push_str(s),

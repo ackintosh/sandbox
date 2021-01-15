@@ -3,8 +3,11 @@
 // https://doc.rust-jp.rs/the-rust-programming-language-ja/1.6/book/choosing-your-guarantees.html#%E3%82%BB%E3%83%AB%E5%9E%8B
 //////////////////////////////////////
 
+#[cfg(test)]
 use std::rc::Rc;
+#[cfg(test)]
 use std::cell::{Cell, RefCell, Ref};
+#[cfg(test)]
 use std::collections::HashMap;
 
 ////////////////////////////////////////////////////////////////////////////////////////

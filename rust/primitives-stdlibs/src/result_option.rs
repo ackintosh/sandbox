@@ -4,7 +4,7 @@ fn unwrap_or_else() {
     assert_eq!(1, f().unwrap());
 
     let f = || { None };
-    assert_eq!(9, f().unwrap_or_else(|| 9));
+    assert_eq!(9, f().unwrap_or(9));
 
     let f: fn() -> Result<u32, String> = || { Ok(1) };
     assert_eq!(1, f().unwrap());

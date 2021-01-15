@@ -11,7 +11,7 @@ impl Solution {
 
         // 最初に渡される、満タンのボトルをすべて飲む
         count += num_bottles;
-        let mut empty_bottles = num_bottles.clone();
+        let mut empty_bottles = num_bottles;
 
         loop {
             let exchanged = empty_bottles / num_exchange;
@@ -20,7 +20,7 @@ impl Solution {
             }
 
             // 交換しきれなかった余りの空ボトル
-            empty_bottles = empty_bottles % num_exchange;
+            empty_bottles %= num_exchange;
             // 交換したボトルを飲む
             count += exchanged;
             // 交換したボトルを飲んだので、空ボトルに追加する

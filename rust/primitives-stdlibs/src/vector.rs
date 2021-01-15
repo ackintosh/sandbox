@@ -72,7 +72,7 @@ fn sum() {
 #[test]
 fn sort() {
     let mut vec = vec![1, 2, 3];
-    vec.sort();
+    vec.sort_unstable();
 
     // 昇順 (変わらない)
     assert_eq!(vec, vec![1, 2, 3]);

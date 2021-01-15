@@ -6,8 +6,12 @@ impl Solution {
     pub fn kids_with_candies(candies: Vec<i32>, extra_candies: i32) -> Vec<bool> {
         let greatest = {
             let mut c = candies.clone();
-            c.sort();
-            c.last().unwrap().clone()
+            // プリミティブのソートには sort ではなく sort_unstable を使う
+            // https://rust-lang.github.io/rust-clippy/master/index.html#stable_sort_primitive
+            c.sort_unstable();
+            // `Copy` 型は明示的に clone() を使う代わりに dereferencing を行う
+            // https://rust-lang.github.io/rust-clippy/master/index.html#clone_on_copy
+            *c.last().unwrap()
         };
 
         let mut result = vec![];

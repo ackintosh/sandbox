@@ -10,8 +10,8 @@ impl Solution {
                 banks.iter().sum::<i32>()
             })
             .collect::<Vec<i32>>();
-        wealth_per_account.sort();
-        wealth_per_account.last().unwrap().clone()
+        wealth_per_account.sort_unstable();
+        *wealth_per_account.last().unwrap()
     }
 }
 

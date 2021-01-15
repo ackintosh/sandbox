@@ -41,9 +41,9 @@ struct Inner {
 
 #[test]
 fn test() {
-    let foo = Foo::new();
-    println!("{:?}", foo);
+    let foo_instance = Foo::new();
+    println!("{:?}", foo_instance);
 
     // Deref(Target = Inner)を実装しているので、`inner` を挟まずにelementsにアクセス可能
-    println!("{:?}", foo.elements);
+    println!("{:?}", foo_instance.elements);
 }

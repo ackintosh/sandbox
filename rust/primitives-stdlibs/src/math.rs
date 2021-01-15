@@ -9,7 +9,18 @@ fn test() {
     assert_eq!(n, 1);
 
     let n = 3f32 / 2f32;
-    assert_eq!(n, 1.5);
+
+    ///////////////////////////////
+    // 浮動小数点の比較
+    // https://rust-lang.github.io/rust-clippy/master/index.html#float_cmp
+    ///////////////////////////////
+    // 下記のように単純な比較は正確な結果を得られない
+    // assert_eq!(n, 1.5);
+
+    // 正確に比較するためにEPSILONを使う
+    let error_margin = f32::EPSILON;
+    assert!((n - 1.5f32).abs() < error_margin);
+
     println!("{:?}", n);
 }
 

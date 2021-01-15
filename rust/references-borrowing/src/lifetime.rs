@@ -44,7 +44,7 @@ fn test_longest() {
 // # 引数の参照に 必ずしもライフタイム識別子が必要なわけではない
 // * 第2引数 `y` にはライフタイム識別子を指定していない
 // * `y` のライフタイムは `x` や戻り値に関係無いので 指定する必要が無い
-fn longest_without_lifetime<'a>(x:&'a str, y: &str) -> &'a str {
+fn longest_without_lifetime<'a>(x:&'a str, _y: &str) -> &'a str {
     // コンパイル出来る
     x // 必ず `x` を返す
 }

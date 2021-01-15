@@ -9,6 +9,7 @@ fn test() {
     assert_eq!(tower_of_hanoi(6), 63);
 }
 
+#[allow(dead_code)]
 fn tower_of_hanoi(n: u32) -> u32 {
     match n {
         0 => 0,
