@@ -4,7 +4,9 @@ extern crate log;
 
 #[test]
 fn it_works() {
-    env_logger::init();
+    // 別のテストで、init() を実行しているので
+    // こちらは try_init() にする
+    let _ = env_logger::try_init();
 
     debug!("debugログ: {}", "xxxxx");
     error!("errorログ: {}", "xxxxx");
@@ -21,7 +23,9 @@ mod builder {
     fn default() {
         // デフォルトの環境変数 `RUST_LOG` から設定値を取る
         let mut builder = Builder::from_env(Env::default());
-        builder.init();
+        // 別のテストで、env_logger::init() を実行しているので
+        // こちらは try_init() にする
+        let _ = builder.try_init();
 
         debug!("builder: {}", "test");
     }
@@ -30,7 +34,9 @@ mod builder {
     fn custom_env() {
         // 環境変数 `CUSTOM_ENV` から設定値を取る
         let mut builder = Builder::from_env(Env::new().filter("CUSTOM_ENV"));
-        builder.init();
+        // 別のテストで、env_logger::init() を実行しているので
+        // こちらは try_init() にする
+        let _ = builder.try_init();
 
         debug!("custom_env: {}", "test");
 

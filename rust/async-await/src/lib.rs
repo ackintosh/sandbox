@@ -63,7 +63,7 @@ mod join {
         let future2 = dance();
 
         // join
-        futures::future::join(future1, future2);
+        futures::future::join(future1, future2).await;
     }
 
     #[test]
@@ -100,8 +100,8 @@ fn thread_pool() {
 #[test]
 fn async_blocks_have_their_own_types() {
     // https://users.rust-lang.org/t/storing-futures/34564
-    let f1 = async { println!("f1") };
-    let f2 = async { println!("f2") };
+    let _f1 = async { println!("f1") };
+    let _f2 = async { println!("f2") };
 
     // asyncブロックはそれぞれに独自の型を持つので、コンパイルエラーになる
     // let futures = vec![f1, f2];

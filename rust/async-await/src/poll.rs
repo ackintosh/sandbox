@@ -1,4 +1,4 @@
-use futures::core_reexport::task::{Context, Poll};
+use futures::task::{Context, Poll};
 
 #[test]
 fn test() {
