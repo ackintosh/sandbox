@@ -46,6 +46,7 @@ jobs:
     - name: Run tests
       run: cargo test --workspace
 
+  # https://github.com/xd009642/tarpaulin#github-actions
   coverage-report:
     name: coverage report
     runs-on: ubuntu-latest
@@ -56,5 +57,5 @@ jobs:
       run: rustup update stable
     - name: Install Tarpaulin
       run: cargo install cargo-tarpaulin
-    - name: Run
-      run: cargo tarpaulin -v
+    - name: Generate code coverage
+      run: cargo tarpaulin --verbose --all-features --workspace
