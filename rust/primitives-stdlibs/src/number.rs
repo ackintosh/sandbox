@@ -29,3 +29,12 @@ fn cmp() {
 
     // n < m が出力される
 }
+
+mod convert {
+    #[test]
+    fn to_string() {
+        let num = 6699;
+        println!("{:?}", num.to_string());
+        // "6699"
+    }
+}
