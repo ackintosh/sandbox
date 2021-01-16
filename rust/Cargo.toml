@@ -9,6 +9,7 @@ members = [
   "async-await",
   "dns",
   "crate-chrono",
+  "crate-criterion",
   "crate-env_logger",
   "crate-futures",
   "crate-lazy_static",
