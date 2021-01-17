@@ -1,19 +1,22 @@
 // https://leetcode.com/problems/jewels-and-stones/
+use std::convert::TryFrom;
 
 struct Solution;
 
 impl Solution {
     pub fn num_jewels_in_stones(jewels: String, stones: String) -> i32 {
-        let target = jewels.split("").filter(|j| !j.is_empty()).collect::<Vec<_>>();
-        let mut count = 0;
+        let target = jewels
+            .split("")
+            .filter(|j| !j.is_empty())
+            .collect::<Vec<_>>();
 
-        for s in stones.split("").filter(|s| !s.is_empty()) {
-            if target.contains(&s) {
-                count += 1;
-            }
-        }
-
-        count
+        i32::try_from(
+            stones
+                .split("")
+                .filter(|s| !s.is_empty() && target.contains(s))
+                .count(),
+        )
+        .unwrap()
     }
 }
 
