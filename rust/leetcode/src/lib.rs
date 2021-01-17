@@ -1,4 +1,5 @@
 mod count_odd_numbers_in_an_interval_range;
+mod defanging_an_ip_address;
 mod kids_with_the_greatest_number_of_candies;
 mod maximum_69_number;
 mod number_of_good_pairs;
