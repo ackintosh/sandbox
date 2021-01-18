@@ -1,4 +1,5 @@
 import com.github.ackintosh.proto.*
+import com.google.protobuf.StringValue
 import com.google.protobuf.Timestamp
 import com.google.protobuf.util.JsonFormat
 import com.google.rpc.BadRequest
@@ -36,6 +37,8 @@ fun main() {
     oneOf()
 
     foo()
+
+    wrapper()
 }
 
 fun smallItem() = SmallItem.newBuilder()
@@ -354,4 +357,31 @@ fun foo() {
     val bars = Bars.newBuilder().build()
     println("bars ===========")
     println(bars)
+}
+
+fun wrapper() {
+        val string: String? = "test"
+        val stringValue = StringValue.newBuilder().setValue(string).build()
+
+        println(stringValue)
+
+//        val stringNull: String? = null
+//        val stringNullValue = StringValue.newBuilder().setValue(stringNull).build()
+    // StringValue.setValue() で NPE が起きる
+
+        println("usingWrapper ==========")
+        val usingWrapper = UsingWrapper
+                .newBuilder()
+                .setStringProperty(StringValue.newBuilder().build())
+                .build()
+
+        println(usingWrapper.hasStringProperty())
+        println(usingWrapper.stringProperty.value)
+
+        val usingWrapper2 = UsingWrapper
+                .newBuilder()
+                .build()
+
+        println(usingWrapper2.hasStringProperty())
+        println(usingWrapper2.stringProperty.value)
 }

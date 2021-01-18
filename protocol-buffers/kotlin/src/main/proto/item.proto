@@ -4,6 +4,7 @@ option java_multiple_files = true;
 option java_package = "com.github.ackintosh.proto";
 
 import "google/protobuf/timestamp.proto";
+import "wrappers.proto";
 
 message SmallItem {
   string string1 = 1;
@@ -268,4 +269,8 @@ message Bar {
 
 message Bars {
   repeated Bar bars = 1;
+}
+
+message UsingWrapper {
+  google.protobuf.StringValue stringProperty = 1;
 }
