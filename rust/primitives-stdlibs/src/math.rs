@@ -24,6 +24,20 @@ fn test() {
     println!("{:?}", n);
 }
 
+mod ordering {
+    #[test]
+    fn test() {
+        assert_eq!(
+            7,
+            2 * 3 + 1
+        );
+        assert_eq!(
+            7,
+            1 + 2 * 3
+        );
+    }
+}
+
 mod overflow {
     use std::ops::Add;
 
