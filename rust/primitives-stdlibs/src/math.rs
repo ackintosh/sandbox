@@ -14,10 +14,35 @@ fn test() {
     // 浮動小数点の比較
     // https://rust-lang.github.io/rust-clippy/master/index.html#float_cmp
     ///////////////////////////////
-    // 下記のように単純な比較は正確な結果を得られない
-    // assert_eq!(n, 1.5);
 
-    // 正確に比較するためにEPSILONを使う
+    let x = 1.2331f64;
+    let y = 1.2332f64;
+    let yy = 1.2331f64;
+
+    if y == x {
+        println!("1. ============");
+    } else {
+        println!("1. !!!!!!!!!!!!");
+    }
+    if yy == x {
+        println!("2. ============");
+    } else {
+        println!("2. !!!!!!!!!!!!");
+    }
+
+    let diff = (x - y).abs();
+    println!("diff: {:?}", diff);
+
+    if diff == f64::EPSILON {
+        println!("======f64::EPSILON");
+    }
+    if diff < f64::EPSILON {
+        println!("<<<<<<f64::EPSILON");
+    } else {
+        println!(">>>>>>f64::EPSILON");
+    }
+
+    // 浮動小数点の計算の不正確さを許容するために f32::EPSILON を使う
     let error_margin = f32::EPSILON;
     assert!((n - 1.5f32).abs() < error_margin);
 
