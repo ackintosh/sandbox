@@ -11,22 +11,18 @@ impl Solution {
         while let Some(c) = splitted_iter.next() {
             match c {
                 "G" => result.push_str(c),
-                "(" => {
-                    match splitted_iter.next() {
-                        Some(cc) => {
-                            match cc {
-                                ")" => result.push_str("o"),
-                                "a" => {
-                                    let _ = splitted_iter.next().unwrap();
-                                    let _ = splitted_iter.next().unwrap();
-                                    result.push_str("al");
-                                    continue;
-                                }
-                                _ => unreachable!(),
-                            }
-                        },
+                "(" => match splitted_iter.next() {
+                    Some(cc) => match cc {
+                        ")" => result.push_str("o"),
+                        "a" => {
+                            let _ = splitted_iter.next().unwrap();
+                            let _ = splitted_iter.next().unwrap();
+                            result.push_str("al");
+                            continue;
+                        }
                         _ => unreachable!(),
-                    }
+                    },
+                    _ => unreachable!(),
                 },
                 _ => unreachable!(),
             }
@@ -38,8 +34,5 @@ impl Solution {
 
 #[test]
 fn test() {
-    assert_eq!(
-        Solution::interpret("G()(al)".into()),
-        "Goal".to_owned()
-    );
+    assert_eq!(Solution::interpret("G()(al)".into()), "Goal".to_owned());
 }

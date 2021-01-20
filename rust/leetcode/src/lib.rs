@@ -1,4 +1,5 @@
 mod count_odd_numbers_in_an_interval_range;
+mod decode_xored_array;
 mod defanging_an_ip_address;
 mod design_parking_system;
 mod goal_parser_interpretation;
