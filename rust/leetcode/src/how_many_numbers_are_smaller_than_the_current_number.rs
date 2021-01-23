@@ -10,21 +10,26 @@ impl Solution {
             cloned
         };
 
-        nums.iter().map(|n| {
-            let mut count = 0;
-            for nn in &nums_sorted {
-                if nn < n {
-                    count += 1;
-                } else {
-                    break;
+        nums.iter()
+            .map(|n| {
+                let mut count = 0;
+                for nn in &nums_sorted {
+                    if nn < n {
+                        count += 1;
+                    } else {
+                        break;
+                    }
                 }
-            }
-            count
-        }).collect()
+                count
+            })
+            .collect()
     }
 }
 
 #[test]
 fn test() {
-    assert_eq!(Solution::smaller_numbers_than_current(vec![8,1,2,2,3]), vec![4,0,1,1,3]);
+    assert_eq!(
+        Solution::smaller_numbers_than_current(vec![8, 1, 2, 2, 3]),
+        vec![4, 0, 1, 1, 3]
+    );
 }

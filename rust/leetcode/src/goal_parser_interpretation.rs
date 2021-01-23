@@ -13,7 +13,7 @@ impl Solution {
                 "G" => result.push_str(c),
                 "(" => match splitted_iter.next() {
                     Some(cc) => match cc {
-                        ")" => result.push_str("o"),
+                        ")" => result.push('o'),
                         "a" => {
                             let _ = splitted_iter.next().unwrap();
                             let _ = splitted_iter.next().unwrap();

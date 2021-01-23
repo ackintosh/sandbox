@@ -8,6 +8,7 @@ mod jewels_and_stones;
 mod kids_with_the_greatest_number_of_candies;
 mod maximum_69_number;
 mod number_of_good_pairs;
+mod number_of_steps_to_reduce_a_number_to_zero;
 mod richest_customer_wealth;
 mod running_sum_of_1d_array;
 mod shuffle_string;

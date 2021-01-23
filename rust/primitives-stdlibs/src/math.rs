@@ -1,56 +1,64 @@
-#[test]
-fn test() {
-    let n = 4i32 / 2i32;
-    assert_eq!(n, 2);
+mod floating_point_number {
+    #[test]
+    #[allow(clippy::float_cmp)]
+    fn test() {
+        let n = 4i32 / 2i32;
+        assert_eq!(n, 2);
 
-    // i32 として扱われる
-    let n = 3 / 2;
-    // 小数点以下が切り捨てられる
-    assert_eq!(n, 1);
+        // i32 として扱われる
+        let n = 3 / 2;
+        // 小数点以下が切り捨てられる
+        assert_eq!(n, 1);
 
-    let n = 3f32 / 2f32;
-
-    ///////////////////////////////
-    // 浮動小数点の比較
-    // https://rust-lang.github.io/rust-clippy/master/index.html#float_cmp
-    ///////////////////////////////
-
-    let x = 1.2331f64;
-    let y = 1.2332f64;
-    let yy = 1.2331f64;
-
-    if y == x {
-        println!("1. ============");
-    } else {
-        println!("1. !!!!!!!!!!!!");
-    }
-    if yy == x {
-        println!("2. ============");
-    } else {
-        println!("2. !!!!!!!!!!!!");
+        // 通常の f32 の除算
+        let n = 3f32 / 2f32;
+        assert_eq!(n, 1.5)
     }
 
-    let diff = (x - y).abs();
-    println!("diff: {:?}", diff);
+    #[test]
+    #[allow(clippy::float_cmp)]
+    fn comparing() {
+        ///////////////////////////////
+        // 浮動小数点の比較
+        // https://rust-lang.github.io/rust-clippy/master/index.html#float_cmp
+        ///////////////////////////////
 
-    if diff == f64::EPSILON {
-        println!("======f64::EPSILON");
+        let x = 1.2331f64;
+        let y = 1.2332f64;
+        let yy = 1.2331f64;
+
+        if y == x {
+            println!("1. ============");
+        } else {
+            println!("1. !!!!!!!!!!!!");
+        }
+        if yy == x {
+            println!("2. ============");
+        } else {
+            println!("2. !!!!!!!!!!!!");
+        }
+
+        let diff = (x - y).abs();
+        println!("diff: {:?}", diff);
+
+        if diff == f64::EPSILON {
+            println!("======f64::EPSILON");
+        }
+        if diff < f64::EPSILON {
+            println!("<<<<<<f64::EPSILON");
+        } else {
+            println!(">>>>>>f64::EPSILON");
+        }
+
+        // 浮動小数点の計算の不正確さを許容するために f32::EPSILON を使う
+        let error_margin = f64::EPSILON;
+        assert!((x - y).abs() < error_margin);
     }
-    if diff < f64::EPSILON {
-        println!("<<<<<<f64::EPSILON");
-    } else {
-        println!(">>>>>>f64::EPSILON");
-    }
-
-    // 浮動小数点の計算の不正確さを許容するために f32::EPSILON を使う
-    let error_margin = f32::EPSILON;
-    assert!((n - 1.5f32).abs() < error_margin);
-
-    println!("{:?}", n);
 }
 
 mod ordering {
     #[test]
+    #[allow(clippy::eq_op)]
     fn test() {
         assert_eq!(7, 2 * 3 + 1);
         assert_eq!(7, 1 + 2 * 3);
