@@ -8,6 +8,20 @@ fn vector() {
 }
 
 #[test]
+fn multidimensional_vector() {
+    let vec = vec![vec![1, 2, 3], vec![4, 5, 6], vec![7, 8, 9]];
+
+    // 愚直にindexを指定する
+    // indexが範囲外の場合は panic
+    assert_eq!(vec[1][2], 6);
+
+    // エラーハンドリングする場合
+    let d1 = vec.get(1);
+    assert!(d1.is_some());
+    assert_eq!(d1.unwrap().get(2), Some(&6));
+}
+
+#[test]
 fn reverse() {
     let mut vec = vec![1, 2, 3];
     vec.reverse();

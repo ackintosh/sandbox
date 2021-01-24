@@ -13,5 +13,6 @@ mod richest_customer_wealth;
 mod running_sum_of_1d_array;
 mod shuffle_string;
 mod shuffle_the_array;
+mod subrectangle_queries;
 mod subtract_the_product_and_sum_of_digits_of_an_integer;
 mod water_bottles;
