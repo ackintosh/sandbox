@@ -52,7 +52,7 @@ mod floating_point_number {
 
         // 浮動小数点の計算の不正確さを許容するために f32::EPSILON を使う
         let error_margin = f64::EPSILON;
-        assert!((x - y).abs() < error_margin);
+        assert!((x - yy).abs() < error_margin);
     }
 }
 
