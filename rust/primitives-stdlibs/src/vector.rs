@@ -89,3 +89,14 @@ fn sort() {
     // 昇順 (変わらない)
     assert_eq!(vec, vec![1, 2, 3]);
 }
+
+#[test]
+fn clear() {
+    let mut vec = vec![1, 2, 3];
+    assert_eq!(vec.len(), 3);
+    println!("{:?}", vec);
+
+    vec.clear();
+    assert_eq!(vec.len(), 0);
+    println!("{:?}", vec);
+}

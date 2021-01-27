@@ -31,4 +31,16 @@ mod convert {
         println!("{:?}", num.to_string());
         // "6699"
     }
+
+    mod usize_to_i32 {
+        use std::convert::TryFrom;
+
+        #[test]
+        fn usize_to_i32() {
+            let num_usize = 1_usize;
+            let num_i32 = i32::try_from(num_usize).unwrap();
+
+            assert_eq!(num_i32, 1_i32);
+        }
+    }
 }

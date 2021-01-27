@@ -2,6 +2,7 @@ mod btreemap;
 mod const_static;
 mod drop;
 mod generics;
+mod hash;
 mod inner;
 mod loops;
 mod macro_format;
