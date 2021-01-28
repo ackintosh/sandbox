@@ -3,7 +3,7 @@
 # workflow_idは下記で確認
 # https://api.github.com/repos/ackintosh/sandbox/actions/workflows
 
-name: Cancel
+name: cancel previous runs
 on: [push]
 jobs:
   cancel:
