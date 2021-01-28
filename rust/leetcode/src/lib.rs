@@ -8,6 +8,7 @@ mod group_the_people_given_the_group_size_they_belong_to;
 mod how_many_numbers_are_smaller_than_the_current_number;
 mod jewels_and_stones;
 mod kids_with_the_greatest_number_of_candies;
+mod max_increase_to_keep_city_skyline;
 mod maximum_69_number;
 mod number_of_good_pairs;
 mod number_of_steps_to_reduce_a_number_to_zero;
