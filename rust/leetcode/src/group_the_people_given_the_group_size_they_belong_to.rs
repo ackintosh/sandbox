@@ -38,12 +38,12 @@ impl Solution {
     }
 }
 
-// 結果のvectorの順番が変動するのでテストはコメントアウトしておく
-
-// #[test]
-// fn test() {
-//     assert_eq!(
-//         Solution::group_the_people(vec![3, 3, 3, 3, 3, 1, 3]),
-//         vec![vec![0, 1, 2], vec![3, 4, 6], vec![5]]
-//     )
-// }
+#[test]
+fn test() {
+    assert_eq!(
+        // 結果のvectorの順番が変動するので、結果の len() だけテストしておく
+        Solution::group_the_people(vec![3, 3, 3, 3, 3, 1, 3]).len(),
+        3 // 正しくは下記のようなvectorであることをテストする
+          // vec![vec![0, 1, 2], vec![3, 4, 6], vec![5]]
+    )
+}
