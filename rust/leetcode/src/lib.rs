@@ -2,6 +2,7 @@ mod count_odd_numbers_in_an_interval_range;
 mod create_target_array_in_the_given_order;
 mod decode_xored_array;
 mod decompress_run_length_encoded_list;
+mod deepest_leaves_sum;
 mod defanging_an_ip_address;
 mod design_parking_system;
 mod goal_parser_interpretation;
