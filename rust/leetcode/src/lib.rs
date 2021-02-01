@@ -23,3 +23,4 @@ mod subrectangle_queries;
 mod subtract_the_product_and_sum_of_digits_of_an_integer;
 mod sum_of_nodes_with_even_valued_grandparent;
 mod water_bottles;
+mod xor_operation_in_an_array;

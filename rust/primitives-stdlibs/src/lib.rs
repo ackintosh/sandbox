@@ -4,6 +4,7 @@ mod drop;
 mod generics;
 mod hash;
 mod inner;
+mod iter;
 mod loops;
 mod macro_format;
 mod math;
