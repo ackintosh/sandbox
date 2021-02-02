@@ -19,6 +19,7 @@ mod richest_customer_wealth;
 mod running_sum_of_1d_array;
 mod shuffle_string;
 mod shuffle_the_array;
+mod split_a_string_in_balanced_strings;
 mod subrectangle_queries;
 mod subtract_the_product_and_sum_of_digits_of_an_integer;
 mod sum_of_nodes_with_even_valued_grandparent;
