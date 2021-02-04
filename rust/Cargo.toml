@@ -14,6 +14,7 @@ members = [
   "crate-futures",
   "crate-lazy_static",
   "crate-parking_lot",
+  "crate-rand",
   "crate-reqwest",
   "crate-uint",
   "crate-tokio",
