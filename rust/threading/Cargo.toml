@@ -8,3 +8,4 @@ edition = "2018"
 
 [dependencies]
 futures = { version = "0.3.1", features = ["executor", "thread-pool"] }
+rand = "0.8.3"
