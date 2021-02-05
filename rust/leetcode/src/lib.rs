@@ -1,3 +1,4 @@
+mod binary_search_tree_to_greater_sum_tree;
 mod count_odd_numbers_in_an_interval_range;
 mod count_the_number_of_consistent_strings;
 mod create_target_array_in_the_given_order;
