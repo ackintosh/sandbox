@@ -100,3 +100,55 @@ fn clear() {
     assert_eq!(vec.len(), 0);
     println!("{:?}", vec);
 }
+
+mod update {
+    // 参照渡しで各要素を更新する
+    #[test]
+    fn pass_by_reference() {
+        let mut vec = vec![1, 2, 3];
+        plus_10(&mut vec);
+
+        println!("{:?}", vec);
+        // [11, 12, 13]
+    }
+
+    #[test]
+    fn multi_dimension() {
+        let mut vec = vec![vec![1, 2, 3], vec![4, 5, 6], vec![7, 8, 9]];
+
+        vec.iter_mut().for_each(|row| {
+            plus_10(row);
+        });
+
+        println!("{:?}", vec);
+        // [[11, 12, 13], [14, 15, 16], [17, 18, 19]]
+    }
+
+    // 特定の要素のみを更新する
+    #[test]
+    fn particular_element() {
+        let mut vec = vec![vec![1, 2, 3], vec![4, 5, 6], vec![7, 8, 9]];
+
+        let target_row = 1;
+        let target_column = 2;
+
+        match vec.get_mut(target_row) {
+            Some(column) => match column.get_mut(target_column) {
+                Some(target) => {
+                    *target += 10;
+                }
+                None => unreachable!(),
+            },
+            None => unreachable!(),
+        }
+
+        println!("{:?}", vec);
+        // [[1, 2, 3], [4, 5, 16], [7, 8, 9]]
+    }
+
+    fn plus_10(vec: &mut Vec<i32>) {
+        vec.iter_mut().for_each(|v| {
+            *v += 10;
+        });
+    }
+}
