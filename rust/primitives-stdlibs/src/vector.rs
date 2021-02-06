@@ -101,6 +101,26 @@ fn clear() {
     println!("{:?}", vec);
 }
 
+mod index {
+    use std::ops::Index;
+
+    // 特定のindexの値を取る
+    #[test]
+    fn get_value_at_index() {
+        let vec = vec!["a", "b", "c"];
+        println!("{:?}", vec.index(2));
+        // "c"
+    }
+
+    // 特定の値を持つ(最初の)indexを取る
+    #[test]
+    fn position() {
+        let vec = vec!["a", "b", "c"];
+        let index = vec.iter().position(|&str| str == "b").unwrap();
+        assert_eq!(index, 1_usize);
+    }
+}
+
 mod update {
     // 参照渡しで各要素を更新する
     #[test]
