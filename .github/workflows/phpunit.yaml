@@ -40,6 +40,7 @@ jobs:
           POSTGRES_USER: sandbox_user
           POSTGRES_PASSWORD: sandbox_password
           POSTGRES_DB: sandbox_db
+        # postgresが起動するまで待つヘルスチェックの設定
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
