@@ -99,4 +99,5 @@ $ brew services stop grafana
 
 ## scrape-targets
 
-- そのままコピーしただけ。
+- そのままコピーしただけ
+- prometheus.yml から参照される
