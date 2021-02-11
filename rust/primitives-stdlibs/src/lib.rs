@@ -12,6 +12,7 @@ mod number;
 mod ownership;
 mod path;
 mod result_option;
+mod slice;
 mod stdlib_box;
 mod string_str;
 mod vector;

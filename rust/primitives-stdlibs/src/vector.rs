@@ -172,3 +172,22 @@ mod update {
         });
     }
 }
+
+mod find {
+    // ベクターの最大値とそのインデックスを取る
+    #[test]
+    fn position_max() {
+        let vec = vec![1, 2, 3];
+        let mut max_num = 0;
+        let mut max_index = 0;
+        vec.iter().enumerate().for_each(|(index, &n)| {
+            if max_num < n {
+                max_num = n;
+                max_index = index;
+            }
+        });
+
+        assert_eq!(max_num, 3);
+        assert_eq!(max_index, 2);
+    }
+}
