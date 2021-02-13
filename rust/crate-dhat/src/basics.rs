@@ -10,6 +10,9 @@ static ALLOCATOR: DhatAlloc = DhatAlloc;
 // - The t-gmax refers to the maximum amount of allocated memory at a single time.
 // - The t-end represents the amount of bytes left over after the dhat reference is dropped.
 
+// dhatをCIで利用する例
+// https://github.com/unicode-org/icu4x/pull/446/files
+
 #[test]
 fn test1() {
     let _dhat = Dhat::start_heap_profiling();

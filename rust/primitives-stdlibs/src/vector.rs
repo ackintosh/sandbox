@@ -108,8 +108,13 @@ mod index {
     #[test]
     fn get_value_at_index() {
         let vec = vec!["a", "b", "c"];
-        println!("{:?}", vec.index(2));
+        let str = vec.index(2);
+        println!("{:?}", str);
         // "c"
+
+        // 範囲外の要素にアクセスするとpanic
+        // index out of bounds: the len is 3 but the index is 999
+        // let _ = vec.index(999);
     }
 
     // 特定の値を持つ(最初の)indexを取る

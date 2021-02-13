@@ -100,6 +100,25 @@ mod str {
         // ccc
         // ddd
     }
+
+    #[test]
+    fn iter() {
+        let str = "abc";
+        for char in str.chars() {
+            println!("char: {}", char);
+        }
+    }
+
+    #[test]
+    fn index() {
+        let str = "abc";
+
+        // println!("{:?}", str[0]);
+        // string indices are ranges of `usize`
+
+        let i = 0;
+        assert_eq!(&str[i..=i], "a");
+    }
 }
 
 /////////////////////////////////////////////////////////
@@ -125,5 +144,43 @@ mod string {
         }
 
         assert_eq!(s, "aaa".to_owned());
+    }
+
+    #[test]
+    fn index() {
+        let string = "abc".to_owned();
+
+        // 新しくCharsが作られる
+        let mut chars = string.chars();
+        // nth() は要素を消費する
+        assert_eq!(chars.nth(0), Some('a'));
+        assert_eq!(chars.nth(0), Some('b'));
+        assert_eq!(chars.nth(0), Some('c'));
+        assert_eq!(chars.nth(0), None);
+
+        // stringは変化しない
+        assert_eq!(string, "abc".to_owned());
+
+        // &Stringにレンジでアクセスできる
+        assert_eq!(&string[0..=0], "a");
+        assert_eq!(&string[1..=1], "b");
+        assert_eq!(&string[2..=2], "c");
+        // 範囲外にアクセスするとpanic
+        // assert_eq!(&string[3..=3], "c");
+        // byte index 4 is out of bounds of `abc`
+    }
+
+    #[test]
+    fn iter() {
+        let string = "abc".to_owned();
+        for char in string.chars() {
+            println!("char: {}", char);
+        }
+
+        let mut chars = string.chars();
+        assert_eq!(chars.next(), Some('a'));
+        assert_eq!(chars.next(), Some('b'));
+        assert_eq!(chars.next(), Some('c'));
+        assert_eq!(chars.next(), None);
     }
 }
