@@ -10,3 +10,6 @@ build
 
 php/phpunit/vendor
 php/phpunit/composer.lock
+
+# dhatの計測結果
+dhat-heap.json
