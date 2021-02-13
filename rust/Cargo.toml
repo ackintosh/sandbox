@@ -10,6 +10,7 @@ members = [
   "dns",
   "crate-chrono",
   "crate-criterion",
+  "crate-dhat",
   "crate-env_logger",
   "crate-futures",
   "crate-lazy_static",
