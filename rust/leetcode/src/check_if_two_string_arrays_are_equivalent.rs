@@ -34,7 +34,7 @@ impl Solution {
                     ww2_index += 1;
                 }
             }
-        };
+        }
 
         if word2.len() >= (w2_index + 1) {
             let w2 = &word2[w2_index];

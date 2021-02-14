@@ -7,6 +7,7 @@ fn fold() {
 }
 
 #[test]
+#[allow(clippy::iter_nth_zero)]
 fn nth() {
     let vec = [1, 2, 3];
     let mut iter = vec.iter();

@@ -147,6 +147,7 @@ mod string {
     }
 
     #[test]
+    #[allow(clippy::iter_nth_zero)]
     fn index() {
         let string = "abc".to_owned();
 

@@ -10,6 +10,11 @@ static ALLOCATOR: DhatAlloc = DhatAlloc;
 // - The t-gmax refers to the maximum amount of allocated memory at a single time.
 // - The t-end represents the amount of bytes left over after the dhat reference is dropped.
 
+// https://www.valgrind.org/docs/manual/dh-manual.html
+// The first line shows how many heap blocks and bytes were allocated over the entire execution.
+// The second line shows how many heap blocks and bytes were alive at t-gmax, i.e. the time when the heap size reached its global maximum (as measured in bytes).
+// The third line shows how many heap blocks and bytes were alive at t-end, i.e. the end of execution. In other words, how many blocks and bytes were not explicitly freed.
+
 // dhatをCIで利用する例
 // https://github.com/unicode-org/icu4x/pull/446/files
 
