@@ -184,4 +184,11 @@ mod string {
         assert_eq!(chars.next(), Some('c'));
         assert_eq!(chars.next(), None);
     }
+
+    #[test]
+    fn replace() {
+        let string = "http://example.com/foo".to_owned();
+        let replaced = string.replace("http://example.com/", "");
+        assert_eq!(replaced, "foo".to_owned());
+    }
 }

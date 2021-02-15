@@ -8,6 +8,7 @@ mod decompress_run_length_encoded_list;
 mod deepest_leaves_sum;
 mod defanging_an_ip_address;
 mod design_parking_system;
+mod encode_and_decode_tinyurl;
 mod goal_parser_interpretation;
 mod group_the_people_given_the_group_size_they_belong_to;
 mod how_many_numbers_are_smaller_than_the_current_number;
