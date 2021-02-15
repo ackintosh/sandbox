@@ -1,9 +1,10 @@
 // https://leetcode.com/problems/encode-and-decode-tinyurl/
 
+use std::cell::RefCell;
 use std::ops::Index;
 
 struct Codec {
-    url: Vec<String>,
+    urls: RefCell<Vec<String>>,
 }
 
 /**
@@ -12,13 +13,16 @@ struct Codec {
  */
 impl Codec {
     fn new() -> Self {
-        Self { url: vec![] }
+        Self {
+            urls: RefCell::new(vec![]),
+        }
     }
 
     // Encodes a URL to a shortened URL.
-    fn encode(&mut self, longURL: String) -> String {
-        let index = self.url.len();
-        self.url.push(longURL);
+    fn encode(&self, longURL: String) -> String {
+        let mut urls = self.urls.borrow_mut();
+        let index = urls.len();
+        urls.push(longURL);
 
         format!("http://tinyurl.com/{}", index)
     }
@@ -27,7 +31,7 @@ impl Codec {
     fn decode(&self, shortURL: String) -> String {
         let index_string = shortURL.replace("http://tinyurl.com/", "");
         let index: usize = index_string.parse().unwrap();
-        self.url.index(index).clone()
+        self.urls.borrow().index(index).clone()
     }
 }
 
@@ -40,7 +44,7 @@ impl Codec {
 
 #[test]
 fn test() {
-    let mut codec = Codec::new();
+    let codec = Codec::new();
     let url = "https://leetcode.com/problems/design-tinyurl".to_owned();
     let s = codec.encode(url.clone());
 
