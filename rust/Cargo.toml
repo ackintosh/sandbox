@@ -32,3 +32,7 @@ members = [
   "tower-of-hanoi"
 ]
 
+# dhat利用時に入れた設定
+# https://docs.rs/dhat/0.2.2/dhat/#configuration
+[profile.release]
+ debug = 1
