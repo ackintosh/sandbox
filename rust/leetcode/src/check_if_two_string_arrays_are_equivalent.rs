@@ -1,10 +1,10 @@
 // https://leetcode.com/problems/check-if-two-string-arrays-are-equivalent/
 
-use dhat::{Dhat, DhatAlloc};
+// use dhat::{Dhat, DhatAlloc};
 use std::ops::Index;
 
-#[global_allocator]
-static ALLOCATOR: DhatAlloc = DhatAlloc;
+// #[global_allocator]
+// static ALLOCATOR: DhatAlloc = DhatAlloc;
 
 struct Solution;
 
@@ -53,7 +53,7 @@ impl Solution {
 
 #[test]
 fn example1() {
-    let _dhat = Dhat::start_heap_profiling();
+    // let _dhat = Dhat::start_heap_profiling();
 
     assert!(Solution::array_strings_are_equal(
         vec!["a".into(), "c".into()],
@@ -73,7 +73,7 @@ fn example1() {
 
 #[test]
 fn heap_test1() {
-    let _dhat = Dhat::start_heap_profiling();
+    // let _dhat = Dhat::start_heap_profiling();
 
     assert!(Solution::array_strings_are_equal(
         vec!["12".into(), "34567890".into(), "123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890".into()],
@@ -83,7 +83,7 @@ fn heap_test1() {
 
 #[test]
 fn heap_test2() {
-    let _dhat = Dhat::start_heap_profiling();
+    // let _dhat = Dhat::start_heap_profiling();
 
     assert!(Solution::array_strings_are_equal_easy(
         vec!["12".into(), "34567890".into(), "123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890".into()],
