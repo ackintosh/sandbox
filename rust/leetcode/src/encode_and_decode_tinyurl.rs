@@ -11,6 +11,7 @@ struct Codec {
  * `&self` means the method takes an immutable reference.
  * If you need a mutable reference, change it to `&mut self` instead.
  */
+#[allow(non_snake_case)]
 impl Codec {
     fn new() -> Self {
         Self {
