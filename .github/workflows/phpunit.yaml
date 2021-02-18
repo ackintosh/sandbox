@@ -118,10 +118,12 @@ jobs:
       - name: Create schema on PostgreSQL
         env:
           POSTGRES_USER: sandbox_user
-          POSTGRES_PASSWORD: sandbox_password
+          # このスクリプトでは使ってないのでコメントアウト
+          # POSTGRES_PASSWORD: sandbox_password
           PGHOST: localhost
           PGPASSWORD: sandbox_password
-          POSTGRES_DB: sandbox_db
+          # このスクリプトでは使ってないのでコメントアウト
+          # POSTGRES_DB: sandbox_db
           POSTGRES_MULTIPLE_DATABASES: sandbox_db
         working-directory: ./
         run: ./postgresql/initdb.sh
@@ -133,12 +135,13 @@ jobs:
         env:
           PGSSLMODE: disable
         with:
-          args: >-
-            sandbox_db
-            -U sandbox_user
-            -W sandbox_password
-            -h postgres
-            -f sqldef/sandbox_schema.sql
+          entrypoint: ./sqldef/entrypoint.sh
+          #args: >-
+          #  sandbox_db
+          #  -U sandbox_user
+          #  -W sandbox_password
+          #  -h postgres
+          #  -f sqldef/sandbox_schema.sql
 
       - name: Run tests with PHPUnit
         run: vendor/bin/phpunit
