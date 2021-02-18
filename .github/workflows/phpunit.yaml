@@ -115,6 +115,15 @@ jobs:
         run: |
           aws dynamodb create-table --endpoint-url http://localhost:8000 --cli-input-json file://$(pwd)/dynamodb-local/tables/movies.json
 
+      - name: Create schema on PostgreSQL
+        env:
+          POSTGRES_USER: sandbox_user
+          POSTGRES_PASSWORD: sandbox_password
+          POSTGRES_DB: sandbox_db
+          POSTGRES_MULTIPLE_DATABASES: sandbox_db
+        run: ./postgresql/initdb.sh
+
+
       - name: Create tables on PostgreSQL
         # https://github.com/users/ackintosh/packages/container/package/psqldef
         uses: docker://ghcr.io/ackintosh/psqldef:0.8.6-alpine
