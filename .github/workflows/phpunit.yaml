@@ -134,7 +134,7 @@ jobs:
         uses: docker://ghcr.io/ackintosh/psqldef:0.8.6-alpine
         env:
           PGSSLMODE: disable
-          PGHOST: postgres
+          POSTGRES_HOST: postgres
           POSTGRES_MULTIPLE_DATABASES: sandbox_db
         with:
           entrypoint: ./sqldef/entrypoint.sh

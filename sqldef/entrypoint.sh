@@ -13,7 +13,7 @@ if [ $# -eq 1 ] && [ $1 == '--no-dry-run' ]; then
   DRY_RUN=''
 fi
 
-HOST="${PGHOST:-postgres-local}"
+HOST="${POSTGRES_HOST:-postgres-local}"
 
 # NOTE: 現状ローカルでしか使っていないのでユーザ名などは直書きしています
 
