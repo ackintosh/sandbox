@@ -134,8 +134,10 @@ jobs:
         uses: docker://ghcr.io/ackintosh/psqldef:0.8.6-alpine
         env:
           PGSSLMODE: disable
+          POSTGRES_MULTIPLE_DATABASES: sandbox_db
         with:
           entrypoint: ./sqldef/entrypoint.sh
+          args: --no-dry-run
           #args: >-
           #  sandbox_db
           #  -U sandbox_user
