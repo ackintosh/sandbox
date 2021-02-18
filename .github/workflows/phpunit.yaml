@@ -121,6 +121,7 @@ jobs:
           POSTGRES_PASSWORD: sandbox_password
           POSTGRES_DB: sandbox_db
           POSTGRES_MULTIPLE_DATABASES: sandbox_db
+        working-directory: ./
         run: ./postgresql/initdb.sh
 
 
