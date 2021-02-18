@@ -25,7 +25,7 @@ for DB in $(echo $POSTGRES_MULTIPLE_DATABASES | tr ',' ' '); do
   cat sqldef/*.sql | psqldef \
     $DB \
     -U sandbox_user \
-    -W sandbox_passwrod \
+    -W sandbox_password \
     -h $HOST \
     --skip-drop \
     $DRY_RUN
