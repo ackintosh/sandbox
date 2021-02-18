@@ -119,6 +119,7 @@ jobs:
         env:
           POSTGRES_USER: sandbox_user
           POSTGRES_PASSWORD: sandbox_password
+          PGPASSWORD: sandbox_password
           POSTGRES_DB: sandbox_db
           POSTGRES_MULTIPLE_DATABASES: sandbox_db
         working-directory: ./
