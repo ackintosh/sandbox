@@ -2,6 +2,8 @@ name: Run PHPUnit
 
 on: [push, pull_request]
 
+postgres_user: &postgres_user sandbox_user
+
 # 指定したバージョンのPHPや拡張をセットアップするGitHub Action
 # https://github.com/shivammathur/setup-php
 
@@ -37,7 +39,7 @@ jobs:
         ports:
           - 5432:5432
         env:
-          POSTGRES_USER: sandbox_user
+          POSTGRES_USER: *postgres_user
           POSTGRES_PASSWORD: sandbox_password
           POSTGRES_DB: sandbox_db
         # postgresが起動するまで待つヘルスチェックの設定
@@ -117,7 +119,7 @@ jobs:
 
       - name: Create schema on PostgreSQL
         env:
-          POSTGRES_USER: sandbox_user
+          POSTGRES_USER: *postgres_user
           # このスクリプトでは使ってないのでコメントアウト
           # POSTGRES_PASSWORD: sandbox_password
           PGHOST: localhost
