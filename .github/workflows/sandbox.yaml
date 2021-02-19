@@ -253,3 +253,19 @@ jobs:
     steps:
       - name: print the combination
         run: echo os ${{ matrix.os }}  version ${{ matrix.version }}
+
+  #####################################################################
+  # リポジトリのenvファイルから環境変数を設定する
+  # https://docs.github.com/ja/actions/reference/workflow-commands-for-github-actions#setting-an-environment-variable
+  #####################################################################
+  setEnvironmentVariableFromFile:
+    name: set env var
+    runs-on: ubuntu-18.04
+    steps:
+      - name: print empty values
+        run: echo "before -> " && echo "$foo $bar $baz" && echo "."
+      - name: set env var
+        run: cat sandbox.env | grep -v '^#' >> $GITHUB_ENV
+      - name: print the env var
+        run: echo "after -> " && echo "$foo $bar $baz" && echo "."
+
