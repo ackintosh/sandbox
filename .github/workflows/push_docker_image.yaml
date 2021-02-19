@@ -1,6 +1,6 @@
 # https://docs.github.com/ja/actions/guides/publishing-docker-images#
 
-# v1$B$+$i(Bv2$B$X$N0\9T%,%$%I(B
+# v1からv2への移行ガイド
 # https://github.com/docker/build-push-action/blob/master/UPGRADE.md#simple-workflow
 # Tags with ref and Git labels
 # https://github.com/docker/build-push-action/blob/master/UPGRADE.md#tags-with-ref-and-git-labels
