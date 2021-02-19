@@ -1,4 +1,5 @@
 # https://docs.github.com/ja/actions/guides/publishing-docker-images#
+# *** 2021-02時点では、上記ページのサンプルは docker/build-push-action の v1 を使っているので古い ***
 
 # v1からv2への移行ガイド
 # https://github.com/docker/build-push-action/blob/master/UPGRADE.md#simple-workflow
@@ -28,6 +29,14 @@ jobs:
           fi
           TAGS="${DOCKER_IMAGE}:${VERSION}"
           echo ::set-output name=tags::${TAGS}
+
+      # https://github.com/marketplace/actions/docker-login#github-container-registry
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push
         uses: docker/build-push-action@v2
