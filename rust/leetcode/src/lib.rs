@@ -1,3 +1,4 @@
+mod all_paths_from_source_to_target;
 mod binary_search_tree_to_greater_sum_tree;
 mod check_if_two_string_arrays_are_equivalent;
 mod count_odd_numbers_in_an_interval_range;
