@@ -1,9 +1,20 @@
 [k0kubun/sqldef: Idempotent MySQL/PostgreSQL schema management by SQL](https://github.com/k0kubun/sqldef)
 
-#### docker build (alpine)
+#### docker build
 
 ```shell
+# alpine
 $ docker build -t psqldef:0.8.6-alpine -f Dockerfile.alpine . 
+
+# ubuntu
+$ docker build -t psqldef:0.8.6 . 
+```
+
+image size
+
+```shell
+psqldef         0.8.7          2fa00184f195   8 seconds ago   86.7MB
+psqldef         0.8.7-alpine   5ea0e7816067   5 minutes ago   22MB
 ```
 
 #### push the image to GitHub Container Registry

@@ -1,7 +1,7 @@
 # https://hub.docker.com/r/amothic/mysqldef/dockerfile
 FROM ubuntu:21.04 as builder
 
-ENV VERSION 0.8.6
+ENV VERSION 0.8.7
 
 RUN set -ex \
     && apt-get update \
