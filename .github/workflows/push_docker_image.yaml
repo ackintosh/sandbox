@@ -34,4 +34,4 @@ jobs:
         with:
           file: sqldef/Dockerfile.alpine
           push: true
-          tags: ${{ steps.prep.outputs.tags }}
+          tags: ${{ steps.prepare.outputs.tags }}
