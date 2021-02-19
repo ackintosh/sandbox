@@ -1,0 +1,25 @@
+FROM alpine:3.12
+
+# https://github.com/k0kubun/sqldef/releases
+ENV SQLDEF_VERSION 0.8.7
+
+# https://hub.docker.com/r/amothic/mysqldef/dockerfile
+RUN set -ex \
+    && apk add --no-cache curl tar \
+    && curl -fSL https://github.com/k0kubun/sqldef/releases/download/v$SQLDEF_VERSION/psqldef_linux_amd64.tar.gz -o psqldef.tar.gz \
+    && tar -zxf psqldef.tar.gz \
+    && rm -f psqldef.tar.gz \
+    && mv psqldef /usr/local/bin/psqldef
+
+# https://github.com/sgerrand/alpine-pkg-glibc/releases
+ENV GLIBC_VERSION 2.32-r0
+
+# PostgreSQLクライアントがglibcに依存しているが
+# Alpine Linuxにはglibcが入っていないのでインストールする
+# 参考: https://gitlab.com/dar/hugo/blob/feat-postCSS/Dockerfile#L21
+RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
+  &&  wget "https://github.com/sgerrand/alpine-pkg-glibc/releases/download/$GLIBC_VERSION/glibc-$GLIBC_VERSION.apk" \
+  &&  apk --no-cache add "glibc-$GLIBC_VERSION.apk" \
+  &&  rm "glibc-$GLIBC_VERSION.apk"
+
+ENTRYPOINT ["psqldef"]
