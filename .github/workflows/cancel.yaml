@@ -12,7 +12,7 @@ jobs:
     timeout-minutes: 3
     steps:
       # https://github.com/styfle/cancel-workflow-action/releases
-      - uses: styfle/cancel-workflow-action@514c783 # 0.7.0
+      - uses: styfle/cancel-workflow-action@514c783324374c6940d1b92bfb962d0763d22de3 # 0.7.0
         with:
           workflow_id: 2791194,4114599,4991388,1168326
           access_token: ${{ github.token }}
