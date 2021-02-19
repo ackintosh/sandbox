@@ -262,6 +262,8 @@ jobs:
     name: set env var
     runs-on: ubuntu-18.04
     steps:
+      - uses: actions/checkout@v2
+
       - name: print empty values
         run: echo "before -> " && echo "$foo $bar $baz" && echo "."
       - name: set env var
