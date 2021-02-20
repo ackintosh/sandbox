@@ -102,14 +102,27 @@ jobs:
       #   * その場合はAction名が名前として指定されたことになる
       - uses: actions/checkout@v2
 
+      # #############################################
       # 別のリポジトリ(private)をチェックアウトする
       # https://github.com/actions/checkout#checkout-multiple-repos-private
-      - name: Checkout an another repository
-        uses: actions/checkout@v2
-        with:
-          repository: ackintosh/test
-          token: ${{ secrets.PAT }}
-          path: private_test
+      # * PATに repo フル権限を付ける必要がある(*)ので一旦コメントアウト
+      #   * (*) おそらくprivateリポジトリをチェックアウトしようとしているのが理由
+      #   * セキュリティの観点で良くない
+      #     公開リポジトリのワークフローで、repoのフル権限を付けたトークンを扱うことは、
+      #     全コラボレータに、その権限を解放してしまっているのと同様の状態
+      # * deploy keysを使うのが良いかもしれない
+      #   * https://docs.github.com/en/actions/learn-github-actions/security-hardening-for-github-actions#considering-cross-repository-access
+      #     > If a personal access token is used, it should be one that was generated for a new account that is only granted access to the specific repositories that are needed for the workflow. Note that this approach is not scalable and should be avoided in favor of alternatives, such as deploy keys.
+      #   * deploy keysなら、特定のリポジトリ(private含む)の権限だけを持たせたアクセスコントロールが可能と思われる
+      #     https://docs.github.com/ja/developers/overview/managing-deploy-keys#deploy-keys
+      #     https://github.community/t/github-actions-ci-how-to-use-store-deploy-key-to-download-from-another-private-repo/16113/7
+      # #############################################
+      # - name: Checkout an another repository
+      #   uses: actions/checkout@v2
+      #   with:
+      #     repository: ackintosh/test
+      #     token: ${{ secrets.PAT }}
+      #     path: private_test
 
         # `with` でActionsに渡すパラメータを指定する
         # リポジトリ内のfooブランチをチェックアウトする場合
