@@ -1,16 +1,15 @@
-FROM alpine:3.12 as builder
+FROM alpine:3.12
 
 # https://github.com/k0kubun/sqldef/releases
 ENV SQLDEF_VERSION 0.8.7
 
+# 参考(mysqldef)
 # https://hub.docker.com/r/amothic/mysqldef/dockerfile
 RUN set -ex \
-    && apk add --no-cache curl tar \
-    && curl -fSL https://github.com/k0kubun/sqldef/releases/download/v$SQLDEF_VERSION/psqldef_linux_amd64.tar.gz -o psqldef.tar.gz \
-    && tar -zxf psqldef.tar.gz
-
-FROM alpine:3.12
-COPY --from=builder /psqldef /usr/local/bin/psqldef
+    && wget https://github.com/k0kubun/sqldef/releases/download/v$SQLDEF_VERSION/psqldef_linux_amd64.tar.gz \
+    && tar -zxf psqldef_linux_amd64.tar.gz \
+    && rm psqldef_linux_amd64.tar.gz \
+    && mv psqldef /usr/local/bin/psqldef
 
 # https://github.com/sgerrand/alpine-pkg-glibc/releases
 ENV GLIBC_VERSION 2.32-r0
