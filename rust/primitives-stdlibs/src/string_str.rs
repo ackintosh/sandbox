@@ -58,11 +58,34 @@ mod str {
         }
     }
 
+    // unstable
+    // #[test]
+    // fn rsplit_once() {
+    //     let str = "abc";
+    //     let s = str.rsplit_once("c").unwrap();
+    // }
+
+    #[test]
+    fn rsplitn() {
+        let str = "abc";
+
+        // 通常の分割
+        assert_eq!(str.rsplitn(2, 'b').collect::<Vec<&str>>(), vec!["c", "a"]);
+        assert_eq!(str.rsplitn(2, 'a').collect::<Vec<&str>>(), vec!["bc", ""]);
+
+        // 該当する文字列が無い場合
+        assert_eq!(str.rsplitn(2, 'x').collect::<Vec<&str>>(), vec!["abc"]);
+
+        // 完全一致している場合
+        assert_eq!(str.rsplitn(2, "abc").collect::<Vec<&str>>(), vec!["", ""]);
+        assert_eq!(str.rsplitn(4, "abc").collect::<Vec<&str>>(), vec!["", ""]);
+    }
+
     // How can I split a string (String or &str) on more than one delimiter? - Stack Overflow
     // https://stackoverflow.com/questions/29240157/how-can-i-split-a-string-string-or-str-on-more-than-one-delimiter
     #[test]
     fn split_with_regex() {
-        // r"" はraw string literal
+        // r";" はraw string literal
         // Rust: Raw string literals - rahul thakoor
         // https://rahul-thakoor.github.io/rust-raw-string-literals/
         let regex = Regex::new(r",|\.").unwrap();
@@ -109,6 +132,7 @@ mod str {
         }
     }
 
+    // 文字列から、インデックスを指定して文字を取る
     #[test]
     fn index() {
         let str = "abc";
@@ -118,6 +142,43 @@ mod str {
 
         let i = 0;
         assert_eq!(&str[i..=i], "a");
+    }
+
+    // 文字列から、ユニークな文字のvectorを作る
+    // 参考
+    // https://qiita.com/yagince/items/73184237964e9dbb8b3d#comment-24b9ff48e7aba10e736b
+    #[test]
+    fn uniq() {
+        let str = "abcdabcdefg";
+
+        // 1文字ごとのvectorを作る
+        let mut strs: Vec<&str> = str.split("").filter(|&s| !s.is_empty()).collect();
+        assert_eq!(
+            strs,
+            ["a", "b", "c", "d", "a", "b", "c", "d", "e", "f", "g"]
+        );
+
+        // 重複を取り除く(dedupを実行する)前にソートしておく
+        //   -> 最悪ケースで O(n log n)を保証
+        strs.sort_unstable();
+        assert_eq!(
+            strs,
+            ["a", "a", "b", "b", "c", "c", "d", "d", "e", "f", "g"]
+        );
+
+        // vectorから重複を取り除く
+        strs.dedup();
+        assert_eq!(strs, ["a", "b", "c", "d", "e", "f", "g"]);
+    }
+
+    // 文字列から、特定の文字が存在する "最後のインデックス" を返す
+    #[test]
+    fn last_index_using_rfind() {
+        let str = "abcabc";
+
+        // strの最初の文字 "a" の "最後のインデックス" を返す
+        let target = str.chars().next().unwrap();
+        assert_eq!(str.rfind(target), Some(3));
     }
 }
 
