@@ -19,6 +19,7 @@ members = [
   "crate-reqwest",
   "crate-uint",
   "crate-tokio",
+  "crate-tracing",
   "iterator",
   "leetcode",
   "level-db",
