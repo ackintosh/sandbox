@@ -32,7 +32,9 @@ SendRec(n,m,i,K) =    (i<K & disp!send.n -> SendRec((n+1)%N,m,i+1,K))
 -- verification
 ---------------------------------------------------------
 
+-- SRseq(1)と等しくなることを検証する
 assert SRseq(1) [FD= AltSRconc
--- assert AltSRconc [FD= SRseq(1)
--- assert SRseq(2) [FD= AltSRconc
--- assert AltSRconc [FD= SRseq(2)
+assert AltSRconc [FD= SRseq(1)
+-- SRseq(2)とは等しくないので下記はFailedになる
+assert SRseq(2) [FD= AltSRconc
+assert AltSRconc [FD= SRseq(2)
