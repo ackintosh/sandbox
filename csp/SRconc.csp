@@ -1,31 +1,54 @@
+---------------------------------------------------------
 -- parameter & type
+---------------------------------------------------------
 
 N = 10
+-- 0から9までの整数の集合
 nametype Nat = {0..(N-1)}
-datatype STtype = send | receive
+-- 表示するメッセージの型。sendまたはreceive
+datatype SRtype = send | receive
 
+---------------------------------------------------------
 -- channel declaration
+-- * `channel (チャネルの名前) : (渡されるデータの型)`
+---------------------------------------------------------
 
-channel disp : STtype.Nat
+channel disp : SRtype.Nat
 channel chan : Nat
 
+---------------------------------------------------------
 -- concurrent system SRconc
+-- * 各行は、 A = P のｎ形をしている
+-- * これは右辺のプロセス P にプロセス名と呼ばれる名前 A を付けることを表している
+--   * (プロセス名 A が、プロセス P のように動作することを定義している)
+--   * プロセス名の目的は単に記述を簡単にすることだけでなく、繰り返し動作を記述することにある
+--     * 例えば、下記のSender(n) と Sender'(n) の記述で、「Sender(n)は、n を1ずつ増やしながら(10で0に戻る)、イベント disp!send.n と chan!n を繰り返し実行するプロセス」であることを表している
+---------------------------------------------------------
 
+-- 並行合成演算子 `[| {| chan |} |]` によって2つのプロセス Sender(n) と Receiver(m) をチャネル chan を通して並行動作するように合成している
+-- 初期値は n=0, m=0
+-- 隠蔽演算子 `\ [| chan |]` によってチャネル chan を外部から隠してできるプロセスを表している
 SRconc = (Sender(0) [| {| chan |} |] Receiver(0)) \ {| chan |}
 
+-- Sender(n)は「イベント disp!send.n を実行でき、その実行後にプロセス Sender'(n) のように動作するプロセス」
 Sender(n) = disp!send.n -> Sender'(n)
+-- Sender'(n)は「イベント chan!n を実行でき、その実行後に Sender((n+1)%10)のように動作するプロセス」
 Sender'(n) = chan!n -> Sender((n+1)%N)
 
 Receiver(m) = chan?m -> Receiver'(m)
 Receiver'(m) = disp!receive.m -> Receiver(m)
 
+---------------------------------------------------------
 -- sequential system SRseq(K)
+---------------------------------------------------------
 
 SRseq(K) = SendRec(0,0,0,K)
 SendRec(n,m,i,K) =    (i<K & disp!send.n -> SendRec((n+1)%N,m,i+1,K))
                    [] (i>0 & disp!receive.m -> SendRec(n,(m+1)%N, i-1, K))
 
+---------------------------------------------------------
 -- verification
+---------------------------------------------------------
 
 assert SRseq(1) [FD= SRconc
 assert SRconc [FD= SRseq(1)

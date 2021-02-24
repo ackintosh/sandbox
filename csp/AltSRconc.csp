@@ -1,0 +1,38 @@
+-- parameter & type
+
+N = 10
+nametype Nat = {0..(N-1)}
+datatype SRtype = send | receive
+
+-- channel declaration
+
+channel disp : SRtype.Nat
+channel chan : Nat
+channel ack : {0} -- 固定値 0 を送受信する
+
+-- concurrent system AltSRconc
+
+AltSRconc = (AltSender(0) [| {| chan,ack |} |] AltReceiver(0)) \ {| chan,ack |}
+
+AltSender(n) = disp!send.n -> AltSender1(n)
+AltSender1(n) = chan!n -> AltSender2(n)
+AltSender2(n) = ack?x -> AltSender((n+1)%N)
+
+AltReceiver(m) = chan?m -> AltReceiver1(m)
+AltReceiver1(m) = disp!receive.m -> AltReceiver2(m)
+AltReceiver2(m) = ack!0 -> AltReceiver(m)
+
+-- sequential system SRseq(K)
+
+SRseq(K) = SendRec(0,0,0,K)
+SendRec(n,m,i,K) =    (i<K & disp!send.n -> SendRec((n+1)%N,m,i+1,K))
+                   [] (i>0 & disp!receive.m -> SendRec(n,(m+1)%N, i-1, K))
+
+---------------------------------------------------------
+-- verification
+---------------------------------------------------------
+
+assert SRseq(1) [FD= AltSRconc
+-- assert AltSRconc [FD= SRseq(1)
+-- assert SRseq(2) [FD= AltSRconc
+-- assert AltSRconc [FD= SRseq(2)
