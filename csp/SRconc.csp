@@ -1,0 +1,34 @@
+-- parameter & type
+
+N = 10
+nametype Nat = {0..(N-1)}
+datatype STtype = send | receive
+
+-- channel declaration
+
+channel disp : STtype.Nat
+channel chan : Nat
+
+-- concurrent system SRconc
+
+SRconc = (Sender(0) [| {| chan |} |] Receiver(0)) \ {| chan |}
+
+Sender(n) = disp!send.n -> Sender'(n)
+Sender'(n) = chan!n -> Sender((n+1)%N)
+
+Receiver(m) = chan?m -> Receiver'(m)
+Receiver'(m) = disp!receive.m -> Receiver(m)
+
+-- sequential system SRseq(K)
+
+SRseq(K) = SendRec(0,0,0,K)
+SendRec(n,m,i,K) =    (i<K & disp!send.n -> SendRec((n+1)%N,m,i+1,K))
+                   [] (i>0 & disp!receive.m -> SendRec(n,(m+1)%N, i-1, K))
+
+-- verification
+
+assert SRseq(1) [FD= SRconc
+assert SRconc [FD= SRseq(1)
+assert SRseq(2) [FD= SRconc
+assert SRconc [FD= SRseq(2)
+
