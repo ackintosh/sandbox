@@ -40,3 +40,12 @@ fn xor() {
     println!("{}", a ^ b); // XOR
                            // 15(1111)
 }
+
+
+#[test]
+fn leading_zeros() {
+    let a = U256::from(4u64); // 100
+
+    // 256bitのバイナリ表現のときに、0 が頭に253個
+    assert_eq!(a.leading_zeros(), 253);
+}
