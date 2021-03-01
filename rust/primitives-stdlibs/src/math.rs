@@ -1,3 +1,48 @@
+mod div {
+    #[test]
+    #[allow(clippy::float_cmp)]
+    fn basics() {
+        // 1 / 2
+        {
+            let a1 = 1_i32 / 2_i32;
+            assert_eq!(a1, 0);
+        }
+
+        // 4 / 2
+        {
+            let a1 = 4_i32 / 2_i32;
+            assert_eq!(a1, 2);
+        }
+
+        // 4 / 3
+        {
+            let a1 = 4_i32 / 3_i32;
+            assert_eq!(a1, 1);
+
+            let a2: f32 = 4_f32 / 3_f32;
+            assert_eq!(a2, 1.3333334);
+        }
+
+        // 5 / 2
+        {
+            let a1 = 5_i32 / 2_i32;
+            assert_eq!(a1, 2);
+
+            let a2 = 5_f32 / 2_f32;
+            assert_eq!(a2, 2.5);
+        }
+
+        // 5 / 3
+        {
+            let a1 = 5_i32 / 3_i32;
+            assert_eq!(a1, 1);
+
+            let a2 = 5_f32 / 3_f32;
+            assert_eq!(a2, 1.6666666);
+        }
+    }
+}
+
 mod floating_point_number {
     #[test]
     #[allow(clippy::float_cmp)]

@@ -19,6 +19,7 @@ mod max_increase_to_keep_city_skyline;
 mod maximum_69_number;
 mod maximum_binary_tree;
 mod minimum_number_of_operations_to_move_all_balls_to_each_box;
+mod minimum_operations_to_make_array_equal;
 mod number_of_good_pairs;
 mod number_of_steps_to_reduce_a_number_to_zero;
 mod partition_labels;

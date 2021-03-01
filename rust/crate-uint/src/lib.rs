@@ -41,7 +41,6 @@ fn xor() {
                            // 15(1111)
 }
 
-
 #[test]
 fn leading_zeros() {
     let a = U256::from(4u64); // 100
