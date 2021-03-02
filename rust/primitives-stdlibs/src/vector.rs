@@ -8,6 +8,28 @@ fn vector() {
 }
 
 #[test]
+fn append() {
+    {
+        let mut vec = vec![1, 2, 3];
+        let mut other = vec![4, 5, 6];
+        vec.append(&mut other);
+
+        assert_eq!(vec, vec![1, 2, 3, 4, 5, 6]);
+        assert_eq!(other, vec![]);
+    }
+
+    // otherが空の場合
+    {
+        let mut vec = vec![1, 2, 3];
+        let mut other = vec![];
+        vec.append(&mut other);
+
+        assert_eq!(vec, vec![1, 2, 3]);
+        assert_eq!(other, vec![]);
+    }
+}
+
+#[test]
 fn multidimensional_vector() {
     let vec = vec![vec![1, 2, 3], vec![4, 5, 6], vec![7, 8, 9]];
 
