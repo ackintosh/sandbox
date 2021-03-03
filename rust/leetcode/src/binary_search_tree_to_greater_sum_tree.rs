@@ -98,6 +98,7 @@ mod test {
         println!("root: {:?}", gst);
     }
 
+    #[allow(clippy::unnecessary_wraps)]
     fn new_tree_node(
         val: i32,
         left: Option<Rc<RefCell<TreeNode>>>,

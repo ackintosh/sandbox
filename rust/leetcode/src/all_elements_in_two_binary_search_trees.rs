@@ -79,6 +79,7 @@ mod test {
         assert_eq!(elements, vec![0, 1, 1, 2, 3, 4]);
     }
 
+    #[allow(clippy::unnecessary_wraps)]
     fn new_tree_node(
         val: i32,
         left: Option<Rc<RefCell<TreeNode>>>,
