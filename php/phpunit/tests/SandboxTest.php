@@ -55,10 +55,10 @@ class SandboxTest extends TestCase
             self::markTestSkipped('No ext-pgsql present');
         }
 
-        $conn = pg_connect("host=localhost port=5432 user=sandbox_user password=sandbox_password dbname=sandbox_db");
-        var_dump(pg_dbname($conn), pg_connection_status($conn));
-        self::assertSame("sandbox_db", pg_dbname($conn));
-        self::assertSame(PGSQL_CONNECTION_OK, pg_connection_status($conn));
+        $conn = \pg_connect("host=localhost port=5432 user=sandbox_user password=sandbox_password dbname=sandbox_db");
+        var_dump(\pg_dbname($conn), \pg_connection_status($conn));
+        self::assertSame("sandbox_db", \pg_dbname($conn));
+        self::assertSame(PGSQL_CONNECTION_OK, \pg_connection_status($conn));
     }
 
     /**
@@ -76,12 +76,12 @@ class SandboxTest extends TestCase
         // GitHub Actionsでpsqldefを使って作っているテーブル
         $table_name = 'sample';
 
-        $conn = pg_connect("host=localhost port=5432 user=sandbox_user password=sandbox_password dbname=sandbox_db");
+        $conn = \pg_connect("host=localhost port=5432 user=sandbox_user password=sandbox_password dbname=sandbox_db");
 
-        $res = pg_insert($conn, $table_name, ['id' => 'aaaa', 'label' => 'test_label']);
+        $res = \pg_insert($conn, $table_name, ['id' => 'aaaa', 'label' => 'test_label']);
         self::assertNotFalse($res);
 
-        $res = pg_select($conn, $table_name, ['id' => 'aaaa']);
+        $res = \pg_select($conn, $table_name, ['id' => 'aaaa']);
         var_dump($res);
         self::assertCount(1, $res);
         self::assertSame(['id' => 'aaaa', 'label' => 'test_label'], $res[0]);
