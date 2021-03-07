@@ -6,6 +6,67 @@ const font = new THREE.Font(fontJson);
 const _scale = 1;
 const _speed = 1; // 1/x time multiplier
 
+class Node {
+  constructor(name, pos) {
+    this.name = name;
+    this.pos = pos;
+    this.line = this.createLine();
+  }
+
+  // create new line
+  // https://threejs.org/docs/index.html#manual/en/introduction/Drawing-lines
+  createLine() {
+    const MAX_POINTS = 500;
+
+    // geometry
+    const geometry = new THREE.BufferGeometry();
+
+    // attributes
+    const positions = new Float32Array( MAX_POINTS * 3 ); // 3 vertices per point
+
+    let y, yIndex;
+    y = yIndex = 0;
+    for (var i = 0; i < MAX_POINTS; i ++) {
+      yIndex = (i * 3) + 1;
+      positions[yIndex] = y;
+      y += -1 * i;
+    }
+
+    geometry.setAttribute( 'position', new THREE.BufferAttribute( positions, 3 ) );
+
+    // draw range
+    const drawCount = 2; // draw the first 2 points, only
+    geometry.setDrawRange( 0, drawCount );
+
+    //create a blue LineBasicMaterial
+    const material = new THREE.LineBasicMaterial( { color: 0xff0000 } );
+
+    return new THREE.Line( geometry, material );
+  }
+
+  // create cap text
+  // https://threejs.org/docs/index.html#manual/en/introduction/Creating-text
+  createNameGeometry() {
+	  const textGeometry = new THREE.TextGeometry( this.name, {
+      font: font,
+      size: 20,
+      height: 2,
+      curveSegments: 12,
+      bevelEnabled: false,
+      bevelThickness: 10,
+      bevelSize: 8,
+      bevelOffset: 0,
+      bevelSegments: 5
+    });
+    const textMaterial = new THREE.MeshBasicMaterial({color: 0xffffff})
+	  const text = new THREE.Mesh( textGeometry, textMaterial );
+	  text.position.x = this.pos.x;
+	  text.position.y = this.pos.y;
+	  text.position.z = this.pos.z;
+
+	  return text;
+  }
+}
 
 window.addEventListener('DOMContentLoaded', init);
 
@@ -89,32 +150,6 @@ function init() {
 
 
   // ///////////////////////////////////////
-  // 4. 立方体を作る
-  //
-  // 立方体はメッシュという表示オブジェクトを使用して作成する
-  // メッシュを作るには、ジオメトリ（形状）とマテリアル（素材）を用意する必要がある
-  // ///////////////////////////////////////
-
-  // *ジオメトリ（形状）を作る*
-  // ジオメトリは頂点情報や面情報を持っている
-  // 立方体や直方体のような箱状の形状を生成するための `BoxGeometry` を使用する
-  // new THREE.BoxGeometry(幅, 高さ, 奥行き)
-//  const geometry = new THREE.BoxGeometry(500, 500, 500);
-
-  // *マテリアル（素材）を作る*
-  // マテリアルは色や質感の情報を持っている
-//  const material = new THREE.MeshStandardMaterial({
-//      color: 0x0000ff
-//  });
-
-  // ジオメトリとマテリアルを使って、メッシュを作り、シーンに追加する
-  // new THREE.Mesh(ジオメトリ,マテリアル)
-//  const box = new THREE.Mesh(geometry, material);
-  // シーンに追加
-//  scene.add(box);
-
-
-  // ///////////////////////////////////////
   // 5. ライトを作る
   // ///////////////////////////////////////
   // このままでは真っ暗なのでライトを作成する
@@ -126,14 +161,6 @@ function init() {
   light.position.set(1, 1, 1);
   // ライトもシーンに追加することで反映される
   scene.add(light);
-
-
-  // ///////////////////////////////////////
-  // 6. 描画する
-  // ///////////////////////////////////////
-  // 下記だと、一度描画するだけなのでアニメーションできない
-  // アニメーションさせるには、7. を行う
-  // renderer.render(scene, camera);
 
 
   // ///////////////////////////////////////
@@ -153,41 +180,10 @@ function init() {
 
   function advanceTrace() {
     if (step == 0) {
-      // create new node
-      const depth = 0;
-      const pos = {x: 0, y: 0, z: 0};
-      const node = {name: 'new node'};
-
-      const x = pos.x;
-      const y = pos.y;
-      const z = pos.z;
-
-      // create new line
-      // https://threejs.org/docs/index.html#manual/en/introduction/Drawing-lines
-		  node.line = newLine();
-
-		  // create cap text
-		  // https://threejs.org/docs/index.html#manual/en/introduction/Creating-text
-		  const textGeometry = new THREE.TextGeometry( node.name, {
-      		font: font,
-      		size: 20,
-      		height: 2,
-      		curveSegments: 12,
-      		bevelEnabled: false,
-      		bevelThickness: 10,
-      		bevelSize: 8,
-      		bevelOffset: 0,
-      		bevelSegments: 5
-      	} );
-      const textMaterial = new THREE.MeshBasicMaterial({color: 0xffffff})
-		  const text = new THREE.Mesh( textGeometry, textMaterial );
-		  text.position.x = x;
-		  text.position.y = y;
-		  text.position.z = z;
-//		  text.lookAt( _cam_position );
+      const node = newNode('new node');
 
       // add to scene
-		  scene.add(text);
+		  scene.add(node.createNameGeometry());
 		  scene.add(node.line);
 
 		  nodes.push(node);
@@ -197,10 +193,6 @@ function init() {
     growExistingNodes(step);
 
     step += 1;
-
-    // 箱を回転させる
-//    box.rotation.x += 0.01;
-//    box.rotation.y += 0.01;
   }
 
   // grow existing nodes along the time axis
@@ -214,33 +206,6 @@ function init() {
   }
 }
 
-// create new line
-// https://threejs.org/docs/index.html#manual/en/introduction/Drawing-lines
-function newLine() {
-  const MAX_POINTS = 500;
-
-  // geometry
-  const geometry = new THREE.BufferGeometry();
-
-  // attributes
-  const positions = new Float32Array( MAX_POINTS * 3 ); // 3 vertices per point
-
-  let y, yIndex;
-  y = yIndex = 0;
-  for (var i = 0; i < MAX_POINTS; i ++) {
-    yIndex = (i * 3) + 1;
-    positions[yIndex] = y;
-    y += -1 * i;
-  }
-
-  geometry.setAttribute( 'position', new THREE.BufferAttribute( positions, 3 ) );
-
-  // draw range
-  const drawCount = 2; // draw the first 2 points, only
-  geometry.setDrawRange( 0, drawCount );
-
-  //create a blue LineBasicMaterial
-  const material = new THREE.LineBasicMaterial( { color: 0xff0000 } );
-
-  return new THREE.Line( geometry, material );
+function newNode(name) {
+  return new Node(name, {x: 0, y: 0, z: 0});
 }
