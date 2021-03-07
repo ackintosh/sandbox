@@ -5,11 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "build-bk": "webpack --mode=production",
     "dev": "webpack --mode development --watch",
-    "dev-server": "webpack-cli serve --mode development",
-    "dev-bk": "webpack-cli serve --mode development",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "run": "webpack-cli serve --mode development"
   },
   "author": "",
   "license": "ISC",

@@ -1,16 +1,6 @@
-//const THREE = require('three');
-
-//const OrbitControls = require('@three/OrbitControls');
-//import OrbitControls from 'three/examples/js/controls/OrbitControls.js';
-//const f = require('three/examples/js/controls/OrbitControls.js');
-
-//import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-
-
-//import 'OrbitControls';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 const Stats = require('stats-js');
-
 const _font = new THREE.Font(require('three/examples/fonts/helvetiker_regular.typeface.json'));
 const _scale = 1;
 const _speed = 1; // 1/x time multiplier
@@ -157,6 +147,9 @@ function init() {
   );
   camera.position.set(0, 0, +1000);
 
+  // OrbitControls
+  // https://threejs.org/docs/index.html#examples/en/controls/OrbitControls
+  const controls = new OrbitControls(camera, renderer.domElement);
 
   // ///////////////////////////////////////
   // 5. ライトを作る
@@ -182,6 +175,7 @@ function init() {
     requestAnimationFrame(tick);
     advanceTrace();
 
+    controls.update();
     stats.begin();
     renderer.render(scene, camera);
     stats.end();
@@ -207,8 +201,8 @@ function init() {
   // grow existing nodes along the time axis
   // https://threejs.org/docs/#manual/en/introduction/How-to-update-things
   function growExistingNodes(step) {
-    for (node of nodes) {
-			const line = node.line;
+    for (let i = 0; i < nodes.length; i++) {
+			const line = nodes[i].line;
       line.geometry.setDrawRange(0, step);
       line.geometry.attributes.position.needsUpdate = true; // required after the first render
     }
