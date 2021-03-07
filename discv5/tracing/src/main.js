@@ -3,6 +3,8 @@ const Stats = require('stats-js');
 
 const fontJson = require('./fonts/helvetiker_regular.typeface.json');
 const font = new THREE.Font(fontJson);
+const _scale = 1;
+const _speed = 1; // 1/x time multiplier
 
 
 window.addEventListener('DOMContentLoaded', init);
@@ -31,6 +33,7 @@ window.addEventListener('DOMContentLoaded', init);
 //};
 
 function init() {
+  const nodes = [];
   const width = window.innerWidth;
   const height = window.innerHeight;
 
@@ -76,12 +79,11 @@ function init() {
   // https://ics.media/entry/14771/images/concept.png
   // ///////////////////////////////////////
   // new THREE.PerspectiveCamera(画角, アスペクト比, 描画開始距離, 描画終了距離)
-  const scale = 1;
   const camera = new THREE.PerspectiveCamera(
     45,
     width / height,
     1,
-    1000 * scale
+    1000 * _scale
   );
   camera.position.set(0, 0, +1000);
 
@@ -154,7 +156,7 @@ function init() {
       // create new node
       const depth = 0;
       const pos = {x: 0, y: 0, z: 0};
-      const goroutine = {name: 'new node'};
+      const node = {name: 'new node'};
 
       const x = pos.x;
       const y = pos.y;
@@ -162,16 +164,11 @@ function init() {
 
       // create new line
       // https://threejs.org/docs/index.html#manual/en/introduction/Drawing-lines
-      const points = [];
-      points.push( new THREE.Vector3( x, y, z ) );
-      points.push( new THREE.Vector3( x, y + 100, z ) );
-      const geometry = new THREE.BufferGeometry().setFromPoints( points );
-      const material = new THREE.LineBasicMaterial( { color: 0xffffff } );
-		  goroutine.line = new THREE.Line(geometry, material);
+		  node.line = newLine();
 
 		  // create cap text
 		  // https://threejs.org/docs/index.html#manual/en/introduction/Creating-text
-		  const textGeometry = new THREE.TextGeometry( goroutine.name, {
+		  const textGeometry = new THREE.TextGeometry( node.name, {
       		font: font,
       		size: 20,
       		height: 2,
@@ -191,8 +188,13 @@ function init() {
 
       // add to scene
 		  scene.add(text);
-		  scene.add(goroutine.line);
+		  scene.add(node.line);
+
+		  nodes.push(node);
+		  console.info("Added a node: " + node.name);
     }
+
+    growExistingNodes(step);
 
     step += 1;
 
@@ -200,5 +202,45 @@ function init() {
 //    box.rotation.x += 0.01;
 //    box.rotation.y += 0.01;
   }
+
+  // grow existing nodes along the time axis
+  // https://threejs.org/docs/#manual/en/introduction/How-to-update-things
+  function growExistingNodes(step) {
+    for (node of nodes) {
+			const line = node.line;
+      line.geometry.setDrawRange(0, step);
+      line.geometry.attributes.position.needsUpdate = true; // required after the first render
+    }
+  }
 }
 
+// create new line
+// https://threejs.org/docs/index.html#manual/en/introduction/Drawing-lines
+function newLine() {
+  const MAX_POINTS = 500;
+
+  // geometry
+  const geometry = new THREE.BufferGeometry();
+
+  // attributes
+  const positions = new Float32Array( MAX_POINTS * 3 ); // 3 vertices per point
+
+  let y, yIndex;
+  y = yIndex = 0;
+  for (var i = 0; i < MAX_POINTS; i ++) {
+    yIndex = (i * 3) + 1;
+    positions[yIndex] = y;
+    y += -1 * i;
+  }
+
+  geometry.setAttribute( 'position', new THREE.BufferAttribute( positions, 3 ) );
+
+  // draw range
+  const drawCount = 2; // draw the first 2 points, only
+  geometry.setDrawRange( 0, drawCount );
+
+  //create a blue LineBasicMaterial
+  const material = new THREE.LineBasicMaterial( { color: 0xff0000 } );
+
+  return new THREE.Line( geometry, material );
+}
