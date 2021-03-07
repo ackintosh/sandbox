@@ -1,8 +1,17 @@
-const THREE = require('three');
+//const THREE = require('three');
+
+//const OrbitControls = require('@three/OrbitControls');
+//import OrbitControls from 'three/examples/js/controls/OrbitControls.js';
+//const f = require('three/examples/js/controls/OrbitControls.js');
+
+//import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+
+
+//import 'OrbitControls';
+
 const Stats = require('stats-js');
 
-const fontJson = require('./fonts/helvetiker_regular.typeface.json');
-const font = new THREE.Font(fontJson);
+const _font = new THREE.Font(require('three/examples/fonts/helvetiker_regular.typeface.json'));
 const _scale = 1;
 const _speed = 1; // 1/x time multiplier
 
@@ -48,7 +57,7 @@ class Node {
   // https://threejs.org/docs/index.html#manual/en/introduction/Creating-text
   createNameGeometry() {
 	  const textGeometry = new THREE.TextGeometry( this.name, {
-      font: font,
+      font: _font,
       size: 20,
       height: 2,
       curveSegments: 12,

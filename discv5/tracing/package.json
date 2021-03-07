@@ -7,6 +7,7 @@
     "build": "webpack",
     "build-bk": "webpack --mode=production",
     "dev": "webpack --mode development --watch",
+    "dev-server": "webpack-cli serve --mode development",
     "dev-bk": "webpack-cli serve --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
