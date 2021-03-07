@@ -1,0 +1,24 @@
+{
+  "name": "discv5-tracing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "build-bk": "webpack --mode=production",
+    "dev": "webpack --mode development --watch",
+    "dev-bk": "webpack-cli serve --mode development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "stats-js": "^1.0.1",
+    "three": "^0.126.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.24.3",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}

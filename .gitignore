@@ -11,6 +11,11 @@ build
 php/phpunit/vendor
 php/phpunit/composer.lock
 
+node_modules
+
+# discv5/tracing
+discv5/tracing/public/bundle.js
+
 # dhatの計測結果
 dhat-heap.json
 
