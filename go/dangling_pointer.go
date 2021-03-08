@@ -1,4 +1,4 @@
-package main;
+package main
 
 import "fmt"
 
@@ -22,5 +22,5 @@ type User struct {
 // https://golang.org/doc/effective_go.html#composite_literals
 // Note that, unlike in C, it's perfectly OK to return the address of a local variable; the storage associated with the variable survives after the function returns.
 func newUser(name string) *User {
-	return &User{ Name: name }
+	return &User{Name: name}
 }
