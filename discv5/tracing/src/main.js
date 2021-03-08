@@ -1,20 +1,31 @@
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 const Stats = require('stats-js');
+const _nodes = [];
 const _font = new THREE.Font(require('three/examples/fonts/helvetiker_regular.typeface.json'));
 const _scale = 1;
 const _speed = 1; // 1/x time multiplier
+const _distance = 500;
+const _totalNodeCount = 3;
 
 class Node {
-  constructor(name, pos) {
+  constructor(name) {
     this.name = name;
-    this.pos = pos;
-    this.line = this.createLine();
+    this.pos = this.calculatePos();
+    this.line = this.createLine(this.pos);
+  }
+
+  calculatePos() {
+    const angle = 360 / _totalNodeCount * _nodes.length;
+    const x = Math.cos(angle * Math.PI / 180) * _distance;
+    const z = Math.sin(angle * Math.PI / 180) * _distance;
+
+    return {x: x, y: 0, z: z};
   }
 
   // create new line
   // https://threejs.org/docs/index.html#manual/en/introduction/Drawing-lines
-  createLine() {
+  createLine(pos) {
     const MAX_POINTS = 500;
 
     // geometry
@@ -23,11 +34,15 @@ class Node {
     // attributes
     const positions = new Float32Array( MAX_POINTS * 3 ); // 3 vertices per point
 
-    let y, yIndex;
-    y = yIndex = 0;
+    let y, yIndex, xIndex, zIndex;
+    y = yIndex = xIndex = zIndex = 0;
     for (var i = 0; i < MAX_POINTS; i ++) {
+      xIndex = (i * 3);
       yIndex = (i * 3) + 1;
+      zIndex = (i * 3) + 2;
+      positions[xIndex] = pos.x;
       positions[yIndex] = y;
+      positions[zIndex] = pos.z;
       y += -1 * i;
     }
 
@@ -93,7 +108,6 @@ window.addEventListener('DOMContentLoaded', init);
 //};
 
 function init() {
-  const nodes = [];
   const width = window.innerWidth;
   const height = window.innerHeight;
 
@@ -182,14 +196,14 @@ function init() {
   }
 
   function advanceTrace() {
-    if (step == 0) {
-      const node = newNode('new node');
+    if (step < _totalNodeCount) { // FIXME
+      const node = new Node('node #' + step);
 
       // add to scene
 		  scene.add(node.createNameGeometry());
 		  scene.add(node.line);
 
-		  nodes.push(node);
+		  _nodes.push(node);
 		  console.info("Added a node: " + node.name);
     }
 
@@ -201,14 +215,10 @@ function init() {
   // grow existing nodes along the time axis
   // https://threejs.org/docs/#manual/en/introduction/How-to-update-things
   function growExistingNodes(step) {
-    for (let i = 0; i < nodes.length; i++) {
-			const line = nodes[i].line;
+    for (let i = 0; i < _nodes.length; i++) {
+			const line = _nodes[i].line;
       line.geometry.setDrawRange(0, step);
       line.geometry.attributes.position.needsUpdate = true; // required after the first render
     }
   }
-}
-
-function newNode(name) {
-  return new Node(name, {x: 0, y: 0, z: 0});
 }
