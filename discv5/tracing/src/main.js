@@ -157,7 +157,7 @@ function init() {
     45,
     width / height,
     1,
-    1000 * _scale
+    5000 * _scale
   );
   camera.position.set(0, 0, +1000);
 
