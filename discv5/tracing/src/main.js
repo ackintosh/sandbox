@@ -207,6 +207,13 @@ function init() {
 		  console.info("Added a node: " + node.name);
     }
 
+    if (step == 50) { // FIXME
+      const fromNode = _nodes[0];
+      const toNode = _nodes[1];
+      const arrow = createArrow(fromNode, toNode);
+      scene.add( arrow );
+    }
+
     growExistingNodes(step);
 
     step += 1;
@@ -221,4 +228,28 @@ function init() {
       line.geometry.attributes.position.needsUpdate = true; // required after the first render
     }
   }
+}
+
+// https://threejs.org/docs/index.html#api/en/helpers/ArrowHelper
+function createArrow(fromNode, toNode) {
+  const targetV = new THREE.Vector3(
+    toNode.pos.x,
+    toNode.pos.y - toNode.line.geometry.drawRange.count,
+    toNode.pos.z
+  );
+  const head = {
+    x: fromNode.pos.x,
+    y: fromNode.pos.y - fromNode.line.geometry.drawRange.count,
+    z: fromNode.pos.z
+  };
+  const direction = new THREE.Vector3().subVectors(targetV, head);
+
+  return new THREE.ArrowHelper(
+    direction.clone().normalize(),
+    head,
+    direction.length(),
+    0x00d6dd,
+    10,
+    10
+  );
 }
