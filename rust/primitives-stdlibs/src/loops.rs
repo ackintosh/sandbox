@@ -21,6 +21,18 @@ fn test_loop() {
 }
 
 #[test]
+fn reverse_ordered_loop() {
+    for i in (0..5).rev() {
+        println!("{}", i);
+    }
+    // 4
+    // 3
+    // 2
+    // 1
+    // 0
+}
+
+#[test]
 fn test_enumerate() {
     for (i, s) in vec![1, 2, 3].iter().enumerate() {
         println!("i: {}, s: {}", i, s);
