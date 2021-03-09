@@ -10,6 +10,7 @@ services:
       POSTGRES_USER: sandbox_user
       POSTGRES_DB: sandbox_db
       POSTGRES_PASSWORD: sandbox_pw
+    command: -c max_connections=14
     volumes:
       - postgresql-data:/var/lib/postgresql/data
 volumes:
