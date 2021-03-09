@@ -180,6 +180,14 @@ mod str {
         let target = str.chars().next().unwrap();
         assert_eq!(str.rfind(target), Some(3));
     }
+
+    #[test]
+    fn reverse() {
+        let str = "abc";
+        let rev_string = str.chars().rev().collect::<String>();
+
+        assert_eq!(rev_string, "cba".to_owned());
+    }
 }
 
 /////////////////////////////////////////////////////////
@@ -251,5 +259,13 @@ mod string {
         let string = "http://example.com/foo".to_owned();
         let replaced = string.replace("http://example.com/", "");
         assert_eq!(replaced, "foo".to_owned());
+    }
+
+    #[test]
+    fn reverse() {
+        let string = "abcd".to_owned();
+        let reverse = string.chars().rev().collect::<String>();
+
+        assert_eq!(reverse, "dcba".to_owned());
     }
 }
