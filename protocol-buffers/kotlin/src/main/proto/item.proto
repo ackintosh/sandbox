@@ -274,3 +274,17 @@ message Bars {
 message UsingWrapper {
   google.protobuf.StringValue stringProperty = 1;
 }
+
+enum Season {
+  SEASON_UNKNOWN = 0;
+  SPRING = 1;
+  SUMMER = 2;
+  AUTUMN = 3;
+  WINTER = 4;
+  XXX = 100;
+}
+
+message Person {
+  string name = 1;
+  Season favourite_season = 2;
+}

@@ -39,6 +39,8 @@ fun main() {
     foo()
 
     wrapper()
+
+    enum()
 }
 
 fun smallItem() = SmallItem.newBuilder()
@@ -384,4 +386,14 @@ fun wrapper() {
 
         println(usingWrapper2.hasStringProperty())
         println(usingWrapper2.stringProperty.value)
+}
+
+fun enum() {
+        val person = Person.newBuilder().setName("test person").build()
+        println(person.name)
+        println(person.favouriteSeason)
+
+        val anotherPerson = Person.newBuilder().setName("another person").setFavouriteSeason(Season.forNumber(100))
+        println(anotherPerson.name)
+        println(anotherPerson.favouriteSeason)
 }
