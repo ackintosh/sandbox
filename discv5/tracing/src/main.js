@@ -1,5 +1,6 @@
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
+const _scene = new THREE.Scene();
 const Stats = require('stats-js');
 const _nodes = [];
 const _font = new THREE.Font(require('three/examples/fonts/helvetiker_regular.typeface.json'));
@@ -12,7 +13,9 @@ class Node {
   constructor(name) {
     this.name = name;
     this.pos = this.calculatePos();
-    this.line = this.createLine(this.pos);
+
+    this.showLine();
+    this.showName();
   }
 
   calculatePos() {
@@ -25,7 +28,7 @@ class Node {
 
   // create new line
   // https://threejs.org/docs/index.html#manual/en/introduction/Drawing-lines
-  createLine(pos) {
+  showLine() {
     const MAX_POINTS = 500;
 
     // geometry
@@ -40,9 +43,9 @@ class Node {
       xIndex = (i * 3);
       yIndex = (i * 3) + 1;
       zIndex = (i * 3) + 2;
-      positions[xIndex] = pos.x;
+      positions[xIndex] = this.pos.x;
       positions[yIndex] = y;
-      positions[zIndex] = pos.z;
+      positions[zIndex] = this.pos.z;
       y += -1 * i;
     }
 
@@ -52,33 +55,45 @@ class Node {
     const drawCount = 2; // draw the first 2 points, only
     geometry.setDrawRange( 0, drawCount );
 
-    //create a blue LineBasicMaterial
+    // create a blue LineBasicMaterial
     const material = new THREE.LineBasicMaterial( { color: 0xff0000 } );
 
-    return new THREE.Line( geometry, material );
+    this.line = new THREE.Line( geometry, material );
+    _scene.add(this.line);
   }
 
   // create cap text
   // https://threejs.org/docs/index.html#manual/en/introduction/Creating-text
-  createNameGeometry() {
-	  const textGeometry = new THREE.TextGeometry( this.name, {
-      font: _font,
-      size: 20,
-      height: 2,
-      curveSegments: 12,
-      bevelEnabled: false,
-      bevelThickness: 10,
-      bevelSize: 8,
-      bevelOffset: 0,
-      bevelSegments: 5
-    });
-    const textMaterial = new THREE.MeshBasicMaterial({color: 0xffffff})
-	  const text = new THREE.Mesh( textGeometry, textMaterial );
-	  text.position.x = this.pos.x;
-	  text.position.y = this.pos.y;
-	  text.position.z = this.pos.z;
+  showName() {
+	  const name = createCapText(this.name, this.pos.x, this.pos.y, this.pos.z);
+    _scene.add(name);
+  }
 
-	  return text;
+  // https://threejs.org/docs/index.html#api/en/helpers/ArrowHelper
+  sendFindNode(toNode, step) {
+    const targetV = new THREE.Vector3(
+      toNode.pos.x,
+      toNode.line.geometry.getAttribute('position').getY(step),
+      toNode.pos.z
+    );
+    const head = {
+      x: this.pos.x,
+      y: this.line.geometry.getAttribute('position').getY(step),
+      z: this.pos.z
+    };
+    const direction = new THREE.Vector3().subVectors(targetV, head);
+
+    const arrow = new THREE.ArrowHelper(
+      direction.clone().normalize(),
+      head,
+      direction.length(),
+      0x00d6dd,
+      10,
+      10
+    );
+    _scene.add( arrow );
+
+//	  return createCapText(this.name, this.pos.x, this.pos.y, this.pos.z);
   }
 }
 
@@ -137,15 +152,6 @@ function init() {
   // これを設定しないとスマホだとぼやけてしまう
   renderer.setPixelRatio(window.devicePixelRatio);
 
-
-  // ///////////////////////////////////////
-  // Scene
-  //
-  // シーン: オブジェクトや光源などの置き場
-  // ///////////////////////////////////////
-  const scene = new THREE.Scene();
-
-
   // ///////////////////////////////////////
   // Camera
   //
@@ -176,7 +182,7 @@ function init() {
   //  光源が斜めから差し込むようにライトの位置を変更しておく
   light.position.set(1, 1, 1);
   // ライトもシーンに追加することで反映される
-  scene.add(light);
+  _scene.add(light);
 
 
   // ///////////////////////////////////////
@@ -191,30 +197,24 @@ function init() {
 
     controls.update();
     stats.begin();
-    renderer.render(scene, camera);
+    renderer.render(_scene, camera);
     stats.end();
   }
 
   function advanceTrace() {
     if (step < _totalNodeCount) { // FIXME
       const node = new Node('node #' + step);
-
-      // add to scene
-		  scene.add(node.createNameGeometry());
-		  scene.add(node.line);
-
 		  _nodes.push(node);
 		  console.info("Added a node: " + node.name);
     }
 
-    if (step == 50) { // FIXME
+    growExistingNodes(step);
+
+    if (step == 20) { // FIXME
       const fromNode = _nodes[0];
       const toNode = _nodes[1];
-      const arrow = createArrow(fromNode, toNode);
-      scene.add( arrow );
+      fromNode.sendFindNode(toNode, step);
     }
-
-    growExistingNodes(step);
 
     step += 1;
   }
@@ -230,26 +230,25 @@ function init() {
   }
 }
 
-// https://threejs.org/docs/index.html#api/en/helpers/ArrowHelper
-function createArrow(fromNode, toNode) {
-  const targetV = new THREE.Vector3(
-    toNode.pos.x,
-    toNode.pos.y - toNode.line.geometry.drawRange.count,
-    toNode.pos.z
-  );
-  const head = {
-    x: fromNode.pos.x,
-    y: fromNode.pos.y - fromNode.line.geometry.drawRange.count,
-    z: fromNode.pos.z
-  };
-  const direction = new THREE.Vector3().subVectors(targetV, head);
+function createCapText(text, x, y, z) {
+  const textGeometry = new THREE.TextGeometry( text, {
+    font: _font,
+    size: 20,
+    height: 2,
+    curveSegments: 12,
+    bevelEnabled: false,
+    bevelThickness: 10,
+    bevelSize: 8,
+    bevelOffset: 0,
+    bevelSegments: 5
+  });
 
-  return new THREE.ArrowHelper(
-    direction.clone().normalize(),
-    head,
-    direction.length(),
-    0x00d6dd,
-    10,
-    10
-  );
+  const textMaterial = new THREE.MeshBasicMaterial({color: 0xffffff})
+  const textMesh = new THREE.Mesh( textGeometry, textMaterial );
+
+  textMesh.position.x = x;
+  textMesh.position.y = y;
+  textMesh.position.z = z;
+
+  return textMesh;
 }

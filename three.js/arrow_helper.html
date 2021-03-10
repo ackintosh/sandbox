@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <!-- three.jsを読み込む -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r120/three.min.js"></script>
+</head>
+<body style="margin: 0;">
+<script>
+  // https://threejs.org/docs/index.html#api/en/helpers/ArrowHelper
+  const renderer = new THREE.WebGLRenderer();
+  renderer.setSize( window.innerWidth, window.innerHeight );
+  document.body.appendChild( renderer.domElement );
+
+  const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
+  camera.position.set( 0, 0, 100 );
+  camera.lookAt( 0, 0, 0 );
+
+  const scene = new THREE.Scene();
+
+  // サンプルここから -----------------------------
+  const dir = new THREE.Vector3( 1, 2, 0 );
+  
+  //normalize the direction vector (convert to vector of length 1)
+  dir.normalize();
+  
+  const origin = new THREE.Vector3( 0, 0, 0 );
+  const length = 10;
+  const hex = 0xffff00;
+  
+  // dir：THREE.Vector3 矢印の向きを表すベクトル
+  // origin：THREE.Vector3 矢印の始点となるベクトル
+  // length：矢印の長さ
+  // hex：矢印の色
+  // headLength：矢印の頭の長さ
+  // headWidth：矢印の頭の太さ
+  const arrowHelper = new THREE.ArrowHelper( dir, origin, length, hex );
+  scene.add( arrowHelper );
+  // サンプルここまで ------------------------------
+
+  renderer.render( scene, camera );
+</script>
+</body>
+</html>
