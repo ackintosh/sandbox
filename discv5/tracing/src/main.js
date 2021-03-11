@@ -9,16 +9,18 @@ const _speed = 1; // 1/x time multiplier
 const _distance = 500;
 const _totalNodeCount = 3;
 
+// TODO: 色の調整
+const COLOR_WHOAREYOU = 0x00dd00;
 const COLOR_FINDNODE = 0x00d6dd;
 const COLOR_NODES = 0xddd600;
 
 class Node {
-  constructor(name) {
-    this.name = name;
+  constructor(id) {
+    this.id = id;
     this.pos = this.calculatePos();
 
     this.showLine();
-    this.showName();
+    this.showNodeId();
   }
 
   calculatePos() {
@@ -65,9 +67,20 @@ class Node {
     _scene.add(this.line);
   }
 
-  showName() {
-	  const name = createCapText(this.name, this.pos.x, this.pos.y, this.pos.z);
-    _scene.add(name);
+  showNodeId() {
+	  const id = createCapText(this.id, this.pos.x, this.pos.y, this.pos.z);
+    _scene.add(id);
+  }
+
+  sendWhoAreYou(toNode, step, idNonce, enrSeq) {
+    const arrow = createArrow(this, toNode, step, COLOR_WHOAREYOU);
+    _scene.add(arrow);
+
+    const x = this.pos.x;
+    const y = this.line.geometry.getAttribute('position').getY(step);
+    const z = this.pos.z;
+	  const text = createCapText(`WHEAREYOU :\n  ${idNonce}\n  ${enrSeq}`, x, y, z, COLOR_WHOAREYOU);
+    _scene.add(text);
   }
 
   sendFindNode(toNode, step, requestId, distances) {
@@ -178,7 +191,7 @@ function init() {
     if (step < _totalNodeCount) { // FIXME
       const node = new Node('node #' + step);
 		  _nodes.push(node);
-		  console.info("Added a node: " + node.name);
+		  console.info("Added a node: " + node.id);
     }
 
     growExistingNodes(step);
@@ -186,11 +199,15 @@ function init() {
     if (step == 20) { // FIXME
       const fromNode = _nodes[0];
       const toNode = _nodes[1];
-      fromNode.sendFindNode(toNode, step, "xxxxxxx request-id xxxxxxx", [255, 254, 253]);
+      fromNode.sendFindNode(toNode, step, "*** dummy-request-id ***", [255, 254, 253]);
     } else if (step == 21) {
       const fromNode = _nodes[1];
       const toNode = _nodes[0];
-      fromNode.sendNodes(toNode, step, "xxxxxxx request-id xxxxxxx", ["enr1", "enr2"]);
+      fromNode.sendWhoAreYou(toNode, step, "dummy-id-nonce", "dummy-enr-seq");
+    } else if (step == 22) {
+      const fromNode = _nodes[1];
+      const toNode = _nodes[0];
+      fromNode.sendNodes(toNode, step, "*** dummy-request-id ***", ["dummy-enr1", "dummy-enr2"]);
     }
 
     step += 1;
