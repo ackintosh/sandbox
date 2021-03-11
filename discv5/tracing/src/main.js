@@ -9,6 +9,9 @@ const _speed = 1; // 1/x time multiplier
 const _distance = 500;
 const _totalNodeCount = 3;
 
+const COLOR_FINDNODE = 0x00d6dd;
+const COLOR_NODES = 0xddd600;
+
 class Node {
   constructor(name) {
     this.name = name;
@@ -62,65 +65,35 @@ class Node {
     _scene.add(this.line);
   }
 
-  // create cap text
-  // https://threejs.org/docs/index.html#manual/en/introduction/Creating-text
   showName() {
 	  const name = createCapText(this.name, this.pos.x, this.pos.y, this.pos.z);
     _scene.add(name);
   }
 
-  // https://threejs.org/docs/index.html#api/en/helpers/ArrowHelper
-  sendFindNode(toNode, step) {
-    const targetV = new THREE.Vector3(
-      toNode.pos.x,
-      toNode.line.geometry.getAttribute('position').getY(step),
-      toNode.pos.z
-    );
-    const head = {
-      x: this.pos.x,
-      y: this.line.geometry.getAttribute('position').getY(step),
-      z: this.pos.z
-    };
-    const direction = new THREE.Vector3().subVectors(targetV, head);
+  sendFindNode(toNode, step, requestId, distances) {
+    const arrow = createArrow(this, toNode, step, COLOR_FINDNODE);
+    _scene.add(arrow);
 
-    const arrow = new THREE.ArrowHelper(
-      direction.clone().normalize(),
-      head,
-      direction.length(),
-      0x00d6dd,
-      10,
-      10
-    );
-    _scene.add( arrow );
+    const x = this.pos.x;
+    const y = this.line.geometry.getAttribute('position').getY(step);
+    const z = this.pos.z;
+	  const text = createCapText(`FINDNODE :\n  ${requestId}\n  [${distances.join(', ')}]`, x, y, z, COLOR_FINDNODE);
+    _scene.add(text);
+  }
 
-//	  return createCapText(this.name, this.pos.x, this.pos.y, this.pos.z);
+  sendNodes(toNode, step, requestId, nodes) {
+    const arrow = createArrow(this, toNode, step, COLOR_NODES);
+    _scene.add(arrow);
+
+    const x = this.pos.x;
+    const y = this.line.geometry.getAttribute('position').getY(step);
+    const z = this.pos.z;
+	  const text = createCapText(`NODES :\n  ${requestId}\n  [${nodes.join(', ')}]`, x, y, z, COLOR_NODES);
+    _scene.add(text);
   }
 }
 
 window.addEventListener('DOMContentLoaded', init);
-
-//	var _colors3 = {
-//        "send_arrow":  "#00D6DD",
-//        "send_value":  "#00D6DD",
-//        "go_normal":  "#D4FF00",
-//        "go_link":  "#B1B4B5",
-//        "go_blocked":  "#ED0000",
-//        "go_sleep":  "#6C8200",
-//        "go_cap":  "#D4FF00",
-//    };
-//
-//	var _colors = _colors3;
-//
-//const _mats = {
-//	"go_normal": new THREE.LineBasicMaterial( { color: _colors["go_normal"], linewidth: 5 } ),
-//	"go_sleep": new THREE.LineBasicMaterial( { color: _colors["go_sleep"], linewidth: 2 } ),
-//	"go_blocked": new THREE.LineBasicMaterial( { color: _colors["go_blocked"], linewidth: 2 } ),
-//	"go_link": new THREE.LineBasicMaterial( { color: _colors["go_link"], linewidth: 1, } ),
-//	"go_cap": new THREE.MeshBasicMaterial({color: _colors["go_cap"]}),
-//	"send_value": new THREE.MeshBasicMaterial({color: _colors["send_value"]}),
-//	"send_arrow": new THREE.LineBasicMaterial({color: _colors["send_arrow"]}),
-//	"channel": new THREE.MeshBasicMaterial( {color: _colors["channel"]} ),
-//};
 
 function init() {
   const width = window.innerWidth;
@@ -213,7 +186,11 @@ function init() {
     if (step == 20) { // FIXME
       const fromNode = _nodes[0];
       const toNode = _nodes[1];
-      fromNode.sendFindNode(toNode, step);
+      fromNode.sendFindNode(toNode, step, "xxxxxxx request-id xxxxxxx", [255, 254, 253]);
+    } else if (step == 21) {
+      const fromNode = _nodes[1];
+      const toNode = _nodes[0];
+      fromNode.sendNodes(toNode, step, "xxxxxxx request-id xxxxxxx", ["enr1", "enr2"]);
     }
 
     step += 1;
@@ -230,7 +207,9 @@ function init() {
   }
 }
 
-function createCapText(text, x, y, z) {
+// create cap text
+// https://threejs.org/docs/index.html#manual/en/introduction/Creating-text
+function createCapText(text, x, y, z, color) {
   const textGeometry = new THREE.TextGeometry( text, {
     font: _font,
     size: 20,
@@ -243,7 +222,7 @@ function createCapText(text, x, y, z) {
     bevelSegments: 5
   });
 
-  const textMaterial = new THREE.MeshBasicMaterial({color: 0xffffff})
+  const textMaterial = new THREE.MeshBasicMaterial({color: color})
   const textMesh = new THREE.Mesh( textGeometry, textMaterial );
 
   textMesh.position.x = x;
@@ -251,4 +230,28 @@ function createCapText(text, x, y, z) {
   textMesh.position.z = z;
 
   return textMesh;
+}
+
+function createArrow(fromNode, toNode, step, color) {
+  const targetV = new THREE.Vector3(
+    toNode.pos.x,
+    toNode.line.geometry.getAttribute('position').getY(step),
+    toNode.pos.z
+  );
+  const head = {
+    x: fromNode.pos.x,
+    y: fromNode.line.geometry.getAttribute('position').getY(step),
+    z: fromNode.pos.z
+  };
+  const direction = new THREE.Vector3().subVectors(targetV, head);
+
+  // https://threejs.org/docs/index.html#api/en/helpers/ArrowHelper
+  return new THREE.ArrowHelper(
+    direction.clone().normalize(),
+    head,
+    direction.length(),
+    color,
+    10,
+    10
+  );
 }
