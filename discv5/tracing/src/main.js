@@ -51,7 +51,7 @@ class Node {
       positions[xIndex] = this.pos.x;
       positions[yIndex] = y;
       positions[zIndex] = this.pos.z;
-      y += -1 * i;
+      y += -5 * i; // TODO: 調整可能にする
     }
 
     geometry.setAttribute( 'position', new THREE.BufferAttribute( positions, 3 ) );
