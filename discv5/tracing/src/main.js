@@ -1,13 +1,16 @@
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls';
 
 const _scene = new THREE.Scene();
 const Stats = require('stats-js');
 const _nodes = [];
 const _font = new THREE.Font(require('three/examples/fonts/helvetiker_regular.typeface.json'));
-const _scale = 1;
+const _scale = 100;
 const _speed = 1; // 1/x time multiplier
 const _distance = 500;
 const _totalNodeCount = 3;
+
+
+const MAX_STEPS = 50;
 
 // TODO: 色の調整
 const COLOR_WHOAREYOU = 0x00dd00;
@@ -51,7 +54,7 @@ class Node {
       positions[xIndex] = this.pos.x;
       positions[yIndex] = y;
       positions[zIndex] = this.pos.z;
-      y += -5 * i; // TODO: 調整可能にする
+      y = (-1 * _scale) * i;
     }
 
     geometry.setAttribute( 'position', new THREE.BufferAttribute( positions, 3 ) );
@@ -153,9 +156,9 @@ function init() {
   );
   camera.position.set(0, 0, +1000);
 
-  // OrbitControls
-  // https://threejs.org/docs/index.html#examples/en/controls/OrbitControls
-  const controls = new OrbitControls(camera, renderer.domElement);
+  // TrackballControls
+  // https://threejs.org/docs/#examples/en/controls/TrackballControls
+  const controls = new TrackballControls(camera, renderer.domElement);
 
   // ///////////////////////////////////////
   // 5. ライトを作る
@@ -188,6 +191,10 @@ function init() {
   }
 
   function advanceTrace() {
+    if (step >= MAX_STEPS) {
+      return;
+    }
+
     if (step < _totalNodeCount) { // FIXME
       const node = new Node('node #' + step);
 		  _nodes.push(node);
@@ -221,6 +228,11 @@ function init() {
       line.geometry.setDrawRange(0, step);
       line.geometry.attributes.position.needsUpdate = true; // required after the first render
     }
+
+//    const y = (-1 * _scale) * step;
+//    camera.lookAt(new THREE.Vector3(0, y, 0));
+//    controls.target = new THREE.Vector3(0, y, 0);
+//    camera.position.y = y;
   }
 }
 
