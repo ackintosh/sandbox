@@ -12,6 +12,7 @@ const _totalNodeCount = 3;
 const MAX_STEPS = 50;
 
 // TODO: 色の調整
+const COLOR_RANDOM = 0xffdd00;
 const COLOR_WHOAREYOU = 0x00dd00;
 const COLOR_FINDNODE = 0x00d6dd;
 const COLOR_NODES = 0xddd600;
@@ -72,6 +73,17 @@ class Node {
   showNodeId() {
 	  const id = createCapText(this.id, this.pos.x, this.pos.y, this.pos.z);
     _scene.add(id);
+  }
+
+  sendRandomMessage(toNode, step) {
+    const arrow = createArrow(this, toNode, step, COLOR_RANDOM);
+    _scene.add(arrow);
+
+    const x = this.pos.x;
+    const y = this.line.geometry.getAttribute('position').getY(step);
+    const z = this.pos.z;
+	  const text = createCapText('Random Message', x, y, z, COLOR_RANDOM);
+    _scene.add(text);
   }
 
   sendWhoAreYou(toNode, step, idNonce, enrSeq) {
@@ -202,14 +214,18 @@ function init() {
 
     growExistingNodes(step);
 
-    if (step == 5) { // FIXME
+    if (step == 4) { // FIXME
       const fromNode = _nodes[0];
       const toNode = _nodes[1];
-      fromNode.sendFindNode(toNode, step, "*** dummy-request-id ***", [255, 254, 253]);
-    } else if (step == 6) {
+      fromNode.sendRandomMessage(toNode, step);
+    } else if (step == 5) {
       const fromNode = _nodes[1];
       const toNode = _nodes[0];
       fromNode.sendWhoAreYou(toNode, step, "dummy-id-nonce", "dummy-enr-seq");
+    } else if (step == 6) { // FIXME
+      const fromNode = _nodes[0];
+      const toNode = _nodes[1];
+      fromNode.sendFindNode(toNode, step, "*** dummy-request-id ***", [255, 254, 253]);
     } else if (step == 7) {
       const fromNode = _nodes[1];
       const toNode = _nodes[0];
