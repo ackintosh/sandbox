@@ -5,7 +5,6 @@ const Stats = require('stats-js');
 const _nodes = [];
 const _font = new THREE.Font(require('three/examples/fonts/helvetiker_regular.typeface.json'));
 const _scale = 100;
-const _speed = 1; // 1/x time multiplier
 const _distance = 500;
 const _totalNodeCount = 3;
 
@@ -154,7 +153,7 @@ function init() {
     1,
     5000 * _scale
   );
-  camera.position.set(0, 0, +1000);
+  camera.position.set(0, 0, 2000);
 
   // TrackballControls
   // https://threejs.org/docs/#examples/en/controls/TrackballControls
@@ -203,15 +202,15 @@ function init() {
 
     growExistingNodes(step);
 
-    if (step == 20) { // FIXME
+    if (step == 5) { // FIXME
       const fromNode = _nodes[0];
       const toNode = _nodes[1];
       fromNode.sendFindNode(toNode, step, "*** dummy-request-id ***", [255, 254, 253]);
-    } else if (step == 21) {
+    } else if (step == 6) {
       const fromNode = _nodes[1];
       const toNode = _nodes[0];
       fromNode.sendWhoAreYou(toNode, step, "dummy-id-nonce", "dummy-enr-seq");
-    } else if (step == 22) {
+    } else if (step == 7) {
       const fromNode = _nodes[1];
       const toNode = _nodes[0];
       fromNode.sendNodes(toNode, step, "*** dummy-request-id ***", ["dummy-enr1", "dummy-enr2"]);
@@ -228,11 +227,6 @@ function init() {
       line.geometry.setDrawRange(0, step);
       line.geometry.attributes.position.needsUpdate = true; // required after the first render
     }
-
-//    const y = (-1 * _scale) * step;
-//    camera.lookAt(new THREE.Vector3(0, y, 0));
-//    controls.target = new THREE.Vector3(0, y, 0);
-//    camera.position.y = y;
   }
 }
 
