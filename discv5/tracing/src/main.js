@@ -19,6 +19,32 @@ const COLOR_PONG = 0xff00ff;
 const COLOR_FINDNODE = 0x00d6dd;
 const COLOR_NODES = 0xddd600;
 
+(function () {
+  const b = document.getElementById('b');
+  b.addEventListener('click', async () => {
+    // https://wicg.github.io/file-system-access/#api-showopenfilepicker
+    const [handle] = await window.showOpenFilePicker({
+      multiple: false,
+      types: [
+        {
+          description: 'Choose trace file',
+          accept: {
+            'text/plain': ['.log']
+          },
+        }
+      ]
+    });
+
+    b.style.display = 'none';
+
+    const file = await handle.getFile();
+    const text = await file.text();
+
+    console.dir(text);
+    init();
+  });
+})();
+
 class Node {
   constructor(id) {
     this.id = id;
@@ -203,8 +229,6 @@ class Nodes {
     return `  ${this.requestId}\n  [${this.nodes.join(', ')}]`;
   }
 }
-
-window.addEventListener('DOMContentLoaded', init);
 
 function init() {
   const width = window.innerWidth;
