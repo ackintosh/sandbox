@@ -14,6 +14,8 @@ const MAX_STEPS = 50;
 // TODO: 色の調整
 const COLOR_RANDOM = 0xffdd00;
 const COLOR_WHOAREYOU = 0x00dd00;
+const COLOR_PING = 0x0000ff;
+const COLOR_PONG = 0xff00ff;
 const COLOR_FINDNODE = 0x00d6dd;
 const COLOR_NODES = 0xddd600;
 
@@ -104,7 +106,7 @@ class Node {
     const x = this.pos.x;
     const y = this.line.geometry.getAttribute('position').getY(step);
     const z = this.pos.z;
-	  const text = createCapText(`WHEAREYOU :\n  ${idNonce}\n  ${enrSeq}`, x, y, z, COLOR_WHOAREYOU);
+	  const text = createCapText(`WHOAREYOU :\n  ${idNonce}\n  ${enrSeq}`, x, y, z, COLOR_WHOAREYOU);
     _scene.add(text);
   }
 
@@ -120,6 +122,49 @@ class Node {
   }
 }
 
+// https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#ping-request-0x01
+class Ping {
+  constructor(requestId, enrSeq) {
+    this.requestId = requestId;
+    this.enrSeq = enrSeq;
+  }
+
+  name() {
+    return 'PING';
+  }
+
+  color() {
+    return COLOR_PING;
+  }
+
+  capText() {
+    return `  ${this.requestId}\n  ${this.enrSeq}`;
+  }
+}
+
+// https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#pong-response-0x02
+class Pong {
+  constructor(requestId, enrSeq, recipientIp, recipientPort) {
+    this.requestId = requestId;
+    this.enrSeq = enrSeq;
+    this.recipientIp = recipientIp;
+    this.recipientPort = recipientPort;
+  }
+
+  name() {
+    return 'PONG';
+  }
+
+  color() {
+    return COLOR_PONG;
+  }
+
+  capText() {
+    return `  ${this.requestId}\n  ${this.enrSeq}\n  ${this.recipientIp}\n  ${this.recipientPort}`;
+  }
+}
+
+// https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#findnode-request-0x03
 class Findnode {
   constructor(requestId, distances) {
     this.requestId = requestId;
@@ -139,6 +184,7 @@ class Findnode {
   }
 }
 
+// https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#nodes-response-0x04
 class Nodes {
   constructor(requestId, nodes) {
     this.requestId = requestId;
@@ -271,6 +317,21 @@ function init() {
       const toNode = _nodes[0];
       const nodes = new Nodes("*** dummy-request-id ***", ["dummy-enr1", "dummy-enr2"]);
       fromNode.sendMessage(toNode, step, nodes);
+    } else if (step == 8) {
+      const fromNode = _nodes[0];
+      const toNode = _nodes[1];
+      const ping = new Ping("*** dummy-request-id ***", "dummy-enr-seq");
+      fromNode.sendMessage(toNode, step, ping);
+    } else if (step == 9) {
+      const fromNode = _nodes[1];
+      const toNode = _nodes[0];
+      const pong = new Pong(
+        "*** dummy-request-id ***",
+        "dummy-enr-seq",
+        "dummy-recipient-ip",
+        "dummy-recipient-port"
+      );
+      fromNode.sendMessage(toNode, step, pong);
     }
 
     step += 1;
