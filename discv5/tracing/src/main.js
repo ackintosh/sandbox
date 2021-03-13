@@ -86,6 +86,17 @@ class Node {
     _scene.add(text);
   }
 
+  sendMessage(toNode, step, message) {
+    const arrow = createArrow(this, toNode, step, message.color());
+    _scene.add(arrow);
+
+    const x = this.pos.x;
+    const y = this.line.geometry.getAttribute('position').getY(step);
+    const z = this.pos.z;
+	  const text = createCapText(`Message<${message.name()}>\n${message.capText()}`, x, y, z, message.color());
+    _scene.add(text);
+  }
+
   sendWhoAreYou(toNode, step, idNonce, enrSeq) {
     const arrow = createArrow(this, toNode, step, COLOR_WHOAREYOU);
     _scene.add(arrow);
@@ -97,26 +108,53 @@ class Node {
     _scene.add(text);
   }
 
-  sendFindNode(toNode, step, requestId, distances) {
-    const arrow = createArrow(this, toNode, step, COLOR_FINDNODE);
+  sendHandshakeMessage(toNode, step, message) {
+    const arrow = createArrow(this, toNode, step, message.color());
     _scene.add(arrow);
 
     const x = this.pos.x;
     const y = this.line.geometry.getAttribute('position').getY(step);
     const z = this.pos.z;
-	  const text = createCapText(`FINDNODE :\n  ${requestId}\n  [${distances.join(', ')}]`, x, y, z, COLOR_FINDNODE);
+	  const text = createCapText(`Handshake Message<${message.name()}>\n${message.capText()}`, x, y, z, message.color());
     _scene.add(text);
   }
+}
 
-  sendNodes(toNode, step, requestId, nodes) {
-    const arrow = createArrow(this, toNode, step, COLOR_NODES);
-    _scene.add(arrow);
+class Findnode {
+  constructor(requestId, distances) {
+    this.requestId = requestId;
+    this.distances = distances;
+  }
 
-    const x = this.pos.x;
-    const y = this.line.geometry.getAttribute('position').getY(step);
-    const z = this.pos.z;
-	  const text = createCapText(`NODES :\n  ${requestId}\n  [${nodes.join(', ')}]`, x, y, z, COLOR_NODES);
-    _scene.add(text);
+  name() {
+    return 'FINDNODE';
+  }
+
+  color() {
+    return COLOR_FINDNODE;
+  }
+
+  capText() {
+    return `  ${this.requestId}\n  [${this.distances.join(', ')}]`;
+  }
+}
+
+class Nodes {
+  constructor(requestId, nodes) {
+    this.requestId = requestId;
+    this.nodes = nodes;
+  }
+
+  name() {
+    return 'NODES';
+  }
+
+  color() {
+    return COLOR_NODES;
+  }
+
+  capText() {
+    return `  ${this.requestId}\n  [${this.nodes.join(', ')}]`;
   }
 }
 
@@ -214,7 +252,8 @@ function init() {
 
     growExistingNodes(step);
 
-    if (step == 4) { // FIXME
+    // TODO
+    if (step == 4) {
       const fromNode = _nodes[0];
       const toNode = _nodes[1];
       fromNode.sendRandomMessage(toNode, step);
@@ -222,14 +261,16 @@ function init() {
       const fromNode = _nodes[1];
       const toNode = _nodes[0];
       fromNode.sendWhoAreYou(toNode, step, "dummy-id-nonce", "dummy-enr-seq");
-    } else if (step == 6) { // FIXME
+    } else if (step == 6) {
       const fromNode = _nodes[0];
       const toNode = _nodes[1];
-      fromNode.sendFindNode(toNode, step, "*** dummy-request-id ***", [255, 254, 253]);
+      const findNode = new Findnode("*** dummy-request-id ***", [255, 254, 253]);
+      fromNode.sendHandshakeMessage(toNode, step, findNode);
     } else if (step == 7) {
       const fromNode = _nodes[1];
       const toNode = _nodes[0];
-      fromNode.sendNodes(toNode, step, "*** dummy-request-id ***", ["dummy-enr1", "dummy-enr2"]);
+      const nodes = new Nodes("*** dummy-request-id ***", ["dummy-enr1", "dummy-enr2"]);
+      fromNode.sendMessage(toNode, step, nodes);
     }
 
     step += 1;
