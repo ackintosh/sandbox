@@ -286,5 +286,6 @@ enum Season {
 
 message Person {
   string name = 1;
-  Season favourite_season = 2;
+  optional string middle_name = 2;
+  Season favourite_season = 3;
 }

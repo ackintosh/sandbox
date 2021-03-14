@@ -41,6 +41,8 @@ fun main() {
     wrapper()
 
     enum()
+
+    optional()
 }
 
 fun smallItem() = SmallItem.newBuilder()
@@ -396,4 +398,23 @@ fun enum() {
         val anotherPerson = Person.newBuilder().setName("another person").setFavouriteSeason(Season.forNumber(100))
         println(anotherPerson.name)
         println(anotherPerson.favouriteSeason)
+}
+
+fun optional() {
+        val person = Person.newBuilder().setName("test person").build()
+        println(person.name)
+        println(person.favouriteSeason)
+
+        // hasメソッドで有無を確認できる
+        println("person.hasMiddleName: ${person.hasMiddleName()}")
+        // セットされていない場合、値はデフォルト値(空文字)
+        println("person.MiddleName: ${person.middleName}")
+
+        val person2 = Person.newBuilder()
+                .setName("test person")
+                .setMiddleName("test middle name")
+                .build()
+
+        println("person2.hasMiddleName: ${person2.hasMiddleName()}")
+        println("personn2.MiddleName: ${person2.middleName}")
 }

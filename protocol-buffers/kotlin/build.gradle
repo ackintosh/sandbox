@@ -1,6 +1,6 @@
 buildscript {
     ext.versions = [
-        'protobuf': '3.12.2',
+        'protobuf': '3.15.6',
     ]
 }
 
