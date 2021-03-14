@@ -289,6 +289,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "crate-rust-protobuf"
+version = "0.1.0"
+dependencies = [
+ "protobuf",
+ "protoc-rust",
+]
+
+[[package]]
 name = "crate-tokio"
 version = "0.1.0"
 dependencies = [
@@ -1433,6 +1441,43 @@ name = "procon"
 version = "0.1.0"
 
 [[package]]
+name = "protobuf"
+version = "2.22.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "73f72884896d22e0da0e5b266cb9a780b791f6c3b2f5beab6368d6cd4f0dbb86"
+
+[[package]]
+name = "protobuf-codegen"
+version = "2.22.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e8217a1652dbc91d19c509c558234145faed729191a966896414e5889f62d543"
+dependencies = [
+ "protobuf",
+]
+
+[[package]]
+name = "protoc"
+version = "2.22.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "57628f7456fe5fff1591901fb8b594e1584750cb857da23b65c456b42670524d"
+dependencies = [
+ "log",
+ "which",
+]
+
+[[package]]
+name = "protoc-rust"
+version = "2.22.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1f4f7f814511b67bcbef52cb4ac9160766d087de35245d2fba08d6ee87fb5ecd"
+dependencies = [
+ "protobuf",
+ "protobuf-codegen",
+ "protoc",
+ "tempfile",
+]
+
+[[package]]
 name = "quick-error"
 version = "1.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2471,6 +2516,16 @@ checksum = "222b1ef9334f92a21d3fb53dc3fd80f30836959a90f9274a626d7e06315ba3c3"
 dependencies = [
  "js-sys",
  "wasm-bindgen",
+]
+
+[[package]]
+name = "which"
+version = "4.0.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "87c14ef7e1b8b8ecfc75d5eca37949410046e66f15d185c01d70824f1f8111ef"
+dependencies = [
+ "libc",
+ "thiserror",
 ]
 
 [[package]]

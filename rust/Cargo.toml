@@ -17,6 +17,7 @@ members = [
   "crate-parking_lot",
   "crate-rand",
   "crate-reqwest",
+  "crate-rust-protobuf",
   "crate-uint",
   "crate-tokio",
   "crate-tracing",
