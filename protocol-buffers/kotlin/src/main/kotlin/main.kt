@@ -3,7 +3,7 @@ import com.google.protobuf.StringValue
 import com.google.protobuf.Timestamp
 import com.google.protobuf.util.JsonFormat
 import com.google.rpc.BadRequest
-import com.google.rpc.Status
+import java.io.FileOutputStream
 
 fun main() {
     ///////////////////////////////////////////////////////
@@ -43,6 +43,8 @@ fun main() {
     enum()
 
     optional()
+
+//    writeTo()
 }
 
 fun smallItem() = SmallItem.newBuilder()
@@ -417,4 +419,11 @@ fun optional() {
 
         println("person2.hasMiddleName: ${person2.hasMiddleName()}")
         println("personn2.MiddleName: ${person2.middleName}")
+}
+
+// ファイルに書き出す
+fun writeTo() {
+    val smallItem = smallItem()
+    val output = FileOutputStream("./output.bin")
+    smallItem.writeTo(output)
 }
