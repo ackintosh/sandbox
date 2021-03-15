@@ -402,17 +402,20 @@ fun enum() {
         println(anotherPerson.favouriteSeason)
 }
 
+// https://github.com/protocolbuffers/protobuf/blob/master/docs/field_presence.md
 fun optional() {
-        val person = Person.newBuilder().setName("test person").build()
+        val person = OptionalPerson.newBuilder().setName("test person").build()
         println(person.name)
         println(person.favouriteSeason)
 
         // hasメソッドで有無を確認できる
         println("person.hasMiddleName: ${person.hasMiddleName()}")
-        // セットされていない場合、値はデフォルト値(空文字)
-        println("person.MiddleName: ${person.middleName}")
+        println("person.hasFavouriteSeason: ${person.hasFavouriteSeason()}")
+        // セットされていない場合、値はデフォルト値
+        println("person.MiddleName: ${person.middleName}") // 空文字
+        println("person.FavouriteSeason: ${person.favouriteSeason}") // 0番目の要素(SEASON_UNKNOWN)
 
-        val person2 = Person.newBuilder()
+        val person2 = OptionalPerson.newBuilder()
                 .setName("test person")
                 .setMiddleName("test middle name")
                 .build()
