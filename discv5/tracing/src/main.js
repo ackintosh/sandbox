@@ -1,4 +1,5 @@
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls';
+import { Reader } from "protobufjs";
 
 const _scene = new THREE.Scene();
 const Stats = require('stats-js');
@@ -53,12 +54,15 @@ const COLOR_NODES = 0xddd600;
    const bytes = new Uint8Array(ab);
    console.dir(bytes);
 
+   const reader = Reader.create(bytes);
+   console.dir(reader);
+
    const root = await protobuf.load('person.proto');
 
    const Person = root.lookupType('person.Person');
-
-   console.dir(Person.verify(bytes));
-   console.dir(Person.decode(bytes));
+   // console.dir(Person.verify(bytes));
+   console.dir(Person.decodeDelimited(reader));
+   console.dir(Person.decodeDelimited(reader));
 
    // init();
  });
