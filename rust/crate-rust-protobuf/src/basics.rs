@@ -12,8 +12,10 @@ fn test() {
     println!("{:?}", bytes);
 
     let mut file = std::fs::OpenOptions::new()
-        .append(true)
-        .open("person.bin")
+        // .append(true)
+        .write(true)
+        .truncate(true)
+        .open("person.log")
         .unwrap();
     file.write_all(&bytes).unwrap();
     file.flush().unwrap();

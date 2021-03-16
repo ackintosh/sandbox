@@ -2,6 +2,7 @@ import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls
 
 const _scene = new THREE.Scene();
 const Stats = require('stats-js');
+const protobuf = require('protobufjs');
 const _nodes = [];
 const _font = new THREE.Font(require('three/examples/fonts/helvetiker_regular.typeface.json'));
 const _scale = 100;
@@ -19,31 +20,64 @@ const COLOR_PONG = 0xff00ff;
 const COLOR_FINDNODE = 0x00d6dd;
 const COLOR_NODES = 0xddd600;
 
+// protocol-buffers
+// https://developers.google.com/protocol-buffers/docs/reference/javascript-generated
+// > deserializeBinary
+
+// protobuf.js
+// http://protobufjs.github.io/protobuf.js/Type.html#decodeDelimited
+
 (function () {
-  const b = document.getElementById('b');
-  b.addEventListener('click', async () => {
-    // https://wicg.github.io/file-system-access/#api-showopenfilepicker
-    const [handle] = await window.showOpenFilePicker({
-      multiple: false,
-      types: [
-        {
-          description: 'Choose trace file',
-          accept: {
-            'text/plain': ['.log']
-          },
-        }
-      ]
-    });
+ const b = document.getElementById('b');
+ b.addEventListener('click', async () => {
+   // https://wicg.github.io/file-system-access/#api-showopenfilepicker
+   const [handle] = await window.showOpenFilePicker({
+     multiple: false,
+     types: [
+       {
+         description: 'Choose trace file',
+         accept: {
+           'text/plain': ['.log']
+         },
+       }
+     ]
+   });
 
-    b.style.display = 'none';
+   b.style.display = 'none';
 
-    const file = await handle.getFile();
-    const text = await file.text();
+   const file = await handle.getFile();
+   console.dir(file);
 
-    console.dir(text);
-    init();
-  });
+   const ab = await file.arrayBuffer();
+   console.dir(ab);
+   const bytes = new Uint8Array(ab);
+   console.dir(bytes);
+
+   const root = await protobuf.load('person.proto');
+
+   const Person = root.lookupType('person.Person');
+
+   console.dir(Person.verify(bytes));
+   console.dir(Person.decode(bytes));
+
+   // init();
+ });
 })();
+
+// ****************
+// test
+// ****************
+// (async () => {
+//   const root = await protobuf.load('person.proto');
+//   const Person = root.lookupType('person.Person');
+//   const payload = {name: "aaaaaaaa"};
+//   console.dir(root);
+//   console.dir(Person);
+//   console.dir(Person.verify(payload));
+//   const msg = Person.create(payload);
+//   console.dir(msg);
+// })();
+
 
 class Node {
   constructor(id) {
