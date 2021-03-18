@@ -30,12 +30,20 @@ message Log {
     string recipient = 2;
     oneof message {
       FindNode find_node = 3;
+      Nodes nodes = 4;
     }
 
     // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#findnode-request-0x03
     message FindNode {
       string request_id = 1;
       repeated uint32 distances = 2;
+    }
+
+    // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#nodes-response-0x04
+    message Nodes {
+      string request_id = 1;
+      int32 total = 2;
+      repeated string nodes = 3;
     }
   }
 }

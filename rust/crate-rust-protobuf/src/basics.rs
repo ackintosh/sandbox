@@ -1,7 +1,7 @@
 use crate::rust_pb::person::Person;
-use protobuf::Message;
+use protobuf::{Message, RepeatedField};
 use std::io::Write;
-use crate::rust_pb::tracing::{Log, Log_SendWhoAreYou, Log_NodeStarted, Log_SendOrdinaryMessage_FindNode, Log_SendOrdinaryMessage};
+use crate::rust_pb::tracing::{Log, Log_SendWhoAreYou, Log_NodeStarted, Log_SendOrdinaryMessage_FindNode, Log_SendOrdinaryMessage, Log_SendOrdinaryMessage_Nodes};
 use protobuf::well_known_types::Timestamp;
 use chrono::prelude::*;
 
@@ -76,6 +76,11 @@ fn write_tracing() {
 
     std::thread::sleep(std::time::Duration::from_millis(3));
 
+    {
+        let log = nodes("node#2", "node#1");
+        write(log.write_length_delimited_to_bytes().unwrap(), FILE_TRACING);
+    }
+
     fn node_started(node_id: &str) -> Log {
         let mut node_started = Log_NodeStarted::new();
         node_started.set_node_id(node_id.into());
@@ -96,6 +101,23 @@ fn write_tracing() {
         send_orddinary_message.set_sender(sender.into());
         send_orddinary_message.set_recipient(recipient.into());
         send_orddinary_message.set_find_node(findnode);
+
+        let mut log = Log::new();
+        log.set_timestamp(timestamp());
+        log.set_send_ordinary_message(send_orddinary_message);
+        log
+    }
+
+    fn nodes(sender: &str, recipient: &str) -> Log {
+        let mut nodes = Log_SendOrdinaryMessage_Nodes::new();
+        nodes.set_request_id("***request_id***".into());
+        nodes.set_total(1);
+        nodes.set_nodes(RepeatedField::from_vec(vec!["nodes_xxx".into(), "nodes_yyy".into()]));
+
+        let mut send_orddinary_message = Log_SendOrdinaryMessage::new();
+        send_orddinary_message.set_sender(sender.into());
+        send_orddinary_message.set_recipient(recipient.into());
+        send_orddinary_message.set_nodes(nodes);
 
         let mut log = Log::new();
         log.set_timestamp(timestamp());

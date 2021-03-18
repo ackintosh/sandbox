@@ -133,7 +133,7 @@ class Node {
     const x = this.pos.x;
     const y = this.line.geometry.getAttribute('position').getY(step);
     const z = this.pos.z;
-    const text = createCapText(`Message<${message.name()}>\n${message.capText()}`, x, y, z, message.color());
+    const text = createCapText(`Ordinary Message<${message.name()}>\n${message.capText()}`, x, y, z, message.color());
     _scene.add(text);
   }
 
@@ -429,6 +429,9 @@ function processOrdinaryMessage(log, step) {
     case 'findNode':
       processFindNode(log, step);
       break;
+    case 'nodes':
+      processNodes(log, step);
+      break;
     default:
       console.error("unknown message type", log);
       break;
@@ -446,6 +449,20 @@ function processFindNode(log, step) {
       recipient,
       step,
       new Findnode(findNodeLog.requestId, findNodeLog.distances)
+  );
+}
+
+function processNodes(log, step) {
+  const ordinaryMessage = log.sendOrdinaryMessage;
+
+  const sender = _nodes.get(ordinaryMessage.sender);
+  const recipient = _nodes.get(ordinaryMessage.recipient);
+  const nodesLog = ordinaryMessage.nodes;
+
+  sender.sendMessage(
+      recipient,
+      step,
+      new Nodes(nodesLog.requestId, nodesLog.nodes)
   );
 }
 
