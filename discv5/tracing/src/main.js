@@ -311,6 +311,7 @@ function init() {
   let step = 0;
   // NOTE: `time` is a string value which consists of seconds and nanos.
   let [time] = _logs.first();
+  time = decreaseStringKey(time, IDLE_STEPS * TIME_PROGRESS_PER_STEP);
 
   animate();
 
@@ -397,6 +398,7 @@ function growExistingNodes(step) {
 function processLog(log, step) {
   switch (log.event) {
     case 'nodeStarted':
+      // TODO
       break;
     case 'sendWhoareyou':
       const sender = _nodes.get(log.sendWhoareyou.sender);
@@ -480,6 +482,7 @@ const _nodeIds = [];
 const MAX_STEPS = 10;
 
 const TIME_PROGRESS_PER_STEP = 1; // milli
+const IDLE_STEPS = 5;
 
 // TODO: 色の調整
 const COLOR_RANDOM = 0xffdd00;
@@ -587,6 +590,35 @@ function increaseStringKey(s, n) {
   let result = s;
   for (let i = 0; i < n; i++) {
     result = incrementStringKey(result)
+  }
+
+  return result;
+}
+
+function decrementStringKey(s) {
+  const n = s.length / 2;
+  const left = s.slice(0, n);
+  const right = s.slice(n);
+  const rightLength = right.length;
+
+  const newRight = parseInt(right) - 1;
+
+  if (newRight.toString().length === rightLength) {
+    return `${left}${newRight}`;
+  } else if (newRight === -1) {
+    const newLeft = parseInt(left) - 1;
+    const nineRight = (new Array(rightLength)).fill(9).join("");
+    return `${newLeft}${nineRight}`;
+  } else if (newRight.toString().length < rightLength) {
+    const newLeft = parseInt(left) - 1;
+    return `${newLeft}0${newRight.toString()}`;
+  }
+}
+
+function decreaseStringKey(s, n) {
+  let result = s;
+  for (let i = 0; i < n; i++) {
+    result = decrementStringKey(result)
   }
 
   return result;
