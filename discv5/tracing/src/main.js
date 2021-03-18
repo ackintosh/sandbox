@@ -29,7 +29,7 @@ class Node {
   }
 
   calculatePos() {
-    const angle = 360 / _totalNodeCount * _nodes.length;
+    const angle = 360 / _nodeIds.length * _nodes.length;
     const x = Math.cos(angle * Math.PI / 180) * _distance;
     const z = Math.sin(angle * Math.PI / 180) * _distance;
 
@@ -205,6 +205,8 @@ class Nodes {
 }
 
 function init() {
+  console.log("init --------------------->");
+  console.dir(_nodeIds);
   const width = window.innerWidth;
   const height = window.innerHeight;
 
@@ -266,11 +268,20 @@ function init() {
   // ライトもシーンに追加することで反映される
   _scene.add(light);
 
+  // ///////////////////////////////////////
+  // Node
+  // ///////////////////////////////////////
+  for (let i = 0; i < _nodeIds.length; i++) {
+    const node = new Node(_nodeIds[i]);
+    _nodes.push(node);
+    console.info("Node: " + node.id);
+  }
 
   // ///////////////////////////////////////
   // animate
   // ///////////////////////////////////////
   var step = 0;
+
   tick();
 
   function tick() {
@@ -286,12 +297,6 @@ function init() {
   function advanceTrace() {
     if (step >= MAX_STEPS) {
       return;
-    }
-
-    if (step < _totalNodeCount) { // FIXME
-      const node = new Node('node #' + step);
-		  _nodes.push(node);
-		  console.info("Added a node: " + node.id);
     }
 
     growExistingNodes(step);
@@ -403,7 +408,7 @@ const _nodes = [];
 const _font = new THREE.Font(require('three/examples/fonts/helvetiker_regular.typeface.json'));
 const _scale = 100;
 const _distance = 500;
-const _totalNodeCount = 3;
+const _nodeIds = [];
 
 // TODO: 調整
 const MAX_STEPS = 50;
@@ -465,7 +470,15 @@ const COLOR_NODES = 0xddd600;
 
     try {
       while (true) {
-        _logs.add(Log.decodeDelimited(reader));
+        const log = Log.decodeDelimited(reader);
+        _logs.add(log);
+
+        if (log.event === 'nodeStarted') {
+          _nodeIds.push(log.nodeStarted.nodeId);
+          console.dir(log.nodeStarted);
+        }
+        console.dir(log);
+        console.dir(log.event);
       }
     } catch (e) {
       if (e instanceof RangeError) {
