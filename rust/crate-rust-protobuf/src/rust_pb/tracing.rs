@@ -44,6 +44,7 @@ impl<'a> ::std::default::Default for &'a Log {
 pub enum Log_oneof_event {
     node_started(Log_NodeStarted),
     send_whoareyou(Log_SendWhoAreYou),
+    send_ordinary_message(Log_SendOrdinaryMessage),
 }
 
 impl Log {
@@ -181,6 +182,55 @@ impl Log {
             Log_SendWhoAreYou::new()
         }
     }
+
+    // .tracing.Log.SendOrdinaryMessage send_ordinary_message = 4;
+
+
+    pub fn get_send_ordinary_message(&self) -> &Log_SendOrdinaryMessage {
+        match self.event {
+            ::std::option::Option::Some(Log_oneof_event::send_ordinary_message(ref v)) => v,
+            _ => <Log_SendOrdinaryMessage as ::protobuf::Message>::default_instance(),
+        }
+    }
+    pub fn clear_send_ordinary_message(&mut self) {
+        self.event = ::std::option::Option::None;
+    }
+
+    pub fn has_send_ordinary_message(&self) -> bool {
+        match self.event {
+            ::std::option::Option::Some(Log_oneof_event::send_ordinary_message(..)) => true,
+            _ => false,
+        }
+    }
+
+    // Param is passed by value, moved
+    pub fn set_send_ordinary_message(&mut self, v: Log_SendOrdinaryMessage) {
+        self.event = ::std::option::Option::Some(Log_oneof_event::send_ordinary_message(v))
+    }
+
+    // Mutable pointer to the field.
+    pub fn mut_send_ordinary_message(&mut self) -> &mut Log_SendOrdinaryMessage {
+        if let ::std::option::Option::Some(Log_oneof_event::send_ordinary_message(_)) = self.event {
+        } else {
+            self.event = ::std::option::Option::Some(Log_oneof_event::send_ordinary_message(Log_SendOrdinaryMessage::new()));
+        }
+        match self.event {
+            ::std::option::Option::Some(Log_oneof_event::send_ordinary_message(ref mut v)) => v,
+            _ => panic!(),
+        }
+    }
+
+    // Take field
+    pub fn take_send_ordinary_message(&mut self) -> Log_SendOrdinaryMessage {
+        if self.has_send_ordinary_message() {
+            match self.event.take() {
+                ::std::option::Option::Some(Log_oneof_event::send_ordinary_message(v)) => v,
+                _ => panic!(),
+            }
+        } else {
+            Log_SendOrdinaryMessage::new()
+        }
+    }
 }
 
 impl ::protobuf::Message for Log {
@@ -196,6 +246,11 @@ impl ::protobuf::Message for Log {
             }
         }
         if let Some(Log_oneof_event::send_whoareyou(ref v)) = self.event {
+            if !v.is_initialized() {
+                return false;
+            }
+        }
+        if let Some(Log_oneof_event::send_ordinary_message(ref v)) = self.event {
             if !v.is_initialized() {
                 return false;
             }
@@ -221,6 +276,12 @@ impl ::protobuf::Message for Log {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
                     self.event = ::std::option::Option::Some(Log_oneof_event::send_whoareyou(is.read_message()?));
+                },
+                4 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.event = ::std::option::Option::Some(Log_oneof_event::send_ordinary_message(is.read_message()?));
                 },
                 _ => {
                     ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
@@ -248,6 +309,10 @@ impl ::protobuf::Message for Log {
                     let len = v.compute_size();
                     my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
                 },
+                &Log_oneof_event::send_ordinary_message(ref v) => {
+                    let len = v.compute_size();
+                    my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
+                },
             };
         }
         my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
@@ -270,6 +335,11 @@ impl ::protobuf::Message for Log {
                 },
                 &Log_oneof_event::send_whoareyou(ref v) => {
                     os.write_tag(3, ::protobuf::wire_format::WireTypeLengthDelimited)?;
+                    os.write_raw_varint32(v.get_cached_size())?;
+                    v.write_to_with_cached_sizes(os)?;
+                },
+                &Log_oneof_event::send_ordinary_message(ref v) => {
+                    os.write_tag(4, ::protobuf::wire_format::WireTypeLengthDelimited)?;
                     os.write_raw_varint32(v.get_cached_size())?;
                     v.write_to_with_cached_sizes(os)?;
                 },
@@ -328,6 +398,11 @@ impl ::protobuf::Message for Log {
                 Log::has_send_whoareyou,
                 Log::get_send_whoareyou,
             ));
+            fields.push(::protobuf::reflect::accessor::make_singular_message_accessor::<_, Log_SendOrdinaryMessage>(
+                "send_ordinary_message",
+                Log::has_send_ordinary_message,
+                Log::get_send_ordinary_message,
+            ));
             ::protobuf::reflect::MessageDescriptor::new_pb_name::<Log>(
                 "Log",
                 fields,
@@ -345,6 +420,7 @@ impl ::protobuf::Message for Log {
 impl ::protobuf::Clear for Log {
     fn clear(&mut self) {
         self.timestamp.clear();
+        self.event = ::std::option::Option::None;
         self.event = ::std::option::Option::None;
         self.event = ::std::option::Option::None;
         self.unknown_fields.clear();
@@ -793,17 +869,515 @@ impl ::protobuf::reflect::ProtobufValue for Log_SendWhoAreYou {
     }
 }
 
+#[derive(PartialEq,Clone,Default)]
+pub struct Log_SendOrdinaryMessage {
+    // message fields
+    pub sender: ::std::string::String,
+    pub recipient: ::std::string::String,
+    // message oneof groups
+    pub message: ::std::option::Option<Log_SendOrdinaryMessage_oneof_message>,
+    // special fields
+    pub unknown_fields: ::protobuf::UnknownFields,
+    pub cached_size: ::protobuf::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a Log_SendOrdinaryMessage {
+    fn default() -> &'a Log_SendOrdinaryMessage {
+        <Log_SendOrdinaryMessage as ::protobuf::Message>::default_instance()
+    }
+}
+
+#[derive(Clone,PartialEq,Debug)]
+pub enum Log_SendOrdinaryMessage_oneof_message {
+    find_node(Log_SendOrdinaryMessage_FindNode),
+}
+
+impl Log_SendOrdinaryMessage {
+    pub fn new() -> Log_SendOrdinaryMessage {
+        ::std::default::Default::default()
+    }
+
+    // string sender = 1;
+
+
+    pub fn get_sender(&self) -> &str {
+        &self.sender
+    }
+    pub fn clear_sender(&mut self) {
+        self.sender.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_sender(&mut self, v: ::std::string::String) {
+        self.sender = v;
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_sender(&mut self) -> &mut ::std::string::String {
+        &mut self.sender
+    }
+
+    // Take field
+    pub fn take_sender(&mut self) -> ::std::string::String {
+        ::std::mem::replace(&mut self.sender, ::std::string::String::new())
+    }
+
+    // string recipient = 2;
+
+
+    pub fn get_recipient(&self) -> &str {
+        &self.recipient
+    }
+    pub fn clear_recipient(&mut self) {
+        self.recipient.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_recipient(&mut self, v: ::std::string::String) {
+        self.recipient = v;
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_recipient(&mut self) -> &mut ::std::string::String {
+        &mut self.recipient
+    }
+
+    // Take field
+    pub fn take_recipient(&mut self) -> ::std::string::String {
+        ::std::mem::replace(&mut self.recipient, ::std::string::String::new())
+    }
+
+    // .tracing.Log.SendOrdinaryMessage.FindNode find_node = 3;
+
+
+    pub fn get_find_node(&self) -> &Log_SendOrdinaryMessage_FindNode {
+        match self.message {
+            ::std::option::Option::Some(Log_SendOrdinaryMessage_oneof_message::find_node(ref v)) => v,
+            _ => <Log_SendOrdinaryMessage_FindNode as ::protobuf::Message>::default_instance(),
+        }
+    }
+    pub fn clear_find_node(&mut self) {
+        self.message = ::std::option::Option::None;
+    }
+
+    pub fn has_find_node(&self) -> bool {
+        match self.message {
+            ::std::option::Option::Some(Log_SendOrdinaryMessage_oneof_message::find_node(..)) => true,
+            _ => false,
+        }
+    }
+
+    // Param is passed by value, moved
+    pub fn set_find_node(&mut self, v: Log_SendOrdinaryMessage_FindNode) {
+        self.message = ::std::option::Option::Some(Log_SendOrdinaryMessage_oneof_message::find_node(v))
+    }
+
+    // Mutable pointer to the field.
+    pub fn mut_find_node(&mut self) -> &mut Log_SendOrdinaryMessage_FindNode {
+        if let ::std::option::Option::Some(Log_SendOrdinaryMessage_oneof_message::find_node(_)) = self.message {
+        } else {
+            self.message = ::std::option::Option::Some(Log_SendOrdinaryMessage_oneof_message::find_node(Log_SendOrdinaryMessage_FindNode::new()));
+        }
+        match self.message {
+            ::std::option::Option::Some(Log_SendOrdinaryMessage_oneof_message::find_node(ref mut v)) => v,
+            _ => panic!(),
+        }
+    }
+
+    // Take field
+    pub fn take_find_node(&mut self) -> Log_SendOrdinaryMessage_FindNode {
+        if self.has_find_node() {
+            match self.message.take() {
+                ::std::option::Option::Some(Log_SendOrdinaryMessage_oneof_message::find_node(v)) => v,
+                _ => panic!(),
+            }
+        } else {
+            Log_SendOrdinaryMessage_FindNode::new()
+        }
+    }
+}
+
+impl ::protobuf::Message for Log_SendOrdinaryMessage {
+    fn is_initialized(&self) -> bool {
+        if let Some(Log_SendOrdinaryMessage_oneof_message::find_node(ref v)) = self.message {
+            if !v.is_initialized() {
+                return false;
+            }
+        }
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                1 => {
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.sender)?;
+                },
+                2 => {
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.recipient)?;
+                },
+                3 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.message = ::std::option::Option::Some(Log_SendOrdinaryMessage_oneof_message::find_node(is.read_message()?));
+                },
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        if !self.sender.is_empty() {
+            my_size += ::protobuf::rt::string_size(1, &self.sender);
+        }
+        if !self.recipient.is_empty() {
+            my_size += ::protobuf::rt::string_size(2, &self.recipient);
+        }
+        if let ::std::option::Option::Some(ref v) = self.message {
+            match v {
+                &Log_SendOrdinaryMessage_oneof_message::find_node(ref v) => {
+                    let len = v.compute_size();
+                    my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
+                },
+            };
+        }
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        if !self.sender.is_empty() {
+            os.write_string(1, &self.sender)?;
+        }
+        if !self.recipient.is_empty() {
+            os.write_string(2, &self.recipient)?;
+        }
+        if let ::std::option::Option::Some(ref v) = self.message {
+            match v {
+                &Log_SendOrdinaryMessage_oneof_message::find_node(ref v) => {
+                    os.write_tag(3, ::protobuf::wire_format::WireTypeLengthDelimited)?;
+                    os.write_raw_varint32(v.get_cached_size())?;
+                    v.write_to_with_cached_sizes(os)?;
+                },
+            };
+        }
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn as_any(&self) -> &dyn (::std::any::Any) {
+        self as &dyn (::std::any::Any)
+    }
+    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
+        self as &mut dyn (::std::any::Any)
+    }
+    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+        self
+    }
+
+    fn descriptor(&self) -> &'static ::protobuf::reflect::MessageDescriptor {
+        Self::descriptor_static()
+    }
+
+    fn new() -> Log_SendOrdinaryMessage {
+        Log_SendOrdinaryMessage::new()
+    }
+
+    fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
+        descriptor.get(|| {
+            let mut fields = ::std::vec::Vec::new();
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
+                "sender",
+                |m: &Log_SendOrdinaryMessage| { &m.sender },
+                |m: &mut Log_SendOrdinaryMessage| { &mut m.sender },
+            ));
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
+                "recipient",
+                |m: &Log_SendOrdinaryMessage| { &m.recipient },
+                |m: &mut Log_SendOrdinaryMessage| { &mut m.recipient },
+            ));
+            fields.push(::protobuf::reflect::accessor::make_singular_message_accessor::<_, Log_SendOrdinaryMessage_FindNode>(
+                "find_node",
+                Log_SendOrdinaryMessage::has_find_node,
+                Log_SendOrdinaryMessage::get_find_node,
+            ));
+            ::protobuf::reflect::MessageDescriptor::new_pb_name::<Log_SendOrdinaryMessage>(
+                "Log.SendOrdinaryMessage",
+                fields,
+                file_descriptor_proto()
+            )
+        })
+    }
+
+    fn default_instance() -> &'static Log_SendOrdinaryMessage {
+        static instance: ::protobuf::rt::LazyV2<Log_SendOrdinaryMessage> = ::protobuf::rt::LazyV2::INIT;
+        instance.get(Log_SendOrdinaryMessage::new)
+    }
+}
+
+impl ::protobuf::Clear for Log_SendOrdinaryMessage {
+    fn clear(&mut self) {
+        self.sender.clear();
+        self.recipient.clear();
+        self.message = ::std::option::Option::None;
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for Log_SendOrdinaryMessage {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for Log_SendOrdinaryMessage {
+    fn as_ref(&self) -> ::protobuf::reflect::ReflectValueRef {
+        ::protobuf::reflect::ReflectValueRef::Message(self)
+    }
+}
+
+#[derive(PartialEq,Clone,Default)]
+pub struct Log_SendOrdinaryMessage_FindNode {
+    // message fields
+    pub request_id: ::std::string::String,
+    pub distances: ::std::vec::Vec<u32>,
+    // special fields
+    pub unknown_fields: ::protobuf::UnknownFields,
+    pub cached_size: ::protobuf::CachedSize,
+}
+
+impl<'a> ::std::default::Default for &'a Log_SendOrdinaryMessage_FindNode {
+    fn default() -> &'a Log_SendOrdinaryMessage_FindNode {
+        <Log_SendOrdinaryMessage_FindNode as ::protobuf::Message>::default_instance()
+    }
+}
+
+impl Log_SendOrdinaryMessage_FindNode {
+    pub fn new() -> Log_SendOrdinaryMessage_FindNode {
+        ::std::default::Default::default()
+    }
+
+    // string request_id = 1;
+
+
+    pub fn get_request_id(&self) -> &str {
+        &self.request_id
+    }
+    pub fn clear_request_id(&mut self) {
+        self.request_id.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_request_id(&mut self, v: ::std::string::String) {
+        self.request_id = v;
+    }
+
+    // Mutable pointer to the field.
+    // If field is not initialized, it is initialized with default value first.
+    pub fn mut_request_id(&mut self) -> &mut ::std::string::String {
+        &mut self.request_id
+    }
+
+    // Take field
+    pub fn take_request_id(&mut self) -> ::std::string::String {
+        ::std::mem::replace(&mut self.request_id, ::std::string::String::new())
+    }
+
+    // repeated uint32 distances = 2;
+
+
+    pub fn get_distances(&self) -> &[u32] {
+        &self.distances
+    }
+    pub fn clear_distances(&mut self) {
+        self.distances.clear();
+    }
+
+    // Param is passed by value, moved
+    pub fn set_distances(&mut self, v: ::std::vec::Vec<u32>) {
+        self.distances = v;
+    }
+
+    // Mutable pointer to the field.
+    pub fn mut_distances(&mut self) -> &mut ::std::vec::Vec<u32> {
+        &mut self.distances
+    }
+
+    // Take field
+    pub fn take_distances(&mut self) -> ::std::vec::Vec<u32> {
+        ::std::mem::replace(&mut self.distances, ::std::vec::Vec::new())
+    }
+}
+
+impl ::protobuf::Message for Log_SendOrdinaryMessage_FindNode {
+    fn is_initialized(&self) -> bool {
+        true
+    }
+
+    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        while !is.eof()? {
+            let (field_number, wire_type) = is.read_tag_unpack()?;
+            match field_number {
+                1 => {
+                    ::protobuf::rt::read_singular_proto3_string_into(wire_type, is, &mut self.request_id)?;
+                },
+                2 => {
+                    ::protobuf::rt::read_repeated_uint32_into(wire_type, is, &mut self.distances)?;
+                },
+                _ => {
+                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
+                },
+            };
+        }
+        ::std::result::Result::Ok(())
+    }
+
+    // Compute sizes of nested messages
+    #[allow(unused_variables)]
+    fn compute_size(&self) -> u32 {
+        let mut my_size = 0;
+        if !self.request_id.is_empty() {
+            my_size += ::protobuf::rt::string_size(1, &self.request_id);
+        }
+        for value in &self.distances {
+            my_size += ::protobuf::rt::value_size(2, *value, ::protobuf::wire_format::WireTypeVarint);
+        };
+        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
+        self.cached_size.set(my_size);
+        my_size
+    }
+
+    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::ProtobufResult<()> {
+        if !self.request_id.is_empty() {
+            os.write_string(1, &self.request_id)?;
+        }
+        for v in &self.distances {
+            os.write_uint32(2, *v)?;
+        };
+        os.write_unknown_fields(self.get_unknown_fields())?;
+        ::std::result::Result::Ok(())
+    }
+
+    fn get_cached_size(&self) -> u32 {
+        self.cached_size.get()
+    }
+
+    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
+        &self.unknown_fields
+    }
+
+    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
+        &mut self.unknown_fields
+    }
+
+    fn as_any(&self) -> &dyn (::std::any::Any) {
+        self as &dyn (::std::any::Any)
+    }
+    fn as_any_mut(&mut self) -> &mut dyn (::std::any::Any) {
+        self as &mut dyn (::std::any::Any)
+    }
+    fn into_any(self: ::std::boxed::Box<Self>) -> ::std::boxed::Box<dyn (::std::any::Any)> {
+        self
+    }
+
+    fn descriptor(&self) -> &'static ::protobuf::reflect::MessageDescriptor {
+        Self::descriptor_static()
+    }
+
+    fn new() -> Log_SendOrdinaryMessage_FindNode {
+        Log_SendOrdinaryMessage_FindNode::new()
+    }
+
+    fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
+        static descriptor: ::protobuf::rt::LazyV2<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::LazyV2::INIT;
+        descriptor.get(|| {
+            let mut fields = ::std::vec::Vec::new();
+            fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeString>(
+                "request_id",
+                |m: &Log_SendOrdinaryMessage_FindNode| { &m.request_id },
+                |m: &mut Log_SendOrdinaryMessage_FindNode| { &mut m.request_id },
+            ));
+            fields.push(::protobuf::reflect::accessor::make_vec_accessor::<_, ::protobuf::types::ProtobufTypeUint32>(
+                "distances",
+                |m: &Log_SendOrdinaryMessage_FindNode| { &m.distances },
+                |m: &mut Log_SendOrdinaryMessage_FindNode| { &mut m.distances },
+            ));
+            ::protobuf::reflect::MessageDescriptor::new_pb_name::<Log_SendOrdinaryMessage_FindNode>(
+                "Log.SendOrdinaryMessage.FindNode",
+                fields,
+                file_descriptor_proto()
+            )
+        })
+    }
+
+    fn default_instance() -> &'static Log_SendOrdinaryMessage_FindNode {
+        static instance: ::protobuf::rt::LazyV2<Log_SendOrdinaryMessage_FindNode> = ::protobuf::rt::LazyV2::INIT;
+        instance.get(Log_SendOrdinaryMessage_FindNode::new)
+    }
+}
+
+impl ::protobuf::Clear for Log_SendOrdinaryMessage_FindNode {
+    fn clear(&mut self) {
+        self.request_id.clear();
+        self.distances.clear();
+        self.unknown_fields.clear();
+    }
+}
+
+impl ::std::fmt::Debug for Log_SendOrdinaryMessage_FindNode {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+        ::protobuf::text_format::fmt(self, f)
+    }
+}
+
+impl ::protobuf::reflect::ProtobufValue for Log_SendOrdinaryMessage_FindNode {
+    fn as_ref(&self) -> ::protobuf::reflect::ReflectValueRef {
+        ::protobuf::reflect::ReflectValueRef::Message(self)
+    }
+}
+
 static file_descriptor_proto_data: &'static [u8] = b"\
     \n\x13proto/tracing.proto\x12\x07tracing\x1a\x1fgoogle/protobuf/timestam\
-    p.proto\"\xef\x02\n\x03Log\x128\n\ttimestamp\x18\x01\x20\x01(\x0b2\x1a.g\
+    p.proto\"\xb3\x05\n\x03Log\x128\n\ttimestamp\x18\x01\x20\x01(\x0b2\x1a.g\
     oogle.protobuf.TimestampR\ttimestamp\x12=\n\x0cnode_started\x18\x02\x20\
     \x01(\x0b2\x18.tracing.Log.NodeStartedH\0R\x0bnodeStarted\x12C\n\x0esend\
     _whoareyou\x18\x03\x20\x01(\x0b2\x1a.tracing.Log.SendWhoAreYouH\0R\rsend\
-    Whoareyou\x1a&\n\x0bNodeStarted\x12\x17\n\x07node_id\x18\x01\x20\x01(\tR\
-    \x06nodeId\x1ay\n\rSendWhoAreYou\x12\x16\n\x06sender\x18\x01\x20\x01(\tR\
-    \x06sender\x12\x1c\n\trecipient\x18\x02\x20\x01(\tR\trecipient\x12\x19\n\
-    \x08id_nonce\x18\x03\x20\x01(\x04R\x07idNonce\x12\x17\n\x07enr_seq\x18\
-    \x04\x20\x01(\x04R\x06enrSeqB\x07\n\x05eventb\x06proto3\
+    Whoareyou\x12V\n\x15send_ordinary_message\x18\x04\x20\x01(\x0b2\x20.trac\
+    ing.Log.SendOrdinaryMessageH\0R\x13sendOrdinaryMessage\x1a&\n\x0bNodeSta\
+    rted\x12\x17\n\x07node_id\x18\x01\x20\x01(\tR\x06nodeId\x1ay\n\rSendWhoA\
+    reYou\x12\x16\n\x06sender\x18\x01\x20\x01(\tR\x06sender\x12\x1c\n\trecip\
+    ient\x18\x02\x20\x01(\tR\trecipient\x12\x19\n\x08id_nonce\x18\x03\x20\
+    \x01(\x04R\x07idNonce\x12\x17\n\x07enr_seq\x18\x04\x20\x01(\x04R\x06enrS\
+    eq\x1a\xe9\x01\n\x13SendOrdinaryMessage\x12\x16\n\x06sender\x18\x01\x20\
+    \x01(\tR\x06sender\x12\x1c\n\trecipient\x18\x02\x20\x01(\tR\trecipient\
+    \x12H\n\tfind_node\x18\x03\x20\x01(\x0b2).tracing.Log.SendOrdinaryMessag\
+    e.FindNodeH\0R\x08findNode\x1aG\n\x08FindNode\x12\x1d\n\nrequest_id\x18\
+    \x01\x20\x01(\tR\trequestId\x12\x1c\n\tdistances\x18\x02\x20\x03(\rR\tdi\
+    stancesB\t\n\x07messageB\x07\n\x05eventb\x06proto3\
 ";
 
 static file_descriptor_proto_lazy: ::protobuf::rt::LazyV2<::protobuf::descriptor::FileDescriptorProto> = ::protobuf::rt::LazyV2::INIT;

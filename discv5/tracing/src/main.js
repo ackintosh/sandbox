@@ -408,6 +408,9 @@ function processLog(log, step) {
     case 'nodeStarted':
       processNodeStarted(log, step);
       break;
+    case 'sendOrdinaryMessage':
+      processOrdinaryMessage(log, step);
+      break;
     case 'sendWhoareyou':
       processWhoareyou(log, step)
       break;
@@ -418,8 +421,32 @@ function processLog(log, step) {
 
 function processNodeStarted(log, step) {
   const node = _nodes.get(log.nodeStarted.nodeId);
-  console.dir(node);
   node.start(step);
+}
+
+function processOrdinaryMessage(log, step) {
+  switch (log.sendOrdinaryMessage.message) {
+    case 'findNode':
+      processFindNode(log, step);
+      break;
+    default:
+      console.error("unknown message type", log);
+      break;
+  }
+}
+
+function processFindNode(log, step) {
+  const ordinaryMessage = log.sendOrdinaryMessage;
+
+  const sender = _nodes.get(ordinaryMessage.sender);
+  const recipient = _nodes.get(ordinaryMessage.recipient);
+  const findNodeLog = ordinaryMessage.findNode;
+
+  sender.sendMessage(
+      recipient,
+      step,
+      new Findnode(findNodeLog.requestId, findNodeLog.distances)
+  );
 }
 
 function processWhoareyou(log, step) {
@@ -493,7 +520,7 @@ const _distance = 500;
 const _nodeIds = [];
 
 // TODO: 調整
-const MAX_STEPS = 100;
+const MAX_STEPS = 30;
 
 const TIME_PROGRESS_PER_STEP = 3; // milli
 const IDLE_STEPS = 5;

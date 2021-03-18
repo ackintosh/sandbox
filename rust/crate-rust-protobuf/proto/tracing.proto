@@ -9,6 +9,7 @@ message Log {
   oneof event {
     NodeStarted node_started = 2;
     SendWhoAreYou send_whoareyou = 3;
+    SendOrdinaryMessage send_ordinary_message = 4;
   }
 
   message NodeStarted {
@@ -21,5 +22,20 @@ message Log {
     string recipient = 2;
     uint64 id_nonce = 3; // TODO: uint128
     uint64 enr_seq = 4;
+  }
+
+  // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#ordinary-message-packet-flag--0
+  message SendOrdinaryMessage {
+    string sender = 1;
+    string recipient = 2;
+    oneof message {
+      FindNode find_node = 3;
+    }
+
+    // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#findnode-request-0x03
+    message FindNode {
+      string request_id = 1;
+      repeated uint32 distances = 2;
+    }
   }
 }
