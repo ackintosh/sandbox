@@ -107,6 +107,14 @@ class Node {
     _scene.add(id);
   }
 
+  start(step) {
+    const x = this.pos.x;
+    const y = this.line.geometry.getAttribute('position').getY(step);
+    const z = this.pos.z;
+    const text = createCapText('<start>', x, y, z, COLOR_START);
+    _scene.add(text);
+  }
+
   sendRandomMessage(toNode, step) {
     const arrow = createArrow(this, toNode, step, COLOR_RANDOM);
     _scene.add(arrow);
@@ -114,7 +122,7 @@ class Node {
     const x = this.pos.x;
     const y = this.line.geometry.getAttribute('position').getY(step);
     const z = this.pos.z;
-	  const text = createCapText('Random Message', x, y, z, COLOR_RANDOM);
+    const text = createCapText('Random Message', x, y, z, COLOR_RANDOM);
     _scene.add(text);
   }
 
@@ -125,7 +133,7 @@ class Node {
     const x = this.pos.x;
     const y = this.line.geometry.getAttribute('position').getY(step);
     const z = this.pos.z;
-	  const text = createCapText(`Message<${message.name()}>\n${message.capText()}`, x, y, z, message.color());
+    const text = createCapText(`Message<${message.name()}>\n${message.capText()}`, x, y, z, message.color());
     _scene.add(text);
   }
 
@@ -136,7 +144,7 @@ class Node {
     const x = this.pos.x;
     const y = this.line.geometry.getAttribute('position').getY(step);
     const z = this.pos.z;
-	  const text = createCapText(`WHOAREYOU :\n  ${idNonce}\n  ${enrSeq}`, x, y, z, COLOR_WHOAREYOU);
+    const text = createCapText(`WHOAREYOU :\n  ${idNonce}\n  ${enrSeq}`, x, y, z, COLOR_WHOAREYOU);
     _scene.add(text);
   }
 
@@ -147,7 +155,7 @@ class Node {
     const x = this.pos.x;
     const y = this.line.geometry.getAttribute('position').getY(step);
     const z = this.pos.z;
-	  const text = createCapText(`Handshake Message<${message.name()}>\n${message.capText()}`, x, y, z, message.color());
+    const text = createCapText(`Handshake Message<${message.name()}>\n${message.capText()}`, x, y, z, message.color());
     _scene.add(text);
   }
 }
@@ -398,25 +406,31 @@ function growExistingNodes(step) {
 function processLog(log, step) {
   switch (log.event) {
     case 'nodeStarted':
-      // TODO
+      processNodeStarted(log, step);
       break;
     case 'sendWhoareyou':
-      const sender = _nodes.get(log.sendWhoareyou.sender);
-      const recipient = _nodes.get(log.sendWhoareyou.recipient);
-      sender.sendWhoAreYou(
-          recipient,
-          step,
-          log.sendWhoareyou.idNonce,
-          log.sendWhoareyou.enrSeq
-      );
+      processWhoareyou(log, step)
       break;
     default:
       console.error("unknown event", log);
   }
 }
 
-function processNodeStarted(log) {
+function processNodeStarted(log, step) {
+  const node = _nodes.get(log.nodeStarted.nodeId);
+  console.dir(node);
+  node.start(step);
+}
 
+function processWhoareyou(log, step) {
+  const sender = _nodes.get(log.sendWhoareyou.sender);
+  const recipient = _nodes.get(log.sendWhoareyou.recipient);
+  sender.sendWhoAreYou(
+      recipient,
+      step,
+      log.sendWhoareyou.idNonce,
+      log.sendWhoareyou.enrSeq
+  );
 }
 
 // create cap text
@@ -485,6 +499,7 @@ const TIME_PROGRESS_PER_STEP = 1; // milli
 const IDLE_STEPS = 5;
 
 // TODO: 色の調整
+const COLOR_START = 0xffddff;
 const COLOR_RANDOM = 0xffdd00;
 const COLOR_WHOAREYOU = 0x00dd00;
 const COLOR_PING = 0x0000ff;
