@@ -7,7 +7,7 @@ class Logs {
   }
 
   add(log) {
-    const t = `${log.timestamp.seconds}${log.timestamp.nanos}`;
+    const t = log.key();
 
     if (this.logs.has(t)) {
       const elements = this.logs.get(t);
@@ -31,7 +31,21 @@ class Logs {
   }
 
   first() {
-      return this.logs.entries().next();
+      return this.logs.entries().next().value;
+  }
+
+  slice(time, progress) {
+    let slice = [];
+
+    let k = time;
+    for (let i = 0; i < progress; i++) {
+      if (this.logs.has(k)) {
+          slice = slice.concat(this.logs.get(k));
+      }
+      k = incrementStringKey(k);
+    }
+
+    return slice;
   }
 }
 
@@ -221,8 +235,6 @@ class Nodes {
 }
 
 function init() {
-  console.log("init --------------------->");
-  console.dir(_nodeIds);
   const width = window.innerWidth;
   const height = window.innerHeight;
 
@@ -297,6 +309,8 @@ function init() {
   // animate
   // ///////////////////////////////////////
   let step = 0;
+  // NOTE: `time` is a string value which consists of seconds and nanos.
+  let [time] = _logs.first();
 
   animate();
 
@@ -314,6 +328,18 @@ function init() {
     if (step >= MAX_STEPS) {
       return;
     }
+
+
+
+    const logs = _logs.slice(
+        time,
+        TIME_PROGRESS_PER_STEP
+    );
+
+    console.dir("*********");
+    console.dir(step);
+    console.dir(time);
+    console.dir(logs);
 
     growExistingNodes(step);
 
@@ -354,6 +380,7 @@ function init() {
     }
 
     step += 1;
+    time = increaseStringKey(time, TIME_PROGRESS_PER_STEP);
   }
 
   // grow existing nodes along the time axis
@@ -429,6 +456,8 @@ const _nodeIds = [];
 // TODO: 調整
 const MAX_STEPS = 50;
 
+const TIME_PROGRESS_PER_STEP = 1000000; // nano
+
 // TODO: 色の調整
 const COLOR_RANDOM = 0xffdd00;
 const COLOR_WHOAREYOU = 0x00dd00;
@@ -475,7 +504,11 @@ const COLOR_NODES = 0xddd600;
     // console.dir(reader);
 
     const root = await protobuf.load('tracing.proto');
-    const Log = root.lookupType('tracing.Log');
+    let Log = root.lookupType('tracing.Log').ctor;
+    // extend protobuf with custom functionality
+    Log.prototype.key = function () {
+      return `${this.timestamp.seconds}${this.timestamp.nanos}`;
+    }
 
     const reason = Log.verify(bytes);
     if (reason != null) {
@@ -509,6 +542,31 @@ const COLOR_NODES = 0xddd600;
     init();
   });
 })();
+
+function incrementStringKey(s) {
+  const n = s.length / 2;
+  const left = s.slice(0, n);
+  const right = s.slice(n);
+  const rightLength = right.length;
+
+  const newRight = parseInt(right) + 1;
+
+  if (newRight.toString().length > rightLength) {
+    const newLeft = parseInt(left) + 1;
+    return `${newLeft}${newRight.toString().slice(rightLength * -1)}`;
+  } else {
+    return `${left}${newRight}`;
+  }
+}
+
+function increaseStringKey(s, n) {
+  let result = s;
+  for (let i = 0; i < n; i++) {
+    result = incrementStringKey(result)
+  }
+
+  return result;
+}
 
 // ****************
 // test
