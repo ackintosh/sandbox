@@ -493,9 +493,9 @@ const _distance = 500;
 const _nodeIds = [];
 
 // TODO: 調整
-const MAX_STEPS = 10;
+const MAX_STEPS = 100;
 
-const TIME_PROGRESS_PER_STEP = 1; // milli
+const TIME_PROGRESS_PER_STEP = 3; // milli
 const IDLE_STEPS = 5;
 
 // TODO: 色の調整
@@ -597,7 +597,9 @@ function incrementStringKey(s) {
     const newLeft = parseInt(left) + 1;
     return `${newLeft}${newRight.toString().slice(rightLength * -1)}`;
   } else {
-    return `${left}${newRight}`;
+    const zeros = (new Array(rightLength)).fill(0).join("");
+    const zeroPrefixedRight = (zeros + newRight.toString()).slice(rightLength * -1);
+    return `${left}${zeroPrefixedRight}`;
   }
 }
 
@@ -625,8 +627,9 @@ function decrementStringKey(s) {
     const nineRight = (new Array(rightLength)).fill(9).join("");
     return `${newLeft}${nineRight}`;
   } else if (newRight.toString().length < rightLength) {
-    const newLeft = parseInt(left) - 1;
-    return `${newLeft}0${newRight.toString()}`;
+    const zeros = (new Array(rightLength)).fill(0).join("");
+    const zeroPrefixedRight = (zeros + newRight.toString()).slice(rightLength * -1);
+    return `${left}${zeroPrefixedRight}`;
   }
 }
 
