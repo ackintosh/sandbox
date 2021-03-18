@@ -15,6 +15,7 @@ fn main() {
     protoc_rust::Codegen::new()
         .out_dir(out_dir)
         .input("proto/person.proto")
+        .input("proto/tracing.proto")
         .customize(Customize {
             gen_mod_rs: Some(true),
             ..Default::default()

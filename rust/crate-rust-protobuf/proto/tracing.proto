@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package tracing;
+
+message Log {
+  google.protobuf.Timestamp timestamp = 1;
+  oneof event {
+    SendWhoAreYou send_whoareyou = 2;
+  }
+
+  // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#whoareyou-packet-flag--1
+  message SendWhoAreYou {
+    string sender = 1;
+    string recipient = 2;
+    uint64 id_nonce = 3; // TODO: uint128
+    uint64 enr_seq = 4;
+  }
+}

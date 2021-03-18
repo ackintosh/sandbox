@@ -4,6 +4,7 @@ import { Reader } from "protobufjs";
 const _scene = new THREE.Scene();
 const Stats = require('stats-js');
 const protobuf = require('protobufjs');
+const _logs = [];
 const _nodes = [];
 const _font = new THREE.Font(require('three/examples/fonts/helvetiker_regular.typeface.json'));
 const _scale = 100;
@@ -31,12 +32,13 @@ const COLOR_NODES = 0xddd600;
 (function () {
  const b = document.getElementById('b');
  b.addEventListener('click', async () => {
+   // https://developer.mozilla.org/en-US/docs/Web/API/Window/showOpenFilePicker
    // https://wicg.github.io/file-system-access/#api-showopenfilepicker
    const [handle] = await window.showOpenFilePicker({
      multiple: false,
      types: [
        {
-         description: 'Choose trace file',
+         description: 'trace file',
          accept: {
            'text/plain': ['.log']
          },
@@ -47,24 +49,41 @@ const COLOR_NODES = 0xddd600;
    b.style.display = 'none';
 
    const file = await handle.getFile();
-   console.dir(file);
+   // console.dir(file);
 
    const ab = await file.arrayBuffer();
-   console.dir(ab);
+   // console.dir(ab);
    const bytes = new Uint8Array(ab);
-   console.dir(bytes);
+   // console.dir(bytes);
 
    const reader = Reader.create(bytes);
-   console.dir(reader);
+   // console.dir(reader);
 
-   const root = await protobuf.load('person.proto');
+   const root = await protobuf.load('tracing.proto');
+   const Log = root.lookupType('tracing.Log');
 
-   const Person = root.lookupType('person.Person');
-   // console.dir(Person.verify(bytes));
-   console.dir(Person.decodeDelimited(reader));
-   console.dir(Person.decodeDelimited(reader));
+   const reason = Log.verify(bytes);
+   if (reason != null) {
+     console.log(reason);
+     alert(reason);
+     return;
+   }
 
-   // init();
+   try {
+     while (true) {
+       _logs.push(Log.decodeDelimited(reader));
+     }
+   } catch (e) {
+     if (e instanceof RangeError) {
+       console.log("decoding has done");
+     } else {
+       throw e;
+     }
+   }
+
+   console.dir(_logs);
+
+   init();
  });
 })();
 

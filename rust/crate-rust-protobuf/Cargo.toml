@@ -13,3 +13,4 @@ protoc-rust = "2.22.0"
 
 [dependencies]
 protobuf = "2.22.0"
+chrono = "0.4"
