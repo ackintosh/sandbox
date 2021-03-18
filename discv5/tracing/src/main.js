@@ -59,7 +59,7 @@ class Node {
   }
 
   calculatePos() {
-    const angle = 360 / _nodeIds.length * _nodes.length;
+    const angle = 360 / _nodeIds.length * _nodes.size;
     const x = Math.cos(angle * Math.PI / 180) * _distance;
     const z = Math.sin(angle * Math.PI / 180) * _distance;
 
@@ -301,7 +301,7 @@ function init() {
   // ///////////////////////////////////////
   for (let i = 0; i < _nodeIds.length; i++) {
     const node = new Node(_nodeIds[i]);
-    _nodes.push(node);
+    _nodes.set(node.id, node);
     console.info("Node: " + node.id);
   }
 
@@ -329,69 +329,92 @@ function init() {
       return;
     }
 
-
+    growExistingNodes(step);
 
     const logs = _logs.slice(
         time,
         TIME_PROGRESS_PER_STEP
     );
 
-    console.dir("*********");
-    console.dir(step);
-    console.dir(time);
-    console.dir(logs);
+    console.info(`step: ${step}, time: ${time}, logs: ${logs.length}`);
 
-    growExistingNodes(step);
+    logs.forEach((log) => {
+      console.info(log);
+      processLog(log, step);
+    });
 
     // TODO
-    if (step == 4) {
-      const fromNode = _nodes[0];
-      const toNode = _nodes[1];
-      fromNode.sendRandomMessage(toNode, step);
-    } else if (step == 5) {
-      const fromNode = _nodes[1];
-      const toNode = _nodes[0];
-      fromNode.sendWhoAreYou(toNode, step, "dummy-id-nonce", "dummy-enr-seq");
-    } else if (step == 6) {
-      const fromNode = _nodes[0];
-      const toNode = _nodes[1];
-      const findNode = new Findnode("*** dummy-request-id ***", [255, 254, 253]);
-      fromNode.sendHandshakeMessage(toNode, step, findNode);
-    } else if (step == 7) {
-      const fromNode = _nodes[1];
-      const toNode = _nodes[0];
-      const nodes = new Nodes("*** dummy-request-id ***", ["dummy-enr1", "dummy-enr2"]);
-      fromNode.sendMessage(toNode, step, nodes);
-    } else if (step == 8) {
-      const fromNode = _nodes[0];
-      const toNode = _nodes[1];
-      const ping = new Ping("*** dummy-request-id ***", "dummy-enr-seq");
-      fromNode.sendMessage(toNode, step, ping);
-    } else if (step == 9) {
-      const fromNode = _nodes[1];
-      const toNode = _nodes[0];
-      const pong = new Pong(
-        "*** dummy-request-id ***",
-        "dummy-enr-seq",
-        "dummy-recipient-ip",
-        "dummy-recipient-port"
-      );
-      fromNode.sendMessage(toNode, step, pong);
-    }
+    // if (step == 4) {
+    //   const fromNode = _nodes[0];
+    //   const toNode = _nodes[1];
+    //   fromNode.sendRandomMessage(toNode, step);
+    // } else if (step == 5) {
+    //   const fromNode = _nodes[1];
+    //   const toNode = _nodes[0];
+    //   fromNode.sendWhoAreYou(toNode, step, "dummy-id-nonce", "dummy-enr-seq");
+    // } else if (step == 6) {
+    //   const fromNode = _nodes[0];
+    //   const toNode = _nodes[1];
+    //   const findNode = new Findnode("*** dummy-request-id ***", [255, 254, 253]);
+    //   fromNode.sendHandshakeMessage(toNode, step, findNode);
+    // } else if (step == 7) {
+    //   const fromNode = _nodes[1];
+    //   const toNode = _nodes[0];
+    //   const nodes = new Nodes("*** dummy-request-id ***", ["dummy-enr1", "dummy-enr2"]);
+    //   fromNode.sendMessage(toNode, step, nodes);
+    // } else if (step == 8) {
+    //   const fromNode = _nodes[0];
+    //   const toNode = _nodes[1];
+    //   const ping = new Ping("*** dummy-request-id ***", "dummy-enr-seq");
+    //   fromNode.sendMessage(toNode, step, ping);
+    // } else if (step == 9) {
+    //   const fromNode = _nodes[1];
+    //   const toNode = _nodes[0];
+    //   const pong = new Pong(
+    //     "*** dummy-request-id ***",
+    //     "dummy-enr-seq",
+    //     "dummy-recipient-ip",
+    //     "dummy-recipient-port"
+    //   );
+    //   fromNode.sendMessage(toNode, step, pong);
+    // }
 
     step += 1;
     time = increaseStringKey(time, TIME_PROGRESS_PER_STEP);
   }
+}
 
-  // grow existing nodes along the time axis
-  // https://threejs.org/docs/#manual/en/introduction/How-to-update-things
-  function growExistingNodes(step) {
-    for (let i = 0; i < _nodes.length; i++) {
-			const line = _nodes[i].line;
-      line.geometry.setDrawRange(0, step);
-      line.geometry.attributes.position.needsUpdate = true; // required after the first render
-    }
+// grow existing nodes along the time axis
+// https://threejs.org/docs/#manual/en/introduction/How-to-update-things
+function growExistingNodes(step) {
+  for (const [k, node] of _nodes.entries()) {
+    const line = node.line;
+    line.geometry.setDrawRange(0, step);
+    line.geometry.attributes.position.needsUpdate = true; // required after the first render
   }
+}
+
+function processLog(log, step) {
+  switch (log.event) {
+    case 'nodeStarted':
+      break;
+    case 'sendWhoareyou':
+      const sender = _nodes.get(log.sendWhoareyou.sender);
+      const recipient = _nodes.get(log.sendWhoareyou.recipient);
+      sender.sendWhoAreYou(
+          recipient,
+          step,
+          log.sendWhoareyou.idNonce,
+          log.sendWhoareyou.enrSeq
+      );
+      break;
+    default:
+      console.error("unknown event", log);
+  }
+}
+
+function processNodeStarted(log) {
+
 }
 
 // create cap text
@@ -447,16 +470,16 @@ const _scene = new THREE.Scene();
 const Stats = require('stats-js');
 const protobuf = require('protobufjs');
 const _logs = new Logs();
-const _nodes = [];
+const _nodes = new Map();
 const _font = new THREE.Font(require('three/examples/fonts/helvetiker_regular.typeface.json'));
 const _scale = 100;
 const _distance = 500;
 const _nodeIds = [];
 
 // TODO: 調整
-const MAX_STEPS = 50;
+const MAX_STEPS = 10;
 
-const TIME_PROGRESS_PER_STEP = 1000000; // nano
+const TIME_PROGRESS_PER_STEP = 1; // milli
 
 // TODO: 色の調整
 const COLOR_RANDOM = 0xffdd00;
@@ -507,7 +530,8 @@ const COLOR_NODES = 0xddd600;
     let Log = root.lookupType('tracing.Log').ctor;
     // extend protobuf with custom functionality
     Log.prototype.key = function () {
-      return `${this.timestamp.seconds}${this.timestamp.nanos}`;
+      const milli = `0000${Math.floor(this.timestamp.nanos / 1000000).toString()}`.slice(-4);
+      return `${this.timestamp.seconds}${milli}`;
     }
 
     const reason = Log.verify(bytes);
