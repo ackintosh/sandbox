@@ -7,7 +7,7 @@ class Logs {
   }
 
   add(log) {
-    const t = `${log.timestamp.seconds}${log.timestamp.nanos}`
+    const t = `${log.timestamp.seconds}${log.timestamp.nanos}`;
 
     if (this.logs.has(t)) {
       const elements = this.logs.get(t);
@@ -16,6 +16,22 @@ class Logs {
     } else {
       this.logs.set(t, [log]);
     }
+  }
+
+  sort() {
+    const sorted = [...this.logs].sort(([k, _v], [k2, _v2]) => {
+      if (k > k2) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+
+    this.logs = new Map(sorted);
+  }
+
+  first() {
+      return this.logs.entries().next();
   }
 }
 
@@ -280,12 +296,12 @@ function init() {
   // ///////////////////////////////////////
   // animate
   // ///////////////////////////////////////
-  var step = 0;
+  let step = 0;
 
-  tick();
+  animate();
 
-  function tick() {
-    requestAnimationFrame(tick);
+  function animate() {
+    requestAnimationFrame(animate);
     advanceTrace();
 
     controls.update();
@@ -488,7 +504,7 @@ const COLOR_NODES = 0xddd600;
       }
     }
 
-    console.dir(_logs);
+    _logs.sort();
 
     init();
   });
