@@ -7,7 +7,12 @@ package tracing;
 message Log {
   google.protobuf.Timestamp timestamp = 1;
   oneof event {
-    SendWhoAreYou send_whoareyou = 2;
+    NodeStarted node_started = 2;
+    SendWhoAreYou send_whoareyou = 3;
+  }
+
+  message NodeStarted {
+    string node_id = 1;
   }
 
   // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#whoareyou-packet-flag--1

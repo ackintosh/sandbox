@@ -1,106 +1,23 @@
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls';
 import { Reader } from "protobufjs";
 
-const _scene = new THREE.Scene();
-const Stats = require('stats-js');
-const protobuf = require('protobufjs');
-const _logs = [];
-const _nodes = [];
-const _font = new THREE.Font(require('three/examples/fonts/helvetiker_regular.typeface.json'));
-const _scale = 100;
-const _distance = 500;
-const _totalNodeCount = 3;
+class Logs {
+  constructor() {
+    this.logs = new Map();
+  }
 
+  add(log) {
+    const t = `${log.timestamp.seconds}${log.timestamp.nanos}`
 
-const MAX_STEPS = 50;
-
-// TODO: 色の調整
-const COLOR_RANDOM = 0xffdd00;
-const COLOR_WHOAREYOU = 0x00dd00;
-const COLOR_PING = 0x0000ff;
-const COLOR_PONG = 0xff00ff;
-const COLOR_FINDNODE = 0x00d6dd;
-const COLOR_NODES = 0xddd600;
-
-// protocol-buffers
-// https://developers.google.com/protocol-buffers/docs/reference/javascript-generated
-// > deserializeBinary
-
-// protobuf.js
-// http://protobufjs.github.io/protobuf.js/Type.html#decodeDelimited
-
-(function () {
- const b = document.getElementById('b');
- b.addEventListener('click', async () => {
-   // https://developer.mozilla.org/en-US/docs/Web/API/Window/showOpenFilePicker
-   // https://wicg.github.io/file-system-access/#api-showopenfilepicker
-   const [handle] = await window.showOpenFilePicker({
-     multiple: false,
-     types: [
-       {
-         description: 'trace file',
-         accept: {
-           'text/plain': ['.log']
-         },
-       }
-     ]
-   });
-
-   b.style.display = 'none';
-
-   const file = await handle.getFile();
-   // console.dir(file);
-
-   const ab = await file.arrayBuffer();
-   // console.dir(ab);
-   const bytes = new Uint8Array(ab);
-   // console.dir(bytes);
-
-   const reader = Reader.create(bytes);
-   // console.dir(reader);
-
-   const root = await protobuf.load('tracing.proto');
-   const Log = root.lookupType('tracing.Log');
-
-   const reason = Log.verify(bytes);
-   if (reason != null) {
-     console.log(reason);
-     alert(reason);
-     return;
-   }
-
-   try {
-     while (true) {
-       _logs.push(Log.decodeDelimited(reader));
-     }
-   } catch (e) {
-     if (e instanceof RangeError) {
-       console.log("decoding has done");
-     } else {
-       throw e;
-     }
-   }
-
-   console.dir(_logs);
-
-   init();
- });
-})();
-
-// ****************
-// test
-// ****************
-// (async () => {
-//   const root = await protobuf.load('person.proto');
-//   const Person = root.lookupType('person.Person');
-//   const payload = {name: "aaaaaaaa"};
-//   console.dir(root);
-//   console.dir(Person);
-//   console.dir(Person.verify(payload));
-//   const msg = Person.create(payload);
-//   console.dir(msg);
-// })();
-
+    if (this.logs.has(t)) {
+      const elements = this.logs.get(t);
+      elements.push(log);
+      this.logs.set(t, elements);
+    } else {
+      this.logs.set(t, [log]);
+    }
+  }
+}
 
 class Node {
   constructor(id) {
@@ -477,3 +394,103 @@ function createArrow(fromNode, toNode, step, color) {
     10
   );
 }
+
+const _scene = new THREE.Scene();
+const Stats = require('stats-js');
+const protobuf = require('protobufjs');
+const _logs = new Logs();
+const _nodes = [];
+const _font = new THREE.Font(require('three/examples/fonts/helvetiker_regular.typeface.json'));
+const _scale = 100;
+const _distance = 500;
+const _totalNodeCount = 3;
+
+// TODO: 調整
+const MAX_STEPS = 50;
+
+// TODO: 色の調整
+const COLOR_RANDOM = 0xffdd00;
+const COLOR_WHOAREYOU = 0x00dd00;
+const COLOR_PING = 0x0000ff;
+const COLOR_PONG = 0xff00ff;
+const COLOR_FINDNODE = 0x00d6dd;
+const COLOR_NODES = 0xddd600;
+
+// protocol-buffers
+// https://developers.google.com/protocol-buffers/docs/reference/javascript-generated
+// > deserializeBinary
+
+// protobuf.js
+// http://protobufjs.github.io/protobuf.js/Type.html#decodeDelimited
+
+(function () {
+  const b = document.getElementById('b');
+  b.addEventListener('click', async () => {
+    // https://developer.mozilla.org/en-US/docs/Web/API/Window/showOpenFilePicker
+    // https://wicg.github.io/file-system-access/#api-showopenfilepicker
+    const [handle] = await window.showOpenFilePicker({
+      multiple: false,
+      types: [
+        {
+          description: 'trace file',
+          accept: {
+            'text/plain': ['.log']
+          },
+        }
+      ]
+    });
+
+    b.style.display = 'none';
+
+    const file = await handle.getFile();
+    // console.dir(file);
+
+    const ab = await file.arrayBuffer();
+    // console.dir(ab);
+    const bytes = new Uint8Array(ab);
+    // console.dir(bytes);
+
+    const reader = Reader.create(bytes);
+    // console.dir(reader);
+
+    const root = await protobuf.load('tracing.proto');
+    const Log = root.lookupType('tracing.Log');
+
+    const reason = Log.verify(bytes);
+    if (reason != null) {
+      console.log(reason);
+      alert(reason);
+      return;
+    }
+
+    try {
+      while (true) {
+        _logs.add(Log.decodeDelimited(reader));
+      }
+    } catch (e) {
+      if (e instanceof RangeError) {
+        console.log("decoding has done");
+      } else {
+        throw e;
+      }
+    }
+
+    console.dir(_logs);
+
+    init();
+  });
+})();
+
+// ****************
+// test
+// ****************
+// (async () => {
+//   const root = await protobuf.load('person.proto');
+//   const Person = root.lookupType('person.Person');
+//   const payload = {name: "aaaaaaaa"};
+//   console.dir(root);
+//   console.dir(Person);
+//   console.dir(Person.verify(payload));
+//   const msg = Person.create(payload);
+//   console.dir(msg);
+// })();
