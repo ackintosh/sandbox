@@ -1,7 +1,7 @@
 use crate::rust_pb::person::Person;
 use protobuf::{Message, RepeatedField};
 use std::io::Write;
-use crate::rust_pb::tracing::{Log, Log_SendWhoAreYou, Log_NodeStarted, Log_SendOrdinaryMessage_FindNode, Log_SendOrdinaryMessage, Log_SendOrdinaryMessage_Nodes};
+use crate::rust_pb::tracing::{Log, Log_SendWhoAreYou, Log_NodeStarted, Log_SendOrdinaryMessage_FindNode, Log_SendOrdinaryMessage, Log_SendOrdinaryMessage_Nodes, Log_SendOrdinaryMessage_Ping};
 use protobuf::well_known_types::Timestamp;
 use chrono::prelude::*;
 
@@ -81,6 +81,20 @@ fn write_tracing() {
         write(log.write_length_delimited_to_bytes().unwrap(), FILE_TRACING);
     }
 
+    std::thread::sleep(std::time::Duration::from_millis(3));
+
+    {
+        let log = ping("node#2", "node#1");
+        write(log.write_length_delimited_to_bytes().unwrap(), FILE_TRACING);
+    }
+
+    std::thread::sleep(std::time::Duration::from_millis(3));
+
+    {
+        let log = ping("node#1", "node#2");
+        write(log.write_length_delimited_to_bytes().unwrap(), FILE_TRACING);
+    }
+
     fn node_started(node_id: &str) -> Log {
         let mut node_started = Log_NodeStarted::new();
         node_started.set_node_id(node_id.into());
@@ -118,6 +132,22 @@ fn write_tracing() {
         send_orddinary_message.set_sender(sender.into());
         send_orddinary_message.set_recipient(recipient.into());
         send_orddinary_message.set_nodes(nodes);
+
+        let mut log = Log::new();
+        log.set_timestamp(timestamp());
+        log.set_send_ordinary_message(send_orddinary_message);
+        log
+    }
+
+    fn ping(sender: &str, recipient: &str) -> Log {
+        let mut ping = Log_SendOrdinaryMessage_Ping::new();
+        ping.set_request_id("***request_id***".into());
+        ping.set_enr_seq(111);
+
+        let mut send_orddinary_message = Log_SendOrdinaryMessage::new();
+        send_orddinary_message.set_sender(sender.into());
+        send_orddinary_message.set_recipient(recipient.into());
+        send_orddinary_message.set_ping(ping);
 
         let mut log = Log::new();
         log.set_timestamp(timestamp());

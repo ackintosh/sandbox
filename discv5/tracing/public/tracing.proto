@@ -29,8 +29,24 @@ message Log {
     string sender = 1;
     string recipient = 2;
     oneof message {
-      FindNode find_node = 3;
-      Nodes nodes = 4;
+      Ping ping = 3;
+      Pong pong = 4;
+      FindNode find_node = 5;
+      Nodes nodes = 6;
+    }
+
+    // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#ping-request-0x01
+    message Ping {
+      string request_id = 1;
+      uint64 enr_seq = 2;
+    }
+
+    // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#pong-response-0x02
+    message Pong {
+      string request_id = 1;
+      uint64 enr_seq = 2;
+      uint64 recipientIp = 3; // TODO: uint128
+      uint32 recipientPort = 4; // TODO: uint128
     }
 
     // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#findnode-request-0x03

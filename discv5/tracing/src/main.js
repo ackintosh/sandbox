@@ -224,8 +224,9 @@ class Findnode {
 
 // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#nodes-response-0x04
 class Nodes {
-  constructor(requestId, nodes) {
+  constructor(requestId, total, nodes) {
     this.requestId = requestId;
+    this.total = total;
     this.nodes = nodes;
   }
 
@@ -238,7 +239,7 @@ class Nodes {
   }
 
   capText() {
-    return `  ${this.requestId}\n  [${this.nodes.join(', ')}]`;
+    return `  ${this.requestId}\n  ${this.total}\n  [${this.nodes.join(', ')}]`;
   }
 }
 
@@ -426,6 +427,9 @@ function processNodeStarted(log, step) {
 
 function processOrdinaryMessage(log, step) {
   switch (log.sendOrdinaryMessage.message) {
+    case 'ping':
+      processPing(log, step);
+      break;
     case 'findNode':
       processFindNode(log, step);
       break;
@@ -436,6 +440,20 @@ function processOrdinaryMessage(log, step) {
       console.error("unknown message type", log);
       break;
   }
+}
+
+function processPing(log, step) {
+  const ordinaryMessage = log.sendOrdinaryMessage;
+
+  const sender = _nodes.get(ordinaryMessage.sender);
+  const recipient = _nodes.get(ordinaryMessage.recipient);
+  const pingLog = ordinaryMessage.ping;
+
+  sender.sendMessage(
+      recipient,
+      step,
+      new Ping(pingLog.requestId, pingLog.enrSeq)
+  );
 }
 
 function processFindNode(log, step) {
@@ -462,7 +480,7 @@ function processNodes(log, step) {
   sender.sendMessage(
       recipient,
       step,
-      new Nodes(nodesLog.requestId, nodesLog.nodes)
+      new Nodes(nodesLog.requestId, nodesLog.total, nodesLog.nodes)
   );
 }
 
