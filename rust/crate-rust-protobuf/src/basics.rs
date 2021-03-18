@@ -1,7 +1,7 @@
 use crate::rust_pb::person::Person;
 use protobuf::{Message, RepeatedField};
 use std::io::Write;
-use crate::rust_pb::tracing::{Log, Log_SendWhoAreYou, Log_NodeStarted, Log_SendOrdinaryMessage_FindNode, Log_SendOrdinaryMessage, Log_SendOrdinaryMessage_Nodes, Log_SendOrdinaryMessage_Ping};
+use crate::rust_pb::tracing::{Log, Log_SendWhoAreYou, Log_NodeStarted, Log_SendOrdinaryMessage_FindNode, Log_SendOrdinaryMessage, Log_SendOrdinaryMessage_Nodes, Log_SendOrdinaryMessage_Ping, Log_SendOrdinaryMessage_Pong};
 use protobuf::well_known_types::Timestamp;
 use chrono::prelude::*;
 
@@ -81,6 +81,9 @@ fn write_tracing() {
         write(log.write_length_delimited_to_bytes().unwrap(), FILE_TRACING);
     }
 
+    //////////////////////////
+    // PING
+    //////////////////////////
     std::thread::sleep(std::time::Duration::from_millis(3));
 
     {
@@ -92,6 +95,23 @@ fn write_tracing() {
 
     {
         let log = ping("node#1", "node#2");
+        write(log.write_length_delimited_to_bytes().unwrap(), FILE_TRACING);
+    }
+
+    //////////////////////////
+    // PONG
+    //////////////////////////
+    std::thread::sleep(std::time::Duration::from_millis(3));
+
+    {
+        let log = pong("node#2", "node#1");
+        write(log.write_length_delimited_to_bytes().unwrap(), FILE_TRACING);
+    }
+
+    std::thread::sleep(std::time::Duration::from_millis(3));
+
+    {
+        let log = pong("node#1", "node#2");
         write(log.write_length_delimited_to_bytes().unwrap(), FILE_TRACING);
     }
 
@@ -148,6 +168,24 @@ fn write_tracing() {
         send_orddinary_message.set_sender(sender.into());
         send_orddinary_message.set_recipient(recipient.into());
         send_orddinary_message.set_ping(ping);
+
+        let mut log = Log::new();
+        log.set_timestamp(timestamp());
+        log.set_send_ordinary_message(send_orddinary_message);
+        log
+    }
+
+    fn pong(sender: &str, recipient: &str) -> Log {
+        let mut pong = Log_SendOrdinaryMessage_Pong::new();
+        pong.set_request_id("***request_id***".into());
+        pong.set_enr_seq(111);
+        pong.set_recipient_ip("10.0.0.1".into());
+        pong.set_recipient_port(9999);
+
+        let mut send_orddinary_message = Log_SendOrdinaryMessage::new();
+        send_orddinary_message.set_sender(sender.into());
+        send_orddinary_message.set_recipient(recipient.into());
+        send_orddinary_message.set_pong(pong);
 
         let mut log = Log::new();
         log.set_timestamp(timestamp());

@@ -358,36 +358,6 @@ function init() {
     //   const fromNode = _nodes[0];
     //   const toNode = _nodes[1];
     //   fromNode.sendRandomMessage(toNode, step);
-    // } else if (step == 5) {
-    //   const fromNode = _nodes[1];
-    //   const toNode = _nodes[0];
-    //   fromNode.sendWhoAreYou(toNode, step, "dummy-id-nonce", "dummy-enr-seq");
-    // } else if (step == 6) {
-    //   const fromNode = _nodes[0];
-    //   const toNode = _nodes[1];
-    //   const findNode = new Findnode("*** dummy-request-id ***", [255, 254, 253]);
-    //   fromNode.sendHandshakeMessage(toNode, step, findNode);
-    // } else if (step == 7) {
-    //   const fromNode = _nodes[1];
-    //   const toNode = _nodes[0];
-    //   const nodes = new Nodes("*** dummy-request-id ***", ["dummy-enr1", "dummy-enr2"]);
-    //   fromNode.sendMessage(toNode, step, nodes);
-    // } else if (step == 8) {
-    //   const fromNode = _nodes[0];
-    //   const toNode = _nodes[1];
-    //   const ping = new Ping("*** dummy-request-id ***", "dummy-enr-seq");
-    //   fromNode.sendMessage(toNode, step, ping);
-    // } else if (step == 9) {
-    //   const fromNode = _nodes[1];
-    //   const toNode = _nodes[0];
-    //   const pong = new Pong(
-    //     "*** dummy-request-id ***",
-    //     "dummy-enr-seq",
-    //     "dummy-recipient-ip",
-    //     "dummy-recipient-port"
-    //   );
-    //   fromNode.sendMessage(toNode, step, pong);
-    // }
 
     step += 1;
     time = increaseStringKey(time, TIME_PROGRESS_PER_STEP);
@@ -430,6 +400,9 @@ function processOrdinaryMessage(log, step) {
     case 'ping':
       processPing(log, step);
       break;
+    case 'pong':
+      processPong(log, step);
+      break;
     case 'findNode':
       processFindNode(log, step);
       break;
@@ -453,6 +426,20 @@ function processPing(log, step) {
       recipient,
       step,
       new Ping(pingLog.requestId, pingLog.enrSeq)
+  );
+}
+
+function processPong(log, step) {
+  const ordinaryMessage = log.sendOrdinaryMessage;
+
+  const sender = _nodes.get(ordinaryMessage.sender);
+  const recipient = _nodes.get(ordinaryMessage.recipient);
+  const pongLog = ordinaryMessage.pong;
+
+  sender.sendMessage(
+      recipient,
+      step,
+      new Pong(pongLog.requestId, pongLog.enrSeq, pongLog.recipientIp, pongLog.recipientPort)
   );
 }
 
