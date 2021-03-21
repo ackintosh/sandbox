@@ -383,7 +383,10 @@ function processLog(log, step) {
       processOrdinaryMessage(log, step);
       break;
     case 'sendWhoareyou':
-      processWhoareyou(log, step)
+      processWhoareyou(log, step);
+      break;
+    case 'sendHandshakeMessage':
+      processHandshakeMessage(log, step);
       break;
     default:
       console.error("unknown event", log);
@@ -395,80 +398,34 @@ function processNodeStarted(log, step) {
   node.start(step);
 }
 
-function processOrdinaryMessage(log, step) {
-  switch (log.sendOrdinaryMessage.message) {
+function protoToMessage(message) {
+  switch (message.message) {
     case 'ping':
-      processPing(log, step);
-      break;
+      return new Ping(message.ping.requestId, message.ping.enrSeq);
     case 'pong':
-      processPong(log, step);
-      break;
+      return new Pong(message.pong.requestId, message.pong.enrSeq, message.pong.recipientIp, message.pong.recipientPort);
     case 'findNode':
-      processFindNode(log, step);
-      break;
+      return new Findnode(message.findNode.requestId, message.findNode.distances);
     case 'nodes':
-      processNodes(log, step);
-      break;
+      return new Nodes(message.nodes.requestId, message.nodes.total, message.nodes.nodes);
     default:
       console.error("unknown message type", log);
       break;
   }
 }
 
-function processPing(log, step) {
+function processOrdinaryMessage(log, step) {
   const ordinaryMessage = log.sendOrdinaryMessage;
-
   const sender = _nodes.get(ordinaryMessage.sender);
   const recipient = _nodes.get(ordinaryMessage.recipient);
-  const pingLog = ordinaryMessage.ping;
+  const message = protoToMessage(log.sendOrdinaryMessage);
 
   sender.sendMessage(
       recipient,
       step,
-      new Ping(pingLog.requestId, pingLog.enrSeq)
+      message
   );
-}
 
-function processPong(log, step) {
-  const ordinaryMessage = log.sendOrdinaryMessage;
-
-  const sender = _nodes.get(ordinaryMessage.sender);
-  const recipient = _nodes.get(ordinaryMessage.recipient);
-  const pongLog = ordinaryMessage.pong;
-
-  sender.sendMessage(
-      recipient,
-      step,
-      new Pong(pongLog.requestId, pongLog.enrSeq, pongLog.recipientIp, pongLog.recipientPort)
-  );
-}
-
-function processFindNode(log, step) {
-  const ordinaryMessage = log.sendOrdinaryMessage;
-
-  const sender = _nodes.get(ordinaryMessage.sender);
-  const recipient = _nodes.get(ordinaryMessage.recipient);
-  const findNodeLog = ordinaryMessage.findNode;
-
-  sender.sendMessage(
-      recipient,
-      step,
-      new Findnode(findNodeLog.requestId, findNodeLog.distances)
-  );
-}
-
-function processNodes(log, step) {
-  const ordinaryMessage = log.sendOrdinaryMessage;
-
-  const sender = _nodes.get(ordinaryMessage.sender);
-  const recipient = _nodes.get(ordinaryMessage.recipient);
-  const nodesLog = ordinaryMessage.nodes;
-
-  sender.sendMessage(
-      recipient,
-      step,
-      new Nodes(nodesLog.requestId, nodesLog.total, nodesLog.nodes)
-  );
 }
 
 function processWhoareyou(log, step) {
@@ -479,6 +436,17 @@ function processWhoareyou(log, step) {
       step,
       log.sendWhoareyou.idNonce,
       log.sendWhoareyou.enrSeq
+  );
+}
+
+function processHandshakeMessage(log, step) {
+  const sender = _nodes.get(log.sendHandshakeMessage.sender);
+  const recipient = _nodes.get(log.sendHandshakeMessage.recipient);
+  const message = protoToMessage(log.sendHandshakeMessage);
+  sender.sendHandshakeMessage(
+      recipient,
+      step,
+      message
   );
 }
 
@@ -538,11 +506,11 @@ const _logs = new Logs();
 const _nodes = new Map();
 const _font = new THREE.Font(require('three/examples/fonts/helvetiker_regular.typeface.json'));
 const _scale = 100;
-const _distance = 500;
+const _distance = 1000;
 const _nodeIds = [];
 
 // TODO: 調整
-const MAX_STEPS = 30;
+const MAX_STEPS = 100;
 
 const TIME_PROGRESS_PER_STEP = 3; // milli
 const IDLE_STEPS = 5;
