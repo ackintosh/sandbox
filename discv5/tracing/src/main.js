@@ -115,17 +115,6 @@ class Node {
     _scene.add(text);
   }
 
-  sendRandomMessage(toNode, step) {
-    const arrow = createArrow(this, toNode, step, COLOR_RANDOM);
-    _scene.add(arrow);
-
-    const x = this.pos.x;
-    const y = this.line.geometry.getAttribute('position').getY(step);
-    const z = this.pos.z;
-    const text = createCapText('Random Message', x, y, z, COLOR_RANDOM);
-    _scene.add(text);
-  }
-
   sendMessage(toNode, step, message) {
     const arrow = createArrow(this, toNode, step, message.color());
     _scene.add(arrow);
@@ -157,6 +146,21 @@ class Node {
     const z = this.pos.z;
     const text = createCapText(`Handshake Message<${message.name()}>\n${message.capText()}`, x, y, z, message.color());
     _scene.add(text);
+  }
+}
+
+// https://github.com/ethereum/devp2p/blob/master/discv5/discv5-theory.md#step-1-node-a-sends-message-packet
+class Random {
+  name() {
+    return 'Random packet';
+  }
+
+  color() {
+    return COLOR_RANDOM;
+  }
+
+  capText() {
+    return '';
   }
 }
 
@@ -408,8 +412,10 @@ function protoToMessage(message) {
       return new Findnode(message.findNode.requestId, message.findNode.distances);
     case 'nodes':
       return new Nodes(message.nodes.requestId, message.nodes.total, message.nodes.nodes);
+    case 'random':
+      return new Random();
     default:
-      console.error("unknown message type", log);
+      console.error("unknown message type", message);
       break;
   }
 }
@@ -517,8 +523,8 @@ const IDLE_STEPS = 5;
 
 // TODO: 色の調整
 const COLOR_START = 0xffddff;
-const COLOR_RANDOM = 0xffdd00;
 const COLOR_WHOAREYOU = 0x00dd00;
+const COLOR_RANDOM = 0xffdd00;
 const COLOR_PING = 0x0000ff;
 const COLOR_PONG = 0xff00ff;
 const COLOR_FINDNODE = 0x00d6dd;
