@@ -1,9 +1,13 @@
 use crate::rust_pb::person::Person;
+use crate::rust_pb::tracing::{
+    Log, Log_NodeStarted, Log_SendOrdinaryMessage, Log_SendOrdinaryMessage_FindNode,
+    Log_SendOrdinaryMessage_Nodes, Log_SendOrdinaryMessage_Ping, Log_SendOrdinaryMessage_Pong,
+    Log_SendWhoAreYou,
+};
+use chrono::prelude::*;
+use protobuf::well_known_types::Timestamp;
 use protobuf::{Message, RepeatedField};
 use std::io::Write;
-use crate::rust_pb::tracing::{Log, Log_SendWhoAreYou, Log_NodeStarted, Log_SendOrdinaryMessage_FindNode, Log_SendOrdinaryMessage, Log_SendOrdinaryMessage_Nodes, Log_SendOrdinaryMessage_Ping, Log_SendOrdinaryMessage_Pong};
-use protobuf::well_known_types::Timestamp;
-use chrono::prelude::*;
 
 const FILE: &str = "person.log";
 const FILE_TRACING: &str = "tracing.log";
@@ -38,19 +42,34 @@ fn write_tracing() {
     }
 
     {
-        write(node_started("node#0").write_length_delimited_to_bytes().unwrap(), FILE_TRACING);
+        write(
+            node_started("node#0")
+                .write_length_delimited_to_bytes()
+                .unwrap(),
+            FILE_TRACING,
+        );
     }
 
     std::thread::sleep(std::time::Duration::from_millis(3));
 
     {
-        write(node_started("node#1").write_length_delimited_to_bytes().unwrap(), FILE_TRACING);
+        write(
+            node_started("node#1")
+                .write_length_delimited_to_bytes()
+                .unwrap(),
+            FILE_TRACING,
+        );
     }
 
     std::thread::sleep(std::time::Duration::from_millis(3));
 
     {
-        write(node_started("node#2").write_length_delimited_to_bytes().unwrap(), FILE_TRACING);
+        write(
+            node_started("node#2")
+                .write_length_delimited_to_bytes()
+                .unwrap(),
+            FILE_TRACING,
+        );
     }
 
     std::thread::sleep(std::time::Duration::from_millis(3));
@@ -146,7 +165,10 @@ fn write_tracing() {
         let mut nodes = Log_SendOrdinaryMessage_Nodes::new();
         nodes.set_request_id("***request_id***".into());
         nodes.set_total(1);
-        nodes.set_nodes(RepeatedField::from_vec(vec!["nodes_xxx".into(), "nodes_yyy".into()]));
+        nodes.set_nodes(RepeatedField::from_vec(vec![
+            "nodes_xxx".into(),
+            "nodes_yyy".into(),
+        ]));
 
         let mut send_orddinary_message = Log_SendOrdinaryMessage::new();
         send_orddinary_message.set_sender(sender.into());
