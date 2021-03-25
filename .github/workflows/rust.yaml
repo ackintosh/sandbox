@@ -41,6 +41,8 @@ jobs:
     needs: clippy
     steps:
     - uses: actions/checkout@v1
+    - name: Install Protocol Buffer Compiler
+      run: apt install -y protobuf-compiler && protoc --version
     - name: Get latest version of stable Rust
       run: rustup update stable
     - name: Run tests
