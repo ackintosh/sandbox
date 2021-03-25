@@ -8,6 +8,14 @@ fn vector() {
 }
 
 #[test]
+fn initialize() {
+    // 要素数3, 各要素はi32の最大値を持つベクターを作る
+    let n = 3;
+    let vec = vec![i32::max_value(); n];
+    println!("{:?}", vec);
+}
+
+#[test]
 fn append() {
     {
         let mut vec = vec![1, 2, 3];
