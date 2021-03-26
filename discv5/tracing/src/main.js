@@ -500,8 +500,8 @@ function createArrow(fromNode, toNode, step, color) {
     head,
     direction.length(),
     color,
-    10,
-    10
+    100,
+    30
   );
 }
 
@@ -516,9 +516,9 @@ const _distance = 1000;
 const _nodeIds = [];
 
 // TODO: 調整
-const MAX_STEPS = 100;
+const MAX_STEPS = 200;
 
-const TIME_PROGRESS_PER_STEP = 3; // milli
+const TIME_PROGRESS_PER_STEP = 1; // milli
 const IDLE_STEPS = 5;
 
 // TODO: 色の調整
