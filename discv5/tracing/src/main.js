@@ -115,6 +115,14 @@ class Node {
     _scene.add(text);
   }
 
+  shutdown(step) {
+    const x = this.pos.x;
+    const y = this.line.geometry.getAttribute('position').getY(step);
+    const z = this.pos.z;
+    const text = createCapText('<shutdown>', x, y, z, COLOR_SHUTDOWN);
+    _scene.add(text);
+  }
+
   sendMessage(toNode, step, message) {
     const arrow = createArrow(this, toNode, step, message.color());
     _scene.add(arrow);
@@ -380,8 +388,11 @@ function growExistingNodes(step) {
 
 function processLog(log, step) {
   switch (log.event) {
-    case 'nodeStarted':
-      processNodeStarted(log, step);
+    case 'start':
+      processStart(log, step);
+      break;
+    case 'shutdown':
+      processShutdown(log, step);
       break;
     case 'sendOrdinaryMessage':
       processOrdinaryMessage(log, step);
@@ -397,9 +408,14 @@ function processLog(log, step) {
   }
 }
 
-function processNodeStarted(log, step) {
-  const node = _nodes.get(log.nodeStarted.nodeId);
+function processStart(log, step) {
+  const node = _nodes.get(log.start.nodeId);
   node.start(step);
+}
+
+function processShutdown(log, step) {
+  const node = _nodes.get(log.shutdown.nodeId);
+  node.shutdown(step);
 }
 
 function protoToMessage(message) {
@@ -523,6 +539,7 @@ const IDLE_STEPS = 5;
 
 // TODO: 色の調整
 const COLOR_START = 0xffddff;
+const COLOR_SHUTDOWN = 0xffddff;
 const COLOR_WHOAREYOU = 0x00dd00;
 const COLOR_RANDOM = 0xffdd00;
 const COLOR_PING = 0x0000ff;
@@ -587,9 +604,9 @@ const COLOR_NODES = 0xddd600;
         const log = Log.decodeDelimited(reader);
         _logs.add(log);
 
-        if (log.event === 'nodeStarted') {
-          _nodeIds.push(log.nodeStarted.nodeId);
-          console.dir(log.nodeStarted);
+        if (log.event === 'start') {
+          _nodeIds.push(log.start.nodeId);
+          console.dir(log.start);
         }
         console.dir(log);
         console.dir(log.event);
