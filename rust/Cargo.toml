@@ -28,7 +28,6 @@ members = [
   "primitives-stdlibs",
   "procon",
   "references-borrowing",
-  "result",
   "socket-programming",
   "threading",
   "tower-of-hanoi"
