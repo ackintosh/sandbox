@@ -94,11 +94,11 @@ class Node {
     const geometry = new THREE.BufferGeometry();
 
     // attributes
-    const positions = new Float32Array( MAX_STEPS * 3 ); // 3 vertices per point
+    const positions = new Float32Array( _max_step * 3 ); // 3 vertices per point
 
     let y, yIndex, xIndex, zIndex;
     y = yIndex = xIndex = zIndex = 0;
-    for (var i = 0; i < MAX_STEPS; i ++) {
+    for (var i = 0; i < _max_step; i ++) {
       xIndex = (i * 3);
       yIndex = (i * 3) + 1;
       zIndex = (i * 3) + 2;
@@ -343,7 +343,7 @@ function init() {
   // NOTE: `time` is a string value which consists of seconds and nanos.
   let time = decreaseStringKey(_logs.first_key, IDLE_STEPS * TIME_PROGRESS_PER_STEP);
 
-  MAX_STEPS = calculateMaxStep();
+  _max_step = calculateMaxStep();
 
   // ///////////////////////////////////////
   // Node
@@ -367,7 +367,7 @@ function init() {
   }
 
   function advanceTrace() {
-    if (step >= MAX_STEPS) {
+    if (step >= _max_step) {
       return;
     }
 
@@ -545,8 +545,7 @@ const _scale = 100;
 const _distance = 1000;
 const _nodeIds = [];
 
-// TODO: 調整
-let MAX_STEPS = 200;
+let _max_step = 200;
 
 const TIME_PROGRESS_PER_STEP = 1; // milli
 const IDLE_STEPS = 5;
