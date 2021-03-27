@@ -3,6 +3,8 @@ import { Reader } from "protobufjs";
 
 class Logs {
   constructor() {
+    this.first_key = undefined;
+    this.last_key = undefined;
     this.logs = new Map();
   }
 
@@ -20,18 +22,19 @@ class Logs {
 
   sort() {
     const sorted = [...this.logs].sort(([k, _v], [k2, _v2]) => {
+      this.updateEdgeKey(k);
+      this.updateEdgeKey(k2);
       if (k > k2) {
+        this.last_key = k;
         return 1;
       } else {
+        this.first_key = k;
         return -1;
       }
     });
 
-    this.logs = new Map(sorted);
-  }
 
-  first() {
-      return this.logs.entries().next().value;
+    this.logs = new Map(sorted);
   }
 
   slice(time, progress) {
@@ -46,6 +49,24 @@ class Logs {
     }
 
     return slice;
+  }
+
+  updateEdgeKey(k) {
+    if (this.first_key === undefined) {
+      this.first_key = k;
+    }
+
+    if (this.last_key === undefined) {
+      this.last_key = k;
+    }
+
+    if (this.first_key > k) {
+      this.first_key = k;
+    }
+
+    if (this.last_key < k) {
+      this.last_key = k;
+    }
   }
 }
 
@@ -69,17 +90,15 @@ class Node {
   // create new line
   // https://threejs.org/docs/index.html#manual/en/introduction/Drawing-lines
   showLine() {
-    const MAX_POINTS = 500;
-
     // geometry
     const geometry = new THREE.BufferGeometry();
 
     // attributes
-    const positions = new Float32Array( MAX_POINTS * 3 ); // 3 vertices per point
+    const positions = new Float32Array( MAX_STEPS * 3 ); // 3 vertices per point
 
     let y, yIndex, xIndex, zIndex;
     y = yIndex = xIndex = zIndex = 0;
-    for (var i = 0; i < MAX_POINTS; i ++) {
+    for (var i = 0; i < MAX_STEPS; i ++) {
       xIndex = (i * 3);
       yIndex = (i * 3) + 1;
       zIndex = (i * 3) + 2;
@@ -318,6 +337,15 @@ function init() {
   _scene.add(light);
 
   // ///////////////////////////////////////
+  // animate
+  // ///////////////////////////////////////
+  let step = 0;
+  // NOTE: `time` is a string value which consists of seconds and nanos.
+  let time = decreaseStringKey(_logs.first_key, IDLE_STEPS * TIME_PROGRESS_PER_STEP);
+
+  MAX_STEPS = calculateMaxStep();
+
+  // ///////////////////////////////////////
   // Node
   // ///////////////////////////////////////
   for (let i = 0; i < _nodeIds.length; i++) {
@@ -325,14 +353,6 @@ function init() {
     _nodes.set(node.id, node);
     console.info("Node: " + node.id);
   }
-
-  // ///////////////////////////////////////
-  // animate
-  // ///////////////////////////////////////
-  let step = 0;
-  // NOTE: `time` is a string value which consists of seconds and nanos.
-  let [time] = _logs.first();
-  time = decreaseStringKey(time, IDLE_STEPS * TIME_PROGRESS_PER_STEP);
 
   animate();
 
@@ -364,12 +384,6 @@ function init() {
       console.info(log);
       processLog(log, step);
     });
-
-    // TODO
-    // if (step == 4) {
-    //   const fromNode = _nodes[0];
-    //   const toNode = _nodes[1];
-    //   fromNode.sendRandomMessage(toNode, step);
 
     step += 1;
     time = increaseStringKey(time, TIME_PROGRESS_PER_STEP);
@@ -532,7 +546,7 @@ const _distance = 1000;
 const _nodeIds = [];
 
 // TODO: 調整
-const MAX_STEPS = 200;
+let MAX_STEPS = 200;
 
 const TIME_PROGRESS_PER_STEP = 1; // milli
 const IDLE_STEPS = 5;
@@ -682,16 +696,18 @@ function decreaseStringKey(s, n) {
   return result;
 }
 
-// ****************
-// test
-// ****************
-// (async () => {
-//   const root = await protobuf.load('person.proto');
-//   const Person = root.lookupType('person.Person');
-//   const payload = {name: "aaaaaaaa"};
-//   console.dir(root);
-//   console.dir(Person);
-//   console.dir(Person.verify(payload));
-//   const msg = Person.create(payload);
-//   console.dir(msg);
-// })();
+function subtractStringKey(a, b) {
+  console.dir(a);
+  console.dir(b);
+  let result = 0;
+  while (a > b) {
+    result++;
+    a = decrementStringKey(a);
+  }
+  return result;
+}
+
+function calculateMaxStep() {
+  let steps = subtractStringKey(_logs.last_key, _logs.first_key) / TIME_PROGRESS_PER_STEP;
+  return steps + (IDLE_STEPS * 2);
+}
