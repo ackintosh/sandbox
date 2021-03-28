@@ -7,7 +7,6 @@
 [workspace]
 members = [
   "async-await",
-  "dns",
   "crate-chrono",
   "crate-criterion",
   "crate-dhat",
@@ -21,7 +20,7 @@ members = [
   "crate-uint",
   "crate-tokio",
   "crate-tracing",
-  "iterator",
+  "crate-trust-dns",
   "leetcode",
   "level-db",
   "macros",

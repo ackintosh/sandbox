@@ -48,7 +48,7 @@ fn libstd() {
 
 // https://crates.io/crates/trust-dns-resolver
 //
-// Can't create custom ResolverOpts · Issue #1004 · bluejekyll/trust-dns
+// Can't create custom ResolverOpts · Issue #1004 · bluejekyll/trust-crate-trust-dns
 // https://github.com/bluejekyll/trust-dns/issues/1004
 fn trust_dns_resolver() {
     println!("/// trust_dns_resolver ///");
@@ -68,7 +68,7 @@ fn trust_dns_resolver() {
     println!("{:?}", address);
 }
 
-// 汎用的なクエリには trust-dns-client を使う
+// 汎用的なクエリには trust-crate-trust-dns-client を使う
 // https://crates.io/crates/trust-dns-client
 fn txt() {
     println!("/// txt ///");
