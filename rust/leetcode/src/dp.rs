@@ -55,7 +55,10 @@ mod frog2 {
                 }
 
                 let base_cost = table[ni_usize];
-                table[ki_usize] = min(table[ki_usize], base_cost + (h[ni_usize] - h[ki_usize]).abs());
+                table[ki_usize] = min(
+                    table[ki_usize],
+                    base_cost + (h[ni_usize] - h[ki_usize]).abs(),
+                );
             }
             // println!("{:?}", table);
         }
@@ -70,5 +73,61 @@ mod frog2 {
         let h = vec![10, 30, 40, 50, 20];
 
         assert_eq!(dp(n, k, h), 30);
+    }
+}
+
+// https://qiita.com/drken/items/dc53c683d6de8aeacf5a#c-%E5%95%8F%E9%A1%8C---vacation
+mod vacation {
+    use std::cmp::max;
+    use std::convert::TryFrom;
+
+    fn dp(n: i32, abc: Vec<Vec<i32>>) -> i32 {
+        // 最大値を求める問題なのでゼロで初期化する
+        let mut table = vec![vec![0; 3]; usize::try_from(n).unwrap()];
+
+        println!("{:?}", table);
+
+        for i in 0..usize::try_from(n).unwrap() {
+            if i == 0 {
+                // 前日の値が無いのでそのまま入れる
+                table[i][0] = abc[i][0];
+                table[i][1] = abc[i][1];
+                table[i][2] = abc[i][2];
+                continue;
+            }
+
+            for j in 0usize..3 {
+                for jj in 0usize..3 {
+                    if j == jj {
+                        // 2日連続で同じ活動はできない
+                        continue;
+                    }
+
+                    let yesterday = table[i - 1][j];
+                    let today = yesterday + abc[i][jj];
+                    table[i][jj] = max(table[i][jj], today);
+                }
+            }
+        }
+
+        println!("{:?}", table);
+        *table
+            .iter()
+            .last()
+            .expect("should have an element")
+            .iter()
+            .max()
+            .expect("should have a value")
+    }
+
+    #[test]
+    fn vacation() {
+        let n = 3;
+        let abc = vec![vec![10, 40, 70], vec![20, 50, 80], vec![30, 60, 90]];
+        // let a = vec![10, 20, 30];
+        // let b = vec![40, 50, 60];
+        // let c = vec![70, 80, 90];
+
+        assert_eq!(dp(n, abc), 210);
     }
 }

@@ -74,3 +74,9 @@ fn take_remains_from_iter() {
     // i: 4, n: 4
     // i: 5, n: 5
 }
+
+#[test]
+fn max() {
+    let nums = vec![1, 5, 2, 8, 3];
+    assert_eq!(nums.iter().max(), Some(&8));
+}
