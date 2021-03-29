@@ -39,6 +39,7 @@ fn filter_map() {
 }
 
 #[test]
+#[allow(clippy::flat_map_identity)]
 fn flatten() {
     // flatten
     // https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.flatten
@@ -47,7 +48,7 @@ fn flatten() {
 
     println!("{:?}", iter.clone().flatten().collect::<Vec<_>>()); // [0, 1, 2, 3, 4]
 
-    // .flat_map(|x| x) と同等
+    // `flatten()` は、 `.flat_map(|x| x)` と同等
     assert_eq!(
         iter.clone().flatten().collect::<Vec<_>>(),
         iter.flat_map(|x| x).collect::<Vec<_>>(),
