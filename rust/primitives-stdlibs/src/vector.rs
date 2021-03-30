@@ -131,6 +131,15 @@ fn clear() {
     println!("{:?}", vec);
 }
 
+#[test]
+fn remove() {
+    let mut vec = vec![1, 2, 3];
+    assert_eq!(2, vec.remove(1));
+    assert_eq!(2, vec.len());
+    assert_eq!(3, vec.remove(1));
+    assert_eq!(1, vec.len());
+}
+
 mod index {
     use std::ops::Index;
 
