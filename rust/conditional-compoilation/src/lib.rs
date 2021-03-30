@@ -9,7 +9,6 @@ fn test() {
         "disabled"
     };
 
-
     println!("{}", s);
     // assert_eq!("disabled", s);
 }
