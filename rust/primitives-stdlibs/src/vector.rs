@@ -163,6 +163,15 @@ mod index {
         let index = vec.iter().position(|&str| str == "b").unwrap();
         assert_eq!(index, 1_usize);
     }
+
+    // 特定のレンジ内の値を取る
+    #[test]
+    fn range() {
+        let vec = vec!["a", "b", "c", "d", "e"];
+        let start = 1;
+        let end = 4;
+        assert_eq!(&vec[start..end], vec!["b", "c", "d"]);
+    }
 }
 
 mod update {
