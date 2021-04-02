@@ -122,8 +122,8 @@ class Node {
   }
 
   showNodeId() {
-	  const id = createCapText(this.id, this.pos.x, this.pos.y, this.pos.z);
-    _scene.add(id);
+	const nodeId = createCapText(this.id, this.pos.x, this.pos.y, this.pos.z, COLOR_NODE_ID);
+    _scene.add(nodeId);
   }
 
   start(step) {
@@ -150,6 +150,7 @@ class Node {
     const y = this.line.geometry.getAttribute('position').getY(step);
     const z = this.pos.z;
     const text = createCapText(`Ordinary Message<${message.name()}>\n${message.capText()}`, x, y, z, message.color());
+    text.userData.originalColor = message.color();
     _scene.add(text);
   }
 
@@ -161,6 +162,7 @@ class Node {
     const y = this.line.geometry.getAttribute('position').getY(step);
     const z = this.pos.z;
     const text = createCapText(`WHOAREYOU :\n  ${idNonce}\n  ${enrSeq}`, x, y, z, COLOR_WHOAREYOU);
+    text.userData.originalColor = COLOR_WHOAREYOU;
     _scene.add(text);
   }
 
@@ -172,6 +174,7 @@ class Node {
     const y = this.line.geometry.getAttribute('position').getY(step);
     const z = this.pos.z;
     const text = createCapText(`Handshake Message<${message.name()}>\n${message.capText()}`, x, y, z, message.color());
+    text.userData.originalColor = message.color();
     _scene.add(text);
   }
 }
@@ -360,6 +363,12 @@ function init() {
     requestAnimationFrame(animate);
     advanceTrace();
 
+    // レイキャスト = マウス位置からまっすぐに伸びる光線ベクトルを生成
+    raycaster.setFromCamera(mouse, camera);
+    // その光線とぶつかったオブジェクトを得る
+    const intersects = raycaster.intersectObjects(_scene.children);
+    highlightObject(intersects);
+
     controls.update();
     stats.begin();
     renderer.render(_scene, camera);
@@ -544,6 +553,7 @@ const _font = new THREE.Font(require('three/examples/fonts/helvetiker_regular.ty
 const _scale = 100;
 const _distance = 1000;
 const _nodeIds = [];
+const _stateHighlighted = [];
 
 let _max_step = 200;
 
@@ -551,6 +561,7 @@ const TIME_PROGRESS_PER_STEP = 1; // milli
 const IDLE_STEPS = 5;
 
 // TODO: 色の調整
+const COLOR_NODE_ID = 0xffffff;
 const COLOR_START = 0xffddff;
 const COLOR_SHUTDOWN = 0xffddff;
 const COLOR_WHOAREYOU = 0x00dd00;
@@ -566,6 +577,28 @@ const COLOR_NODES = 0xddd600;
 
 // protobuf.js
 // http://protobufjs.github.io/protobuf.js/Type.html#decodeDelimited
+
+const canvas = document.querySelector("#tracing");
+// マウス座標管理用のベクトルを作成
+const mouse = new THREE.Vector2();
+canvas.addEventListener('mousemove', handleMouseMove);
+// マウスを動かしたときのイベント
+function handleMouseMove(event) {
+  const element = event.currentTarget;
+  // canvas要素上のXY座標
+  const x = event.clientX - element.offsetLeft;
+  const y = event.clientY - element.offsetTop;
+  // canvas要素の幅・高さ
+  const w = element.offsetWidth;
+  const h = element.offsetHeight;
+
+  // -1〜+1の範囲で現在のマウス座標を登録する
+  mouse.x = ( x / w ) * 2 - 1;
+  mouse.y = -( y / h ) * 2 + 1;
+}
+
+// レイキャストを作成
+const raycaster = new THREE.Raycaster();
 
 (function () {
   const b = document.getElementById('b');
@@ -709,4 +742,46 @@ function subtractStringKey(a, b) {
 function calculateMaxStep() {
   let steps = subtractStringKey(_logs.last_key, _logs.first_key) / TIME_PROGRESS_PER_STEP;
   return steps + (IDLE_STEPS * 2);
+}
+
+function highlightObject(intersects) {
+  let obj = undefined;
+  if (intersects.length > 0) {
+    obj = _scene.getObjectById(intersects[0].object.id);
+  }
+
+  let revertId = _stateHighlighted.shift();
+  while (revertId !== undefined) {
+    if (obj !== undefined && revertId === obj.id) {
+      revertId = _stateHighlighted.shift();
+      continue;
+    }
+    revertHighlight(revertId);
+    revertId = _stateHighlighted.shift();
+  }
+
+  if (obj !== undefined && highlight(obj.id)) {
+    _stateHighlighted.push(obj.id);
+  }
+}
+
+function highlight(objectId) {
+  const obj = _scene.getObjectById(objectId);
+
+  if (obj.userData.originalColor === undefined) {
+    return false
+  }
+
+  obj.material.color.setHex(obj.userData.originalColor ^ 0xffffff);
+  return true;
+}
+
+function revertHighlight(objectId) {
+  const obj = _scene.getObjectById(objectId);
+
+  if (obj.userData.originalColor === undefined) {
+      return;
+  }
+
+  obj.material.color.setHex(obj.userData.originalColor);
 }
