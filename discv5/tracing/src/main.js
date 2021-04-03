@@ -367,7 +367,7 @@ function init() {
     raycaster.setFromCamera(mouse, camera);
     // その光線とぶつかったオブジェクトを得る
     const intersects = raycaster.intersectObjects(_scene.children);
-    highlightObject(intersects);
+    ObjectHighlighter.highlight(intersects);
 
     controls.update();
     stats.begin();
@@ -744,44 +744,52 @@ function calculateMaxStep() {
   return steps + (IDLE_STEPS * 2);
 }
 
-function highlightObject(intersects) {
-  let obj = undefined;
-  if (intersects.length > 0) {
-    obj = _scene.getObjectById(intersects[0].object.id);
-  }
+class ObjectHighlighter {
+  // なぜかコンパイルエラーになるためコメントアウト
+  // 代わりに、クラス定義のあとにプロパティを初期化するコードを入れている
+  // static highlightedIds = [];
 
-  let revertId = _stateHighlighted.shift();
-  while (revertId !== undefined) {
-    if (obj !== undefined && revertId === obj.id) {
-      revertId = _stateHighlighted.shift();
-      continue;
+  static highlight(intersects) {
+    let obj = undefined;
+    if (intersects.length > 0) {
+      obj = _scene.getObjectById(intersects[0].object.id);
     }
-    revertHighlight(revertId);
-    revertId = _stateHighlighted.shift();
+
+    let revertId = ObjectHighlighter.highlightedIds.shift();
+    while (revertId !== undefined) {
+      if (obj !== undefined && revertId === obj.id) {
+        revertId = ObjectHighlighter.highlightedIds.shift();
+        continue;
+      }
+      ObjectHighlighter.revert(revertId);
+      revertId = ObjectHighlighter.highlightedIds.shift();
+    }
+
+    if (obj !== undefined && ObjectHighlighter.invert(obj.id)) {
+      ObjectHighlighter.highlightedIds.push(obj.id);
+    }
   }
 
-  if (obj !== undefined && highlight(obj.id)) {
-    _stateHighlighted.push(obj.id);
+  static invert(objectId) {
+    const obj = _scene.getObjectById(objectId);
+
+    if (obj.userData.originalColor === undefined) {
+      return false
+    }
+
+    obj.material.color.setHex(obj.userData.originalColor ^ 0xffffff);
+    return true;
   }
-}
 
-function highlight(objectId) {
-  const obj = _scene.getObjectById(objectId);
+  static revert(objectId) {
+    const obj = _scene.getObjectById(objectId);
 
-  if (obj.userData.originalColor === undefined) {
-    return false
-  }
-
-  obj.material.color.setHex(obj.userData.originalColor ^ 0xffffff);
-  return true;
-}
-
-function revertHighlight(objectId) {
-  const obj = _scene.getObjectById(objectId);
-
-  if (obj.userData.originalColor === undefined) {
+    if (obj.userData.originalColor === undefined) {
       return;
-  }
+    }
 
-  obj.material.color.setHex(obj.userData.originalColor);
+    obj.material.color.setHex(obj.userData.originalColor);
+  }
 }
+// ワークアラウンド
+ObjectHighlighter.highlightedIds = [];
