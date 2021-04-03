@@ -24,7 +24,6 @@ members = [
   "crate-trust-dns",
   "leetcode",
   "level-db",
-  "macros",
   "primitives-stdlibs",
   "procon",
   "references-borrowing",

@@ -1,14 +1,3 @@
-#[test]
-fn assertions() {
-    let a = 1;
-    let b = 2;
-
-    // assert! でも意味は同じだけど、
-    // assert_ne! なら、panic時にそれぞれの値をデバッグ出力してくれる
-    // assert!(a != b);
-    assert_ne!(a, b);
-}
-
 // ドキュメントのサンプル
 // https://doc.rust-jp.rs/the-rust-programming-language-ja/1.6/book/macros.html
 #[cfg(test)]
@@ -38,15 +27,17 @@ fn test_foo() {
     //    |          ^ no rules expected this token in macro call
 }
 
-// パターン(pat)
+// 第一引数が、第二引数のパターンにマッチするかどうか
 #[cfg(test)]
-macro_rules! pat {
+macro_rules! pattern_match {
+    // マッチしなければpanic
     ( $e:expr , $pat:pat ) => {
         match $e {
             $pat => (),
             ref e => panic!("error: {:?}", e),
         }
     };
+    // マッチした場合の処理を指定できる
     ( $e:expr , $pat:pat => $arm:expr ) => {
         match $e {
             $pat => $arm,
@@ -56,9 +47,10 @@ macro_rules! pat {
 }
 
 #[test]
-fn test_pat() {
+#[allow(unused_variables)]
+fn test_pattern_match_macro() {
     #[derive(Debug)]
-    enum Foo {
+    enum TestEnum {
         A,
         B { s: String },
         C { n: u32, s: String },
@@ -67,34 +59,38 @@ fn test_pat() {
     ///////////
     // A
     ///////////
-    let foo = Foo::A;
-    pat!(foo, Foo::A);
+    {
+        let a = TestEnum::A;
+        pattern_match!(a, TestEnum::A);
+    }
 
     ///////////
     // B
     ///////////
-    let foo = Foo::B {
-        s: "foo:s".to_owned(),
-    };
-    pat!(foo, Foo::B { s });
+    {
+        let b = TestEnum::B {
+            s: "foo:s".to_owned(),
+        };
+        pattern_match!(b, TestEnum::B { s });
+    }
 
-    let foo = Foo::B {
-        s: "foo:s".to_owned(),
-    };
-    let s = pat!(foo, Foo::B { s } => s);
-    assert_eq!("foo:s".to_owned(), s);
-
-    let foo = Foo::B {
-        s: "foo:s".to_owned(),
-    };
-    pat!(foo, Foo::B { s } => assert!(true));
+    {
+        let b = TestEnum::B {
+            s: "foo:s".to_owned(),
+        };
+        let s = pattern_match!(b, TestEnum::B { s } => s);
+        assert_eq!("foo:s".to_owned(), s);
+    }
 
     ///////////
     // C
     ///////////
-    let foo = Foo::C {
-        n: 1,
-        s: "foo:s".to_owned(),
-    };
-    pat!(foo, Foo::C { n, s } => assert!(true));
+    {
+        let c = TestEnum::C {
+            n: 1,
+            s: "foo:s".to_owned(),
+        };
+        let msg = pattern_match!(c, TestEnum::C { n, s } => "ok");
+        assert_eq!("ok", msg);
+    }
 }
