@@ -1,6 +1,6 @@
 mod binary_tree {
     // https://laysakura.github.io/2019/12/22/rust-DataStructures-Algorithm-BinaryTree/
-    #[derive(Debug)]
+    #[derive(Debug, PartialEq)]
     enum BinaryTree<T> {
         Nil,
         Node {
@@ -8,6 +8,21 @@ mod binary_tree {
             left: Box<BinaryTree<T>>,
             right: Box<BinaryTree<T>>,
         },
+    }
+
+    impl<T> BinaryTree<T> {
+        // *** 要素の追加(置き換え) ***
+        // Node が1つのノードでなくサブツリーのルートであれば、二分木に二分木を追加することになる
+        // to は self に組み込まれる形で move される
+        fn replace(&mut self, to: Self) {
+            *self = to;
+        }
+
+        // *** 削除 ***
+        #[allow(dead_code)]
+        fn remove(&mut self) {
+            self.replace(Self::Nil);
+        }
     }
 
     // 二分木を簡単に作るためのマクロ
@@ -91,5 +106,138 @@ mod binary_tree {
         );
 
         println!("{:?}", root);
+    }
+
+    #[test]
+    fn test_replace() {
+        // tree1:
+        //       5
+        //      /
+        //     4
+        //    /
+        //   11
+        //  /  \
+        // 7    2
+        //
+        // tree2:
+        //         8
+        //        / \
+        //       13  4
+        //            \
+        //             1
+        //
+        // tree3 = tree1.root.right + tree2:
+        //       5
+        //      / \
+        //     4   8
+        //    /   / \
+        //   11  13  4
+        //  /  \      \
+        // 7    2      1
+        //
+
+        // tree1 は後ほどルートの右のNilを置き換えるので、 mut でつくる。
+        let mut tree1 = bin_tree! {
+            val: 5,
+            left: bin_tree! {
+                val: 4,
+                left: bin_tree! {
+                    val: 11,
+                    left: bin_tree! { val: 7 },
+                    right: bin_tree! { val: 2 },
+                },
+            },
+        };
+
+        let tree2 = bin_tree! {
+            val: 8,
+            left: bin_tree! { val: 13 },
+            right: bin_tree! {
+                val: 4,
+                right: bin_tree! { val: 1 },
+            },
+        };
+
+        let tree3 = bin_tree! {
+            val: 5,
+            left: bin_tree! {
+                val: 4,
+                left: bin_tree! {
+                    val: 11,
+                    left: bin_tree! { val: 7 },
+                    right: bin_tree! { val: 2 },
+                },
+            },
+            right: bin_tree! {
+                val: 8,
+                left: bin_tree! { val: 13 },
+                right: bin_tree! {
+                    val: 4,
+                    right: bin_tree!{ val: 1 },
+                },
+            },
+        };
+
+        if let BinaryTree::Node { right, .. } = &mut tree1 {
+            // tree1のルートの右を、Nilからtree2のルートに置き換える。
+            //
+            // 型の解説:
+            //   right: &mut Box<BinaryTree>
+            //   *right: mut Box<BinaryTree>
+            //   **right: mut BinaryTree
+            //
+            // replaceは &mut BinaryTree をセルフとして受け取るので (&mut **right).replace と書くのが明示的だが、
+            // `.` 演算子が暗黙的に借用への変換を行ってくれる。
+            (**right).replace(tree2);
+        }
+        assert_eq!(&tree1, &tree3);
+    }
+
+    // 深さ優先探索
+    #[test]
+    fn test_dfs() {
+        //       5
+        //      / \
+        //     4   8
+        //    /   / \
+        //   11  13  4
+        //  /  \      \
+        // 7    2      1
+        let tree = bin_tree! {
+            val: 5,
+            left: bin_tree! {
+                val: 4,
+                left: bin_tree! {
+                    val: 11,
+                    left: bin_tree! { val: 7 },
+                    right: bin_tree! { val: 2 },
+                },
+            },
+            right: bin_tree! {
+                val: 8,
+                left: bin_tree! { val: 13 },
+                right: bin_tree! {
+                    val: 4,
+                    right: bin_tree! { val: 1 },
+                },
+            },
+        };
+
+        assert!(dfs(&tree, &13));
+        assert!(!dfs(&tree, &99));
+
+        fn dfs(node: &BinaryTree<i32>, target: &i32) -> bool {
+            if let BinaryTree::Node { val, left, right } = node {
+                if val == target {
+                    return true;
+                }
+
+                if dfs(&left, target) || dfs(&right, target) {
+                    return true;
+                }
+            }
+
+            false
+        }
     }
 }
