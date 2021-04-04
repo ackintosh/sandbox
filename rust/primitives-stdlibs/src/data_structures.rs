@@ -1,4 +1,6 @@
 mod binary_tree {
+    use std::collections::VecDeque;
+
     // https://laysakura.github.io/2019/12/22/rust-DataStructures-Algorithm-BinaryTree/
     #[derive(Debug, PartialEq)]
     enum BinaryTree<T> {
@@ -226,6 +228,7 @@ mod binary_tree {
         assert!(dfs(&tree, &13));
         assert!(!dfs(&tree, &99));
 
+        // 再帰関数を使うことで簡潔に実装できる
         fn dfs(node: &BinaryTree<i32>, target: &i32) -> bool {
             if let BinaryTree::Node { val, left, right } = node {
                 if val == target {
@@ -234,6 +237,59 @@ mod binary_tree {
 
                 if dfs(&left, target) || dfs(&right, target) {
                     return true;
+                }
+            }
+
+            false
+        }
+    }
+
+    // 幅優先探索
+    #[test]
+    fn bfs() {
+        //       5
+        //      / \
+        //     4   8
+        //    /   / \
+        //   11  13  4
+        //  /  \      \
+        // 7    2      1
+        let tree = bin_tree! {
+            val: 5,
+            left: bin_tree! {
+                val: 4,
+                left: bin_tree! {
+                    val: 11,
+                    left: bin_tree! { val: 7 },
+                    right: bin_tree! { val: 2 },
+                },
+            },
+            right: bin_tree! {
+                val: 8,
+                left: bin_tree! { val: 13 },
+                right: bin_tree! {
+                    val: 4,
+                    right: bin_tree! { val: 1 },
+                },
+            },
+        };
+
+        assert!(bfs(&tree, &13));
+        assert!(!bfs(&tree, &99));
+
+        // FIFOなキューに左右の子ノードを順にpushしていき、それをpopしていくループによって実現する
+        fn bfs(node: &BinaryTree<i32>, target: &i32) -> bool {
+            let mut queue = VecDeque::new();
+            queue.push_back(node);
+
+            while let Some(node) = queue.pop_front() {
+                if let BinaryTree::Node {val, left, right} = node {
+                    if val == target {
+                        return true;
+                    }
+
+                    queue.push_back(left);
+                    queue.push_back(right);
                 }
             }
 
