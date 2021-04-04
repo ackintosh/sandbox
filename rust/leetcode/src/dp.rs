@@ -131,3 +131,60 @@ mod vacation {
         assert_eq!(dp(n, abc), 210);
     }
 }
+
+// 最強最速アルゴリズマー養成講座
+// 第７章 動的計画法・メモ化
+// P.169 経路の探索
+mod searching_for_a_route {
+    // 9回、右または上に移動することができる
+    // 右に5(w:5), 上に4(h:4)進む経路は何通りか
+
+    use std::collections::HashMap;
+
+    // *** 深さ優先探索 ***
+    //
+    #[test]
+    fn dfs() {
+        let result = solution(0, 0);
+        assert_eq!(126, result);
+
+        fn solution(h: i32, w: i32) -> i32 {
+            if h == 5 && w == 4 {
+                return 1;
+            }
+            if h + w == 9 {
+                return 0;
+            }
+
+            solution(h + 1, w) + solution(h, w + 1)
+        }
+    }
+
+    // *** メモ化した深さ優先探索 ***
+    // 一度探索した経路はメモから結果を得られるので、各頂点に対して1回しか探索を行わないことになる
+    // そのため、計算量は O(h * w) になる
+    #[test]
+    fn dfs_memoized() {
+        // 探索結果をメモするmap
+        let mut dp = HashMap::new();
+
+        let result = solution(0, 0, &mut dp);
+        assert_eq!(126, result);
+
+        fn solution(h: i32, w: i32, dp: &mut HashMap<(i32, i32), i32>) -> i32 {
+            if let Some(memo) = dp.get(&(h, w)){
+                return *memo;
+            }
+            if h == 5 && w == 4 {
+                return 1;
+            }
+            if h + w == 9 {
+                return 0;
+            }
+
+            let memo = solution(h + 1, w, dp) + solution(h, w + 1, dp);
+            dp.insert((h, w), memo);
+            memo
+        }
+    }
+}
