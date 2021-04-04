@@ -283,7 +283,7 @@ mod binary_tree {
             queue.push_back(node);
 
             while let Some(node) = queue.pop_front() {
-                if let BinaryTree::Node {val, left, right} = node {
+                if let BinaryTree::Node { val, left, right } = node {
                     if val == target {
                         return true;
                     }

@@ -172,7 +172,7 @@ mod searching_for_a_route {
         assert_eq!(126, result);
 
         fn solution(h: i32, w: i32, dp: &mut HashMap<(i32, i32), i32>) -> i32 {
-            if let Some(memo) = dp.get(&(h, w)){
+            if let Some(memo) = dp.get(&(h, w)) {
                 return *memo;
             }
             if h == 5 && w == 4 {
@@ -186,5 +186,32 @@ mod searching_for_a_route {
             dp.insert((h, w), memo);
             memo
         }
+    }
+
+    // *** 動的計画法 ***
+    // (h, w)にたどり着くには、(h - 1, w) もしくは (h, w - 1) を経由する必要がある
+    // よって、その2つの頂点にたどり着くための道筋が何通り有るのかを足し合わせると (h, w) にたどり着くための道順が何通りあるのかを求められる
+    #[test]
+    fn dp() {
+        let h: usize = 5;
+        let w: usize = 4;
+        let mut table = vec![vec![0; w + 1]; h + 1];
+
+        // 原点の経路数は1
+        table[0][0] = 1;
+
+        for hi in 0..=h {
+            for wi in 0..=w {
+                if hi > 0 {
+                    table[hi][wi] += table[hi - 1][wi];
+                }
+                if wi > 0 {
+                    table[hi][wi] += table[hi][wi - 1];
+                }
+            }
+        }
+
+        // println!("{:?}", table);
+        assert_eq!(126, table[h][w]);
     }
 }
