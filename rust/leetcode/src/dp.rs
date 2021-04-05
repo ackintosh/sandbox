@@ -223,7 +223,7 @@ mod knapsack {
     // 重さの合計 10 まで、価値の合計の最大は?
 
     #[test]
-    fn search() {
+    fn search1() {
         let weight = vec![3, 4, 1, 2, 3];
         let value = vec![2, 3, 2, 3, 6];
         let mut max = 0;
@@ -238,6 +238,11 @@ mod knapsack {
 
         assert_eq!(14, max);
 
+        // *** 探索方法1の実装 ***
+        // * 関数の返り値を持たず、
+        // 「いま見ている商品番号」「いま持っている重さ」「いま持っている商品価値」を引き回している。
+        // * これは、直感的な実装ではあるが、メモ化が難しいというデメリットがある
+        //  `max` は、探索の結果得られた最適解ではなく、単純い試している途中の値にすぎないので、メモには向かない。
         fn solution(item_index: usize, weight_total: i32, value_total: i32, weight: &Vec<i32>, value: &Vec<i32>, max: &mut i32) {
             // 重さが上限を超える場合
             if weight_total > 10 {
@@ -246,6 +251,10 @@ mod knapsack {
 
             // 最大値を更新する
             *max = (*max).max(value_total);
+
+            ///////////////////////////////////////////////
+            // 以下、次の深さのための処理
+            ///////////////////////////////////////////////
 
             // 深さが上限を超えた場合
             if item_index >= 5 {
