@@ -215,3 +215,51 @@ mod searching_for_a_route {
         assert_eq!(126, table[h][w]);
     }
 }
+
+// 最強最速アルゴリズマー養成講座
+// 第７章 動的計画法・メモ化
+// P.177 ナップサック問題
+mod knapsack {
+    // 重さの合計 10 まで、価値の合計の最大は?
+
+    #[test]
+    fn search() {
+        let weight = vec![3, 4, 1, 2, 3];
+        let value = vec![2, 3, 2, 3, 6];
+        let mut max = 0;
+
+        //       *
+        //      / \
+        //     1   0      item_index: 1 <-- 品物Aを 運ぶ/運ばない
+        //    / \  / \
+        //   1  0  1  0   item_index: 2 <-- 品物Bを 運ぶ/運ばない
+        //   (略)
+        solution(0, 0, 0, &weight, &value, &mut max);
+
+        assert_eq!(14, max);
+
+        fn solution(item_index: usize, weight_total: i32, value_total: i32, weight: &Vec<i32>, value: &Vec<i32>, max: &mut i32) {
+            // 重さが上限を超える場合
+            if weight_total > 10 {
+                return;
+            }
+
+            // 最大値を更新する
+            *max = (*max).max(value_total);
+
+            // 深さが上限を超えた場合
+            if item_index >= 5 {
+                return;
+            }
+
+            let w = weight[item_index];
+            let v = value[item_index];
+
+            // 品物 `item_index` を運ぶ場合
+            solution(item_index + 1, weight_total + w, value_total + v, weight, value, max);
+
+            // 品物 `item_index` を運ばない場合
+            solution(item_index + 1, weight_total, value_total, weight, value, max);
+        }
+    }
+}
