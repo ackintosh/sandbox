@@ -222,6 +222,8 @@ mod searching_for_a_route {
 mod knapsack {
     // 重さの合計 10 まで、価値の合計の最大は?
 
+    use std::collections::HashMap;
+
     #[test]
     fn search1() {
         const WEIGHT: [i32; 5] = [3, 4, 1, 2, 3];
@@ -277,15 +279,23 @@ mod knapsack {
         const WEIGHT: [i32; 5] = [3, 4, 1, 2, 3];
         const VALUE: [i32; 5] = [2, 3, 2, 3, 6];
 
-        let max = solution(0, 0);
+        let mut memo = vec![HashMap::new(); 5];
+
+        let max = solution(0, 0, &mut memo);
         assert_eq!(14, max);
 
         // *** 探索方法2 の実装 ***
         // 返り値で「それ以降で得られる商品価値」を返すようにすることで、メモ化できるようになっている
-        fn solution(item_index: usize, weight_total: i32) -> i32{
+        fn solution(item_index: usize, weight_total: i32, memo: &mut Vec<HashMap<i32, i32>>) -> i32{
             // 深さが上限を超えた場合
             if item_index >= WEIGHT.len() {
                 return 0;
+            }
+
+            // メモ
+            if let Some(m) = memo[item_index].get(&weight_total) {
+                println!("[memo] item_index: {}, weight_total: {}, max: {}", item_index, weight_total, m);
+                return *m;
             }
 
             let w = WEIGHT[item_index];
@@ -293,14 +303,17 @@ mod knapsack {
 
             // 品物 `item_index` を運ぶ場合
             let a = if weight_total + w <= 10 {
-                solution(item_index + 1, weight_total + w) + v
+                solution(item_index + 1, weight_total + w, memo) + v
             } else {
                 0
             };
             // 品物 `item_index` を運ばない場合
-            let b = solution(item_index + 1, weight_total);
+            let b = solution(item_index + 1, weight_total, memo);
 
-            a.max(b)
+            let max = a.max(b);
+            memo[item_index].insert(weight_total, max);
+
+            max
         }
     }
 }
