@@ -224,8 +224,8 @@ mod knapsack {
 
     #[test]
     fn search1() {
-        let weight = vec![3, 4, 1, 2, 3];
-        let value = vec![2, 3, 2, 3, 6];
+        const WEIGHT: [i32; 5] = [3, 4, 1, 2, 3];
+        const VALUE: [i32; 5] = [2, 3, 2, 3, 6];
         let mut max = 0;
 
         //       *
@@ -234,7 +234,7 @@ mod knapsack {
         //    / \  / \
         //   1  0  1  0   item_index: 2 <-- 品物Bを 運ぶ/運ばない
         //   (略)
-        solution(0, 0, 0, &weight, &value, &mut max);
+        solution(0, 0, 0, &mut max);
 
         assert_eq!(14, max);
 
@@ -243,7 +243,7 @@ mod knapsack {
         // 「いま見ている商品番号」「いま持っている重さ」「いま持っている商品価値」を引き回している。
         // * これは、直感的な実装ではあるが、メモ化が難しいというデメリットがある
         //  `max` は、探索の結果得られた最適解ではなく、単純い試している途中の値にすぎないので、メモには向かない。
-        fn solution(item_index: usize, weight_total: i32, value_total: i32, weight: &Vec<i32>, value: &Vec<i32>, max: &mut i32) {
+        fn solution(item_index: usize, weight_total: i32, value_total: i32, max: &mut i32) {
             // 重さが上限を超える場合
             if weight_total > 10 {
                 return;
@@ -257,18 +257,50 @@ mod knapsack {
             ///////////////////////////////////////////////
 
             // 深さが上限を超えた場合
-            if item_index >= 5 {
+            if item_index >= WEIGHT.len() {
                 return;
             }
 
-            let w = weight[item_index];
-            let v = value[item_index];
+            let w = WEIGHT[item_index];
+            let v = VALUE[item_index];
 
             // 品物 `item_index` を運ぶ場合
-            solution(item_index + 1, weight_total + w, value_total + v, weight, value, max);
+            solution(item_index + 1, weight_total + w, value_total + v, max);
 
             // 品物 `item_index` を運ばない場合
-            solution(item_index + 1, weight_total, value_total, weight, value, max);
+            solution(item_index + 1, weight_total, value_total, max);
+        }
+    }
+
+    #[test]
+    fn search2() {
+        const WEIGHT: [i32; 5] = [3, 4, 1, 2, 3];
+        const VALUE: [i32; 5] = [2, 3, 2, 3, 6];
+
+        let max = solution(0, 0);
+        assert_eq!(14, max);
+
+        // *** 探索方法2 の実装 ***
+        // 返り値で「それ以降で得られる商品価値」を返すようにすることで、メモ化できるようになっている
+        fn solution(item_index: usize, weight_total: i32) -> i32{
+            // 深さが上限を超えた場合
+            if item_index >= WEIGHT.len() {
+                return 0;
+            }
+
+            let w = WEIGHT[item_index];
+            let v = VALUE[item_index];
+
+            // 品物 `item_index` を運ぶ場合
+            let a = if weight_total + w <= 10 {
+                solution(item_index + 1, weight_total + w) + v
+            } else {
+                0
+            };
+            // 品物 `item_index` を運ばない場合
+            let b = solution(item_index + 1, weight_total);
+
+            a.max(b)
         }
     }
 }
