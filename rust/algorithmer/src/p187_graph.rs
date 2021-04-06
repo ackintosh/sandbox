@@ -49,19 +49,14 @@ fn solution(relations: Vec<Vec<&str>>) -> i32 {
 
 #[test]
 fn example0() {
-    let relations = vec![
-        vec!["N"],
-    ];
+    let relations = vec![vec!["N"]];
 
     assert_eq!(1, solution(relations));
 }
 
 #[test]
 fn example0_1() {
-    let relations = vec![
-        vec!["N", "Y"],
-        vec!["N", "N"],
-    ];
+    let relations = vec![vec!["N", "Y"], vec!["N", "N"]];
 
     assert_eq!(2, solution(relations));
 }
