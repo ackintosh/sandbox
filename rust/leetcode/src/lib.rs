@@ -1,5 +1,6 @@
 mod all_elements_in_two_binary_search_trees;
 mod all_paths_from_source_to_target;
+mod april_leetcoding_challenge_2021;
 mod arithmetic_subarrays;
 mod binary_search_tree_to_greater_sum_tree;
 mod check_if_two_string_arrays_are_equivalent;

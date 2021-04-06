@@ -6,6 +6,7 @@
 # * `target` ディレクトリ(出力ディレクトリ)も親ディレクトリに集約される
 [workspace]
 members = [
+  "algorithmer",
   "async-await",
   "conditional-compoilation",
   "crate-chrono",
