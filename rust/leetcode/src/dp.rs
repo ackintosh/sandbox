@@ -223,6 +223,7 @@ mod knapsack {
     // 重さの合計 10 まで、価値の合計の最大は?
 
     use std::collections::HashMap;
+    use std::convert::TryFrom;
 
     #[test]
     fn search1() {
@@ -286,7 +287,11 @@ mod knapsack {
 
         // *** 探索方法2 の実装 ***
         // 返り値で「それ以降で得られる商品価値」を返すようにすることで、メモ化できるようになっている
-        fn solution(item_index: usize, weight_total: i32, memo: &mut Vec<HashMap<i32, i32>>) -> i32{
+        fn solution(
+            item_index: usize,
+            weight_total: i32,
+            memo: &mut Vec<HashMap<i32, i32>>,
+        ) -> i32 {
             // 深さが上限を超えた場合
             if item_index >= WEIGHT.len() {
                 return 0;
@@ -294,7 +299,10 @@ mod knapsack {
 
             // メモ
             if let Some(m) = memo[item_index].get(&weight_total) {
-                println!("[memo] item_index: {}, weight_total: {}, max: {}", item_index, weight_total, m);
+                println!(
+                    "[memo] item_index: {}, weight_total: {}, max: {}",
+                    item_index, weight_total, m
+                );
                 return *m;
             }
 
@@ -315,5 +323,36 @@ mod knapsack {
 
             max
         }
+    }
+
+    // *** 動的計画法を使った解法 ***
+    #[test]
+    fn dp() {
+        const WEIGHT: [i32; 5] = [3, 4, 1, 2, 3];
+        const VALUE: [i32; 5] = [2, 3, 2, 3, 6];
+        let weight_limit = 10;
+
+        // 0番目~5つの品物 = 要素数6
+        // 0~10までの重量 = 要素数11
+        let mut table = [[0; 11]; 6];
+
+        let mut result = 0;
+
+        for i in 0..WEIGHT.len() {
+            for j in 0..table[i].len() {
+                let w = WEIGHT[i];
+                let v = VALUE[i];
+
+                let new_weight = j + usize::try_from(w).unwrap();
+                if new_weight <= weight_limit {
+                    let max = table[i][new_weight].max(table[i][j] + v);
+                    table[i + 1][new_weight] = max;
+                    result = max;
+                }
+            }
+        }
+
+        // println!("{:?}", table);
+        assert_eq!(14, result);
     }
 }
