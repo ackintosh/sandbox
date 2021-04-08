@@ -1,6 +1,5 @@
 mod all_elements_in_two_binary_search_trees;
 mod all_paths_from_source_to_target;
-mod april_leetcoding_challenge_2021;
 mod arithmetic_subarrays;
 mod binary_search_tree_to_greater_sum_tree;
 mod check_if_two_string_arrays_are_equivalent;
@@ -40,5 +39,6 @@ mod split_a_string_in_balanced_strings;
 mod subrectangle_queries;
 mod subtract_the_product_and_sum_of_digits_of_an_integer;
 mod sum_of_nodes_with_even_valued_grandparent;
+mod unique_number_of_occurrences;
 mod water_bottles;
 mod xor_operation_in_an_array;
