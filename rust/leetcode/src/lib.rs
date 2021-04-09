@@ -30,6 +30,7 @@ mod number_of_steps_to_reduce_a_number_to_zero;
 mod partition_labels;
 mod partitioning_into_minimum_number_of_deci_binary_numbers;
 mod queries_on_a_permutation_with_key;
+mod remove_outermost_parentheses;
 mod richest_customer_wealth;
 mod running_sum_of_1d_array;
 mod shuffle_string;
