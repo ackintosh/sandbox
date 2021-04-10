@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-cli serve --mode development",
     "prestart": "npm run pbjs && npm run pbts",
-    "pbjs": "pbjs -t static-module -w commonjs -o src/proto.js public/tracing.proto",
+    "pbjs": "pbjs -t static-module -w commonjs -o src/proto.js src/tracing.proto",
     "pbts": "pbts -o src/proto.d.ts src/proto.js"
   },
   "author": "",
