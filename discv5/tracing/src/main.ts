@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { tracing } from './proto';
+import { tracing } from './generated/proto';
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls';
 import { Reader } from "protobufjs";
 
@@ -18,8 +18,13 @@ class Logs {
     this.logs = new Map();
   }
 
+  private static key(log: tracing.Log): string {
+    const milli = `0000${Math.floor(log.timestamp.nanos / 1000000).toString()}`.slice(-4);
+    return `${log.timestamp.seconds}${milli}`;
+  }
+
   add(log) {
-    const t = log.key();
+    const t = Logs.key(log);
 
     if (this.logs.has(t)) {
       const elements = this.logs.get(t);
@@ -679,25 +684,11 @@ const raycaster = new THREE.Raycaster();
     b.style.display = 'none';
 
     const file = await handle.getFile();
-    // console.dir(file);
-
     const ab = await file.arrayBuffer();
-    // console.dir(ab);
     const bytes = new Uint8Array(ab);
-    // console.dir(bytes);
-
     const reader = Reader.create(bytes);
-    // console.dir(reader);
 
-    const root = await protobuf.load('tracing.proto');
-    let Log = root.lookupType('tracing.Log').ctor;
-    // extend protobuf with custom functionality
-    Log.prototype.key = function () {
-      const milli = `0000${Math.floor(this.timestamp.nanos / 1000000).toString()}`.slice(-4);
-      return `${this.timestamp.seconds}${milli}`;
-    }
-
-    const reason = Log.verify(bytes);
+    const reason = tracing.Log.verify(bytes);
     if (reason != null) {
       console.log(reason);
       alert(reason);
@@ -706,7 +697,7 @@ const raycaster = new THREE.Raycaster();
 
     try {
       while (true) {
-        const log = Log.decodeDelimited(reader);
+        const log = tracing.Log.decodeDelimited(reader);
         _logs.add(log);
 
         if (log.event === 'start') {
@@ -850,5 +841,3 @@ class ObjectHighlighter {
     obj.material.color.setHex(obj.userData.originalColor);
   }
 }
-// ワークアラウンド
-// ObjectHighlighter.highlightedIds = [];

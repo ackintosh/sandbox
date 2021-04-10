@@ -6,8 +6,8 @@
   "scripts": {
     "start": "webpack-cli serve --mode development",
     "prestart": "npm run pbjs && npm run pbts",
-    "pbjs": "pbjs -t static-module -w commonjs -o src/proto.js src/tracing.proto",
-    "pbts": "pbts -o src/proto.d.ts src/proto.js"
+    "pbjs": "pbjs -t static-module -w commonjs -o src/generated/proto.js src/tracing.proto",
+    "pbts": "pbts -o src/generated/proto.d.ts src/generated/proto.js"
   },
   "author": "",
   "license": "ISC",
