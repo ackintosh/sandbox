@@ -610,7 +610,6 @@ function createArrow(fromNode, toNode, step, color) {
 
 const _scene = new THREE.Scene();
 const Stats = require('stats-js');
-const protobuf = require('protobufjs');
 const _logs = new Logs();
 const _nodes = new Map();
 const _font = new THREE.Font(require('three/examples/fonts/helvetiker_regular.typeface.json'));
@@ -795,8 +794,6 @@ function calculateMaxStep() {
 }
 
 class ObjectHighlighter {
-  // なぜかコンパイルエラーになるためコメントアウト
-  // 代わりに、クラス定義のあとにプロパティを初期化するコードを入れている
   static highlightedIds = [];
 
   static highlight(intersects) {
