@@ -277,6 +277,18 @@ class Nodes {
   }
 }
 
+class SentMessages {
+  constructor() {
+    this.messages = new Map();
+  }
+
+  // @param {string} sender
+  // @param {} message
+  add(sender, message) {
+    this.messages.set(sender, message);
+  }
+}
+
 function init() {
   const width = window.innerWidth;
   const height = window.innerHeight;
@@ -553,7 +565,7 @@ const _font = new THREE.Font(require('three/examples/fonts/helvetiker_regular.ty
 const _scale = 100;
 const _distance = 1000;
 const _nodeIds = [];
-const _stateHighlighted = [];
+const _sentMessages = new SentMessages();
 
 let _max_step = 200;
 
