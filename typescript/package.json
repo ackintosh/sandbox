@@ -1,0 +1,15 @@
+{
+  "name": "sandbox-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc *.ts",
+    "start": "tsc *.ts && node sample.js"
+  },
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "typescript": "4.2.4"
+  }
+}
