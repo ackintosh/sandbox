@@ -1,7 +1,17 @@
+import * as THREE from 'three';
+import { tracing } from './proto';
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls';
 import { Reader } from "protobufjs";
 
+// Workaround for the compile error:
+// TS2339: Property 'showOpenFilePicker' does not exist on type 'Window & typeof globalThis'.
+declare global { interface Window { showOpenFilePicker: any; } }
+
 class Logs {
+  first_key: string;
+  last_key: string;
+  logs: Map<string, Array<tracing.Log>>;
+
   constructor() {
     this.first_key = undefined;
     this.last_key = undefined;
@@ -21,7 +31,7 @@ class Logs {
   }
 
   sort() {
-    const sorted = [...this.logs].sort(([k, _v], [k2, _v2]) => {
+    const sorted = Array.from(this.logs).sort(([k, _v], [k2, _v2]) => {
       this.updateEdgeKey(k);
       this.updateEdgeKey(k2);
       if (k > k2) {
@@ -71,6 +81,10 @@ class Logs {
 }
 
 class Node {
+  id: string;
+  pos: NodePos;
+  line: THREE.Line;
+
   constructor(id) {
     this.id = id;
     this.pos = this.calculatePos();
@@ -79,12 +93,12 @@ class Node {
     this.showNodeId();
   }
 
-  calculatePos() {
+  calculatePos(): NodePos {
     const angle = 360 / _nodeIds.length * _nodes.size;
     const x = Math.cos(angle * Math.PI / 180) * _distance;
     const z = Math.sin(angle * Math.PI / 180) * _distance;
 
-    return {x: x, y: 0, z: z};
+    return new NodePos(x, 0, z);
   }
 
   // create new line
@@ -98,7 +112,7 @@ class Node {
 
     let y, yIndex, xIndex, zIndex;
     y = yIndex = xIndex = zIndex = 0;
-    for (var i = 0; i < _max_step; i ++) {
+    for (let i = 0; i < _max_step; i ++) {
       xIndex = (i * 3);
       yIndex = (i * 3) + 1;
       zIndex = (i * 3) + 2;
@@ -179,8 +193,26 @@ class Node {
   }
 }
 
+class NodePos {
+  readonly x: number;
+  readonly y: number;
+  readonly z: number;
+
+  constructor(x: number, y: number, z: number) {
+    this.x = x;
+    this.y = y;
+    this.z = z;
+  }
+}
+
+interface Message {
+  name(): string;
+  color(): number;
+  capText(): string;
+}
+
 // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-theory.md#step-1-node-a-sends-message-packet
-class Random {
+class Random implements Message{
   name() {
     return 'Random packet';
   }
@@ -195,7 +227,10 @@ class Random {
 }
 
 // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#ping-request-0x01
-class Ping {
+class Ping implements Message{
+  requestId: string;
+  enrSeq: number;
+
   constructor(requestId, enrSeq) {
     this.requestId = requestId;
     this.enrSeq = enrSeq;
@@ -215,7 +250,12 @@ class Ping {
 }
 
 // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#pong-response-0x02
-class Pong {
+class Pong implements Message{
+  requestId: string;
+  enrSeq: number;
+  recipientIp: string;
+  recipientPort: number;
+
   constructor(requestId, enrSeq, recipientIp, recipientPort) {
     this.requestId = requestId;
     this.enrSeq = enrSeq;
@@ -237,7 +277,10 @@ class Pong {
 }
 
 // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#findnode-request-0x03
-class Findnode {
+class Findnode implements Message{
+  requestId: string;
+  distances: Array<number>;
+
   constructor(requestId, distances) {
     this.requestId = requestId;
     this.distances = distances;
@@ -257,7 +300,11 @@ class Findnode {
 }
 
 // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#nodes-response-0x04
-class Nodes {
+class Nodes implements Message{
+  requestId: string;
+  total: number;
+  nodes: Array<string>;
+
   constructor(requestId, total, nodes) {
     this.requestId = requestId;
     this.total = total;
@@ -278,13 +325,13 @@ class Nodes {
 }
 
 class SentMessages {
+  messages: Map<string, Message>;
+
   constructor() {
     this.messages = new Map();
   }
 
-  // @param {string} sender
-  // @param {} message
-  add(sender, message) {
+  add(sender: string, message: Message) {
     this.messages.set(sender, message);
   }
 }
@@ -759,7 +806,7 @@ function calculateMaxStep() {
 class ObjectHighlighter {
   // なぜかコンパイルエラーになるためコメントアウト
   // 代わりに、クラス定義のあとにプロパティを初期化するコードを入れている
-  // static highlightedIds = [];
+  static highlightedIds = [];
 
   static highlight(intersects) {
     let obj = undefined;
@@ -804,4 +851,4 @@ class ObjectHighlighter {
   }
 }
 // ワークアラウンド
-ObjectHighlighter.highlightedIds = [];
+// ObjectHighlighter.highlightedIds = [];

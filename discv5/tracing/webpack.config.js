@@ -2,19 +2,28 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './src/main.js',
+  mode: 'development',
+  entry: './src/main.ts',
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        use: 'ts-loader',
+      },
+    ],
+  },
+  resolve: {
+    extensions: [
+      '.ts', '.js',
+    ],
+  },
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, 'public')
   },
+  target: ['web', 'es5'],
   devServer: {
-    contentBase: "public",
+    contentBase: 'public',
     open: true
   },
-  plugins: [
-    // THREE.Scene などの形式で three.js のオブジェクトを使用できるようにする
-    new webpack.ProvidePlugin({
-      THREE : 'three/build/three'
-    }),
-  ]
 };
