@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { tracing } from './generated/proto';
-import { Random, Ping, Findnode, Nodes, Pong  } from './Message';
+import {Random, Ping, Findnode, Nodes, Pong, Message} from './Message';
 import { ObjectHighlighter } from "./ObjectHighlighter";
 import { LogKeyHelper } from "./LogKeyHelper";
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls';
@@ -9,6 +9,7 @@ import { Reader } from "protobufjs";
 import { Globals } from './Globals';
 import { Node } from "./Node";
 import {Logs} from "./Logs";
+import {SentMessages} from "./SentMessages";
 
 // Workaround for the compile error:
 // TS2339: Property 'showOpenFilePicker' does not exist on type 'Window & typeof globalThis'.
@@ -21,8 +22,9 @@ export const IDLE_STEPS = 5;
 
 const _scene = new THREE.Scene();
 const _logs = new Logs();
-const _nodes = new Map();
-const _nodeIds = [];
+const _nodes: Map<string, Node> = new Map();
+const _nodeIds: Array<string> = [];
+const _sentMessages = new SentMessages();
 const _canvas: HTMLElement = document.querySelector<HTMLElement>("#tracing");
 // マウス座標管理用のベクトル
 const _mouse = new THREE.Vector2();
@@ -39,19 +41,6 @@ _canvas.addEventListener('mousemove', function (event: MouseEvent) {
   _mouse.y = -( y / h ) * 2 + 1;
 });
 
-
-// const _sentMessages = new SentMessages();
-// class SentMessages {
-//   messages: Map<string, Message>;
-//
-//   constructor() {
-//     this.messages = new Map();
-//   }
-//
-//   add(sender: string, message: Message) {
-//     this.messages.set(sender, message);
-//   }
-// }
 
 (function () {
   const b: HTMLElement = document.getElementById('b');
@@ -258,6 +247,9 @@ function processLog(log: tracing.Log, step: number) {
     case 'sendOrdinaryMessage':
       processOrdinaryMessage(log, step);
       break;
+    case 'handleOrdinaryMessage':
+      processHandleOrdinaryMessage(log, step);
+      break;
     case 'sendWhoareyou':
       processWhoareyou(log, step);
       break;
@@ -279,7 +271,7 @@ function processShutdown(log, step) {
   node.shutdown(step);
 }
 
-function protoToMessage(message) {
+function protoToMessage(message): Message {
   switch (message.message) {
     case 'ping':
       return new Ping(message.ping.requestId, message.ping.enrSeq);
@@ -303,12 +295,33 @@ function processOrdinaryMessage(log: tracing.Log, step: number) {
   const recipient = _nodes.get(ordinaryMessage.recipient);
   const message = protoToMessage(log.sendOrdinaryMessage);
 
-  sender.sendMessage(
-      recipient,
-      step,
-      message
-  );
+  if (ordinaryMessage.random !== null) {
+    // Due to Random packet has no request_id, we can't trace when the Random packet has been handled by the recipient.
+    // So we can only draw an arrow which grows horizontally towards recipient.
+    sender.drawOrdinaryMessageHorizontally(recipient, step, message);
+  } else {
+    _sentMessages.add(
+        sender.id,
+        recipient.id,
+        message,
+        step
+    );
+  }
+}
 
+function processHandleOrdinaryMessage(log: tracing.Log, step: number): void {
+  const ordinaryMessage = log.handleOrdinaryMessage;
+  const sender = _nodes.get(ordinaryMessage.sender);
+  const recipient = _nodes.get(ordinaryMessage.recipient);
+  const message = protoToMessage(ordinaryMessage);
+
+  // FIXME
+  try {
+    const sentMessage = _sentMessages.take(sender.id, recipient.id, message.requestId());
+    sender.drawOrdinaryMessage(recipient, step, sentMessage);
+  } catch (e) {
+    console.error(e);
+  }
 }
 
 function processWhoareyou(log, step) {

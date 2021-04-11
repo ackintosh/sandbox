@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import {Globals} from "./Globals";
 import {DISTANCE_BETWEEN_NODES, SCALE} from "./main";
+import {SentMessage} from "./SentMessages";
 
 const COLOR_NODE_ID = 0xffffff;
 const COLOR_START = 0xffddff;
@@ -100,7 +101,7 @@ export class Node {
         this.scene.add(text);
     }
 
-    sendMessage(toNode, step, message) {
+    drawOrdinaryMessageHorizontally(toNode, step, message): void {
         const arrow = createArrow(this, toNode, step, message.color());
         this.scene.add(arrow);
 
@@ -109,6 +110,18 @@ export class Node {
         const z = this.pos.z;
         const text = createCapText(`Ordinary Message<${message.name()}>\n${message.capText()}`, x, y, z, message.color());
         text.userData.originalColor = message.color();
+        this.scene.add(text);
+    }
+
+    drawOrdinaryMessage(toNode: Node, toStep: number, sentMessage: SentMessage) {
+        const arrow = createArrow2(this, sentMessage, toNode, toStep, sentMessage.message.color());
+        this.scene.add(arrow);
+
+        const x = this.pos.x;
+        const y = this.line.geometry.getAttribute('position').getY(sentMessage.step);
+        const z = this.pos.z;
+        const text = createCapText(`Ordinary Message<${sentMessage.message.name()}>\n${sentMessage.message.capText()}`, x, y, z, sentMessage.message.color());
+        text.userData.originalColor = sentMessage.message.color();
         this.scene.add(text);
     }
 
@@ -179,6 +192,38 @@ function createArrow(fromNode, toNode, step, color) {
     return new THREE.ArrowHelper(
         direction.clone().normalize(),
         head,
+        direction.length(),
+        color,
+        100,
+        30
+    );
+}
+
+function createArrow2(fromNode: Node, sentMessage: SentMessage, toNode: Node, toStep: number, color: number) {
+    const target = new THREE.Vector3(
+        toNode.pos.x,
+        toNode
+            .line
+            .geometry
+            .getAttribute('position')
+            .getY(toStep),
+        toNode.pos.z
+    );
+    const origin = {
+        x: fromNode.pos.x,
+        y: fromNode
+            .line
+            .geometry
+            .getAttribute('position')
+            .getY(sentMessage.step),
+        z: fromNode.pos.z
+    };
+    const direction = new THREE.Vector3().subVectors(target, origin);
+
+    // https://threejs.org/docs/index.html#api/en/helpers/ArrowHelper
+    return new THREE.ArrowHelper(
+        direction.clone().normalize(),
+        origin,
         direction.length(),
         color,
         100,

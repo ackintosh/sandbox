@@ -8,6 +8,7 @@ export interface Message {
     name(): string;
     color(): number;
     capText(): string;
+    requestId(): string
 }
 
 // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-theory.md#step-1-node-a-sends-message-packet
@@ -23,15 +24,19 @@ export class Random implements Message{
     capText(): string {
         return '';
     }
+
+    requestId(): string {
+        throw new Error("Random has no requestId.");
+    }
 }
 
 // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#ping-request-0x01
 export class Ping implements Message{
-    requestId: string;
+    readonly #requestId: string;
     enrSeq: number;
 
     constructor(requestId: string, enrSeq: number) {
-        this.requestId = requestId;
+        this.#requestId = requestId;
         this.enrSeq = enrSeq;
     }
 
@@ -44,19 +49,23 @@ export class Ping implements Message{
     }
 
     capText(): string {
-        return `  ${this.requestId}\n  ${this.enrSeq}`;
+        return `  ${this.#requestId}\n  ${this.enrSeq}`;
+    }
+
+    requestId(): string {
+        return this.#requestId;
     }
 }
 
 // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#pong-response-0x02
 export class Pong implements Message{
-    requestId: string;
+    readonly #requestId: string;
     enrSeq: number;
     recipientIp: string;
     recipientPort: number;
 
     constructor(requestId: string, enrSeq: number, recipientIp: string, recipientPort: number) {
-        this.requestId = requestId;
+        this.#requestId = requestId;
         this.enrSeq = enrSeq;
         this.recipientIp = recipientIp;
         this.recipientPort = recipientPort;
@@ -71,17 +80,21 @@ export class Pong implements Message{
     }
 
     capText(): string {
-        return `  ${this.requestId}\n  ${this.enrSeq}\n  ${this.recipientIp}\n  ${this.recipientPort}`;
+        return `  ${this.#requestId}\n  ${this.enrSeq}\n  ${this.recipientIp}\n  ${this.recipientPort}`;
+    }
+
+    requestId(): string {
+        return this.#requestId;
     }
 }
 
 // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#findnode-request-0x03
 export class Findnode implements Message{
-    requestId: string;
+    readonly #requestId: string;
     distances: Array<number>;
 
     constructor(requestId: string, distances: Array<number>) {
-        this.requestId = requestId;
+        this.#requestId = requestId;
         this.distances = distances;
     }
 
@@ -94,18 +107,22 @@ export class Findnode implements Message{
     }
 
     capText(): string {
-        return `  ${this.requestId}\n  [${this.distances.join(', ')}]`;
+        return `  ${this.#requestId}\n  [${this.distances.join(', ')}]`;
+    }
+
+    requestId(): string {
+        return this.#requestId;
     }
 }
 
 // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#nodes-response-0x04
 export class Nodes implements Message{
-    requestId: string;
+    readonly #requestId: string;
     total: number;
     nodes: Array<string>;
 
     constructor(requestId: string, total: number, nodes: Array<string>) {
-        this.requestId = requestId;
+        this.#requestId = requestId;
         this.total = total;
         this.nodes = nodes;
     }
@@ -119,6 +136,10 @@ export class Nodes implements Message{
     }
 
     capText(): string {
-        return `  ${this.requestId}\n  ${this.total}\n  [${this.nodes.join(', ')}]`;
+        return `  ${this.#requestId}\n  ${this.total}\n  [${this.nodes.join(', ')}]`;
+    }
+
+    requestId(): string {
+        return this.#requestId;
     }
 }
