@@ -298,7 +298,7 @@ function processOrdinaryMessage(log: tracing.Log, step: number) {
   if (ordinaryMessage.random !== null) {
     // Due to Random packet has no request_id, we can't trace when the Random packet has been handled by the recipient.
     // So we can only draw an arrow which grows horizontally towards recipient.
-    sender.drawOrdinaryMessageHorizontally(recipient, step, message);
+    sender.drawMessageHorizontally(recipient, step, message);
   } else {
     _sentMessages.addOrdinaryMessage(
         sender.id,

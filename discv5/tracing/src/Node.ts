@@ -101,7 +101,7 @@ export class Node {
         this.scene.add(text);
     }
 
-    drawOrdinaryMessageHorizontally(toNode, step, message): void {
+    drawMessageHorizontally(toNode, step, message): void {
         const arrow = drawArrow(this, toNode, step, message.color());
         this.scene.add(arrow);
 
