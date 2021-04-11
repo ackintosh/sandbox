@@ -1,9 +1,10 @@
 import * as THREE from 'three';
 import { tracing } from './generated/proto';
-import { Message, Random, Ping, Findnode, Nodes, Pong  } from './Message';
+import { Random, Ping, Findnode, Nodes, Pong  } from './Message';
 import { ObjectHighlighter } from "./ObjectHighlighter";
 import { LogKeyHelper } from "./LogKeyHelper";
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls';
+import Stats from 'three/examples/jsm/libs/stats.module';
 import { Reader } from "protobufjs";
 import { Globals } from './Globals';
 import { Node } from "./Node";
@@ -13,17 +14,102 @@ import {Logs} from "./Logs";
 // TS2339: Property 'showOpenFilePicker' does not exist on type 'Window & typeof globalThis'.
 declare global { interface Window { showOpenFilePicker: any; } }
 
-class SentMessages {
-  messages: Map<string, Message>;
+export const SCALE = 100;
+export const DISTANCE_BETWEEN_NODES = 1000;
+export const TIME_PROGRESS_PER_STEP = 1; // milli
+export const IDLE_STEPS = 5;
 
-  constructor() {
-    this.messages = new Map();
-  }
+const _scene = new THREE.Scene();
+const _logs = new Logs();
+const _nodes = new Map();
+const _nodeIds = [];
+const _canvas: HTMLElement = document.querySelector<HTMLElement>("#tracing");
+// マウス座標管理用のベクトル
+const _mouse = new THREE.Vector2();
+_canvas.addEventListener('mousemove', function (event: MouseEvent) {
+  // canvas要素上のXY座標
+  const x = event.clientX - this.offsetLeft;
+  const y = event.clientY - this.offsetTop;
+  // canvas要素の幅・高さ
+  const w = this.offsetWidth;
+  const h = this.offsetHeight;
 
-  add(sender: string, message: Message) {
-    this.messages.set(sender, message);
-  }
-}
+  // -1〜+1の範囲で現在のマウス座標を登録する
+  _mouse.x = ( x / w ) * 2 - 1;
+  _mouse.y = -( y / h ) * 2 + 1;
+});
+
+
+// const _sentMessages = new SentMessages();
+// class SentMessages {
+//   messages: Map<string, Message>;
+//
+//   constructor() {
+//     this.messages = new Map();
+//   }
+//
+//   add(sender: string, message: Message) {
+//     this.messages.set(sender, message);
+//   }
+// }
+
+(function () {
+  const b: HTMLElement = document.getElementById('b');
+  b.addEventListener('click', async () => {
+    // https://developer.mozilla.org/en-US/docs/Web/API/Window/showOpenFilePicker
+    // https://wicg.github.io/file-system-access/#api-showopenfilepicker
+    const [handle] = await window.showOpenFilePicker({
+      multiple: false,
+      types: [
+        {
+          description: 'trace file',
+          accept: {
+            'text/plain': ['.log']
+          },
+        }
+      ]
+    });
+
+    b.style.display = 'none';
+
+    const file = await handle.getFile();
+    const ab = await file.arrayBuffer();
+    const bytes = new Uint8Array(ab);
+    const reader = Reader.create(bytes);
+
+    const reason = tracing.Log.verify(bytes);
+    if (reason != null) {
+      console.log(reason);
+      alert(reason);
+      return;
+    }
+
+    try {
+      while (true) {
+        // http://protobufjs.github.io/protobuf.js/Type.html#decodeDelimited
+        const log = tracing.Log.decodeDelimited(reader);
+        _logs.add(log);
+
+        if (log.event === 'start') {
+          _nodeIds.push(log.start.nodeId);
+          // console.dir(log.start);
+        }
+        // console.dir(log);
+        // console.dir(log.event);
+      }
+    } catch (e) {
+      if (e instanceof RangeError) {
+        // console.log("decoding has done");
+      } else {
+        throw e;
+      }
+    }
+
+    _logs.sort();
+
+    bootstrap();
+  });
+})();
 
 function bootstrap() {
   const _globals = new Globals(_logs, _nodeIds, _nodes);
@@ -107,6 +193,8 @@ function bootstrap() {
 
   const objectHighlighter = new ObjectHighlighter(_scene);
 
+  const raycaster = new THREE.Raycaster();
+
   animate();
 
   function animate() {
@@ -114,7 +202,7 @@ function bootstrap() {
     advanceTrace();
 
     // レイキャスト = マウス位置からまっすぐに伸びる光線ベクトルを生成
-    raycaster.setFromCamera(mouse, camera);
+    raycaster.setFromCamera(_mouse, camera);
     // その光線とぶつかったオブジェクトを得る
     const intersects = raycaster.intersectObjects(_scene.children);
     objectHighlighter.highlight(intersects);
@@ -244,101 +332,3 @@ function processHandshakeMessage(log, step) {
       message
   );
 }
-
-const _scene = new THREE.Scene();
-const Stats = require('stats-js');
-const _logs = new Logs();
-const _nodes = new Map();
-const _nodeIds = [];
-const _sentMessages = new SentMessages();
-
-export const SCALE = 100;
-export const DISTANCE_BETWEEN_NODES = 1000;
-export const TIME_PROGRESS_PER_STEP = 1; // milli
-export const IDLE_STEPS = 5;
-
-// protocol-buffers
-// https://developers.google.com/protocol-buffers/docs/reference/javascript-generated
-// > deserializeBinary
-
-// protobuf.js
-// http://protobufjs.github.io/protobuf.js/Type.html#decodeDelimited
-
-const canvas = document.querySelector("#tracing");
-// マウス座標管理用のベクトルを作成
-const mouse = new THREE.Vector2();
-canvas.addEventListener('mousemove', handleMouseMove);
-// マウスを動かしたときのイベント
-function handleMouseMove(event) {
-  const element = event.currentTarget;
-  // canvas要素上のXY座標
-  const x = event.clientX - element.offsetLeft;
-  const y = event.clientY - element.offsetTop;
-  // canvas要素の幅・高さ
-  const w = element.offsetWidth;
-  const h = element.offsetHeight;
-
-  // -1〜+1の範囲で現在のマウス座標を登録する
-  mouse.x = ( x / w ) * 2 - 1;
-  mouse.y = -( y / h ) * 2 + 1;
-}
-
-// レイキャストを作成
-const raycaster = new THREE.Raycaster();
-
-(function () {
-  const b = document.getElementById('b');
-  b.addEventListener('click', async () => {
-    // https://developer.mozilla.org/en-US/docs/Web/API/Window/showOpenFilePicker
-    // https://wicg.github.io/file-system-access/#api-showopenfilepicker
-    const [handle] = await window.showOpenFilePicker({
-      multiple: false,
-      types: [
-        {
-          description: 'trace file',
-          accept: {
-            'text/plain': ['.log']
-          },
-        }
-      ]
-    });
-
-    b.style.display = 'none';
-
-    const file = await handle.getFile();
-    const ab = await file.arrayBuffer();
-    const bytes = new Uint8Array(ab);
-    const reader = Reader.create(bytes);
-
-    const reason = tracing.Log.verify(bytes);
-    if (reason != null) {
-      console.log(reason);
-      alert(reason);
-      return;
-    }
-
-    try {
-      while (true) {
-        const log = tracing.Log.decodeDelimited(reader);
-        _logs.add(log);
-
-        if (log.event === 'start') {
-          _nodeIds.push(log.start.nodeId);
-          console.dir(log.start);
-        }
-        console.dir(log);
-        console.dir(log.event);
-      }
-    } catch (e) {
-      if (e instanceof RangeError) {
-        console.log("decoding has done");
-      } else {
-        throw e;
-      }
-    }
-
-    _logs.sort();
-
-    bootstrap();
-  });
-})();
