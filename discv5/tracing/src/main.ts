@@ -1,14 +1,18 @@
 import * as THREE from 'three';
 import { tracing } from './generated/proto';
 import { Message, Random, Ping, Findnode, Nodes, Pong  } from './Message';
+import { ObjectHighlighter } from "./ObjectHighlighter";
+import { LogKeyHelper } from "./LogKeyHelper";
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls';
 import { Reader } from "protobufjs";
+import { Globals } from './Globals';
+import { Node } from "./Node";
 
 // Workaround for the compile error:
 // TS2339: Property 'showOpenFilePicker' does not exist on type 'Window & typeof globalThis'.
 declare global { interface Window { showOpenFilePicker: any; } }
 
-class Logs {
+export class Logs {
   first_key: string;
   last_key: string;
   logs: Map<string, Array<tracing.Log>>;
@@ -61,7 +65,7 @@ class Logs {
       if (this.logs.has(k)) {
           slice = slice.concat(this.logs.get(k));
       }
-      k = incrementStringKey(k);
+      k = LogKeyHelper.increment(k);
     }
 
     return slice;
@@ -86,132 +90,6 @@ class Logs {
   }
 }
 
-class Node {
-  id: string;
-  pos: NodePos;
-  line: THREE.Line;
-
-  constructor(id) {
-    this.id = id;
-    this.pos = this.calculatePos();
-
-    this.showLine();
-    this.showNodeId();
-  }
-
-  calculatePos(): NodePos {
-    const angle = 360 / _nodeIds.length * _nodes.size;
-    const x = Math.cos(angle * Math.PI / 180) * _distance;
-    const z = Math.sin(angle * Math.PI / 180) * _distance;
-
-    return new NodePos(x, 0, z);
-  }
-
-  // create new line
-  // https://threejs.org/docs/index.html#manual/en/introduction/Drawing-lines
-  showLine() {
-    // geometry
-    const geometry = new THREE.BufferGeometry();
-
-    // attributes
-    const positions = new Float32Array( _max_step * 3 ); // 3 vertices per point
-
-    let y, yIndex, xIndex, zIndex;
-    y = yIndex = xIndex = zIndex = 0;
-    for (let i = 0; i < _max_step; i ++) {
-      xIndex = (i * 3);
-      yIndex = (i * 3) + 1;
-      zIndex = (i * 3) + 2;
-      positions[xIndex] = this.pos.x;
-      positions[yIndex] = y;
-      positions[zIndex] = this.pos.z;
-      y = (-1 * _scale) * i;
-    }
-
-    geometry.setAttribute( 'position', new THREE.BufferAttribute( positions, 3 ) );
-
-    // draw range
-    const drawCount = 2; // draw the first 2 points, only
-    geometry.setDrawRange( 0, drawCount );
-
-    // create a blue LineBasicMaterial
-    const material = new THREE.LineBasicMaterial( { color: 0xff0000 } );
-
-    this.line = new THREE.Line( geometry, material );
-    _scene.add(this.line);
-  }
-
-  showNodeId() {
-	const nodeId = createCapText(this.id, this.pos.x, this.pos.y, this.pos.z, COLOR_NODE_ID);
-    _scene.add(nodeId);
-  }
-
-  start(step) {
-    const x = this.pos.x;
-    const y = this.line.geometry.getAttribute('position').getY(step);
-    const z = this.pos.z;
-    const text = createCapText('<start>', x, y, z, COLOR_START);
-    _scene.add(text);
-  }
-
-  shutdown(step) {
-    const x = this.pos.x;
-    const y = this.line.geometry.getAttribute('position').getY(step);
-    const z = this.pos.z;
-    const text = createCapText('<shutdown>', x, y, z, COLOR_SHUTDOWN);
-    _scene.add(text);
-  }
-
-  sendMessage(toNode, step, message) {
-    const arrow = createArrow(this, toNode, step, message.color());
-    _scene.add(arrow);
-
-    const x = this.pos.x;
-    const y = this.line.geometry.getAttribute('position').getY(step);
-    const z = this.pos.z;
-    const text = createCapText(`Ordinary Message<${message.name()}>\n${message.capText()}`, x, y, z, message.color());
-    text.userData.originalColor = message.color();
-    _scene.add(text);
-  }
-
-  sendWhoAreYou(toNode, step, idNonce, enrSeq) {
-    const arrow = createArrow(this, toNode, step, COLOR_WHOAREYOU);
-    _scene.add(arrow);
-
-    const x = this.pos.x;
-    const y = this.line.geometry.getAttribute('position').getY(step);
-    const z = this.pos.z;
-    const text = createCapText(`WHOAREYOU :\n  ${idNonce}\n  ${enrSeq}`, x, y, z, COLOR_WHOAREYOU);
-    text.userData.originalColor = COLOR_WHOAREYOU;
-    _scene.add(text);
-  }
-
-  sendHandshakeMessage(toNode, step, message) {
-    const arrow = createArrow(this, toNode, step, message.color());
-    _scene.add(arrow);
-
-    const x = this.pos.x;
-    const y = this.line.geometry.getAttribute('position').getY(step);
-    const z = this.pos.z;
-    const text = createCapText(`Handshake Message<${message.name()}>\n${message.capText()}`, x, y, z, message.color());
-    text.userData.originalColor = message.color();
-    _scene.add(text);
-  }
-}
-
-class NodePos {
-  readonly x: number;
-  readonly y: number;
-  readonly z: number;
-
-  constructor(x: number, y: number, z: number) {
-    this.x = x;
-    this.y = y;
-    this.z = z;
-  }
-}
-
-
 class SentMessages {
   messages: Map<string, Message>;
 
@@ -225,6 +103,8 @@ class SentMessages {
 }
 
 function init() {
+  const _globals = new Globals(_logs, _nodeIds, _nodes);
+
   const width = window.innerWidth;
   const height = window.innerHeight;
 
@@ -265,7 +145,7 @@ function init() {
     45,
     width / height,
     1,
-    5000 * _scale
+    5000 * SCALE
   );
   camera.position.set(0, 0, 2000);
 
@@ -291,18 +171,18 @@ function init() {
   // ///////////////////////////////////////
   let step: number = 0;
   // NOTE: `time` is a string value which consists of seconds and nanos.
-  let time = decreaseStringKey(_logs.first_key, IDLE_STEPS * TIME_PROGRESS_PER_STEP);
-
-  _max_step = calculateMaxStep();
+  let time = LogKeyHelper.decrease(_logs.first_key, IDLE_STEPS * TIME_PROGRESS_PER_STEP);
 
   // ///////////////////////////////////////
   // Node
   // ///////////////////////////////////////
   for (let i = 0; i < _nodeIds.length; i++) {
-    const node = new Node(_nodeIds[i]);
+    const node = new Node(_scene, _globals, _nodeIds[i]);
     _nodes.set(node.id, node);
     console.info("Node: " + node.id);
   }
+
+  const objectHighlighter = new ObjectHighlighter(_scene);
 
   animate();
 
@@ -314,7 +194,7 @@ function init() {
     raycaster.setFromCamera(mouse, camera);
     // その光線とぶつかったオブジェクトを得る
     const intersects = raycaster.intersectObjects(_scene.children);
-    ObjectHighlighter.highlight(intersects);
+    objectHighlighter.highlight(intersects);
 
     controls.update();
     stats.begin();
@@ -323,7 +203,7 @@ function init() {
   }
 
   function advanceTrace() {
-    if (step >= _max_step) {
+    if (step >= _globals.max_step) {
       return;
     }
 
@@ -342,7 +222,7 @@ function init() {
     });
 
     step += 1;
-    time = increaseStringKey(time, TIME_PROGRESS_PER_STEP);
+    time = LogKeyHelper.increase(time, TIME_PROGRESS_PER_STEP);
   }
 }
 
@@ -442,75 +322,17 @@ function processHandshakeMessage(log, step) {
   );
 }
 
-// create cap text
-// https://threejs.org/docs/index.html#manual/en/introduction/Creating-text
-function createCapText(text, x, y, z, color) {
-  const textGeometry = new THREE.TextGeometry( text, {
-    font: _font,
-    size: 20,
-    height: 2,
-    curveSegments: 12,
-    bevelEnabled: false,
-    bevelThickness: 10,
-    bevelSize: 8,
-    bevelOffset: 0,
-    bevelSegments: 5
-  });
-
-  const textMaterial = new THREE.MeshBasicMaterial({color: color})
-  const textMesh = new THREE.Mesh( textGeometry, textMaterial );
-
-  textMesh.position.x = x;
-  textMesh.position.y = y;
-  textMesh.position.z = z;
-
-  return textMesh;
-}
-
-function createArrow(fromNode, toNode, step, color) {
-  const targetV = new THREE.Vector3(
-    toNode.pos.x,
-    toNode.line.geometry.getAttribute('position').getY(step),
-    toNode.pos.z
-  );
-  const head = {
-    x: fromNode.pos.x,
-    y: fromNode.line.geometry.getAttribute('position').getY(step),
-    z: fromNode.pos.z
-  };
-  const direction = new THREE.Vector3().subVectors(targetV, head);
-
-  // https://threejs.org/docs/index.html#api/en/helpers/ArrowHelper
-  return new THREE.ArrowHelper(
-    direction.clone().normalize(),
-    head,
-    direction.length(),
-    color,
-    100,
-    30
-  );
-}
-
 const _scene = new THREE.Scene();
 const Stats = require('stats-js');
 const _logs = new Logs();
 const _nodes = new Map();
-const _font = new THREE.Font(require('three/examples/fonts/helvetiker_regular.typeface.json'));
-const _scale = 100;
-const _distance = 1000;
 const _nodeIds = [];
 const _sentMessages = new SentMessages();
 
-let _max_step = 200;
-
-const TIME_PROGRESS_PER_STEP = 1; // milli
-const IDLE_STEPS = 5;
-
-// TODO: 色の調整
-const COLOR_NODE_ID = 0xffffff;
-const COLOR_START = 0xffddff;
-const COLOR_SHUTDOWN = 0xffddff;
-const COLOR_WHOAREYOU = 0x00dd00;
+export const SCALE = 100;
+export const DISTANCE_BETWEEN_NODES = 1000;
+export const TIME_PROGRESS_PER_STEP = 1; // milli
+export const IDLE_STEPS = 5;
 
 // protocol-buffers
 // https://developers.google.com/protocol-buffers/docs/reference/javascript-generated
@@ -597,122 +419,3 @@ const raycaster = new THREE.Raycaster();
     init();
   });
 })();
-
-function incrementStringKey(s) {
-  const n = s.length / 2;
-  const left = s.slice(0, n);
-  const right = s.slice(n);
-  const rightLength = right.length;
-
-  const newRight = parseInt(right) + 1;
-
-  if (newRight.toString().length > rightLength) {
-    const newLeft = parseInt(left) + 1;
-    return `${newLeft}${newRight.toString().slice(rightLength * -1)}`;
-  } else {
-    const zeros = (new Array(rightLength)).fill(0).join("");
-    const zeroPrefixedRight = (zeros + newRight.toString()).slice(rightLength * -1);
-    return `${left}${zeroPrefixedRight}`;
-  }
-}
-
-function increaseStringKey(s, n) {
-  let result = s;
-  for (let i = 0; i < n; i++) {
-    result = incrementStringKey(result)
-  }
-
-  return result;
-}
-
-function decrementStringKey(s) {
-  const n = s.length / 2;
-  const left = s.slice(0, n);
-  const right = s.slice(n);
-  const rightLength = right.length;
-
-  const newRight = parseInt(right) - 1;
-
-  if (newRight.toString().length === rightLength) {
-    return `${left}${newRight}`;
-  } else if (newRight === -1) {
-    const newLeft = parseInt(left) - 1;
-    const nineRight = (new Array(rightLength)).fill(9).join("");
-    return `${newLeft}${nineRight}`;
-  } else if (newRight.toString().length < rightLength) {
-    const zeros = (new Array(rightLength)).fill(0).join("");
-    const zeroPrefixedRight = (zeros + newRight.toString()).slice(rightLength * -1);
-    return `${left}${zeroPrefixedRight}`;
-  }
-}
-
-function decreaseStringKey(s, n) {
-  let result = s;
-  for (let i = 0; i < n; i++) {
-    result = decrementStringKey(result)
-  }
-
-  return result;
-}
-
-function subtractStringKey(a, b) {
-  console.dir(a);
-  console.dir(b);
-  let result = 0;
-  while (a > b) {
-    result++;
-    a = decrementStringKey(a);
-  }
-  return result;
-}
-
-function calculateMaxStep() {
-  let steps = subtractStringKey(_logs.last_key, _logs.first_key) / TIME_PROGRESS_PER_STEP;
-  return steps + (IDLE_STEPS * 2);
-}
-
-class ObjectHighlighter {
-  static highlightedIds = [];
-
-  static highlight(intersects) {
-    let obj = undefined;
-    if (intersects.length > 0) {
-      obj = _scene.getObjectById(intersects[0].object.id);
-    }
-
-    let revertId = ObjectHighlighter.highlightedIds.shift();
-    while (revertId !== undefined) {
-      if (obj !== undefined && revertId === obj.id) {
-        revertId = ObjectHighlighter.highlightedIds.shift();
-        continue;
-      }
-      ObjectHighlighter.revert(revertId);
-      revertId = ObjectHighlighter.highlightedIds.shift();
-    }
-
-    if (obj !== undefined && ObjectHighlighter.invert(obj.id)) {
-      ObjectHighlighter.highlightedIds.push(obj.id);
-    }
-  }
-
-  static invert(objectId) {
-    const obj = _scene.getObjectById(objectId);
-
-    if (obj.userData.originalColor === undefined) {
-      return false
-    }
-
-    obj.material.color.setHex(obj.userData.originalColor ^ 0xffffff);
-    return true;
-  }
-
-  static revert(objectId) {
-    const obj = _scene.getObjectById(objectId);
-
-    if (obj.userData.originalColor === undefined) {
-      return;
-    }
-
-    obj.material.color.setHex(obj.userData.originalColor);
-  }
-}
