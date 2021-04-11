@@ -247,14 +247,14 @@ function processLog(log: tracing.Log, step: number) {
     case 'sendOrdinaryMessage':
       processOrdinaryMessage(log, step);
       break;
-    case 'handleOrdinaryMessage':
-      processHandleOrdinaryMessage(log, step);
-      break;
     case 'sendWhoareyou':
       processWhoareyou(log, step);
       break;
     case 'sendHandshakeMessage':
       processHandshakeMessage(log, step);
+      break;
+    case 'handleMessage':
+      processHandleMessage(log, step);
       break;
     default:
       console.error("unknown event", log);
@@ -290,12 +290,12 @@ function protoToMessage(message): Message {
 }
 
 function processOrdinaryMessage(log: tracing.Log, step: number) {
-  const ordinaryMessage = log.sendOrdinaryMessage;
-  const sender = _nodes.get(ordinaryMessage.sender);
-  const recipient = _nodes.get(ordinaryMessage.recipient);
+  const event = log.sendOrdinaryMessage;
+  const sender = _nodes.get(event.sender);
+  const recipient = _nodes.get(event.recipient);
   const message = protoToMessage(log.sendOrdinaryMessage);
 
-  if (ordinaryMessage.random !== null) {
+  if (event.random !== null) {
     // Due to Random packet has no request_id, we can't trace when the Random packet has been handled by the recipient.
     // So we can only draw an arrow which grows horizontally towards recipient.
     sender.drawMessageHorizontally(recipient, step, message);
@@ -309,11 +309,11 @@ function processOrdinaryMessage(log: tracing.Log, step: number) {
   }
 }
 
-function processHandleOrdinaryMessage(log: tracing.Log, step: number): void {
-  const ordinaryMessage = log.handleOrdinaryMessage;
-  const sender = _nodes.get(ordinaryMessage.sender);
-  const recipient = _nodes.get(ordinaryMessage.recipient);
-  const message = protoToMessage(ordinaryMessage);
+function processHandleMessage(log: tracing.Log, step: number): void {
+  const event = log.handleMessage;
+  const sender = _nodes.get(event.sender);
+  const recipient = _nodes.get(event.recipient);
+  const message = protoToMessage(event);
 
   const sentMessage = _sentMessages.take(sender.id, recipient.id, message.requestId());
   sender.drawMessage(recipient, step, sentMessage);

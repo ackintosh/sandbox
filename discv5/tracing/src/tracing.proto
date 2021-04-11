@@ -11,8 +11,10 @@ message Log {
     Shutdown shutdown = 3;
     SendWhoAreYou send_whoareyou = 4;
     SendOrdinaryMessage send_ordinary_message = 5;
-    HandleOrdinaryMessage handle_ordinary_message = 6;
-    SendHandshakeMessage send_handshake_message = 7;
+    SendHandshakeMessage send_handshake_message = 6;
+
+    // Handle ordinary message or handshake message.
+    HandleMessage handle_message = 7;
   }
 
   message Start {
@@ -44,7 +46,7 @@ message Log {
     }
   }
 
-  message HandleOrdinaryMessage {
+  message HandleMessage {
     string sender = 1;
     string recipient = 2;
     oneof message {
