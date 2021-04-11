@@ -25,7 +25,7 @@ class SentMessages {
   }
 }
 
-function init() {
+function bootstrap() {
   const _globals = new Globals(_logs, _nodeIds, _nodes);
 
   const width = window.innerWidth;
@@ -339,6 +339,6 @@ const raycaster = new THREE.Raycaster();
 
     _logs.sort();
 
-    init();
+    bootstrap();
   });
 })();
