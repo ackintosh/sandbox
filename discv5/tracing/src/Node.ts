@@ -102,7 +102,7 @@ export class Node {
     }
 
     drawOrdinaryMessageHorizontally(toNode, step, message): void {
-        const arrow = createArrow(this, toNode, step, message.color());
+        const arrow = drawArrow(this, toNode, step, message.color());
         this.scene.add(arrow);
 
         const x = this.pos.x;
@@ -114,7 +114,7 @@ export class Node {
     }
 
     drawOrdinaryMessage(toNode: Node, toStep: number, sentMessage: SentMessage) {
-        const arrow = createArrow2(this, sentMessage, toNode, toStep, sentMessage.message.color());
+        const arrow = drawArrow2(this, sentMessage, toNode, toStep, sentMessage.message.color());
         this.scene.add(arrow);
 
         const x = this.pos.x;
@@ -126,7 +126,7 @@ export class Node {
     }
 
     sendWhoAreYou(toNode, step, idNonce, enrSeq) {
-        const arrow = createArrow(this, toNode, step, COLOR_WHOAREYOU);
+        const arrow = drawArrow(this, toNode, step, COLOR_WHOAREYOU);
         this.scene.add(arrow);
 
         const x = this.pos.x;
@@ -138,7 +138,7 @@ export class Node {
     }
 
     sendHandshakeMessage(toNode, step, message) {
-        const arrow = createArrow(this, toNode, step, message.color());
+        const arrow = drawArrow(this, toNode, step, message.color());
         this.scene.add(arrow);
 
         const x = this.pos.x;
@@ -175,7 +175,8 @@ function createCapText(text, x, y, z, color) {
     return textMesh;
 }
 
-function createArrow(fromNode, toNode, step, color) {
+// Draw an arrow which grows horizontally from `fromNode` to `toNode`.
+function drawArrow(fromNode: Node, toNode: Node, step: number, color: number) {
     const targetV = new THREE.Vector3(
         toNode.pos.x,
         toNode.line.geometry.getAttribute('position').getY(step),
@@ -199,7 +200,7 @@ function createArrow(fromNode, toNode, step, color) {
     );
 }
 
-function createArrow2(fromNode: Node, sentMessage: SentMessage, toNode: Node, toStep: number, color: number) {
+function drawArrow2(fromNode: Node, sentMessage: SentMessage, toNode: Node, toStep: number, color: number) {
     const target = new THREE.Vector3(
         toNode.pos.x,
         toNode
