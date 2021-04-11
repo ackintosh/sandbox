@@ -1,8 +1,8 @@
-const COLOR_RANDOM = 0xffdd00;
-const COLOR_PING = 0x0000ff;
-const COLOR_PONG = 0xff00ff;
-const COLOR_FINDNODE = 0x00d6dd;
-const COLOR_NODES = 0xddd600;
+const COLOR_RANDOM: number = 0xffdd00;
+const COLOR_PING: number = 0x0000ff;
+const COLOR_PONG: number = 0xff00ff;
+const COLOR_FINDNODE: number = 0x00d6dd;
+const COLOR_NODES: number = 0xddd600;
 
 export interface Message {
     name(): string;
@@ -12,15 +12,15 @@ export interface Message {
 
 // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-theory.md#step-1-node-a-sends-message-packet
 export class Random implements Message{
-    name() {
+    name(): string {
         return 'Random packet';
     }
 
-    color() {
+    color(): number {
         return COLOR_RANDOM;
     }
 
-    capText() {
+    capText(): string {
         return '';
     }
 }
@@ -30,20 +30,20 @@ export class Ping implements Message{
     requestId: string;
     enrSeq: number;
 
-    constructor(requestId, enrSeq) {
+    constructor(requestId: string, enrSeq: number) {
         this.requestId = requestId;
         this.enrSeq = enrSeq;
     }
 
-    name() {
+    name(): string {
         return 'PING';
     }
 
-    color() {
+    color(): number {
         return COLOR_PING;
     }
 
-    capText() {
+    capText(): string {
         return `  ${this.requestId}\n  ${this.enrSeq}`;
     }
 }
@@ -55,22 +55,22 @@ export class Pong implements Message{
     recipientIp: string;
     recipientPort: number;
 
-    constructor(requestId, enrSeq, recipientIp, recipientPort) {
+    constructor(requestId: string, enrSeq: number, recipientIp: string, recipientPort: number) {
         this.requestId = requestId;
         this.enrSeq = enrSeq;
         this.recipientIp = recipientIp;
         this.recipientPort = recipientPort;
     }
 
-    name() {
+    name(): string {
         return 'PONG';
     }
 
-    color() {
+    color(): number {
         return COLOR_PONG;
     }
 
-    capText() {
+    capText(): string {
         return `  ${this.requestId}\n  ${this.enrSeq}\n  ${this.recipientIp}\n  ${this.recipientPort}`;
     }
 }
@@ -80,20 +80,20 @@ export class Findnode implements Message{
     requestId: string;
     distances: Array<number>;
 
-    constructor(requestId, distances) {
+    constructor(requestId: string, distances: Array<number>) {
         this.requestId = requestId;
         this.distances = distances;
     }
 
-    name() {
+    name(): string {
         return 'FINDNODE';
     }
 
-    color() {
+    color(): number {
         return COLOR_FINDNODE;
     }
 
-    capText() {
+    capText(): string {
         return `  ${this.requestId}\n  [${this.distances.join(', ')}]`;
     }
 }
@@ -104,21 +104,21 @@ export class Nodes implements Message{
     total: number;
     nodes: Array<string>;
 
-    constructor(requestId, total, nodes) {
+    constructor(requestId: string, total: number, nodes: Array<string>) {
         this.requestId = requestId;
         this.total = total;
         this.nodes = nodes;
     }
 
-    name() {
+    name(): string {
         return 'NODES';
     }
 
-    color() {
+    color(): number {
         return COLOR_NODES;
     }
 
-    capText() {
+    capText(): string {
         return `  ${this.requestId}\n  ${this.total}\n  [${this.nodes.join(', ')}]`;
     }
 }
