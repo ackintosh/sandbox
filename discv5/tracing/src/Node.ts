@@ -113,14 +113,14 @@ export class Node {
         this.scene.add(text);
     }
 
-    drawOrdinaryMessage(toNode: Node, toStep: number, sentMessage: SentMessage) {
+    drawMessage(toNode: Node, toStep: number, sentMessage: SentMessage) {
         const arrow = drawArrow2(this, sentMessage, toNode, toStep, sentMessage.message.color());
         this.scene.add(arrow);
 
         const x = this.pos.x;
         const y = this.line.geometry.getAttribute('position').getY(sentMessage.step);
         const z = this.pos.z;
-        const text = createCapText(`Ordinary Message<${sentMessage.message.name()}>\n${sentMessage.message.capText()}`, x, y, z, sentMessage.message.color());
+        const text = createCapText(`${sentMessage.capTextTitle()}<${sentMessage.message.name()}>\n${sentMessage.message.capText()}`, x, y, z, sentMessage.message.color());
         text.userData.originalColor = sentMessage.message.color();
         this.scene.add(text);
     }
@@ -134,18 +134,6 @@ export class Node {
         const z = this.pos.z;
         const text = createCapText(`WHOAREYOU :\n  ${idNonce}\n  ${enrSeq}`, x, y, z, COLOR_WHOAREYOU);
         text.userData.originalColor = COLOR_WHOAREYOU;
-        this.scene.add(text);
-    }
-
-    sendHandshakeMessage(toNode, step, message) {
-        const arrow = drawArrow(this, toNode, step, message.color());
-        this.scene.add(arrow);
-
-        const x = this.pos.x;
-        const y = this.line.geometry.getAttribute('position').getY(step);
-        const z = this.pos.z;
-        const text = createCapText(`Handshake Message<${message.name()}>\n${message.capText()}`, x, y, z, message.color());
-        text.userData.originalColor = message.color();
         this.scene.add(text);
     }
 }

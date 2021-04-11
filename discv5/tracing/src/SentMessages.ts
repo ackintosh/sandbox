@@ -1,6 +1,5 @@
 import {Message} from "./Message";
 
-
 export class SentMessages {
   messages: Map<string, SentMessage>;
 
@@ -8,9 +7,18 @@ export class SentMessages {
     this.messages = new Map();
   }
 
-  add(sender: string, recipient: string, message: Message, step: number) {
-    const m = new SentMessage(sender, recipient, message, step);
-    this.messages.set(m.key(), m);
+  private add(message: SentMessage): void {
+    this.messages.set(message.key(), message);
+  }
+
+  addOrdinaryMessage(sender: string, recipient: string, message: Message, step: number): void {
+    const m = new SentMessage(sender, recipient, message, TYPE.ORDINARY, step);
+    this.add(m);
+  }
+
+  addHandshakeMessage(sender: string, recipient: string, message: Message, step: number): void {
+    const m = new SentMessage(sender, recipient, message, TYPE.HANDSHAKE, step);
+    this.add(m);
   }
 
   take(sender: string, recipient: string, requestId: string): SentMessage {
@@ -30,21 +38,39 @@ export class SentMessages {
   }
 }
 
+enum TYPE {
+  ORDINARY,
+  HANDSHAKE,
+}
+
 export class SentMessage {
+  type: TYPE;
   sender: string;
   recipient: string;
   message: Message;
   step: number;
 
-  constructor(sender, recipient, message, step) {
+  constructor(sender, recipient, message, type, step) {
     this.sender = sender;
     this.recipient = recipient;
     this.message = message;
+    this.type = type;
     this.step = step;
   }
 
-  key() {
+  key(): string {
     return key(this.sender, this.message.requestId());
+  }
+
+  capTextTitle(): string {
+    switch (this.type) {
+      case TYPE.ORDINARY:
+        return 'Ordinary Message';
+        break;
+      case TYPE.HANDSHAKE:
+        return 'Handshake Message';
+        break;
+    }
   }
 }
 

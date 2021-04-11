@@ -214,10 +214,10 @@ function bootstrap() {
         TIME_PROGRESS_PER_STEP
     );
 
-    console.info(`step: ${step}, time: ${time}, logs: ${logs.length}`);
+    // console.info(`step: ${step}, time: ${time}, logs: ${logs.length}`);
 
     logs.forEach((log: tracing.Log) => {
-      console.info(log);
+      // console.info(log);
       processLog(log, step);
     });
 
@@ -300,7 +300,7 @@ function processOrdinaryMessage(log: tracing.Log, step: number) {
     // So we can only draw an arrow which grows horizontally towards recipient.
     sender.drawOrdinaryMessageHorizontally(recipient, step, message);
   } else {
-    _sentMessages.add(
+    _sentMessages.addOrdinaryMessage(
         sender.id,
         recipient.id,
         message,
@@ -315,13 +315,8 @@ function processHandleOrdinaryMessage(log: tracing.Log, step: number): void {
   const recipient = _nodes.get(ordinaryMessage.recipient);
   const message = protoToMessage(ordinaryMessage);
 
-  // FIXME
-  try {
-    const sentMessage = _sentMessages.take(sender.id, recipient.id, message.requestId());
-    sender.drawOrdinaryMessage(recipient, step, sentMessage);
-  } catch (e) {
-    console.error(e);
-  }
+  const sentMessage = _sentMessages.take(sender.id, recipient.id, message.requestId());
+  sender.drawMessage(recipient, step, sentMessage);
 }
 
 function processWhoareyou(log, step) {
@@ -339,9 +334,11 @@ function processHandshakeMessage(log, step) {
   const sender = _nodes.get(log.sendHandshakeMessage.sender);
   const recipient = _nodes.get(log.sendHandshakeMessage.recipient);
   const message = protoToMessage(log.sendHandshakeMessage);
-  sender.sendHandshakeMessage(
-      recipient,
-      step,
-      message
+
+  _sentMessages.addHandshakeMessage(
+      sender.id,
+      recipient.id,
+      message,
+      step
   );
 }
