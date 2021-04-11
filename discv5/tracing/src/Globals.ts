@@ -1,6 +1,7 @@
-import { Logs, IDLE_STEPS, TIME_PROGRESS_PER_STEP } from './main';
+import { IDLE_STEPS, TIME_PROGRESS_PER_STEP } from './main';
 import { LogKeyHelper } from "./LogKeyHelper";
 import {Node} from "./Node";
+import {Logs} from "./Logs";
 
 export class Globals {
   readonly logs: Logs;
