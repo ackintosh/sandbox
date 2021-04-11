@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { tracing } from './generated/proto';
+import { Message, Random, Ping, Findnode, Nodes, Pong  } from './Message';
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls';
 import { Reader } from "protobufjs";
 
@@ -210,124 +211,6 @@ class NodePos {
   }
 }
 
-interface Message {
-  name(): string;
-  color(): number;
-  capText(): string;
-}
-
-// https://github.com/ethereum/devp2p/blob/master/discv5/discv5-theory.md#step-1-node-a-sends-message-packet
-class Random implements Message{
-  name() {
-    return 'Random packet';
-  }
-
-  color() {
-    return COLOR_RANDOM;
-  }
-
-  capText() {
-    return '';
-  }
-}
-
-// https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#ping-request-0x01
-class Ping implements Message{
-  requestId: string;
-  enrSeq: number;
-
-  constructor(requestId, enrSeq) {
-    this.requestId = requestId;
-    this.enrSeq = enrSeq;
-  }
-
-  name() {
-    return 'PING';
-  }
-
-  color() {
-    return COLOR_PING;
-  }
-
-  capText() {
-    return `  ${this.requestId}\n  ${this.enrSeq}`;
-  }
-}
-
-// https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#pong-response-0x02
-class Pong implements Message{
-  requestId: string;
-  enrSeq: number;
-  recipientIp: string;
-  recipientPort: number;
-
-  constructor(requestId, enrSeq, recipientIp, recipientPort) {
-    this.requestId = requestId;
-    this.enrSeq = enrSeq;
-    this.recipientIp = recipientIp;
-    this.recipientPort = recipientPort;
-  }
-
-  name() {
-    return 'PONG';
-  }
-
-  color() {
-    return COLOR_PONG;
-  }
-
-  capText() {
-    return `  ${this.requestId}\n  ${this.enrSeq}\n  ${this.recipientIp}\n  ${this.recipientPort}`;
-  }
-}
-
-// https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#findnode-request-0x03
-class Findnode implements Message{
-  requestId: string;
-  distances: Array<number>;
-
-  constructor(requestId, distances) {
-    this.requestId = requestId;
-    this.distances = distances;
-  }
-
-  name() {
-    return 'FINDNODE';
-  }
-
-  color() {
-    return COLOR_FINDNODE;
-  }
-
-  capText() {
-    return `  ${this.requestId}\n  [${this.distances.join(', ')}]`;
-  }
-}
-
-// https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#nodes-response-0x04
-class Nodes implements Message{
-  requestId: string;
-  total: number;
-  nodes: Array<string>;
-
-  constructor(requestId, total, nodes) {
-    this.requestId = requestId;
-    this.total = total;
-    this.nodes = nodes;
-  }
-
-  name() {
-    return 'NODES';
-  }
-
-  color() {
-    return COLOR_NODES;
-  }
-
-  capText() {
-    return `  ${this.requestId}\n  ${this.total}\n  [${this.nodes.join(', ')}]`;
-  }
-}
 
 class SentMessages {
   messages: Map<string, Message>;
@@ -406,7 +289,7 @@ function init() {
   // ///////////////////////////////////////
   // animate
   // ///////////////////////////////////////
-  let step = 0;
+  let step: number = 0;
   // NOTE: `time` is a string value which consists of seconds and nanos.
   let time = decreaseStringKey(_logs.first_key, IDLE_STEPS * TIME_PROGRESS_PER_STEP);
 
@@ -453,7 +336,7 @@ function init() {
 
     console.info(`step: ${step}, time: ${time}, logs: ${logs.length}`);
 
-    logs.forEach((log) => {
+    logs.forEach((log: tracing.Log) => {
       console.info(log);
       processLog(log, step);
     });
@@ -473,7 +356,7 @@ function growExistingNodes(step) {
   }
 }
 
-function processLog(log, step) {
+function processLog(log: tracing.Log, step: number) {
   switch (log.event) {
     case 'start':
       processStart(log, step);
@@ -523,7 +406,7 @@ function protoToMessage(message) {
   }
 }
 
-function processOrdinaryMessage(log, step) {
+function processOrdinaryMessage(log: tracing.Log, step: number) {
   const ordinaryMessage = log.sendOrdinaryMessage;
   const sender = _nodes.get(ordinaryMessage.sender);
   const recipient = _nodes.get(ordinaryMessage.recipient);
@@ -628,11 +511,6 @@ const COLOR_NODE_ID = 0xffffff;
 const COLOR_START = 0xffddff;
 const COLOR_SHUTDOWN = 0xffddff;
 const COLOR_WHOAREYOU = 0x00dd00;
-const COLOR_RANDOM = 0xffdd00;
-const COLOR_PING = 0x0000ff;
-const COLOR_PONG = 0xff00ff;
-const COLOR_FINDNODE = 0x00d6dd;
-const COLOR_NODES = 0xddd600;
 
 // protocol-buffers
 // https://developers.google.com/protocol-buffers/docs/reference/javascript-generated
