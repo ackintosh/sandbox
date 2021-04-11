@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc *.ts",
-    "start": "tsc *.ts && node sample.js"
+    "build": "tsc",
+    "start": "tsc && node sample.js"
   },
   "author": "",
   "license": "",

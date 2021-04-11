@@ -1,22 +1,38 @@
-function hello(name: string): void {
-    console.log("Hello " + name + "!");
-}
+class Counter {
+  #i: number;
 
-let your_name: string = "Yamada";
+  constructor() {
+    this.#i = 0;
+  }
 
-class Sample {
-  readonly name: string;
+  increment(): void {
+    this.#i++;
+  }
 
-  constructor(name: string) {
-    this.name = name;
+  i(): number {
+    return this.#i;
   }
 }
 
-hello(your_name);
+class Sample {
+  readonly name: string;
+  readonly counter: Counter;
 
-const sample = new Sample('mary');
-console.log(sample.name);
+  constructor(name: string, counter: Counter) {
+    this.name = name;
+    this.counter = counter;
+  }
 
-// nameは readonly なので更新できない
-// sample.name = 'bob';
-// console.log(sample.name);
+  hello(): string {
+    return `${this.name} ${this.counter.i()}`;
+  }
+}
+
+const counter = new Counter();
+counter.increment();
+console.log(counter.i());
+
+const sample = new Sample('mary', counter);
+console.log(sample.hello());
+counter.increment();
+console.log(sample.hello());
