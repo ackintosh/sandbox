@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import {Globals} from "./Globals";
 import {DISTANCE_BETWEEN_NODES, SCALE} from "./main";
 import {SentMessage} from "./SentMessages";
+import {SentWhoAreYou} from "./SentWhoAreYouPackets";
 
 const COLOR_NODE_ID = 0xffffff;
 const COLOR_START = 0xffddff;
@@ -114,7 +115,7 @@ export class Node {
     }
 
     drawMessage(toNode: Node, toStep: number, sentMessage: SentMessage) {
-        const arrow = drawArrow2(this, sentMessage, toNode, toStep, sentMessage.message.color());
+        const arrow = drawArrow2(this, sentMessage.step, toNode, toStep, sentMessage.message.color());
         this.scene.add(arrow);
 
         const x = this.pos.x;
@@ -125,14 +126,14 @@ export class Node {
         this.scene.add(text);
     }
 
-    sendWhoAreYou(toNode, step, idNonce, enrSeq) {
-        const arrow = drawArrow(this, toNode, step, COLOR_WHOAREYOU);
+    drawWhoAreYou(toNode: Node, toStep: number, sentWhoAreYou: SentWhoAreYou) {
+        const arrow = drawArrow2(this, sentWhoAreYou.step, toNode, toStep, COLOR_WHOAREYOU);
         this.scene.add(arrow);
 
         const x = this.pos.x;
-        const y = this.line.geometry.getAttribute('position').getY(step);
+        const y = this.line.geometry.getAttribute('position').getY(sentWhoAreYou.step);
         const z = this.pos.z;
-        const text = createCapText(`WHOAREYOU :\n  ${idNonce}\n  ${enrSeq}`, x, y, z, COLOR_WHOAREYOU);
+        const text = createCapText(`WHOAREYOU :\n  ${sentWhoAreYou.idNonce}\n  ${sentWhoAreYou.enrSeq}`, x, y, z, COLOR_WHOAREYOU);
         text.userData.originalColor = COLOR_WHOAREYOU;
         this.scene.add(text);
     }
@@ -188,7 +189,7 @@ function drawArrow(fromNode: Node, toNode: Node, step: number, color: number) {
     );
 }
 
-function drawArrow2(fromNode: Node, sentMessage: SentMessage, toNode: Node, toStep: number, color: number) {
+function drawArrow2(fromNode: Node, fromStep: number, toNode: Node, toStep: number, color: number) {
     const target = new THREE.Vector3(
         toNode.pos.x,
         toNode
@@ -204,7 +205,7 @@ function drawArrow2(fromNode: Node, sentMessage: SentMessage, toNode: Node, toSt
             .line
             .geometry
             .getAttribute('position')
-            .getY(sentMessage.step),
+            .getY(fromStep),
         z: fromNode.pos.z
     };
     const direction = new THREE.Vector3().subVectors(target, origin);

@@ -10,6 +10,7 @@ import { Globals } from './Globals';
 import { Node } from "./Node";
 import {Logs} from "./Logs";
 import {SentMessages} from "./SentMessages";
+import {SentWhoAreYouPackets} from "./SentWhoAreYouPackets";
 
 // Workaround for the compile error:
 // TS2339: Property 'showOpenFilePicker' does not exist on type 'Window & typeof globalThis'.
@@ -25,6 +26,7 @@ const _logs = new Logs();
 const _nodes: Map<string, Node> = new Map();
 const _nodeIds: Array<string> = [];
 const _sentMessages = new SentMessages();
+const _sentWhoAreYou = new SentWhoAreYouPackets();
 const _canvas: HTMLElement = document.querySelector<HTMLElement>("#tracing");
 // マウス座標管理用のベクトル
 const _mouse = new THREE.Vector2();
@@ -256,6 +258,9 @@ function processLog(log: tracing.Log, step: number) {
     case 'handleMessage':
       processHandleMessage(log, step);
       break;
+    case 'handleWhoareyou':
+      processHandleWhoareyou(log, step);
+      break;
     default:
       console.error("unknown event", log);
   }
@@ -322,12 +327,22 @@ function processHandleMessage(log: tracing.Log, step: number): void {
 function processWhoareyou(log, step) {
   const sender = _nodes.get(log.sendWhoareyou.sender);
   const recipient = _nodes.get(log.sendWhoareyou.recipient);
-  sender.sendWhoAreYou(
-      recipient,
-      step,
+  _sentWhoAreYou.add(
+      sender.id,
+      recipient.id,
       log.sendWhoareyou.idNonce,
-      log.sendWhoareyou.enrSeq
+      log.sendWhoareyou.enrSeq,
+      step
   );
+}
+
+function processHandleWhoareyou(log: tracing.Log, step: number): void {
+  const event = log.handleWhoareyou;
+  const sender = _nodes.get(event.sender);
+  const recipient = _nodes.get(event.recipient);
+
+  const sentWhoAreYou = _sentWhoAreYou.take(sender.id, recipient.id, event.enrSeq);
+  sender.drawWhoAreYou(recipient, step, sentWhoAreYou);
 }
 
 function processHandshakeMessage(log, step) {
