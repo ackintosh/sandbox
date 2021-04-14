@@ -32,6 +32,12 @@ mod convert {
         // "6699"
     }
 
+    #[test]
+    fn positive_to_negative() {
+        let positive = 10;
+        assert_eq!(-10, -positive);
+    }
+
     mod usize_to_i32 {
         use std::convert::TryFrom;
 
