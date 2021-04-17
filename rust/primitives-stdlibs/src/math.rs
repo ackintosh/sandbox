@@ -115,6 +115,7 @@ mod overflow {
 
     #[test]
     fn saturating() {
+        // `u8` の 10
         let n = 10u8;
         assert_eq!(255, n.add(245));
 

@@ -1,5 +1,10 @@
 #[test]
-fn usize_isize() {
+fn max() {
+    assert_eq!(2_147_483_647, i32::MAX);
+}
+
+#[test]
+fn size_of_usize_isize() {
     // std::mem::size_of()
     // https://doc.rust-lang.org/std/mem/fn.size_of.html
     // 型のサイズ(byte)を返す
