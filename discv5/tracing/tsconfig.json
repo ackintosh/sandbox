@@ -2,11 +2,25 @@
   "compilerOptions": {
     "sourceMap": true,
     "target": "es2015",
-    "module": "es2015",
+    "module": "esnext",
     "moduleResolution": "node",
     "lib": [
       "es2020",
       "dom"
-    ]
-  }
+    ],
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
+  },
+  "include": [
+    "src"
+  ]
 }

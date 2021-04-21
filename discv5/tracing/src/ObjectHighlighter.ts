@@ -31,23 +31,25 @@ export class ObjectHighlighter {
     }
 
     private invert(objectId) {
-        const obj = this.scene.getObjectById(objectId);
+        const obj = this.scene.getObjectById(objectId) as THREE.Mesh;
 
         if (obj.userData.originalColor === undefined) {
             return false
         }
 
-        obj.material.color.setHex(obj.userData.originalColor ^ 0xffffff);
+        const material = obj.material as THREE.MeshBasicMaterial;
+        material.color.setHex(obj.userData.originalColor ^ 0xffffff);
         return true;
     }
 
     private revert(objectId) {
-        const obj = this.scene.getObjectById(objectId);
+        const obj = this.scene.getObjectById(objectId) as THREE.Mesh;
 
         if (obj.userData.originalColor === undefined) {
             return;
         }
 
-        obj.material.color.setHex(obj.userData.originalColor);
+        const material = obj.material as THREE.MeshBasicMaterial;
+        material.color.setHex(obj.userData.originalColor);
     }
 }

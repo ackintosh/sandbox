@@ -17,6 +17,10 @@ export class Globals {
   }
 
   private calculateMaxStep() {
+    if (this.logs.first_key === null || this.logs.last_key === null) {
+      throw new Error(`invalid key. first_key: ${this.logs.first_key}, last_key: ${this.logs.last_key}`);
+    }
+
     let steps = LogKeyHelper.subtract(this.logs.last_key, this.logs.first_key) / TIME_PROGRESS_PER_STEP;
     return steps + (IDLE_STEPS * 2);
   }
