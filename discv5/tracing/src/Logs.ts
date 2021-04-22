@@ -73,11 +73,11 @@ export class Logs {
     }
 
     updateEdgeKey(k: string): void {
-        if (this.first_key === undefined) {
+        if (this.first_key === null) {
             this.first_key = k;
         }
 
-        if (this.last_key === undefined) {
+        if (this.last_key === null) {
             this.last_key = k;
         }
 
