@@ -27,7 +27,9 @@ const _nodes: Map<string, Node> = new Map();
 const _nodeIds: Array<string> = [];
 const _sentMessages = new SentMessages();
 const _sentWhoAreYou = new SentWhoAreYouPackets();
-const _canvas: HTMLElement = document.querySelector<HTMLElement>("#tracing");
+// const _canvas: HTMLElement = findHTMLElement('tracing');
+const _canvas = findElement<HTMLCanvasElement>('tracing');
+
 // マウス座標管理用のベクトル
 const _mouse = new THREE.Vector2();
 _canvas.addEventListener('mousemove', function (event: MouseEvent) {
@@ -45,7 +47,7 @@ _canvas.addEventListener('mousemove', function (event: MouseEvent) {
 
 
 (function () {
-  const b: HTMLElement = document.getElementById('b');
+  const b = findElement<HTMLElement>('b');
   b.addEventListener('click', async () => {
     // https://developer.mozilla.org/en-US/docs/Web/API/Window/showOpenFilePicker
     // https://wicg.github.io/file-system-access/#api-showopenfilepicker
@@ -113,7 +115,7 @@ function bootstrap() {
   // Stats
   // https://github.com/mrdoob/stats.js
   // ///////////////////////////////////////
-  const stats = new Stats();
+  const stats = Stats();
   stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
   stats.domElement.style.position = 'absolute';
   stats.domElement.style.left = '8px';
@@ -124,7 +126,7 @@ function bootstrap() {
   // Renderer
   // ///////////////////////////////////////
   const renderer = new THREE.WebGLRenderer({
-    canvas: document.querySelector("#tracing")
+    canvas: _canvas,
   });
 
   // デフォルトではレンダラーのサイズが小さいため、setSize()メソッドでサイズを設定
@@ -356,4 +358,12 @@ function processHandshakeMessage(log, step) {
       message,
       step
   );
+}
+
+function findElement<T>(id: string): T {
+  const e = <T><unknown>document.getElementById(id);
+  if (e === null) {
+    throw new Error(`#${id} not found.`);
+  }
+  return e;
 }

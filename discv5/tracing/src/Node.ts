@@ -171,11 +171,11 @@ function drawArrow(fromNode: Node, toNode: Node, step: number, color: number) {
         toNode.line.geometry.getAttribute('position').getY(step),
         toNode.pos.z
     );
-    const head = {
-        x: fromNode.pos.x,
-        y: fromNode.line.geometry.getAttribute('position').getY(step),
-        z: fromNode.pos.z
-    };
+    const head = new THREE.Vector3(
+        fromNode.pos.x,
+        fromNode.line.geometry.getAttribute('position').getY(step),
+        fromNode.pos.z
+    );
     const direction = new THREE.Vector3().subVectors(targetV, head);
 
     // https://threejs.org/docs/index.html#api/en/helpers/ArrowHelper
@@ -199,15 +199,15 @@ function drawArrow2(fromNode: Node, fromStep: number, toNode: Node, toStep: numb
             .getY(toStep),
         toNode.pos.z
     );
-    const origin = {
-        x: fromNode.pos.x,
-        y: fromNode
+    const origin = new THREE.Vector3(
+        fromNode.pos.x,
+        fromNode
             .line
             .geometry
             .getAttribute('position')
             .getY(fromStep),
-        z: fromNode.pos.z
-    };
+        fromNode.pos.z
+    );
     const direction = new THREE.Vector3().subVectors(target, origin);
 
     // https://threejs.org/docs/index.html#api/en/helpers/ArrowHelper

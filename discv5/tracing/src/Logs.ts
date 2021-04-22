@@ -2,31 +2,42 @@ import { tracing } from './generated/proto';
 import {LogKeyHelper} from "./LogKeyHelper";
 
 export class Logs {
-    first_key: string;
-    last_key: string;
+    first_key: string | null;
+    last_key: string | null;
     logs: Map<string, Array<tracing.Log>>;
 
     constructor() {
-        this.first_key = undefined;
-        this.last_key = undefined;
+        this.first_key = null;
+        this.last_key = null;
         this.logs = new Map();
     }
 
     private static key(log: tracing.Log): string {
+        if (log.timestamp == undefined || log.timestamp.nanos == null) {
+            throw new Error(`invalid log: ${log}`);
+        }
+
         const milli = `0000${Math.floor(log.timestamp.nanos / 1000000).toString()}`.slice(-4);
         return `${log.timestamp.seconds}${milli}`;
     }
 
-    add(log) {
+    add(log: tracing.Log): void {
         const t = Logs.key(log);
-
-        if (this.logs.has(t)) {
-            const elements = this.logs.get(t);
+        const elements = this.logs.get(t);
+        if (elements !== undefined) {
             elements.push(log);
             this.logs.set(t, elements);
         } else {
             this.logs.set(t, [log]);
         }
+
+        // if (this.logs.has(t)) {
+        //     const elements = this.logs.get(t);
+        //     elements.push(log);
+        //     this.logs.set(t, elements);
+        // } else {
+        //     this.logs.set(t, [log]);
+        // }
     }
 
     sort() {
@@ -46,13 +57,14 @@ export class Logs {
         this.logs = new Map(sorted);
     }
 
-    slice(time, progress) {
-        let slice = [];
+    slice(time: string, progress: number): Array<tracing.Log> {
+        let slice: Array<tracing.Log> = [];
 
         let k = time;
         for (let i = 0; i < progress; i++) {
-            if (this.logs.has(k)) {
-                slice = slice.concat(this.logs.get(k));
+            const logs = this.logs.get(k);
+            if (logs !== undefined) {
+                slice = slice.concat(logs);
             }
             k = LogKeyHelper.increment(k);
         }
@@ -60,20 +72,20 @@ export class Logs {
         return slice;
     }
 
-    updateEdgeKey(k) {
-        if (this.first_key === undefined) {
+    updateEdgeKey(k: string): void {
+        if (this.first_key === null) {
             this.first_key = k;
         }
 
-        if (this.last_key === undefined) {
+        if (this.last_key === null) {
             this.last_key = k;
         }
 
-        if (this.first_key > k) {
+        if (this.first_key !== null && this.first_key > k) {
             this.first_key = k;
         }
 
-        if (this.last_key < k) {
+        if (this.last_key !== null && this.last_key < k) {
             this.last_key = k;
         }
     }

@@ -1,5 +1,5 @@
 export class LogKeyHelper {
-    static increment(s) {
+    static increment(s: string): string {
         const n = s.length / 2;
         const left = s.slice(0, n);
         const right = s.slice(n);
@@ -17,7 +17,7 @@ export class LogKeyHelper {
         }
     }
 
-    static increase(s, n) {
+    static increase(s: string, n: number): string {
         let result = s;
         for (let i = 0; i < n; i++) {
             result = LogKeyHelper.increment(result)
@@ -26,7 +26,7 @@ export class LogKeyHelper {
         return result;
     }
 
-    private static decrement(s) {
+    private static decrement(s: string): string {
         const n = s.length / 2;
         const left = s.slice(0, n);
         const right = s.slice(n);
@@ -45,9 +45,11 @@ export class LogKeyHelper {
             const zeroPrefixedRight = (zeros + newRight.toString()).slice(rightLength * -1);
             return `${left}${zeroPrefixedRight}`;
         }
+
+        throw new Error('*** unreachable ***');
     }
 
-    static decrease(s, n) {
+    static decrease(s: string, n: number): string {
         let result = s;
         for (let i = 0; i < n; i++) {
             result = LogKeyHelper.decrement(result)
@@ -56,7 +58,7 @@ export class LogKeyHelper {
         return result;
     }
 
-    static subtract(a, b) {
+    static subtract(a: string, b: string): number {
         let result = 0;
         while (a > b) {
             result++;
