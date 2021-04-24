@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import './main';
 import {ArwesThemeProvider, Button, FrameBox, StylesBaseline, Text} from "@arwes/core";
 import {Animator, AnimatorGeneralProvider} from "@arwes/animation";
+import {bootstrap} from "./main";
 
 // import '../public/index.css';
 
@@ -40,7 +41,7 @@ const App = () => {
                         <div>
                             <Button
                                 animator={{ activate }}
-                                onClick={event => console.log(event)}
+                                onClick={bootstrap}
                             >
                                 <Text>Choose Trace File</Text>
                             </Button>

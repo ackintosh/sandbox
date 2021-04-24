@@ -27,7 +27,6 @@ const _nodes: Map<string, Node> = new Map();
 const _nodeIds: Array<string> = [];
 const _sentMessages = new SentMessages();
 const _sentWhoAreYou = new SentWhoAreYouPackets();
-// const _canvas: HTMLElement = findHTMLElement('tracing');
 const _canvas = findElement<HTMLCanvasElement>('tracing');
 
 // マウス座標管理用のベクトル
@@ -46,65 +45,63 @@ _canvas.addEventListener('mousemove', function (event: MouseEvent) {
 });
 
 
-(function () {
-  const b = findElement<HTMLElement>('b');
-  b.addEventListener('click', async () => {
-    // https://developer.mozilla.org/en-US/docs/Web/API/Window/showOpenFilePicker
-    // https://wicg.github.io/file-system-access/#api-showopenfilepicker
-    const [handle] = await window.showOpenFilePicker({
-      multiple: false,
-      types: [
-        {
-          description: 'trace file',
-          accept: {
-            'text/plain': ['.log']
-          },
-        }
-      ]
-    });
-
-    b.style.display = 'none';
-
-    const file = await handle.getFile();
-    const ab = await file.arrayBuffer();
-    const bytes = new Uint8Array(ab);
-    const reader = Reader.create(bytes);
-
-    const reason = tracing.Log.verify(bytes);
-    if (reason != null) {
-      console.log(reason);
-      alert(reason);
-      return;
-    }
-
-    try {
-      while (true) {
-        // http://protobufjs.github.io/protobuf.js/Type.html#decodeDelimited
-        const log = tracing.Log.decodeDelimited(reader);
-        _logs.add(log);
-
-        if (log.event === 'start') {
-          _nodeIds.push(log.start.nodeId);
-          // console.dir(log.start);
-        }
-        // console.dir(log);
-        // console.dir(log.event);
+export async function bootstrap() {
+  // https://developer.mozilla.org/en-US/docs/Web/API/Window/showOpenFilePicker
+  // https://wicg.github.io/file-system-access/#api-showopenfilepicker
+  const [handle] = await window.showOpenFilePicker({
+    multiple: false,
+    types: [
+      {
+        description: 'trace file',
+        accept: {
+          'text/plain': ['.log']
+        },
       }
-    } catch (e) {
-      if (e instanceof RangeError) {
-        // console.log("decoding has done");
-      } else {
-        throw e;
-      }
-    }
-
-    _logs.sort();
-
-    bootstrap();
+    ]
   });
-})();
 
-function bootstrap() {
+  // const b = findElement<HTMLElement>('b');
+  // b.style.display = 'none';
+
+  const file = await handle.getFile();
+  const ab = await file.arrayBuffer();
+  const bytes = new Uint8Array(ab);
+  const reader = Reader.create(bytes);
+
+  const reason = tracing.Log.verify(bytes);
+  if (reason != null) {
+    console.log(reason);
+    alert(reason);
+    return;
+  }
+
+  try {
+    while (true) {
+      // http://protobufjs.github.io/protobuf.js/Type.html#decodeDelimited
+      const log = tracing.Log.decodeDelimited(reader);
+      _logs.add(log);
+
+      if (log.event === 'start') {
+        _nodeIds.push(log.start.nodeId);
+        // console.dir(log.start);
+      }
+      // console.dir(log);
+      // console.dir(log.event);
+    }
+  } catch (e) {
+    if (e instanceof RangeError) {
+      // console.log("decoding has done");
+    } else {
+      throw e;
+    }
+  }
+
+  _logs.sort();
+
+  start();
+}
+
+function start() {
   const _globals = new Globals(_logs, _nodeIds, _nodes);
 
   const width = window.innerWidth;
