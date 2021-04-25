@@ -12,25 +12,25 @@ const FONT_FAMILY_CODE = '"Source Code Pro", monospace';
 const generalAnimator = { duration: { enter: 500, exit: 500 } };
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-        }
+    state = {
+        welcome: true,
     }
 
     async handleClick(closeWelcomeContent) {
         const fileHandle = await openFilePicker();
         closeWelcomeContent();
         await new Promise(resolve => setTimeout(resolve, generalAnimator.duration.exit + 200));
+        this.setState({
+            welcome: false,
+        });
         await bootstrap(fileHandle);
     }
 
     render() {
-
-        return (
-            <Welcome handleClick={(action) => this.handleClick(action)} />
-        );
+        if (this.state.welcome) {
+            return (<Welcome handleClick={(action) => this.handleClick(action)}/>);
+        }
+        return ('');
     }
 }
 
@@ -58,9 +58,7 @@ const Welcome = (props) => {
                         <div>
                             <Button
                                 animator={{ activate }}
-                                onClick={() => {
-                                    props.handleClick(() => setActivate(!activate));
-                                }}
+                                onClick={() => {props.handleClick(() => setActivate(!activate));}}
                             >
                                 <Text>Choose Tracing Log File</Text>
                             </Button>
@@ -72,6 +70,10 @@ const Welcome = (props) => {
         </ArwesThemeProvider>
     );
 };
+
+const Canvas = () => {
+    return (<canvas id="tracing"></canvas>)
+}
 
 ReactDOM.render(
     <React.StrictMode>

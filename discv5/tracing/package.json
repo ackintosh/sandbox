@@ -2,13 +2,11 @@
   "name": "discv5-tracing",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "start": "npm run pbjs && npm run pbts && react-scripts start",
+    "start": "react-scripts start",
     "prestart": "npm run pbjs && npm run pbts",
     "pbjs": "pbjs -t static-module -w commonjs -o src/generated/proto.js src/tracing.proto",
     "pbts": "pbts -o src/generated/proto.d.ts src/generated/proto.js",
-    "rstart": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
