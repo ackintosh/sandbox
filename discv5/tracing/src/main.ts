@@ -44,8 +44,7 @@ _canvas.addEventListener('mousemove', function (event: MouseEvent) {
   _mouse.y = -( y / h ) * 2 + 1;
 });
 
-
-export async function bootstrap() {
+export async function openFilePicker() {
   // https://developer.mozilla.org/en-US/docs/Web/API/Window/showOpenFilePicker
   // https://wicg.github.io/file-system-access/#api-showopenfilepicker
   const [handle] = await window.showOpenFilePicker({
@@ -60,20 +59,25 @@ export async function bootstrap() {
     ]
   });
 
-  // const b = findElement<HTMLElement>('b');
-  // b.style.display = 'none';
+  const file = await handle.getFile();
+  const ab = await file.arrayBuffer();
+  const bytes = new Uint8Array(ab);
 
+  const reason = tracing.Log.verify(bytes);
+  if (reason != null) {
+    console.error(reason);
+    alert(reason);
+    return;
+  }
+
+  return handle;
+}
+
+export async function bootstrap(handle) {
   const file = await handle.getFile();
   const ab = await file.arrayBuffer();
   const bytes = new Uint8Array(ab);
   const reader = Reader.create(bytes);
-
-  const reason = tracing.Log.verify(bytes);
-  if (reason != null) {
-    console.log(reason);
-    alert(reason);
-    return;
-  }
 
   try {
     while (true) {

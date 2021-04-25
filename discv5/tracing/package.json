@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-cli serve --mode development",
+    "start": "npm run pbjs && npm run pbts && react-scripts start",
     "prestart": "npm run pbjs && npm run pbts",
     "pbjs": "pbjs -t static-module -w commonjs -o src/generated/proto.js src/tracing.proto",
     "pbts": "pbts -o src/generated/proto.d.ts src/generated/proto.js",

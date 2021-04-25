@@ -4,23 +4,38 @@ import ReactDOM from 'react-dom';
 import './main';
 import {ArwesThemeProvider, Button, FrameBox, StylesBaseline, Text} from "@arwes/core";
 import {Animator, AnimatorGeneralProvider} from "@arwes/animation";
-import {bootstrap} from "./main";
-
-// import '../public/index.css';
+import {bootstrap, openFilePicker} from "./main";
 
 const FONT_FAMILY_ROOT = '"Titillium Web", sans-serif';
 const FONT_FAMILY_CODE = '"Source Code Pro", monospace';
 
 const generalAnimator = { duration: { enter: 500, exit: 500 } };
 
+class App extends React.Component {
+    constructor(props) {
+        super(props);
 
-const App = () => {
+        this.state = {
+        }
+    }
+
+    async handleClick(closeWelcomeContent) {
+        const fileHandle = await openFilePicker();
+        closeWelcomeContent();
+        await new Promise(resolve => setTimeout(resolve, generalAnimator.duration.exit + 200));
+        await bootstrap(fileHandle);
+    }
+
+    render() {
+
+        return (
+            <Welcome handleClick={(action) => this.handleClick(action)} />
+        );
+    }
+}
+
+const Welcome = (props) => {
     const [activate, setActivate] = React.useState(true);
-
-    // React.useEffect(() => {
-    //     const timeout = setTimeout(() => setActivate(!activate), 2000);
-    //     return () => clearTimeout(timeout);
-    // }, [activate]);
 
     return (
         <ArwesThemeProvider>
@@ -43,7 +58,9 @@ const App = () => {
                         <div>
                             <Button
                                 animator={{ activate }}
-                                onClick={bootstrap}
+                                onClick={() => {
+                                    props.handleClick(() => setActivate(!activate));
+                                }}
                             >
                                 <Text>Choose Tracing Log File</Text>
                             </Button>
