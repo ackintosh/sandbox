@@ -33,34 +33,14 @@ let _canvas = null;
 // マウス座標管理用のベクトル
 const _mouse = new THREE.Vector2();
 
-// _canvas.addEventListener('mousemove', function (event: MouseEvent) {
-//   // canvas要素上のXY座標
-//   const x = event.clientX - this.offsetLeft;
-//   const y = event.clientY - this.offsetTop;
-//   // canvas要素の幅・高さ
-//   const w = this.offsetWidth;
-//   const h = this.offsetHeight;
-//
-//   // -1〜+1の範囲で現在のマウス座標を登録する
-//   _mouse.x = ( x / w ) * 2 - 1;
-//   _mouse.y = -( y / h ) * 2 + 1;
-// });
-
 export class Tracing extends React.Component {
-  // FIXME
   handleMouseMove(event) {
-    console.dir('onMouseMove');
-    console.dir(event);
     // canvas要素上のXY座標
-    // const x = event.clientX - this.offsetLeft;
-    const x = event.clientX - 0;
-    const y = event.clientY - 0;
-    // const y = event.clientY - this.offsetTop;
+    const x = event.clientX - _canvas.offsetLeft;
+    const y = event.clientY - _canvas.offsetTop;
     // canvas要素の幅・高さ
-    // const w = this.offsetWidth;
-    const w = 0;
-    // const h = this.offsetHeight;
-    const h = 0;
+    const w = _canvas.offsetWidth;
+    const h = _canvas.offsetHeight;
 
     // -1〜+1の範囲で現在のマウス座標を登録する
     _mouse.x = ( x / w ) * 2 - 1;
@@ -69,8 +49,6 @@ export class Tracing extends React.Component {
 
   onCanvasLoaded = (canvas: HTMLCanvasElement) => {
     _canvas = canvas;
-    console.dir(_canvas);
-    console.info('canvas loaded');
   }
 
   render() {
