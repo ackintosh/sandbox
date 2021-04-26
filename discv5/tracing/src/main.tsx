@@ -11,6 +11,7 @@ import { Node } from "./Node";
 import {Logs} from "./Logs";
 import {SentMessages} from "./SentMessages";
 import {SentWhoAreYouPackets} from "./SentWhoAreYouPackets";
+import React from "react";
 
 // Workaround for the compile error:
 // TS2339: Property 'showOpenFilePicker' does not exist on type 'Window & typeof globalThis'.
@@ -27,22 +28,62 @@ const _nodes: Map<string, Node> = new Map();
 const _nodeIds: Array<string> = [];
 const _sentMessages = new SentMessages();
 const _sentWhoAreYou = new SentWhoAreYouPackets();
-const _canvas = findElement<HTMLCanvasElement>('tracing');
+let _canvas = null;
 
 // マウス座標管理用のベクトル
 const _mouse = new THREE.Vector2();
-_canvas.addEventListener('mousemove', function (event: MouseEvent) {
-  // canvas要素上のXY座標
-  const x = event.clientX - this.offsetLeft;
-  const y = event.clientY - this.offsetTop;
-  // canvas要素の幅・高さ
-  const w = this.offsetWidth;
-  const h = this.offsetHeight;
 
-  // -1〜+1の範囲で現在のマウス座標を登録する
-  _mouse.x = ( x / w ) * 2 - 1;
-  _mouse.y = -( y / h ) * 2 + 1;
-});
+// _canvas.addEventListener('mousemove', function (event: MouseEvent) {
+//   // canvas要素上のXY座標
+//   const x = event.clientX - this.offsetLeft;
+//   const y = event.clientY - this.offsetTop;
+//   // canvas要素の幅・高さ
+//   const w = this.offsetWidth;
+//   const h = this.offsetHeight;
+//
+//   // -1〜+1の範囲で現在のマウス座標を登録する
+//   _mouse.x = ( x / w ) * 2 - 1;
+//   _mouse.y = -( y / h ) * 2 + 1;
+// });
+
+export class Tracing extends React.Component {
+  // FIXME
+  handleMouseMove(event) {
+    console.dir('onMouseMove');
+    console.dir(event);
+    // canvas要素上のXY座標
+    // const x = event.clientX - this.offsetLeft;
+    const x = event.clientX - 0;
+    const y = event.clientY - 0;
+    // const y = event.clientY - this.offsetTop;
+    // canvas要素の幅・高さ
+    // const w = this.offsetWidth;
+    const w = 0;
+    // const h = this.offsetHeight;
+    const h = 0;
+
+    // -1〜+1の範囲で現在のマウス座標を登録する
+    _mouse.x = ( x / w ) * 2 - 1;
+    _mouse.y = -( y / h ) * 2 + 1;
+  }
+
+  onCanvasLoaded = (canvas: HTMLCanvasElement) => {
+    _canvas = canvas;
+    console.dir(_canvas);
+    console.info('canvas loaded');
+  }
+
+  render() {
+    return (
+        <canvas
+            id="tracing"
+            style={{display: "none"}}
+            onMouseMove={this.handleMouseMove}
+            ref={this.onCanvasLoaded}
+        />
+    )
+  }
+}
 
 export async function openFilePicker() {
   // https://developer.mozilla.org/en-US/docs/Web/API/Window/showOpenFilePicker
@@ -106,6 +147,7 @@ export async function bootstrap(handle) {
 }
 
 function start() {
+  _canvas.style.display = 'inline';
   const _globals = new Globals(_logs, _nodeIds, _nodes);
 
   const width = window.innerWidth;
@@ -359,12 +401,4 @@ function processHandshakeMessage(log, step) {
       message,
       step
   );
-}
-
-function findElement<T>(id: string): T {
-  const e = <T><unknown>document.getElementById(id);
-  if (e === null) {
-    throw new Error(`#${id} not found.`);
-  }
-  return e;
 }

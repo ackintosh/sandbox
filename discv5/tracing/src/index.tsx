@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import './main';
 import {ArwesThemeProvider, Button, FrameBox, StylesBaseline, Text} from "@arwes/core";
 import {Animator, AnimatorGeneralProvider} from "@arwes/animation";
-import {bootstrap, openFilePicker} from "./main";
+import {bootstrap, openFilePicker, Tracing} from "./main";
 
 const FONT_FAMILY_ROOT = '"Titillium Web", sans-serif';
 const FONT_FAMILY_CODE = '"Source Code Pro", monospace';
@@ -27,15 +27,21 @@ class App extends React.Component {
     }
 
     render() {
-        if (this.state.welcome) {
-            return (<Welcome handleClick={(action) => this.handleClick(action)}/>);
-        }
-        return ('');
+        return (
+            <div>
+                <Welcome welcome={this.state.welcome} handleClick={(action) => this.handleClick(action)}/>
+                <Tracing />
+            </div>
+        );
     }
 }
 
 const Welcome = (props) => {
     const [activate, setActivate] = React.useState(true);
+
+    if (!props.welcome) {
+        return null;
+    }
 
     return (
         <ArwesThemeProvider>
@@ -70,10 +76,6 @@ const Welcome = (props) => {
         </ArwesThemeProvider>
     );
 };
-
-const Canvas = () => {
-    return (<canvas id="tracing"></canvas>)
-}
 
 ReactDOM.render(
     <React.StrictMode>
