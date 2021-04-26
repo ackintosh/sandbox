@@ -14,6 +14,7 @@ const generalAnimator = { duration: { enter: 500, exit: 500 } };
 class App extends React.Component {
     state = {
         welcome: true,
+        tracing: false,
     }
 
     async handleClick(closeWelcomeContent) {
@@ -22,6 +23,7 @@ class App extends React.Component {
         await new Promise(resolve => setTimeout(resolve, generalAnimator.duration.exit + 200));
         this.setState({
             welcome: false,
+            tracing: true,
         });
         await bootstrap(fileHandle);
     }
@@ -30,7 +32,7 @@ class App extends React.Component {
         return (
             <div>
                 <Welcome welcome={this.state.welcome} handleClick={(action) => this.handleClick(action)}/>
-                <Tracing />
+                <Tracing tracing={this.state.tracing}/>
             </div>
         );
     }

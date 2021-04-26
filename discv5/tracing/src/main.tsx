@@ -33,7 +33,11 @@ let _canvas = null;
 // マウス座標管理用のベクトル
 const _mouse = new THREE.Vector2();
 
-export class Tracing extends React.Component {
+type Props = {
+  tracing: boolean;
+}
+
+export class Tracing extends React.Component<Props> {
   handleMouseMove(event) {
     // canvas要素上のXY座標
     const x = event.clientX - _canvas.offsetLeft;
@@ -52,10 +56,11 @@ export class Tracing extends React.Component {
   }
 
   render() {
+    const display = this.props.tracing ? 'inline' : 'none';
     return (
         <canvas
             id="tracing"
-            style={{display: "none"}}
+            style={{display: display}}
             onMouseMove={this.handleMouseMove}
             ref={this.onCanvasLoaded}
         />
@@ -125,7 +130,6 @@ export async function bootstrap(handle) {
 }
 
 function start() {
-  _canvas.style.display = 'inline';
   const _globals = new Globals(_logs, _nodeIds, _nodes);
 
   const width = window.innerWidth;
