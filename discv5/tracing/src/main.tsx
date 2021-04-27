@@ -23,6 +23,7 @@ export const TIME_PROGRESS_PER_STEP = 1; // milli
 export const IDLE_STEPS = 5;
 
 const _scene = new THREE.Scene();
+_scene.background = new THREE.Color(0x021114);
 const _logs = new Logs();
 const _nodes: Map<string, Node> = new Map();
 const _nodeIds: Array<string> = [];
