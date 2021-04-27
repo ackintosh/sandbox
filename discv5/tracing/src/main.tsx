@@ -28,10 +28,9 @@ const _nodes: Map<string, Node> = new Map();
 const _nodeIds: Array<string> = [];
 const _sentMessages = new SentMessages();
 const _sentWhoAreYou = new SentWhoAreYouPackets();
-let _canvas = null;
-
 // マウス座標管理用のベクトル
 const _mouse = new THREE.Vector2();
+let _canvas = null;
 
 type Props = {
   tracing: boolean;
