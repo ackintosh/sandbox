@@ -12,6 +12,9 @@ import {Logs} from "./Logs";
 import {SentMessages} from "./SentMessages";
 import {SentWhoAreYouPackets} from "./SentWhoAreYouPackets";
 import React from "react";
+import {ArwesThemeProvider, FrameBox, StylesBaseline, Text} from "@arwes/core";
+import {FONT_FAMILY_CODE, FONT_FAMILY_ROOT} from "./index";
+import {Animator, AnimatorGeneralProvider} from "@arwes/animation";
 
 // Workaround for the compile error:
 // TS2339: Property 'showOpenFilePicker' does not exist on type 'Window & typeof globalThis'.
@@ -56,17 +59,54 @@ export class Tracing extends React.Component<Props> {
   }
 
   render() {
-    const display = this.props.tracing ? 'inline' : 'none';
+    const display = this.props.tracing ? 'block' : 'none';
     return (
-        <canvas
-            id="tracing"
-            style={{display: display}}
-            onMouseMove={this.handleMouseMove}
-            ref={this.onCanvasLoaded}
-        />
+        <div>
+          <canvas
+              id="tracing"
+              style={{display: display}}
+              onMouseMove={this.handleMouseMove}
+              ref={this.onCanvasLoaded}
+          />
+          <Panel contents={"aaaaaaaaaaaaaa"}/>
+        </div>
     )
   }
 }
+
+const generalAnimator = { duration: { enter: 500, exit: 500 } };
+
+const Panel = (props) => {
+  const [activate, setActivate] = React.useState(true);
+  const display = props.contents ? 'inline' : 'none';
+  return (
+      <div
+          style={{
+            position: "absolute",
+            left: "3%",
+            bottom: "3%",
+            zIndex: 100,
+            textAlign: "left",
+            display: display
+          }}
+      >
+        <ArwesThemeProvider>
+          <StylesBaseline styles={{
+            'html, body': { fontFamily: FONT_FAMILY_ROOT },
+            'code, pre': { fontFamily: FONT_FAMILY_CODE },
+            'body': { textAlign: "center" }
+          }} />
+          <AnimatorGeneralProvider animator={generalAnimator}>
+            <Animator animator={{ activate, manager: 'stagger' }}>
+              <FrameBox>
+                <Text as='p'>{props.contents}</Text>
+              </FrameBox>
+            </Animator>
+          </AnimatorGeneralProvider>
+        </ArwesThemeProvider>
+      </div>
+  );
+};
 
 export async function openFilePicker() {
   // https://developer.mozilla.org/en-US/docs/Web/API/Window/showOpenFilePicker

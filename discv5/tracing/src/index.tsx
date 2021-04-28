@@ -6,8 +6,8 @@ import {ArwesThemeProvider, Button, FrameBox, StylesBaseline, Text} from "@arwes
 import {Animator, AnimatorGeneralProvider} from "@arwes/animation";
 import {bootstrap, openFilePicker, Tracing} from "./main";
 
-const FONT_FAMILY_ROOT = '"Titillium Web", sans-serif';
-const FONT_FAMILY_CODE = '"Source Code Pro", monospace';
+export const FONT_FAMILY_ROOT = '"Titillium Web", sans-serif';
+export const FONT_FAMILY_CODE = '"Source Code Pro", monospace';
 
 const generalAnimator = { duration: { enter: 500, exit: 500 } };
 
