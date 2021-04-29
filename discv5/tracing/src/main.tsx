@@ -41,6 +41,16 @@ type Props = {
 }
 
 export class Tracing extends React.Component<Props> {
+  state = {
+    panelContents: '',
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.handleMouseMove = this.handleMouseMove.bind(this);
+  }
+
   handleMouseMove(event) {
     // canvas要素上のXY座標
     const x = event.clientX - _canvas.offsetLeft;
@@ -52,6 +62,10 @@ export class Tracing extends React.Component<Props> {
     // -1〜+1の範囲で現在のマウス座標を登録する
     _mouse.x = ( x / w ) * 2 - 1;
     _mouse.y = -( y / h ) * 2 + 1;
+
+    this.setState({
+      panelContents: `${_mouse.x} ${_mouse.y}`,
+    });
   }
 
   onCanvasLoaded = (canvas: HTMLCanvasElement) => {
@@ -68,17 +82,16 @@ export class Tracing extends React.Component<Props> {
               onMouseMove={this.handleMouseMove}
               ref={this.onCanvasLoaded}
           />
-          <Panel contents={"aaaaaaaaaaaaaa"}/>
+          <Panel contents={this.state.panelContents}/>
         </div>
     )
   }
 }
 
-const generalAnimator = { duration: { enter: 500, exit: 500 } };
+const panelAnimator = { duration: { enter: 200, exit: 200 } };
 
 const Panel = (props) => {
-  const [activate, setActivate] = React.useState(true);
-  const display = props.contents ? 'inline' : 'none';
+  let activate = props.contents.length > 0;
   return (
       <div
           style={{
@@ -87,7 +100,6 @@ const Panel = (props) => {
             bottom: "3%",
             zIndex: 100,
             textAlign: "left",
-            display: display
           }}
       >
         <ArwesThemeProvider>
@@ -96,7 +108,7 @@ const Panel = (props) => {
             'code, pre': { fontFamily: FONT_FAMILY_CODE },
             'body': { textAlign: "center" }
           }} />
-          <AnimatorGeneralProvider animator={generalAnimator}>
+          <AnimatorGeneralProvider animator={panelAnimator}>
             <Animator animator={{ activate, manager: 'stagger' }}>
               <FrameBox>
                 <Text as='p'>{props.contents}</Text>
