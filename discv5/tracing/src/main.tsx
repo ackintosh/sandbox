@@ -32,8 +32,22 @@ const _nodes: Map<string, Node> = new Map();
 const _nodeIds: Array<string> = [];
 const _sentMessages = new SentMessages();
 const _sentWhoAreYou = new SentWhoAreYouPackets();
-// マウス座標管理用のベクトル
-const _mouse = new THREE.Vector2();
+
+// ///////////////////////////////////////
+// Camera
+//
+// Three.jsではカメラを作成し、その視点から見えるものがレンダラーを介してcanvasへ描画される
+// https://ics.media/entry/14771/images/concept.png
+// ///////////////////////////////////////
+// new THREE.PerspectiveCamera(画角, アスペクト比, 描画開始距離, 描画終了距離)
+const _camera = new THREE.PerspectiveCamera(
+    45,
+    window.innerWidth / window.innerHeight,
+    1,
+    5000 * SCALE
+);
+_camera.position.set(0, 0, 2000);
+
 let _canvas = null;
 
 type Props = {
@@ -44,6 +58,11 @@ export class Tracing extends React.Component<Props> {
   state = {
     panelContents: '',
   }
+
+  mouse = new THREE.Vector2();
+  raycaster = new THREE.Raycaster();
+  objectHighlighter = new ObjectHighlighter(_scene);
+
 
   constructor(props) {
     super(props);
@@ -60,11 +79,17 @@ export class Tracing extends React.Component<Props> {
     const h = _canvas.offsetHeight;
 
     // -1〜+1の範囲で現在のマウス座標を登録する
-    _mouse.x = ( x / w ) * 2 - 1;
-    _mouse.y = -( y / h ) * 2 + 1;
+    this.mouse.x = ( x / w ) * 2 - 1;
+    this.mouse.y = -( y / h ) * 2 + 1;
+
+    // レイキャスト = マウス位置からまっすぐに伸びる光線ベクトルを生成
+    this.raycaster.setFromCamera(this.mouse, _camera);
+    // その光線とぶつかったオブジェクトを得る
+    const intersects = this.raycaster.intersectObjects(_scene.children);
+    this.objectHighlighter.highlight(intersects);
 
     this.setState({
-      panelContents: `${_mouse.x} ${_mouse.y}`,
+      panelContents: `${this.mouse.x} ${this.mouse.y}`,
     });
   }
 
@@ -213,24 +238,9 @@ function start() {
   // これを設定しないとスマホだとぼやけてしまう
   renderer.setPixelRatio(window.devicePixelRatio);
 
-  // ///////////////////////////////////////
-  // Camera
-  //
-  // Three.jsではカメラを作成し、その視点から見えるものがレンダラーを介してcanvasへ描画される
-  // https://ics.media/entry/14771/images/concept.png
-  // ///////////////////////////////////////
-  // new THREE.PerspectiveCamera(画角, アスペクト比, 描画開始距離, 描画終了距離)
-  const camera = new THREE.PerspectiveCamera(
-    45,
-    width / height,
-    1,
-    5000 * SCALE
-  );
-  camera.position.set(0, 0, 2000);
-
   // TrackballControls
   // https://threejs.org/docs/#examples/en/controls/TrackballControls
-  const controls = new TrackballControls(camera, renderer.domElement);
+  const controls = new TrackballControls(_camera, renderer.domElement);
 
   // ///////////////////////////////////////
   // 5. ライトを作る
@@ -261,25 +271,15 @@ function start() {
     console.info("Node: " + node.id);
   }
 
-  const objectHighlighter = new ObjectHighlighter(_scene);
-
-  const raycaster = new THREE.Raycaster();
-
   animate();
 
   function animate() {
     requestAnimationFrame(animate);
     advanceTrace();
 
-    // レイキャスト = マウス位置からまっすぐに伸びる光線ベクトルを生成
-    raycaster.setFromCamera(_mouse, camera);
-    // その光線とぶつかったオブジェクトを得る
-    const intersects = raycaster.intersectObjects(_scene.children);
-    objectHighlighter.highlight(intersects);
-
     controls.update();
     stats.begin();
-    renderer.render(_scene, camera);
+    renderer.render(_scene, _camera);
     stats.end();
   }
 
