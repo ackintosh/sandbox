@@ -56,7 +56,8 @@ type Props = {
 
 export class Tracing extends React.Component<Props> {
   state = {
-    panelContents: '',
+    showPanel: false,
+    panelContents: <Text>...</Text>,
   }
 
   mouse = new THREE.Vector2();
@@ -86,10 +87,18 @@ export class Tracing extends React.Component<Props> {
     this.raycaster.setFromCamera(this.mouse, _camera);
     // その光線とぶつかったオブジェクトを得る
     const intersects = this.raycaster.intersectObjects(_scene.children);
-    this.objectHighlighter.highlight(intersects);
+    const highlightedObject = this.objectHighlighter.highlight(intersects);
+
+    let showPanel = false;
+    let panelContents = <Text>...</Text>;
+    if (highlightedObject) {
+      showPanel = true;
+      panelContents = <div><Text>{this.mouse.x} {this.mouse.y}</Text></div>;
+    }
 
     this.setState({
-      panelContents: `${this.mouse.x} ${this.mouse.y}`,
+      showPanel: showPanel,
+      panelContents: panelContents,
     });
   }
 
@@ -107,7 +116,7 @@ export class Tracing extends React.Component<Props> {
               onMouseMove={this.handleMouseMove}
               ref={this.onCanvasLoaded}
           />
-          <Panel contents={this.state.panelContents}/>
+          <Panel show={this.state.showPanel} contents={this.state.panelContents} />
         </div>
     )
   }
@@ -116,7 +125,7 @@ export class Tracing extends React.Component<Props> {
 const panelAnimator = { duration: { enter: 200, exit: 200 } };
 
 const Panel = (props) => {
-  let activate = props.contents.length > 0;
+  let activate = props.show;
   return (
       <div
           style={{
@@ -136,7 +145,7 @@ const Panel = (props) => {
           <AnimatorGeneralProvider animator={panelAnimator}>
             <Animator animator={{ activate, manager: 'stagger' }}>
               <FrameBox>
-                <Text as='p'>{props.contents}</Text>
+                {props.contents}
               </FrameBox>
             </Animator>
           </AnimatorGeneralProvider>

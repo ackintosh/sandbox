@@ -2,35 +2,35 @@ import * as THREE from 'three';
 
 export class ObjectHighlighter {
     readonly scene: THREE.Scene;
-    private highlightedIds: Array<string>;
+    private highlightedIds: Array<number>;
 
     constructor(scene: THREE.Scene) {
         this.scene = scene;
         this.highlightedIds = [];
     }
 
-    highlight(intersects) {
+    highlight(intersects): THREE.Object3D | null {
         let obj = undefined;
         if (intersects.length > 0) {
             obj = this.scene.getObjectById(intersects[0].object.id);
         }
 
+        // Revert all highlighted objects
         let revertId = this.highlightedIds.shift();
         while (revertId !== undefined) {
-            if (obj !== undefined && revertId === obj.id) {
-                revertId = this.highlightedIds.shift();
-                continue;
-            }
             this.revert(revertId);
             revertId = this.highlightedIds.shift();
         }
 
         if (obj !== undefined && this.invert(obj.id)) {
             this.highlightedIds.push(obj.id);
+            return obj;
         }
+
+        return null;
     }
 
-    private invert(objectId) {
+    private invert(objectId: number): boolean {
         const obj = this.scene.getObjectById(objectId) as THREE.Mesh;
 
         if (obj.userData.originalColor === undefined) {
@@ -42,7 +42,7 @@ export class ObjectHighlighter {
         return true;
     }
 
-    private revert(objectId) {
+    private revert(objectId: number): void {
         const obj = this.scene.getObjectById(objectId) as THREE.Mesh;
 
         if (obj.userData.originalColor === undefined) {
