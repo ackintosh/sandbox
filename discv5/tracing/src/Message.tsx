@@ -1,3 +1,6 @@
+import {Node} from './Node';
+import {Text} from "@arwes/core";
+
 const COLOR_RANDOM: number = 0xffdd00;
 const COLOR_PING: number = 0x0000ff;
 const COLOR_PONG: number = 0xff00ff;
@@ -9,10 +12,19 @@ export interface Message {
     color(): number;
     capText(): string;
     requestId(): string
+    panelContents(): Object;
 }
 
 // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-theory.md#step-1-node-a-sends-message-packet
 export class Random implements Message{
+    senderId: string;
+    recipientId: string;
+
+    constructor(sender: Node, recipient: Node) {
+        this.senderId = sender.id;
+        this.recipientId = recipient.id;
+    }
+
     name(): string {
         return 'Random packet';
     }
@@ -28,14 +40,27 @@ export class Random implements Message{
     requestId(): string {
         throw new Error("Random has no requestId.");
     }
+
+    panelContents(): Object {
+        return <Text>sender: {this.senderId}, recipient: {this.recipientId}</Text>;
+    }
 }
 
 // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#ping-request-0x01
 export class Ping implements Message{
+    senderId: string;
+    recipientId: string;
     readonly #requestId: string;
     enrSeq: number;
 
-    constructor(requestId: string, enrSeq: number) {
+    constructor(
+        sender: Node,
+        recipient: Node,
+        requestId: string,
+        enrSeq: number
+    ) {
+        this.senderId = sender.id;
+        this.recipientId = recipient.id;
         this.#requestId = requestId;
         this.enrSeq = enrSeq;
     }
@@ -55,16 +80,31 @@ export class Ping implements Message{
     requestId(): string {
         return this.#requestId;
     }
+
+    panelContents(): Object {
+        return <Text>sender: {this.senderId}, recipient: {this.recipientId}</Text>;
+    }
 }
 
 // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#pong-response-0x02
 export class Pong implements Message{
+    senderId: string;
+    recipientId: string;
     readonly #requestId: string;
     enrSeq: number;
     recipientIp: string;
     recipientPort: number;
 
-    constructor(requestId: string, enrSeq: number, recipientIp: string, recipientPort: number) {
+    constructor(
+        sender: Node,
+        recipient: Node,
+        requestId: string,
+        enrSeq: number,
+        recipientIp: string,
+        recipientPort: number
+    ) {
+        this.senderId = sender.id;
+        this.recipientId = recipient.id;
         this.#requestId = requestId;
         this.enrSeq = enrSeq;
         this.recipientIp = recipientIp;
@@ -86,14 +126,27 @@ export class Pong implements Message{
     requestId(): string {
         return this.#requestId;
     }
+
+    panelContents(): Object {
+        return <Text>sender: {this.senderId}, recipient: {this.recipientId}</Text>;
+    }
 }
 
 // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#findnode-request-0x03
 export class Findnode implements Message{
+    senderId: string;
+    recipientId: string;
     readonly #requestId: string;
     distances: Array<number>;
 
-    constructor(requestId: string, distances: Array<number>) {
+    constructor(
+        sender: Node,
+        recipient: Node,
+        requestId: string,
+        distances: Array<number>
+    ) {
+        this.senderId = sender.id;
+        this.recipientId = recipient.id;
         this.#requestId = requestId;
         this.distances = distances;
     }
@@ -113,15 +166,29 @@ export class Findnode implements Message{
     requestId(): string {
         return this.#requestId;
     }
+
+    panelContents(): Object {
+        return <Text>sender: {this.senderId}, recipient: {this.recipientId}</Text>;
+    }
 }
 
 // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#nodes-response-0x04
 export class Nodes implements Message{
+    senderId: string;
+    recipientId: string;
     readonly #requestId: string;
     total: number;
     nodes: Array<string>;
 
-    constructor(requestId: string, total: number, nodes: Array<string>) {
+    constructor(
+        sender: Node,
+        recipient: Node,
+        requestId: string,
+        total: number,
+        nodes: Array<string>
+    ) {
+        this.senderId = sender.id;
+        this.recipientId = recipient.id;
         this.#requestId = requestId;
         this.total = total;
         this.nodes = nodes;
@@ -141,5 +208,9 @@ export class Nodes implements Message{
 
     requestId(): string {
         return this.#requestId;
+    }
+
+    panelContents(): Object {
+        return <Text>sender: {this.senderId}, recipient: {this.recipientId}</Text>;
     }
 }

@@ -57,7 +57,7 @@ type Props = {
 export class Tracing extends React.Component<Props> {
   state = {
     showPanel: false,
-    panelContents: <Text>...</Text>,
+    panelContents: <Text></Text>,
   }
 
   mouse = new THREE.Vector2();
@@ -90,10 +90,10 @@ export class Tracing extends React.Component<Props> {
     const highlightedObject = this.objectHighlighter.highlight(intersects);
 
     let showPanel = false;
-    let panelContents = <Text>...</Text>;
-    if (highlightedObject) {
+    let panelContents = <Text></Text>;
+    if (highlightedObject && highlightedObject.userData.panelContents) {
       showPanel = true;
-      panelContents = <div><Text>{this.mouse.x} {this.mouse.y}</Text></div>;
+      panelContents = highlightedObject.userData.panelContents;
     }
 
     this.setState({
@@ -122,7 +122,7 @@ export class Tracing extends React.Component<Props> {
   }
 }
 
-const panelAnimator = { duration: { enter: 200, exit: 200 } };
+const panelAnimator = { duration: { enter: 10, exit: 100 } };
 
 const Panel = (props) => {
   let activate = props.show;
@@ -364,18 +364,44 @@ function processShutdown(log, step) {
   node.shutdown(step);
 }
 
-function protoToMessage(message): Message {
+function protoToMessage(sender: Node, recipient: Node, message): Message {
   switch (message.message) {
     case 'ping':
-      return new Ping(message.ping.requestId, message.ping.enrSeq);
+      return new Ping(
+          sender,
+          recipient,
+          message.ping.requestId,
+          message.ping.enrSeq
+      );
     case 'pong':
-      return new Pong(message.pong.requestId, message.pong.enrSeq, message.pong.recipientIp, message.pong.recipientPort);
+      return new Pong(
+          sender,
+          recipient,
+          message.pong.requestId,
+          message.pong.enrSeq,
+          message.pong.recipientIp,
+          message.pong.recipientPort
+      );
     case 'findNode':
-      return new Findnode(message.findNode.requestId, message.findNode.distances);
+      return new Findnode(
+          sender,
+          recipient,
+          message.findNode.requestId,
+          message.findNode.distances
+      );
     case 'nodes':
-      return new Nodes(message.nodes.requestId, message.nodes.total, message.nodes.nodes);
+      return new Nodes(
+          sender,
+          recipient,
+          message.nodes.requestId,
+          message.nodes.total,
+          message.nodes.nodes
+      );
     case 'random':
-      return new Random();
+      return new Random(
+          sender,
+          recipient
+      );
     default:
       console.error("unknown message type", message);
       break;
@@ -386,7 +412,7 @@ function processOrdinaryMessage(log: tracing.Log, step: number) {
   const event = log.sendOrdinaryMessage;
   const sender = _nodes.get(event.sender);
   const recipient = _nodes.get(event.recipient);
-  const message = protoToMessage(log.sendOrdinaryMessage);
+  const message = protoToMessage(sender, recipient, log.sendOrdinaryMessage);
 
   if (event.random !== null) {
     // Due to Random packet has no request_id, we can't trace when the Random packet has been handled by the recipient.
@@ -406,7 +432,7 @@ function processHandleMessage(log: tracing.Log, step: number): void {
   const event = log.handleMessage;
   const sender = _nodes.get(event.sender);
   const recipient = _nodes.get(event.recipient);
-  const message = protoToMessage(event);
+  const message = protoToMessage(sender, recipient, event);
 
   const sentMessage = _sentMessages.take(sender.id, recipient.id, message.requestId());
   sender.drawMessage(recipient, step, sentMessage);
@@ -436,7 +462,7 @@ function processHandleWhoareyou(log: tracing.Log, step: number): void {
 function processHandshakeMessage(log, step) {
   const sender = _nodes.get(log.sendHandshakeMessage.sender);
   const recipient = _nodes.get(log.sendHandshakeMessage.recipient);
-  const message = protoToMessage(log.sendHandshakeMessage);
+  const message = protoToMessage(sender, recipient, log.sendHandshakeMessage);
 
   _sentMessages.addHandshakeMessage(
       sender.id,

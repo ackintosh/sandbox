@@ -1,4 +1,5 @@
 import {Long} from "protobufjs";
+import {Text} from "@arwes/core";
 
 export class SentWhoAreYouPackets {
   packets: Map<string, SentWhoAreYou>;
@@ -36,7 +37,7 @@ export class SentWhoAreYou {
   enrSeq: number|Long;
   step: number;
 
-  constructor(sender, recipient, idNonce, enrSeq, step) {
+  constructor(sender: string, recipient: string, idNonce: Array<number>, enrSeq: number|Long, step: number) {
     this.sender = sender;
     this.recipient = recipient;
     this.idNonce = idNonce;
@@ -46,6 +47,10 @@ export class SentWhoAreYou {
 
   key(): string {
     return key(this.sender, this.enrSeq);
+  }
+
+  panelContents(): Object {
+    return <Text>sender: {this.sender}, recipient: {this.recipient}</Text>;
   }
 }
 

@@ -111,6 +111,7 @@ export class Node {
         const z = this.pos.z;
         const text = createCapText(`Ordinary Message<${message.name()}>\n${message.capText()}`, x, y, z, message.color());
         text.userData.originalColor = message.color();
+        text.userData.panelContents = message.panelContents();
         this.scene.add(text);
     }
 
@@ -123,6 +124,7 @@ export class Node {
         const z = this.pos.z;
         const text = createCapText(`${sentMessage.capTextTitle()}<${sentMessage.message.name()}>\n${sentMessage.message.capText()}`, x, y, z, sentMessage.message.color());
         text.userData.originalColor = sentMessage.message.color();
+        text.userData.panelContents = sentMessage.message.panelContents();
         this.scene.add(text);
     }
 
@@ -135,6 +137,7 @@ export class Node {
         const z = this.pos.z;
         const text = createCapText(`WHOAREYOU :\n  ${sentWhoAreYou.idNonce}\n  ${sentWhoAreYou.enrSeq}`, x, y, z, COLOR_WHOAREYOU);
         text.userData.originalColor = COLOR_WHOAREYOU;
+        text.userData.panelContents = sentWhoAreYou.panelContents();
         this.scene.add(text);
     }
 }
