@@ -1,5 +1,5 @@
 import {Node} from './Node';
-import {Text} from "@arwes/core";
+import {Table, Text} from "@arwes/core";
 
 const COLOR_RANDOM: number = 0xffdd00;
 const COLOR_PING: number = 0x0000ff;
@@ -42,7 +42,26 @@ export class Random implements Message{
     }
 
     panelContents(): Object {
-        return <Text>sender: {this.senderId}, recipient: {this.recipientId}</Text>;
+        const headers = [
+            { id: 'a', data: 'Packet data' }
+        ];
+        const dataset = [
+            {
+                id: 0,
+                columns: [
+                    {id: 0, data: 'sender'},
+                    {id: 1, data: this.senderId},
+                ],
+            },
+            {
+                id: 1,
+                columns: [
+                    {id: 0, data: 'recipient'},
+                    {id: 1, data: this.recipientId},
+                ],
+            },
+        ];
+        return <Table headers={headers} dataset={dataset}/>
     }
 }
 
