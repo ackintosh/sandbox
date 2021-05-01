@@ -55,13 +55,19 @@ function init() {
   // ジオメトリは頂点情報や面情報を持っている
   // 立方体や直方体のような箱状の形状を生成するための `BoxGeometry` を使用する
   // new THREE.BoxGeometry(幅, 高さ, 奥行き)
-  const geometry = new THREE.BoxGeometry(500, 500, 500);
+  // const geometry = new THREE.BoxGeometry(500, 500, 500);
 
   // *マテリアル（素材）を作る*
   // マテリアルは色や質感の情報を持っている
-  const material = new THREE.MeshStandardMaterial({
-      color: 0x0000ff
-  });
+  // const material = new THREE.MeshStandardMaterial({
+  //     color: 0x0000ff
+  // });
+
+
+  const geometry = new THREE.CircleGeometry( 200, 6);
+  const material = new THREE.MeshBasicMaterial( { color: 0x1aff1a, transparent: true, opacity: 0.3, side: THREE.FrontSide } );
+  // const material = new MeshPhongMaterial( { color: 0x156289, emissive: 0x072534, side: DoubleSide, flatShading: true } );
+
 
   // ジオメトリとマテリアルを使って、メッシュを作り、シーンに追加する
   // new THREE.Mesh(ジオメトリ,マテリアル)
@@ -101,8 +107,9 @@ function init() {
     requestAnimationFrame(tick);
 
     // 箱を回転させる
-    box.rotation.x += 0.01;
-    box.rotation.y += 0.01;
+    // box.rotation.x += 0.01;
+    // box.rotation.y += 0.01;
+
     // レンダリング
     renderer.render(scene, camera);
   }

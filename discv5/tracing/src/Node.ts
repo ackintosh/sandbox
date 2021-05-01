@@ -84,15 +84,34 @@ export class Node {
 
     showNodeId() {
         const nodeId = createCapText(this.id, this.pos.x, this.pos.y, this.pos.z, COLOR_NODE_ID);
+        nodeId.position.x = this.pos.x - 80;
         this.scene.add(nodeId);
+
+        const geometry = new THREE.CircleGeometry( 150, 6);
+        const material = new THREE.MeshBasicMaterial( { color: 0x49ef4, transparent: true, opacity: 0.3, side: THREE.FrontSide } );
+        const mesh = new THREE.Mesh( geometry, material );
+        mesh.position.x = this.pos.x;
+        mesh.position.y = this.pos.y;
+        mesh.position.z = this.pos.z;
+        this.scene.add(mesh);
     }
 
     start(step) {
         const x = this.pos.x;
         const y = this.line.geometry.getAttribute('position').getY(step);
         const z = this.pos.z;
-        const text = createCapText('<start>', x, y, z, COLOR_START);
+        const text = createCapText('start', x, y, z, COLOR_START);
+        text.position.x = x - 30;
+        text.position.y = y - 10;
         this.scene.add(text);
+
+        const geometry = new THREE.CircleGeometry( 80, 6);
+        const material = new THREE.MeshBasicMaterial( { color: 0x1aff1a, transparent: true, opacity: 0.3, side: THREE.FrontSide } );
+        const mesh = new THREE.Mesh( geometry, material );
+        mesh.position.x = x;
+        mesh.position.y = y;
+        mesh.position.z = z;
+        this.scene.add(mesh);
     }
 
     shutdown(step) {
