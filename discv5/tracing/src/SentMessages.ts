@@ -12,12 +12,12 @@ export class SentMessages {
   }
 
   addOrdinaryMessage(sender: string, recipient: string, message: Message, step: number): void {
-    const m = new SentMessage(sender, recipient, message, TYPE.ORDINARY, step);
+    const m = new SentMessage(sender, recipient, message, PacketType.Ordinary, step);
     this.add(m);
   }
 
   addHandshakeMessage(sender: string, recipient: string, message: Message, step: number): void {
-    const m = new SentMessage(sender, recipient, message, TYPE.HANDSHAKE, step);
+    const m = new SentMessage(sender, recipient, message, PacketType.Handshake, step);
     this.add(m);
   }
 
@@ -38,19 +38,14 @@ export class SentMessages {
   }
 }
 
-enum TYPE {
-  ORDINARY,
-  HANDSHAKE,
-}
-
 export class SentMessage {
-  type: TYPE;
+  type: PacketType;
   sender: string;
   recipient: string;
   message: Message;
   step: number;
 
-  constructor(sender, recipient, message, type, step) {
+  constructor(sender, recipient, message, type: PacketType, step) {
     this.sender = sender;
     this.recipient = recipient;
     this.message = message;
@@ -60,29 +55,6 @@ export class SentMessage {
 
   key(): string {
     return key(this.sender, this.message.requestId());
-  }
-
-  capTextTitle(): string {
-    switch (this.type) {
-      case TYPE.ORDINARY:
-        return 'Ordinary Message';
-        break;
-      case TYPE.HANDSHAKE:
-        return 'Handshake Message';
-        break;
-    }
-  }
-
-  // TODO
-  packetType(): PacketType{
-    switch (this.type) {
-      case TYPE.ORDINARY:
-        return PacketType.Ordinary;
-        break;
-      case TYPE.HANDSHAKE:
-        return PacketType.Handshake;
-        break;
-    }
   }
 }
 

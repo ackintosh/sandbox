@@ -123,9 +123,9 @@ export class Node {
         const x = this.pos.x;
         const y = this.line.geometry.getAttribute('position').getY(sentMessage.step);
         const z = this.pos.z;
-        const text = createCapText(`${sentMessage.capTextTitle()}<${sentMessage.message.name()}>\n${sentMessage.message.capText()}`, x, y, z, sentMessage.message.color());
+        const text = createCapText(`${sentMessage.type}<${sentMessage.message.name()}>\n${sentMessage.message.capText()}`, x, y, z, sentMessage.message.color());
         text.userData.originalColor = sentMessage.message.color();
-        text.userData.panelContents = sentMessage.message.panelContents(sentMessage.packetType());
+        text.userData.panelContents = sentMessage.message.panelContents(sentMessage.type);
         this.scene.add(text);
     }
 
