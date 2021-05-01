@@ -1,5 +1,5 @@
 import {Long} from "protobufjs";
-import {Text} from "@arwes/core";
+import {Table, Text} from "@arwes/core";
 
 export class SentWhoAreYouPackets {
   packets: Map<string, SentWhoAreYou>;
@@ -50,7 +50,40 @@ export class SentWhoAreYou {
   }
 
   panelContents(): Object {
-    return <Text>sender: {this.sender}, recipient: {this.recipient}</Text>;
+    const headers = [
+      { id: 'a', data: 'WHOAREYOU' }
+    ];
+    const dataset = [
+      {
+        id: 0,
+        columns: [
+          {id: 0, data: 'sender'},
+          {id: 1, data: this.sender},
+        ],
+      },
+      {
+        id: 1,
+        columns: [
+          {id: 0, data: 'recipient'},
+          {id: 1, data: this.recipient},
+        ],
+      },
+      {
+        id: 2,
+        columns: [
+          {id: 0, data: 'id-nonce'},
+          {id: 1, data: this.idNonce.join(',')},
+        ],
+      },
+      {
+        id: 3,
+        columns: [
+          {id: 0, data: 'enr-seq'},
+          {id: 1, data: this.enrSeq},
+        ],
+      },
+    ];
+    return <Table headers={headers} dataset={dataset}/>
   }
 }
 

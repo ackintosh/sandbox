@@ -1,5 +1,5 @@
 import {Node} from './Node';
-import {Table, Text} from "@arwes/core";
+import {List, Table, Text} from "@arwes/core";
 
 const COLOR_RANDOM: number = 0xffdd00;
 const COLOR_PING: number = 0x0000ff;
@@ -43,7 +43,7 @@ export class Random implements Message{
 
     panelContents(): Object {
         const headers = [
-            { id: 'a', data: 'Packet data' }
+            { id: 'a', data: 'Message' }
         ];
         const dataset = [
             {
@@ -101,7 +101,40 @@ export class Ping implements Message{
     }
 
     panelContents(): Object {
-        return <Text>sender: {this.senderId}, recipient: {this.recipientId}</Text>;
+        const headers = [
+            { id: 'a', data: 'Message' }
+        ];
+        const dataset = [
+            {
+                id: 0,
+                columns: [
+                    {id: 0, data: 'sender'},
+                    {id: 1, data: this.senderId},
+                ],
+            },
+            {
+                id: 1,
+                columns: [
+                    {id: 0, data: 'recipient'},
+                    {id: 1, data: this.recipientId},
+                ],
+            },
+            {
+                id: 2,
+                columns: [
+                    {id: 0, data: 'request-id'},
+                    {id: 1, data: this.requestId()},
+                ],
+            },
+            {
+                id: 3,
+                columns: [
+                    {id: 0, data: 'enr-seq'},
+                    {id: 1, data: this.enrSeq},
+                ],
+            },
+        ];
+        return <Table headers={headers} dataset={dataset}/>
     }
 }
 
@@ -147,7 +180,54 @@ export class Pong implements Message{
     }
 
     panelContents(): Object {
-        return <Text>sender: {this.senderId}, recipient: {this.recipientId}</Text>;
+        const headers = [
+            { id: 'a', data: 'Message' }
+        ];
+        const dataset = [
+            {
+                id: 0,
+                columns: [
+                    {id: 0, data: 'sender'},
+                    {id: 1, data: this.senderId},
+                ],
+            },
+            {
+                id: 1,
+                columns: [
+                    {id: 0, data: 'recipient'},
+                    {id: 1, data: this.recipientId},
+                ],
+            },
+            {
+                id: 2,
+                columns: [
+                    {id: 0, data: 'request-id'},
+                    {id: 1, data: this.requestId()},
+                ],
+            },
+            {
+                id: 3,
+                columns: [
+                    {id: 0, data: 'enr-seq'},
+                    {id: 1, data: this.enrSeq},
+                ],
+            },
+            {
+                id: 4,
+                columns: [
+                    {id: 0, data: 'recipient-ip'},
+                    {id: 1, data: this.recipientIp},
+                ],
+            },
+            {
+                id: 5,
+                columns: [
+                    {id: 0, data: 'recipient-port'},
+                    {id: 1, data: this.recipientPort},
+                ],
+            },
+        ];
+        return <Table headers={headers} dataset={dataset}/>
     }
 }
 
@@ -187,7 +267,44 @@ export class Findnode implements Message{
     }
 
     panelContents(): Object {
-        return <Text>sender: {this.senderId}, recipient: {this.recipientId}</Text>;
+        const distanceList = [];
+        for (let i = 0; i < this.distances.length; i++) {
+            distanceList.push(<li key={this.distances[i]}><Text>{this.distances[i]}</Text></li>);
+        }
+        const headers = [
+            { id: 'a', data: 'Message' }
+        ];
+        const dataset = [
+            {
+                id: 0,
+                columns: [
+                    {id: 0, data: 'sender'},
+                    {id: 1, data: this.senderId},
+                ],
+            },
+            {
+                id: 1,
+                columns: [
+                    {id: 0, data: 'recipient'},
+                    {id: 1, data: this.recipientId},
+                ],
+            },
+            {
+                id: 2,
+                columns: [
+                    {id: 0, data: 'request-id'},
+                    {id: 1, data: this.requestId()},
+                ],
+            },
+            {
+                id: 3,
+                columns: [
+                    {id: 0, data: 'distances'},
+                    {id: 1, data: <List>{distanceList}</List>},
+                ],
+            },
+        ];
+        return <Table headers={headers} dataset={dataset}/>
     }
 }
 
@@ -230,6 +347,50 @@ export class Nodes implements Message{
     }
 
     panelContents(): Object {
-        return <Text>sender: {this.senderId}, recipient: {this.recipientId}</Text>;
+        const nodeList = [];
+        for (let i = 0; i < this.nodes.length; i++) {
+            nodeList.push(<li key={this.nodes[i]}><Text>{this.nodes[i]}</Text></li>);
+        }
+        const headers = [
+            { id: 'a', data: 'Message' }
+        ];
+        const dataset = [
+            {
+                id: 0,
+                columns: [
+                    {id: 0, data: 'sender'},
+                    {id: 1, data: this.senderId},
+                ],
+            },
+            {
+                id: 1,
+                columns: [
+                    {id: 0, data: 'recipient'},
+                    {id: 1, data: this.recipientId},
+                ],
+            },
+            {
+                id: 2,
+                columns: [
+                    {id: 0, data: 'request-id'},
+                    {id: 1, data: this.requestId()},
+                ],
+            },
+            {
+                id: 3,
+                columns: [
+                    {id: 0, data: 'total'},
+                    {id: 1, data: this.total},
+                ],
+            },
+            {
+                id: 4,
+                columns: [
+                    {id: 0, data: 'nodes'},
+                    {id: 1, data: <List>{nodeList}</List>},
+                ],
+            },
+        ];
+        return <Table headers={headers} dataset={dataset}/>
     }
 }
