@@ -7,12 +7,18 @@ const COLOR_PONG: number = 0xff00ff;
 const COLOR_FINDNODE: number = 0x00d6dd;
 const COLOR_NODES: number = 0xddd600;
 
+export enum PacketType {
+    Ordinary = 'Ordinary Message',
+    Whoareyou = 'WHOAREYOU',
+    Handshake = 'Handshake Message',
+}
+
 export interface Message {
     name(): string;
     color(): number;
     capText(): string;
     requestId(): string
-    panelContents(): Object;
+    panelContents(type: PacketType): Object;
 }
 
 // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-theory.md#step-1-node-a-sends-message-packet
@@ -41,9 +47,9 @@ export class Random implements Message{
         throw new Error("Random has no requestId.");
     }
 
-    panelContents(): Object {
+    panelContents(type: PacketType): Object {
         const headers = [
-            { id: 'a', data: 'Message' }
+            { id: 'a', data: `${type}<${this.name()}>` }
         ];
         const dataset = [
             {
@@ -100,9 +106,9 @@ export class Ping implements Message{
         return this.#requestId;
     }
 
-    panelContents(): Object {
+    panelContents(type: PacketType): Object {
         const headers = [
-            { id: 'a', data: 'Message' }
+            { id: 'a', data: `${type}<${this.name()}>` }
         ];
         const dataset = [
             {
@@ -179,9 +185,9 @@ export class Pong implements Message{
         return this.#requestId;
     }
 
-    panelContents(): Object {
+    panelContents(type: PacketType): Object {
         const headers = [
-            { id: 'a', data: 'Message' }
+            { id: 'a', data: `${type}<${this.name()}>` }
         ];
         const dataset = [
             {
@@ -266,13 +272,13 @@ export class Findnode implements Message{
         return this.#requestId;
     }
 
-    panelContents(): Object {
+    panelContents(type: PacketType): Object {
         const distanceList = [];
         for (let i = 0; i < this.distances.length; i++) {
             distanceList.push(<li key={this.distances[i]}><Text>{this.distances[i]}</Text></li>);
         }
         const headers = [
-            { id: 'a', data: 'Message' }
+            { id: 'a', data: `${type}<${this.name()}>` }
         ];
         const dataset = [
             {
@@ -346,13 +352,13 @@ export class Nodes implements Message{
         return this.#requestId;
     }
 
-    panelContents(): Object {
+    panelContents(type: PacketType): Object {
         const nodeList = [];
         for (let i = 0; i < this.nodes.length; i++) {
             nodeList.push(<li key={this.nodes[i]}><Text>{this.nodes[i]}</Text></li>);
         }
         const headers = [
-            { id: 'a', data: 'Message' }
+            { id: 'a', data: `${type}<${this.name()}>` }
         ];
         const dataset = [
             {

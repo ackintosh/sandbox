@@ -1,4 +1,4 @@
-import {Message} from "./Message";
+import {Message, PacketType} from "./Message";
 
 export class SentMessages {
   messages: Map<string, SentMessage>;
@@ -69,6 +69,18 @@ export class SentMessage {
         break;
       case TYPE.HANDSHAKE:
         return 'Handshake Message';
+        break;
+    }
+  }
+
+  // TODO
+  packetType(): PacketType{
+    switch (this.type) {
+      case TYPE.ORDINARY:
+        return PacketType.Ordinary;
+        break;
+      case TYPE.HANDSHAKE:
+        return PacketType.Handshake;
         break;
     }
   }

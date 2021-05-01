@@ -3,6 +3,7 @@ import {Globals} from "./Globals";
 import {DISTANCE_BETWEEN_NODES, SCALE} from "./main";
 import {SentMessage} from "./SentMessages";
 import {SentWhoAreYou} from "./SentWhoAreYouPackets";
+import {PacketType} from "./Message";
 
 const COLOR_NODE_ID = 0xffffff;
 const COLOR_START = 0xffddff;
@@ -111,7 +112,7 @@ export class Node {
         const z = this.pos.z;
         const text = createCapText(`Ordinary Message<${message.name()}>\n${message.capText()}`, x, y, z, message.color());
         text.userData.originalColor = message.color();
-        text.userData.panelContents = message.panelContents();
+        text.userData.panelContents = message.panelContents(PacketType.Ordinary);
         this.scene.add(text);
     }
 
@@ -124,7 +125,7 @@ export class Node {
         const z = this.pos.z;
         const text = createCapText(`${sentMessage.capTextTitle()}<${sentMessage.message.name()}>\n${sentMessage.message.capText()}`, x, y, z, sentMessage.message.color());
         text.userData.originalColor = sentMessage.message.color();
-        text.userData.panelContents = sentMessage.message.panelContents();
+        text.userData.panelContents = sentMessage.message.panelContents(sentMessage.packetType());
         this.scene.add(text);
     }
 
@@ -137,7 +138,7 @@ export class Node {
         const z = this.pos.z;
         const text = createCapText(`WHOAREYOU :\n  ${sentWhoAreYou.idNonce}\n  ${sentWhoAreYou.enrSeq}`, x, y, z, COLOR_WHOAREYOU);
         text.userData.originalColor = COLOR_WHOAREYOU;
-        text.userData.panelContents = sentWhoAreYou.panelContents();
+        text.userData.panelContents = sentWhoAreYou.panelContents(PacketType.Whoareyou);
         this.scene.add(text);
     }
 }
