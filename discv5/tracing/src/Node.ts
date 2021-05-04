@@ -194,7 +194,7 @@ export class Node {
         this.scene.add(arrow);
 
         const x = (this.pos.x + toNode.pos.x) / 2;
-        const y = this.line.geometry.getAttribute('position').getY(toStep);
+        const y = (this.line.geometry.getAttribute('position').getY(toStep) + this.line.geometry.getAttribute('position').getY(sentWhoAreYou.step)) / 2;
         const z = (this.pos.z + toNode.pos.z) / 2;
         const text = createCapText(
             'WHOAREYOU',
