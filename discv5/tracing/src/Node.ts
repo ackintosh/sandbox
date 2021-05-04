@@ -146,8 +146,6 @@ export class Node {
             z,
             0xffffff
         );
-        text.userData.originalColor = 0xffffff;
-        text.userData.panelContents = message.panelContents(PacketType.Ordinary);
         this.scene.add(text);
 
         const geometry = new THREE.BoxGeometry( 550, 100, 1 );
@@ -156,6 +154,9 @@ export class Node {
         mesh.position.x = x;
         mesh.position.y = y;
         mesh.position.z = z;
+        mesh.userData.panelContents = message.panelContents(PacketType.Ordinary);
+        mesh.userData.originalColor = message.color();
+        mesh.userData.highlightedColor = 0xa2f7a2; // TODO
         this.scene.add(mesh);
     }
 
@@ -174,8 +175,6 @@ export class Node {
             z,
             0xffffff
         );
-        capText.userData.originalColor = 0xffffff;
-        capText.userData.panelContents = sentMessage.message.panelContents(sentMessage.type);
         this.scene.add(capText);
 
         const geometry = new THREE.BoxGeometry( 550, 100, 1 );
@@ -184,6 +183,9 @@ export class Node {
         mesh.position.x = x;
         mesh.position.y = y;
         mesh.position.z = z;
+        mesh.userData.panelContents = sentMessage.message.panelContents(sentMessage.type);
+        mesh.userData.originalColor = sentMessage.message.color();
+        mesh.userData.highlightedColor = 0xa2f7a2; // TODO
         this.scene.add(mesh);
     }
 
@@ -201,8 +203,6 @@ export class Node {
             z,
             0xffffff
         );
-        text.userData.originalColor = 0xffffff;
-        text.userData.panelContents = sentWhoAreYou.panelContents(PacketType.Whoareyou);
         this.scene.add(text);
 
         const geometry = new THREE.BoxGeometry( 350, 100, 1 );
@@ -211,6 +211,9 @@ export class Node {
         mesh.position.x = x;
         mesh.position.y = y;
         mesh.position.z = z;
+        mesh.userData.panelContents = sentWhoAreYou.panelContents(PacketType.Whoareyou);
+        mesh.userData.originalColor = COLOR_WHOAREYOU;
+        mesh.userData.highlightedColor = 0xa2f7a2;
         this.scene.add(mesh);
     }
 }

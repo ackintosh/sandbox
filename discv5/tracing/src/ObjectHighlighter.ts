@@ -19,7 +19,7 @@ export class ObjectHighlighter {
             revertId = this.highlightedIds.shift();
         }
 
-        if (obj !== null && this.invert(obj.id)) {
+        if (obj !== null && ObjectHighlighter.invert(obj as THREE.Mesh)) {
             this.highlightedIds.push(obj.id);
             return obj;
         }
@@ -33,7 +33,7 @@ export class ObjectHighlighter {
         }
 
         for (let i = 0; i < intersects.length; i++) {
-            const obj = this.scene.getObjectById(intersects[0].object.id);
+            const obj = this.scene.getObjectById(intersects[i].object.id);
             if (obj.userData.panelContents) {
                 return obj;
             }
@@ -42,15 +42,13 @@ export class ObjectHighlighter {
         return null;
     }
 
-    private invert(objectId: number): boolean {
-        const obj = this.scene.getObjectById(objectId) as THREE.Mesh;
-
-        if (obj.userData.originalColor === undefined) {
+    private static invert(obj: THREE.Mesh): boolean {
+        if (obj.userData.highlightedColor === undefined) {
             return false
         }
 
         const material = obj.material as THREE.MeshBasicMaterial;
-        material.color.setHex(obj.userData.originalColor ^ 0xffffff);
+        material.color.setHex(obj.userData.highlightedColor);
         return true;
     }
 
