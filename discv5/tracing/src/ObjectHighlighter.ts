@@ -10,10 +10,7 @@ export class ObjectHighlighter {
     }
 
     highlight(intersects): THREE.Object3D | null {
-        let obj = undefined;
-        if (intersects.length > 0) {
-            obj = this.scene.getObjectById(intersects[0].object.id);
-        }
+        const obj = this.getHighlightObject(intersects);
 
         // Revert all highlighted objects
         let revertId = this.highlightedIds.shift();
@@ -22,9 +19,24 @@ export class ObjectHighlighter {
             revertId = this.highlightedIds.shift();
         }
 
-        if (obj !== undefined && this.invert(obj.id)) {
+        if (obj !== null && this.invert(obj.id)) {
             this.highlightedIds.push(obj.id);
             return obj;
+        }
+
+        return null;
+    }
+
+    private getHighlightObject(intersects): THREE.Object3D | null {
+        if (intersects.length === 0) {
+            return null;
+        }
+
+        for (let i = 0; i < intersects.length; i++) {
+            const obj = this.scene.getObjectById(intersects[0].object.id);
+            if (obj.userData.panelContents) {
+                return obj;
+            }
         }
 
         return null;
