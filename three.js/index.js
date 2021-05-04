@@ -64,7 +64,8 @@ function init() {
   // });
 
 
-  const geometry = new THREE.CircleGeometry( 200, 6);
+  // const geometry = new THREE.CircleGeometry( 200, 6);
+  const geometry = new THREE.BoxGeometry( 300, 300, 1 );
   const material = new THREE.MeshBasicMaterial( { color: 0x1aff1a, transparent: true, opacity: 0.3, side: THREE.FrontSide } );
   // const material = new MeshPhongMaterial( { color: 0x156289, emissive: 0x072534, side: DoubleSide, flatShading: true } );
 

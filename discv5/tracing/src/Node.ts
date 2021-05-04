@@ -136,39 +136,82 @@ export class Node {
         const arrow = drawArrow(this, toNode, step, message.color());
         this.scene.add(arrow);
 
-        const x = this.pos.x;
+        const x = (this.pos.x + toNode.pos.x) / 2;
         const y = this.line.geometry.getAttribute('position').getY(step);
-        const z = this.pos.z;
-        const text = createCapText(`Ordinary Message<${message.name()}>\n${message.capText()}`, x, y, z, message.color());
-        text.userData.originalColor = message.color();
+        const z = (this.pos.z + toNode.pos.z) / 2;
+        const text = createCapText(
+            `Ordinary Message<${message.name()}>\n${message.capText()}`,
+            x - 225,
+            y,
+            z,
+            0xffffff
+        );
+        text.userData.originalColor = 0xffffff;
         text.userData.panelContents = message.panelContents(PacketType.Ordinary);
         this.scene.add(text);
+
+        const geometry = new THREE.BoxGeometry( 550, 100, 1 );
+        const material = new THREE.MeshBasicMaterial( { color: message.color(), transparent: true, opacity: 0.3, side: THREE.FrontSide } );
+        const mesh = new THREE.Mesh( geometry, material );
+        mesh.position.x = x;
+        mesh.position.y = y;
+        mesh.position.z = z;
+        this.scene.add(mesh);
     }
 
     drawMessage(toNode: Node, toStep: number, sentMessage: SentMessage) {
         const arrow = drawArrow2(this, sentMessage.step, toNode, toStep, sentMessage.message.color());
         this.scene.add(arrow);
 
-        const x = this.pos.x;
-        const y = this.line.geometry.getAttribute('position').getY(sentMessage.step);
-        const z = this.pos.z;
-        const text = createCapText(`${sentMessage.type}<${sentMessage.message.name()}>\n${sentMessage.message.capText()}`, x, y, z, sentMessage.message.color());
-        text.userData.originalColor = sentMessage.message.color();
-        text.userData.panelContents = sentMessage.message.panelContents(sentMessage.type);
-        this.scene.add(text);
+        const x = (this.pos.x + toNode.pos.x) / 2;
+        const y = (this.line.geometry.getAttribute('position').getY(toStep) + this.line.geometry.getAttribute('position').getY(sentMessage.step)) / 2;
+        const z = (this.pos.z + toNode.pos.z) / 2;
+        const text = `${sentMessage.type}<${sentMessage.message.name()}>`;
+        const capText = createCapText(
+            text,
+            x - (180),
+            y,
+            z,
+            0xffffff
+        );
+        capText.userData.originalColor = 0xffffff;
+        capText.userData.panelContents = sentMessage.message.panelContents(sentMessage.type);
+        this.scene.add(capText);
+
+        const geometry = new THREE.BoxGeometry( 550, 100, 1 );
+        const material = new THREE.MeshBasicMaterial( { color: sentMessage.message.color(), transparent: true, opacity: 0.3, side: THREE.FrontSide } );
+        const mesh = new THREE.Mesh( geometry, material );
+        mesh.position.x = x;
+        mesh.position.y = y;
+        mesh.position.z = z;
+        this.scene.add(mesh);
     }
 
     drawWhoAreYou(toNode: Node, toStep: number, sentWhoAreYou: SentWhoAreYou) {
         const arrow = drawArrow2(this, sentWhoAreYou.step, toNode, toStep, COLOR_WHOAREYOU);
         this.scene.add(arrow);
 
-        const x = this.pos.x;
-        const y = this.line.geometry.getAttribute('position').getY(sentWhoAreYou.step);
-        const z = this.pos.z;
-        const text = createCapText(`WHOAREYOU :\n  ${sentWhoAreYou.idNonce}\n  ${sentWhoAreYou.enrSeq}`, x, y, z, COLOR_WHOAREYOU);
-        text.userData.originalColor = COLOR_WHOAREYOU;
+        const x = (this.pos.x + toNode.pos.x) / 2;
+        const y = this.line.geometry.getAttribute('position').getY(toStep);
+        const z = (this.pos.z + toNode.pos.z) / 2;
+        const text = createCapText(
+            'WHOAREYOU',
+            x - 90,
+            y,
+            z,
+            0xffffff
+        );
+        text.userData.originalColor = 0xffffff;
         text.userData.panelContents = sentWhoAreYou.panelContents(PacketType.Whoareyou);
         this.scene.add(text);
+
+        const geometry = new THREE.BoxGeometry( 350, 100, 1 );
+        const material = new THREE.MeshBasicMaterial( { color: COLOR_WHOAREYOU, transparent: true, opacity: 0.3, side: THREE.FrontSide } );
+        const mesh = new THREE.Mesh( geometry, material );
+        mesh.position.x = x;
+        mesh.position.y = y;
+        mesh.position.z = z;
+        this.scene.add(mesh);
     }
 }
 
