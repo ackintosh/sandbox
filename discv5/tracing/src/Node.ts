@@ -118,8 +118,18 @@ export class Node {
         const x = this.pos.x;
         const y = this.line.geometry.getAttribute('position').getY(step);
         const z = this.pos.z;
-        const text = createCapText('<shutdown>', x, y, z, COLOR_SHUTDOWN);
+        const text = createCapText('shutdown', x, y, z, COLOR_SHUTDOWN);
+        text.position.x = x - 60;
+        text.position.y = y - 10;
         this.scene.add(text);
+
+        const geometry = new THREE.CircleGeometry( 120, 6);
+        const material = new THREE.MeshBasicMaterial( { color: 0xa4a4a4, transparent: true, opacity: 0.3, side: THREE.FrontSide } );
+        const mesh = new THREE.Mesh( geometry, material );
+        mesh.position.x = x;
+        mesh.position.y = y;
+        mesh.position.z = z;
+        this.scene.add(mesh);
     }
 
     drawMessageHorizontally(toNode, step, message): void {
