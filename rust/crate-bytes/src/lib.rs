@@ -1,4 +1,4 @@
-use bytes::{Bytes, BytesMut, BufMut};
+use bytes::{BufMut, Bytes, BytesMut};
 
 // *** Bytesを使うモチベーション ***
 // * データを渡す際、シンプルにバイトデータ(&[u8]やVecなど)をあちらこちらに渡しながらメモリプールを使用することも良いのですが、
