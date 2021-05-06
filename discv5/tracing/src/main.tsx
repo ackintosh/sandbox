@@ -48,7 +48,7 @@ const _camera = new THREE.PerspectiveCamera(
 );
 _camera.position.set(0, 0, 2000);
 
-let _canvas = null;
+let _canvas: HTMLCanvasElement | null = null;
 
 type Props = {
   tracing: boolean;
@@ -72,6 +72,9 @@ export class Tracing extends React.Component<Props> {
   }
 
   handleMouseMove(event) {
+    if (_canvas === null) {
+      return;
+    }
     // canvas要素上のXY座標
     const x = event.clientX - _canvas.offsetLeft;
     const y = event.clientY - _canvas.offsetTop;
@@ -236,6 +239,9 @@ function start() {
   // ///////////////////////////////////////
   // Renderer
   // ///////////////////////////////////////
+  if (_canvas === null) {
+    throw new Error("_canvas is null");
+  }
   const renderer = new THREE.WebGLRenderer({
     canvas: _canvas,
   });

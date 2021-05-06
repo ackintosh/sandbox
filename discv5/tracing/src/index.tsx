@@ -17,7 +17,7 @@ class App extends React.Component {
         tracing: false,
     }
 
-    async handleClick(closeWelcomeContent) {
+    async handleClick(closeWelcomeContent: () => void) {
         const fileHandle = await openFilePicker();
         closeWelcomeContent();
         await new Promise(resolve => setTimeout(resolve, generalAnimator.duration.exit + 200));
@@ -31,14 +31,20 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Welcome welcome={this.state.welcome} handleClick={(action) => this.handleClick(action)}/>
+                <Welcome welcome={this.state.welcome} handleClick={(action: () => void) => this.handleClick(action)}/>
                 <Tracing tracing={this.state.tracing}/>
             </div>
         );
     }
 }
 
-const Welcome = (props) => {
+type WelcomeProps = {
+    handleClick: (action: () => void) => void,
+    welcome: boolean;
+}
+
+const Welcome = (props: WelcomeProps) => {
+    console.dir(props);
     const [activate, setActivate] = React.useState(true);
 
     if (!props.welcome) {

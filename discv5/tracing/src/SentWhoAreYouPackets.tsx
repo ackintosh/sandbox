@@ -1,5 +1,5 @@
 import {Long} from "protobufjs";
-import {Table, Text} from "@arwes/core";
+import {Table} from "@arwes/core";
 import {PacketType} from "./Message";
 
 export class SentWhoAreYouPackets {

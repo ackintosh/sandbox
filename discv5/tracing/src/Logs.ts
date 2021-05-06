@@ -13,7 +13,7 @@ export class Logs {
     }
 
     private static key(log: tracing.Log): string {
-        if (log.timestamp == undefined || log.timestamp.nanos == null) {
+        if (log.timestamp === undefined || log.timestamp === null || log.timestamp.nanos === undefined || log.timestamp.nanos === null) {
             throw new Error(`invalid log: ${log}`);
         }
 
@@ -30,14 +30,6 @@ export class Logs {
         } else {
             this.logs.set(t, [log]);
         }
-
-        // if (this.logs.has(t)) {
-        //     const elements = this.logs.get(t);
-        //     elements.push(log);
-        //     this.logs.set(t, elements);
-        // } else {
-        //     this.logs.set(t, [log]);
-        // }
     }
 
     sort() {
