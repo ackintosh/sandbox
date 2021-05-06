@@ -9,6 +9,7 @@ members = [
   "algorithmer",
   "async-await",
   "conditional-compoilation",
+  "crate-bytes",
   "crate-chrono",
   "crate-criterion",
   "crate-dhat",
