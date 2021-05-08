@@ -11,8 +11,8 @@ import { Node } from "./Node";
 import {Logs} from "./Logs";
 import {SentMessages} from "./SentMessages";
 import {SentWhoAreYouPackets} from "./SentWhoAreYouPackets";
-import React from "react";
-import {ArwesThemeProvider, FrameBox, StylesBaseline, Text} from "@arwes/core";
+import React, {ReactElement} from "react";
+import {ArwesThemeProvider, FrameBox, StylesBaseline, Text, TextProps} from "@arwes/core";
 import {FONT_FAMILY_CODE, FONT_FAMILY_ROOT} from "./index";
 import {Animator, AnimatorGeneralProvider} from "@arwes/animation";
 
@@ -50,11 +50,11 @@ _camera.position.set(0, 0, 2000);
 
 let _canvas: HTMLCanvasElement | null = null;
 
-type Props = {
+type TracingProps = {
   tracing: boolean;
 }
 
-export class Tracing extends React.Component<Props> {
+export class Tracing extends React.Component<TracingProps> {
   state = {
     showPanel: false,
     panelContents: <Text></Text>,
@@ -65,13 +65,13 @@ export class Tracing extends React.Component<Props> {
   objectHighlighter = new ObjectHighlighter(_scene);
 
 
-  constructor(props) {
+  constructor(props: TracingProps) {
     super(props);
 
     this.handleMouseMove = this.handleMouseMove.bind(this);
   }
 
-  handleMouseMove(event) {
+  handleMouseMove(event: React.MouseEvent) {
     if (_canvas === null) {
       return;
     }
@@ -127,7 +127,12 @@ export class Tracing extends React.Component<Props> {
 
 const panelAnimator = { duration: { enter: 10, exit: 100 } };
 
-const Panel = (props) => {
+type PanelProps = {
+  show: boolean;
+  contents: ReactElement;
+}
+
+const Panel = (props: PanelProps) => {
   let activate = props.show;
   return (
       <div
@@ -186,7 +191,8 @@ export async function openFilePicker() {
   return handle;
 }
 
-export async function bootstrap(handle) {
+export async function bootstrap(handle: any /*FileSystemFileHandle*/) {
+  console.dir(handle);
   const file = await handle.getFile();
   const ab = await file.arrayBuffer();
   const bytes = new Uint8Array(ab);
@@ -198,16 +204,13 @@ export async function bootstrap(handle) {
       const log = tracing.Log.decodeDelimited(reader);
       _logs.add(log);
 
-      if (log.event === 'start') {
+      if (log.event === 'start' && log.start && log.start.nodeId) {
         _nodeIds.push(log.start.nodeId);
-        // console.dir(log.start);
       }
-      // console.dir(log);
-      // console.dir(log.event);
     }
   } catch (e) {
     if (e instanceof RangeError) {
-      // console.log("decoding has done");
+      console.debug("Decoding the logs has done successfully.");
     } else {
       throw e;
     }
@@ -275,6 +278,9 @@ function start() {
   // ///////////////////////////////////////
   let step: number = 0;
   // NOTE: `time` is a string value which consists of seconds and nanos.
+  if (_logs.first_key === null) {
+    throw new Error('Logs has not been initialized.');
+  }
   let time = LogKeyHelper.decrease(_logs.first_key, IDLE_STEPS * TIME_PROGRESS_PER_STEP);
 
   // ///////////////////////////////////////
@@ -324,7 +330,7 @@ function start() {
 
 // grow existing nodes along the time axis
 // https://threejs.org/docs/#manual/en/introduction/How-to-update-things
-function growExistingNodes(step) {
+function growExistingNodes(step: number): void {
   for (const [k, node] of _nodes.entries()) {
     const line = node.line;
     line.geometry.setDrawRange(0, step);
@@ -360,7 +366,7 @@ function processLog(log: tracing.Log, step: number) {
   }
 }
 
-function processStart(log, step) {
+function processStart(log: tracing.Log, step: number) {
   const node = _nodes.get(log.start.nodeId);
   node.start(step);
 }

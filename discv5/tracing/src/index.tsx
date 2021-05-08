@@ -44,7 +44,6 @@ type WelcomeProps = {
 }
 
 const Welcome = (props: WelcomeProps) => {
-    console.dir(props);
     const [activate, setActivate] = React.useState(true);
 
     if (!props.welcome) {
