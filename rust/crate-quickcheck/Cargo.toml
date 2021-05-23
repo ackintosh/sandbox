@@ -8,3 +8,6 @@ edition = "2018"
 
 [dependencies]
 quickcheck = "1"
+
+# `#[quickcheck]` アトリビュートを使うために必要
+quickcheck_macros = "1"

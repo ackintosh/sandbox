@@ -1,5 +1,9 @@
-#[macro_use]
-extern crate quickcheck;
+// #[macro_use]
+// extern crate quickcheck;
+
+// `#[quickcheck]` アトリビュートを使うために必要
+#[macro_use(quickcheck)]
+extern crate quickcheck_macros;
 
 fn reverse<T: Clone>(xs: &[T]) -> Vec<T> {
     let mut rev = vec![];
@@ -14,16 +18,24 @@ fn reverse<T: Clone>(xs: &[T]) -> Vec<T> {
 #[cfg(test)]
 mod tests_example {
     use super::*;
+    use quickcheck::quickcheck;
 
+    // マクロを使うパターン
     quickcheck! {
         fn prop(xs: Vec<u32>) -> bool {
             xs == reverse(&reverse(&xs))
         }
     }
+
+    // attributeを使うパターン
+    // マクロだとIntelliJのコード追跡の対象から外れたりするので、こちらの方が良いかもしれない
+    #[quickcheck]
+    fn double_reversal_is_identity(xs: Vec<u32>) -> bool {
+        xs == reverse(&reverse(&xs))
+    }
 }
 
-// マクロではなく quickcheck::quickcheck() を使うパターン
-// マクロだとIntelliJのコード追跡の対象から外れたりするので、こちらの方が良いかもしれない
+// quickcheck::quickcheck() を使うパターン
 mod tests {
     use super::*;
     use quickcheck::quickcheck;
