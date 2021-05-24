@@ -4,7 +4,7 @@ struct Solution;
 
 impl Solution {
     pub fn max_product(nums: Vec<i32>) -> i32 {
-        let mut ns = nums.clone();
+        let mut ns = nums;
         ns.sort_unstable();
 
         let a = ns.pop().unwrap() - 1;
