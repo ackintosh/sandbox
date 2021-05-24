@@ -9,8 +9,8 @@ edition = "2018"
 build = "build.rs"
 
 [build-dependencies]
-protoc-rust = "2.22.0"
+protoc-rust = "2.23.0"
 
 [dependencies]
-protobuf = "2.22.0"
+protobuf = "2.23.0"
 chrono = "0.4"
