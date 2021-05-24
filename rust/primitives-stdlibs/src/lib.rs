@@ -14,6 +14,7 @@ mod math;
 mod number;
 mod ownership;
 mod path;
+mod phantom_type;
 mod result_option;
 mod slice;
 mod stdlib_box;
