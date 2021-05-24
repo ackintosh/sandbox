@@ -27,7 +27,12 @@ https://docs.github.com/ja/free-pro-team@latest/packages/guides/pushing-and-pull
 $ docker tag {IMAGE ID} ghcr.io/ackintosh/psqldef:0.8.6-alpine
 $ docker push ghcr.io/ackintosh/psqldef:0.8.6-alpine
 ```
-#### GitHub Actionsでの実行
+
+#### Github Actionsを使って、Release時に自動でRegistryにイメージを公開する
+
+https://github.com/ackintosh/sandbox/blob/master/.github/workflows/push_docker_image.yaml
+
+#### GitHub Actionsでsqldefを実行する
 
 - https://github.com/ackintosh/sandbox/blob/master/.github/workflows/phpunit.yaml
 
