@@ -13,7 +13,7 @@ mod money {
         currency: PhantomData<T>,
     }
 
-    impl <T> Money<T> {
+    impl<T> Money<T> {
         fn new(amount: u32) -> Self {
             Self {
                 amount,
