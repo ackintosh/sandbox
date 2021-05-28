@@ -294,3 +294,32 @@ message OptionalPerson {
   optional string middle_name = 2;
   optional Season favourite_season = 3;
 }
+
+
+///////////////////////////////////////////
+// 同じ定義値を持つEnum
+///////////////////////////////////////////
+// グローバルスコープ
+enum Status {
+  UNKNOWN = 0;
+  AAA = 1;
+}
+
+// メッセージ内のenum
+message AwesomeMessage1 {
+  Status status = 1;
+
+  enum Status {
+    UNKNOWN = 0;
+    AAA = 1;
+  }
+}
+
+message AwesomeMessage2 {
+  Status status = 1;
+
+  enum Status {
+    UNKNOWN = 0;
+    AAA = 1;
+  }
+}

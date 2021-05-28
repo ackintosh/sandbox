@@ -400,6 +400,21 @@ fun enum() {
         val anotherPerson = Person.newBuilder().setName("another person").setFavouriteSeason(Season.forNumber(100))
         println(anotherPerson.name)
         println(anotherPerson.favouriteSeason)
+
+        val status = Status.UNKNOWN
+        println(status)
+
+        val m1 = AwesomeMessage1
+                .newBuilder()
+                .setStatus(AwesomeMessage1.Status.UNKNOWN)
+                .build()
+        println(m1)
+
+        val m2 = AwesomeMessage2
+                .newBuilder()
+                .setStatus(AwesomeMessage2.Status.UNKNOWN)
+                .build()
+        println(m2)
 }
 
 // https://github.com/protocolbuffers/protobuf/blob/master/docs/field_presence.md
