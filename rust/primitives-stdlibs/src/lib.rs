@@ -1,6 +1,7 @@
 mod btreemap;
 mod const_static;
 mod data_structures;
+mod ddd;
 mod drop;
 mod generics;
 mod hash;
