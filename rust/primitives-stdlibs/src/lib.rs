@@ -12,6 +12,7 @@ mod macro_format;
 mod macros;
 mod math;
 mod number;
+mod ops;
 mod ownership;
 mod path;
 mod phantom_type;

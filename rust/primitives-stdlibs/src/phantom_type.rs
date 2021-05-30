@@ -36,17 +36,17 @@ mod money {
     }
 
     #[derive(Debug, PartialEq)]
-    enum JPY {}
+    enum Jpy {}
     #[derive(Debug, PartialEq)]
-    enum USD {}
+    enum Usd {}
 
     #[test]
     fn test_phantom_money() {
-        let jpy1 = Money::<JPY>::new(10);
-        let jpy2 = Money::<JPY>::new(20);
+        let jpy1 = Money::<Jpy>::new(10);
+        let jpy2 = Money::<Jpy>::new(20);
 
         let result = jpy1 + jpy2;
-        assert_eq!(result, Money::<JPY>::new(30));
+        assert_eq!(result, Money::<Jpy>::new(30));
 
         // *** T が異なる Money 同士ではコンパイルエラー ***
         // let jpy3 = Money::<JPY>::new(30);
