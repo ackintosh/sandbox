@@ -272,7 +272,7 @@ message Bars {
 }
 
 message UsingWrapper {
-  google.protobuf.StringValue stringProperty = 1;
+  google.protobuf.StringValue string_property = 1;
 }
 
 enum Season {

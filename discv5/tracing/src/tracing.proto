@@ -1,8 +1,6 @@
 syntax = "proto3";
-
-import "google/protobuf/timestamp.proto";
-
 package tracing;
+import "google/protobuf/timestamp.proto";
 
 message Log {
   google.protobuf.Timestamp timestamp = 1;
@@ -30,7 +28,7 @@ message Log {
   message SendWhoAreYou {
     string sender = 1;
     string recipient = 2;
-    repeated uint32 id_nonce = 3; // NOTE: 128bytes (uint8 * 16)
+    repeated uint32 id_nonces = 3; // NOTE: 128bytes (uint8 * 16)
     uint64 enr_seq = 4;
   }
 
@@ -84,7 +82,8 @@ message Log {
 }
 
 // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-theory.md#step-1-node-a-sends-message-packet
-message Random {}
+message Random {
+}
 
 // https://github.com/ethereum/devp2p/blob/master/discv5/discv5-wire.md#ping-request-0x01
 message Ping {
