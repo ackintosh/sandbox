@@ -2,7 +2,7 @@ syntax = "proto3";
 package tracing;
 import "google/protobuf/timestamp.proto";
 
-message Log {
+message Log 
   google.protobuf.Timestamp timestamp = 1;
   oneof event {
     Start start = 2;
