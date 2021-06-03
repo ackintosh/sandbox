@@ -7,6 +7,11 @@ lint:
       # 公式からダウンロードしたファイルを除外
       - protocol-buffers/kotlin/src/main/proto/code.proto
       - protocol-buffers/kotlin/src/main/proto/error_details.proto
+  # https://github.com/yoheimuta/protolint#rules
+  rules:
+    remove:
+      - ORDER
+      - ENUM_FIELD_NAMES_PREFIX
   rules_option:
     max_line_length:
       max_chars: 120
