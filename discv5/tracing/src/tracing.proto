@@ -1,7 +1,5 @@
 syntax = "proto3";
-
 package tracing;
-
 import "google/protobuf/timestamp.proto";
 
 message Log {
