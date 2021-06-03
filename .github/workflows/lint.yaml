@@ -23,3 +23,4 @@ jobs:
         uses: docker://ghcr.io/github/super-linter:slim-v4
         env:
           VALIDATE_PROTOBUF: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
