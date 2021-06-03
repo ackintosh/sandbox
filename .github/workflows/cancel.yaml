@@ -4,7 +4,11 @@
 # https://api.github.com/repos/ackintosh/sandbox/actions/workflows
 
 name: cancel previous runs
-on: [push]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
 jobs:
   cancel:
     name: 'Cancel Previous Runs'
