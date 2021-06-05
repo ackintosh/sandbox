@@ -26,7 +26,17 @@ env:
 #   → GitHub Webhookで定義されているイベントと同じものが指定可能
 #     https://developer.github.com/webhooks/#events
 #################################################################################################################
-on: push
+# *** push と pull_request ではジョブで扱うソースコードが異なる ***
+# * push:
+#   * 単純に、そのブランチのソースコード.
+#   * featureブランチなら、featureブランチのソースコード
+#   * Actionsのcheckoutのログから、下記のようにブランチがチェックアウトされていることがわかる
+#     * /usr/bin/git ..(略).. --depth=1 origin +8dbd573c88b01e51fd10546a927b685591b2eced:refs/remotes/origin/testactions
+# * pull_request:
+#   * そのブランチと、(その時点の)マージ先ブランチを "マージしたソースコード" (pull/xxx/mergeブランチ)
+#   * Actionsのcheckoutのログから、下記のようにmergeブランチがチェックアウトされていることがわかる
+#     * /usr/bin/git ..(略).. --depth=1 origin +91775586d19b0d02440ef913836a5b3539e09d42:refs/remotes/pull/27/merge
+on: [push, pull_request]
 
 # <リスト形式で複数のイベントを指定できる>
 #
