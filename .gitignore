@@ -1,5 +1,4 @@
 *.class
-*.jar
 *.log
 .DS_Store
 *.iml
@@ -7,6 +6,12 @@
 .idea
 out
 build
+
+dependency-injection/kotlin/lib/*.jar
+kotlin/flow/gradle/wrapper/gradle-wrapper.jar
+kotlin/json/gradle/wrapper/gradle-wrapper.jar
+lambda/kotlin/gradle/wrapper/gradle-wrapper.jar
+protocol-buffers/kotlin/gradle/wrapper/gradle-wrapper.jar
 
 php/phpunit/vendor
 php/phpunit/composer.lock
