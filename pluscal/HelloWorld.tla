@@ -4,7 +4,7 @@
 \* ただし PlusCal 構文の algorithm [アルゴリズム名] はモジュール名とは異なる名前にしても良い
 
 \* 実行方法(VSCode)
-\* 1. Cmd + Ctrl + P で表示されるパネルで「TLA+:Parse module」を実行する
+\* 1. Cmd + Shift + P で表示されるパネルで「TLA+:Parse module」を実行する
 \* 2. すると コードに "BEGIN TRANSLATION" ～ "END TRANSLATION" が挿入される
 \* 3. ソースを右クリックで "Check model with TLC" を選択する
 
