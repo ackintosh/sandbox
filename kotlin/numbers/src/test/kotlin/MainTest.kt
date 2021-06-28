@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import java.math.BigDecimal
+import java.time.LocalDate
+import java.time.LocalDateTime
 
 class MainTest {
     // Effective Java 第3版
@@ -32,5 +34,10 @@ class MainTest {
         val ex1 = BigDecimal.valueOf(1.03).subtract(BigDecimal.valueOf(0.42))
         // 0.61になる
         Assertions.assertEquals(BigDecimal.valueOf(0.61), ex1)
+
+
+        // TEST
+        val date = LocalDateTime.now()
+        println(date)
     }
 }
