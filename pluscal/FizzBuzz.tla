@@ -1,5 +1,8 @@
 ---- MODULE FizzBuzz ----
 
+\* 参考
+\* https://hazm.at/mox/lang/tla+/pluscal/control-flow/index.html
+
 EXTENDS Integers, Sequences, TLC
 
 (* --algorithm FizzBuzz
