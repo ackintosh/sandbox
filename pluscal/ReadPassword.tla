@@ -19,6 +19,9 @@ variables
 begin
     \* while構文の先頭にはラベルを付けなければならない
     ReadPassword:
+        \* while と either の組み合わせ
+        \* https://hazm.at/mox/lang/tla+/pluscal/control-flow/index.html#explain-read-password
+        \* either のシンプルな例は VendingMachine.tla を参照
         while input /= correct_password /\ retry < max_retry do
             either
                 input := "success!";
