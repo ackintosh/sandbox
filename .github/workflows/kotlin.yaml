@@ -11,8 +11,6 @@ jobs:
   tests:
     name: Tests
     runs-on: ubuntu-latest
-    env:
-      JAVA_OPTS: -Duser.timezone=Asia/Tokyo -Dfile.encoding=UTF-8
     defaults:
       run:
         working-directory: kotlin/numbers
@@ -39,4 +37,6 @@ jobs:
         run: chmod +x gradlew
 
       - name: Run tests
+        env:
+          TZ: Asia/Tokyo
         run: ./gradlew test
