@@ -11,7 +11,8 @@ jobs:
   tests:
     name: Tests
     runs-on: ubuntu-latest
-    # env:
+    env:
+      JAVA_OPTS: -Duser.timezone=Asia/Tokyo -Dfile.encoding=UTF-8
     defaults:
       run:
         working-directory: kotlin/numbers
