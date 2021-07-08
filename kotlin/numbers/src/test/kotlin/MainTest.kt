@@ -1,8 +1,9 @@
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import java.math.BigDecimal
-import java.time.LocalDate
+import java.time.Clock
 import java.time.LocalDateTime
+import java.time.ZoneId
 
 class MainTest {
     // Effective Java 第3版
@@ -36,8 +37,19 @@ class MainTest {
         Assertions.assertEquals(BigDecimal.valueOf(0.61), ex1)
 
 
+
         // TEST
-        val date = LocalDateTime.now()
-        println(date)
+        val dateTime = LocalDateTime.now()
+        println(dateTime)
+
+        val clock = Clock.system(ZoneId.of("Asia/Tokyo"))
+        val anotherDateTime = LocalDateTime.now(clock)
+        println(anotherDateTime)
+
+        Assertions.assertEquals(dateTime.year, anotherDateTime.year)
+        Assertions.assertEquals(dateTime.month, anotherDateTime.month)
+        Assertions.assertEquals(dateTime.dayOfMonth, anotherDateTime.dayOfMonth)
+        Assertions.assertEquals(dateTime.hour, anotherDateTime.hour)
+        Assertions.assertEquals(dateTime.minute, anotherDateTime.minute)
     }
 }
