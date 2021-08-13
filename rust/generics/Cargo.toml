@@ -1,10 +1,9 @@
 [package]
-name = "crate-rand"
+name = "generics"
 version = "0.1.0"
-authors = ["ackintosh <sora.akatsuki@gmail.com>"]
+authors = ["akihito.nakano <sora.akatsuki@gmail.com>"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-rand = "0.8.4"
