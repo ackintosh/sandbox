@@ -9,11 +9,15 @@ extern crate test;
 use test::Bencher;
 
 use std::cell::RefCell;
+use std::collections::HashMap;
 use lru_time_cache::LruCache;
 
 const RANGE: usize = 32 * 1024;
 const FIND_TIMES: usize = 10;
 use rand::prelude::*;
+
+// https://github.com/maidsafe/lru_time_cache/issues/143
+// にあるベンチマーク
 
 #[bench]
 fn lru_time_cache_sum(b: &mut Bencher) {
@@ -26,6 +30,22 @@ fn lru_time_cache_sum(b: &mut Bencher) {
         let res: usize = (0..FIND_TIMES)
             .map(|_| *lru
                 .borrow_mut()
+                .get(&thread_rng().gen_range(0..RANGE))
+                .unwrap_or(&0))
+            .sum();
+        test::black_box(res);
+    });
+}
+
+#[bench]
+fn hashmap_sum(b: &mut Bencher) {
+    let mut map = HashMap::new();
+    for i in 0..RANGE {
+        map.insert(i, i);
+    }
+    b.iter(|| {
+        let res: usize = (0..FIND_TIMES)
+            .map(|_| *map
                 .get(&thread_rng().gen_range(0..RANGE))
                 .unwrap_or(&0))
             .sum();
