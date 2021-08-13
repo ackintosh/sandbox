@@ -15,7 +15,7 @@ impl Solution {
             .collect()
     }
 
-    fn is_inside(point: &Vec<i32>, query: &Vec<i32>) -> bool {
+    fn is_inside(point: &[i32], query: &[i32]) -> bool {
         println!("=== is_inside() ===");
         println!("point: x={}, y={}", point[0], point[1]);
         println!("query: x={}, y={}", query[0], query[1]);

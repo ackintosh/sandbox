@@ -4,7 +4,7 @@ struct Solution;
 
 impl Solution {
     pub fn max_product_difference(nums: Vec<i32>) -> i32 {
-        let mut sorted = nums.clone();
+        let mut sorted = nums;
         sorted.sort_unstable();
 
         sorted[sorted.len() - 1] * sorted[sorted.len() - 2] - sorted[0] * sorted[1]

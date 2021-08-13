@@ -59,5 +59,5 @@ fn result_map_or() {
         }
     }
 
-    assert_eq!(true, returns_another_result(100).map_or(false, |i| i > 1))
+    assert!(returns_another_result(100).map_or(false, |i| i > 1));
 }
