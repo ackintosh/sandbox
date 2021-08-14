@@ -29,6 +29,7 @@ members = [
   "generics",
   "leetcode",
   "level-db",
+  "lru-time-cache",
   "primitives-stdlibs",
   "procon",
   "references-borrowing",
