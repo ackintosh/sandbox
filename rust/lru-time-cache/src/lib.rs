@@ -92,21 +92,29 @@ mod tests {
 
     #[test]
     fn insert() {
-        let mut lru_cache = LruCache::new(Duration::from_secs(10), Some(2));
+        let mut lru_cache = LruCache::new(Duration::from_secs(10), None);
 
         lru_cache.insert(1, 10);
         lru_cache.insert(2, 20);
         lru_cache.insert(3, 30);
 
-        assert_eq!(None, lru_cache.get(&1));
+        assert_eq!(Some(&10), lru_cache.get(&1));
         assert_eq!(Some(&20), lru_cache.get(&2));
         assert_eq!(Some(&30), lru_cache.get(&3));
+    }
 
-        lru_cache.get(&2);
-        lru_cache.insert(4, 40);
+    #[test]
+    fn capacity() {
+        let mut lru_cache = LruCache::new(Duration::from_secs(10), Some(2));
+
+        lru_cache.insert(1, 10);
+        lru_cache.insert(2, 20);
+        assert_eq!(2, lru_cache.len());
+
+        lru_cache.insert(3, 30);
+        assert_eq!(2, lru_cache.len());
         assert_eq!(Some(&20), lru_cache.get(&2));
-        assert_eq!(None, lru_cache.get(&3));
-        assert_eq!(Some(&40), lru_cache.get(&4));
+        assert_eq!(Some(&30), lru_cache.get(&3));
     }
 
     #[test]
@@ -126,7 +134,7 @@ mod tests {
 
     #[test]
     fn get_mut() {
-        let mut lru_cache = LruCache::new(Duration::from_secs(10), Some(2));
+        let mut lru_cache = LruCache::new(Duration::from_secs(10), None);
 
         lru_cache.insert(1, 10);
         let v = lru_cache.get_mut(&1).expect("should have value");
@@ -151,7 +159,7 @@ mod tests {
 
     #[test]
     fn len() {
-        let mut lru_cache = LruCache::new(Duration::from_secs(10), Some(10));
+        let mut lru_cache = LruCache::new(Duration::from_secs(10), None);
 
         assert_eq!(0, lru_cache.len());
 
@@ -163,11 +171,49 @@ mod tests {
 
     #[test]
     fn remove() {
-        let mut lru_cache = LruCache::new(Duration::from_secs(10), Some(2));
+        let mut lru_cache = LruCache::new(Duration::from_secs(10), None);
 
         lru_cache.insert(1, 10);
         assert_eq!(Some(&10), lru_cache.get(&1));
         lru_cache.remove(&1);
         assert_eq!(None, lru_cache.get(&1));
+    }
+
+    mod ttl {
+        use crate::LruCache;
+        use std::thread::sleep;
+        use std::time::Duration;
+
+        const TTL: Duration = Duration::from_millis(1);
+
+        #[test]
+        fn get() {
+            let mut lru_cache = LruCache::new(TTL, None);
+            lru_cache.insert(1, 10);
+            assert_eq!(Some(&10), lru_cache.get(&1));
+
+            sleep(TTL);
+            assert_eq!(None, lru_cache.get(&1));
+        }
+
+        #[test]
+        fn peek() {
+            let mut lru_cache = LruCache::new(TTL, None);
+            lru_cache.insert(1, 10);
+            assert_eq!(Some(&10), lru_cache.peek(&1));
+
+            sleep(TTL);
+            assert_eq!(None, lru_cache.peek(&1));
+        }
+
+        #[test]
+        fn len() {
+            let mut lru_cache = LruCache::new(TTL, None);
+            lru_cache.insert(1, 10);
+            assert_eq!(1, lru_cache.len());
+
+            sleep(TTL);
+            assert_eq!(0, lru_cache.len());
+        }
     }
 }
