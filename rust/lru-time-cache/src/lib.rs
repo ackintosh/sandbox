@@ -4,7 +4,9 @@ use std::time::{Duration, Instant};
 
 pub struct LruCache<K, V> {
     map: LinkedHashMap<K, (V, Instant)>,
+    /// The time elements remain in the cache.
     ttl: Duration,
+    /// The max size of the cache.
     capacity: Option<usize>,
 }
 
@@ -17,6 +19,7 @@ impl<K: Clone + Eq + Hash, V: Copy> LruCache<K, V> {
         }
     }
 
+    /// Inserts a key-value pair into the cache.
     pub fn insert(&mut self, key: K, value: V) {
         let now = Instant::now();
         self.map.insert(key, (value, now));
@@ -28,10 +31,14 @@ impl<K: Clone + Eq + Hash, V: Copy> LruCache<K, V> {
         }
     }
 
+    /// Retrieves a reference to the value stored under `key`, or `None` if the key doesn't exist.
+    /// Also removes expired elements and updates the time.
     pub fn get(&mut self, key: &K) -> Option<&V> {
         self.get_mut(key).map(|value| &*value)
     }
 
+    /// Retrieves a mutable reference to the value stored under `key`, or `None` if the key doesn't exist.
+    /// Also removes expired elements and updates the time.
     pub fn get_mut(&mut self, key: &K) -> Option<&mut V> {
         let now = Instant::now();
         self.remove_expired_values(now);
@@ -60,15 +67,18 @@ impl<K: Clone + Eq + Hash, V: Copy> LruCache<K, V> {
         None
     }
 
+    /// Returns the size of the cache, i.e. the number of cached non-expired key-value pairs.
     pub fn len(&mut self) -> usize {
         self.remove_expired_values(Instant::now());
         self.map.len()
     }
 
+    /// Removes a key-value pair from the cache.
     pub fn remove(&mut self, key: &K) {
         self.map.remove(key);
     }
 
+    /// Removes expired items from the cache.
     fn remove_expired_values(&mut self, now: Instant) {
         let mut expired_keys = vec![];
 
@@ -152,7 +162,7 @@ mod tests {
         assert_eq!(Some(&10), lru_cache.peek(&1));
 
         lru_cache.insert(3, 30);
-        // `1` is removed as `peek()` does not update the timestamp.
+        // `1` is removed as `peek()` does not update the time.
         assert_eq!(None, lru_cache.peek(&1));
         assert_eq!(Some(&20), lru_cache.get(&2));
     }
