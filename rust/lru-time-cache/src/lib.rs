@@ -61,7 +61,7 @@ impl<K: Clone + Eq + Hash, V: Copy> LruCache<K, V> {
                 Some(value)
             } else {
                 None
-            }
+            };
         }
 
         None
