@@ -49,9 +49,9 @@ impl<K: Clone + Eq + Hash, V: Copy> LruCache<K, V> {
     pub fn peek(&self, key: &K) -> Option<&V> {
         if let Some((value, time)) = self.map.get(key) {
             return if *time + self.ttl >= Instant::now() {
-                None
-            } else {
                 Some(value)
+            } else {
+                None
             }
         }
 
@@ -105,6 +105,46 @@ mod tests {
         assert_eq!(Some(&20), lru_cache.get(&2));
         assert_eq!(None, lru_cache.get(&3));
         assert_eq!(Some(&40), lru_cache.get(&4));
+    }
+
+    #[test]
+    fn get() {
+        let mut lru_cache = LruCache::new(2, Duration::new(10, 0));
+
+        lru_cache.insert(1, 10);
+        lru_cache.insert(2, 20);
+        assert_eq!(Some(&10), lru_cache.get(&1));
+
+        lru_cache.insert(3, 30);
+        // `1` is alive as `get()` updates the timestamp.
+        assert_eq!(Some(&10), lru_cache.get(&1));
+        // `2` is removed as `2` is oldest at the time `3` was inserted.
+        assert_eq!(None, lru_cache.get(&2));
+    }
+
+    #[test]
+    fn get_mut() {
+        let mut lru_cache = LruCache::new(2, Duration::new(10, 0));
+
+        lru_cache.insert(1, 10);
+        let v = lru_cache.get_mut(&1).expect("should have value");
+        *v = 100;
+
+        assert_eq!(Some(&100), lru_cache.get(&1));
+    }
+
+    #[test]
+    fn peek() {
+        let mut lru_cache = LruCache::new(2, Duration::new(10, 0));
+
+        lru_cache.insert(1, 10);
+        lru_cache.insert(2, 20);
+        assert_eq!(Some(&10), lru_cache.peek(&1));
+
+        lru_cache.insert(3, 30);
+        // `1` is removed as `peek()` does not update the timestamp.
+        assert_eq!(None, lru_cache.peek(&1));
+        assert_eq!(Some(&20), lru_cache.get(&2));
     }
 
     #[test]
