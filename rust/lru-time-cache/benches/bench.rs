@@ -22,7 +22,7 @@ use std::time::Duration;
 
 #[bench]
 fn lru_time_cache_sum(b: &mut Bencher) {
-    let mut lru = LruCache::new(RANGE, Duration::from_secs(10));
+    let mut lru = LruCache::new(Duration::from_secs(10), Some(RANGE));
     for i in 0..RANGE {
         lru.insert(i, i);
     }
