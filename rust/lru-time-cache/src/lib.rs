@@ -10,7 +10,7 @@ pub struct LruCache<K, V> {
     capacity: Option<usize>,
 }
 
-impl<K: Clone + Eq + Hash, V: Copy> LruCache<K, V> {
+impl<K: Clone + Eq + Hash, V> LruCache<K, V> {
     pub fn new(ttl: Duration, capacity: Option<usize>) -> Self {
         LruCache {
             map: LinkedHashMap::new(),
@@ -45,7 +45,7 @@ impl<K: Clone + Eq + Hash, V: Copy> LruCache<K, V> {
 
         match self.map.raw_entry_mut().from_key(key) {
             hashlink::linked_hash_map::RawEntryMut::Occupied(mut occupied) => {
-                occupied.replace_value((occupied.get().0, now));
+                occupied.get_mut().1 = now;
                 occupied.to_back();
                 Some(&mut occupied.into_mut().0)
             }
