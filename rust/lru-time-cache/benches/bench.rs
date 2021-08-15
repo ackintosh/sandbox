@@ -28,14 +28,8 @@ fn lru_time_cache_sum(b: &mut Bencher) {
     }
     let lru = RefCell::new(lru);
     b.iter(|| {
-        let res: i32 = (0..FIND_TIMES)
-            .map(|_| {
-                if lru.borrow_mut().contains(&thread_rng().gen_range(0..RANGE)) {
-                    1
-                } else {
-                    0
-                }
-            })
+        let res: usize = (0..FIND_TIMES)
+            .map(|_| *lru.borrow_mut().get(&thread_rng().gen_range(0..RANGE)).unwrap_or(&0))
             .sum();
         test::black_box(res);
     });

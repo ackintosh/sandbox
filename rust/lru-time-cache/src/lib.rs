@@ -8,7 +8,7 @@ pub struct LruCache<K, V> {
     ttl: Duration,
 }
 
-impl<K: Eq + Hash, V: Copy> LruCache<K, V> {
+impl<K: Clone + Eq + Hash, V: Copy> LruCache<K, V> {
     pub fn new(capacity: usize, ttl: Duration) -> Self {
         LruCache {
             map: LinkedHashMap::new(),
@@ -17,34 +17,68 @@ impl<K: Eq + Hash, V: Copy> LruCache<K, V> {
         }
     }
 
-    pub fn contains(&mut self, k: &K) -> bool {
+    pub fn insert(&mut self, key: K, value: V) {
         let now = Instant::now();
-        match self.map.raw_entry_mut().from_key(k) {
-            hashlink::linked_hash_map::RawEntryMut::Occupied(mut occupied) => {
-                let (v, t) = {
-                    let v = occupied.get();
-                    (v.0, v.1)
-                };
-
-                if t + self.ttl < now {
-                    occupied.remove_entry();
-                    return false;
-                }
-
-                occupied.replace_value((v, now));
-                occupied.to_back();
-                true
-            }
-            hashlink::linked_hash_map::RawEntryMut::Vacant(_) => false,
-        }
-    }
-
-    pub fn insert(&mut self, k: K, v: V) {
-        let now = Instant::now();
-        self.map.insert(k, (v, now));
+        self.map.insert(key, (value, now));
 
         if self.map.len() > self.capacity {
             self.map.pop_front();
+        }
+    }
+
+    pub fn get(&mut self, key: &K) -> Option<&V> {
+        self.get_mut(key).map(|value| &*value)
+    }
+
+    pub fn get_mut(&mut self, key: &K) -> Option<&mut V> {
+        let now = Instant::now();
+        self.remove_expired_values(now);
+
+        match self.map.raw_entry_mut().from_key(key) {
+            hashlink::linked_hash_map::RawEntryMut::Occupied(mut occupied) => {
+                occupied.replace_value((occupied.get().0, now));
+                occupied.to_back();
+                Some(&mut occupied.into_mut().0)
+            }
+            hashlink::linked_hash_map::RawEntryMut::Vacant(_) => None,
+        }
+    }
+
+    /// Returns a reference to the value with the given `key`, if present and not expired, without
+    /// updating the timestamp.
+    pub fn peek(&self, key: &K) -> Option<&V> {
+        if let Some((value, time)) = self.map.get(key) {
+            return if *time + self.ttl >= Instant::now() {
+                None
+            } else {
+                Some(value)
+            }
+        }
+
+        None
+    }
+
+    pub fn len(&mut self) -> usize {
+        self.remove_expired_values(Instant::now());
+        self.map.len()
+    }
+
+    pub fn remove(&mut self, key: &K) {
+        self.map.remove(key);
+    }
+
+    fn remove_expired_values(&mut self, now: Instant) {
+        let mut expired_keys = vec![];
+
+        for (key, (_, time)) in self.map.iter_mut() {
+            if *time + self.ttl >= now {
+                break;
+            }
+            expired_keys.push(key.clone());
+        }
+
+        for k in expired_keys {
+            self.map.remove(&k);
         }
     }
 }
@@ -55,20 +89,43 @@ mod tests {
     use std::time::Duration;
 
     #[test]
-    fn it_works() {
+    fn insert() {
         let mut lru_cache = LruCache::new(2, Duration::new(10, 0));
 
         lru_cache.insert(1, 10);
         lru_cache.insert(2, 20);
         lru_cache.insert(3, 30);
-        assert!(!lru_cache.contains(&1));
-        assert!(lru_cache.contains(&2));
-        assert!(lru_cache.contains(&3));
 
-        lru_cache.contains(&2);
+        assert_eq!(None, lru_cache.get(&1));
+        assert_eq!(Some(&20), lru_cache.get(&2));
+        assert_eq!(Some(&30), lru_cache.get(&3));
+
+        lru_cache.get(&2);
         lru_cache.insert(4, 40);
-        assert!(lru_cache.contains(&2));
-        assert!(!lru_cache.contains(&3));
-        assert!(lru_cache.contains(&4));
+        assert_eq!(Some(&20), lru_cache.get(&2));
+        assert_eq!(None, lru_cache.get(&3));
+        assert_eq!(Some(&40), lru_cache.get(&4));
+    }
+
+    #[test]
+    fn len() {
+        let mut lru_cache = LruCache::new(10, Duration::new(10, 0));
+
+        assert_eq!(0, lru_cache.len());
+
+        lru_cache.insert(1, 10);
+        lru_cache.insert(2, 20);
+        lru_cache.insert(3, 30);
+        assert_eq!(3, lru_cache.len());
+    }
+
+    #[test]
+    fn remove() {
+        let mut lru_cache = LruCache::new(2, Duration::new(10, 0));
+
+        lru_cache.insert(1, 10);
+        assert_eq!(Some(&10), lru_cache.get(&1));
+        lru_cache.remove(&1);
+        assert_eq!(None, lru_cache.get(&1));
     }
 }
