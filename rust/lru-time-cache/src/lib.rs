@@ -4,16 +4,16 @@ use std::time::{Duration, Instant};
 
 pub struct LruCache<K, V> {
     map: LinkedHashMap<K, (V, Instant)>,
-    capacity: usize,
     ttl: Duration,
+    capacity: Option<usize>,
 }
 
 impl<K: Clone + Eq + Hash, V: Copy> LruCache<K, V> {
-    pub fn new(capacity: usize, ttl: Duration) -> Self {
+    pub fn new(ttl: Duration, capacity: Option<usize>) -> Self {
         LruCache {
             map: LinkedHashMap::new(),
-            capacity,
             ttl,
+            capacity,
         }
     }
 
@@ -21,8 +21,10 @@ impl<K: Clone + Eq + Hash, V: Copy> LruCache<K, V> {
         let now = Instant::now();
         self.map.insert(key, (value, now));
 
-        if self.map.len() > self.capacity {
-            self.map.pop_front();
+        if let Some(capacity) = self.capacity {
+            if self.map.len() > capacity {
+                self.map.pop_front();
+            }
         }
     }
 
@@ -90,7 +92,7 @@ mod tests {
 
     #[test]
     fn insert() {
-        let mut lru_cache = LruCache::new(2, Duration::new(10, 0));
+        let mut lru_cache = LruCache::new(Duration::from_secs(10), Some(2));
 
         lru_cache.insert(1, 10);
         lru_cache.insert(2, 20);
@@ -109,7 +111,7 @@ mod tests {
 
     #[test]
     fn get() {
-        let mut lru_cache = LruCache::new(2, Duration::new(10, 0));
+        let mut lru_cache = LruCache::new(Duration::from_secs(10), Some(2));
 
         lru_cache.insert(1, 10);
         lru_cache.insert(2, 20);
@@ -124,7 +126,7 @@ mod tests {
 
     #[test]
     fn get_mut() {
-        let mut lru_cache = LruCache::new(2, Duration::new(10, 0));
+        let mut lru_cache = LruCache::new(Duration::from_secs(10), Some(2));
 
         lru_cache.insert(1, 10);
         let v = lru_cache.get_mut(&1).expect("should have value");
@@ -135,7 +137,7 @@ mod tests {
 
     #[test]
     fn peek() {
-        let mut lru_cache = LruCache::new(2, Duration::new(10, 0));
+        let mut lru_cache = LruCache::new(Duration::from_secs(10), Some(2));
 
         lru_cache.insert(1, 10);
         lru_cache.insert(2, 20);
@@ -149,7 +151,7 @@ mod tests {
 
     #[test]
     fn len() {
-        let mut lru_cache = LruCache::new(10, Duration::new(10, 0));
+        let mut lru_cache = LruCache::new(Duration::from_secs(10), Some(10));
 
         assert_eq!(0, lru_cache.len());
 
@@ -161,7 +163,7 @@ mod tests {
 
     #[test]
     fn remove() {
-        let mut lru_cache = LruCache::new(2, Duration::new(10, 0));
+        let mut lru_cache = LruCache::new(Duration::from_secs(10), Some(2));
 
         lru_cache.insert(1, 10);
         assert_eq!(Some(&10), lru_cache.get(&1));
