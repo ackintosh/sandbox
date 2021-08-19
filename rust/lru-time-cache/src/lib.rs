@@ -7,11 +7,17 @@ pub struct LruCache<K, V> {
     /// The time elements remain in the cache.
     ttl: Duration,
     /// The max size of the cache.
-    capacity: Option<usize>,
+    capacity: usize,
 }
 
 impl<K: Clone + Eq + Hash, V> LruCache<K, V> {
     pub fn new(ttl: Duration, capacity: Option<usize>) -> Self {
+        let capacity = if let Some(cap) = capacity {
+            cap
+        } else {
+            usize::MAX
+        };
+
         LruCache {
             map: LinkedHashMap::new(),
             ttl,
@@ -24,10 +30,8 @@ impl<K: Clone + Eq + Hash, V> LruCache<K, V> {
         let now = Instant::now();
         self.map.insert(key, (value, now));
 
-        if let Some(capacity) = self.capacity {
-            if self.map.len() > capacity {
-                self.map.pop_front();
-            }
+        if self.map.len() > self.capacity {
+            self.map.pop_front();
         }
     }
 
