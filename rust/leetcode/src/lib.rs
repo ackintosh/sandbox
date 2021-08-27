@@ -29,6 +29,7 @@ mod maximum_product_difference_between_two_pairs;
 mod maximum_product_of_two_elements_in_an_array;
 mod minimum_number_of_operations_to_move_all_balls_to_each_box;
 mod minimum_operations_to_make_array_equal;
+mod minimum_time_visiting_all_points;
 mod number_of_good_pairs;
 mod number_of_steps_to_reduce_a_number_to_zero;
 mod partition_labels;
