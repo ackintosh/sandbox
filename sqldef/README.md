@@ -4,11 +4,11 @@
 
 ```shell
 # alpine
-$ docker build -t psqldef:0.8.7-alpine -f Dockerfile.alpine . 
-$ docker build -t psqldef:0.8.7-alpine-using-builder -f Dockerfile.alpine-using-builder . 
+$ docker build -t psqldef:v0.10.2-alpine -f Dockerfile.alpine --build-arg SQLDEF_VERSION=v0.10.2 . 
+$ docker build -t psqldef:v0.10.2-alpine -f Dockerfile.alpine-using-builder --build-arg SQLDEF_VERSION=v0.10.2 . 
 
 # ubuntu
-$ docker build -t psqldef:0.8.7 . 
+$ docker build -t psqldef:v0.8.7 --build-arg SQLDEF_VERSION=v0.10.2 . 
 ```
 
 image size

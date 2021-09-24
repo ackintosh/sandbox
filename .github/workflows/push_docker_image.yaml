@@ -54,4 +54,5 @@ jobs:
         with:
           file: sqldef/Dockerfile.alpine
           push: true
-          tags: ${{ steps.prepare.outputs.tags }}
+          tags: ${{ steps.prepare.outputs.tags }}-alpine
+          build-args: SQLDEF_VERSION=${{ steps.prepare.outputs.tags }}
