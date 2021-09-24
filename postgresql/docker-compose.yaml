@@ -1,18 +1,19 @@
 version: '3.7'
 services:
   postgres:
-    #image: postgres:13-alpine
-    build: .
-    container_name: postgre-sandbox
+    image: postgres:13-alpine
+    container_name: postgres-sandbox
     ports:
       - "5432:5432"
     environment:
+      LANG: ja_JP.utf8
       POSTGRES_USER: sandbox_user
       POSTGRES_DB: sandbox_db
       POSTGRES_PASSWORD: sandbox_pw
     command: -c max_connections=14
     volumes:
       - postgresql-data:/var/lib/postgresql/data
+      - ./init-db/*:/docker-entrypoint-initdb.d/
 volumes:
   postgresql-data:
     driver: local
