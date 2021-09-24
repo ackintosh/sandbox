@@ -30,8 +30,9 @@ jobs:
           else
             exit 1
           fi
-          TAGS="${GHCR_IMAGE}:${VERSION}"
-          echo ::set-output name=tags::${TAGS}
+          TAG="${GHCR_IMAGE}:${VERSION}"
+          echo ::set-output name=tag::${TAG}
+          echo ::set-output name=version::${VERSION}
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
@@ -54,5 +55,5 @@ jobs:
         with:
           file: sqldef/Dockerfile.alpine
           push: true
-          tags: ${{ steps.prepare.outputs.tags }}-alpine
-          build-args: SQLDEF_VERSION=${{ steps.prepare.outputs.tags }}
+          tags: ${{ steps.prepare.outputs.tag }}-alpine
+          build-args: SQLDEF_VERSION=${{ steps.prepare.outputs.version }}
