@@ -8,6 +8,7 @@
 members = [
   "algorithmer",
   "async-await",
+  "cargo-bench",
   "conditional-compoilation",
   "crate-bytes",
   "crate-chrono",
