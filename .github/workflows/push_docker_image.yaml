@@ -24,34 +24,30 @@ jobs:
       - name: Prepare
         id: prepare
         run: |
-          GHCR_IMAGE=ghcr.io/${{ github.repository_owner }}/psqldef
+          GHCR_IMAGE=docker.pkg.github.com/${{ github.repository }}/psqldef
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             VERSION=${GITHUB_REF#refs/tags/}
           else
             exit 1
           fi
-          TAGS="${GHCR_IMAGE}:${VERSION}"
-          echo ::set-output name=tags::${TAGS}
+          TAG="${GHCR_IMAGE}:${VERSION}"
+          echo ::set-output name=tag::${TAG}
+          echo ::set-output name=version::${VERSION}
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
+      #- name: Set up Docker Buildx
+      #  uses: docker/setup-buildx-action@v1
 
-      # https://github.com/marketplace/actions/docker-login#github-container-registry
-      - name: Login to GitHub Container Registry
+      - name: Log in to GitHub Docker Registry
         uses: docker/login-action@v1
         with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          # 必要なscope
-          # `${{ secrets.GITHUB_TOKEN }}` では権限が足りないので別途作成する
-          # https://docs.github.com/en/packages/guides/migrating-to-github-container-registry-for-docker-images#authenticating-with-the-container-registry
-          # > We recommend selecting only the necessary read, write, or delete package scope when creating a PAT to authenticate to the container registry.
-          # > Avoid including the repo scope in a PAT used by a GitHub Actions workflow because it gives unnecessary additional access.
-          password: ${{ secrets.CR_PAT }}
+          registry: docker.pkg.github.com
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
           file: sqldef/Dockerfile.alpine
           push: true
-          tags: ${{ steps.prepare.outputs.tags }}
+          tags: ${{ steps.prepare.outputs.tag }}-alpine
+          build-args: SQLDEF_VERSION=${{ steps.prepare.outputs.version }}
