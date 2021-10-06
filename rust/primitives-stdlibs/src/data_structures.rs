@@ -235,7 +235,7 @@ mod binary_tree {
                     return true;
                 }
 
-                if dfs(&left, target) || dfs(&right, target) {
+                if dfs(left, target) || dfs(right, target) {
                     return true;
                 }
             }

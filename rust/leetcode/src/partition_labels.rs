@@ -74,7 +74,7 @@ impl Solution {
                 break;
             }
 
-            last_index = &max_pos;
+            last_index = max_pos;
         }
 
         last_index - start_index + 1

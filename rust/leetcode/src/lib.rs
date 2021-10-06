@@ -13,6 +13,7 @@ mod defanging_an_ip_address;
 mod design_parking_system;
 mod dp;
 mod encode_and_decode_tinyurl;
+mod find_center_of_star_graph;
 mod find_n_unique_integers_sum_up_to_zero;
 mod finding_the_users_active_minutes;
 mod goal_parser_interpretation;
