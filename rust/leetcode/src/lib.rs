@@ -33,6 +33,7 @@ mod minimum_operations_to_make_array_equal;
 mod minimum_time_visiting_all_points;
 mod number_of_good_pairs;
 mod number_of_steps_to_reduce_a_number_to_zero;
+mod palindrome_number;
 mod partition_labels;
 mod partitioning_into_minimum_number_of_deci_binary_numbers;
 mod queries_on_a_permutation_with_key;
