@@ -1,3 +1,4 @@
+mod barrier;
 mod btreemap;
 mod condvar;
 mod const_static;

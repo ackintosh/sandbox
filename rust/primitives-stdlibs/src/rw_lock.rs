@@ -9,6 +9,7 @@ fn test() {
 
     {
         // immutableな参照を取得
+        // スコープが外れたときに、自動的にReadロックが解放される
         let v1 = lock.read().unwrap();
         let v2 = lock.read().unwrap();
         println!("v1 = {}", v1);
@@ -16,7 +17,7 @@ fn test() {
     }
 
     {
-        // mutableな参照を取得
+        // mutableな参照(正確には、RwLockWriteGuard型で包まれた参照)を取得
         let mut v = lock.write().unwrap();
         *v = 7;
         println!("v = {}", v);
