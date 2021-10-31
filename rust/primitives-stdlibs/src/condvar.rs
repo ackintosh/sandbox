@@ -7,10 +7,11 @@ use std::sync::{Arc, Condvar, Mutex};
 // MutexとCondvarを含むタプルがArcに包んで渡される
 fn child(id: u64, p: Arc<(Mutex<bool>, Condvar)>) {
     let &(ref lock, ref cvar) = &*p;
-    
+
     // まず、ミューテックスロックを行う
     let mut started = lock.lock().unwrap();
-    while !*started { // Mutex中の共有変数が false の間ループする
+    while !*started {
+        // Mutex中の共有変数が false の間ループする
         // 通知があるまでwaitで待機する
         println!("child {}: waiting for cvar...", id);
         started = cvar.wait(started).unwrap();
@@ -40,9 +41,9 @@ fn test() {
     let pair1 = pair0.clone();
     let pair2 = pair0.clone();
 
-    let c0 = std::thread::spawn(move || { child(0, pair0 )});
-    let c1 = std::thread::spawn(move || { child(1, pair1 )});
-    let p = std::thread::spawn(move || { parent(pair2 )});
+    let c0 = std::thread::spawn(move || child(0, pair0));
+    let c1 = std::thread::spawn(move || child(1, pair1));
+    let p = std::thread::spawn(move || parent(pair2));
 
     c0.join().unwrap();
     c1.join().unwrap();
