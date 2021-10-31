@@ -1,7 +1,7 @@
 struct Node<T> {
     value: T,
-    prev: Option<Node<T>>,
-    next: Option<Node<T>>,
+    prev: Box<Option<Node<T>>>,
+    next: Box<Option<Node<T>>>,
 }
 
 struct LinkedList<T> {
@@ -10,7 +10,7 @@ struct LinkedList<T> {
 }
 
 impl<T> LinkedList<T> {
-    fn new() -> Self<T> {
+    fn new() -> Self {
         Self {
             length: 0,
             start: None,
@@ -20,8 +20,8 @@ impl<T> LinkedList<T> {
     fn add(mut self, value: T) {
         let n = Node {
             value,
-            prev: None,
-            next: None,
+            prev: Box::new(None),
+            next: Box::new(None),
         };
         self.length += 1;
     }
