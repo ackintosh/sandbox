@@ -35,8 +35,11 @@ fn parent(p: Arc<(Mutex<bool>, Condvar)>) {
 }
 
 #[test]
+#[allow(clippy::mutex_atomic)] // Mutex<bool> の代わりに AtomicBool を使うよう警告が出るので抑制しておく
 fn test() {
     // ミューテックスと条件変数を作成する
+    // 補足: Mutex<bool> の場合は、代わりに AtomicBool を使うのが推奨されている
+    //      https://rust-lang.github.io/rust-clippy/master/index.html#mutex_atomic
     let pair0 = Arc::new((Mutex::new(false), Condvar::new()));
     let pair1 = pair0.clone();
     let pair2 = pair0.clone();
