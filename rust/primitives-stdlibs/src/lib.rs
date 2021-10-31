@@ -13,6 +13,7 @@ mod macro_assert;
 mod macro_format;
 mod macros;
 mod math;
+mod mutex;
 mod number;
 mod ops;
 mod ownership;
