@@ -11,6 +11,7 @@ members = [
   "async-await",
   "cargo-bench",
   "conditional-compoilation",
+  "coursera-algorithmic-toolbox/week1-2-maximum-pairwise-product",
   "crate-bytes",
   "crate-chrono",
   "crate-criterion",
