@@ -1,3 +1,5 @@
+// https://www.coursera.org/learn/algorithmic-toolbox/programming/Xscmz/programming-assignment-1-maximum-pairwise-product
+
 // use rand::Rng;
 use std::convert::TryFrom;
 use std::str::FromStr;
