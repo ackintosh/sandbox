@@ -1,3 +1,4 @@
+// use rand::Rng;
 use std::convert::TryFrom;
 use std::str::FromStr;
 
@@ -15,7 +16,9 @@ fn main() {
         words.map(|w| u64::from_str(w).unwrap()).collect::<Vec<_>>()
     };
 
-    println!("{}", naive_algorithm(n, nums));
+    println!("{}", fast_algorithm(n, nums));
+
+    // stress_test(5, 9);
 }
 
 fn naive_algorithm(n: u64, nums: Vec<u64>) -> u64 {
@@ -48,16 +51,22 @@ fn fast_algorithm(n: u64, nums: Vec<u64>) -> u64 {
     };
 
     let second_largest_index = {
-        let mut index = 0_usize;
+        let mut index: Option<usize> = None;
         let mut number = 0;
-        for i in 1..usize::try_from(n).unwrap() {
-            if i != largest_index && nums[i] > number {
-                index = i;
+        for i in 0..usize::try_from(n).unwrap() {
+            if i == largest_index {
+                continue;
+            }
+            if index.is_none() {
+                index = Some(i);
+                number = nums[i];
+            } else if nums[i] > number {
+                index = Some(i);
                 number = nums[i];
             }
         }
 
-        index
+        index.unwrap()
     };
 
     nums[largest_index]
@@ -89,6 +98,7 @@ fn test_fast_algorithm() {
     );
 
     assert_eq!(9000000000, fast_algorithm(2, vec![100000, 90000]));
+    assert_eq!(24, fast_algorithm(4, vec![4, 6, 2, 1]));
 }
 
 #[test]
@@ -101,3 +111,29 @@ fn test_fast_algorithm_on_large_data_sets() {
 
     assert_eq!(39999800000, fast_algorithm(n, nums));
 }
+
+// #[allow(dead_code)]
+// fn stress_test(n: u64, m: u64) {
+//     let mut rng = rand::thread_rng();
+//     let uniform_n = rand::distributions::Uniform::new(2, n);
+//     let uniform_m = rand::distributions::Uniform::new(0, m);
+//
+//     loop {
+//         let nums_len = rng.sample(uniform_n);
+//         let mut nums = vec![];
+//         for _ in 0..nums_len {
+//             nums.push(rng.sample(uniform_m));
+//         }
+//
+//         let result_naive = naive_algorithm(nums_len, nums.clone());
+//         let result_fast = fast_algorithm(nums_len, nums.clone());
+//
+//         if result_naive == result_fast {
+//             println!("OK");
+//         } else {
+//             println!("{:?}", nums);
+//             println!("Wrong answer: {}, {}", result_naive, result_fast);
+//             return;
+//         }
+//     }
+// }

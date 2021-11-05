@@ -2633,6 +2633,9 @@ dependencies = [
 [[package]]
 name = "week1-programming-challenges"
 version = "0.1.0"
+dependencies = [
+ "rand 0.8.4",
+]
 
 [[package]]
 name = "which"
