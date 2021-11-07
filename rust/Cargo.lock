@@ -38,10 +38,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "algorithmer"
-version = "0.1.0"
-
-[[package]]
 name = "algorithms"
 version = "0.1.0"
 
@@ -141,6 +137,23 @@ name = "bitflags"
 version = "1.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cf1de2fe8c75bc145a2f577add951f8134889b4795d47466a54a5c846d691693"
+
+[[package]]
+name = "book-algorithmer"
+version = "0.1.0"
+
+[[package]]
+name = "book-procon"
+version = "0.1.0"
+
+[[package]]
+name = "book-socket-programming"
+version = "0.1.0"
+dependencies = [
+ "env_logger 0.6.2",
+ "failure",
+ "log",
+]
 
 [[package]]
 name = "bstr"
@@ -1531,10 +1544,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "procon"
-version = "0.1.0"
-
-[[package]]
 name = "protobuf"
 version = "2.23.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2033,15 +2042,6 @@ name = "smallvec"
 version = "1.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c7cb5678e1615754284ec264d9bb5b4c27d2018577fd90ac0ceb578591ed5ee4"
-
-[[package]]
-name = "socket-programming"
-version = "0.1.0"
-dependencies = [
- "env_logger 0.6.2",
- "failure",
- "log",
-]
 
 [[package]]
 name = "socket2"
