@@ -6,7 +6,9 @@
 # * `target` ディレクトリ(出力ディレクトリ)も親ディレクトリに集約される
 [workspace]
 members = [
-  "algorithmer",
+  "book-algorithmer",
+  "book-procon",
+  "book-socket-programming",
   "algorithms",
   "async-await",
   "cargo-bench",
@@ -34,9 +36,7 @@ members = [
   "level-db",
   "lru-time-cache",
   "primitives-stdlibs",
-  "procon",
   "references-borrowing",
-  "socket-programming",
   "threading",
   "tower-of-hanoi"
 ]

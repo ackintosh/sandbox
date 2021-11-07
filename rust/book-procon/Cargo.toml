@@ -1,5 +1,5 @@
 [package]
-name = "procon"
+name = "book-procon"
 version = "0.1.0"
 authors = ["akihito.nakano <sora.akatsuki@gmail.com>"]
 edition = "2018"
