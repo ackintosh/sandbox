@@ -143,6 +143,10 @@ name = "book-algorithmer"
 version = "0.1.0"
 
 [[package]]
+name = "book-introduction-to-concurrent-programming"
+version = "0.1.0"
+
+[[package]]
 name = "book-procon"
 version = "0.1.0"
 

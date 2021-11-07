@@ -7,6 +7,7 @@
 [workspace]
 members = [
   "book-algorithmer",
+  "book-introduction-to-concurrent-programming",
   "book-procon",
   "book-socket-programming",
   "algorithms",
