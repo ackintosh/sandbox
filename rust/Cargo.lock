@@ -2642,6 +2642,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "week2-1-fibonacci-number"
+version = "0.1.0"
+
+[[package]]
 name = "which"
 version = "4.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
