@@ -16,6 +16,7 @@ members = [
   "conditional-compoilation",
   "coursera-algorithmic-toolbox/week1-2-maximum-pairwise-product",
   "coursera-algorithmic-toolbox/week2-1-fibonacci-number",
+  "coursera-algorithmic-toolbox/week2-2-last-digit-of-a-large-fibonacci-number",
   "crate-bytes",
   "crate-chrono",
   "crate-criterion",
