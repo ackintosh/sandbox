@@ -20,6 +20,7 @@ members = [
   "coursera-algorithmic-toolbox/week2-3-greatest-common-divisor",
   "coursera-algorithmic-toolbox/week2-4-least-common-multiple",
   "coursera-algorithmic-toolbox/week3-1-money-change",
+  "coursera-algorithmic-toolbox/week3-2-maximum-value-of-the-loot",
   "crate-bytes",
   "crate-chrono",
   "crate-criterion",

@@ -2662,6 +2662,10 @@ name = "week3-1-money-change"
 version = "0.1.0"
 
 [[package]]
+name = "week3-2-maximum-value-of-the-loot"
+version = "0.1.0"
+
+[[package]]
 name = "which"
 version = "4.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
