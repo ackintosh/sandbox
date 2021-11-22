@@ -2654,6 +2654,10 @@ name = "week2-3-greatest-common-divisor"
 version = "0.1.0"
 
 [[package]]
+name = "week2-4-least-common-multiple"
+version = "0.1.0"
+
+[[package]]
 name = "which"
 version = "4.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"

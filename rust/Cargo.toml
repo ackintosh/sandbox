@@ -18,6 +18,7 @@ members = [
   "coursera-algorithmic-toolbox/week2-1-fibonacci-number",
   "coursera-algorithmic-toolbox/week2-2-last-digit-of-a-large-fibonacci-number",
   "coursera-algorithmic-toolbox/week2-3-greatest-common-divisor",
+  "coursera-algorithmic-toolbox/week2-4-least-common-multiple",
   "crate-bytes",
   "crate-chrono",
   "crate-criterion",
