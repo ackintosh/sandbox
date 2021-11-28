@@ -1,3 +1,4 @@
+mod algorithms;
 mod data_structures;
 mod lamports_bakery_algorithm;
 
