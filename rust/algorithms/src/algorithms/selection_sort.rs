@@ -1,4 +1,5 @@
-// 見本: https://github.com/TheAlgorithms/Rust/blob/master/src/sorting/selection_sort.rs
+// * アルゴリズム イントロダクション 2章 P.14
+// * Rust実装の手本: https://github.com/TheAlgorithms/Rust/blob/master/src/sorting/selection_sort.rs
 
 // in-place方式で実装するので引数を &mut にしている
 //   -> in-placeにすることで空間効率が O(1) になる
