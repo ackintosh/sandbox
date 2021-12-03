@@ -54,7 +54,7 @@ fn _insertion_sort_recursive(input: &mut Vec<u8>, right: usize) {
             input[i + 1] = input[i];
             input[i] = elm;
         } else {
-            break;
+            return;
         }
     }
 }
