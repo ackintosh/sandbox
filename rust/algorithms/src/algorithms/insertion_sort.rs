@@ -38,8 +38,27 @@ fn insertion_sort_desc(input: &mut Vec<u8>) {
     }
 }
 
+// insertion_sort_ascを再帰的手続きで実装する
+fn insertion_sort_recursive(input: &mut Vec<u8>, right: usize) {
+    if right == 0 {
+        return;
+    }
+    insertion_sort_recursive(input, right - 1);
+    for i in (0..right).rev() {
+        if input[i + 1] < input[i] {
+            let elm = input[i + 1];
+            input[i + 1] = input[i];
+            input[i] = elm;
+        } else {
+            break;
+        }
+    }
+}
+
 mod test {
-    use crate::algorithms::insertion_sort::{insertion_sort_asc, insertion_sort_desc};
+    use crate::algorithms::insertion_sort::{
+        insertion_sort_asc, insertion_sort_desc, insertion_sort_recursive,
+    };
 
     #[test]
     fn test_asc() {
@@ -53,5 +72,12 @@ mod test {
         let mut input = vec![5, 2, 4, 6, 1, 3];
         insertion_sort_desc(&mut input);
         assert_eq!(vec![6, 5, 4, 3, 2, 1], input);
+    }
+
+    #[test]
+    fn test_recursive() {
+        let mut input = vec![5, 2, 4, 6, 1, 3];
+        insertion_sort_recursive(&mut input, 5);
+        assert_eq!(vec![1, 2, 3, 4, 5, 6], input);
     }
 }
