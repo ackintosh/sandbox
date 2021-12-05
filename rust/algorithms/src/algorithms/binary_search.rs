@@ -3,6 +3,10 @@
 
 use std::cmp::Ordering;
 
+// input: 探索対象のベクタ。昇順にソート済み
+// target: 探索する数値
+// start: ベクタの探索範囲の開始位置
+// end: ベクタの探索範囲の修了位置
 fn binary_search(input: &Vec<u8>, target: u8, start: usize, end: usize) -> Option<usize> {
     if start > end {
         return None;
