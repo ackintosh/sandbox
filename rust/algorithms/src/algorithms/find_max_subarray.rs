@@ -12,7 +12,7 @@ fn find_max_subarray(input: &Vec<i8>, low: usize, high: usize) -> (usize, usize,
         return (low, high, input[low]);
     }
 
-    let mid = low + ((high - low) / 2);
+    let mid = (high + low) / 2;
     let (left_low, left_high, left_sum) = find_max_subarray(input, low, mid);
     let (right_low, right_high, right_sum) = find_max_subarray(input, mid + 1, high);
     let (crossing_low, crossing_high, crossing_sum) = find_max_crossing_subarray(input, low, high);
@@ -27,7 +27,7 @@ fn find_max_subarray(input: &Vec<i8>, low: usize, high: usize) -> (usize, usize,
 }
 
 fn find_max_crossing_subarray(input: &Vec<i8>, low: usize, high: usize) -> (usize, usize, i8) {
-    let mid = low + ((high - low) / 2); // usize同士の除算なので切り捨てになる
+    let mid = (high + low) / 2; // usize同士の除算なので切り捨てになる
     _find_max_crossing_subarray(input, low, mid, high)
 }
 
