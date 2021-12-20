@@ -6,12 +6,13 @@ fn main() {
     let a = read_line(read_num());
     let b = read_line(read_num());
 
-    let result = search(&a, &b).iter().map(|res| {
-        match res {
+    let result = search(&a, &b)
+        .iter()
+        .map(|res| match res {
             None => "-1".to_owned(),
             Some(n) => format!("{}", n),
-        }
-    }).collect::<Vec<_>>();
+        })
+        .collect::<Vec<_>>();
     print!("{}", result.join(" "));
 }
 
@@ -61,7 +62,7 @@ fn binary_search(input: &Vec<u64>, l: usize, r: usize, target: &u64) -> Option<u
                 tmp -= 1;
             }
             Some(result)
-        },
+        }
         Ordering::Greater => binary_search(input, l, m - 1, target),
     }
 }
