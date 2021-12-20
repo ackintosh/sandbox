@@ -2670,6 +2670,10 @@ name = "week3-3-car-fueling"
 version = "0.1.0"
 
 [[package]]
+name = "week4-1-binary-search"
+version = "0.1.0"
+
+[[package]]
 name = "which"
 version = "4.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"

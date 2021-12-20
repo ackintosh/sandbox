@@ -22,6 +22,7 @@ members = [
   "coursera-algorithmic-toolbox/week3-1-money-change",
   "coursera-algorithmic-toolbox/week3-2-maximum-value-of-the-loot",
   "coursera-algorithmic-toolbox/week3-3-car-fueling",
+  "coursera-algorithmic-toolbox/week4-1-binary-search",
   "crate-bytes",
   "crate-chrono",
   "crate-criterion",

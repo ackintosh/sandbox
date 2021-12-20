@@ -30,17 +30,31 @@ fn cmp() {
 }
 
 mod convert {
+    use std::convert::TryFrom;
+
     #[test]
     fn to_string() {
         let num = 6699;
-        println!("{:?}", num.to_string());
-        // "6699"
+        assert_eq!("6699".to_owned(), num.to_string());
+    }
+
+    #[test]
+    fn string_to_number() {
+        let s = "10";
+        assert_eq!(10_u8, s.parse::<u8>().unwrap());
     }
 
     #[test]
     fn positive_to_negative() {
         let positive = 10;
         assert_eq!(-10, -positive);
+    }
+
+    #[test]
+    fn usize_to_isize() {
+        let u = 1_usize;
+        let i = isize::try_from(u).unwrap();
+        assert_eq!(1_isize, i);
     }
 
     mod usize_to_i32 {
