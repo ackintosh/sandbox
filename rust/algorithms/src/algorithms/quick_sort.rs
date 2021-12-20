@@ -50,6 +50,7 @@ fn three_way(input: &mut Vec<u8>, l: usize, r: usize) -> (usize, usize) {
         }
     }
 
+    // println!("{:?}, {}, {}", input, k, p);
     let distance = p - k;
     for pp in p..=r {
         for d in 0..distance {
@@ -57,13 +58,13 @@ fn three_way(input: &mut Vec<u8>, l: usize, r: usize) -> (usize, usize) {
         }
     }
 
-    (k, p)
+    (k, k + r - p)
 }
 
 // TheAlgorithms: https://github.com/TheAlgorithms/Rust/blob/master/src/sorting/quick_sort.rs
 // left <= pivot
 // right > pivot
-fn two_way(input: &mut Vec<u8>, l: usize, r: usize) -> usize{
+fn two_way(input: &mut Vec<u8>, l: usize, r: usize) -> usize {
     let mut m = l;
     for i in (l + 1)..=r {
         if input[i] <= input[l] {
@@ -88,9 +89,16 @@ mod test {
 
     #[test]
     fn test_quick_sort_with_duplicates() {
-        let mut input = vec![2, 3, 9, 2, 2];
-        quick_sort(&mut input);
-        assert_eq!(vec![2, 2, 2, 3, 9], input);
+        {
+            let mut input = vec![2, 3, 9, 2, 2];
+            quick_sort(&mut input);
+            assert_eq!(vec![2, 2, 2, 3, 9], input);
+        }
+        {
+            let mut input = vec![2, 3, 9, 2, 9];
+            quick_sort(&mut input);
+            assert_eq!(vec![2, 2, 3, 9, 9], input);
+        }
     }
 
     #[test]

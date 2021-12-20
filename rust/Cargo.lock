@@ -2678,6 +2678,10 @@ name = "week4-3-majority-element"
 version = "0.1.0"
 
 [[package]]
+name = "week4-4-improving-quick-sort"
+version = "0.1.0"
+
+[[package]]
 name = "which"
 version = "4.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"

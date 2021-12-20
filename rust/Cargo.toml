@@ -24,6 +24,7 @@ members = [
   "coursera-algorithmic-toolbox/week3-3-car-fueling",
   "coursera-algorithmic-toolbox/week4-1-binary-search",
   "coursera-algorithmic-toolbox/week4-3-majority-element",
+  "coursera-algorithmic-toolbox/week4-4-improving-quick-sort",
   "crate-bytes",
   "crate-chrono",
   "crate-criterion",
