@@ -1,0 +1,309 @@
+<mxfile host="65bd71144e">
+    <diagram id="T8pmpTCMuDaPm9wjzUCa" name="Page-1">
+        <mxGraphModel dx="1621" dy="1091" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="beacon_node::lighthouse_network::behaviour::Behaviour" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="50" y="170" width="410" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="250" y="1230" as="sourcePoint"/>
+                        <mxPoint x="250" y="230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="90" y="290" as="sourcePoint"/>
+                        <mxPoint x="250" y="290" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="6" value="Behaviour::new()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="4">
+                    <mxGeometry x="-0.0375" y="1" relative="1" as="geometry">
+                        <mxPoint y="-9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="250" y="2740" as="sourcePoint"/>
+                        <mxPoint x="250" y="225" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" value="beacon_node::lighthouse_network::discovery::Discovery" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="530" y="170" width="410" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="250" y="370" as="sourcePoint"/>
+                        <mxPoint x="720" y="370" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="9" value="Discovery::discover_peers()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="8">
+                    <mxGeometry x="-0.0375" y="1" relative="1" as="geometry">
+                        <mxPoint y="-9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="734.5" y="1230" as="sourcePoint"/>
+                        <mxPoint x="734.5" y="230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="######################################&lt;br&gt;起動時にPeerを見つけるシーケンス&lt;br&gt;######################################" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="10" y="10" width="340" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="740" y="400" as="sourcePoint"/>
+                        <mxPoint x="730" y="560" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="810" y="400"/>
+                            <mxPoint x="810" y="560"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" value="Self::start_query()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="12">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="-10" y="-85" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="14" value="Discv5" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1060" y="170" width="260" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="810" y="470" as="sourcePoint"/>
+                        <mxPoint x="1200" y="470" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="16" value="Discv5::find_node_predicate()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="15">
+                    <mxGeometry x="-0.0375" y="1" relative="1" as="geometry">
+                        <mxPoint y="-9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="17" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1200" y="1230" as="sourcePoint"/>
+                        <mxPoint x="1200" y="230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="19" value="&lt;span style=&quot;font-weight: normal&quot;&gt;ランダムなNodeIDに対して&lt;br&gt;FIND_NODEクエリを実行する&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="890" y="370" width="240" height="75" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1190" y="510" as="sourcePoint"/>
+                        <mxPoint x="810" y="510" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="21" value="FIND_NODEクエリを実行する future を返す" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="20">
+                    <mxGeometry x="-0.0375" y="1" relative="1" as="geometry">
+                        <mxPoint x="-7" y="19" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1210" y="490" as="sourcePoint"/>
+                        <mxPoint x="1200" y="650" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="1280" y="490"/>
+                            <mxPoint x="1280" y="650"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="23" value="FIND_NODEクエリの実行" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="22">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="-10" y="-85" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="24" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="750" y="610" as="sourcePoint"/>
+                        <mxPoint x="740" y="770" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="820" y="610"/>
+                            <mxPoint x="820" y="770"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="25" value="poll()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="24">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="-20" y="-106" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="26" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="820" y="640" as="sourcePoint"/>
+                        <mxPoint x="820" y="760" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="890" y="640"/>
+                            <mxPoint x="890" y="760"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="27" value="poll_queries()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="26">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="-20" y="-85" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="28" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="890" y="660" as="sourcePoint"/>
+                        <mxPoint x="890" y="730" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="960" y="660"/>
+                            <mxPoint x="950" y="730"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="29" value="process_completed_queries()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="28">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="5" y="-48" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="30" value="&lt;span style=&quot;font-weight: normal&quot;&gt;FIND_NODEクエリの結果を&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;libp2pのイベントで返す&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="620" y="800" width="240" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="&lt;span style=&quot;font-weight: 400&quot;&gt;&lt;br&gt;&amp;nbsp; &amp;nbsp; NetworkBehaviourAction::GenerateEvent(&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;/span&gt;DiscoveryEvent::QueryResult&lt;br&gt;&amp;nbsp; &amp;nbsp; )" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="610" y="880" width="270" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="270" y="1000" as="sourcePoint"/>
+                        <mxPoint x="260" y="1160" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="340" y="1000"/>
+                            <mxPoint x="340" y="1160"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="33" value="impl NetworkBehaviourEventProcess&amp;lt;DiscoveryEvent&amp;gt; for Behaviour&lt;br&gt;inject_event()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="32">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="80" y="-116" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="34" value="&lt;b&gt;DiscoveryEvent::QueryResult&lt;/b&gt; から PeerId を取り出して&lt;br&gt;self.internal_events に内部イベントとして追加する" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=0;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="340" y="1040" width="340" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="260" y="1240" as="sourcePoint"/>
+                        <mxPoint x="250" y="1400" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="330" y="1240"/>
+                            <mxPoint x="330" y="1400"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="36" value="poll()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="35">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="-40" y="-106" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="37" value="InternalBehaviourMessage::DialPeer(peer_id)" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="375" y="1120" width="275" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="&lt;span style=&quot;text-align: center&quot;&gt;self.internal_eventsから&lt;br&gt;InternalBehaviourMessage::DialPeer(peer_id)&lt;br&gt;を取り出して、その Peer に接続する&lt;br&gt;&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=0;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="330" y="1260" width="340" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="NetworkBehaviourAction::DialPeer" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="362.5" y="1350" width="275" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="beacon_node::lighthouse_network::peer_manager::PeerManager" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1400" y="170" width="410" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1610" y="2160" as="sourcePoint"/>
+                        <mxPoint x="1610" y="230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="44" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1630" y="1570" as="sourcePoint"/>
+                        <mxPoint x="1620" y="1730" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="1700" y="1570"/>
+                            <mxPoint x="1700" y="1730"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="45" value="impl NetworkBehaviour for PeerManager&lt;br&gt;inject_connection_established()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="44">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="50" y="-116" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="46" value="&lt;span style=&quot;text-align: center&quot;&gt;・BANや接続数上限の判定&lt;br&gt;・接続の向き（incoming か outgoing か）を判定して self.events に PeerManager の内部イベントを追加する&lt;br&gt;&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=0;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="1720" y="1600" width="343" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="PeerManagerEvent::PeerConnectedIncoming&lt;br&gt;PeerManagerEvent::PeerConnectedOutgoing" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="1743.5" y="1690" width="296" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1630" y="1860" as="sourcePoint"/>
+                        <mxPoint x="1620" y="2020" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="1700" y="1860"/>
+                            <mxPoint x="1700" y="2020"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="49" value="impl NetworkBehaviour for PeerManager&lt;br&gt;poll()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="48">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="50" y="-116" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="50" value="&lt;span style=&quot;text-align: center&quot;&gt;self.events から内部イベントを取り出して&lt;br&gt;NetworkBehaviourAction::GenerateEvent&lt;br&gt;を返す&lt;br&gt;&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=0;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="1720" y="1890" width="343" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="NetworkBehaviourAction::GenerateEvent(&lt;br&gt;&amp;nbsp; &amp;nbsp;&amp;nbsp;PeerManagerEvent&lt;br&gt;)" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1;align=left;spacingLeft=12;" vertex="1" parent="1">
+                    <mxGeometry x="1750" y="1970" width="296" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="280" y="2190.12" as="sourcePoint"/>
+                        <mxPoint x="270" y="2350.12" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="350" y="2190.12"/>
+                            <mxPoint x="350" y="2350.12"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="53" value="impl NetworkBehaviourEventProcess&amp;lt;PeerManagerEvent&amp;gt; for Behaviour&lt;br&gt;inject_event()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="52">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="80" y="-116" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="54" value="&lt;span style=&quot;text-align: center&quot;&gt;PeerManagerEventを BehaviourEvent に替えて&lt;br&gt;self.events に追加する&lt;br&gt;&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=0;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="362.5" y="2230.12" width="340" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="BehaviourEvent::PeerConnectedIncoming&lt;br&gt;BehaviourEvent::PeerConnectedOutgoing" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1;align=left;spacingLeft=12;" vertex="1" parent="1">
+                    <mxGeometry x="384.5" y="2310" width="296" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="270" y="2480" as="sourcePoint"/>
+                        <mxPoint x="260" y="2640" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="340" y="2480"/>
+                            <mxPoint x="340" y="2640"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="57" value="poll()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="56">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="-40" y="-116" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="58" value="&lt;span style=&quot;text-align: center&quot;&gt;self.events から BehaviourEvent を取り出して&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;text-align: center&quot;&gt;NetworkBehaviourAction::GenerateEvent&lt;/span&gt;&lt;br style=&quot;text-align: center&quot;&gt;&lt;span style=&quot;text-align: center&quot;&gt;を返す&lt;/span&gt;&lt;span style=&quot;text-align: center&quot;&gt;&lt;br&gt;&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=0;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="2512" width="340" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="NetworkBehaviourAction::GenerateEvent(&lt;br&gt;&amp;nbsp; &amp;nbsp; BehaviourEvent::PeerConnectedIncoming&lt;br&gt;)&lt;br&gt;&lt;br&gt;NetworkBehaviourAction::GenerateEvent(&lt;br&gt;&amp;nbsp; &amp;nbsp; BehaviourEvent::PeerConnectedOutgoing&lt;br&gt;)" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1;align=left;spacingLeft=12;" vertex="1" parent="1">
+                    <mxGeometry x="392" y="2600" width="328" height="140" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
