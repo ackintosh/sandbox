@@ -7,12 +7,25 @@ fn vector() {
     assert_eq!(vec[2usize], 3);
 }
 
+// /////////////////////
+// 初期化の方法
+// /////////////////////
 #[test]
 fn initialize() {
     // 要素数3, 各要素はi32の最大値を持つベクターを作る
-    let n = 3;
-    let vec = vec![i32::max_value(); n];
-    println!("{:?}", vec);
+    {
+        let n = 3;
+        let vec = vec![i32::MAX; n];
+        println!("{:?}", vec);
+    }
+
+    // 任意の長さのvectorを宣言する
+    // https://stackoverflow.com/questions/34684261/how-to-set-a-rust-array-length-dynamically
+    {
+        let len = 10;
+        let v = vec![0; len];
+        println!("{:?}", v); // [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    }
 }
 
 #[test]

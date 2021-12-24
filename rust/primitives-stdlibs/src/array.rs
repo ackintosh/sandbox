@@ -11,6 +11,12 @@ fn array() {
         println!("{:?}", array);
         println!("{:?}", [99; 3]);
     }
+
+    // 配列のサイズはコンパイルタイムで確定している必要があるため、サイズを変数で指定することはできない
+    // https://stackoverflow.com/questions/34684261/how-to-set-a-rust-array-length-dynamically
+    // let arr = [0; length];
+    //   -> vectorを使う
+    //      let arr = vec![0; length];
 }
 
 #[test]

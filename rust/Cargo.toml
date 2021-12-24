@@ -27,6 +27,7 @@ members = [
   "coursera-algorithmic-toolbox/week4-4-improving-quick-sort",
   "coursera-algorithmic-toolbox/week5-1-money-change-again",
   "coursera-algorithmic-toolbox/week5-2-primitive-calculator",
+  "coursera-algorithmic-toolbox/week5-3-edit-distance",
   "crate-bytes",
   "crate-chrono",
   "crate-criterion",

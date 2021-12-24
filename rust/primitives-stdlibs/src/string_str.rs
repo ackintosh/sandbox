@@ -203,6 +203,7 @@ mod string {
         assert_eq!(s, "abc".to_owned());
     }
 
+    // 特定の文字列以降を切り落とす
     #[test]
     fn string_pos() {
         let mut s = "aaabbbccc".to_owned();
@@ -215,6 +216,7 @@ mod string {
         assert_eq!(s, "aaa".to_owned());
     }
 
+    // 任意の位置の文字にアクセスする
     #[test]
     #[allow(clippy::iter_nth_zero)]
     fn index() {
