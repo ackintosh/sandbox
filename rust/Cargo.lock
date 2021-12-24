@@ -2686,6 +2686,10 @@ name = "week5-1-money-change-again"
 version = "0.1.0"
 
 [[package]]
+name = "week5-2-primitive-calculator"
+version = "0.1.0"
+
+[[package]]
 name = "which"
 version = "4.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"

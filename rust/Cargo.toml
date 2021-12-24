@@ -26,6 +26,7 @@ members = [
   "coursera-algorithmic-toolbox/week4-3-majority-element",
   "coursera-algorithmic-toolbox/week4-4-improving-quick-sort",
   "coursera-algorithmic-toolbox/week5-1-money-change-again",
+  "coursera-algorithmic-toolbox/week5-2-primitive-calculator",
   "crate-bytes",
   "crate-chrono",
   "crate-criterion",
