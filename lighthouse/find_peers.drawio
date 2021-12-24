@@ -255,7 +255,7 @@
                         <mxPoint x="50" y="-116" as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="50" value="&lt;span style=&quot;text-align: center&quot;&gt;self.events から内部イベントを取り出して&lt;br&gt;NetworkBehaviourAction::GenerateEvent&lt;br&gt;を返す&lt;br&gt;&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=0;align=left;" vertex="1" parent="1">
+                <mxCell id="50" value="&lt;span style=&quot;text-align: center&quot;&gt;self.events から内部イベントを取り出して&lt;br&gt;libp2pのイベントを返す&lt;br&gt;&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=0;align=left;" vertex="1" parent="1">
                     <mxGeometry x="1720" y="1890" width="343" height="100" as="geometry"/>
                 </mxCell>
                 <mxCell id="51" value="NetworkBehaviourAction::GenerateEvent(&lt;br&gt;&amp;nbsp; &amp;nbsp;&amp;nbsp;PeerManagerEvent&lt;br&gt;)" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1;align=left;spacingLeft=12;" vertex="1" parent="1">
@@ -297,7 +297,7 @@
                         <mxPoint x="-40" y="-116" as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="58" value="&lt;span style=&quot;text-align: center&quot;&gt;self.events から BehaviourEvent を取り出して&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;text-align: center&quot;&gt;NetworkBehaviourAction::GenerateEvent&lt;/span&gt;&lt;br style=&quot;text-align: center&quot;&gt;&lt;span style=&quot;text-align: center&quot;&gt;を返す&lt;/span&gt;&lt;span style=&quot;text-align: center&quot;&gt;&lt;br&gt;&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=0;align=left;" vertex="1" parent="1">
+                <mxCell id="58" value="&lt;span style=&quot;text-align: center&quot;&gt;self.events から BehaviourEvent を取り出して&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;text-align: center&quot;&gt;libp2pのイベントを&lt;/span&gt;&lt;span style=&quot;text-align: center&quot;&gt;返す&lt;/span&gt;&lt;span style=&quot;text-align: center&quot;&gt;&lt;br&gt;&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=0;align=left;" vertex="1" parent="1">
                     <mxGeometry x="370" y="2512" width="340" height="100" as="geometry"/>
                 </mxCell>
                 <mxCell id="59" value="NetworkBehaviourAction::GenerateEvent(&lt;br&gt;&amp;nbsp; &amp;nbsp; BehaviourEvent::PeerConnectedIncoming&lt;br&gt;)&lt;br&gt;&lt;br&gt;NetworkBehaviourAction::GenerateEvent(&lt;br&gt;&amp;nbsp; &amp;nbsp; BehaviourEvent::PeerConnectedOutgoing&lt;br&gt;)" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1;align=left;spacingLeft=12;" vertex="1" parent="1">
