@@ -1,0 +1,372 @@
+<mxfile host="65bd71144e">
+    <diagram id="WmQeqPcZGVHwFXoyWa7D" name="Page-1">
+        <mxGraphModel dx="2466" dy="1419" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="##########################################################&lt;br&gt;BlockByRange RPCのリクエストを送信するまでのシーケンス&lt;br&gt;##########################################################" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="10" y="10" width="460" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="beacon_node::network::router::Router" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="50" y="170" width="410" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="90" y="290" as="sourcePoint"/>
+                        <mxPoint x="250" y="290" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5" value="Router::handle_message()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="4">
+                    <mxGeometry x="-0.0375" y="1" relative="1" as="geometry">
+                        <mxPoint y="-9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="6" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="254.5" y="2745" as="sourcePoint"/>
+                        <mxPoint x="254.5" y="230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="270" y="320" as="sourcePoint"/>
+                        <mxPoint x="260" y="480" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="340" y="320"/>
+                            <mxPoint x="340" y="480"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="8" value="handle_rpc_request()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="7">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="-10" y="-106" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="9" value="&lt;span style=&quot;font-weight: 400&quot;&gt;リクエストの種類に応じた&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;Processorのメソッドを呼び出す。&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;Request::Status ならば Processor::&lt;/span&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;on_status_request()&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="350" y="320" width="330" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="beacon_node::network::router::Processor" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="640" y="170" width="410" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="830" y="2745" as="sourcePoint"/>
+                        <mxPoint x="830" y="230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="334" y="450" as="sourcePoint"/>
+                        <mxPoint x="830" y="450" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="14" value="&lt;span style=&quot;font-size: 12px&quot;&gt;Processor&lt;/span&gt;::on_status_request()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="13">
+                    <mxGeometry x="-0.0375" y="1" relative="1" as="geometry">
+                        <mxPoint y="-9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="15" value="beacon_node::network::beacon_processor::BeaconProcessor&lt;br&gt;（Manager Task）" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1170" y="170" width="410" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1380" y="2745" as="sourcePoint"/>
+                        <mxPoint x="1380" y="230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="17" value="" style="endArrow=classic;html=1;dashed=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="830" y="520" as="sourcePoint"/>
+                        <mxPoint x="1370" y="520" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="19" value="&lt;span style=&quot;font-size: 12px&quot;&gt;self.beacon_processor_send&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="910" y="490" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="&lt;span style=&quot;font-size: 12px&quot;&gt;event_rx&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="1340" y="490" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="&lt;span style=&quot;font-weight: 400&quot;&gt;Statusの処理を依頼するイベントを送信する&amp;nbsp;&lt;br&gt;&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;WorkEvent&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;{&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; drop_during_sync: false,&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; work: Work::Status { peer_id, message },&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }&lt;/span&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="970" y="530" width="330" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="&lt;span style=&quot;font-weight: 400&quot;&gt;BeaconProcessor::spawn_manager() で起動するマネージャタスク&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="1200" y="80" width="380" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="beacon_node::network::beacon_processor::worker::Worker&lt;br&gt;（Worker Task）" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1690" y="170" width="410" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="&lt;span style=&quot;font-weight: 400&quot;&gt;マネージャタスクから都度起動されるワーカータスク&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="1735" y="70" width="320" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1480" y="670" as="sourcePoint"/>
+                        <mxPoint x="1876" y="670" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="28" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1880" y="890" as="sourcePoint"/>
+                        <mxPoint x="1880" y="670" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="29" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1400" y="560" as="sourcePoint"/>
+                        <mxPoint x="1390" y="720" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="1470" y="560"/>
+                            <mxPoint x="1470" y="720"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="30" value="&lt;span style=&quot;font-size: 12px&quot;&gt;Self::spawn_worker()&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="29">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="-10" y="-106" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="31" value="&lt;span style=&quot;font-weight: 400&quot;&gt;blocking threadを起動して&lt;br&gt;ワーカータスクを実行する&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="1540" y="585" width="240" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="&lt;span style=&quot;font-size: 12px&quot;&gt;Worker::process_status()&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="1654" y="690" as="geometry">
+                        <mxPoint x="1" y="-3" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="33" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1900" y="720" as="sourcePoint"/>
+                        <mxPoint x="1890" y="880" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="1970" y="720"/>
+                            <mxPoint x="1970" y="880"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="34" value="&lt;span style=&quot;font-size: 12px&quot;&gt;Self::send_sync_message()&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="33">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="-10" y="-106" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="35" value="beacon_node::network::sync::manager::SyncManager" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="2270" y="170" width="410" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="" style="endArrow=classic;html=1;dashed=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1970" y="800" as="sourcePoint"/>
+                        <mxPoint x="2470" y="800" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="37" value="&lt;span style=&quot;font-size: 12px&quot;&gt;self.sync_tx&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="2010" y="780" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="&lt;span style=&quot;font-weight: 400&quot;&gt;送信するメッセージ&amp;nbsp;&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;SyncMessage::AddPeer(&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;&amp;nbsp; &amp;nbsp; peer_id,&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;&amp;nbsp; &amp;nbsp; SyncInfo {}&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;)&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+                    <mxGeometry x="2055" y="810" width="330" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="2481" y="2745" as="sourcePoint"/>
+                        <mxPoint x="2481" y="230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="40" value="&lt;span style=&quot;font-size: 12px&quot;&gt;self.input_channel&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="2430" y="770" as="geometry">
+                        <mxPoint x="-5" y="4" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="41" value="&lt;span style=&quot;font-weight: 400&quot;&gt;SyncManager::main() で&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;self.input_channelから受信している&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="2490" y="750" width="240" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="2500" y="860" as="sourcePoint"/>
+                        <mxPoint x="2490" y="1020" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="2570" y="860"/>
+                            <mxPoint x="2570" y="1020"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="43" value="&lt;span style=&quot;font-size: 12px&quot;&gt;Self::add_peer()&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="42">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="-10" y="-106" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="44" value="リモートのチェーンが&lt;br&gt;進んでいるか？" style="rhombus;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="2510" y="900" width="180" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="44">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="2720" y="944.5" as="sourcePoint"/>
+                        <mxPoint x="3040" y="945" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="48" value="beacon_node::network::sync::range_sync::range::RangeSync" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="2830" y="170" width="410" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="3040" y="2745" as="sourcePoint"/>
+                        <mxPoint x="3040" y="230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="50" value="&lt;span style=&quot;font-size: 12px&quot;&gt;YES&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="2700" y="930" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="&lt;span style=&quot;font-size: 12px&quot;&gt;RangeSync::add_peer()&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="2610" y="865" as="geometry">
+                        <mxPoint x="241" y="65" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="52" value="beacon_node::network::sync::range_sync::chain_collection::ChainCollection" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="3308" y="170" width="450" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="3040" y="1070" as="sourcePoint"/>
+                        <mxPoint x="3540" y="1070" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="54" value="&lt;span style=&quot;font-size: 12px&quot;&gt;ChainCollection::&lt;/span&gt;&lt;span style=&quot;font-size: 12px&quot;&gt;add_peer_or_create_chain()&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="53">
+                    <mxGeometry x="-0.0375" y="1" relative="1" as="geometry">
+                        <mxPoint y="-9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="55" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="3540" y="2745" as="sourcePoint"/>
+                        <mxPoint x="3540" y="230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="58" value="&lt;span style=&quot;font-weight: 400&quot;&gt;SyncingChainを作って、&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;self.finalized_chains&lt;br&gt;か&lt;br&gt;self.head_chains&lt;br&gt;に追加する&lt;br&gt;&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="3550" y="1090" width="240" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="3040" y="1230" as="sourcePoint"/>
+                        <mxPoint x="3540" y="1230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="61" value="&lt;span style=&quot;font-size: 12px&quot;&gt;ChainCollection::&lt;/span&gt;&lt;span style=&quot;font-size: 12px&quot;&gt;update()&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="60">
+                    <mxGeometry x="-0.0375" y="1" relative="1" as="geometry">
+                        <mxPoint y="-9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="62" value="&lt;span style=&quot;font-weight: 400&quot;&gt;RangeSyncType::Finalized&lt;br&gt;の条件分岐に入る&lt;br&gt;&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="2930" y="980" width="220" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" value="self.state が&lt;br&gt;RangeSyncState::Finalized か？" style="rhombus;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="3420" y="1260" width="250" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="&lt;span style=&quot;font-size: 12px&quot;&gt;NO&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="2630" y="950" as="geometry">
+                        <mxPoint x="942" y="440" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="65" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="3550" y="1430" as="sourcePoint"/>
+                        <mxPoint x="3540" y="1590" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="3620" y="1430"/>
+                            <mxPoint x="3620" y="1590"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="66" value="&lt;span style=&quot;font-size: 12px&quot;&gt;Self::update_head_chains()&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="65">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="40" y="-96" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="67" value="beacon_node::network::sync::range_sync::chain::SyncingChain" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="3840" y="170" width="410" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="3620" y="1510" as="sourcePoint"/>
+                        <mxPoint x="4040" y="1510" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="69" value="&lt;span style=&quot;font-size: 12px&quot;&gt;SyncingChain::start_syncing()&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="68">
+                    <mxGeometry x="-0.0375" y="1" relative="1" as="geometry">
+                        <mxPoint y="-9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="70" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="4040" y="2745" as="sourcePoint"/>
+                        <mxPoint x="4040" y="230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="71" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="4050" y="1540" as="sourcePoint"/>
+                        <mxPoint x="4040" y="1700" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="4120" y="1540"/>
+                            <mxPoint x="4120" y="1700"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="72" value="&lt;span style=&quot;font-size: 12px&quot;&gt;Self::request_batches()&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="71">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="40" y="-96" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="73" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="4120" y="1580" as="sourcePoint"/>
+                        <mxPoint x="4110" y="1740" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="4190" y="1580"/>
+                            <mxPoint x="4190" y="1740"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="74" value="&lt;span style=&quot;font-size: 12px&quot;&gt;Self::send_batch()&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="73">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="30" y="-96" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="75" value="beacon_node::network::sync::network_context::SyncNetworkContext" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="4330" y="170" width="410" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="76" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="4548" y="2745" as="sourcePoint"/>
+                        <mxPoint x="4548" y="230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="77" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="4190" y="1640" as="sourcePoint"/>
+                        <mxPoint x="4540" y="1640" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="78" value="&lt;span style=&quot;font-size: 12px&quot;&gt;SyncNetworkContext::blocks_by_range_request()&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="77">
+                    <mxGeometry x="-0.0375" y="1" relative="1" as="geometry">
+                        <mxPoint y="-9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="79" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="4570" y="1680" as="sourcePoint"/>
+                        <mxPoint x="4560" y="1840" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="4640" y="1680"/>
+                            <mxPoint x="4640" y="1840"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="80" value="&lt;span style=&quot;font-size: 12px&quot;&gt;Self::send_rpc_request()&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="79">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="40" y="-96" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="81" value="&lt;span style=&quot;font-weight: 400&quot;&gt;Request::BlocksByRange&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="4650" y="1704" width="210" height="50" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
