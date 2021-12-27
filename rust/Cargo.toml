@@ -41,6 +41,7 @@ members = [
   "crate-rand",
   "crate-reqwest",
   "crate-rust-protobuf",
+  "crate-serde",
   "crate-uint",
   "crate-tokio",
   "crate-tracing",
