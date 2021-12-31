@@ -8,3 +8,7 @@ edition = "2018"
 
 [dependencies]
 regex = "1"
+
+[[test]]
+name = "sandbox_tests"
+path = "tests/main.rs"
