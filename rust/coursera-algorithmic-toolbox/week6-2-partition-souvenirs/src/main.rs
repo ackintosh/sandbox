@@ -27,6 +27,7 @@ fn read_line(number_of_elements: u64) -> Vec<u64> {
     nums
 }
 
+// https://thisthread.blogspot.com/2018/02/partitioning-souvenirs.html
 fn partition_souvenirs(input: Vec<u64>) -> bool {
     if input.len() < 3 {
         return false;

@@ -109,8 +109,10 @@ fn test_two_partition_problem_dp_array() {
 }
 
 // ////////////////////////////////////////////////////////////
-// TODO: 3つに分割するパターン
+// 3つに分割するパターン
 // 参考:
 // * https://stackoverflow.com/questions/4803668/3-partition-problem
 // * https://thisthread.blogspot.com/2018/02/partitioning-souvenirs.html
 // ////////////////////////////////////////////////////////////
+// 下記を参照
+// https://github.com/ackintosh/sandbox/blob/master/rust/coursera-algorithmic-toolbox/week6-2-partition-souvenirs/src/main.rs
