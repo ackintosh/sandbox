@@ -107,3 +107,10 @@ fn test_two_partition_problem_dp_array() {
     // The array cannot be partitioned into equal sum sets.
     assert!(!two_partition_problem_dp_array(vec![1, 5, 3]));
 }
+
+// ////////////////////////////////////////////////////////////
+// TODO: 3つに分割するパターン
+// 参考:
+// * https://stackoverflow.com/questions/4803668/3-partition-problem
+// * https://thisthread.blogspot.com/2018/02/partitioning-souvenirs.html
+// ////////////////////////////////////////////////////////////

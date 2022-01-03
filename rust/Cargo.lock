@@ -2712,6 +2712,10 @@ name = "week6-1-maximum-amount-of-gold"
 version = "0.1.0"
 
 [[package]]
+name = "week6-2-partition-souvenirs"
+version = "0.1.0"
+
+[[package]]
 name = "which"
 version = "4.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"

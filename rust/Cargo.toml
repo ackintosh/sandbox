@@ -29,6 +29,7 @@ members = [
   "coursera-algorithmic-toolbox/week5-2-primitive-calculator",
   "coursera-algorithmic-toolbox/week5-3-edit-distance",
   "coursera-algorithmic-toolbox/week6-1-maximum-amount-of-gold",
+  "coursera-algorithmic-toolbox/week6-2-partition-souvenirs",
   "crate-bytes",
   "crate-chrono",
   "crate-criterion",
