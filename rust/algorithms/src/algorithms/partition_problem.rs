@@ -69,3 +69,41 @@ fn test_two_partition_problem_dp() {
     // The array cannot be partitioned into equal sum sets.
     assert!(!two_partition_problem_dp(vec![1, 5, 3]));
 }
+
+// *DPで実装するパターン*
+// 2次元のマトリックスではなく、配列を作るパターン
+// -> https://www.geeksforgeeks.org/partition-problem-dp-18/ の `Dynamic Programming Solution (Space Complexity Optimized)`
+fn two_partition_problem_dp_array(input: Vec<u8>) -> bool {
+    let sum: u8 = input.iter().sum();
+    if sum % 2 != 0 {
+        return false;
+    }
+
+    let half_of_sum = sum / 2;
+    let mut table = vec![false; half_of_sum as usize + 1];
+
+    table[0] = true;
+
+    for i in 0..input.len() {
+        for j in (1..=half_of_sum as usize).rev() {
+            if (j as u8) < input[i] {
+                break;
+            }
+
+            if j == input[i] as usize || table[j - (input[i] as usize)] {
+                table[j] = true;
+            }
+        }
+    }
+
+    return table[half_of_sum as usize];
+}
+
+#[test]
+fn test_two_partition_problem_dp_array() {
+    // The array can be partitioned as {1, 5, 5} and {11}
+    assert!(two_partition_problem_dp_array(vec![1, 5, 11, 5]));
+
+    // The array cannot be partitioned into equal sum sets.
+    assert!(!two_partition_problem_dp_array(vec![1, 5, 3]));
+}
