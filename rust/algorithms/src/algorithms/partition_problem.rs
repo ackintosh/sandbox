@@ -113,6 +113,7 @@ fn test_two_partition_problem_dp_array() {
 // 参考:
 // * https://stackoverflow.com/questions/4803668/3-partition-problem
 // * https://thisthread.blogspot.com/2018/02/partitioning-souvenirs.html
+// * https://github.com/anoubhav/Coursera-Algorithmic-Toolbox/blob/master/assignment%20solutions/6.2%20partition%20souvenirs.py
 // ////////////////////////////////////////////////////////////
 // 下記を参照
 // https://github.com/ackintosh/sandbox/blob/master/rust/coursera-algorithmic-toolbox/week6-2-partition-souvenirs/src/main.rs
