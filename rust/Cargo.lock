@@ -2653,6 +2653,10 @@ name = "week1-1-check-brackets-in-the-code"
 version = "0.1.0"
 
 [[package]]
+name = "week1-2-compute-tree-height"
+version = "0.1.0"
+
+[[package]]
 name = "week1-programming-challenges"
 version = "0.1.0"
 dependencies = [
