@@ -1,3 +1,3 @@
 # Chapter 1
 
-[link](./nested/README.md)
+[link](./nested/chapter_1.md)
