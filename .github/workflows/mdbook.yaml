@@ -7,12 +7,12 @@ jobs:
   linkcheck:
     name: Check broken links
     runs-on: ubuntu-latest
-    services:
-      mdbook-service: # サービス名
-        image: peaceiris/mdbook:latest
-        ports:
-          - 3000:3000
-        options: --entrypoint '["/usr/bin/mdbook", "serve"]'
+      #services:
+      #  mdbook-service: # サービス名
+      #    image: peaceiris/mdbook:latest
+      #    ports:
+      #      - 3000:3000
+      #    options: --entrypoint "mdbook serve"
 
     steps:
       - name: Checkout Code
@@ -20,4 +20,6 @@ jobs:
         with:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
+      - name: Serves a book
+        run: docker run -v ${{ github.workspace }}/mdbook:/book -d peaceiris/mdbook:latest serve
 
