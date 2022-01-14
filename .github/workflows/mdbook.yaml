@@ -18,7 +18,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
       - name: Serves a book
-        run: docker run -v ${{ github.workspace }}/mdbook:/book -p 3000:3000 -d peaceiris/mdbook:latest serve --hostname 0.0.0.0 --name book
+        run: docker run -v ${{ github.workspace }}/mdbook:/book --name book -p 3000:3000 -d peaceiris/mdbook:latest serve --hostname 0.0.0.0
       - name: tes
         run: docker logs book
       - name: Run linkcheck
