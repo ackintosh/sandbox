@@ -22,6 +22,9 @@ jobs:
       - name: Lint Code Base
         uses: docker://ghcr.io/github/super-linter:slim-v4
         env:
+          # 特定の VALIDATE_*** を指定すると、それ以外の言語のLintがfalseになる
+          # https://github.com/github/super-linter#environment-variables
           VALIDATE_PROTOBUF: true
-          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_MARKDOWN: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_ALL_CODEBASE: false
