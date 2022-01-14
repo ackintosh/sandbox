@@ -1,0 +1,31 @@
+name: Linkcheck
+
+on:
+  push:
+
+jobs:
+  linkcheck:
+    name: Check broken links
+    runs-on: ubuntu-latest
+    services:
+      mdbook-service: # サービス名
+        image: peaceiris/mdbook:latest
+        ports:
+          - 3000:3000
+        option: --entrypoint mdbook serve
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          # Full git history is needed to get a proper list of changed files within `super-linter`
+          fetch-depth: 0
+      - name: Lint Code Base
+        uses: docker://ghcr.io/github/super-linter:slim-v4
+        env:
+          # 特定の VALIDATE_*** を指定すると、それ以外の言語のLintがfalseになる
+          # https://github.com/github/super-linter#environment-variables
+          VALIDATE_PROTOBUF: true
+          VALIDATE_MARKDOWN: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_ALL_CODEBASE: false
