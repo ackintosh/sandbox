@@ -21,7 +21,7 @@ jobs:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
       - name: Serves a book
-        run: docker run -v ${{ github.workspace }}/mdbook:/book -p 3000:3000 -d peaceiris/mdbook:latest serve
+        run: docker run -v ${{ github.workspace }}/mdbook:/book -p 3000:3000 -d peaceiris/mdbook:latest serve --hostname 0.0.0.0
       - name: Run linkcheck
         uses: filiph/linkcheck@v2.0.15+1
         with:
