@@ -24,6 +24,6 @@ jobs:
         run: docker run -v ${{ github.workspace }}/mdbook:/book -p 3000:3000 -d peaceiris/mdbook:latest serve
       - name: Run linkcheck
         uses: filiph/linkcheck@v2.0.15+1
-          with:
-            arguments: localhost:3000
+        with:
+          arguments: localhost:3000
 
