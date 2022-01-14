@@ -12,7 +12,7 @@ jobs:
         image: peaceiris/mdbook:latest
         ports:
           - 3000:3000
-        options: --entrypoint mdbook serve
+        options: --entrypoint "mdbook serve"
 
     steps:
       - name: Checkout Code
