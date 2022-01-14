@@ -9,13 +9,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v2
       - name: Create docker network
         run: docker network create book
       - name: Serves a book
         run: docker run -v ${{ github.workspace }}/mdbook:/book --network book --name book -p 3000:3000 -d peaceiris/mdbook:latest serve --hostname 0.0.0.0
-      - name: tes
+      - name: test
         run: docker logs book
       - name: Run linkcheck
         run: docker run  --network book tennox/linkcheck:latest book:3000
