@@ -17,9 +17,6 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-        with:
-          # Full git history is needed to get a proper list of changed files within `super-linter`
-          fetch-depth: 0
       - name: Serves a book
         run: docker run -v ${{ github.workspace }}/mdbook:/book -p 3000:3000 -d peaceiris/mdbook:latest serve --hostname 0.0.0.0
       - name: tes
@@ -27,5 +24,5 @@ jobs:
       - name: Run linkcheck
         uses: filiph/linkcheck@v2.0.15+1
         with:
-          arguments: localhost:3000
+          arguments: 127.0.0.1:3000
 
