@@ -2,7 +2,7 @@ name: Linkcheck
 
 on:
   push:
-    # $B99?7$5$l$?(B path $B$G@)8f$9$k(B
+    # 更新された path で制御する
     # https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#onpushpull_requestpull_request_targetpathspaths-ignore
     paths:
       - 'mdbook/**'
