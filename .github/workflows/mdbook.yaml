@@ -1,3 +1,5 @@
+# mdbookのリンク切れをチェックする
+# ローカルで起動したmdbookに対して `linkcheck` を実行しているので、URLだけでなくアンカーも検証できる
 name: Linkcheck
 
 on:
