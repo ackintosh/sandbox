@@ -12,13 +12,17 @@ jobs:
     name: Check broken links
     runs-on: ubuntu-latest
 
+    # mdbookのサーバを起動するためにソースコードが必要なので、`service` は使わずに
+    # `steps` の中でコンテナを -d オプション付きで起動している(mdbookサーバの起動に時間がかかる場合に、後続のstepで問題になるかも？)
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      # mdbookのコンテナとlinkcheckのコンテナが通信できるようにネットワークを作成する
       - name: Create docker network
         run: docker network create book
       - name: Serves book
         run: docker run -v ${{ github.workspace }}/mdbook:/book --network book --name book -p 3000:3000 -d peaceiris/mdbook:latest serve --hostname 0.0.0.0
+      # 念の為に、Actionsの画面からログを確認できるように出力しておく
       - name: Print logs
         run: docker logs book
       - name: Run linkcheck
