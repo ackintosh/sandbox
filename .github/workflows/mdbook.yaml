@@ -2,6 +2,10 @@ name: Linkcheck
 
 on:
   push:
+    # 更新された path で制御する
+    # https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#onpushpull_requestpull_request_targetpathspaths-ignore
+    paths:
+      - 'mdbook/**'
 
 jobs:
   linkcheck:
@@ -13,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Create docker network
         run: docker network create book
-      - name: Serves a book
+      - name: Serves book
         run: docker run -v ${{ github.workspace }}/mdbook:/book --network book --name book -p 3000:3000 -d peaceiris/mdbook:latest serve --hostname 0.0.0.0
       - name: test
         run: docker logs book
