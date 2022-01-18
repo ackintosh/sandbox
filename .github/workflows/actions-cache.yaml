@@ -1,0 +1,62 @@
+name: Cache
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  # ###########################
+  # GitHub公式
+  # ###########################
+  # https://github.com/actions/cache
+  # ドキュメント
+  # https://help.github.com/en/actions/configuring-and-managing-workflows/caching-dependencies-to-speed-up-workflows
+  actions-cache:
+    name: actions-cache
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Get latest version of stable Rust
+        run: rustup update stable
+
+      # https://github.com/actions/cache/blob/main/examples.md#rust---cargo
+      - uses: actions/cache@v2
+        id: cache-cargo
+        with:
+          path: |
+              ~/.cargo/bin/
+              ~/.cargo/registry/index/
+              ~/.cargo/registry/cache/
+              ~/.cargo/git/db/
+              target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+      # キャッシュがヒットしなければ cargo test を実行する
+      # https://github.com/actions/cache#example-workflow
+      - name: Run tests
+        if: steps.cache-cargo.outputs.cache-hit != 'true'
+        run: cargo test
+        working-directory: rust
+
+  # ###########################
+  # Swatinem/rust-cache
+  # ###########################
+  # https://github.com/Swatinem/rust-cache
+  # libp2pで使われている
+  # https://github.com/libp2p/rust-libp2p/blob/master/.github/workflows/ci.yml
+  swatinem-rust-cache:
+    name: swatinem-rust-cache
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+      
+      - uses: Swatinem/rust-cache@v1
+
