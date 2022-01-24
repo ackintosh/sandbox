@@ -32,6 +32,7 @@ members = [
   "coursera-algorithmic-toolbox/week6-2-partition-souvenirs",
   "coursera-data-structures/week1-1-check-brackets-in-the-code",
   "coursera-data-structures/week1-2-compute-tree-height",
+  "coursera-data-structures/week3-1-convert-array-into-heap",
   "crate-bytes",
   "crate-chrono",
   "crate-criterion",
