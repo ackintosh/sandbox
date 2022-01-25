@@ -33,6 +33,7 @@ members = [
   "coursera-data-structures/week1-1-check-brackets-in-the-code",
   "coursera-data-structures/week1-2-compute-tree-height",
   "coursera-data-structures/week3-1-convert-array-into-heap",
+  "coursera-data-structures/week3-2-parallel-processing",
   "crate-bytes",
   "crate-chrono",
   "crate-criterion",

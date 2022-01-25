@@ -2692,6 +2692,10 @@ name = "week3-2-maximum-value-of-the-loot"
 version = "0.1.0"
 
 [[package]]
+name = "week3-2-parallel-processing"
+version = "0.1.0"
+
+[[package]]
 name = "week3-3-car-fueling"
 version = "0.1.0"
 

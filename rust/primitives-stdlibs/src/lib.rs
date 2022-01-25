@@ -25,6 +25,7 @@ mod phantom_type;
 mod result_option;
 mod rw_lock;
 mod slice;
+mod stdin;
 mod stdlib_box;
 mod string_str;
 mod vector;
