@@ -34,6 +34,7 @@ members = [
   "coursera-data-structures/week1-2-compute-tree-height",
   "coursera-data-structures/week3-1-convert-array-into-heap",
   "coursera-data-structures/week3-2-parallel-processing",
+  "coursera-data-structures/week4-1-phone-book",
   "crate-bytes",
   "crate-chrono",
   "crate-criterion",
