@@ -188,6 +188,17 @@ mod str {
 
         assert_eq!(rev_string, "cba".to_owned());
     }
+
+    #[test]
+    fn ascii() {
+        let str = "abc";
+        for c in str.chars() {
+            println!("{}", c as i8);
+            // 97
+            // 98
+            // 99
+        }
+    }
 }
 
 /////////////////////////////////////////////////////////
