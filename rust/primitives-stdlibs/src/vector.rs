@@ -1,3 +1,6 @@
+// ドキュメント
+// https://doc.rust-lang.org/std/collections/index.html
+
 #[test]
 fn vector() {
     let vec = vec![1, 2, 3];

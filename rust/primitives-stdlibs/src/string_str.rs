@@ -192,8 +192,17 @@ mod str {
     #[test]
     fn ascii() {
         let str = "abc";
+        // as i8
         for c in str.chars() {
             println!("{}", c as i8);
+            // 97
+            // 98
+            // 99
+        }
+
+        // as u32
+        for c in str.chars() {
+            println!("{}", c as u32);
             // 97
             // 98
             // 99
