@@ -338,6 +338,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "crate-prometheus-client_rust"
+version = "0.1.0"
+dependencies = [
+ "prometheus-client",
+]
+
+[[package]]
 name = "crate-quickcheck"
 version = "0.1.0"
 dependencies = [
@@ -555,6 +562,12 @@ dependencies = [
  "serde_json",
  "thousands",
 ]
+
+[[package]]
+name = "dtoa"
+version = "1.0.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5caaa75cbd2b960ff1e5392d2cfb1f44717fffe12fc1f32b7b5d1267f99732a6"
 
 [[package]]
 name = "either"
@@ -1421,6 +1434,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "owning_ref"
+version = "0.4.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6ff55baddef9e4ad00f88b6c743a2a8062d4c6ade126c2a528644b8e444d52ce"
+dependencies = [
+ "stable_deref_trait",
+]
+
+[[package]]
 name = "parking_lot"
 version = "0.11.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1559,6 +1581,29 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1e0704ee1a7e00d7bb417d0770ea303c1bccbabf0ef1667dae92b5967f5f8a71"
 dependencies = [
  "unicode-xid",
+]
+
+[[package]]
+name = "prometheus-client"
+version = "0.15.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c9a896938cc6018c64f279888b8c7559d3725210d5db9a3a1ee6bc7188d51d34"
+dependencies = [
+ "dtoa",
+ "itoa 1.0.1",
+ "owning_ref",
+ "prometheus-client-derive-text-encode",
+]
+
+[[package]]
+name = "prometheus-client-derive-text-encode"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e8e12d01b9d66ad9eb4529c57666b6263fc1993cb30261d83ead658fdd932652"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
 ]
 
 [[package]]
@@ -2071,6 +2116,12 @@ dependencies = [
  "libc",
  "winapi 0.3.8",
 ]
+
+[[package]]
+name = "stable_deref_trait"
+version = "1.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a8f112729512f8e442d81f95a8a7ddf2b7c6b8a1a6f509a95864142b30cab2d3"
 
 [[package]]
 name = "static_assertions"

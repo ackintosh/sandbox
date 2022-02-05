@@ -45,6 +45,7 @@ members = [
   "crate-lazy_static",
   "crate-lru_time_cache",
   "crate-parking_lot",
+  "crate-prometheus-client_rust",
   "crate-quickcheck",
   "crate-rand",
   "crate-reqwest",
