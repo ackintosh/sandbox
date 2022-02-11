@@ -2,10 +2,12 @@
 
 #[cfg(test)]
 mod tests {
-    use prometheus_client::encoding::text::encode;
     use prometheus_client::encoding::text::Encode;
+    use prometheus_client::encoding::text::{encode, EncodeMetric};
     use prometheus_client::metrics::counter::Counter;
     use prometheus_client::metrics::family::Family;
+    use prometheus_client::metrics::gauge::Gauge;
+    use prometheus_client::metrics::MetricType;
     use prometheus_client::registry::Registry;
 
     #[derive(Clone, PartialEq, Eq, Hash, Encode)]
@@ -23,15 +25,15 @@ mod tests {
     #[test]
     fn it_works() {
         let mut registry = <Registry>::default();
-        let http_requests = Family::<Labels, Counter>::default();
+        let counter_http_requests_family = Family::<Labels, Counter>::default();
 
         registry.register(
             "http_requests",
             "Number of HTTP requests received",
-            Box::new(http_requests.clone()),
+            Box::new(counter_http_requests_family.clone()),
         );
 
-        let counter = http_requests.get_or_create(&Labels {
+        let counter = counter_http_requests_family.get_or_create(&Labels {
             method: Method::GET,
             path: "/metrics".to_string(),
         });
@@ -49,6 +51,13 @@ mod tests {
         for (descriptor, metric) in registry.iter() {
             println!("{}", descriptor.name());
             println!("{:?}", descriptor.labels());
+            // match metric.metric_type() {
+            //     MetricType::Counter => println!("Counter: {}", metric.encode()),
+            //     MetricType::Gauge => unreachable!(),
+            //     MetricType::Histogram => unreachable!(),
+            //     MetricType::Info => unreachable!(),
+            //     MetricType::Unknown => unreachable!(),
+            // }
         }
     }
 }
