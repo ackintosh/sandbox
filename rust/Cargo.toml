@@ -36,6 +36,7 @@ members = [
   "coursera-data-structures/week3-2-parallel-processing",
   "coursera-data-structures/week4-1-phone-book",
   "coursera-data-structures/week4-2-hashing-with-chains",
+  "coursera-data-structures/week6-1-binary-tree-traversals",
   "crate-bytes",
   "crate-chrono",
   "crate-criterion",

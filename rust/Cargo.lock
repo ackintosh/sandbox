@@ -2783,6 +2783,10 @@ name = "week5-3-edit-distance"
 version = "0.1.0"
 
 [[package]]
+name = "week6-1-binary-tree-traversals"
+version = "0.1.0"
+
+[[package]]
 name = "week6-1-maximum-amount-of-gold"
 version = "0.1.0"
 
