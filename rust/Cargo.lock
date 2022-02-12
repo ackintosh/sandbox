@@ -2791,6 +2791,10 @@ name = "week6-1-maximum-amount-of-gold"
 version = "0.1.0"
 
 [[package]]
+name = "week6-2-is-it-a-binary-search-tree"
+version = "0.1.0"
+
+[[package]]
 name = "week6-2-partition-souvenirs"
 version = "0.1.0"
 
