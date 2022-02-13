@@ -38,6 +38,7 @@ members = [
   "coursera-data-structures/week4-2-hashing-with-chains",
   "coursera-data-structures/week6-1-binary-tree-traversals",
   "coursera-data-structures/week6-2-is-it-a-binary-search-tree",
+  "coursera-data-structures/week6-3-is-it-a-binary-search-tree-hard-version",
   "crate-bytes",
   "crate-chrono",
   "crate-criterion",

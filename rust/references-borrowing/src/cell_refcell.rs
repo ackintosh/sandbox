@@ -3,6 +3,7 @@
 // https://doc.rust-jp.rs/the-rust-programming-language-ja/1.6/book/choosing-your-guarantees.html#%E3%82%BB%E3%83%AB%E5%9E%8B
 //////////////////////////////////////
 
+// use std::borrow::BorrowMut;
 #[cfg(test)]
 use std::cell::{Cell, Ref, RefCell};
 #[cfg(test)]
