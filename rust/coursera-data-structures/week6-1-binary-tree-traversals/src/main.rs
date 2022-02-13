@@ -9,19 +9,19 @@ fn main() {
 
     {
         let mut result = vec![];
-        in_order_traversal(&Rc::new(root_node.clone()), &mut result);
+        in_order_traversal(Rc::new(root_node.clone()), &mut result);
         print_result(&result);
     }
 
     {
         let mut result = vec![];
-        pre_order_traversal(&Rc::new(root_node.clone()), &mut result);
+        pre_order_traversal(Rc::new(root_node.clone()), &mut result);
         print_result(&result);
     }
 
     {
         let mut result = vec![];
-        post_order_traversal(&Rc::new(root_node), &mut result);
+        post_order_traversal(Rc::new(root_node), &mut result);
         print_result(&result);
     }
 
@@ -99,37 +99,37 @@ fn build_node(input: &Vec<[i64; 3]>, index: usize) -> Node {
     node
 }
 
-fn in_order_traversal(node: &Rc<Node>, output: &mut Vec<u64>) {
+fn in_order_traversal(node: Rc<Node>, output: &mut Vec<u64>) {
     if let Some(left) = &node.left {
-        in_order_traversal(left, output);
+        in_order_traversal(left.clone(), output);
     }
 
     output.push(node.key);
 
     if let Some(right) = &node.right {
-        in_order_traversal(right, output);
+        in_order_traversal(right.clone(), output);
     }
 }
 
-fn pre_order_traversal(node: &Rc<Node>, output: &mut Vec<u64>) {
+fn pre_order_traversal(node: Rc<Node>, output: &mut Vec<u64>) {
     output.push(node.key);
 
     if let Some(left) = &node.left {
-        pre_order_traversal(left, output);
+        pre_order_traversal(left.clone(), output);
     }
 
     if let Some(right) = &node.right {
-        pre_order_traversal(right, output);
+        pre_order_traversal(right.clone(), output);
     }
 }
 
-fn post_order_traversal(node: &Rc<Node>, output: &mut Vec<u64>) {
+fn post_order_traversal(node: Rc<Node>, output: &mut Vec<u64>) {
     if let Some(left) = &node.left {
-        post_order_traversal(left, output);
+        post_order_traversal(left.clone(), output);
     }
 
     if let Some(right) = &node.right {
-        post_order_traversal(right, output);
+        post_order_traversal(right.clone(), output);
     }
 
     output.push(node.key);
@@ -161,7 +161,7 @@ mod tests {
             0,
         );
         let mut result = vec![];
-        in_order_traversal(&Rc::new(root), &mut result);
+        in_order_traversal(Rc::new(root), &mut result);
         assert_eq!(vec![1, 2, 3, 4, 5], result);
     }
 
@@ -172,7 +172,7 @@ mod tests {
             0,
         );
         let mut result = vec![];
-        pre_order_traversal(&Rc::new(root), &mut result);
+        pre_order_traversal(Rc::new(root), &mut result);
         assert_eq!(vec![4, 2, 1, 3, 5], result);
     }
 
@@ -183,7 +183,7 @@ mod tests {
             0,
         );
         let mut result = vec![];
-        post_order_traversal(&Rc::new(root), &mut result);
+        post_order_traversal(Rc::new(root), &mut result);
         assert_eq!(vec![1, 3, 2, 5, 4], result);
     }
 }
