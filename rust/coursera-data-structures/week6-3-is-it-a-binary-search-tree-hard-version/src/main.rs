@@ -1,7 +1,5 @@
 #![recursion_limit = "2000000000"]
 
-use std::cell::{Cell, RefCell};
-use std::collections::HashMap;
 use std::ops::Deref;
 use std::process::exit;
 use std::rc::Rc;
@@ -14,12 +12,7 @@ fn main() {
     }
     let input = read_nodes(n);
     let root_node = build_node(&input, 0);
-    if is_binary_search_tree(
-        &root_node,
-        Rc::new(Cell::new(std::i64::MIN)),
-        Rc::new(RefCell::new(HashMap::new())),
-        1,
-    ) {
+    if is_bst(&root_node, std::i64::MIN, std::i64::MAX) {
         println!("CORRECT");
     } else {
         println!("INCORRECT");
@@ -36,39 +29,7 @@ where
     buff.trim().parse::<T>().unwrap()
 }
 
-// 返り値に配列を使う(stackに領域を確保する)パターン
-// fn read_nodes(number_of_elements: u64) -> Vec<[i64; 3]> {
-//     let mut nodes = vec![];
-//
-//     fn get_i64(s: &str) -> i64 {
-//         match s.parse::<i64>() {
-//             Ok(i) => i,
-//             Err(e) => {
-//                 println!("{}", e);
-//                 exit(0);
-//             }
-//         }
-//     }
-//
-//     for _ in 0..number_of_elements {
-//         let mut buff = String::new();
-//         let res = std::io::stdin().read_line(&mut buff);
-//         if res.is_err() {
-//             println!("res: {:?}", res);
-//             exit(0);
-//         }
-//
-//         let mut strs = buff.split_whitespace();
-//         let key = get_i64(strs.next().expect("should have key"));
-//         let left = get_i64(strs.next().expect("should have left"));
-//         let right = get_i64(strs.next().expect("should have right"));
-//         nodes.push([key, left, right]);
-//     }
-//
-//     nodes
-// }
-
-fn read_nodes(number_of_elements: u64) -> Vec<Vec<i64>> {
+fn read_nodes(number_of_elements: u64) -> Vec<[i64; 3]> {
     let mut nodes = vec![];
 
     fn get_i64(s: &str) -> i64 {
@@ -93,7 +54,7 @@ fn read_nodes(number_of_elements: u64) -> Vec<Vec<i64>> {
         let key = get_i64(strs.next().expect("should have key"));
         let left = get_i64(strs.next().expect("should have left"));
         let right = get_i64(strs.next().expect("should have right"));
-        nodes.push(vec![key, left, right]);
+        nodes.push([key, left, right]);
     }
 
     nodes
@@ -116,7 +77,7 @@ impl Node {
     }
 }
 
-fn build_node(input: &Vec<Vec<i64>>, index: usize) -> Node {
+fn build_node(input: &Vec<[i64; 3]>, index: usize) -> Node {
     let mut node = Node::new(input[index][0]);
 
     if input[index][1] != -1 {
@@ -130,48 +91,22 @@ fn build_node(input: &Vec<Vec<i64>>, index: usize) -> Node {
     node
 }
 
-fn is_binary_search_tree(
-    node: &Node,
-    working_key: Rc<Cell<i64>>,
-    key_to_level: Rc<RefCell<HashMap<i64, u64>>>,
-    level: u64,
-) -> bool {
+// ヒント
+// https://www.coursera.org/learn/data-structures/discussions/weeks/6/threads/QyTVc_BhEeamuwo9wEiniA/replies/z0IzMN_OEem1gg6_wBWAmA?page=1&sort=upvotesDesc
+fn is_bst(node: &Node, min: i64, max: i64) -> bool {
+    if node.key < min || node.key > max {
+        return false;
+    }
+
     if let Some(left) = &node.left {
-        if !is_binary_search_tree(
-            left.deref(),
-            working_key.clone(),
-            key_to_level.clone(),
-            level + 1,
-        ) {
+        // leftでは同一キーを許可しないので、第3引数(`max`)は -1 した数値を渡している
+        if !is_bst(left.deref(), min, node.key - 1) {
             return false;
         }
     }
 
-    if node.key < working_key.get() {
-        return false;
-    } else if node.key == working_key.get() {
-        match key_to_level.borrow().get(&node.key) {
-            None => {
-                println!("unreachable");
-                return false;
-            }
-            Some(level_of_duplicate) => {
-                if level_of_duplicate > &level {
-                    return false;
-                }
-            }
-        }
-    }
-    working_key.set(node.key);
-    key_to_level.borrow_mut().insert(node.key, level);
-
     if let Some(right) = &node.right {
-        if !is_binary_search_tree(
-            right.deref(),
-            working_key.clone(),
-            key_to_level.clone(),
-            level + 1,
-        ) {
+        if !is_bst(right.deref(), node.key, max) {
             return false;
         }
     }
@@ -182,83 +117,48 @@ fn is_binary_search_tree(
 #[test]
 fn test() {
     {
-        let root = build_node(&vec![vec![2, 1, 2], vec![1, -1, -1], vec![3, -1, -1]], 0);
-        assert!(is_binary_search_tree(
-            &root,
-            Rc::new(Cell::new(0)),
-            Rc::new(RefCell::new(HashMap::new())),
-            1,
-        ));
+        let root = build_node(&vec![[2, 1, 2], [1, -1, -1], [3, -1, -1]], 0);
+        assert!(is_bst(&root, std::i64::MIN, std::i64::MAX,));
     }
     {
-        let root = build_node(&vec![vec![1, 1, 2], vec![2, -1, -1], vec![3, -1, -1]], 0);
-        assert!(!is_binary_search_tree(
-            &root,
-            Rc::new(Cell::new(0)),
-            Rc::new(RefCell::new(HashMap::new())),
-            1,
-        ));
+        let root = build_node(&vec![[1, 1, 2], [2, -1, -1], [3, -1, -1]], 0);
+        assert!(!is_bst(&root, std::i64::MIN, std::i64::MAX,));
     }
     {
-        let root = build_node(&vec![vec![2, 1, 2], vec![1, -1, -1], vec![2, -1, -1]], 0);
-        assert!(is_binary_search_tree(
-            &root,
-            Rc::new(Cell::new(0)),
-            Rc::new(RefCell::new(HashMap::new())),
-            1,
-        ));
+        let root = build_node(&vec![[2, 1, 2], [1, -1, -1], [2, -1, -1]], 0);
+        assert!(is_bst(&root, std::i64::MIN, std::i64::MAX,));
     }
     {
-        let root = build_node(&vec![vec![2, 1, 2], vec![2, -1, -1], vec![3, -1, -1]], 0);
-        assert!(!is_binary_search_tree(
-            &root,
-            Rc::new(Cell::new(0)),
-            Rc::new(RefCell::new(HashMap::new())),
-            1,
-        ));
+        let root = build_node(&vec![[2, 1, 2], [2, -1, -1], [3, -1, -1]], 0);
+        assert!(!is_bst(&root, std::i64::MIN, std::i64::MAX,));
     }
     {
-        let root = build_node(&vec![vec![2147483647, -1, -1]], 0);
-        assert!(is_binary_search_tree(
-            &root,
-            Rc::new(Cell::new(0)),
-            Rc::new(RefCell::new(HashMap::new())),
-            1,
-        ));
+        let root = build_node(&vec![[2147483647, -1, -1]], 0);
+        assert!(is_bst(&root, std::i64::MIN, std::i64::MAX,));
     }
     {
         let root = build_node(
-            &vec![vec![1, -1, 1], vec![2, -1, 2], vec![3, -1, 3], vec![4, -1, 4], vec![5, -1, -1]],
+            &vec![[1, -1, 1], [2, -1, 2], [3, -1, 3], [4, -1, 4], [5, -1, -1]],
             0,
         );
-        assert!(is_binary_search_tree(
-            &root,
-            Rc::new(Cell::new(0)),
-            Rc::new(RefCell::new(HashMap::new())),
-            1,
-        ));
+        assert!(is_bst(&root, std::i64::MIN, std::i64::MAX,));
     }
     {
         // https://www.coursera.org/learn/data-structures/discussions/threads/KNAeZCvbEeiUiBLK9GPa7g/replies/27HecCv8EeibaRLLXg8tTg/comments/hjXhFXMXEei99gpJiLeZ7g
         let root = build_node(
             &vec![
-                vec![4, 1, 2],
-                vec![2, 3, 4],
-                vec![6, 5, 6],
-                vec![1, -1, -1],
-                vec![3, -1, -1],
-                vec![4, -1, -1],
-                vec![7, -1, -1],
+                [4, 1, 2],
+                [2, 3, 4],
+                [6, 5, 6],
+                [1, -1, -1],
+                [3, -1, -1],
+                [4, -1, -1],
+                [7, -1, -1],
             ],
             0,
         );
         // This example should be CORRECT(true)
         // https://www.coursera.org/learn/data-structures/discussions/threads/KNAeZCvbEeiUiBLK9GPa7g/replies/27HecCv8EeibaRLLXg8tTg/comments/giYfXH_9Eeir_w7CDfa8dg
-        assert!(is_binary_search_tree(
-            &root,
-            Rc::new(Cell::new(0)),
-            Rc::new(RefCell::new(HashMap::new())),
-            1,
-        ));
+        assert!(is_bst(&root, std::i64::MIN, std::i64::MAX,));
     }
 }
