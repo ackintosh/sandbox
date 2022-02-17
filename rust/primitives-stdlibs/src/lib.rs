@@ -10,6 +10,7 @@ mod dyn_dispatch;
 mod generics;
 mod hash;
 mod inner;
+mod interior_mutability;
 mod iter;
 mod loops;
 mod macro_assert;
