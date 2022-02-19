@@ -1,9 +1,9 @@
 ## 参考
 
-- [【2021年版】NFTを発行してほしいという問い合わせが多いので発行方法とサンプルコードを公開します - SaaS企業で働くPdMエンジニアのブログ https://www.blockchainengineer.tokyo/entry/2021-issue-nft-code]
-- [Solidity Tutorial – How to Create NFTs with Hardhat https://www.freecodecamp.org/news/solidity-tutorial-hardhat-nfts/]
-- OpenZeppelin https://github.com/OpenZeppelin/openzeppelin-contracts
-  - ERC-721 https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/ERC721.sol
+- [【2021年版】NFTを発行してほしいという問い合わせが多いので発行方法とサンプルコードを公開します - SaaS企業で働くPdMエンジニアのブログ](https://www.blockchainengineer.tokyo/entry/2021-issue-nft-code)
+- [Solidity Tutorial – How to Create NFTs with Hardhat](https://www.freecodecamp.org/news/solidity-tutorial-hardhat-nfts/)
+- [OpenZeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts)
+  - [ERC-721](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/ERC721.sol)
 
 ## コマンド
 
