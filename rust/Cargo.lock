@@ -2727,6 +2727,10 @@ name = "week2-1-fibonacci-number"
 version = "0.1.0"
 
 [[package]]
+name = "week2-2-determining-an-order-of-courses"
+version = "0.1.0"
+
+[[package]]
 name = "week2-2-last-digit-of-a-large-fibonacci-number"
 version = "0.1.0"
 
