@@ -2719,6 +2719,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "week2-1-checking-consistency-of-cs-curriculum"
+version = "0.1.0"
+
+[[package]]
 name = "week2-1-fibonacci-number"
 version = "0.1.0"
 

@@ -1,9 +1,6 @@
-// https://www.coursera.org/learn/algorithms-on-graphs/programming/AUd0k/programming-assignment-1-decomposition-of-graphs/submission
-use std::cell::RefCell;
 use std::collections::hash_map::Entry;
 use std::collections::HashMap;
 use std::process::exit;
-use std::rc::Rc;
 
 fn main() {
     let number_of_edges = {
@@ -11,14 +8,9 @@ fn main() {
         nums[1]
     };
     let edges = read_edges(number_of_edges);
-    let maze = build_undirected_graph(edges);
-    let target = {
-        let nums = read_nums(2);
-        (nums[0], nums[1])
-    };
+    let graph = build_directed_graph(edges);
 
-    let visited = Rc::new(RefCell::new(vec![]));
-    if finding_an_exit(&maze, &target.0, &target.1, visited) {
+    if check_consistency(&graph) {
         println!("1");
     } else {
         println!("0");
@@ -97,80 +89,76 @@ fn read_nums(number_of_elements: u64) -> Vec<u64> {
     nums
 }
 
-fn build_undirected_graph(input: Vec<(u64, u64)>) -> HashMap<u64, Vec<u64>> {
-    fn add_edge(graph: &mut HashMap<u64, Vec<u64>>, u: u64, v: u64) {
-        match graph.entry(u) {
-            Entry::Occupied(mut entry) => {
-                let vertices = entry.get_mut();
-                vertices.push(v);
-            }
-            Entry::Vacant(entry) => {
-                entry.insert(vec![v]);
-            }
-        }
-    }
-
+fn build_directed_graph(edges: Vec<(u64, u64)>) -> HashMap<u64, Vec<u64>> {
     let mut graph: HashMap<u64, Vec<u64>> = HashMap::new();
 
-    for i in input {
-        add_edge(&mut graph, i.0, i.1);
-        add_edge(&mut graph, i.1, i.0);
+    for e in edges {
+        match graph.entry(e.0) {
+            Entry::Occupied(mut entry) => {
+                entry.get_mut().push(e.1);
+            }
+            Entry::Vacant(entry) => {
+                entry.insert(vec![e.1]);
+            }
+        }
     }
 
     graph
 }
 
-fn finding_an_exit(
-    maze: &HashMap<u64, Vec<u64>>,
-    v: &u64,
-    target: &u64,
-    visited: Rc<RefCell<Vec<u64>>>,
-) -> bool {
-    if visited.borrow().contains(v) {
-        return false;
+fn check_consistency(graph: &HashMap<u64, Vec<u64>>) -> bool {
+    for vertex in graph.keys() {
+        if contains_cycle(vertex, graph, vec![]) {
+            return true;
+        }
     }
 
-    visited.borrow_mut().push(*v);
-    if v == target {
+    false
+}
+
+fn contains_cycle(v: &u64, graph: &HashMap<u64, Vec<u64>>, mut visited: Vec<u64>) -> bool {
+    if visited.contains(v) {
+        // println!("v: {}, visited: {:?}", v, visited);
         return true;
     }
 
-    match maze.get(&v) {
+    visited.append(&mut vec![*v]);
+
+    match graph.get(v) {
         None => {}
         Some(adjacency) => {
             for a in adjacency {
-                if finding_an_exit(maze, a, target, visited.clone()) {
+                if contains_cycle(a, graph, visited.clone()) {
                     return true;
                 }
             }
         }
     }
-    return false;
+
+    false
 }
 
 #[cfg(test)]
 mod tests {
-    use crate::{build_undirected_graph, finding_an_exit};
-    use std::cell::RefCell;
-    use std::rc::Rc;
+    use crate::{build_directed_graph, check_consistency};
 
     #[test]
-    fn test_build_graph() {
-        let graph = build_undirected_graph(vec![(1, 2), (3, 2), (4, 3), (1, 4)]);
-        println!("{:?}", graph);
+    fn test_build_directed_graph() {
+        let g = build_directed_graph(vec![(1, 2), (4, 1), (2, 3), (3, 1)]);
+        println!("{:?}", g);
     }
 
     #[test]
-    fn test_finding_an_exit() {
+    fn test_check_consistency() {
         {
-            let visited = Rc::new(RefCell::new(vec![]));
-            let maze = build_undirected_graph(vec![(1, 2), (3, 2), (4, 3), (1, 4)]);
-            assert!(finding_an_exit(&maze, &1, &4, visited));
+            let g = build_directed_graph(vec![(1, 2), (4, 1), (2, 3), (3, 1)]);
+            assert!(check_consistency(&g));
         }
         {
-            let visited = Rc::new(RefCell::new(vec![]));
-            let maze = build_undirected_graph(vec![(1, 2), (3, 2)]);
-            assert!(!finding_an_exit(&maze, &1, &4, visited));
+            let g =
+                build_directed_graph(vec![(1, 2), (2, 3), (1, 3), (3, 4), (1, 4), (2, 5), (3, 5)]);
+            // println!("graph: {:?}", g);
+            assert!(!check_consistency(&g));
         }
     }
 }

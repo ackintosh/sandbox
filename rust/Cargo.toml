@@ -31,6 +31,7 @@ members = [
   "coursera-algorithmic-toolbox/week6-1-maximum-amount-of-gold",
   "coursera-algorithmic-toolbox/week6-2-partition-souvenirs",
   "coursera-algorithms-on-graphs/week1-1-finding-an-exit-from-a-maze",
+  "coursera-algorithms-on-graphs/week2-1-checking-consistency-of-cs-curriculum",
   "coursera-data-structures/week1-1-check-brackets-in-the-code",
   "coursera-data-structures/week1-2-compute-tree-height",
   "coursera-data-structures/week3-1-convert-array-into-heap",
