@@ -10,12 +10,13 @@ fn main() {
         (nums[0], nums[1])
     };
     let edges = read_edges(number_of_edges);
-    let mut graph = initialize_directed_graph(number_of_nodes);
-    build_directed_graph(&edges, &mut graph);
+    // let mut graph = initialize_directed_graph(number_of_nodes);
+    let graph = build_directed_graph(&edges);
 
-    for v in topological_sort(&graph).iter().rev() {
-        print!("{} ", v);
-    }
+    topological_sort(&number_of_nodes, &graph);
+    // for v in topological_sort(&number_of_nodes, &graph).iter().rev() {
+    //     print!("{} ", v);
+    // }
 }
 
 fn read_edges(number_of_edges: u64) -> Vec<(u64, u64)> {
@@ -90,43 +91,57 @@ fn read_nums(number_of_elements: u64) -> Vec<u64> {
     nums
 }
 
-fn initialize_directed_graph(number_of_nodes: u64) -> HashMap<u64, Vec<u64>> {
+// fn initialize_directed_graph(number_of_nodes: u64) -> HashMap<u64, Vec<u64>> {
+//     let mut graph: HashMap<u64, Vec<u64>> = HashMap::new();
+//     for n in 1..=number_of_nodes {
+//         graph.insert(n, vec![]);
+//     }
+//
+//     graph
+// }
+
+fn build_directed_graph(edges: &Vec<(u64, u64)>) -> HashMap<u64, Vec<u64>>{
     let mut graph: HashMap<u64, Vec<u64>> = HashMap::new();
-    for n in 1..=number_of_nodes {
-        graph.insert(n, vec![]);
-    }
 
-    graph
-}
-
-fn build_directed_graph(edges: &Vec<(u64, u64)>, graph: &mut HashMap<u64, Vec<u64>>) {
     for e in edges {
         match graph.entry(e.0) {
             Entry::Occupied(mut entry) => {
                 entry.get_mut().push(e.1);
             }
-            Entry::Vacant(_) => unreachable!(), // `initialize_directed_graph` でグラフが正しく初期化されていればここには到達しない
+            Entry::Vacant(entry) => {
+                entry.insert(vec![e.1]);
+            }
         }
     }
+
+    graph
 }
 
-fn topological_sort(graph: &HashMap<u64, Vec<u64>>) -> Vec<u64> {
+fn topological_sort(number_of_nodes: &u64, graph: &HashMap<u64, Vec<u64>>) {
     let sorted_nodes: Rc<RefCell<Vec<u64>>> = Rc::new(RefCell::new(vec![]));
 
-    for node in graph.keys() {
-        if sorted_nodes.borrow().contains(node) {
+    for node in 1_u64..=*number_of_nodes {
+        if sorted_nodes.borrow().contains(&node) {
             continue;
         }
-        dfs(node, graph, sorted_nodes.clone());
+        dfs(&node, graph, sorted_nodes.clone());
     }
 
-    let b = sorted_nodes.borrow();
-    b.clone()
+    let mut b = sorted_nodes.borrow_mut();
+    // b.clone()
+    while let Some(v) = b.pop() {
+        print!("{} ", v);
+    }
+    // for v in b.iter().rev() {
+    //     print!("{} ", v);
+    // }
 }
 
 fn dfs(node: &u64, graph: &HashMap<u64, Vec<u64>>, sorted_nodes: Rc<RefCell<Vec<u64>>>) {
     match graph.get(node) {
-        None => unreachable!(), // `initialize_directed_graph` でグラフが正しく初期化されていればここには到達しない
+        None => {
+            sorted_nodes.borrow_mut().push(*node);
+        }
         Some(edges) => {
             for e in edges {
                 if sorted_nodes.borrow().contains(e) {
@@ -141,20 +156,22 @@ fn dfs(node: &u64, graph: &HashMap<u64, Vec<u64>>, sorted_nodes: Rc<RefCell<Vec<
     }
 }
 
-#[test]
-fn test_topological_sort() {
-    {
-        let mut g = initialize_directed_graph(4);
-        build_directed_graph(&vec![(1, 2), (4, 1), (3, 1)], &mut g);
-        println!("{:?}", g);
-        let s = topological_sort(&g);
-        println!("{:?}", s);
-    }
-    {
-        let mut g = initialize_directed_graph(4);
-        build_directed_graph(&vec![(3, 1)], &mut g);
-        println!("{:?}", g);
-        let s = topological_sort(&g);
-        println!("{:?}", s);
-    }
-}
+// #[test]
+// fn test_topological_sort() {
+//     {
+//         // let mut g = initialize_directed_graph(4);
+//         let g = build_directed_graph(&vec![(1, 2), (4, 1), (3, 1)]);
+//         println!("{:?}", g);
+//         let mut s = topological_sort(&4, &g);
+//         s.reverse();
+//         println!("{:?}", s);
+//     }
+//     {
+//         // let mut g = initialize_directed_graph(4);
+//         let g = build_directed_graph(&vec![(3, 1)]);
+//         println!("{:?}", g);
+//         let mut s = topological_sort(&4, &g);
+//         s.reverse();
+//         println!("{:?}", s);
+//     }
+// }
