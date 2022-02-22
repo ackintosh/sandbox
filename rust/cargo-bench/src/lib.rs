@@ -8,9 +8,12 @@
 #[cfg(test)]
 mod bench {
     extern crate test;
+
+    use std::cell::RefCell;
     use test::Bencher;
 
     use std::collections::HashMap;
+    use std::rc::Rc;
 
     const RANGE: usize = 10_0000;
     const FIND_TIMES: usize = 10_0000;
@@ -42,6 +45,34 @@ mod bench {
             }
             let res: usize = (0..FIND_TIMES)
                 .map(|_| array[thread_rng().gen_range(0_usize..RANGE)])
+                .sum();
+            test::black_box(res);
+        });
+    }
+
+    #[bench]
+    fn array_refcell_io(b: &mut Bencher) {
+        b.iter(|| {
+            let array_refcell = RefCell::new([0; RANGE]);
+            for i in 0..RANGE {
+                array_refcell.borrow_mut()[i] = i;
+            }
+            let res: usize = (0..FIND_TIMES)
+                .map(|_| array_refcell.borrow()[thread_rng().gen_range(0_usize..RANGE)])
+                .sum();
+            test::black_box(res);
+        });
+    }
+
+    #[bench]
+    fn array_refcell_rc_io(b: &mut Bencher) {
+        b.iter(|| {
+            let array_refcell = Rc::new(RefCell::new([0; RANGE]));
+            for i in 0..RANGE {
+                array_refcell.borrow_mut()[i] = i;
+            }
+            let res: usize = (0..FIND_TIMES)
+                .map(|_| array_refcell.borrow()[thread_rng().gen_range(0_usize..RANGE)])
                 .sum();
             test::black_box(res);
         });
