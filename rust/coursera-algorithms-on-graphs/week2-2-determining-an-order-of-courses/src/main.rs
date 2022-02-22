@@ -1,25 +1,26 @@
 use std::cell::RefCell;
 use std::collections::hash_map::Entry;
 use std::collections::HashMap;
+use std::convert::TryFrom;
 use std::process::exit;
 use std::rc::Rc;
+
+const MAX_NODES: usize = 100001; // indexの計算(ゼロオリジンと整合させるために +1 する)を省略するために、 100000 + 1 にしている
 
 fn main() {
     let (number_of_nodes, number_of_edges) = {
         let nums = read_nums(2);
-        (nums[0], nums[1])
+        (usize::try_from(nums[0]).unwrap(), nums[1])
     };
     let edges = read_edges(number_of_edges);
-    // let mut graph = initialize_directed_graph(number_of_nodes);
     let graph = build_directed_graph(&edges);
 
-    topological_sort(&number_of_nodes, &graph);
-    // for v in topological_sort(&number_of_nodes, &graph).iter().rev() {
-    //     print!("{} ", v);
-    // }
+    for v in topological_sort(number_of_nodes, &graph).iter().rev() {
+        print!("{} ", v);
+    }
 }
 
-fn read_edges(number_of_edges: u64) -> Vec<(u64, u64)> {
+fn read_edges(number_of_edges: u64) -> Vec<(usize, usize)> {
     let mut edges = vec![];
 
     for _ in 0..number_of_edges {
@@ -37,7 +38,7 @@ fn read_edges(number_of_edges: u64) -> Vec<(u64, u64)> {
                 println!("strs.next() is None");
                 exit(0);
             }
-            let parsed = str.unwrap().parse::<u64>();
+            let parsed = str.unwrap().parse::<usize>();
             if parsed.is_err() {
                 println!("parsed: {:?}", parsed);
                 exit(0);
@@ -51,7 +52,7 @@ fn read_edges(number_of_edges: u64) -> Vec<(u64, u64)> {
                 println!("strs.next() is None");
                 exit(0);
             }
-            let parsed = str.unwrap().parse::<u64>();
+            let parsed = str.unwrap().parse::<usize>();
             if parsed.is_err() {
                 println!("parsed: {:?}", parsed);
                 exit(0);
@@ -91,17 +92,8 @@ fn read_nums(number_of_elements: u64) -> Vec<u64> {
     nums
 }
 
-// fn initialize_directed_graph(number_of_nodes: u64) -> HashMap<u64, Vec<u64>> {
-//     let mut graph: HashMap<u64, Vec<u64>> = HashMap::new();
-//     for n in 1..=number_of_nodes {
-//         graph.insert(n, vec![]);
-//     }
-//
-//     graph
-// }
-
-fn build_directed_graph(edges: &Vec<(u64, u64)>) -> HashMap<u64, Vec<u64>>{
-    let mut graph: HashMap<u64, Vec<u64>> = HashMap::new();
+fn build_directed_graph(edges: &Vec<(usize, usize)>) -> HashMap<usize, Vec<usize>> {
+    let mut graph: HashMap<usize, Vec<usize>> = HashMap::new();
 
     for e in edges {
         match graph.entry(e.0) {
@@ -117,37 +109,39 @@ fn build_directed_graph(edges: &Vec<(u64, u64)>) -> HashMap<u64, Vec<u64>>{
     graph
 }
 
-fn topological_sort(number_of_nodes: &u64, graph: &HashMap<u64, Vec<u64>>) {
-    let sorted_nodes: Rc<RefCell<Vec<u64>>> = Rc::new(RefCell::new(vec![]));
+fn topological_sort(number_of_nodes: usize, graph: &HashMap<usize, Vec<usize>>) -> Vec<usize> {
+    let sorted_nodes: Rc<RefCell<Vec<usize>>> = Rc::new(RefCell::new(vec![]));
+    let visited: Rc<RefCell<[bool; MAX_NODES]>> = Rc::new(RefCell::new([false; MAX_NODES]));
 
-    for node in 1_u64..=*number_of_nodes {
-        if sorted_nodes.borrow().contains(&node) {
+    for node in 1_usize..=number_of_nodes {
+        if visited.borrow()[node] {
             continue;
         }
-        dfs(&node, graph, sorted_nodes.clone());
+        dfs(&node, graph, sorted_nodes.clone(), visited.clone());
     }
 
-    let mut b = sorted_nodes.borrow_mut();
-    // b.clone()
-    while let Some(v) = b.pop() {
-        print!("{} ", v);
-    }
-    // for v in b.iter().rev() {
-    //     print!("{} ", v);
-    // }
+    let b = sorted_nodes.borrow_mut();
+    b.clone()
 }
 
-fn dfs(node: &u64, graph: &HashMap<u64, Vec<u64>>, sorted_nodes: Rc<RefCell<Vec<u64>>>) {
+fn dfs(
+    node: &usize,
+    graph: &HashMap<usize, Vec<usize>>,
+    sorted_nodes: Rc<RefCell<Vec<usize>>>,
+    visited: Rc<RefCell<[bool; MAX_NODES]>>,
+) {
+    visited.borrow_mut()[*node] = true;
+
     match graph.get(node) {
         None => {
             sorted_nodes.borrow_mut().push(*node);
         }
         Some(edges) => {
             for e in edges {
-                if sorted_nodes.borrow().contains(e) {
+                if visited.borrow()[*e] {
                     continue;
                 }
-                dfs(e, graph, sorted_nodes.clone());
+                dfs(e, graph, sorted_nodes.clone(), visited.clone());
             }
 
             // Postorder
@@ -156,22 +150,20 @@ fn dfs(node: &u64, graph: &HashMap<u64, Vec<u64>>, sorted_nodes: Rc<RefCell<Vec<
     }
 }
 
-// #[test]
-// fn test_topological_sort() {
-//     {
-//         // let mut g = initialize_directed_graph(4);
-//         let g = build_directed_graph(&vec![(1, 2), (4, 1), (3, 1)]);
-//         println!("{:?}", g);
-//         let mut s = topological_sort(&4, &g);
-//         s.reverse();
-//         println!("{:?}", s);
-//     }
-//     {
-//         // let mut g = initialize_directed_graph(4);
-//         let g = build_directed_graph(&vec![(3, 1)]);
-//         println!("{:?}", g);
-//         let mut s = topological_sort(&4, &g);
-//         s.reverse();
-//         println!("{:?}", s);
-//     }
-// }
+#[test]
+fn test_topological_sort() {
+    {
+        let g = build_directed_graph(&vec![(1, 2), (4, 1), (3, 1)]);
+        println!("{:?}", g);
+        let mut s = topological_sort(4, &g);
+        s.reverse();
+        println!("{:?}", s);
+    }
+    {
+        let g = build_directed_graph(&vec![(3, 1)]);
+        println!("{:?}", g);
+        let mut s = topological_sort(4, &g);
+        s.reverse();
+        println!("{:?}", s);
+    }
+}
