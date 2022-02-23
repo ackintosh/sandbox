@@ -1,6 +1,10 @@
 // 参考
 // https://github.com/stepancheg/rust-protobuf/blob/master/protobuf-test/build.rs
 
+// build.rs から標準出力への出力内容は -vv フラグをつけると確認できる
+// https://matsu7874.hatenablog.com/entry/2021/03/20/160150
+// cargo build -vv
+
 // extern crate protoc_rust;
 
 use protoc_rust::Customize;
