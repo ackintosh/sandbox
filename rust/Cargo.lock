@@ -2743,6 +2743,10 @@ name = "week2-4-least-common-multiple"
 version = "0.1.0"
 
 [[package]]
+name = "week3-1-computing-the-minimum-number-of-flight-segments"
+version = "0.1.0"
+
+[[package]]
 name = "week3-1-convert-array-into-heap"
 version = "0.1.0"
 
