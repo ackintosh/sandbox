@@ -178,5 +178,8 @@ mod hello {
 // fn test() {
 //     let executor = Executor::new();
 //     executor.get_spawner().spawn(Hello::new());
+//
+//     // run関数を呼び出すことで、Hello, World!のコルーチンが最後まで自動実行される
+//     // このようにスケジューリング実行を行うと、必要なときに必要なコルーチンの呼び出しをプログラマが考慮する必要がなくなり、必要なときには自動でコルーチンが実行されるようになる
 //     executor.run();
 // }
