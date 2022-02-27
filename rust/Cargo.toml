@@ -60,6 +60,7 @@ members = [
   "crate-serde",
   "crate-uint",
   "crate-tokio",
+  "crate-tokio_echo-server",
   "crate-tracing",
   "crate-trust-dns",
   "generics",
