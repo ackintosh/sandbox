@@ -406,6 +406,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "crate-tokio_oneshot"
+version = "0.1.0"
+dependencies = [
+ "tokio 1.17.0",
+]
+
+[[package]]
 name = "crate-tracing"
 version = "0.1.0"
 dependencies = [

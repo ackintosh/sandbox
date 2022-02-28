@@ -61,6 +61,7 @@ members = [
   "crate-uint",
   "crate-tokio",
   "crate-tokio_echo-server",
+  "crate-tokio_oneshot",
   "crate-tracing",
   "crate-trust-dns",
   "generics",
