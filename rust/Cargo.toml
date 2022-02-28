@@ -62,6 +62,7 @@ members = [
   "crate-tokio",
   "crate-tokio_echo-server",
   "crate-tokio_oneshot",
+  "crate-tokio_spawn-blocking",
   "crate-tracing",
   "crate-trust-dns",
   "generics",
