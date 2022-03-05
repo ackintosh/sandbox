@@ -69,7 +69,6 @@ members = [
   "level-db",
   "lru-time-cache",
   "primitives-stdlibs",
-  "references-borrowing",
   "threading",
   "tower-of-hanoi"
 ]

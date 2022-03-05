@@ -3,7 +3,7 @@ use std::rc::Rc;
 
 // std::rc::Rc (Reference Counted)
 // https://doc.rust-lang.org/std/rc/struct.Rc.html
-// https://doc.rust-jp.rs/book/second-edition/ch15-04-rc.html
+// https://doc.rust-jp.rs/book-ja/ch15-04-rc.html
 
 // * ヒープにプログラムの複数箇所で読む何らかのデータを確保したいけれど、 コンパイル時にはどの部分が最後にデータを使用し終わるか決定できない時に使う
 // * 参照カウントが 0 になるまで値がdropされない

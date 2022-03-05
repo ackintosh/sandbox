@@ -18,7 +18,7 @@ fn test_foo() {
     // zはマクロに定義していないのでコンパイルエラー
     // foo!(z => 3);
     // error: no rules expected the token `z`
-    //   --> macros/src/lib.rs:23:10
+    //   --> macros/src/aaa:23:10
     //    |
     // 14 | macro_rules! foo {
     //    | ---------------- when calling this macro
