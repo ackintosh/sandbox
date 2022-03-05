@@ -5,6 +5,7 @@ mod condvar;
 mod const_static;
 mod ddd;
 mod dyn_dispatch;
+mod file_io;
 mod generics;
 mod hash;
 mod inner;

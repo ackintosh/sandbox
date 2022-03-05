@@ -65,7 +65,6 @@ members = [
   "crate-tokio_spawn-blocking",
   "crate-tracing",
   "crate-trust-dns",
-  "generics",
   "leetcode",
   "level-db",
   "lru-time-cache",

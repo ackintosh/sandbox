@@ -14,6 +14,4 @@
 // https://matsu7874.hatenablog.com/entry/2021/03/20/160150
 // cargo build -vv
 
-fn main() {
-
-}
+fn main() {}
