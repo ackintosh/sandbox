@@ -3,7 +3,6 @@ mod barrier;
 mod btreemap;
 mod condvar;
 mod const_static;
-mod data_structures;
 mod ddd;
 mod dyn_dispatch;
 mod generics;
