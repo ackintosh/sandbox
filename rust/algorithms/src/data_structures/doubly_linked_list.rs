@@ -1,4 +1,5 @@
 // 参考: book-procon/src/p95_alds1_3_c_doubly_linked_list.rs
+// 参考: https://twitter.com/qnighy/status/1271070174897045510
 
 use std::cell::RefCell;
 use std::rc::Rc;
