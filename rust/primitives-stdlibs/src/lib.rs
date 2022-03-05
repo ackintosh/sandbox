@@ -3,6 +3,7 @@ mod barrier;
 mod btreemap;
 mod condvar;
 mod const_static;
+mod cow_clone_on_write;
 mod ddd;
 mod dyn_dispatch;
 mod file_io;
