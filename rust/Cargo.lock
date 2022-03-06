@@ -2819,6 +2819,10 @@ name = "week4-1-phone-book"
 version = "0.1.0"
 
 [[package]]
+name = "week4-2-detecting-anomalies-in-currency-exchange-rates"
+version = "0.1.0"
+
+[[package]]
 name = "week4-2-hashing-with-chains"
 version = "0.1.0"
 
