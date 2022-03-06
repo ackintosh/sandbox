@@ -1,6 +1,8 @@
 // https://www.oreilly.co.jp/books/9784873119595/
 // 3.8.3 RWロック
 
+// https://doc.rust-jp.rs/the-rust-programming-language-ja/1.6/book/choosing-your-guarantees.html#mutext-%E3%81%A8-rwlockt
+
 use std::sync::RwLock;
 
 #[test]
