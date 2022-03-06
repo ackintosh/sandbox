@@ -133,7 +133,11 @@ fn build_directed_graph_with_weight(input: &Vec<(usize, usize, isize)>) -> (Grap
     (graph, weight)
 }
 
+// グラフに負閉路が含まれているかどうかを検査する
+// 全エッジで Relaxation を行うのを |V| 回実行する
+//   -> |V| 回目のループで、まだ Relaxation の影響を受けたノードがある場合、負閉路を含んでいると判定できる
 fn detect_negative_cycle(graph: &Graph, weight: &Weight, number_of_nodes: usize) -> bool {
+    // 課題の制約で、エッジの重みが最大で 1,000 なので、ここでは 1,001 を初期値に設定している
     let mut distance: Vec<isize> = (0..=number_of_nodes).map(|_| 1001_isize).collect();
 
     let mut relaxed = false;
