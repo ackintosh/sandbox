@@ -168,7 +168,7 @@ fn test() {
             for _ in 0..NUM_LOOP {
                 // スレッド番号を渡してロックを獲得する
                 let mut data = lock0.lock(thread_idx);
-                *data += 1;
+                *data += 1; // FairLockGuardが Deref, DerefMut を実装しているので参照外しが可能
             }
         });
 
