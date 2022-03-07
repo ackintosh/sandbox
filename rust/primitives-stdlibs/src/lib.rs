@@ -36,5 +36,7 @@ mod trait_box;
 mod trait_drop;
 mod trait_from_into;
 mod trait_rc;
+mod trait_send;
+mod trait_sync;
 mod vector;
 mod weak;
