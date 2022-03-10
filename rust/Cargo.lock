@@ -2835,6 +2835,10 @@ name = "week4-4-improving-quick-sort"
 version = "0.1.0"
 
 [[package]]
+name = "week5-1-building-roads-to-connect-cities"
+version = "0.1.0"
+
+[[package]]
 name = "week5-1-money-change-again"
 version = "0.1.0"
 

@@ -36,6 +36,7 @@ members = [
   "coursera-algorithms-on-graphs/week3-1-computing-the-minimum-number-of-flight-segments",
   "coursera-algorithms-on-graphs/week4-1-computing-the-minimum-cost-of-a-flight",
   "coursera-algorithms-on-graphs/week4-2-detecting-anomalies-in-currency-exchange-rates",
+  "coursera-algorithms-on-graphs/week5-1-building-roads-to-connect-cities",
   "coursera-data-structures/week1-1-check-brackets-in-the-code",
   "coursera-data-structures/week1-2-compute-tree-height",
   "coursera-data-structures/week3-1-convert-array-into-heap",

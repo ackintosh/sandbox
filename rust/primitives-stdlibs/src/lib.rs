@@ -1,5 +1,6 @@
 mod array;
 mod barrier;
+mod binary_heap;
 mod borrowing;
 mod btreemap;
 mod cell_refcell;
