@@ -158,3 +158,20 @@ mod underflow {
         assert_eq!(10u32.checked_sub(100), None);
     }
 }
+
+mod pow {
+    #[test]
+    fn pow() {
+        assert_eq!(9, 3_u64.pow(2));
+        assert_eq!(-9, -3_i32.pow(2));
+    }
+}
+
+mod sqrt {
+    #[test]
+    fn sqrt() {
+        let n = (10_u64 + 10_u64) as f64;
+        let a = n.sqrt();
+        println!("{}", a); // 4.47213595499958
+    }
+}
