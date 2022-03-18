@@ -9,8 +9,9 @@
 //    ABA問題を回避するには、LL/SC命令を用いるために、ポインタ操作をインラインアセンブリで実装する必要がある
 // *************************************************
 
-use std::ptr::{null, null_mut};
+use std::ptr::null_mut;
 use std::sync::atomic::{AtomicPtr, Ordering};
+use std::sync::Arc;
 
 // スタックのノード. リスト構造で管理する
 struct Node<T> {
@@ -118,4 +119,51 @@ impl<T> Drop for Stack<T> {
             node = n.next.load(Ordering::Relaxed);
         }
     }
+}
+
+const NUM_LOOP: usize = 1000000;
+const NUM_THREADS: usize = 4;
+
+// 下記のテストを実行すればABA問題が発生するはず
+// (NUM_LOOPを少ない数に変えるとテストがパスする)
+// #[test]
+fn test() {
+    let stack = Arc::new(Stack::<usize>::new());
+    let mut handles = vec![];
+
+    for i in 0..NUM_THREADS {
+        let stack0 = stack.clone();
+
+        let h = std::thread::spawn(move || {
+            if i & 1 == 0 {
+                // 偶数スレッドは push
+                for j in 0..NUM_LOOP {
+                    let k = i * NUM_LOOP + j;
+                    stack0.push(k);
+                    println!("push: {}", k);
+                }
+                println!("finished push: #{}", i);
+            } else {
+                // 奇数スレッドは pop
+                for _ in 0..NUM_LOOP {
+                    loop {
+                        // pop の結果が None の場合はやり直す
+                        if let Some(k) = stack0.pop() {
+                            println!("pop: {}", k);
+                            break;
+                        }
+                    }
+                }
+                println!("finished pop: #{}", i);
+            }
+        });
+
+        handles.push(h);
+    }
+
+    for h in handles {
+        h.join().unwrap();
+    }
+
+    assert!(stack.pop() == None);
 }
