@@ -101,3 +101,4 @@ $ brew services stop grafana
 
 - そのままコピーしただけ
 - prometheus.yml から参照される
+- メモ: localhost:5064 は validator client のメトリクス用ポート番号
