@@ -95,6 +95,9 @@ $ brew services stop grafana
 
 - http://localhost:3000/
 - admin/admin
+- ダッシュボードの設定をインポートする
+  - `Dashboard` -> `Browse` -> `Import` からJSONファイルをアップロードする 
+  - 参考: https://github.com/sigp/lighthouse-metrics#usage
 
 
 ## scrape-targets
