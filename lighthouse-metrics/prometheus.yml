@@ -29,7 +29,7 @@ scrape_configs:
     scrape_interval: 5s
     file_sd_configs:
         - files:
-            - '/Users/akihito1/src/github.com/ackintosh/sandbox/lighthouse-metrics/scrape-targets/scrape-targets.json'
+            - '/Users/akihito/src/github.com/ackintosh/sandbox/lighthouse-metrics/scrape-targets/scrape-targets.json'
 
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
