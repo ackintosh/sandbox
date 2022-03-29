@@ -72,15 +72,15 @@ $ brew install grafana
 - https://github.com/grafana/grafana/issues/27171
 - https://grafana.com/docs/grafana/latest/administration/provisioning/#dashboards
 
-下記のコマンドで `/usr/local/etc/grafana` 配下に設定ファイルを配置していく。
+下記のコマンドで `/opt/homebrew/Cellar/grafana/[version]/share/grafana/conf/provisioning/datasources/` 配下に設定ファイルを配置していく。
 
 ```bash
 # grafana/conf/provisioning/datasources/prometheus.yaml
-$ cd /usr/local/share/grafana/conf/provisioning/datasources
+$ cd /opt/homebrew/Cellar/grafana/[version]/share/grafana/conf/provisioning/datasources
 $ ln -s ~/src/github.com/ackintosh/sandbox/lighthouse-metrics/grafana/conf/provisioning/datasources/prometheus.yaml prometheus.yaml
 
 # grafana/conf/provisioning/dashboards
-$ cd /usr/local/share/grafana/conf/provisioning
+$ cd /opt/homebrew/Cellar/grafana/[version]/share/grafana/conf/provisioning
 $ ln -s ~/src/github.com/ackintosh/sandbox/lighthouse-metrics/grafana/conf/provisioning/dashboards dashboards
 ```
 
