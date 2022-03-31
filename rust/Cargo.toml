@@ -76,6 +76,11 @@ members = [
   "tower-of-hanoi"
 ]
 
+# 単独のバイナリで、Cargo.lock を共有したくないクレートを指定している
+exclude = [
+  "crate-tokio-console"
+]
+
 # dhat利用時に入れた設定
 # https://docs.rs/dhat/0.2.2/dhat/#configuration
 [profile.release]
