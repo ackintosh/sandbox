@@ -1,6 +1,12 @@
 use rand::Rng;
 
 #[test]
+fn basic() {
+    let i: i32 = rand::thread_rng().gen();
+    println!("{:?}", i);
+}
+
+#[test]
 fn range() {
     let mut rng = rand::thread_rng();
     let uniform = rand::distributions::Uniform::new(1, 500);

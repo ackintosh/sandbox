@@ -78,7 +78,9 @@ members = [
 
 # 単独のバイナリで、Cargo.lock を共有したくないクレートを指定している
 exclude = [
-  "crate-tokio-console"
+  "crate-async-std",
+  "crate-tokio-console",
+  "crate-testground-sdk-rust",
 ]
 
 # dhat利用時に入れた設定
