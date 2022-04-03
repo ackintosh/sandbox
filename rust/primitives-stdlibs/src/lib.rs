@@ -9,6 +9,7 @@ mod const_static;
 mod cow_clone_on_write;
 mod ddd;
 mod dyn_dispatch;
+mod env;
 mod file_io;
 mod generics;
 mod hash;
