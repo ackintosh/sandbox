@@ -1,5 +1,7 @@
 use std::env::VarError;
 
+// clapでも環境変数を構造体にマッピングできるのでそちらが便利
+
 #[test]
 fn env() {
     let foo = match std::env::var("FOO") {
