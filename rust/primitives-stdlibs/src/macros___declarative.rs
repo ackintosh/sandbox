@@ -1,3 +1,13 @@
+// //////////////////////////
+// 宣言的(declarative)マクロ
+// 参考:
+//   - https://caddi.tech/archives/3555
+//   - 公式ドキュメント: https://doc.rust-jp.rs/book-ja/ch19-06-macros.html
+//
+// - 宣言的マクロは macro_rules! 構文を使用して定義されるマクロで、match 式に似た形で処理内容を定義する
+// - vec! や println! など普段良く使うマクロも宣言的マクロ
+// //////////////////////////
+
 // ドキュメントのサンプル
 // https://doc.rust-jp.rs/the-rust-programming-language-ja/1.6/book/macros.html
 #[cfg(test)]
