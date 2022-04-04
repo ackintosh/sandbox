@@ -56,6 +56,8 @@ mod tests {
                 .map(|d| d.available_space())
                 .sum::<u64>()
         );
+        // 下記PRで実装中
+        // https://github.com/GuillaumeGomez/sysinfo/pull/683
         // println!("disk reads total: {:?}", sysinfo.disks().iter().map(|d| d.available_space()).sum::<u64>());
         // println!("disk writes total: {:?}", sysinfo.disks().iter().map(|d| d.available_space()).sum::<u64>());
 
