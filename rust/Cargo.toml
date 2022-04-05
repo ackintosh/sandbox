@@ -78,8 +78,9 @@ members = [
   "tower-of-hanoi"
 ]
 
-# 単独のバイナリで、Cargo.lock を共有したくないクレートを指定している
+# 単独のバイナリや、特定のチュートリアルを行う関係で Cargo.lock を共有したくないクレートを指定している
 exclude = [
+  "book-proc-macro-workshop",
   "crate-async-std",
   "crate-clap",
   "crate-tokio-console",
