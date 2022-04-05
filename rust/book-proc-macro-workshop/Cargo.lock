@@ -6,6 +6,8 @@ version = 3
 name = "book-proc-macro-workshop"
 version = "0.1.0"
 dependencies = [
+ "quote",
+ "syn",
  "trybuild",
 ]
 

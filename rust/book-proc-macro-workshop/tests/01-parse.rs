@@ -21,7 +21,7 @@
 //   - An example of a derive macro implemented using Syn:
 //     https://github.com/dtolnay/syn/tree/master/examples/heapsize
 
-use derive_builder::Builder;
+use book_proc_macro_workshop::Builder;
 
 #[derive(Builder)]
 pub struct Command {

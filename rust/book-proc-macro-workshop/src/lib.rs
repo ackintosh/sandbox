@@ -5,10 +5,14 @@
 // https://caddi.tech/archives/3555
 
 use proc_macro::TokenStream;
+use quote::quote;
+use syn::DeriveInput;
 
 #[proc_macro_derive(Builder)]
 pub fn derive(input: TokenStream) -> TokenStream {
-    let _ = input;
+    // Parse the input tokens into a syntax tree
+    let _input = syn::parse_macro_input!(input as DeriveInput);
 
-    unimplemented!()
+    let a = quote! {};
+    a.into()
 }
