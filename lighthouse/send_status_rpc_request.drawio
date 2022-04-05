@@ -105,15 +105,6 @@
                         <mxPoint x="4547" y="250" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="75" value="beacon_node::network::sync::network_context::SyncNetworkContext" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="4800" y="190" width="410" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="76" value="" style="endArrow=none;html=1;" parent="1" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="5018" y="2765" as="sourcePoint"/>
-                        <mxPoint x="5018" y="250" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
                 <mxCell id="82" value="beacon_node::network::service::NetworkService" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="35" y="190" width="410" height="60" as="geometry"/>
                 </mxCell>
