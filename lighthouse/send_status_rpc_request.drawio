@@ -1,0 +1,408 @@
+<mxfile host="65bd71144e">
+    <diagram id="WmQeqPcZGVHwFXoyWa7D" name="Page-1">
+        <mxGraphModel dx="961" dy="877" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="##########################################################&lt;br&gt;Status RPCのリクエストを処理するシーケンス&lt;br&gt;##########################################################" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="10" y="10" width="460" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="beacon_node::network::router::Router" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="610" y="190" width="410" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="" style="endArrow=none;html=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="814.5" y="2765" as="sourcePoint"/>
+                        <mxPoint x="814.5" y="250" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="beacon_node::network::router::Processor" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="1110" y="420" width="410" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="" style="endArrow=none;html=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1300" y="2765" as="sourcePoint"/>
+                        <mxPoint x="1300" y="250" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="15" value="beacon_node::network::router::HandlerNetworkContext" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="1600" y="540" width="410" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="endArrow=none;html=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1804.47" y="2765" as="sourcePoint"/>
+                        <mxPoint x="1804.47" y="250" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="24" value="beacon_node::lighthouse_network::Service" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="2110" y="1060" width="410" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="" style="curved=1;endArrow=classic;html=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1820" y="800" as="sourcePoint"/>
+                        <mxPoint x="1810" y="960" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="1890" y="800"/>
+                            <mxPoint x="1890" y="960"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="30" value="&lt;span style=&quot;font-size: 12px&quot;&gt;self.inform_network&lt;/span&gt;&lt;span style=&quot;font-size: 12px&quot;&gt;()&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="29" vertex="1" connectable="0">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="-10" y="-116" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="35" value="beacon_node::lighthouse_network::Behaviour" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="2630" y="1169" width="410" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="" style="endArrow=classic;html=1;dashed=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1800" y="1040" as="sourcePoint"/>
+                        <mxPoint x="240" y="1040" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="39" value="" style="endArrow=none;html=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="2834.47" y="2765" as="sourcePoint"/>
+                        <mxPoint x="2834.47" y="250" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="47" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="2319.999999999999" y="1350" as="sourcePoint"/>
+                        <mxPoint x="2830" y="1350.05" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="122" value="Behaviour::send_request()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="47">
+                    <mxGeometry x="-0.1426" y="-1" relative="1" as="geometry">
+                        <mxPoint x="21" y="-20" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="48" value="beacon_node::lighthouse_network::RPC" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="3110" y="1169" width="410" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="" style="endArrow=none;html=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="3330" y="2775" as="sourcePoint"/>
+                        <mxPoint x="3330" y="260" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="52" value="beacon_node::lighthouse_network::rpc::RPCHandler" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="3750" y="1850" width="450" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="" style="endArrow=none;html=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="4010" y="2765" as="sourcePoint"/>
+                        <mxPoint x="4010" y="250" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="67" value="beacon_node::lighthouse_network::rpc::OutboundRequestContainer" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="4350" y="2550" width="410" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="70" value="" style="endArrow=none;html=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="4547" y="3254" as="sourcePoint"/>
+                        <mxPoint x="4547" y="250" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="75" value="beacon_node::network::sync::network_context::SyncNetworkContext" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="4800" y="190" width="410" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="76" value="" style="endArrow=none;html=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="5018" y="2765" as="sourcePoint"/>
+                        <mxPoint x="5018" y="250" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="82" value="beacon_node::network::service::NetworkService" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="35" y="190" width="410" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="83" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="239.5" y="2765" as="sourcePoint"/>
+                        <mxPoint x="239.5" y="250" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="85" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="260" y="320" as="sourcePoint"/>
+                        <mxPoint x="250" y="480" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="330" y="320"/>
+                            <mxPoint x="330" y="480"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="86" value="&lt;span style=&quot;color: rgba(0 , 0 , 0 , 0) ; font-family: monospace ; font-size: 0px&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22%22%20style%3D%22curved%3D1%3BendArrow%3Dclassic%3Bhtml%3D1%3B%22%20edge%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20width%3D%2250%22%20height%3D%2250%22%20relative%3D%221%22%20as%3D%22geometry%22%3E%3CmxPoint%20x%3D%22740%22%20y%3D%22340%22%20as%3D%22sourcePoint%22%2F%3E%3CmxPoint%20x%3D%22730%22%20y%3D%22500%22%20as%3D%22targetPoint%22%2F%3E%3CArray%20as%3D%22points%22%3E%3CmxPoint%20x%3D%22810%22%20y%3D%22340%22%2F%3E%3CmxPoint%20x%3D%22810%22%20y%3D%22500%22%2F%3E%3C%2FArray%3E%3C%2FmxGeometry%3E%3C%2FmxCell%3E%3CmxCell%20id%3D%223%22%20value%3D%22handle_rpc_request()%22%20style%3D%22edgeLabel%3Bhtml%3D1%3Balign%3Dcenter%3BverticalAlign%3Dmiddle%3Bresizable%3D0%3Bpoints%3D%5B%5D%3B%22%20vertex%3D%221%22%20connectable%3D%220%22%20parent%3D%222%22%3E%3CmxGeometry%20x%3D%220.0727%22%20relative%3D%221%22%20as%3D%22geometry%22%3E%3CmxPoint%20x%3D%22-10%22%20y%3D%22-106%22%20as%3D%22offset%22%2F%3E%3C%2FmxGeometry%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3&lt;/span&gt;&lt;font color=&quot;rgba(0, 0, 0, 0)&quot; face=&quot;monospace&quot;&gt;&lt;span style=&quot;font-size: 0px&quot;&gt;on_libp2p_event&lt;/span&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="85">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="-10" y="-106" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="88" value="on_libp2p_event()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="85">
+                    <mxGeometry x="-0.7097" y="-12" relative="1" as="geometry">
+                        <mxPoint y="-32" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="89" value="BehaviourEvent::PeerConnectedOutgoing&lt;span style=&quot;font-weight: normal&quot;&gt; イベント&lt;br&gt;を受け取ったら、Router に通知する&lt;br&gt;&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="350" y="320" width="330" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="90" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="340" y="440" as="sourcePoint"/>
+                        <mxPoint x="330" y="600" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="410" y="440"/>
+                            <mxPoint x="410" y="600"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="91" value="&lt;span style=&quot;color: rgba(0 , 0 , 0 , 0) ; font-family: monospace ; font-size: 0px&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22%22%20style%3D%22curved%3D1%3BendArrow%3Dclassic%3Bhtml%3D1%3B%22%20edge%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20width%3D%2250%22%20height%3D%2250%22%20relative%3D%221%22%20as%3D%22geometry%22%3E%3CmxPoint%20x%3D%22740%22%20y%3D%22340%22%20as%3D%22sourcePoint%22%2F%3E%3CmxPoint%20x%3D%22730%22%20y%3D%22500%22%20as%3D%22targetPoint%22%2F%3E%3CArray%20as%3D%22points%22%3E%3CmxPoint%20x%3D%22810%22%20y%3D%22340%22%2F%3E%3CmxPoint%20x%3D%22810%22%20y%3D%22500%22%2F%3E%3C%2FArray%3E%3C%2FmxGeometry%3E%3C%2FmxCell%3E%3CmxCell%20id%3D%223%22%20value%3D%22handle_rpc_request()%22%20style%3D%22edgeLabel%3Bhtml%3D1%3Balign%3Dcenter%3BverticalAlign%3Dmiddle%3Bresizable%3D0%3Bpoints%3D%5B%5D%3B%22%20vertex%3D%221%22%20connectable%3D%220%22%20parent%3D%222%22%3E%3CmxGeometry%20x%3D%220.0727%22%20relative%3D%221%22%20as%3D%22geometry%22%3E%3CmxPoint%20x%3D%22-10%22%20y%3D%22-106%22%20as%3D%22offset%22%2F%3E%3C%2FmxGeometry%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3&lt;/span&gt;&lt;font color=&quot;rgba(0, 0, 0, 0)&quot; face=&quot;monospace&quot;&gt;&lt;span style=&quot;font-size: 0px&quot;&gt;on_libp2p_event&lt;/span&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="90">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="-10" y="-106" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="92" value="self.send_to_router(RouterMessage::PeerDialed(peer_id))" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="90">
+                    <mxGeometry x="-0.7097" y="-12" relative="1" as="geometry">
+                        <mxPoint x="105" y="-32" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="95" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="850" y="540" as="sourcePoint"/>
+                        <mxPoint x="840" y="700" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="920" y="540"/>
+                            <mxPoint x="920" y="700"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="96" value="&lt;span style=&quot;color: rgba(0 , 0 , 0 , 0) ; font-family: monospace ; font-size: 0px&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22%22%20style%3D%22curved%3D1%3BendArrow%3Dclassic%3Bhtml%3D1%3B%22%20edge%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20width%3D%2250%22%20height%3D%2250%22%20relative%3D%221%22%20as%3D%22geometry%22%3E%3CmxPoint%20x%3D%22740%22%20y%3D%22340%22%20as%3D%22sourcePoint%22%2F%3E%3CmxPoint%20x%3D%22730%22%20y%3D%22500%22%20as%3D%22targetPoint%22%2F%3E%3CArray%20as%3D%22points%22%3E%3CmxPoint%20x%3D%22810%22%20y%3D%22340%22%2F%3E%3CmxPoint%20x%3D%22810%22%20y%3D%22500%22%2F%3E%3C%2FArray%3E%3C%2FmxGeometry%3E%3C%2FmxCell%3E%3CmxCell%20id%3D%223%22%20value%3D%22handle_rpc_request()%22%20style%3D%22edgeLabel%3Bhtml%3D1%3Balign%3Dcenter%3BverticalAlign%3Dmiddle%3Bresizable%3D0%3Bpoints%3D%5B%5D%3B%22%20vertex%3D%221%22%20connectable%3D%220%22%20parent%3D%222%22%3E%3CmxGeometry%20x%3D%220.0727%22%20relative%3D%221%22%20as%3D%22geometry%22%3E%3CmxPoint%20x%3D%22-10%22%20y%3D%22-106%22%20as%3D%22offset%22%2F%3E%3C%2FmxGeometry%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3&lt;/span&gt;&lt;font color=&quot;rgba(0, 0, 0, 0)&quot; face=&quot;monospace&quot;&gt;&lt;span style=&quot;font-size: 0px&quot;&gt;on_libp2p_event&lt;/span&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="95">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="-10" y="-106" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="97" value="handle_message()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="95">
+                    <mxGeometry x="-0.7097" y="-12" relative="1" as="geometry">
+                        <mxPoint y="-32" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="98" value="RouterMessage::PeerDialed&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;または&lt;/span&gt;&lt;br&gt; RouterMessage::StatusPeer&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;メッセージを&lt;/span&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;受け取ったら、Processor を呼び出す&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="930" y="550" width="330" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="100" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="920" y="690" as="sourcePoint"/>
+                        <mxPoint x="1300" y="690" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="101" value="Processor::send_status(peer_id)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="100">
+                    <mxGeometry x="-0.0375" y="1" relative="1" as="geometry">
+                        <mxPoint x="-3" y="-14" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="102" value="&lt;font color=&quot;rgba(0, 0, 0, 0)&quot; face=&quot;monospace&quot;&gt;&lt;span style=&quot;font-size: 0px&quot;&gt;ha&lt;/span&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="780" y="470" as="geometry">
+                        <mxPoint x="-5" y="3" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="103" value="handler_recv" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="720" y="490" width="90" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="104" value="router_send" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="410" y="490" width="80" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="108" value="" style="endArrow=classic;html=1;dashed=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="414" y="520" as="sourcePoint"/>
+                        <mxPoint x="810" y="520" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="109" value="RouterMessage::PeerDialed(peer_id)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="108">
+                    <mxGeometry x="-0.5741" relative="1" as="geometry">
+                        <mxPoint x="102" y="-10" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="110" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1300" y="760" as="sourcePoint"/>
+                        <mxPoint x="1800" y="760" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="111" value="HandlerNetworkContext::send_processor_request()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="110">
+                    <mxGeometry x="-0.0375" y="1" relative="1" as="geometry">
+                        <mxPoint x="-3" y="-14" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="112" value="Request::Status(status_message)&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;を送信する&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="1430" y="650" width="270" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="113" value="network_send" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="1700" y="1010" width="90" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="114" value="network_recv" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="245" y="1010" width="90" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="115" value="NetworkMessage&lt;br&gt;&lt;span style=&quot;font-weight: normal&quot;&gt;を送信する&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="1410" y="950" width="270" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="116" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="260" y="1100" as="sourcePoint"/>
+                        <mxPoint x="250" y="1260" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="330" y="1100"/>
+                            <mxPoint x="330" y="1260"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="117" value="&lt;span style=&quot;color: rgba(0 , 0 , 0 , 0) ; font-family: monospace ; font-size: 0px&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22%22%20style%3D%22curved%3D1%3BendArrow%3Dclassic%3Bhtml%3D1%3B%22%20edge%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20width%3D%2250%22%20height%3D%2250%22%20relative%3D%221%22%20as%3D%22geometry%22%3E%3CmxPoint%20x%3D%22740%22%20y%3D%22340%22%20as%3D%22sourcePoint%22%2F%3E%3CmxPoint%20x%3D%22730%22%20y%3D%22500%22%20as%3D%22targetPoint%22%2F%3E%3CArray%20as%3D%22points%22%3E%3CmxPoint%20x%3D%22810%22%20y%3D%22340%22%2F%3E%3CmxPoint%20x%3D%22810%22%20y%3D%22500%22%2F%3E%3C%2FArray%3E%3C%2FmxGeometry%3E%3C%2FmxCell%3E%3CmxCell%20id%3D%223%22%20value%3D%22handle_rpc_request()%22%20style%3D%22edgeLabel%3Bhtml%3D1%3Balign%3Dcenter%3BverticalAlign%3Dmiddle%3Bresizable%3D0%3Bpoints%3D%5B%5D%3B%22%20vertex%3D%221%22%20connectable%3D%220%22%20parent%3D%222%22%3E%3CmxGeometry%20x%3D%220.0727%22%20relative%3D%221%22%20as%3D%22geometry%22%3E%3CmxPoint%20x%3D%22-10%22%20y%3D%22-106%22%20as%3D%22offset%22%2F%3E%3C%2FmxGeometry%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3&lt;/span&gt;&lt;font color=&quot;rgba(0, 0, 0, 0)&quot; face=&quot;monospace&quot;&gt;&lt;span style=&quot;font-size: 0px&quot;&gt;on_libp2p_event&lt;/span&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="116">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="-10" y="-106" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="118" value="on_network_msg()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="116">
+                    <mxGeometry x="-0.7097" y="-12" relative="1" as="geometry">
+                        <mxPoint y="-32" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="119" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="2320" y="2765" as="sourcePoint"/>
+                        <mxPoint x="2320" y="250" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="120" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="335" y="1200" as="sourcePoint"/>
+                        <mxPoint x="2320" y="1200" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="121" value="Service::send_request()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="120">
+                    <mxGeometry x="-0.0375" y="1" relative="1" as="geometry">
+                        <mxPoint x="-821" y="-14" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="123" value="self.swarm.behaviour_mut()&amp;nbsp;&lt;br&gt;で Behaviour を取得し、&lt;br&gt;Behaviour::send_request() を呼ぶ" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="2330" y="1240" width="270" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="124" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="2839.999999999999" y="1440" as="sourcePoint"/>
+                        <mxPoint x="3330" y="1440" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="125" value="RPC::send_request()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="124">
+                    <mxGeometry x="-0.1426" y="-1" relative="1" as="geometry">
+                        <mxPoint x="21" y="-20" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="126" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="3350" y="1470" as="sourcePoint"/>
+                        <mxPoint x="3340" y="1630" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="3420" y="1470"/>
+                            <mxPoint x="3420" y="1630"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="127" value="&lt;span style=&quot;font-size: 12px&quot;&gt;self.events にリクエストを含むイベントを追加する&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="126">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="90" y="-116" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="128" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="3350" y="1680" as="sourcePoint"/>
+                        <mxPoint x="3340" y="1840" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="3420" y="1680"/>
+                            <mxPoint x="3420" y="1840"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="129" value="&lt;span style=&quot;font-size: 12px&quot;&gt;self.poll()&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="128">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="-10" y="-106" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="130" value="下記のlibp2pのイベントを追加する&lt;br&gt;&lt;br&gt;NetworkBehaviourAction::NotifyHandler {&lt;br&gt;&amp;nbsp; &amp;nbsp; peer_id,&lt;br&gt;&amp;nbsp; &amp;nbsp; handler:&amp;nbsp;NotifyHandler::Any,&lt;br&gt;&amp;nbsp; &amp;nbsp;&amp;nbsp;event: RPCSend::Request(request_id, event),&lt;br&gt;}" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=0;align=left;spacingLeft=12;" vertex="1" parent="1">
+                    <mxGeometry x="3460" y="1470" width="300" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="131" value="self.events に追加したイベントを取り出して&lt;br&gt;&lt;b&gt;Poll::Ready(イベント)&lt;/b&gt;&lt;br&gt;を返す" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="3440" y="1710" width="310" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="132" value="" style="endArrow=classic;html=1;dashed=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="3610" y="2040" as="sourcePoint"/>
+                        <mxPoint x="4006" y="2040" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="133" value="RPCHandler::inject_event()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="132">
+                    <mxGeometry x="-0.5741" relative="1" as="geometry">
+                        <mxPoint x="102" y="-10" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="134" value="libp2pによって&lt;br&gt;RPCHandler::inject_event() が呼ばれる" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="3440" y="1930" width="281" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="135" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="4030" y="2080" as="sourcePoint"/>
+                        <mxPoint x="4020" y="2240" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="4100" y="2080"/>
+                            <mxPoint x="4100" y="2240"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="136" value="&lt;span style=&quot;font-size: 12px&quot;&gt;self.send_request()&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="135">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="-10" y="-106" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="137" value="self.dial_queue&lt;br&gt;にリクエストを追加する" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="4110" y="2110" width="210" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="138" value="" style="curved=1;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="4040" y="2320" as="sourcePoint"/>
+                        <mxPoint x="4030" y="2480" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="4110" y="2320"/>
+                            <mxPoint x="4110" y="2480"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="139" value="&lt;span style=&quot;font-size: 12px&quot;&gt;self.poll()&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="138">
+                    <mxGeometry x="0.0727" relative="1" as="geometry">
+                        <mxPoint x="-10" y="-106" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="140" value="ConnectionHandlerEvent::OutboundSubstreamRequest&lt;br&gt;にリクエストを詰めて&lt;br&gt;Poll::Ready() で返す" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="4130" y="2338" width="350" height="102" as="geometry"/>
+                </mxCell>
+                <mxCell id="141" value="" style="endArrow=classic;html=1;dashed=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="4153" y="2820" as="sourcePoint"/>
+                        <mxPoint x="4549" y="2820" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="142" value="OutboundRequestContainer::upgrade_outbound()" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="141">
+                    <mxGeometry x="-0.5741" relative="1" as="geometry">
+                        <mxPoint x="102" y="-10" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="143" value="(おそらく) libp2pによって&lt;br&gt;OutboundRequestContainer::upgrade_outbound()&lt;br&gt;&amp;nbsp;が呼ばれる" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="4110" y="2690" width="281" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="145" value="リクエストを&lt;br&gt;SSZSnappyの形式でエンコードする" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="4570" y="2860" width="260" height="102" as="geometry"/>
+                </mxCell>
+                <mxCell id="146" value="おそらく、&lt;br&gt;その後の送信は libp2p がよしなにやってくれる" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="4570" y="3040" width="280" height="102" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
