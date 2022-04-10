@@ -15,6 +15,7 @@ mod generics;
 mod hash;
 mod inner;
 mod interior_mutability;
+mod ip_addr;
 mod iter;
 mod lifetime;
 mod loops;
