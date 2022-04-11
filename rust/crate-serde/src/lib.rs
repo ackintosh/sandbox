@@ -1,7 +1,7 @@
 // https://serde.rs/
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 struct Person {
     name: String,
     age: u8,
@@ -12,6 +12,9 @@ struct Person {
 mod tests {
     use crate::Person;
 
+    // //////////////////
+    // serde_json
+    // //////////////////
     #[test]
     fn json() {
         let person = Person {
@@ -20,9 +23,18 @@ mod tests {
             phones: vec!["+44 1234567".into(), "+44 2345678".into()],
         };
 
-        let serialized = serde_json::to_string(&person);
+        // //////////////////////
+        // serialize
+        // https://docs.rs/serde_json/1.0.79/serde_json/#creating-json-by-serializing-data-structures
+        // //////////////////////
+        let json = serde_json::to_string(&person).unwrap();
+        println!("{}", json); // {"name":"AAA","age":20,"phones":["+44 1234567","+44 2345678"]}
 
-        assert!(serialized.is_ok());
-        println!("{}", serialized.unwrap()); // {"name":"AAA","age":20,"phones":["+44 1234567","+44 2345678"]}
+        // //////////////////////
+        // deserialize
+        // https://docs.rs/serde_json/1.0.79/serde_json/#parsing-json-as-strongly-typed-data-structures
+        // //////////////////////
+        let p: Person = serde_json::from_str(&json).unwrap();
+        println!("{:?}", p);
     }
 }

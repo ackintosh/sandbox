@@ -10,6 +10,7 @@ mod cow_clone_on_write;
 mod ddd;
 mod dyn_dispatch;
 mod env;
+mod error;
 mod file_io;
 mod generics;
 mod hash;
