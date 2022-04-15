@@ -22,4 +22,9 @@ fn env() {
         println!("key: {}, value: {}", key, value);
     }
 
+    if let Ok(_) =
+        std::env::var("RUST_LOG").and_then(|log_level| Ok(log_level == "debug".to_owned()))
+    {
+        println!("debug!!!");
+    }
 }
