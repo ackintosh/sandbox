@@ -6,6 +6,7 @@ mod btreemap;
 mod cell_refcell;
 mod condvar;
 mod const_static;
+mod coverage;
 mod cow_clone_on_write;
 mod ddd;
 mod dyn_dispatch;

@@ -1,7 +1,11 @@
 #![feature(test)]
 // ベンチマークの実行
 //
+// nightly のインストール
+// https://rust-lang.github.io/rustup/installation/index.html#installing-nightly
+//
 // ```shell
+// # `+nightly` を指定することで一時的に nightly のコンパイラを利用する
 // $ cargo +nightly bench
 // ```
 
