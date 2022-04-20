@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  influxdb-v1:
+    image: influxdb:1.8
+    container_name: influxdb-v1-sandbox
+    ports:
+      - "18086:8086"
+    volumes:
+      - ./influxdb_v1.conf:/etc/influxdb/influxdb.conf
+    environment:
+      TZ: Asia/Tokyo
+

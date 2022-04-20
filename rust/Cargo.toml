@@ -83,6 +83,7 @@ exclude = [
   "book-proc-macro-workshop",
   "crate-async-std",
   "crate-clap",
+  "crate-influxdb",
   "crate-tokio-console",
   "crate-testground-sdk-rust",
 ]
