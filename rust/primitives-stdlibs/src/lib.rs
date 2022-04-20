@@ -32,6 +32,7 @@ mod ops;
 mod ownership;
 mod path;
 mod phantom_type;
+mod reexport;
 mod result_option;
 mod rw_lock;
 mod slice;
