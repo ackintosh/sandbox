@@ -27,4 +27,10 @@ fn env() {
     {
         println!("debug!!!");
     }
+
+    // /////////////
+    // env! マクロ
+    // /////////////
+    println!("CARGO_PKG_VERSION: {}", env!("CARGO_PKG_VERSION")); // Cargo.toml のバージョンを出力する
+    println!("XXXXX: {}", env!("XXXXX"));
 }
