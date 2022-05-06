@@ -20,6 +20,7 @@ mod interior_mutability;
 mod ip_addr;
 mod iter;
 mod lifetime;
+mod lifetime_bounds;
 mod loops;
 mod macro_assert;
 mod macro_format;
