@@ -1,5 +1,3 @@
-use std::env::VarError;
-
 // clapでも環境変数を構造体にマッピングできるのでそちらが便利
 
 #[test]
@@ -31,6 +29,9 @@ fn env() {
     // /////////////
     // env! マクロ
     // /////////////
-    println!("CARGO_PKG_VERSION: {}", env!("CARGO_PKG_VERSION")); // Cargo.toml のバージョンを出力する
-    println!("XXXXX: {}", env!("XXXXX"));
+    // 例: Cargo.toml のバージョンを出力する
+    println!("CARGO_PKG_VERSION: {}", env!("CARGO_PKG_VERSION"));
+    // 存在しない環境変数を参照している場合、実行時にエラーになる
+    // error: environment variable `XXXXX` not defined
+    // println!("XXXXX: {}", env!("XXXXX"));
 }
