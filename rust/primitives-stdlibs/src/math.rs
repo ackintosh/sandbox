@@ -113,10 +113,13 @@ mod ordering {
     }
 }
 
+// * オーバーフローに関するRustのRFC
+//   rfcs/0560-integer-overflow.md at master · rust-lang/rfcs
+//   https://github.com/rust-lang/rfcs/blob/master/text/0560-integer-overflow.md
 // * Myths and Legends about Integer Overflow in Rust | Huon on the internet
-// https://huonw.github.io/blog/2016/04/myths-and-legends-about-integer-overflow-in-rust/
+//   https://huonw.github.io/blog/2016/04/myths-and-legends-about-integer-overflow-in-rust/
 // * Rustでの整数オーバーフローまとめ
-// https://qiita.com/garkimasera/items/c5e06de1a7c66aa7652a
+//   https://qiita.com/garkimasera/items/c5e06de1a7c66aa7652a
 mod overflow {
     use std::ops::Add;
 
