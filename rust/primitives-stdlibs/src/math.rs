@@ -113,22 +113,49 @@ mod ordering {
     }
 }
 
+// * Myths and Legends about Integer Overflow in Rust | Huon on the internet
+// https://huonw.github.io/blog/2016/04/myths-and-legends-about-integer-overflow-in-rust/
+// * Rustでの整数オーバーフローまとめ
+// https://qiita.com/garkimasera/items/c5e06de1a7c66aa7652a
 mod overflow {
     use std::ops::Add;
 
     #[test]
+    #[allow(arithmetic_overflow)]
     fn saturating() {
         // `u8` の 10
         let n = 10u8;
         assert_eq!(255, n.add(245));
 
-        // u8 の上限を超えるのでオーバーフローが起きてしまう
+        // 下記は加算の結果が u8 の上限を超えるのでオーバーフローが起きてしまう
         //
-        // エラーメッセージ:
-        // attempt to add with overflow
-        // thread 'math::saturating' panicked at 'attempt to add with overflow'
+        // > エラーメッセージ:
+        // > attempt to add with overflow
+        // > thread 'math::saturating' panicked at 'attempt to add with overflow'
+        // 例1:
         // let _ = n.add(246);
+        // 例2:
+        // let mut nn: u8 = 255;
+        // nn += 1;
 
+        // ただし、releaseモードでは上記のコードでもオーバーフローが検知されず、溢れた桁を無視した結果になる
+        // Rustでの整数オーバーフローまとめ
+        // https://qiita.com/garkimasera/items/c5e06de1a7c66aa7652a
+
+        // /////////////////////////////////////////////
+        // オーバーフローを制御する
+        // /////////////////////////////////////////////
+
+        // wrapping
+
+        // checked
+        let c: u8 = u8::MAX;
+        assert_eq!(None, c.checked_add(1)); // オーバーフローが発生したら None が返る
+        assert_eq!(Some(9), c.checked_add(1).or(Some(9))); // オーバーフローが発生したら 9(適当な値) を返す
+
+        // overflowing
+
+        // saturating
         // saturating_add を使えば、上限で止まって、エラーにならない
         let result = n.saturating_add(246);
         assert_eq!(255, result);
