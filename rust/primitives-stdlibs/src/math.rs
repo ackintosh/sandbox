@@ -140,6 +140,7 @@ mod overflow {
         // 例2:
         // let mut nn: u8 = 255;
         // nn += 1;
+        // println!("nn: {}", nn);
 
         // ただし、releaseモードでは上記のコードでもオーバーフローが検知されず、溢れた桁を無視した結果になる
         // Rustでの整数オーバーフローまとめ
@@ -149,16 +150,17 @@ mod overflow {
         // オーバーフローを制御する
         // /////////////////////////////////////////////
 
-        // wrapping
+        // * wrapping *
+        // (releaseビルドでオーバーフローが発生した場合のデフォルトの挙動もこの関数と同じ)
 
-        // checked
+        // * checked *
         let c: u8 = u8::MAX;
         assert_eq!(None, c.checked_add(1)); // オーバーフローが発生したら None が返る
         assert_eq!(Some(9), c.checked_add(1).or(Some(9))); // オーバーフローが発生したら 9(適当な値) を返す
 
-        // overflowing
+        // * overflowing *
 
-        // saturating
+        // * saturating *
         // saturating_add を使えば、上限で止まって、エラーにならない
         let result = n.saturating_add(246);
         assert_eq!(255, result);
