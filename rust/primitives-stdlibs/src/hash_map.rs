@@ -17,6 +17,20 @@ fn insert() {
     println!("{:?}", contacts);
 }
 
+// value が Vec の場合
+#[test]
+fn vec_value() {
+    let mut hobbies: HashMap<&str, Vec<&str>> = HashMap::new();
+
+    // エントリが無ければ空の Vec を挿入してから値を追加する
+    hobbies
+        .entry("Daniel")
+        .or_insert(Vec::new())
+        .push("football");
+
+    println!("{:?}", hobbies);
+}
+
 #[test]
 fn max_by() {
     let mut contacts = HashMap::new();
