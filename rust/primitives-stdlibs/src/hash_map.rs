@@ -22,13 +22,22 @@ fn insert() {
 fn vec_value() {
     let mut hobbies: HashMap<&str, Vec<&str>> = HashMap::new();
 
-    // エントリが無ければ空の Vec を挿入してから値を追加する
+    // エントリが無ければ、空の Vec を挿入してから値を追加する
     hobbies
         .entry("Daniel")
         .or_insert(Vec::new())
         .push("football");
-
     println!("{:?}", hobbies);
+}
+
+// value が int の場合
+#[test]
+fn int_value() {
+    let mut counts: HashMap<&str, u8> = HashMap::new();
+
+    // エントリが無ければ、その型のデフォルト値を返す
+    *counts.entry("Daniel").or_default() += 1;
+    println!("{:?}", counts);
 }
 
 #[test]
