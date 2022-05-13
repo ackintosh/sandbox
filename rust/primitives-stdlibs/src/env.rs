@@ -1,5 +1,9 @@
 // clapでも環境変数を構造体にマッピングできるのでそちらが便利
 
+// Cargo組み込みの環境変数
+// Environment Variables - The Cargo Book
+// https://doc.rust-lang.org/cargo/reference/environment-variables.html
+
 #[test]
 fn env() {
     let foo = match std::env::var("FOO") {
@@ -34,4 +38,6 @@ fn env() {
     // 存在しない環境変数を参照している場合、実行時にエラーになる
     // error: environment variable `XXXXX` not defined
     // println!("XXXXX: {}", env!("XXXXX"));
+
+    println!("CARGO_MANIFEST_DIR: {}", env!("CARGO_MANIFEST_DIR"));
 }
