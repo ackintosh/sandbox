@@ -4,6 +4,8 @@
 // Environment Variables - The Cargo Book
 // https://doc.rust-lang.org/cargo/reference/environment-variables.html
 
+use std::path::PathBuf;
+
 #[test]
 fn env() {
     let foo = match std::env::var("FOO") {
@@ -39,5 +41,11 @@ fn env() {
     // error: environment variable `XXXXX` not defined
     // println!("XXXXX: {}", env!("XXXXX"));
 
+    // そのパッケージの Cargo.toml が存在するディレクトリ
     println!("CARGO_MANIFEST_DIR: {}", env!("CARGO_MANIFEST_DIR"));
+    // 例:
+    // let path_buf = env!("CARGO_MANIFEST_DIR")
+    //     .parse::<PathBuf>()
+    //     .expect("should parse manifest dir as path")
+    //     .join("foo");
 }
