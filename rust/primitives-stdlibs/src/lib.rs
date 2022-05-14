@@ -25,6 +25,7 @@ mod lifetime_bounds;
 mod loops;
 mod macro_assert;
 mod macro_format;
+mod macros;
 mod macros___declarative;
 mod macros___procedural;
 mod math;
