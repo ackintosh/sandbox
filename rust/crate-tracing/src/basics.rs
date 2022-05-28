@@ -10,25 +10,50 @@
 fn test() {
     let _ = tracing_subscriber::fmt::try_init();
     tracing::info!("Hello, tracing!");
+    tracing::error!("Hello, tracing!");
 }
 
-#[test]
-#[tracing::instrument()]
-fn instrument() {
-    let _ = tracing_subscriber::fmt::try_init();
-    instrument_inner("arg for inner".into());
+// https://github.com/tokio-rs/tracing#usage
+mod official_usage {
+    #[test]
+    fn yak_shave() {
+        let _ = tracing_subscriber::fmt::try_init();
+
+        let number_of_yaks = 3;
+        // this creates a new event, outside of any spans.
+        tracing::error!(number_of_yaks, "preparing to shave yaks");
+
+        let number_shaved = shave_all(number_of_yaks);
+        tracing::error!(
+            all_yaks_shaved = number_shaved == number_of_yaks,
+            "yak shaving completed."
+        );
+    }
+
+    fn shave_all(n: i32) -> i32 {
+        n
+    }
 }
 
-#[tracing::instrument()]
-fn instrument_inner(arg: String) {
-    tracing::info!("inner");
-    tracing::info!("{}", &arg);
+mod instrument {
+    #[test]
+    #[tracing::instrument()]
+    fn instrument() {
+        let _ = tracing_subscriber::fmt::try_init();
+        instrument_inner("arg for inner".into());
+    }
 
-    instrument_inner_inner("arg for inner inner".into())
-}
+    #[tracing::instrument()]
+    fn instrument_inner(arg: String) {
+        tracing::error!("inner");
+        tracing::error!("{}", &arg);
 
-#[tracing::instrument()]
-fn instrument_inner_inner(arg: String) {
-    tracing::info!("inner inner");
-    tracing::info!("{}", &arg);
+        instrument_inner_inner("arg for inner inner".into())
+    }
+
+    #[tracing::instrument()]
+    fn instrument_inner_inner(arg: String) {
+        tracing::error!("inner inner");
+        tracing::error!("{}", &arg);
+    }
 }
