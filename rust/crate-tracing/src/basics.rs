@@ -11,6 +11,7 @@ fn test() {
     let _ = tracing_subscriber::fmt::try_init();
     tracing::info!("Hello, tracing!");
     tracing::error!("Hello, tracing!");
+    tracing::error!("crate-tracing. v{}", env!("CARGO_PKG_VERSION"));
 }
 
 // https://github.com/tokio-rs/tracing#usage
