@@ -1,3 +1,7 @@
+// 実際に quickcheck が使われているテストの例
+// * https://github.com/sigp/discv5/blob/master/src/kbucket/bucket.rs
+// * https://github.com/libp2p/rust-libp2p/blob/master/protocols/gossipsub/tests/smoke.rs
+
 // #[macro_use]
 // extern crate quickcheck;
 
