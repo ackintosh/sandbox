@@ -18,9 +18,11 @@
 // # *** 実行 ***
 // $ cd sandbox/rust
 // # 下記でテストの実行とカバレッジの計測を行う
-// $ cargo llvm-cov --package primitives --lib coverage
-// # `--lib` の指定ができない?
 // $ cargo llvm-cov --package primitives
+// # HTMLで結果を出力する
+//   * 出力先については --help を参照
+//   * コードのどこがカバーされていないか確認できる
+// $ cargo llvm-cov --package primitives --html
 // ///////////////////////////////////////////
 
 #[test]
