@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="T8pmpTCMuDaPm9wjzUCa" name="Page-1">
-        <mxGraphModel dx="3262" dy="1617" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+        <mxGraphModel dx="2085" dy="877" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -66,6 +66,42 @@
                 </mxCell>
                 <mxCell id="158" value="&lt;span style=&quot;font-weight: 400&quot;&gt;score &amp;lt;=&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;MIN_SCORE_BEFORE_DISCONNECT&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1" vertex="1" parent="1">
                     <mxGeometry x="-190" y="630" width="325" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="160" value="##################################################&lt;br&gt;PeerConnectionStatus&lt;br&gt;##################################################" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="980" y="130" width="410" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="161" value="Unknown" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1140" y="340" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="162" value="" style="endArrow=classic;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="161">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1199.5" y="270" as="sourcePoint"/>
+                        <mxPoint x="1199.5" y="350" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="163" value="Connected" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="970" y="620" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="164" value="Disconnecting" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1140" y="730" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="165" value="Disconnected" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1320" y="640" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="166" value="Banned" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1320" y="460" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="167" value="Dialing" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="970" y="460" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="168" value="&lt;span style=&quot;font-weight: 400&quot;&gt;* PeerDB::&lt;/span&gt;&lt;span style=&quot;font-weight: 400&quot;&gt;update_connection_state() で、&lt;br&gt;ピアのステータスを更新する際に、PeerDBに未登録の場合の初期値として使われる。&lt;br&gt;&lt;br&gt;* trusted_peers を PeerDBに登録する際に、デフォルトのステータスとして使われる。&lt;br&gt;&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1;align=left;spacingLeft=15;" vertex="1" parent="1">
+                    <mxGeometry x="1410" y="260" width="510" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="169" value="" style="endArrow=none;dashed=1;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="161" target="168">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1270" y="350" as="sourcePoint"/>
+                        <mxPoint x="1320" y="300" as="targetPoint"/>
+                    </mxGeometry>
                 </mxCell>
             </root>
         </mxGraphModel>
