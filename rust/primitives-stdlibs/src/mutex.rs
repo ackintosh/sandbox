@@ -3,6 +3,7 @@
 
 use std::sync::{Arc, Mutex};
 
+#[allow(dead_code)]
 fn some_func(lock: Arc<Mutex<u64>>) {
     loop {
         // ロックしないとMutex型の中の値は参照不可
@@ -12,7 +13,9 @@ fn some_func(lock: Arc<Mutex<u64>>) {
     }
 }
 
-#[test]
+// 終了しないコードなので #[test] をコメントアウトしている
+// #[test]
+#[allow(dead_code)]
 fn test() {
     // * Mutex用の変数は保護対象のデータを保持するようになっており、ロックしなければ保護対象データにアクセスできなようになっている
     //   * これによって、コンパイル時に共有リソースへの不正なアクセスを防ぐことができるように設計されている

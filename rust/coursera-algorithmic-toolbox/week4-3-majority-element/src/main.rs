@@ -105,7 +105,6 @@ fn merge(input: &mut Vec<u64>, l: usize, m: usize, r: usize) {
     }
 }
 
-#[test]
 mod test {
     use crate::{majority_element, merge, merge_sort};
 
