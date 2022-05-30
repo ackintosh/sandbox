@@ -22,7 +22,9 @@
 // # HTMLで結果を出力する
 //   * 出力先については --help を参照
 //   * コードのどこがカバーされていないか確認できる
-// $ cargo llvm-cov --package primitives --html
+// $ cargo llvm-cov --package primitives --html --open
+// # テキストで標準出力に出力する
+// $ cargo llvm-cov --package primitives --text
 // ///////////////////////////////////////////
 
 #[test]
