@@ -32,7 +32,7 @@ mod tests_example {
     }
 
     // attributeを使うパターン
-    // マクロだとIntelliJのコード追跡の対象から外れたりするので、こちらの方が良いかもしれない
+    // マクロだとIntelliJのコード追跡の対象から外れたりするので、こちらや、後述の quickcheck::quickcheck() を使うパターンの方が良さそう
     #[quickcheck]
     fn double_reversal_is_identity(xs: Vec<u32>) -> bool {
         xs == reverse(&reverse(&xs))
@@ -51,5 +51,58 @@ mod tests {
         }
 
         quickcheck(prop as fn(_) -> _);
+    }
+}
+
+mod arbitrary_structs {
+    use quickcheck::{Arbitrary, Gen};
+
+    #[derive(Clone, Debug)]
+    enum Status {
+        Connected,
+        Disconnected,
+    }
+
+    // ref: https://github.com/BurntSushi/quickcheck#generating-structs
+    impl Arbitrary for Status {
+        fn arbitrary(g: &mut Gen) -> Self {
+            g.choose(&[Status::Connected, Status::Disconnected])
+                .unwrap()
+                .clone()
+        }
+    }
+
+    #[derive(Clone, Debug)]
+    enum Direction {
+        Outgoing,
+        Incoming,
+    }
+
+    impl Arbitrary for Direction {
+        fn arbitrary(g: &mut Gen) -> Self {
+            g.choose(&[Direction::Outgoing, Direction::Incoming])
+                .unwrap()
+                .clone()
+        }
+    }
+
+    #[derive(Clone, Debug)]
+    struct Node {
+        status: Status,
+        direction: Direction,
+    }
+
+    impl Arbitrary for Node {
+        fn arbitrary(g: &mut Gen) -> Self {
+            Node {
+                status: Status::arbitrary(g),
+                direction: Direction::arbitrary(g),
+            }
+        }
+    }
+
+    #[quickcheck]
+    fn test_structs(nodes: Vec<Node>) {
+        println!("nodes: {:?}", nodes);
     }
 }
