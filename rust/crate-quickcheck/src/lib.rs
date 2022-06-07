@@ -44,11 +44,11 @@ struct Person {
     age: u8,
 }
 
-// quickcheck::quickcheck() を使うパターン
 mod tests {
     use super::*;
     use quickcheck::quickcheck;
 
+    // quickcheck::quickcheck() を使うパターン
     #[test]
     fn test() {
         fn prop(xs: Vec<u32>) -> bool {
@@ -58,6 +58,7 @@ mod tests {
         quickcheck(prop as fn(_) -> _);
     }
 
+    // テスト用モジュールの中で Arbitrary トレイトを実装するパターン
     mod property_based_tests {
         use crate::Person;
         use quickcheck::{Arbitrary, Gen};
