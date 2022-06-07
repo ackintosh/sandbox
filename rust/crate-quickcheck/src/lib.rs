@@ -39,6 +39,11 @@ mod tests_example {
     }
 }
 
+#[derive(Clone, Debug)]
+struct Person {
+    age: u8,
+}
+
 // quickcheck::quickcheck() を使うパターン
 mod tests {
     use super::*;
@@ -51,6 +56,24 @@ mod tests {
         }
 
         quickcheck(prop as fn(_) -> _);
+    }
+
+    mod property_based_tests {
+        use crate::Person;
+        use quickcheck::{Arbitrary, Gen};
+
+        impl Arbitrary for Person {
+            fn arbitrary(g: &mut Gen) -> Self {
+                Person {
+                    age: u8::arbitrary(g),
+                }
+            }
+        }
+
+        #[quickcheck]
+        fn person(person: Person) {
+            println!("person: {:?}", person);
+        }
     }
 }
 
