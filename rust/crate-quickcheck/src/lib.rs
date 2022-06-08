@@ -8,6 +8,8 @@
 // `#[quickcheck]` アトリビュートを使うために必要
 #[macro_use(quickcheck)]
 extern crate quickcheck_macros;
+// または、必要なブロックに下記を追加するだけでも良い(こちらの方が望ましい)
+// use quickcheck_macros::quickcheck;
 
 fn reverse<T: Clone>(xs: &[T]) -> Vec<T> {
     let mut rev = vec![];
@@ -127,6 +129,8 @@ mod arbitrary_structs {
 
     #[quickcheck]
     fn test_structs(nodes: Vec<Node>) {
-        println!("nodes: {:?}", nodes);
+        println!("len: {}, nodes: {:?}", nodes.len(), nodes);
     }
 }
+
+mod tokio {}
