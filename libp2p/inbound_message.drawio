@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="T8pmpTCMuDaPm9wjzUCa" name="Page-1">
-        <mxGraphModel dx="2307" dy="1032" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+        <mxGraphModel dx="2085" dy="877" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -34,7 +34,7 @@
                         <mxPoint x="549.62" y="220" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="11" value="######################################&lt;br&gt;Inboundメッセージを扱う流れ&lt;br&gt;######################################" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1" parent="1" vertex="1">
+                <mxCell id="11" value="######################################&lt;br&gt;Inboundメッセージを扱う流れ (TCPの前提)&lt;br&gt;######################################" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1" parent="1" vertex="1">
                     <mxGeometry x="-270" y="20" width="340" height="100" as="geometry"/>
                 </mxCell>
                 <mxCell id="14" value="impl NetworkBehaviour" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
