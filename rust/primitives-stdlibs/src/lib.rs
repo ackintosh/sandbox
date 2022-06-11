@@ -32,6 +32,7 @@ mod math;
 mod mutex;
 mod number;
 mod ops;
+mod option;
 mod ownership;
 mod path;
 mod phantom_type;

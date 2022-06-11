@@ -120,6 +120,9 @@ mod ordering {
 //   https://huonw.github.io/blog/2016/04/myths-and-legends-about-integer-overflow-in-rust/
 // * Rustでの整数オーバーフローまとめ
 //   https://qiita.com/garkimasera/items/c5e06de1a7c66aa7652a
+//   > 整数オーバーフローはバグの温床になりやすいところで、それに対するRustのアプローチは、オーバーフローが予想されるところではプログラマが明示的に処理し、その他の場所ではDebugモードでできるだけ捕捉するというものです
+//   > Rustはパフォーマンスも重視する言語ですのである程度プログラマが面倒を見てやる必要があります。
+//   > Rustではunsafeなことをしない限り整数オーバーフローが起きてもメモリ安全性が保たれるのはRustらしいところです。
 mod overflow {
     use std::ops::Add;
 
