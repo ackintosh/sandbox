@@ -18,7 +18,7 @@
                 </mxCell>
                 <mxCell id="10" value="" style="endArrow=none;html=1;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="549.62" y="1220" as="sourcePoint"/>
+                        <mxPoint x="550" y="1990" as="sourcePoint"/>
                         <mxPoint x="549.62" y="220" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
@@ -61,12 +61,12 @@
                         <mxPoint x="617.75" y="530" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="75" value="fn poll()&lt;br&gt;&lt;br&gt;キューからメッセージを取り出し、下記イベントをPoll::Readyで返す&lt;br&gt;「ConnectionHandlerEvent::OutboundSubstreamRequest」&lt;br&gt;&lt;br&gt;その際に upgrade と info を指定する" style="html=1;dashed=0;whitespace=wrap;" parent="1" vertex="1">
-                    <mxGeometry x="767.81" y="760" width="418.88" height="100" as="geometry"/>
+                <mxCell id="75" value="fn poll()&lt;br&gt;&lt;br&gt;キューからメッセージを取り出し、下記イベントをPoll::Readyで返す&lt;br&gt;「ConnectionHandlerEvent::OutboundSubstreamRequest」&lt;br&gt;&lt;br&gt;その際に upgrade と info を指定する&lt;br&gt;→ infoは、後に&amp;nbsp;inject_fully_negotiated_outbound() の引数に渡される" style="html=1;dashed=0;whitespace=wrap;" parent="1" vertex="1">
+                    <mxGeometry x="767.8" y="730" width="418.88" height="150" as="geometry"/>
                 </mxCell>
                 <mxCell id="76" value="" style="endArrow=none;html=1;" parent="1" target="75" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="977" y="1240" as="sourcePoint"/>
+                        <mxPoint x="977" y="1800" as="sourcePoint"/>
                         <mxPoint x="1200" y="230" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
@@ -84,12 +84,12 @@
                 </mxCell>
                 <mxCell id="79" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" target="78" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-200" y="1470" as="sourcePoint"/>
+                        <mxPoint x="-190" y="2580" as="sourcePoint"/>
                         <mxPoint x="250.99999999999955" y="390" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="80" value="fn upgrade_outbound()&lt;br&gt;&lt;br&gt;メッセージをエンコードして送信する" style="html=1;dashed=0;whitespace=wrap;" parent="1" vertex="1">
-                    <mxGeometry x="1200" y="910" width="352.25" height="100" as="geometry"/>
+                <mxCell id="80" value="fn upgrade_outbound()&lt;br&gt;&lt;br&gt;・メッセージをエンコードして送信する&lt;br&gt;&lt;br&gt;・そのストリームをoutputとして返す&lt;br&gt;→ ConnectionHandler::inject_fully_negotiated_outbound()&lt;br&gt;の引数にそのストリームが渡される" style="html=1;dashed=0;whitespace=wrap;" parent="1" vertex="1">
+                    <mxGeometry x="1203.88" y="890" width="352.25" height="130" as="geometry"/>
                 </mxCell>
                 <mxCell id="81" value="" style="endArrow=classic;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="74" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -107,6 +107,60 @@
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="-200" y="960" as="sourcePoint"/>
                         <mxPoint x="1033" y="1100" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="84" value="fn inject_fully_negotiated_outbound()&lt;br&gt;&lt;br&gt;&lt;div&gt;&lt;span&gt;[引数]&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;・メッセージ送信に利用したストリーム:&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;　OutboundUpgrade::upgrade_outbound() が返したストリーム&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;・アウトバウンドストリームを開始する時に付加した情報:&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;　ConnectionHandler::poll() で&amp;nbsp;&lt;/span&gt;&lt;span&gt;ConnectionHandlerEvent::OutboundSubstreamRequest イベントを発行するときに渡した &quot;info&quot;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;[処理]&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;・レスポンスを受信する必要がある場合、引数で受け取ったストリームをHashMapに保存しておく&lt;/span&gt;&lt;/div&gt;" style="html=1;dashed=0;whitespace=wrap;align=left;spacing=20;" vertex="1" parent="1">
+                    <mxGeometry x="610" y="1050" width="720" height="201" as="geometry"/>
+                </mxCell>
+                <mxCell id="85" value="" style="endArrow=classic;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="84">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-200" y="1151" as="sourcePoint"/>
+                        <mxPoint x="777.8000000000002" y="815" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="86" value="fn poll()&lt;br&gt;&lt;br&gt;・HashMapからストリームを取り出し、レスポンスが到着しているかどうか走査する&lt;br&gt;&lt;br&gt;・レスポンスを受信したら、下記イベントを発行する&lt;br&gt;　ConnectionHandlerEvent::Custom(レスポンス)&lt;br&gt;　→ NetworkBehaviour::inject_event() にイベントが通知される" style="html=1;dashed=0;whitespace=wrap;align=left;spacing=20;" vertex="1" parent="1">
+                    <mxGeometry x="700.1199999999999" y="1350" width="542.2" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="88" value="fn inject_event()&lt;br&gt;&lt;br&gt;[引数]&lt;br&gt;・ConnectionHandlerが発行したイベント&lt;br&gt;&lt;br&gt;[処理]&lt;br&gt;・&lt;span style=&quot;text-align: center&quot;&gt;Handlerから受け取ったイベントを&lt;/span&gt;&lt;span style=&quot;text-align: center&quot;&gt;NetworkBehaviourのイベントに変えて、キューにためる&lt;/span&gt;&lt;br style=&quot;text-align: center&quot;&gt;&lt;span style=&quot;text-align: center&quot;&gt;「NetworkBehaviourAction::GenerateEvent」&lt;/span&gt;" style="html=1;dashed=0;whitespace=wrap;align=left;spacing=20;" vertex="1" parent="1">
+                    <mxGeometry x="284.9999999999999" y="1604" width="542.2" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="89" value="fn poll()&lt;br&gt;&lt;br&gt;・キューからイベントを取り出し、イベントを発行する&lt;br&gt;&amp;nbsp;「Poll::Ready(イベント)」を返す&lt;br&gt;　→&amp;nbsp;NetworkBehaviourEventProcess::inject_event() の引数にそのイベントが渡される" style="html=1;dashed=0;whitespace=wrap;align=left;spacing=20;" vertex="1" parent="1">
+                    <mxGeometry x="310" y="1810" width="510" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="90" value="impl&amp;nbsp;NetworkBehaviourEventProcess&amp;lt;RPCイベント&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1640" y="160" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="91" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="90">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1790" y="2330" as="sourcePoint"/>
+                        <mxPoint x="1890.0100000000002" y="270" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="92" value="fn inject_event()&lt;br&gt;&lt;br&gt;・引数で受け取ったイベントにレスポンスが含まれているので、&lt;br&gt;　そのレスポンスを任意のコンポーネントに渡す" style="html=1;dashed=0;whitespace=wrap;align=left;spacing=20;" vertex="1" parent="1">
+                    <mxGeometry x="1520" y="2000" width="510" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="93" value="" style="endArrow=classic;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="86">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-190" y="1425" as="sourcePoint"/>
+                        <mxPoint x="620" y="1160.5" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="94" value="" style="endArrow=classic;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="88">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-190" y="1679" as="sourcePoint"/>
+                        <mxPoint x="710.1199999999999" y="1435" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="95" value="" style="endArrow=classic;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="89">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-200" y="1880" as="sourcePoint"/>
+                        <mxPoint x="295" y="1689" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="96" value="" style="endArrow=classic;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="92">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-190" y="2065" as="sourcePoint"/>
+                        <mxPoint x="680" y="2070" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
             </root>
