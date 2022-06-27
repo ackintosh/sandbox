@@ -1,0 +1,67 @@
+<mxfile host="65bd71144e">
+    <diagram id="ExdccTZqctQwAvQB16s_" name="Page-1">
+        <mxGraphModel dx="3635" dy="2817" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="132" value="" style="endArrow=none;dashed=1;html=1;fontSize=12;entryX=0.5;entryY=1;entryDx=0;entryDy=0;startArrow=none;" edge="1" parent="1" target="129">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-800" y="-160" as="sourcePoint"/>
+                        <mxPoint x="-767" y="-111.96000000000004" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="126" value="Explicitly invoking `Swarm::dial()` does not necessarily result in which the target peer has been added to `self.outbound_peers`." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontColor=#F0F0F0;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="-880" y="-90" width="500" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="129" value="Peer 1" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="-860" y="-806" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="130" value="Peer 2" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="-500" y="-806" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="131" value="Dial `Peer2`" style="html=1;dashed=0;whitespace=wrap;fontSize=13;" vertex="1" parent="1">
+                    <mxGeometry x="-880" y="-680" width="160" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="133" value="" style="endArrow=none;dashed=1;html=1;fontSize=12;startArrow=none;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="137" target="130">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-440" y="-160" as="sourcePoint"/>
+                        <mxPoint x="-440" y="-670" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="134" value="" style="endArrow=classic;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;exitX=1;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-720.0035931288073" y="-660.5042712474622" as="sourcePoint"/>
+                        <mxPoint x="-444.85640687119275" y="-660.5042712474617" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="135" value="Connection established" style="html=1;dashed=0;whitespace=wrap;fontSize=13;" vertex="1" parent="1">
+                    <mxGeometry x="-840" y="-600" width="440" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="136" value="Add `Peer 2` to `self.outbound_peers`" style="html=1;dashed=0;whitespace=wrap;fontSize=13;" vertex="1" parent="1">
+                    <mxGeometry x="-920" y="-520" width="280" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="137" value="Dial `Peer1`" style="html=1;dashed=0;whitespace=wrap;fontSize=13;" vertex="1" parent="1">
+                    <mxGeometry x="-520" y="-480" width="160" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="138" value="" style="endArrow=none;dashed=1;html=1;fontSize=12;startArrow=none;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="137">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-440" y="-160" as="sourcePoint"/>
+                        <mxPoint x="-440" y="-726" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="139" value="" style="endArrow=classic;html=1;entryX=1;entryY=1;entryDx=0;entryDy=0;exitX=0;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-519.9964068711928" y="-460.49572875253875" as="sourcePoint"/>
+                        <mxPoint x="-795.1435931288073" y="-460.4957287525383" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="140" value="Connection established" style="html=1;dashed=0;whitespace=wrap;fontSize=13;" vertex="1" parent="1">
+                    <mxGeometry x="-840" y="-400" width="440" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="141" value="Don't add `Peer 1` to `self.outbound_peers` &lt;br&gt;since the connection established is not the first one." style="html=1;dashed=1;whitespace=wrap;fontSize=13;" vertex="1" parent="1">
+                    <mxGeometry x="-600" y="-320" width="320" height="80" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
