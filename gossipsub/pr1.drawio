@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="ExdccTZqctQwAvQB16s_" name="Page-1">
-        <mxGraphModel dx="3506" dy="2197" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="3906" dy="2197" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -78,7 +78,7 @@
                 <mxCell id="56" value="" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="-640" y="80" width="120" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="59" value="" style="endArrow=classic;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;exitX=1;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="48" target="49">
+                <mxCell id="59" value="" style="endArrow=classic;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;exitX=1;exitY=0;exitDx=0;exitDy=0;dashed=1;" edge="1" parent="1" source="48" target="49">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="10" y="310" as="sourcePoint"/>
                         <mxPoint x="60" y="260" as="targetPoint"/>
@@ -111,10 +111,10 @@
                         <mxPoint x="-160" y="900" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="74" value="Updating mesh, mesh: { Peer(1) }" style="html=1;dashed=0;whitespace=wrap;fontSize=13;" vertex="1" parent="1">
+                <mxCell id="74" value="Updating mesh, mesh: { `Peer 1` }" style="html=1;dashed=0;whitespace=wrap;fontSize=13;" vertex="1" parent="1">
                     <mxGeometry x="80" y="840" width="240" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="77" value="Gossiping IHAVE to Peer(6)" style="html=1;dashed=0;whitespace=wrap;fontSize=13;" vertex="1" parent="1">
+                <mxCell id="77" value="Gossiping IHAVE to `Peer 6`" style="html=1;dashed=0;whitespace=wrap;fontSize=13;" vertex="1" parent="1">
                     <mxGeometry x="-280" y="960" width="240" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="79" value="&lt;font color=&quot;#ffbc21&quot;&gt;Gossiping IHAVE to 0 peers.&lt;/font&gt;" style="html=1;dashed=0;whitespace=wrap;fontSize=13;" vertex="1" parent="1">
@@ -126,7 +126,7 @@
                 <mxCell id="81" value="Handle IWANT" style="html=1;dashed=0;whitespace=wrap;fontSize=13;" vertex="1" parent="1">
                     <mxGeometry x="-280" y="1280" width="240" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="82" value="Forward the messages received from Peer(1)" style="html=1;dashed=0;whitespace=wrap;fontSize=13;" vertex="1" parent="1">
+                <mxCell id="82" value="Forward the messages received from `Peer 1`" style="html=1;dashed=0;whitespace=wrap;fontSize=13;" vertex="1" parent="1">
                     <mxGeometry x="50" y="1400" width="300" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="83" value="" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
@@ -320,8 +320,8 @@
                 <mxCell id="10" value="Before the heartbeat starts, the nodes send/receive messages to/from the nodes within the mesh it belongs." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" parent="1" vertex="1">
                     <mxGeometry x="-560" y="500" width="1240" height="130" as="geometry"/>
                 </mxCell>
-                <mxCell id="126" value="Since Peer(1) has been added to the mesh, there are no peers to gossip." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontColor=#F0F0F0;fontSize=13;" vertex="1" parent="1">
-                    <mxGeometry x="670" y="790" width="500" height="110" as="geometry"/>
+                <mxCell id="126" value="Since `Peer 1` has been added to the mesh, there are no peers to gossip." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontColor=#F0F0F0;fontSize=13;" vertex="1" parent="1">
+                    <mxGeometry x="652" y="874" width="500" height="110" as="geometry"/>
                 </mxCell>
                 <mxCell id="127" value="" style="endArrow=none;dashed=1;html=1;fontSize=15;fontColor=#F0F0F0;entryX=-0.01;entryY=0.295;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="74" target="126">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -333,6 +333,33 @@
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="330" y="870" as="sourcePoint"/>
                         <mxPoint x="655" y="892.4499999999998" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="129" value="There is an outbound connection from `Peer 1` to `Peer6`, &lt;br&gt;but for `Peer 1`, `Peer 6` is not an outbound peer.&lt;br&gt;&lt;br&gt;In other words, `Peer 1`'s `self.outbound_peers` doesn't contain `Peer 6`." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontColor=#F0F0F0;fontSize=13;" vertex="1" parent="1">
+                    <mxGeometry x="-295" y="-188" width="500" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="130" value="" style="endArrow=none;dashed=1;html=1;fontSize=15;fontColor=#F0F0F0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="129">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-5" y="142" as="sourcePoint"/>
+                        <mxPoint x="675" y="832.4500000000003" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="131" value="No updates because `Peer 1` has no `self.outbound_peers`." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontColor=#F0F0F0;fontSize=13;" vertex="1" parent="1">
+                    <mxGeometry x="-991" y="721" width="439" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="132" value="" style="endArrow=none;dashed=1;html=1;fontSize=15;fontColor=#F0F0F0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="131" target="72">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="330" y="870" as="sourcePoint"/>
+                        <mxPoint x="675.0000000000009" y="832.4500000000003" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="133" value="Since no outbound peers in Mesh B,&lt;br&gt;&amp;nbsp;add `Peer 1` (an outbound peer for `Peer 6`) to the mesh." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontColor=#F0F0F0;fontSize=13;" vertex="1" parent="1">
+                    <mxGeometry x="645" y="667" width="500" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="134" value="" style="endArrow=none;dashed=1;html=1;fontSize=15;fontColor=#F0F0F0;entryX=-0.005;entryY=0.427;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="74" target="133">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="330" y="870" as="sourcePoint"/>
+                        <mxPoint x="675.0000000000009" y="832.4500000000003" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
             </root>
