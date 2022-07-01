@@ -27,6 +27,7 @@ mod max_increase_to_keep_city_skyline;
 mod maximum_69_number;
 mod maximum_binary_tree;
 mod maximum_number_of_coins_you_can_get;
+mod maximum_number_of_words_found_in_sentences;
 mod maximum_product_difference_between_two_pairs;
 mod maximum_product_of_two_elements_in_an_array;
 mod minimum_number_of_operations_to_move_all_balls_to_each_box;
