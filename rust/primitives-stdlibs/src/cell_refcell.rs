@@ -15,7 +15,14 @@ use std::rc::Rc;
 // std::cell:Cell
 //
 // https://doc.rust-lang.org/std/cell/struct.Cell.html
-// https://qiita.com/wada314/items/24249418983312795c08#cell%E3%82%92%E4%BD%BF%E3%81%86
+// * なぜ Cell を使うのかについては下記を参照
+//   https://qiita.com/wada314/items/24249418983312795c08#cell%E3%82%92%E4%BD%BF%E3%81%86
+//   > Rc::make_mutとRc::get_mut
+//   > Rc型のドキュメントを読んでいると、どうやらこの2つの関数を使えば、中身の&mut T型にアクセスできそうな気がしてきます。 しかし実は、この2つの関数には非常に強い制約があり、あなたの期待しているものではない可能性が高いです。
+//   > どちらの関数も「そのRcの参照カウントが1のときだけ」しか、参照先の&mutを返してくれないのです。
+//   > そこで登場するのがCellです。
+//   > まとめ
+//   > Rcの参照先の値を変更したいときは、だいたいRc<RefCell<T>>を使う。 かなりの頻出パターンなので覚えておきたい
 //
 // <Cellの制限>
 // 1. Cellの中身の型はCopyをimplしていなければならない (i.e. memcpyでコピーできなければならない)
