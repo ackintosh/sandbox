@@ -294,3 +294,15 @@ jobs:
       - name: print the env var
         run: echo "after -> " && echo "$foo $bar $baz" && echo "."
 
+  workingDirectory:
+    name: working-directory
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        dir: [discv5]
+    defaults:
+      run:
+        working-directory: ${{ matrix.dir }}
+    steps:
+      - uses: actions/checkout@v2
+
