@@ -305,4 +305,6 @@ jobs:
         working-directory: ${{ matrix.dir }}
     steps:
       - uses: actions/checkout@v2
+      - name: ls
+        run: ls -l .
 
