@@ -1,0 +1,21 @@
+[package]
+name = "book-rust-tcp-book-toytcp"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# Rustで低レイヤなネットワークプログラミングを行うためのクレート
+# Rustの標準モジュールであるstd::netには，TCPやUDPのソケットプログラミングに必要な構造体やメソッドは含まれていますが，トランスポートレイヤ以下のプログラミングを行うことはできません
+# 今回はTCPの実装なので，その一つ下のレイヤにあたるIPのAPIを呼び出して送受信を行う必要があります
+# そこで，IPレベルのAPIを提供する生ソケット*1をRustから利用するため，このクレートを用います
+pnet = "0.27"
+# Rustでのエラー処理を簡単に行うためのクレート
+anyhow = "1.0"
+# 乱数を扱うクレート
+rand = "0.8"
+
+[dev-dependencies]
+# Ctrl+Cによるシグナルを簡単にハンドリングするためのクレート
+ctrlc = "3.1"
