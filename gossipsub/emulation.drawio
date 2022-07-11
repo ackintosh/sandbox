@@ -1,0 +1,266 @@
+<mxfile host="65bd71144e">
+    <diagram id="ExdccTZqctQwAvQB16s_" name="Page-1">
+        <mxGraphModel dx="4035" dy="2817" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="189" value="" style="endArrow=none;dashed=1;html=1;fontSize=12;startArrow=none;entryX=0.5;entryY=0.5;entryDx=0;entryDy=15;entryPerimeter=0;" edge="1" parent="1" target="188">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-760" y="640" as="sourcePoint"/>
+                        <mxPoint x="-760" y="-640" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="161" value="" style="endArrow=none;dashed=1;html=1;fontSize=12;startArrow=none;entryX=0.5;entryY=0.5;entryDx=0;entryDy=15;entryPerimeter=0;" edge="1" parent="1" target="157">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint y="640" as="sourcePoint"/>
+                        <mxPoint x="-390" y="-630" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="132" value="" style="endArrow=none;dashed=1;html=1;fontSize=12;startArrow=none;entryX=0.5;entryY=0.5;entryDx=0;entryDy=15;entryPerimeter=0;" parent="1" target="142" edge="1" source="188">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-760" y="480" as="sourcePoint"/>
+                        <mxPoint x="-750" y="-510" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="126" value="Test param: `warmup`&lt;br&gt;&lt;br&gt;Time to wait for nodes to establish connections&lt;br&gt;&amp;nbsp;before beginning publishing." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontColor=#F0F0F0;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="-1470" y="-115" width="320" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="129" value="Publishers" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="-860" y="-806" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="130" value="Lurkers" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="-500" y="-806" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="134" value="" style="endArrow=classic;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-755.1435931288074" y="-440.00427124746216" as="sourcePoint"/>
+                        <mxPoint x="-400" y="-440" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="160" value="Connect" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="134">
+                    <mxGeometry x="-0.7064" y="-1" relative="1" as="geometry">
+                        <mxPoint x="-17" y="-11" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="136" value="Subscribe to the topic in the message from the publisher, &lt;br&gt;and send back Subscribe / GRAFT." style="html=1;dashed=0;whitespace=wrap;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="-120" y="-160" width="360" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="139" value="" style="endArrow=classic;html=1;entryX=1;entryY=1;entryDx=0;entryDy=0;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint y="-360" as="sourcePoint"/>
+                        <mxPoint x="-755.1435931288073" y="-359.9957287525383" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="162" value="Connect" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="139">
+                    <mxGeometry x="-0.9544" y="2" relative="1" as="geometry">
+                        <mxPoint x="-23" y="-12" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="142" value="Start" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" vertex="1" parent="1">
+                    <mxGeometry x="-800" y="-670" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="143" value="Publishers" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="-850" y="-796" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="144" value="Publishers" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="-840" y="-786" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="145" value="Publishers" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="-830" y="-776" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="146" value="Publishers" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="-820" y="-766" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="147" value="Lurkers" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="-490" y="-796" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="148" value="Lurkers" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="-480" y="-786" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="149" value="Lurkers" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="-470" y="-776" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="150" value="Lurkers" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="-460" y="-766" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="151" value="Attackers" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="-100" y="-805" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="152" value="Attackers" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="-90" y="-795" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="153" value="Attackers" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="-80" y="-785" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="154" value="Attackers" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="-70" y="-775" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="155" value="Attackers" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="-60" y="-765" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="156" value="Start" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" vertex="1" parent="1">
+                    <mxGeometry x="-440" y="-670" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="157" value="Start" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" vertex="1" parent="1">
+                    <mxGeometry x="-40" y="-670" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="159" value="" style="endArrow=none;dashed=1;html=1;fontSize=12;startArrow=none;entryX=0.5;entryY=0.5;entryDx=0;entryDy=15;entryPerimeter=0;" edge="1" parent="1" target="156">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-400" y="640" as="sourcePoint"/>
+                        <mxPoint x="-750" y="-630" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="135" value="Subscribe topic(s)" style="html=1;dashed=0;whitespace=wrap;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="-840" y="-280" width="520" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="131" value="Setup discovery&lt;br&gt;&lt;br&gt;Connects to some of the honest nodes (publishers + lurkers) randomly selected." style="html=1;dashed=0;whitespace=wrap;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="-840" y="-600" width="520" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="158" value="Setup discovery&lt;br&gt;&lt;br&gt;Connects to a *single publisher*." style="html=1;dashed=0;whitespace=wrap;fontSize=13;" vertex="1" parent="1">
+                    <mxGeometry x="-115" y="-600" width="235" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="163" value="" style="endArrow=classic;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-757.5735931288074" y="-200.00427124746238" as="sourcePoint"/>
+                        <mxPoint x="-402.43" y="-200" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="164" value="Subscribe / GRAFT" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="163">
+                    <mxGeometry x="-0.7064" y="-1" relative="1" as="geometry">
+                        <mxPoint x="6" y="-11" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="167" value="" style="endArrow=classic;html=1;entryX=1;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-400" y="-400" as="sourcePoint"/>
+                        <mxPoint x="-760.0035931288074" y="-399.9957287525385" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="168" value="Connect" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="167">
+                    <mxGeometry x="-0.9544" y="2" relative="1" as="geometry">
+                        <mxPoint x="-23" y="-12" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="169" value="" style="endArrow=classic;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-757.5735931288073" y="-120.00427124746238" as="sourcePoint"/>
+                        <mxPoint x="-130" y="-120" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="170" value="Subscribe / GRAFT" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="169">
+                    <mxGeometry x="-0.7064" y="-1" relative="1" as="geometry">
+                        <mxPoint x="-34" y="-11" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="171" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-410" y="-160" as="sourcePoint"/>
+                        <mxPoint x="-760" y="-160" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="172" value="Subscribe / GRAFT" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="171">
+                    <mxGeometry x="-0.7064" y="-1" relative="1" as="geometry">
+                        <mxPoint x="6" y="-11" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="173" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-130" y="-80" as="sourcePoint"/>
+                        <mxPoint x="-750" y="-80" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="174" value="Subscribe / GRAFT" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="173">
+                    <mxGeometry x="-0.7064" y="-1" relative="1" as="geometry">
+                        <mxPoint x="6" y="-11" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="175" value="" style="endArrow=classic;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-753.7835931288073" y="39.995728752537616" as="sourcePoint"/>
+                        <mxPoint x="-126.21" y="40" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="176" value="PRUNE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="175">
+                    <mxGeometry x="-0.7064" y="-1" relative="1" as="geometry">
+                        <mxPoint x="-58" y="-11" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="177" value="Process the PRUNE control message, &lt;br&gt;and re-GRAFT after some interval." style="html=1;dashed=0;whitespace=wrap;fontSize=13;" vertex="1" parent="1">
+                    <mxGeometry x="-120" width="360" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="178" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-130" y="80" as="sourcePoint"/>
+                        <mxPoint x="-750" y="80" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="179" value="GRAFT" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="178">
+                    <mxGeometry x="-0.7064" y="-1" relative="1" as="geometry">
+                        <mxPoint x="6" y="-11" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="180" value="Publish messages on all topics subscribing periodically, &lt;br&gt;until the `runtime` is over." style="html=1;dashed=0;whitespace=wrap;fontSize=13;" vertex="1" parent="1">
+                    <mxGeometry x="-930" y="220" width="340" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="181" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="-1140" y="-240" width="20" height="360" as="geometry"/>
+                </mxCell>
+                <mxCell id="182" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="-1140" y="160" width="20" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="183" value="" style="endArrow=classic;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-590.0035931288073" y="259.9957287525376" as="sourcePoint"/>
+                        <mxPoint x="-400" y="260" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="184" value="Message" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="183">
+                    <mxGeometry x="-0.7064" y="-1" relative="1" as="geometry">
+                        <mxPoint x="11" y="-11" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="185" value="" style="endArrow=classic;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-590.0035931288076" y="299.9957287525376" as="sourcePoint"/>
+                        <mxPoint x="-130" y="300" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="186" value="Message" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="185">
+                    <mxGeometry x="-0.7064" y="-1" relative="1" as="geometry">
+                        <mxPoint x="11" y="-11" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="187" value="Don't propagate messages." style="html=1;dashed=0;whitespace=wrap;fontSize=13;" vertex="1" parent="1">
+                    <mxGeometry x="-120" y="220" width="360" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="188" value="Loop" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.loop" vertex="1" parent="1">
+                    <mxGeometry x="-800" y="180" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="191" value="Test param: `runtime`&lt;br&gt;&lt;br&gt;Time to run the emulation." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontColor=#F0F0F0;fontSize=13;" vertex="1" parent="1">
+                    <mxGeometry x="-1440" y="205" width="290" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="194" value="Record connection information." style="html=1;dashed=0;whitespace=wrap;fontSize=13;" vertex="1" parent="1">
+                    <mxGeometry x="-840" y="520" width="920" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="195" value="Record metrics." style="html=1;dashed=0;whitespace=wrap;fontSize=13;" vertex="1" parent="1">
+                    <mxGeometry x="-840" y="440" width="520" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="196" value="End" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" vertex="1" parent="1">
+                    <mxGeometry x="-800" y="640" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="197" value="End" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" vertex="1" parent="1">
+                    <mxGeometry x="-440" y="640" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="198" value="End" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" vertex="1" parent="1">
+                    <mxGeometry x="-40" y="640" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="199" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="-980" y="-280" width="20" height="640" as="geometry"/>
+                </mxCell>
+                <mxCell id="201" value="&lt;span&gt;Record scores periodically.&lt;/span&gt;" style="html=1;dashed=0;whitespace=wrap;fontSize=13;" vertex="1" parent="1">
+                    <mxGeometry x="-1070" y="20" width="200" height="40" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
