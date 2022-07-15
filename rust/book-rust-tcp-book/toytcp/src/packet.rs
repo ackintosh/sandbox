@@ -1,7 +1,8 @@
-use std::net::{IpAddr, Ipv4Addr};
 use pnet::packet::ip::IpNextHeaderProtocols;
 use pnet::packet::Packet;
 use pnet::util;
+use std::fmt::{Debug, Formatter};
+use std::net::{IpAddr, Ipv4Addr};
 
 const TCP_HEADER_SIZE: usize = 20;
 
@@ -75,7 +76,8 @@ impl TcpPacket {
     }
 
     pub fn set_payload(&mut self, payload: &[u8]) {
-        self.buffer[TCP_HEADER_SIZE..TCP_HEADER_SIZE + payload.len() as usize].copy_from_slice(payload)
+        self.buffer[TCP_HEADER_SIZE..TCP_HEADER_SIZE + payload.len() as usize]
+            .copy_from_slice(payload)
     }
 
     // ////////////////////////////////////////////////////////////////////////
@@ -115,17 +117,11 @@ impl TcpPacket {
     }
 
     pub fn get_window_size(&self) -> u16 {
-        u16::from_be_bytes([
-            self.buffer[14],
-            self.buffer[15],
-        ])
+        u16::from_be_bytes([self.buffer[14], self.buffer[15]])
     }
 
     pub fn get_checksum(&self) -> u16 {
-        u16::from_be_bytes([
-            self.buffer[16],
-            self.buffer[17],
-        ])
+        u16::from_be_bytes([self.buffer[16], self.buffer[17]])
     }
 
     // ////////////////////////////////////////////////////////////////////////
@@ -133,18 +129,19 @@ impl TcpPacket {
     // ////////////////////////////////////////////////////////////////////////
 
     pub fn is_correct_checksum(&self, local_addr: Ipv4Addr, remote_addr: Ipv4Addr) -> bool {
-        self.get_checksum() == util::ipv4_checksum(
-            &self.packet(),
-            8,
-            &[],
-            &local_addr,
-            &remote_addr,
-            IpNextHeaderProtocols::Tcp,
-        )
+        self.get_checksum()
+            == util::ipv4_checksum(
+                &self.packet(),
+                8,
+                &[],
+                &local_addr,
+                &remote_addr,
+                IpNextHeaderProtocols::Tcp,
+            )
     }
 }
 
-// 送受信の際に利用する pnet の関数がこのトレイとを実装した型を引数に要求するため
+// 送受信の際に利用する pnet の関数がこのトレイトを実装した型を引数に要求するため
 impl Packet for TcpPacket {
     fn packet(&self) -> &[u8] {
         &self.buffer
@@ -152,5 +149,30 @@ impl Packet for TcpPacket {
 
     fn payload(&self) -> &[u8] {
         &self.buffer[TCP_HEADER_SIZE..]
+    }
+}
+
+impl Debug for TcpPacket {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            r"
+                src: {}
+                dst: {}
+                flag: {}
+                payload_len: {}",
+            self.get_src(),
+            self.get_dest(),
+            crate::tcpflags::flag_to_string(self.get_flag()),
+            self.packet().len(),
+        )
+    }
+}
+
+impl From<pnet::packet::tcp::TcpPacket> for TcpPacket {
+    fn from(packet: pnet::packet::tcp::TcpPacket) -> Self {
+        Self {
+            buffer: packet.packet().to_vec(),
+        }
     }
 }

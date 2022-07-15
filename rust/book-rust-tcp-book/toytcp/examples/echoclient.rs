@@ -1,6 +1,6 @@
+use book_rust_tcp_book_toytcp::tcp::ToyTcp;
 use std::env;
 use std::net::Ipv4Addr;
-use book_rust_tcp_book_toytcp::tcp::ToyTcp;
 
 // 実行例:
 // * 適当なサーバとして netcat を利用する
