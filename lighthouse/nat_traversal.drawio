@@ -1,0 +1,235 @@
+<mxfile host="65bd71144e">
+    <diagram id="T8pmpTCMuDaPm9wjzUCa" name="Page-1">
+        <mxGraphModel dx="2835" dy="1617" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="187" value="A" style="html=1;dashed=0;whitespace=wrap;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="560" y="119" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="188" value="Boot node" style="html=1;dashed=0;whitespace=wrap;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="240" y="119" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="189" value="B" style="html=1;dashed=0;whitespace=wrap;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="960" y="119" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="190" value="Start" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" vertex="1" parent="1">
+                    <mxGeometry x="560" y="199" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="191" value="" style="endArrow=none;dashed=1;html=1;entryX=0.5;entryY=0.5;entryDx=0;entryDy=20;entryPerimeter=0;" edge="1" parent="1" target="190">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="600" y="1480" as="sourcePoint"/>
+                        <mxPoint x="380" y="479" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="192" value="" style="endArrow=none;dashed=1;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="188">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="280" y="1480" as="sourcePoint"/>
+                        <mxPoint x="450" y="249" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="193" value="" style="endArrow=none;dashed=1;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="189">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1000" y="1480" as="sourcePoint"/>
+                        <mxPoint x="690" y="169" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="194" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="600" y="399" as="sourcePoint"/>
+                        <mxPoint x="280" y="400" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="202" value="FINDNODE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="194">
+                    <mxGeometry x="-0.2" y="-2" relative="1" as="geometry">
+                        <mxPoint x="24" y="-7" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="195" value="ENR" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="610" y="349" width="160" height="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="196" value="seq : 1" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="195">
+                    <mxGeometry y="26" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="201" value="The ENR of a Lighthouse node is initially set to be non-contactable, i.e. the ENR has no ip and udp keys." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=14;" vertex="1" parent="1">
+                    <mxGeometry x="624" y="248" width="330" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="205" value="Session established&lt;br&gt;(The handshake sequence is omitted here)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="429" width="400" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="208" value="DHT" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="60" y="429" width="160" height="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="210" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="600" y="599" as="sourcePoint"/>
+                        <mxPoint x="280" y="599" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="211" value="PING (enr-seq : 1)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="210">
+                    <mxGeometry x="-0.2" y="-2" relative="1" as="geometry">
+                        <mxPoint x="62" y="-12" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="212" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="280" y="639" as="sourcePoint"/>
+                        <mxPoint x="600" y="639" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="213" value="PONG (recipient-ip: 198.51.100.1,&amp;nbsp;recipient-port: 40000)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="212">
+                    <mxGeometry x="-0.2" y="-2" relative="1" as="geometry">
+                        <mxPoint x="11" y="-12" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="214" value="Session has been established between Boot node and A, however, Node A's ENR is not inserted into Boot node's DHT as the ENR is non-contactable." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=14;" vertex="1" parent="1">
+                    <mxGeometry x="-187" y="262" width="350" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="215" value="Node A is behind NAT." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=14;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="59" width="260" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="216" value="PONG response contains `recipient-ip ` and `recipient-port` which are the contact information of the recipient node contactable from the internet." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=14;" vertex="1" parent="1">
+                    <mxGeometry x="-251" y="621" width="350" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="219" value="" style="endArrow=none;dashed=1;html=1;exitX=0;exitY=0;exitDx=350;exitDy=47;exitPerimeter=0;" edge="1" parent="1" source="216">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="90" y="870" as="sourcePoint"/>
+                        <mxPoint x="285" y="626" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="220" value="" style="endArrow=none;dashed=1;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="208" target="214">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="200" y="707" as="sourcePoint"/>
+                        <mxPoint x="310" y="650" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="221" value="&lt;div&gt;IpVote&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Collect IP:Ports for this node reported from external peers and take a majority.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fontColor=#80FF00;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="680" width="320" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="223" value="ENR" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="610" y="870" width="160" height="116" as="geometry"/>
+                </mxCell>
+                <mxCell id="224" value="seq : 2" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="223">
+                    <mxGeometry y="26" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="227" value="ip : 198.51.100.1" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="223">
+                    <mxGeometry y="56" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="228" value="udp: 40000" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="223">
+                    <mxGeometry y="86" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="225" value="Update the ENR with the majority." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="460" y="800" width="280" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="229" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1000" y="1280" as="sourcePoint"/>
+                        <mxPoint x="280" y="1281" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="230" value="FINDNODE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="229">
+                    <mxGeometry x="-0.2" y="-2" relative="1" as="geometry">
+                        <mxPoint x="200" y="-7" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="233" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="600" y="1040" as="sourcePoint"/>
+                        <mxPoint x="280" y="1040" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="234" value="PING (enr-seq : 2)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="233">
+                    <mxGeometry x="-0.2" y="-2" relative="1" as="geometry">
+                        <mxPoint x="62" y="-12" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="236" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="280" y="1080" as="sourcePoint"/>
+                        <mxPoint x="600" y="1080" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="237" value="PONG" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="236">
+                    <mxGeometry x="-0.2" y="-2" relative="1" as="geometry">
+                        <mxPoint x="-108" y="-12" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="238" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="280" y="1120" as="sourcePoint"/>
+                        <mxPoint x="600" y="1120" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="239" value="FINDNODE (distance: 0)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="238">
+                    <mxGeometry x="-0.2" y="-2" relative="1" as="geometry">
+                        <mxPoint x="-58" y="-12" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="240" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="600" y="1160" as="sourcePoint"/>
+                        <mxPoint x="280" y="1160" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="241" value="NODES" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="240">
+                    <mxGeometry x="-0.2" y="-2" relative="1" as="geometry">
+                        <mxPoint x="98" y="-12" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="242" value="DHT" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="1160" width="160" height="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="243" value="Node A's ENR" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="115" y="1190" width="90" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="244" value="The enr-seq received here is newer than the Boot node has so requesting Node A's ENR." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=14;" vertex="1" parent="1">
+                    <mxGeometry x="-179" y="906" width="350" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="245" value="" style="endArrow=none;dashed=1;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="244">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="200" y="707" as="sourcePoint"/>
+                        <mxPoint x="300" y="1110" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="246" value="The *contactable* Node A's ENR has been inserted." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=14;" vertex="1" parent="1">
+                    <mxGeometry x="-322" y="1178" width="350" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="247" value="" style="endArrow=none;dashed=1;html=1;exitX=0;exitY=0;exitDx=350;exitDy=47;exitPerimeter=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="246" target="242">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="45" y="1010" as="sourcePoint"/>
+                        <mxPoint x="310" y="1120" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="248" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="280" y="1320" as="sourcePoint"/>
+                        <mxPoint x="1000" y="1320" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="249" value="NODES (&amp;nbsp;&lt;span style=&quot;font-size: 12px&quot;&gt;Node A's ENR&lt;/span&gt;&amp;nbsp;)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="248">
+                    <mxGeometry x="-0.2" y="-2" relative="1" as="geometry">
+                        <mxPoint x="-208" y="-12" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="250" value="Node B connects to Node A directly." style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fontColor=#80FF00;" vertex="1" parent="1">
+                    <mxGeometry x="560" y="1360" width="490" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="251" value="The Node A's *contactable* ENR is returned to Node B." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=14;" vertex="1" parent="1">
+                    <mxGeometry x="-120" y="1360" width="350" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="252" value="" style="endArrow=none;dashed=1;html=1;exitX=0.583;exitY=-0.037;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="251">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="70" y="1237" as="sourcePoint"/>
+                        <mxPoint x="290" y="1310" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="253" value="" style="endArrow=none;dashed=1;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="195" target="201">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="150" y="439" as="sourcePoint"/>
+                        <mxPoint x="-2" y="352" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
