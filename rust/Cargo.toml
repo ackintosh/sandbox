@@ -86,6 +86,7 @@ exclude = [
   "crate-clap",
   "crate-influxdb",
   "crate-tokio-console",
+  "crate-tokio-stream",
   "crate-tokio_framed",
   "crate-testground-sdk-rust",
 ]
