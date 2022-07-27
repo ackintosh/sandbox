@@ -63,4 +63,5 @@ mod sum_of_nodes_with_even_valued_grandparent;
 mod truncate_sentence;
 mod unique_number_of_occurrences;
 mod water_bottles;
+mod watering_plants;
 mod xor_operation_in_an_array;
