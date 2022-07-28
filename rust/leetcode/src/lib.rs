@@ -1,5 +1,6 @@
 mod all_elements_in_two_binary_search_trees;
 mod all_paths_from_source_to_target;
+mod all_possible_full_binary_trees;
 mod arithmetic_subarrays;
 mod balance_a_binary_search_tree;
 mod binary_search_tree_to_greater_sum_tree;
