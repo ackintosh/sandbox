@@ -25,6 +25,8 @@ async fn tokio_sync_mpsc_channel() {
     //   -> もしreceiverが受信せずにバッファが一杯になったら、sendはブロックされる
     // * senderは複製可能
     //   -> 複数のsenderから、単一のreceiverにメッセージを送信する
+    // * channel() の引数でバッファを指定する. バッファを越えた場合 panic が発生する
+    //   -> unbounded_channel() ならばバッファの指定が不要. ただし、メモリからあふれるリスクあり. Doc参照
     let (sender, mut receiver) = tokio::sync::mpsc::channel(5);
 
     tokio::spawn(async move {

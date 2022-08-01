@@ -1,3 +1,4 @@
+mod allocator;
 mod array;
 mod barrier;
 mod binary_heap;

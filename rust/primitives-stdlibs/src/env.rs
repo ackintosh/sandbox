@@ -4,8 +4,6 @@
 // Environment Variables - The Cargo Book
 // https://doc.rust-lang.org/cargo/reference/environment-variables.html
 
-use std::path::PathBuf;
-
 #[test]
 fn env() {
     let foo = match std::env::var("FOO") {

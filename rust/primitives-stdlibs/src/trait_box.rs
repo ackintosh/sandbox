@@ -15,6 +15,7 @@
 // 19 |     inner: Box<Bar>,
 //    |            ^^^^   ^
 
+#[allow(unused)]
 #[derive(Debug)]
 struct Foo {
     inner: Box<Bar>, // Boxで包むことで、コンパイル時にサイズが決まる必要がなくなるので、コンパイルエラーが出なくなる

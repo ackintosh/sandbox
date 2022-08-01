@@ -23,6 +23,7 @@ fn mutable_reference() {
     assert_eq!(a, 32);
 }
 
+#[allow(unused_assignments)]
 #[test]
 fn mutable_reference2() {
     let mut a: i32 = 1;
@@ -62,7 +63,7 @@ fn borrowing() {
 #[test]
 fn borrowing_threading() {
     // 可変の変数
-    let mut s = String::from("Hello");
+    let s = String::from("Hello");
     // 可変の参照
     // let ref_s = &mut s;
 

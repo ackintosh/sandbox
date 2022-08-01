@@ -60,6 +60,7 @@ fn test_longest_without_lifetime() {
 
 // # 構造体定義のライフタイム注釈
 // Excerptのインスタンスが、 `part` フィールドに保持している参照よりも短命であることを意味する
+#[allow(dead_code)]
 struct Excerpt<'a> {
     part: &'a str,
 }
