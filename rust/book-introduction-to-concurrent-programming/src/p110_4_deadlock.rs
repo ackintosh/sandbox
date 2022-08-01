@@ -12,6 +12,7 @@ use std::sync::{Arc, Mutex};
 // }
 
 #[allow(dead_code)]
+#[allow(clippy::let_underscore_lock)]
 fn dining_philosophers_problem() {
     // 箸が2本
     let chopstick1_philosopher1 = Arc::new(Mutex::new(()));
@@ -24,7 +25,7 @@ fn dining_philosophers_problem() {
     let philosopher1 = std::thread::spawn(move || {
         for _ in 0..100000 {
             // 1 -> 2 の順に箸を取る(哲学者1から見て左の箸から取る)
-            let _ = chopstick1_philosopher1.lock().unwrap();
+            let _ = chopstick1_philosopher1.lock().unwrap(); // clippy::let_underscore_lock のエラーが出るが抑制している
             let _ = chopstick2_philosopher1.lock().unwrap();
             println!("philosopher1: eating");
         }

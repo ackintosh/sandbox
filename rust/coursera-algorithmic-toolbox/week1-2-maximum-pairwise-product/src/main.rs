@@ -59,10 +59,7 @@ fn fast_algorithm(n: u64, nums: Vec<u64>) -> u64 {
             if i == largest_index {
                 continue;
             }
-            if index.is_none() {
-                index = Some(i);
-                number = nums[i];
-            } else if nums[i] > number {
+            if index.is_none() || nums[i] > number {
                 index = Some(i);
                 number = nums[i];
             }
