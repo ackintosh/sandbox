@@ -81,3 +81,42 @@ fn max() {
     let nums = vec![1, 5, 2, 8, 3];
     assert_eq!(nums.iter().max(), Some(&8));
 }
+
+// Returning Rust Iterators | Depth-First
+// https://depth-first.com/articles/2020/06/22/returning-rust-iterators/#simpleiteratordelegation
+mod returning_iterator {
+
+    // Associated Type
+    mod associated_type {
+        trait Container<'a> {
+            type ItemIterator: Iterator<Item = &'a u8>;
+
+            fn items(&'a self) -> Self::ItemIterator;
+        }
+
+        struct VecContainer {
+            items: Vec<u8>,
+        }
+
+        impl<'a> Container<'a> for VecContainer {
+            type ItemIterator = std::slice::Iter<'a, u8>;
+
+            fn items(&'a self) -> Self::ItemIterator {
+                self.items.iter()
+            }
+        }
+
+        #[test]
+        fn test() {
+            let vec_container = VecContainer {
+                items: vec![1, 2, 3],
+            };
+
+            // イテレータを返す items() を呼び出す
+            let iter = vec_container.items();
+            for i in iter {
+                println!("{}", i);
+            }
+        }
+    }
+}
