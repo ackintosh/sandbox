@@ -41,17 +41,17 @@ pub fn derive(input: TokenStream) -> TokenStream {
     // `proc_macro::TokenStream` を引数として受け取る
 
     // `syn::parse_macro_input!` マクロでパースして構文木にする
-    let input = syn::parse_macro_input!(input as DeriveInput);
+    let ast = syn::parse_macro_input!(input as DeriveInput);
     // derive マクロの入力をパースすると以下のような `syn::DeriveInput` 構造体が得られる
     // * vis: 構造体の可視性の情報を保持しています
     // * ident: identifier の略で、変数名などの Rust コード中の識別子の情報を保持しています。ここでは derive マクロが付与された構造体/enum の名前を保持しています
     // * data: 構造体の保持するフィールドの情報を持っています
 
     // 生成するビルダー名は `{対象の構造体名}Builder` とする
-    let builder_name = format_ident!("{}Builder", input.ident);
+    let builder_name = format_ident!("{}Builder", ast.ident);
 
     // 対象の構造体が持つフィールドの名前と型を入力から取得する
-    let (idents, types): (Vec<Ident>, Vec<Type>) = match input.data {
+    let (idents, types): (Vec<Ident>, Vec<Type>) = match ast.data {
         Data::Struct(data) => match data.fields {
             Fields::Named(fields) => fields
                 .named
@@ -89,8 +89,8 @@ pub fn derive(input: TokenStream) -> TokenStream {
     //   * これを使って適切な名前や型のフィールドを持った構造体を動的に生成します
     //     * `syn::Ident` などの構造体は `quote::ToTokens` トレイトを実装しているので特に気にせず使える
     //   * 以下では、 `#ident`, `#vis`, `#builder_name` といった変数で利用している
-    let ident = input.ident;
-    let vis = input.vis;
+    let ident = ast.ident;
+    let vis = ast.vis;
 
     // * `#(...)*` のような形で `IntoIterator` を実装した型の変数を繰り返して挿入できる
     //   * 以下では、`#idents`, `#types` といった変数で利用している
