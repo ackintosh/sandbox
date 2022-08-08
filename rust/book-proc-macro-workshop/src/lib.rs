@@ -13,6 +13,25 @@ pub fn derive(input: TokenStream) -> TokenStream {
     // Parse the input tokens into a syntax tree
     let _input = syn::parse_macro_input!(input as DeriveInput);
 
-    let a = quote! {};
-    a.into()
+    let expand = quote! {
+        pub struct CommandBuilder {
+            executable: Option<String>,
+            args: Option<Vec<String>>,
+            env: Option<Vec<String>>,
+            current_dir: Option<Vec<String>>,
+        }
+
+        impl Command {
+            pub fn builder() -> CommandBuilder {
+                CommandBuilder {
+                    executable: None,
+                    args: None,
+                    env: None,
+                    current_dir: None,
+                }
+            }
+        }
+    };
+
+    proc_macro::TokenStream::from(expand)
 }

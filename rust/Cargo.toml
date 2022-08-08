@@ -89,6 +89,7 @@ exclude = [
   "crate-tokio-stream",
   "crate-tokio_framed",
   "crate-testground-sdk-rust",
+  "primitives-proc-macro",
 ]
 
 # dhat利用時に入れた設定
