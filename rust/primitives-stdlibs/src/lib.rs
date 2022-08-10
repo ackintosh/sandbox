@@ -48,6 +48,7 @@ mod trait_box;
 mod trait_clone;
 mod trait_drop;
 mod trait_from_into;
+mod trait_into;
 mod trait_rc;
 mod trait_send;
 mod trait_sized;
