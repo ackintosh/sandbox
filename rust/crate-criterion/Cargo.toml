@@ -16,4 +16,6 @@ criterion = "0.3"
 
 [[bench]]
 name = "my_benchmark"
+# Criterionでは `harness = false` を設定する必要がある
+# https://bheisler.github.io/criterion.rs/book/getting_started.html#step-1---add-dependency-to-cargotoml
 harness = false

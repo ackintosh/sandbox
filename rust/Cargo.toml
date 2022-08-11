@@ -84,6 +84,7 @@ exclude = [
   "cargo-bench",
   "crate-async-std",
   "crate-clap",
+  "crate-critcmp",
   "crate-influxdb",
   "crate-tokio-console",
   "crate-tokio-stream",
