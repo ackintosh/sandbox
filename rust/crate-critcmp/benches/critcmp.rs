@@ -16,93 +16,84 @@ use criterion::{criterion_group, criterion_main};
 //
 // $ critcmp baseline-vec baseline-iter
 
-mod vec {
-    use criterion::Criterion;
-    use prometheus_client_vec::encoding::proto::encode;
-    use prometheus_client_vec::metrics::counter::Counter;
-    use prometheus_client_vec::metrics::family::Family;
-    use prometheus_client_vec::registry::Registry;
-    use std::borrow::Cow;
+use criterion::{black_box, Criterion};
+use prometheus_client::encoding::proto::EncodeProtobuf;
+use prometheus_client::encoding::proto::{encode, EncodeMetric};
+use prometheus_client::metrics::counter::Counter;
+use prometheus_client::metrics::family::Family;
+use prometheus_client::metrics::histogram::{exponential_buckets, Histogram};
+use prometheus_client::registry::Registry;
+use std::fmt::{Display, Formatter};
 
-    pub fn criterion_benchmark(c: &mut Criterion) {
-        c.bench_function("vec", |b| {
-            b.iter(|| {
-                let mut registry = Registry::default();
-                let sub_registry = registry.sub_registry_with_prefix("my_prefix");
-                let sub_sub_registry = sub_registry
-                    .sub_registry_with_label((Cow::Borrowed("my_key"), Cow::Borrowed("my_value")));
-                let family = Family::<Vec<(String, String)>, Counter>::default();
-                sub_sub_registry.register("my_counter_family", "My counter family", family.clone());
+pub fn criterion_benchmark(c: &mut Criterion) {
+    c.bench_function("encode", |b| {
+        #[derive(Clone, Hash, PartialEq, Eq, EncodeProtobuf)]
+        struct Labels {
+            path: String,
+            method: Method,
+            some_number: u64,
+        }
 
-                family
-                    .get_or_create(&vec![
-                        ("method".to_string(), "GET".to_string()),
-                        ("status".to_string(), "200".to_string()),
-                    ])
+        #[derive(Clone, Hash, PartialEq, Eq)]
+        enum Method {
+            Get,
+            #[allow(dead_code)]
+            Put,
+        }
+
+        impl Display for Method {
+            fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+                match self {
+                    Method::Get => write!(f, "Get"),
+                    Method::Put => write!(f, "Put"),
+                }
+            }
+        }
+
+        let mut registry = Registry::<Box<dyn EncodeMetric>>::default();
+
+        for i in 0..100 {
+            let counter_family = Family::<Labels, Counter>::default();
+            let histogram_family = Family::<Labels, Histogram>::new_with_constructor(|| {
+                Histogram::new(exponential_buckets(1.0, 2.0, 10))
+            });
+
+            registry.register(
+                format!("my_counter{}", i),
+                "My counter",
+                Box::new(counter_family.clone()),
+            );
+            registry.register(
+                format!("my_histogram{}", i),
+                "My histogram",
+                Box::new(histogram_family.clone()),
+            );
+
+            for j in 0_u32..100 {
+                counter_family
+                    .get_or_create(&Labels {
+                        path: format!("/path/{}", i),
+                        method: Method::Get,
+                        some_number: j.into(),
+                    })
                     .inc();
 
-                let metric_set = encode(&registry);
+                histogram_family
+                    .get_or_create(&Labels {
+                        path: format!("/path/{}", i),
+                        method: Method::Get,
+                        some_number: j.into(),
+                    })
+                    .observe(j.into());
+            }
+        }
 
-                let family = metric_set.metric_families.first().unwrap();
-                assert_eq!("my_prefix_my_counter_family", family.name);
-                assert_eq!("My counter family.", family.help);
-
-                let metric = family.metrics.first().unwrap();
-                assert_eq!(3, metric.labels.len());
-                assert_eq!("method", metric.labels[0].name);
-                assert_eq!("GET", metric.labels[0].value);
-                assert_eq!("status", metric.labels[1].name);
-                assert_eq!("200", metric.labels[1].value);
-                assert_eq!("my_key", metric.labels[2].name);
-                assert_eq!("my_value", metric.labels[2].value);
-            })
-        });
-    }
+        b.iter(|| {
+            let metric_set = encode(&registry);
+            black_box(metric_set);
+        })
+    });
 }
 
-mod iter {
-    use criterion::Criterion;
-    use prometheus_client_iter::encoding::proto::encode;
-    use prometheus_client_iter::metrics::counter::Counter;
-    use prometheus_client_iter::metrics::family::Family;
-    use prometheus_client_iter::registry::Registry;
-    use std::borrow::Cow;
-
-    pub fn criterion_benchmark(c: &mut Criterion) {
-        c.bench_function("iter", |b| {
-            b.iter(|| {
-                let mut registry = Registry::default();
-                let sub_registry = registry.sub_registry_with_prefix("my_prefix");
-                let sub_sub_registry = sub_registry
-                    .sub_registry_with_label((Cow::Borrowed("my_key"), Cow::Borrowed("my_value")));
-                let family = Family::<Vec<(String, String)>, Counter>::default();
-                sub_sub_registry.register("my_counter_family", "My counter family", family.clone());
-
-                family
-                    .get_or_create(&vec![
-                        ("method".to_string(), "GET".to_string()),
-                        ("status".to_string(), "200".to_string()),
-                    ])
-                    .inc();
-
-                let metric_set = encode(&registry);
-
-                let family = metric_set.metric_families.first().unwrap();
-                assert_eq!("my_prefix_my_counter_family", family.name);
-                assert_eq!("My counter family.", family.help);
-
-                let metric = family.metrics.first().unwrap();
-                assert_eq!(3, metric.labels.len());
-                assert_eq!("method", metric.labels[1].name);
-                assert_eq!("GET", metric.labels[1].value);
-                assert_eq!("status", metric.labels[2].name);
-                assert_eq!("200", metric.labels[2].value);
-                assert_eq!("my_key", metric.labels[0].name);
-                assert_eq!("my_value", metric.labels[0].value);
-            })
-        });
-    }
-}
-
-criterion_group!(benches, crate::vec::criterion_benchmark, crate::iter::criterion_benchmark);
+criterion_group!(benches, criterion_benchmark);
 criterion_main!(benches);
