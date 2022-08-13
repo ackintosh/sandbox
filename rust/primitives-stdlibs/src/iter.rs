@@ -20,6 +20,16 @@ fn nth() {
 }
 
 #[test]
+fn zip() {
+    let a = vec![1, 2, 3];
+    let b = vec![4, 5, 6];
+
+    for (i, j) in a.iter().zip(b.iter()) {
+        println!("{}, {}", i, j);
+    }
+}
+
+#[test]
 fn filter_map() {
     println!("/// filter_map ///");
     // filter_map
