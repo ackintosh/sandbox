@@ -436,7 +436,7 @@ dependencies = [
 [[package]]
 name = "prometheus-client"
 version = "0.17.0"
-source = "git+https://github.com/ackintosh/client_rust.git?rev=98ffcc28d51364fab1ce6dc68c229466642d632d#98ffcc28d51364fab1ce6dc68c229466642d632d"
+source = "git+https://github.com/ackintosh/client_rust.git?rev=2c16ebc31cb8b2d36a6fb7d49308f87f11ff2558#2c16ebc31cb8b2d36a6fb7d49308f87f11ff2558"
 dependencies = [
  "dtoa",
  "itoa 1.0.3",
@@ -446,13 +446,12 @@ dependencies = [
  "prost",
  "prost-build",
  "prost-types",
- "void",
 ]
 
 [[package]]
 name = "prometheus-client-derive-proto-encode"
 version = "0.1.0"
-source = "git+https://github.com/ackintosh/client_rust.git?rev=98ffcc28d51364fab1ce6dc68c229466642d632d#98ffcc28d51364fab1ce6dc68c229466642d632d"
+source = "git+https://github.com/ackintosh/client_rust.git?rev=2c16ebc31cb8b2d36a6fb7d49308f87f11ff2558#2c16ebc31cb8b2d36a6fb7d49308f87f11ff2558"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -462,7 +461,7 @@ dependencies = [
 [[package]]
 name = "prometheus-client-derive-text-encode"
 version = "0.3.0"
-source = "git+https://github.com/ackintosh/client_rust.git?rev=98ffcc28d51364fab1ce6dc68c229466642d632d#98ffcc28d51364fab1ce6dc68c229466642d632d"
+source = "git+https://github.com/ackintosh/client_rust.git?rev=2c16ebc31cb8b2d36a6fb7d49308f87f11ff2558#2c16ebc31cb8b2d36a6fb7d49308f87f11ff2558"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -722,12 +721,6 @@ name = "unicode-width"
 version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3ed742d4ea2bd1176e236172c8429aaf54486e7ac098db29ffe6529e0ce50973"
-
-[[package]]
-name = "void"
-version = "1.0.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6a02e4885ed3bc0f2de90ea6dd45ebcbb66dacffe03547fadbb0eeae2770887d"
 
 [[package]]
 name = "walkdir"

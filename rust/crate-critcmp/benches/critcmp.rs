@@ -5,11 +5,11 @@ use criterion::{criterion_group, criterion_main};
 //
 // $ cargo install critcmp
 //
-// `vec` のベンチマークを取り、結果を `baseline-vec` の名前で保存する
-// $ cargo bench --bench critcmp -- vec --save-baseline baseline-vec
+// 結果を `baseline-vec` の名前で保存する
+// $ cargo bench --bench critcmp -- --save-baseline baseline-vec
 //
 // `iter` も同様に行う
-// $ cargo bench --bench critcmp -- iter --save-baseline baseline-iter
+// $ cargo bench --bench critcmp -- --save-baseline baseline-iter
 //
 // それぞれの baseline が保存されていることを確認する
 // $ critcmp --baselines
@@ -17,17 +17,24 @@ use criterion::{criterion_group, criterion_main};
 // $ critcmp baseline-vec baseline-iter
 
 use criterion::{black_box, Criterion};
-use prometheus_client::encoding::proto::EncodeProtobuf;
+// * before (vec)
+// use prometheus_client::encoding::proto::EncodeProtobuf;
+// * after (iter)
+use prometheus_client::encoding::proto::Encode;
 use prometheus_client::encoding::proto::{encode, EncodeMetric};
 use prometheus_client::metrics::counter::Counter;
 use prometheus_client::metrics::family::Family;
 use prometheus_client::metrics::histogram::{exponential_buckets, Histogram};
 use prometheus_client::registry::Registry;
 use std::fmt::{Display, Formatter};
+use std::vec::IntoIter;
 
 pub fn criterion_benchmark(c: &mut Criterion) {
     c.bench_function("encode", |b| {
-        #[derive(Clone, Hash, PartialEq, Eq, EncodeProtobuf)]
+        // * before (vec)
+        // #[derive(Clone, Hash, PartialEq, Eq, EncodeProtobuf)]
+        // * after (iter)
+        #[derive(Clone, Hash, PartialEq, Eq, Encode)]
         struct Labels {
             path: String,
             method: Method,
@@ -50,7 +57,12 @@ pub fn criterion_benchmark(c: &mut Criterion) {
             }
         }
 
-        let mut registry = Registry::<Box<dyn EncodeMetric>>::default();
+        // * before (vec)
+        // let mut registry = Registry::<Box<dyn EncodeMetric>>::default();
+        // * after (iter)
+        let mut registry = Registry::<
+            Box<dyn EncodeMetric<Iterator = IntoIter<prometheus_client::encoding::proto::Metric>>>,
+        >::default();
 
         for i in 0..100 {
             let counter_family = Family::<Labels, Counter>::default();

@@ -7,9 +7,10 @@ edition = "2021"
 
 [dependencies]
 # before (vec)
-#prometheus-client = { git = "https://github.com/ackintosh/client_rust.git", rev = "2c16ebc31cb8b2d36a6fb7d49308f87f11ff2558", features = ["protobuf"] }
+prometheus-client = { git = "https://github.com/ackintosh/client_rust.git", rev = "2c16ebc31cb8b2d36a6fb7d49308f87f11ff2558", features = ["protobuf"] }
 # after (iter)
-prometheus-client = { git = "https://github.com/ackintosh/client_rust.git", rev = "98ffcc28d51364fab1ce6dc68c229466642d632d", features = ["protobuf"] }
+prometheus-client = { git = "https://github.com/ackintosh/client_rust.git", rev = "59a67624c26dd0df0bff7a7c0cfc03d67d7741b5", features = ["protobuf"] }
+#prometheus-client = { path = "../../../client_rust", features = ["protobuf"] }
 
 [dev-dependencies]
 criterion = "0.3"
