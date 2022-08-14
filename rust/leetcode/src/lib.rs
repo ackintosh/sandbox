@@ -19,6 +19,7 @@ mod design_parking_system;
 mod dp;
 mod encode_and_decode_tinyurl;
 mod execution_of_all_suffix_instructions_staying_in_a_grid;
+mod find_and_replace_pattern;
 mod find_center_of_star_graph;
 mod find_n_unique_integers_sum_up_to_zero;
 mod find_triangular_sum_of_an_array;
