@@ -18,9 +18,9 @@ use criterion::{criterion_group, criterion_main};
 
 use criterion::{black_box, Criterion};
 // * before (vec)
-// use prometheus_client::encoding::proto::EncodeProtobuf;
+use prometheus_client::encoding::proto::EncodeProtobuf;
 // * after (iter)
-use prometheus_client::encoding::proto::Encode;
+// use prometheus_client::encoding::proto::Encode;
 use prometheus_client::encoding::proto::{encode, EncodeMetric};
 use prometheus_client::metrics::counter::Counter;
 use prometheus_client::metrics::family::Family;
@@ -32,9 +32,9 @@ use std::vec::IntoIter;
 pub fn criterion_benchmark(c: &mut Criterion) {
     c.bench_function("encode", |b| {
         // * before (vec)
-        // #[derive(Clone, Hash, PartialEq, Eq, EncodeProtobuf)]
+        #[derive(Clone, Hash, PartialEq, Eq, EncodeProtobuf)]
         // * after (iter)
-        #[derive(Clone, Hash, PartialEq, Eq, Encode)]
+        // #[derive(Clone, Hash, PartialEq, Eq, Encode)]
         struct Labels {
             path: String,
             method: Method,
@@ -58,11 +58,11 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         }
 
         // * before (vec)
-        // let mut registry = Registry::<Box<dyn EncodeMetric>>::default();
+        let mut registry = Registry::<Box<dyn EncodeMetric>>::default();
         // * after (iter)
-        let mut registry = Registry::<
-            Box<dyn EncodeMetric<Iterator = IntoIter<prometheus_client::encoding::proto::Metric>>>,
-        >::default();
+        // let mut registry = Registry::<
+        //     Box<dyn EncodeMetric<Iterator = IntoIter<prometheus_client::encoding::proto::Metric>>>,
+        // >::default();
 
         for i in 0..100 {
             let counter_family = Family::<Labels, Counter>::default();
