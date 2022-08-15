@@ -1,6 +1,6 @@
 use std::alloc::{GlobalAlloc, Layout, System};
 // * before (vec)
-use prometheus_client::encoding::proto::EncodeProtobuf;
+use prometheus_client::encoding::proto::EncodeProtobuf as Encode;
 // * after (iter)
 // use prometheus_client::encoding::proto::Encode;
 use prometheus_client::encoding::proto::{encode, EncodeMetric};
@@ -31,10 +31,7 @@ unsafe impl GlobalAlloc for CheckAlloc {
 #[global_allocator]
 static A: CheckAlloc = CheckAlloc;
 
-// * before (vec)
-#[derive(Clone, Hash, PartialEq, Eq, EncodeProtobuf)]
-// * after (iter)
-// #[derive(Clone, Hash, PartialEq, Eq, Encode)]
+#[derive(Clone, Hash, PartialEq, Eq, Encode)]
 struct Labels {
     path: String,
     method: Method,
@@ -57,10 +54,14 @@ impl Display for Method {
     }
 }
 
-#[test]
-fn test() {
-    let before = ALLOCATED.load(SeqCst);
+#[derive(Clone, Hash, PartialEq, Eq, Encode)]
+enum Region {
+    Africa,
+    #[allow(dead_code)]
+    Asia,
+}
 
+pub fn run_encode() -> prometheus_client::encoding::proto::MetricSet {
     // * before (vec)
     let mut registry = Registry::<Box<dyn EncodeMetric>>::default();
     // * after (iter)
@@ -70,7 +71,7 @@ fn test() {
 
     for i in 0..100 {
         let counter_family = Family::<Labels, Counter>::default();
-        let histogram_family = Family::<Labels, Histogram>::new_with_constructor(|| {
+        let histogram_family = Family::<Region, Histogram>::new_with_constructor(|| {
             Histogram::new(exponential_buckets(1.0, 2.0, 10))
         });
 
@@ -95,20 +96,22 @@ fn test() {
                 .inc();
 
             histogram_family
-                .get_or_create(&Labels {
-                    path: format!("/path/{}", i),
-                    method: Method::Get,
-                    some_number: j.into(),
-                })
+                .get_or_create(&Region::Africa)
                 .observe(j.into());
         }
     }
 
-    let _metric_set = encode(&registry);
-    // println!("{:?}", metric_set);
+    encode(&registry)
+}
+
+#[test]
+fn allocation_count() {
+    let before = ALLOCATED.load(SeqCst);
+
+    let _metric_set = run_encode();
 
     // *** Allocation count ***
-    // vec: allocation count: 294014
-    // iter: allocation count: 314214
+    // before (vec): allocation count: 124114
+    // after (iter): allocation count: 124214
     println!("allocation count: {}", ALLOCATED.load(SeqCst) - before);
 }
