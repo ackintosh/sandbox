@@ -131,8 +131,8 @@ mod allocation_count {
         let _metric_set = run_encode();
 
         // *** Allocation count ***
-        // before (vec): allocation count: 124114
         // after (iter): allocation count: 124214
+        // before (vec): allocation count: 124114
         println!("allocation count: {}", ALLOCATED.load(SeqCst) - before);
     }
 }
