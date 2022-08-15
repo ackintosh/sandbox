@@ -2,16 +2,20 @@
 // How to switch between `vec` version and `iter` version.
 // * There are some mark: `before(vec)`, `after(iter)`.
 //   * Cargo.toml
+//     * `prometheus-client` dependency
 //   * src/lib.rs
-//     * L11 - L14
-//     * L54 - L59
+//     * `use` declaration
+//     * Instantiating `Registry`
 // * Enable the one you want to test.
 // ///////////////////////////////////////////////////////////////
 
+// ///////////////////////////////////////////////////////////////
 // * before (vec)
 // use prometheus_client::encoding::proto::EncodeProtobuf as Encode;
 // * after (iter)
 use prometheus_client::encoding::proto::Encode;
+// ///////////////////////////////////////////////////////////////
+
 use prometheus_client::encoding::proto::{encode, EncodeMetric};
 use prometheus_client::metrics::counter::Counter;
 use prometheus_client::metrics::family::Family;
@@ -51,12 +55,14 @@ enum Region {
 }
 
 pub fn run_encode() -> prometheus_client::encoding::proto::MetricSet {
+    // ///////////////////////////////////////////////////////////////
     // * before (vec)
     // let mut registry = Registry::<Box<dyn EncodeMetric>>::default();
     // * after (iter)
     let mut registry = Registry::<
         Box<dyn EncodeMetric<Iterator = IntoIter<prometheus_client::encoding::proto::Metric>>>,
     >::default();
+    // ///////////////////////////////////////////////////////////////
 
     for i in 0..100 {
         let counter_family = Family::<Labels, Counter>::default();
