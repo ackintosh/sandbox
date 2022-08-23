@@ -10,7 +10,9 @@ edition = "2021"
 # before (vec)
 #prometheus-client = { git = "https://github.com/ackintosh/client_rust.git", rev = "2c16ebc31cb8b2d36a6fb7d49308f87f11ff2558", features = ["protobuf"] }
 # after (iter)
-prometheus-client = { git = "https://github.com/ackintosh/client_rust.git", rev = "aed6113005870c56835b2521f9c897b4726d08b2", features = ["protobuf"] }
+#prometheus-client = { git = "https://github.com/ackintosh/client_rust.git", rev = "aed6113005870c56835b2521f9c897b4726d08b2", features = ["protobuf"] }
+# after (max)
+prometheus-client = { git = "https://github.com/ackintosh/client_rust.git", rev = "4fad176ad67b4d55da7a03bf90da55723506a32e", features = ["protobuf"] }
 # ################################################
 
 [dev-dependencies]

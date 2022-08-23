@@ -12,7 +12,7 @@
 // ///////////////////////////////////////////////////////////////
 // * before (vec)
 // use prometheus_client::encoding::proto::EncodeProtobuf as Encode;
-// * after (iter)
+// * after (iter) | after (max)
 use prometheus_client::encoding::proto::Encode;
 // ///////////////////////////////////////////////////////////////
 
@@ -59,9 +59,12 @@ pub fn run_encode() -> prometheus_client::encoding::proto::MetricSet {
     // * before (vec)
     // let mut registry = Registry::<Box<dyn EncodeMetric>>::default();
     // * after (iter)
-    let mut registry = Registry::<
-        Box<dyn EncodeMetric<Iterator = IntoIter<prometheus_client::encoding::proto::Metric>>>,
-    >::default();
+    // let mut registry = Registry::<
+    //     Box<dyn EncodeMetric<Iterator = IntoIter<prometheus_client::encoding::proto::Metric>>>,
+    // >::default();
+    // * after (max)
+    let mut registry = Registry::<Box<dyn EncodeMetric>>::default();
+
     // ///////////////////////////////////////////////////////////////
 
     for i in 0..100 {
@@ -131,6 +134,7 @@ mod allocation_count {
         let _metric_set = run_encode();
 
         // *** Allocation count ***
+        // after (max):  allocation count: 114014
         // after (iter): allocation count: 124214
         // before (vec): allocation count: 124114
         println!("allocation count: {}", ALLOCATED.load(SeqCst) - before);
