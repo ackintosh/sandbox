@@ -41,6 +41,7 @@ mod maximum_number_of_words_found_in_sentences;
 mod maximum_product_difference_between_two_pairs;
 mod maximum_product_of_two_elements_in_an_array;
 mod maximum_twin_sum_of_a_linked_list;
+mod maximum_xor_after_operations;
 mod merge_nodes_in_between_zeros;
 mod minimize_maximum_pair_sum_in_array;
 mod minimum_number_of_operations_to_move_all_balls_to_each_box;
