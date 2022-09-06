@@ -59,9 +59,6 @@ fn test() {
 
     assert_eq!(
         37,
-        Solution::garbage_collection(
-            vec!["MMM".into(), "PGM".into(), "GP".into()],
-            vec![3, 10],
-        )
+        Solution::garbage_collection(vec!["MMM".into(), "PGM".into(), "GP".into()], vec![3, 10],)
     );
 }

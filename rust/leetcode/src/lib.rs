@@ -24,6 +24,7 @@ mod execution_of_all_suffix_instructions_staying_in_a_grid;
 mod find_and_replace_pattern;
 mod find_center_of_star_graph;
 mod find_n_unique_integers_sum_up_to_zero;
+mod find_the_winner_of_the_circular_game;
 mod find_triangular_sum_of_an_array;
 mod find_valid_matrix_given_row_and_column_sums;
 mod finding_the_users_active_minutes;
