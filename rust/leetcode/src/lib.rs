@@ -47,6 +47,7 @@ mod merge_nodes_in_between_zeros;
 mod minimize_maximum_pair_sum_in_array;
 mod minimum_amount_of_time_to_collect_garbage;
 mod minimum_number_of_operations_to_move_all_balls_to_each_box;
+mod minimum_number_of_steps_to_make_two_strings_anagram;
 mod minimum_number_of_vertices_to_reach_all_nodes;
 mod minimum_operations_to_make_array_equal;
 mod minimum_time_visiting_all_points;
