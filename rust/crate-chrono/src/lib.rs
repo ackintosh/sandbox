@@ -8,6 +8,13 @@ mod tests {
 
         println!("{}", local);
         // 2020-12-12 07:01:46.005411 +09:00
+
+        let utc = Utc::now();
+        println!("{}", utc);
+        let utc_string = utc.to_rfc3339();
+        println!("{}", utc_string);
+        let dt = DateTime::parse_from_rfc3339(&utc_string).unwrap();
+        println!("{}", dt);
     }
 
     #[test]
