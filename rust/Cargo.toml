@@ -82,6 +82,7 @@ exclude = [
   "book-proc-macro-workshop",
   "book-rust-tcp-book",
   "cargo-bench",
+  "crate-arti",
   "crate-async-std",
   "crate-bitflags",
   "crate-clap",
