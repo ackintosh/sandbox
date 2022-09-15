@@ -17,5 +17,10 @@ mod tests {
         let e2 = Flags::B | Flags::C;
         // union
         assert_eq!((e1 | e2), Flags::ABC);
+
+        let ab = Flags::A | Flags::B;
+        let ac = Flags::A | Flags::C;
+        assert!((Flags::A | Flags::B | Flags::C).contains(ab));
+        assert!((Flags::A | Flags::B | Flags::C).contains(ac));
     }
 }
