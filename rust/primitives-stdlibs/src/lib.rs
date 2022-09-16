@@ -2,6 +2,7 @@ mod allocator;
 mod array;
 mod barrier;
 mod binary_heap;
+mod bitwise;
 mod borrowing;
 mod btreemap;
 mod cell_refcell;

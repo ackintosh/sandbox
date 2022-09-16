@@ -43,6 +43,7 @@ mod maximum_product_difference_between_two_pairs;
 mod maximum_product_of_two_elements_in_an_array;
 mod maximum_twin_sum_of_a_linked_list;
 mod maximum_xor_after_operations;
+mod maximum_xor_for_each_query;
 mod merge_nodes_in_between_zeros;
 mod minimize_maximum_pair_sum_in_array;
 mod minimum_amount_of_time_to_collect_garbage;
