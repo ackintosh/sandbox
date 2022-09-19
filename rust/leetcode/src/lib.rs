@@ -46,6 +46,7 @@ mod maximum_xor_after_operations;
 mod maximum_xor_for_each_query;
 mod merge_nodes_in_between_zeros;
 mod minimize_maximum_pair_sum_in_array;
+mod minimum_add_to_make_parentheses_valid;
 mod minimum_amount_of_time_to_collect_garbage;
 mod minimum_number_of_operations_to_move_all_balls_to_each_box;
 mod minimum_number_of_steps_to_make_two_strings_anagram;

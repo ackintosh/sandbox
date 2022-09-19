@@ -210,3 +210,12 @@ mod sqrt {
         println!("{}", a); // 4.47213595499958
     }
 }
+
+mod abs {
+    #[test]
+    fn abs_diff() {
+        let n: i32 = 100;
+        assert_eq!(900, n.abs_diff(1000));
+        assert_eq!(10, n.abs_diff(90));
+    }
+}
