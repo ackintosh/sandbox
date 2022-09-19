@@ -65,6 +65,7 @@ mod queries_on_number_of_points_inside_a_circle;
 mod rearrange_array_elements_by_sign;
 mod remove_outermost_parentheses;
 mod reveal_cards_in_increasing_order;
+mod reverse_odd_levels_of_binary_tree;
 mod richest_customer_wealth;
 mod running_sum_of_1d_array;
 mod shuffle_string;
