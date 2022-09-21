@@ -187,6 +187,10 @@ mod index {
         let start = 1;
         let end = 4;
         assert_eq!(&vec[start..end], vec!["b", "c", "d"]);
+
+        // 範囲を省略できる
+        println!("{:?}", &vec[..2]); // a, b
+        println!("{:?}", &vec[2..]); // c, d, e
     }
 }
 

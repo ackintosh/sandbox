@@ -45,6 +45,12 @@ mod convert {
     }
 
     #[test]
+    fn uint_to_float() {
+        let i = 1_u64;
+        println!("{}", i as f64)
+    }
+
+    #[test]
     fn positive_to_negative() {
         let positive = 10;
         assert_eq!(-10, -positive);
