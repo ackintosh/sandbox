@@ -23,6 +23,7 @@ mod encode_and_decode_tinyurl;
 mod execution_of_all_suffix_instructions_staying_in_a_grid;
 mod find_and_replace_pattern;
 mod find_center_of_star_graph;
+mod find_elements_in_a_contaminated_binary_tree;
 mod find_n_unique_integers_sum_up_to_zero;
 mod find_the_winner_of_the_circular_game;
 mod find_triangular_sum_of_an_array;
