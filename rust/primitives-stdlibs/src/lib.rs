@@ -16,6 +16,7 @@ mod env;
 mod error;
 mod file_io;
 mod generics;
+mod generics_gossipsub;
 mod hash_map;
 mod if_syntax;
 mod inner;
