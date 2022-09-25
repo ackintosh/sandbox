@@ -28,6 +28,7 @@ mod prometheus {
 //
 // Registryの型パラメータのデフォルトが `Box<dyn Text>` に指定されていて、
 // それでコンパイルされる。
+//
 // ////////////////////////////////////////////////////////////////////////////
 mod before {
     use crate::generics_gossipsub::prometheus;
