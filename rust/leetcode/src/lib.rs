@@ -17,6 +17,7 @@ mod decompress_run_length_encoded_list;
 mod deepest_leaves_sum;
 mod defanging_an_ip_address;
 mod design_a_stack_with_increment_operation;
+mod design_browser_history;
 mod design_parking_system;
 mod dp;
 mod encode_and_decode_tinyurl;
