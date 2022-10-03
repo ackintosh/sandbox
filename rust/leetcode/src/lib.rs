@@ -11,6 +11,7 @@ mod count_nodes_equal_to_average_of_subtree;
 mod count_odd_numbers_in_an_interval_range;
 mod count_sorted_vowel_strings;
 mod count_the_number_of_consistent_strings;
+mod count_triplets_that_can_form_two_arrays_of_equal_xor;
 mod create_target_array_in_the_given_order;
 mod decode_xored_array;
 mod decompress_run_length_encoded_list;
