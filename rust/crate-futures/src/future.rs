@@ -2,6 +2,7 @@ use std::pin::Pin;
 
 struct CountDown(u32);
 
+// Futureトレイトを実装する
 impl std::future::Future for CountDown {
     type Output = String;
 

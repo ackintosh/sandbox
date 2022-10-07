@@ -304,13 +304,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "crate-futures"
-version = "0.1.0"
-dependencies = [
- "futures",
-]
-
-[[package]]
 name = "crate-lazy_static"
 version = "0.1.0"
 dependencies = [
