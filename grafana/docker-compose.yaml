@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  bitnami-grafana:
+    image: bitnami/grafana:9
+    ports:
+      - '13000:3000'
+    volumes:
+      # data sourceの設定をプリセットする
+      - ./influxdb.yml:/opt/bitnami/grafana/conf/provisioning/datasources/influxdb.yml
