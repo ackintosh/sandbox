@@ -4,8 +4,9 @@
 // Environment Variables - The Cargo Book
 // https://doc.rust-lang.org/cargo/reference/environment-variables.html
 
+// 環境変数を取得する
 #[test]
-fn env() {
+fn get_env() {
     let foo = match std::env::var("FOO") {
         Ok(v) => v,
         Err(err) => {
@@ -30,9 +31,9 @@ fn env() {
         println!("debug!!!");
     }
 
-    // /////////////
+    // //////////////////////////////////////////////////////////
     // env! マクロ
-    // /////////////
+    // //////////////////////////////////////////////////////////
     // 例: Cargo.toml のバージョンを出力する
     println!("CARGO_PKG_VERSION: {}", env!("CARGO_PKG_VERSION"));
     // 存在しない環境変数を参照している場合、実行時にエラーになる
@@ -46,4 +47,26 @@ fn env() {
     //     .parse::<PathBuf>()
     //     .expect("should parse manifest dir as path")
     //     .join("foo");
+
+    // 実行時(runtime)にセットする環境変数は、 env! では取れない
+    //   -> env! は compile time に環境変数を解決するので。
+    //      runtimeに環境変数を取得したい場合は std::env::var() を使う
+    std::env::set_var("A_TEST_ENV_VAR", "VALUE");
+    // env!("A_TEST_ENV_VAR");
+    //
+    // error: environment variable `A_TEST_ENV_VAR` not defined
+    //   --> primitives-stdlibs/src/env.rs:58:5
+    //    |
+    // 58 |     env!("A_TEST_ENV_VAR");
+    //    |     ^^^^^^^^^^^^^^^^^^^^^^
+    //    |
+    //    = note: this error originates in the macro `env` (in Nightly builds, run with -Z macro-backtrace for more info)
+}
+
+// 環境変数を設定する
+#[test]
+fn set_env() {
+    std::env::set_var("A_TEST_ENV_VAR", "VALUE");
+
+    println!("{:?}", std::env::var("A_TEST_ENV_VAR"));
 }
