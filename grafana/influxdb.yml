@@ -1,3 +1,7 @@
+# bitnami/grafana イメージの
+# /opt/bitnami/grafana/conf/provisioning/datasources/sample.yaml
+# をコピーして修正した。
+
 # # config file version
 apiVersion: 1
 
