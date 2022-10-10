@@ -11,6 +11,7 @@ async fn basics() {
     let mut stream = tokio_stream::iter(&[1, 2, 3]);
 
     // `Stream`には`next`メソッドが含まれて*8おり、 これを使うと「次のアイテムを取得する`Future`」を取得できる
+    // `StreamExt::next()` が `None` を返したら、streamのイテレーションが終了したことを意味する
     while let Some(v) = stream.next().await {
         println!("GOT = {:?}", v);
     }

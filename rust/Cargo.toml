@@ -82,6 +82,7 @@ exclude = [
   "book-rust-tcp-book",
   "cargo-bench",
   "crate-arti",
+  "crate-async-stream",
   "crate-async-std",
   "crate-bitflags",
   "crate-clap",
