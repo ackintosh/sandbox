@@ -38,6 +38,7 @@ mod jewels_and_stones;
 mod kids_with_the_greatest_number_of_candies;
 mod letter_tile_possibilities;
 mod march_leetcoding_challenge_2021;
+mod matrix_block_sum;
 mod max_increase_to_keep_city_skyline;
 mod maximum_69_number;
 mod maximum_binary_tree;
