@@ -1,10 +1,25 @@
 version: '3'
 
 services:
-  bitnami-grafana:
-    image: bitnami/grafana:9
+  # bitnami-grafana:
+  #   image: bitnami/grafana:9
+  #   ports:
+  #     - '13000:3000'
+  #   volumes:
+  #     # data sourceの設定をプリセットする
+  #     - ./influxdb-bitnami.yml:/opt/bitnami/grafana/conf/provisioning/datasources/influxdb.yml
+
+  # testgroundのInfluxDBに接続するGrafana
+  grafana:
+    image: grafana/grafana:9.1.8
     ports:
       - '13000:3000'
     volumes:
-      # data sourceの設定をプリセットする
-      - ./influxdb.yml:/opt/bitnami/grafana/conf/provisioning/datasources/influxdb.yml
+      - ./influxdb.yml:/etc/grafana/provisioning/datasources/influxdb.yml
+    networks:
+      - testground
+
+networks:
+  testground:
+    name: testground-control
+    external: true
