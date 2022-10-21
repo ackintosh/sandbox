@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="ExdccTZqctQwAvQB16s_" name="Page-1">
-        <mxGraphModel dx="2058" dy="1277" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="2893" dy="1472" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -169,7 +169,7 @@
                 <mxCell id="95" value="&lt;span style=&quot;text-align: left&quot;&gt;validator は、&lt;br&gt;1 epoch につき 1 slot に割り当てられ、&lt;br&gt;1つの attestation を提出できる&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=center;spacingLeft=20;" parent="1" vertex="1">
                     <mxGeometry x="40" y="630" width="380" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="96" value="&lt;span style=&quot;text-align: left&quot;&gt;1つの slot には、1 〜 最大 64 の committee が存在する？&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=center;spacingLeft=20;" parent="1" vertex="1">
+                <mxCell id="96" value="&lt;span style=&quot;text-align: left&quot;&gt;1つの slot には、1 〜 最大 64 の committee が割り当てられる&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=center;spacingLeft=20;" parent="1" vertex="1">
                     <mxGeometry x="-440" y="-180" width="390" height="70" as="geometry"/>
                 </mxCell>
                 <mxCell id="97" value="" style="endArrow=none;dashed=1;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="47" target="96" edge="1">
