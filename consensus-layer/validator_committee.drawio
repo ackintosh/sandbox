@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="ExdccTZqctQwAvQB16s_" name="Page-1">
-        <mxGraphModel dx="2893" dy="1472" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="2458" dy="1277" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -183,6 +183,18 @@
                         <mxPoint x="150" y="490" as="sourcePoint"/>
                         <mxPoint x="225" y="640" as="targetPoint"/>
                     </mxGeometry>
+                </mxCell>
+                <mxCell id="99" value="リンク" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="-1010" y="-260" width="500" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="100" value="https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/beacon-chain.md" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="99">
+                    <mxGeometry y="30" width="500" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="101" value="https://y-nakajo.hatenablog.com/entry/2022/08/05/015915" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="99">
+                    <mxGeometry y="60" width="500" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="102" value="Item 3" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="99">
+                    <mxGeometry y="90" width="500" height="30" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
