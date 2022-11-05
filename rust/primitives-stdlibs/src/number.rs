@@ -75,3 +75,26 @@ mod convert {
         }
     }
 }
+
+mod binary_numbers {
+    #[test]
+    fn binary_numbers() {
+        let x = 0b0011;
+        // 表示には {:b} を使う
+        println!("x = {:b}, that is {}", x, x); // x = 11, that is 3
+
+        let y = 0b0101;
+        println!("y = {:b}, that is {}", y, y); // y = 101, that is 5
+
+        println!("x + y = {:b}, that is {}", x + y, x + y); // x + y = 1000, that is 8
+    }
+
+    #[test]
+    fn vec_of_bins_to_int() {
+        // https://www.reddit.com/r/rust/comments/t2t4v7/comment/hyo15d3/?utm_source=share&utm_medium=web2x&context=3
+        let bins: Vec<i32> = vec![1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1];
+
+        let int = bins.iter().fold(0, |acc, digit| (acc << 1) + digit);
+        assert_eq!(3317, int);
+    }
+}

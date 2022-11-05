@@ -73,6 +73,7 @@ mod reveal_cards_in_increasing_order;
 mod reverse_odd_levels_of_binary_tree;
 mod richest_customer_wealth;
 mod running_sum_of_1d_array;
+mod score_after_flipping_matrix;
 mod shuffle_string;
 mod shuffle_the_array;
 mod sort_the_matrix_diagonally;

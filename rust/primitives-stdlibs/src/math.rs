@@ -102,6 +102,24 @@ mod floating_point_number {
         let error_margin = f64::EPSILON;
         assert!((x - yy).abs() < error_margin);
     }
+
+    #[test]
+    fn ceil() {
+        // x以上で最小の整数 -> 切り上げ
+        let x: f64 = 1.5;
+        assert_eq!(2.0, x.ceil());
+        let x: f64 = 1.1;
+        assert_eq!(2.0, x.ceil());
+    }
+
+    #[test]
+    fn floor() {
+        // x以下で最大の整数 -> 切り下げ
+        let x: f64 = 1.5;
+        assert_eq!(1.0, x.floor());
+        let x: f64 = 1.9;
+        assert_eq!(1.0, x.floor());
+    }
 }
 
 mod ordering {
