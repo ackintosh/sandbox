@@ -43,3 +43,21 @@ fn test() {
         Entry::Occupied(_) => unreachable!(),
     }
 }
+
+#[test]
+fn iter() {
+    let mut map = BTreeMap::new();
+    map.insert(2, "foo");
+    map.insert(8, "bar");
+    map.insert(3, "baz");
+    map.insert(0, "zzz");
+
+    // キーの昇順で出力される
+    for (i, s) in map.iter() {
+        println!("{i}, {s}");
+        // 0, zzz
+        // 2, foo
+        // 3, baz
+        // 8, bar
+    }
+}
