@@ -61,6 +61,8 @@ fn get_env() {
     //    |     ^^^^^^^^^^^^^^^^^^^^^^
     //    |
     //    = note: this error originates in the macro `env` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+    println!("CARGO_PKG_NAME: {}", env!("CARGO_PKG_NAME")); // primitives
 }
 
 // 環境変数を設定する
