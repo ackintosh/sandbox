@@ -66,6 +66,7 @@ mod partition_array_according_to_given_pivot;
 mod partition_labels;
 mod partitioning_into_minimum_number_of_deci_binary_numbers;
 mod path_in_zigzag_labelled_binary_tree;
+mod permutations;
 mod queries_on_a_permutation_with_key;
 mod queries_on_number_of_points_inside_a_circle;
 mod rearrange_array_elements_by_sign;
