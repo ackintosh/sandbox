@@ -1,4 +1,11 @@
 #[test]
+fn or() {
+    let a = 1;
+    let b = 2;
+    println!("{}", a | b); // 3
+}
+
+#[test]
 fn xor() {
     // How do I print an integer in binary with leading zeros?
     // https://stackoverflow.com/questions/44690439/how-do-i-print-an-integer-in-binary-with-leading-zeros
