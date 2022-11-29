@@ -18,6 +18,7 @@ mod decode_xored_array;
 mod decompress_run_length_encoded_list;
 mod deepest_leaves_sum;
 mod defanging_an_ip_address;
+mod delete_leaves_with_a_given_value;
 mod design_a_stack_with_increment_operation;
 mod design_browser_history;
 mod design_parking_system;
@@ -90,3 +91,37 @@ mod unique_number_of_occurrences;
 mod water_bottles;
 mod watering_plants;
 mod xor_operation_in_an_array;
+
+// mod test {
+//     use std::cell::RefCell;
+//     use std::rc::Rc;
+//     use super::*;
+//
+//     #[allow(clippy::unnecessary_wraps)]
+//     fn new_tree_node(
+//         val: i32,
+//         left: Option<Rc<RefCell<TreeNode>>>,
+//         right: Option<Rc<RefCell<TreeNode>>>,
+//     ) -> Option<Rc<RefCell<TreeNode>>> {
+//         Some(Rc::new(RefCell::new(TreeNode { val, left, right })))
+//     }
+//
+//     #[test]
+//     fn test() {
+//         let root = new_tree_node(
+//             1,
+//             new_tree_node(
+//                 2,
+//                 new_tree_node(2, None, None),
+//                 None,
+//             ),
+//             new_tree_node(
+//                 3,
+//                 new_tree_node(2, None, None),
+//                 new_tree_node(4, None, None),
+//             )
+//         );
+//         let result = Solution::remove_leaf_nodes(root, 2);
+//         println!("{:?}", result);
+//     }
+// }
