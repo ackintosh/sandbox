@@ -9,6 +9,7 @@ pub struct TreeNode {
 }
 
 impl TreeNode {
+    #[allow(dead_code)]
     #[inline]
     pub fn new(val: i32) -> Self {
         TreeNode {
@@ -19,7 +20,6 @@ impl TreeNode {
     }
 }
 
-use std::borrow::BorrowMut;
 use std::cell::RefCell;
 use std::rc::Rc;
 
@@ -34,10 +34,10 @@ impl Solution {
     }
 
     fn dfs(
-        mut maybe_node: Option<Rc<RefCell<TreeNode>>>,
+        maybe_node: Option<Rc<RefCell<TreeNode>>>,
         target: i32,
     ) -> Option<Rc<RefCell<TreeNode>>> {
-        if let Some(mut node) = maybe_node {
+        if let Some(node) = maybe_node {
             let n = node.borrow();
             let left = Self::dfs(n.left.clone(), target);
             let right = Self::dfs(n.right.clone(), target);

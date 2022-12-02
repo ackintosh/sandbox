@@ -3,6 +3,7 @@ mod all_paths_from_source_to_target;
 mod all_possible_full_binary_trees;
 mod arithmetic_subarrays;
 mod balance_a_binary_search_tree;
+mod battleships_in_a_board;
 mod binary_search_tree_to_greater_sum_tree;
 mod check_if_two_string_arrays_are_equivalent;
 mod construct_binary_search_tree_from_preorder_traversal;
