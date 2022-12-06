@@ -37,6 +37,7 @@ mod finding_the_users_active_minutes;
 mod goal_parser_interpretation;
 mod group_the_people_given_the_group_size_they_belong_to;
 mod how_many_numbers_are_smaller_than_the_current_number;
+mod insert_into_a_binary_search_tree;
 mod jewels_and_stones;
 mod kids_with_the_greatest_number_of_candies;
 mod letter_tile_possibilities;
