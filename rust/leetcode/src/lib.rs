@@ -83,6 +83,7 @@ mod score_after_flipping_matrix;
 mod shuffle_string;
 mod shuffle_the_array;
 mod sort_the_matrix_diagonally;
+mod spiral_matrix_iv;
 mod split_a_string_in_balanced_strings;
 mod subdomain_visit_count;
 mod subrectangle_queries;
