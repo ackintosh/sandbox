@@ -7,6 +7,7 @@ mod battleships_in_a_board;
 mod binary_search_tree_to_greater_sum_tree;
 mod check_if_two_string_arrays_are_equivalent;
 mod construct_binary_search_tree_from_preorder_traversal;
+mod count_good_nodes_in_binary_tree;
 mod count_items_matching_a_rule;
 mod count_nodes_equal_to_average_of_subtree;
 mod count_number_of_maximum_bitwise_or_subsets;
@@ -124,7 +125,7 @@ mod xor_operation_in_an_array;
 //                 new_tree_node(4, None, None),
 //             )
 //         );
-//         let result = Solution::remove_leaf_nodes(root, 2);
-//         println!("{:?}", result);
+//         let answer = Solution::remove_leaf_nodes(root, 2);
+//         println!("{:?}", answer);
 //     }
 // }
