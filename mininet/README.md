@@ -6,6 +6,18 @@ http://mininet.org/download/
 
 http://mininet.org/walkthrough/#part-1-everyday-mininet-usage
 
+## VMware Fusion
+
+Ubuntuをインストール
+
+https://dev.to/daud99/installing-ubuntu-using-vmware-fusion-tech-preview-on-mac-m1-silicon-4b0e
+
+UbuntuでMininetをセットアップ
+
+http://mininet.org/download/
+
+他、Scrapboxの ubuntu と Mininet を参照
+
 ---
 
 ## Memo:VirtualBoxはイメージが起動できなかったので諦めた
