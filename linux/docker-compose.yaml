@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+  debian-bullseye:
+    image: debian:bullseye-slim
+    volumes:
+      - .:/temp/sandbox
+    working_dir: /temp/sandbox
+
