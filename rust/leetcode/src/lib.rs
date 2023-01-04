@@ -1,3 +1,5 @@
+extern crate core;
+
 mod all_elements_in_two_binary_search_trees;
 mod all_paths_from_source_to_target;
 mod all_possible_full_binary_trees;
@@ -91,6 +93,7 @@ mod spiral_matrix_iv;
 mod split_a_string_in_balanced_strings;
 mod subdomain_visit_count;
 mod subrectangle_queries;
+mod subsets;
 mod subtract_the_product_and_sum_of_digits_of_an_integer;
 mod sum_of_nodes_with_even_valued_grandparent;
 mod truncate_sentence;
