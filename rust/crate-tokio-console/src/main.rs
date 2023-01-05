@@ -30,9 +30,10 @@ use std::time::Duration;
 // $ sysctl hw.physicalcpu hw.logicalcpu
 //    hw.physicalcpu: 10
 //    hw.logicalcpu: 10
-#[tokio::main]
+// #[tokio::main]
 // *** ワーカースレッド数をtokio::mainで変更することが可能 ***
 // #[tokio::main(flavor = "multi_thread", worker_threads = 10)]
+#[tokio::main(flavor = "multi_thread")]
 // *** Node.jsのようにシングルスレッドにすることも可能 ***
 // #[tokio::main(flavor = "current_thread")]
 async fn main() {
@@ -49,21 +50,25 @@ async fn main() {
     let mut handles = vec![];
 
     // Task A: ノンブロッキング スリープ
-    let task_a = tokio::task::Builder::new().name("Task A").spawn(async {
-        loop {
-            println!(
-                "      =Task A sleeping... {:?}",
-                std::thread::current().id()
-            );
-            // ノンブロッキングの sleep (tokio::time の sleep)
-            tokio::time::sleep(Duration::from_secs(1)).await;
-            println!("      =Task A woke up.");
-        }
-    });
+    let task_a = tokio::task::Builder::new()
+        .name("Task A")
+        .spawn(async {
+            loop {
+                println!(
+                    "      =Task A sleeping... {:?}",
+                    std::thread::current().id()
+                );
+                // ノンブロッキングの sleep (tokio::time の sleep)
+                tokio::time::sleep(Duration::from_secs(1)).await;
+                println!("      =Task A woke up.");
+            }
+        })
+        .unwrap();
     handles.push(task_a);
 
     // Task B-n: ブロッキング スリープ
-    for i in 0..cpus + 1 {
+    // `0..cpus` にすると Task B がすべてのOSスレッドを専有してしまい、Task A が sleep したままになる
+    for i in 0..cpus - 1 {
         let task_b = tokio::task::Builder::new()
             .name(&format!("Task B-{}", i))
             .spawn(async move {
@@ -77,7 +82,8 @@ async fn main() {
                     std::thread::sleep(Duration::from_secs(5));
                     println!("#Task B-{} woke up.", i);
                 }
-            });
+            })
+            .unwrap();
         handles.push(task_b);
     }
 
