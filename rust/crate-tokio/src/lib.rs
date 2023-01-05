@@ -1,9 +1,7 @@
-use tokio::runtime::Runtime;
-
 mod channel;
 mod either_future;
+mod flavor_current_thread;
+mod flavor_multi_thread;
 mod interval;
 mod select;
-
-// featureフラグ一覧
-// https://docs.rs/tokio/latest/tokio/index.html#feature-flags
+mod spawn_blocking;
