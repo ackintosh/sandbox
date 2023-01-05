@@ -4,6 +4,7 @@ use std::time::Duration;
 
 // `worker_threads = 1` を指定しているので
 // `メインスレッド` + `ワーカースレッド1` になる
+// worker_threads を省略した場合は論理コア数分ワーカースレッドが作成される
 #[tokio::test(flavor = "multi_thread", worker_threads = 1)]
 async fn multi_thread() {
     println!("logical cores: {}", num_cpus::get());
