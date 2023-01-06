@@ -8,4 +8,4 @@ edition = "2021"
 [dependencies]
 async-stream = "0.3"
 futures-util = "0.3"
-tokio = { version = "1.21", features = ["time", "macros", "rt-multi-thread"] }
+tokio = { version = "1.23", features = ["time", "macros", "rt-multi-thread"] }
