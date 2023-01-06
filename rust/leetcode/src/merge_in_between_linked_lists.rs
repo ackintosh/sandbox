@@ -9,12 +9,12 @@ pub struct ListNode {
     pub next: Option<Box<ListNode>>,
 }
 
-impl ListNode {
-    #[inline]
-    fn new(val: i32) -> Self {
-        ListNode { next: None, val }
-    }
-}
+// impl ListNode {
+//     #[inline]
+//     fn new(val: i32) -> Self {
+//         ListNode { next: None, val }
+//     }
+// }
 
 struct Solution;
 
@@ -56,7 +56,7 @@ impl Solution {
 
     // https://leetcode.com/problems/merge-in-between-linked-lists/solutions/989246/rust-linear-time-and-no-extra-space-o-n-m-time-and-o-1-space/
     pub fn merge_in_between2(
-        mut list1: Option<Box<ListNode>>,
+        list1: Option<Box<ListNode>>,
         a: i32,
         b: i32,
         mut list2: Option<Box<ListNode>>,

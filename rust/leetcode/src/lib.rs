@@ -54,6 +54,7 @@ mod maximum_number_of_coins_you_can_get;
 mod maximum_number_of_words_found_in_sentences;
 mod maximum_product_difference_between_two_pairs;
 mod maximum_product_of_two_elements_in_an_array;
+mod maximum_sum_of_an_hourglass;
 mod maximum_twin_sum_of_a_linked_list;
 mod maximum_xor_after_operations;
 mod maximum_xor_for_each_query;
