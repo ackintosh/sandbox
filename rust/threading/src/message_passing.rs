@@ -1,4 +1,13 @@
+// 参考
+// https://zenn.dev/tfutada/articles/16766e3b4560db
+
+use std::sync::{mpsc, Arc, Mutex};
+use std::thread;
+use std::time::Duration;
+
+// /////////////////////////////////////////////////////////////////////////////////////////////////
 // 単方向のみのメッセージパッシング
+// /////////////////////////////////////////////////////////////////////////////////////////////////
 #[test]
 fn simplex() {
     let (tx, rx) = std::sync::mpsc::channel();
@@ -12,11 +21,15 @@ fn simplex() {
     let _ = handle.join();
 }
 
+// /////////////////////////////////////////////////////////////////////////////////////////////////
 // senderチャネルが切断されるまでメッセージを受信しつづける
+// /////////////////////////////////////////////////////////////////////////////////////////////////
 mod read_until {
     use rand::Rng;
 
+    // ///////////////////////////////
     // 単一のsender
+    // ///////////////////////////////
     #[test]
     fn single_sender() {
         let (tx, rx) = std::sync::mpsc::channel();
@@ -55,7 +68,9 @@ mod read_until {
         join_handle.join().unwrap();
     }
 
+    // ///////////////////////////////
     // 複数のsender
+    // ///////////////////////////////
     #[test]
     fn multiple_sender() {
         let (tx, rx) = std::sync::mpsc::channel();
@@ -98,7 +113,51 @@ mod read_until {
     }
 }
 
+// /////////////////////////////////////////////////////////////////////////////////////////////////
+// 単一の sender
+// 複数の receiver
+// https://zenn.dev/tfutada/articles/16766e3b4560db#%E5%8F%97%E4%BF%A1%E5%81%B4%E3%81%8C%E8%A4%87%E6%95%B0%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89
+// /////////////////////////////////////////////////////////////////////////////////////////////////
+#[test]
+fn single_sender_multiple_receiver() {
+    let (tx, rx) = mpsc::channel();
+    // 受信側のエンドポイントを排他制御する必要がある
+    let shared_rx = Arc::new(Mutex::new(rx));
+
+    for i in 1..5 {
+        // 受信スレッドを生成する
+        let rx = shared_rx.clone();
+        thread::spawn(move || loop {
+            // チャネルから受け取った値を保持する
+            let mut n = 0;
+            match rx.lock() {
+                Ok(receiver) => {
+                    n = receiver.recv().unwrap();
+                }
+                Err(e) => {
+                    println!("error: {:?}", e);
+                }
+            }
+
+            // ロックを取得しチャネルからrecvしないとココにはこない
+
+            thread::sleep(Duration::from_secs(1)); // 重い演算処理の代わり
+
+            println!("worker>{} {}", i, n);
+        });
+    }
+
+    // 送信
+    for i in 10..14 {
+        tx.send(i).unwrap();
+    }
+
+    thread::sleep(Duration::from_secs(10));
+}
+
+// /////////////////////////////////////////////////////////////////////////////////////////////////
 // メインスレッドと各スレッドの双方向のメッセージパッシング
+// /////////////////////////////////////////////////////////////////////////////////////////////////
 #[test]
 fn multiplex() {
     let mut handles = vec![];
