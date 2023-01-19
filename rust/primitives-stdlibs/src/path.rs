@@ -4,6 +4,7 @@ use std::path::PathBuf;
 fn path() {
     let mut current_dir = std::env::current_dir().unwrap();
     println!("current_dir: {:?}", current_dir);
+    // current_dir: "/Users/akihito/src/github.com/ackintosh/sandbox/rust/primitives-stdlibs"
 
     println!("file_name: {:?}", current_dir.file_name());
     println!("pop: {:?}", current_dir.pop());
