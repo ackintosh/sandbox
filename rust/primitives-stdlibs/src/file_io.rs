@@ -24,6 +24,17 @@ mod stdfs {
         let mut file = File::create("file_io/test_write.txt").unwrap();
         file.write_all("test".as_bytes()).unwrap();
     }
+
+    #[test]
+    fn append() {
+        let mut file = File::options()
+            .create(true)
+            .append(true)
+            .open("file_io/stdfs_append.txt")
+            .unwrap();
+        file.write_all("test".as_bytes()).unwrap();
+        file.write_all("test".as_bytes()).unwrap();
+    }
 }
 
 // RustのファイルIOには BufReader, BufWriter を使う. バッファリングを利用するため.

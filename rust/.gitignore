@@ -1,3 +1,4 @@
 target
 **/*.rs.bk
 primitives-stdlibs/file_io/test_write.txt
+primitives-stdlibs/file_io/stdfs_append.txt
