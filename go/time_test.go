@@ -1,9 +1,22 @@
 package main
 
 import (
+	"fmt"
 	"testing"
 	"time"
 )
+
+// Goで時刻を扱うチートシート https://zenn.dev/hsaki/articles/go-time-cheatsheet
+func TestBasics(t *testing.T) {
+	now := time.Now()
+	fmt.Println(now)
+
+	timeZone := time.FixedZone("Asia/Tokyo", 9*60*60)
+	fmt.Println(now.In(timeZone))
+
+	d := time.Date(2022, 11, 1, 8, 0, 0, 0, time.Local)
+	fmt.Println(d) // 2022-11-01 08:00:00 +0900 JST
+}
 
 // サンプルで学ぶ Go 言語：Time Formatting / Parsing
 // https://www.spinute.org/go-by-example/time-formatting-parsing.html
