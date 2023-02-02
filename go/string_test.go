@@ -20,3 +20,9 @@ func TestString(t *testing.T) {
 	var a = strings.Join(strs[:], ",")
 	fmt.Println(a)
 }
+
+func TestSplit(t *testing.T) {
+	s := "helloworld"
+	fmt.Println(s[0:5])
+	fmt.Println(s[5:])
+}
