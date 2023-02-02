@@ -51,6 +51,7 @@ mod matrix_block_sum;
 mod max_increase_to_keep_city_skyline;
 mod maximum_69_number;
 mod maximum_binary_tree;
+mod maximum_ice_cream_bars;
 mod maximum_number_of_coins_you_can_get;
 mod maximum_number_of_words_found_in_sentences;
 mod maximum_product_difference_between_two_pairs;
