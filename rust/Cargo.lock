@@ -323,7 +323,7 @@ name = "crate-parking_lot"
 version = "0.1.0"
 dependencies = [
  "parking_lot 0.11.1",
- "tokio 1.23.1",
+ "tokio 1.24.2",
 ]
 
 [[package]]
@@ -360,7 +360,7 @@ name = "crate-reqwest"
 version = "0.1.0"
 dependencies = [
  "reqwest",
- "tokio 1.23.1",
+ "tokio 1.24.2",
 ]
 
 [[package]]
@@ -395,7 +395,7 @@ dependencies = [
  "futures",
  "num_cpus",
  "rand 0.7.3",
- "tokio 1.23.1",
+ "tokio 1.24.2",
  "tokio-stream",
 ]
 
@@ -403,21 +403,21 @@ dependencies = [
 name = "crate-tokio_echo-server"
 version = "0.1.0"
 dependencies = [
- "tokio 1.23.1",
+ "tokio 1.24.2",
 ]
 
 [[package]]
 name = "crate-tokio_oneshot"
 version = "0.1.0"
 dependencies = [
- "tokio 1.23.1",
+ "tokio 1.24.2",
 ]
 
 [[package]]
 name = "crate-tokio_spawn-blocking"
 version = "0.1.0"
 dependencies = [
- "tokio 1.23.1",
+ "tokio 1.24.2",
 ]
 
 [[package]]
@@ -432,7 +432,7 @@ dependencies = [
 name = "crate-trust-dns"
 version = "0.1.0"
 dependencies = [
- "tokio 1.23.1",
+ "tokio 1.24.2",
  "trust-dns-client",
  "trust-dns-resolver",
 ]
@@ -2396,9 +2396,9 @@ dependencies = [
 
 [[package]]
 name = "tokio"
-version = "1.23.1"
+version = "1.24.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "38a54aca0c15d014013256222ba0ebed095673f89345dd79119d912eb561b7a8"
+checksum = "597a12a59981d9e3c38d216785b0c37399f6e415e8d0712047620f189371b0bb"
 dependencies = [
  "autocfg",
  "bytes 1.0.1",
@@ -2434,7 +2434,7 @@ dependencies = [
  "async-stream",
  "futures-core",
  "pin-project-lite 0.2.8",
- "tokio 1.23.1",
+ "tokio 1.24.2",
 ]
 
 [[package]]
@@ -2574,7 +2574,7 @@ dependencies = [
  "radix_trie",
  "rand 0.8.5",
  "thiserror",
- "tokio 1.23.1",
+ "tokio 1.24.2",
  "trust-dns-proto",
 ]
 
@@ -2598,7 +2598,7 @@ dependencies = [
  "rand 0.8.5",
  "smallvec",
  "thiserror",
- "tokio 1.23.1",
+ "tokio 1.24.2",
  "url",
 ]
 
@@ -2618,7 +2618,7 @@ dependencies = [
  "resolv-conf",
  "smallvec",
  "thiserror",
- "tokio 1.23.1",
+ "tokio 1.24.2",
  "trust-dns-proto",
 ]
 
