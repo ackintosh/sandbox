@@ -19,6 +19,8 @@ prometheus/data
 php/phpunit/vendor
 php/phpunit/composer.lock
 
+redis-rdb-tools/dump.rdb
+
 # dhatの計測結果
 dhat-heap.json
 
