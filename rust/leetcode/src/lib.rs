@@ -45,6 +45,7 @@ mod how_many_numbers_are_smaller_than_the_current_number;
 mod insert_into_a_binary_search_tree;
 mod jewels_and_stones;
 mod kids_with_the_greatest_number_of_candies;
+mod letter_case_permutation;
 mod letter_tile_possibilities;
 mod march_leetcoding_challenge_2021;
 mod matrix_block_sum;
