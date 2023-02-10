@@ -21,6 +21,13 @@ func TestString(t *testing.T) {
 	fmt.Println(a)
 }
 
+func TestComparing(t *testing.T) {
+	s1 := "00000000"
+	s2 := "00000000_AR19652"
+
+	println(s1 < s2) // true
+}
+
 func TestSplit(t *testing.T) {
 	s := "helloworld"
 	fmt.Println(s[0:5])
