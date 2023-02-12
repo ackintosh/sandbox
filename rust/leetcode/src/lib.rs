@@ -28,6 +28,7 @@ mod delete_leaves_with_a_given_value;
 mod design_a_stack_with_increment_operation;
 mod design_browser_history;
 mod design_parking_system;
+mod design_underground_system;
 mod dp;
 mod encode_and_decode_tinyurl;
 mod execution_of_all_suffix_instructions_staying_in_a_grid;
