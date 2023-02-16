@@ -32,6 +32,7 @@ mod design_underground_system;
 mod dp;
 mod encode_and_decode_tinyurl;
 mod execution_of_all_suffix_instructions_staying_in_a_grid;
+mod find_all_duplicates_in_an_array;
 mod find_and_replace_pattern;
 mod find_center_of_star_graph;
 mod find_elements_in_a_contaminated_binary_tree;
