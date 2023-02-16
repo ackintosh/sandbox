@@ -1,0 +1,91 @@
+<mxfile host="65bd71144e">
+    <diagram id="T8pmpTCMuDaPm9wjzUCa" name="Page-1">
+        <mxGraphModel dx="2085" dy="2046" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="192" value="beacon_node::&lt;br&gt;network::&lt;br&gt;service::&lt;br&gt;&lt;br&gt;enum RequestId {&lt;br&gt;&amp;nbsp; &amp;nbsp; Sync(SyncId),&lt;br&gt;&amp;nbsp; &amp;nbsp; Router,&lt;br&gt;}" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=20;" vertex="1" parent="1">
+                    <mxGeometry x="-320" y="-387" width="200" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="##################################################&lt;br&gt;Lifecycle of Request ID&lt;br&gt;##################################################" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="-320" y="120" width="410" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="169" value="beacon_node::&lt;br&gt;network::&lt;br&gt;router::&lt;br&gt;processor::&lt;br&gt;HandlerNetworkContext" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=20;" vertex="1" parent="1">
+                    <mxGeometry x="-320" y="280" width="240" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="171" value="send_processor_request" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="-280" y="400" width="160" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="172" value="beacon_node::&lt;br&gt;network::&lt;br&gt;service::&lt;br&gt;NetworkService" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=20;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="280" width="240" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="173" value="on_network_msg" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="400" width="160" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="176" value="RequestId::Router" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="-270" y="480" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="177" value="beacon_node::&lt;br&gt;lighthouse_network::&lt;br&gt;service::&lt;br&gt;Network" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=20;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="280" width="240" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="178" value="send_request" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="480" y="400" width="160" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="179" value="" style="shape=flexArrow;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-120" y="514.5" as="sourcePoint"/>
+                        <mxPoint x="390" y="515" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="181" value="&amp;lt;AppReqId: ReqId&amp;gt;" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="390" y="480" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="182" value="RequestId::Application" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="590" y="480" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="183" value="beacon_node::&lt;br&gt;lighthouse_network::&lt;br&gt;rpc::&lt;br&gt;RPC" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=20;" vertex="1" parent="1">
+                    <mxGeometry x="920" y="280" width="240" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="184" value="" style="shape=flexArrow;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="770" y="514.5" as="sourcePoint"/>
+                        <mxPoint x="910" y="515" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="185" value="Wrap the `ReqId` with `RequestId::Application`." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="410" y="580" width="340" height="65" as="geometry"/>
+                </mxCell>
+                <mxCell id="186" value="send_request" style="html=1;dashed=0;whitespace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="960" y="400" width="160" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="187" value="&amp;lt;Id: ReqId&amp;gt;" style="ellipse;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="910" y="480" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="188" value="##################################################&lt;br&gt;Structs related to Request ID.&lt;br&gt;##################################################" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="-320" y="-507" width="410" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="189" value="beacon_node::&lt;br&gt;lighthouse_network::&lt;br&gt;api_type::&lt;br&gt;&lt;br&gt;enum RequestId {&lt;br&gt;&amp;nbsp; &amp;nbsp; Application(AppReqId),&lt;br&gt;&amp;nbsp; &amp;nbsp; Internal,&lt;br&gt;}" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=20;" vertex="1" parent="1">
+                    <mxGeometry x="444" y="-387" width="240" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="190" value="beacon_node::&lt;br&gt;lighthouse_network::&lt;br&gt;rpc::&lt;br&gt;&lt;br&gt;trait ReqId" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=20;" vertex="1" parent="1">
+                    <mxGeometry x="144" y="-387" width="200" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="191" value="Composit trait for a request_id." style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="90" y="-280" width="290" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="193" value="beacon_node::&lt;br&gt;network::&lt;br&gt;sync::&lt;br&gt;manager&lt;br&gt;&lt;br&gt;enum RequestId {&lt;br&gt;&amp;nbsp; &amp;nbsp; SingleBlock,&lt;br&gt;&amp;nbsp; &amp;nbsp; ParentLookup,&lt;br&gt;&amp;nbsp; &amp;nbsp; ...,&lt;br&gt;&amp;nbsp; &amp;nbsp; ...,&lt;br&gt;}" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=20;" vertex="1" parent="1">
+                    <mxGeometry x="-320" y="-130" width="200" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="195" value="" style="endArrow=classic;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="192" target="193">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-150" y="-297" as="sourcePoint"/>
+                        <mxPoint x="-100" y="-347" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="196" value="SyncId は&lt;br&gt;sync::manager::RequestId のエイリアス" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-435" y="-240" width="430" height="80" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
