@@ -70,6 +70,12 @@ if [ -d ../README.md ];then
 	echo "READMEはファイルなのでfalse"
 fi
 
+if [ -d ../lighthouseeee ];then
+	echo "aaa"
+else
+	echo "lighthouseeeeは存在しないディレクトリなのでfalse"
+fi
+
 # -f
 # 普通のファイルならtrue
 if [ -f ../README.md ];then

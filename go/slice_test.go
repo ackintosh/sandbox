@@ -23,3 +23,15 @@ func TestAppendSliceToSlice(t *testing.T) {
 	slice_5 := append(slice_3, slice_4...)
 	fmt.Printf("slice_5: %v\n", slice_5)
 }
+
+// スライスが要素を含むかどうか
+// slices.Contains がまだ標準パッケージに無いので自前で書く必要がある
+// https://pkg.go.dev/golang.org/x/exp/slices#Contains
+func TestSliceContains(t *testing.T) {
+	var slice = []int{1, 2, 3, 4, 5, 6}
+	for _, n := range slice {
+		if n == 3 {
+			fmt.Println("テスト")
+		}
+	}
+}
