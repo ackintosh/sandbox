@@ -17,6 +17,12 @@ net.addLink(h2, s1)
 # ネットワークを開始
 net.start()
 
+# 任意のコマンドを実行する
+print(h1.cmd('echo "Hello, Mininet!"'))
+print(h1.cmd('pwd'))
+print(h1.cmd('ifconfig'))
+print(h2.cmd('ifconfig'))
+
 # すべてのホスト間で ping コマンドを実行
 net.pingAll()
 
