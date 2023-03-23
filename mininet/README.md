@@ -18,6 +18,13 @@ http://mininet.org/download/
 
 他、Scrapboxの ubuntu と Mininet を参照
 
+## Pythonスクリプトの実行
+
+```bash
+# VMで実行する
+sudo python3 simple.py
+```
+
 ---
 
 ## Memo:VirtualBoxはイメージが起動できなかったので諦めた
