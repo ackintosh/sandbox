@@ -82,6 +82,7 @@ mod number_of_steps_to_reduce_a_number_to_zero;
 mod optimal_partition_of_string;
 mod palindrome_number;
 mod partition_array_according_to_given_pivot;
+mod partition_array_such_that_maximum_difference_is_k;
 mod partition_labels;
 mod partitioning_into_minimum_number_of_deci_binary_numbers;
 mod path_in_zigzag_labelled_binary_tree;
