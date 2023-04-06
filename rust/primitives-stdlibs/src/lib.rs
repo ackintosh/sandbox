@@ -46,6 +46,7 @@ mod slice;
 mod stdin;
 mod stdlib_box;
 mod string_str;
+mod trait_basics;
 mod trait_box;
 mod trait_clone;
 mod trait_drop;
