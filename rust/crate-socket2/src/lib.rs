@@ -11,4 +11,6 @@ fn test_ipv6() {
     let addr = "[::]:0".parse::<SocketAddrV6>().unwrap();
     let r = socket.bind(&addr.into());
     println!("Socket::bind : {:?}", r);
+    let ad = socket.local_addr();
+    println!("local_addr: {:?}", ad.unwrap().as_socket_ipv6());
 }
