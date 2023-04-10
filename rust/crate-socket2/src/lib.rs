@@ -9,6 +9,6 @@ fn test_ipv6() {
     println!("Socket::new : {:?}", r);
 
     let addr = "[::]:0".parse::<SocketAddrV6>().unwrap();
-    let r = socket.bind(addr.into());
+    let r = socket.bind(&addr.into());
     println!("Socket::bind : {:?}", r);
 }
