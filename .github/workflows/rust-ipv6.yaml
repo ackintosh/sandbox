@@ -24,5 +24,6 @@ jobs:
     - name: Get latest version of stable Rust
       run: rustup update stable
     - name: Run IPv6 test
-      run: cargo test -p primitives test_ipv6 -- --show-output
+      working-directory: crate-socket2
+      run: cargo test --package crate-socket2 --lib test_ipv6 -- --show-output
 

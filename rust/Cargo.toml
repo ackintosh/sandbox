@@ -89,6 +89,7 @@ exclude = [
   "crate-critcmp",
   "crate-futures",
   "crate-influxdb",
+  "crate-socket2",
   "crate-tokio-console",
   "crate-tokio-stream",
   "crate-tokio_framed",
