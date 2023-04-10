@@ -9,8 +9,8 @@ fn test_ipv6() {
     println!("result: {:?}", r);
     match r {
         Ok(listener) => {
-            let a = listener.local_addr().unwrap();
-            println!("socketaddr: {:?}", a);
+            let addr = listener.local_addr().unwrap();
+            println!("socketaddr: {:?}", addr);
             if let SocketAddr::V6(_) = addr {
                 println!("ipv6");
             } else {
