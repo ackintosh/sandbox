@@ -1,0 +1,30 @@
+name: Rust IPv6
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+defaults:
+  run:
+    working-directory: rust
+
+jobs:
+
+  tests:
+    name: test ipv6
+    runs-on: ubuntu-latest
+    needs: clippy
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install Protocol Buffer Compiler
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y protobuf-compiler
+        protoc --version
+    - name: Get latest version of stable Rust
+      run: rustup update stable
+    - name: Run IPv6 test
+      run: cargo test -p primitives test_ipv6 -- --show-output
+

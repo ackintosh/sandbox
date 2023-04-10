@@ -37,7 +37,7 @@ fn no_deadlock() {
         // Rust は _ という変数に保持された値は即座に破棄する
         // したがって、Read ロックは即座に解放されるため、Write ロックを獲得しようとしてもデッドロックとはならない
         // clippy::let_underscore_lock のエラーが出るが抑制している
-        let _ = val.read().unwrap();
+        let _unused = val.read().unwrap();
 
         *val.write().unwrap() = false;
         println!("flag is true");

@@ -25,8 +25,8 @@ fn dining_philosophers_problem() {
     let philosopher1 = std::thread::spawn(move || {
         for _ in 0..100000 {
             // 1 -> 2 の順に箸を取る(哲学者1から見て左の箸から取る)
-            let _ = chopstick1_philosopher1.lock().unwrap(); // clippy::let_underscore_lock のエラーが出るが抑制している
-            let _ = chopstick2_philosopher1.lock().unwrap();
+            let _unused = chopstick1_philosopher1.lock().unwrap(); // clippy::let_underscore_lock のエラーが出るが抑制している
+            let _unused = chopstick2_philosopher1.lock().unwrap();
             println!("philosopher1: eating");
         }
     });
@@ -35,8 +35,8 @@ fn dining_philosophers_problem() {
     let philosopher2 = std::thread::spawn(move || {
         for _ in 0..100000 {
             // 哲学者1とは逆に 2 -> 1 の順に箸を取る(哲学者2から見て左の箸から取る)
-            let _ = chopstick2_philosopher2.lock().unwrap();
-            let _ = chopstick1_philosopher2.lock().unwrap();
+            let _unused = chopstick2_philosopher2.lock().unwrap();
+            let _unused = chopstick1_philosopher2.lock().unwrap();
             println!("philosopher2: eating");
         }
     });

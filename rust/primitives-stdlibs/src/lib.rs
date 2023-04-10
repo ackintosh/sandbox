@@ -22,6 +22,7 @@ mod if_syntax;
 mod inner;
 mod interior_mutability;
 mod ip_addr;
+mod ipv6;
 mod iter;
 mod lifetime;
 mod lifetime_bounds;
