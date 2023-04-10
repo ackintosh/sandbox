@@ -88,6 +88,7 @@ exclude = [
   "crate-clap",
   "crate-critcmp",
   "crate-futures",
+  "crate-if-addrs",
   "crate-influxdb",
   "crate-socket2",
   "crate-tokio-console",
