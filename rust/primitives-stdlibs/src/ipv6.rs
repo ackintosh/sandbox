@@ -1,6 +1,6 @@
 // use std::net::{IpAddr, Ipv6Addr, TcpStream};
 
-use std::net::TcpListener;
+use std::net::{SocketAddr, TcpListener};
 
 // IPv6が有効かどうかを判定する
 #[test]
@@ -11,6 +11,11 @@ fn test_ipv6() {
         Ok(listener) => {
             let a = listener.local_addr().unwrap();
             println!("socketaddr: {:?}", a);
+            if let SocketAddr::V6(_) = addr {
+                println!("ipv6");
+            } else {
+                println!("ipv4");
+            }
         }
         Err(_) => {
             println!("ipv6 isn't available");
