@@ -6,10 +6,6 @@ on:
       - master
   pull_request:
 
-defaults:
-  run:
-    working-directory: rust
-
 jobs:
   tests:
     name: test ipv6
@@ -24,6 +20,6 @@ jobs:
     - name: Get latest version of stable Rust
       run: rustup update stable
     - name: Run IPv6 test
-      working-directory: crate-socket2
+      working-directory: rust/crate-socket2
       run: cargo test --package crate-socket2 --lib test_ipv6 -- --show-output
 
