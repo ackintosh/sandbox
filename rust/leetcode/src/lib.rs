@@ -74,6 +74,7 @@ mod minimum_number_of_operations_to_move_all_balls_to_each_box;
 mod minimum_number_of_steps_to_make_two_strings_anagram;
 mod minimum_number_of_vertices_to_reach_all_nodes;
 mod minimum_operations_to_make_array_equal;
+mod minimum_suffix_flips;
 mod minimum_time_visiting_all_points;
 mod number_of_good_pairs;
 mod number_of_laser_beams_in_a_bank;
