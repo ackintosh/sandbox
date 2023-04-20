@@ -43,6 +43,7 @@ mod reexport;
 mod result_option;
 mod rw_lock;
 mod slice;
+mod stderr;
 mod stdin;
 mod stdlib_box;
 mod string_str;
