@@ -1,4 +1,10 @@
-use std::net::Ipv4Addr;
+use std::net::{IpAddr, Ipv4Addr};
+
+#[test]
+fn ipaddr() {
+    let localhost_v4 = IpAddr::V4(Ipv4Addr::LOCALHOST);
+    println!("{localhost_v4}");
+}
 
 #[test]
 fn ipv4() {
