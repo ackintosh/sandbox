@@ -41,6 +41,7 @@ mod find_the_winner_of_the_circular_game;
 mod find_triangular_sum_of_an_array;
 mod find_valid_matrix_given_row_and_column_sums;
 mod finding_the_users_active_minutes;
+mod generate_parentheses;
 mod goal_parser_interpretation;
 mod group_the_people_given_the_group_size_they_belong_to;
 mod how_many_numbers_are_smaller_than_the_current_number;
