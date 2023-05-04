@@ -29,10 +29,6 @@ pub mod beacon_node {
                 }
             }
         }
-
-        // mod sync {
-        //     mod manager {}
-        // }
     }
 
     pub mod lighthouse_network {
@@ -69,7 +65,7 @@ pub mod beacon_node {
 
         pub mod service {
             use crate::lighthouse_request_id::beacon_node::lighthouse_network::api_type::RequestId;
-            use crate::lighthouse_request_id::beacon_node::lighthouse_network::rpc::ReqId;
+            use crate::lighthouse_request_id::beacon_node::lighthouse_network::rpc::{ReqId, RPC};
             use crate::lighthouse_request_id::beacon_node::lighthouse_network::service::behaviour::Behaviour;
             use crate::lighthouse_request_id::libp2p::Swarm;
             use std::marker::PhantomData;
@@ -85,25 +81,29 @@ pub mod beacon_node {
                     }
                 }
 
+                pub fn eth2_rpc_mut(&self) -> &RPC<RequestId<AppReqId>> {
+                    &self.swarm.behaviour_mut().eth2_rpc
+                }
+
                 pub fn send_request(&self, request_id: AppReqId) {
-                    self.swarm
-                        .behaviour
-                        .eth2_rpc
+                    self.eth2_rpc_mut()
                         .send_request(RequestId::Application(request_id));
                 }
             }
 
             pub mod behaviour {
+                use crate::lighthouse_request_id::beacon_node::lighthouse_network::api_type::RequestId;
                 use crate::lighthouse_request_id::beacon_node::lighthouse_network::rpc::{
                     ReqId, RPC,
                 };
+                use crate::lighthouse_request_id::libp2p::NetworkBehaviour;
 
                 pub struct Behaviour<AppReqId: ReqId> {
-                    pub eth2_rpc: RPC<AppReqId>,
+                    pub eth2_rpc: RPC<RequestId<AppReqId>>,
                 }
 
-                impl<AppReqId: ReqId> Behaviour<AppReqId> {
-                    pub fn new() -> Self {
+                impl<AppReqId: ReqId> NetworkBehaviour for Behaviour<AppReqId> {
+                    fn new() -> Self {
                         Behaviour {
                             eth2_rpc: RPC::new(),
                         }
@@ -118,16 +118,24 @@ pub mod libp2p {
     use crate::lighthouse_request_id::beacon_node::lighthouse_network::service::behaviour::Behaviour;
     use std::marker::PhantomData;
 
-    pub struct Swarm<TBehaviour> {
+    pub struct Swarm<TBehaviour: NetworkBehaviour> {
         pub behaviour: TBehaviour,
     }
 
-    impl<TBehaviour> Swarm<TBehaviour> {
+    impl<TBehaviour: NetworkBehaviour> Swarm<TBehaviour> {
         pub fn new() -> Self {
             Swarm {
-                behaviour: Behaviour::new(),
+                behaviour: TBehaviour::new(),
             }
         }
+
+        pub fn behaviour_mut(&self) -> &TBehaviour {
+            &self.behaviour
+        }
+    }
+
+    pub trait NetworkBehaviour {
+        fn new() -> Self;
     }
 }
 
