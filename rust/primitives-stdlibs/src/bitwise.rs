@@ -32,3 +32,13 @@ fn shift() {
     assert_eq!(4, 1 << 2);
     assert_eq!(8, 1 << 3);
 }
+
+#[test]
+fn check_bits() {
+    // 2ビット目がたっているかどうかチェックする
+    let nums = vec![1, 2, 4, 12, 16];
+    for n in nums {
+        let result = (n >> 2) & 1; // 2ビット右にずらして、1との bitwise AND をとる
+        println!("second bit of {n} is ... {result}");
+    }
+}
