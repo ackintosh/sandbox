@@ -24,3 +24,11 @@ fn xor() {
     println!("{:#010b}", 1 ^ 2);
     println!("{:#010b}", 4 ^ 3);
 }
+
+#[test]
+fn shift() {
+    assert_eq!(1, 1 << 0);
+    assert_eq!(2, 1 << 1);
+    assert_eq!(4, 1 << 2);
+    assert_eq!(8, 1 << 3);
+}
