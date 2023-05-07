@@ -1,4 +1,10 @@
 #[test]
+fn and() {
+    println!("{}", 1 & 5); // 1
+    println!("{}", 5 & 12); // 4
+}
+
+#[test]
 fn or() {
     let a = 1;
     let b = 2;
