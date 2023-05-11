@@ -1,6 +1,4 @@
-use crate::lighthouse_request_id::beacon_node::lighthouse_network::service::Network;
 use crate::lighthouse_request_id::beacon_node::network::service::NetworkService;
-use std::marker::PhantomData;
 
 pub mod beacon_node {
     pub mod network {
@@ -68,7 +66,6 @@ pub mod beacon_node {
             use crate::lighthouse_request_id::beacon_node::lighthouse_network::rpc::{ReqId, RPC};
             use crate::lighthouse_request_id::beacon_node::lighthouse_network::service::behaviour::Behaviour;
             use crate::lighthouse_request_id::libp2p::Swarm;
-            use std::marker::PhantomData;
 
             pub struct Network<AppReqId: ReqId> {
                 swarm: Swarm<Behaviour<AppReqId>>,
@@ -115,9 +112,6 @@ pub mod beacon_node {
 }
 
 pub mod libp2p {
-    use crate::lighthouse_request_id::beacon_node::lighthouse_network::service::behaviour::Behaviour;
-    use std::marker::PhantomData;
-
     pub struct Swarm<TBehaviour: NetworkBehaviour> {
         pub behaviour: TBehaviour,
     }
