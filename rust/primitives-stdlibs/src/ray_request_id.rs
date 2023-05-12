@@ -1,16 +1,16 @@
-use crate::ray_request_id::network::Network;
+use crate::ray_request_id::network::{ApplicationRequestId, Network, NetworkMessage};
 
 mod network {
-    use std::marker::PhantomData;
     use crate::ray_request_id::behaviour::{BehaviourComposer, RequestId};
-    use crate::ray_request_id::libp2p::Swarm;
     use crate::ray_request_id::libp2p::NetworkBehaviour;
+    use crate::ray_request_id::libp2p::Swarm;
+    use std::marker::PhantomData;
 
     pub trait ReqId: Send + 'static + std::fmt::Debug + Copy + Clone {}
     impl<T> ReqId for T where T: Send + 'static + std::fmt::Debug + Copy + Clone {}
 
     pub(crate) struct Network<AppReqId: ReqId> {
-        swarm: Swarm<BehaviourComposer<AppReqId>>,
+        swarm: Swarm<BehaviourComposer<ApplicationRequestId>>,
         _phantom: PhantomData<AppReqId>,
     }
 
@@ -22,12 +22,19 @@ mod network {
             }
         }
 
-        pub(crate) fn on_network_message(&self) {
-            self.send_request(ApplicationRequestId::Sync);
+        pub(crate) fn on_network_message(&self, message: NetworkMessage) {
+            match message {
+                NetworkMessage::SendRequest { request_id } => {
+                    self.send_request(request_id);
+                }
+            }
         }
 
-        fn send_request(&self, request_id: AppReqId) {
-            self.swarm.behaviour_mut().rpc.send_request(RequestId::Application(request_id))
+        fn send_request(&self, request_id: ApplicationRequestId) {
+            self.swarm
+                .behaviour_mut()
+                .rpc
+                .send_request(RequestId::Application(request_id))
         }
     }
 
@@ -36,12 +43,16 @@ mod network {
         Sync,
         Router,
     }
+
+    pub(crate) enum NetworkMessage {
+        SendRequest { request_id: ApplicationRequestId },
+    }
 }
 
 mod rpc {
     pub(crate) mod behaviour {
-        use std::marker::PhantomData;
         use crate::ray_request_id::network::ReqId;
+        use std::marker::PhantomData;
 
         pub(crate) struct Behaviour<Id: ReqId> {
             _phantom: PhantomData<Id>,
@@ -54,8 +65,8 @@ mod rpc {
                 }
             }
 
-            pub(crate) fn send_request(&self, _request_id: Id) {
-                println!("send_request");
+            pub(crate) fn send_request(&self, request_id: Id) {
+                println!("send_request: {request_id:?}");
             }
         }
     }
@@ -73,7 +84,7 @@ pub(crate) mod behaviour {
     }
 
     pub(crate) struct BehaviourComposer<AppReqId: ReqId> {
-        pub(crate) rpc: Behaviour<RequestId<AppReqId>>
+        pub(crate) rpc: Behaviour<RequestId<AppReqId>>,
     }
 
     impl<AppReqId: ReqId> NetworkBehaviour for BehaviourComposer<AppReqId> {
@@ -86,17 +97,13 @@ pub(crate) mod behaviour {
 }
 
 mod libp2p {
-    use std::marker::PhantomData;
-
     pub struct Swarm<TBehaviour: NetworkBehaviour> {
         pub behaviour: TBehaviour,
     }
 
     impl<TBehaviour: NetworkBehaviour> Swarm<TBehaviour> {
         pub fn new(behaviour: TBehaviour) -> Self {
-            Swarm {
-                behaviour,
-            }
+            Swarm { behaviour }
         }
 
         pub fn behaviour_mut(&self) -> &TBehaviour {
@@ -110,6 +117,8 @@ mod libp2p {
 }
 #[test]
 fn test() {
-    let service = Network::new();
-    service.on_network_msg();
+    let service: Network<ApplicationRequestId> = Network::new();
+    service.on_network_message(NetworkMessage::SendRequest {
+        request_id: ApplicationRequestId::Sync,
+    });
 }
