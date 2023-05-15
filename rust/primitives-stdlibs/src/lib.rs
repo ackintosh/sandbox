@@ -25,6 +25,7 @@ mod ip_addr;
 mod iter;
 mod lifetime;
 mod lifetime_bounds;
+mod lifetime_static;
 mod lighthouse_request_id;
 mod loops;
 mod macro_assert;
