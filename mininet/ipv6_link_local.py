@@ -1,6 +1,7 @@
 from mininet.net import Mininet
 from mininet.node import Controller, OVSKernelSwitch
 from mininet.cli import CLI
+from mininet.util import dumpNodeConnections
 
 def ipv6Net():
     net = Mininet(controller=Controller, switch=OVSKernelSwitch, build=False)
@@ -49,8 +50,10 @@ def ipv6NetLinkLocalScopeMultiZone():
 
     # ネットワークを開始
     net.start()
+    dumpNodeConnections(net.hosts)
 
     h1.cmd('ip -6 addr add fe80::1/64 dev h1-eth0')
+    h1.cmd('ip -6 addr add fe80::1/64 dev h1-eth1')
     h2.cmd('ip -6 addr add fe80::2/64 dev h2-eth0')
     h3.cmd('ip -6 addr add fe80::2/64 dev h3-eth0')
 
