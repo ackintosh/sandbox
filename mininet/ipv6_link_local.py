@@ -3,6 +3,13 @@ from mininet.node import Controller, OVSKernelSwitch
 from mininet.cli import CLI
 from mininet.util import dumpNodeConnections
 
+# * Ping
+# h1 ping6 -I h1-eth0 fe80::2
+# h1 ping6 fe80::2
+
+# * IPv6のルーティングテーブルを確認する
+# h1 ip -6 route show
+
 def ipv6Net():
     net = Mininet(controller=Controller, switch=OVSKernelSwitch, build=False)
 
