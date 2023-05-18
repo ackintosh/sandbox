@@ -90,6 +90,7 @@ exclude = [
   "crate-futures",
   "crate-if-addrs",
   "crate-influxdb",
+  "crate-rtnetlink",
   "crate-socket2",
   "crate-tokio-console",
   "crate-tokio-stream",
