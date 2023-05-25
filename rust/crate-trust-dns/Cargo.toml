@@ -11,4 +11,4 @@ trust-dns-resolver = "0.20.0"
 trust-dns-client = "0.20.0"
 
 # used in async usage
-tokio = { version = "1.0", features = ["full"] }
+tokio = { version = "1.24", features = ["full"] }
