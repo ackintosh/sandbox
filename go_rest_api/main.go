@@ -13,6 +13,8 @@ func main() {
 	}
 }
 
+// https://grpc.io/docs/languages/go/basics/#client
+
 func Hello(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Hello. %s", r.Method)
 
