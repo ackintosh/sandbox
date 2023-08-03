@@ -13,6 +13,7 @@ mod construct_smallest_number_from_di_string;
 mod count_good_nodes_in_binary_tree;
 mod count_items_matching_a_rule;
 mod count_nodes_equal_to_average_of_subtree;
+mod count_number_of_distinct_integers_after_reverse_operations;
 mod count_number_of_maximum_bitwise_or_subsets;
 mod count_odd_numbers_in_an_interval_range;
 mod count_sorted_vowel_strings;
