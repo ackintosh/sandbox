@@ -35,3 +35,9 @@ func TestSplit(t *testing.T) {
 	// 最後の一文字
 	fmt.Println(s[len(s)-1:])
 }
+
+func TestTrim(t *testing.T) {
+	s := "helloworld"
+
+	fmt.Println(strings.Trim(s, "he"))
+}
