@@ -32,4 +32,6 @@ func TestSplit(t *testing.T) {
 	s := "helloworld"
 	fmt.Println(s[0:5])
 	fmt.Println(s[5:])
+	// 最後の一文字
+	fmt.Println(s[len(s)-1:])
 }
