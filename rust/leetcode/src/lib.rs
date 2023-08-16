@@ -110,6 +110,7 @@ mod shuffle_string;
 mod shuffle_the_array;
 mod sort_the_matrix_diagonally;
 mod sort_the_students_by_their_kth_score;
+mod sort_vowels_in_a_string;
 mod spiral_matrix_iv;
 mod split_a_string_in_balanced_strings;
 mod subdomain_visit_count;
