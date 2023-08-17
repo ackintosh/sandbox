@@ -33,6 +33,7 @@ mod design_underground_system;
 mod difference_between_ones_and_zeros_in_row_and_column;
 mod dp;
 mod encode_and_decode_tinyurl;
+mod equal_row_and_column_pairs;
 mod execution_of_all_suffix_instructions_staying_in_a_grid;
 mod find_all_duplicates_in_an_array;
 mod find_and_replace_pattern;
