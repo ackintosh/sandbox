@@ -37,6 +37,20 @@ fn test_foo() {
     //    |          ^ no rules expected this token in macro call
 }
 
+// 返り値があるマクロ
+#[test]
+fn test_return_value() {
+    // 文字列を返すだけのマクロ
+    macro_rules! return_value {
+        () => {{
+            let a = "bb";
+            format!("{} foo_return_value", a)
+        }};
+    }
+
+    println!("{}", return_value!());
+}
+
 // 第一引数が、第二引数のパターンにマッチするかどうか
 #[cfg(test)]
 macro_rules! pattern_match {
