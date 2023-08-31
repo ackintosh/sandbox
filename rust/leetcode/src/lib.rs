@@ -57,6 +57,7 @@ mod kids_with_the_greatest_number_of_candies;
 mod largest_combination_with_bitwise_and_greater_than_zero;
 mod letter_case_permutation;
 mod letter_tile_possibilities;
+mod lexicographically_smallest_equivalent_string;
 mod march_leetcoding_challenge_2021;
 mod matrix_block_sum;
 mod max_increase_to_keep_city_skyline;

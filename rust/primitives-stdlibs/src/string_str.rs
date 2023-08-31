@@ -208,6 +208,11 @@ mod str {
             // 99
         }
     }
+
+    #[test]
+    fn comparing() {
+        assert!("a" < "b");
+    }
 }
 
 /////////////////////////////////////////////////////////
@@ -289,5 +294,17 @@ mod string {
         let reverse = string.chars().rev().collect::<String>();
 
         assert_eq!(reverse, "dcba".to_owned());
+    }
+
+    #[test]
+    fn comparing() {
+        assert!("a".to_string() < "b".to_string());
+    }
+}
+
+mod char {
+    #[test]
+    fn comparing() {
+        assert!('a' < 'b');
     }
 }
