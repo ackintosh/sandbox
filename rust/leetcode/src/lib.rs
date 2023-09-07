@@ -110,6 +110,7 @@ mod running_sum_of_1d_array;
 mod score_after_flipping_matrix;
 mod shuffle_string;
 mod shuffle_the_array;
+mod smallest_number_in_infinite_set;
 mod sort_the_matrix_diagonally;
 mod sort_the_students_by_their_kth_score;
 mod sort_vowels_in_a_string;
