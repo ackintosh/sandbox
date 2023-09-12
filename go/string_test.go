@@ -38,6 +38,7 @@ func TestSplit(t *testing.T) {
 
 func TestTrim(t *testing.T) {
 	s := "helloworld"
+	fmt.Println(strings.Trim(s, "he")) // lloworld
 
-	fmt.Println(strings.Trim(s, "he"))
+	fmt.Println(strings.TrimSpace("　全角スペース　"))
 }
