@@ -106,6 +106,7 @@ mod removing_stars_from_a_string;
 mod reveal_cards_in_increasing_order;
 mod reverse_odd_levels_of_binary_tree;
 mod richest_customer_wealth;
+mod rotate_image;
 mod running_sum_of_1d_array;
 mod score_after_flipping_matrix;
 mod shuffle_string;
