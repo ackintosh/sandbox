@@ -7,6 +7,7 @@ mod arithmetic_subarrays;
 mod balance_a_binary_search_tree;
 mod battleships_in_a_board;
 mod binary_search_tree_to_greater_sum_tree;
+mod build_an_array_with_stack_operations;
 mod check_if_two_string_arrays_are_equivalent;
 mod construct_binary_search_tree_from_preorder_traversal;
 mod construct_smallest_number_from_di_string;
