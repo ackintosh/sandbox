@@ -11,6 +11,7 @@ version-resolver:
     labels:
       - 'patch'
   default: patch
+commitish: master
 template: |
   ## What’s Changed
 
