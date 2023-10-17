@@ -32,6 +32,7 @@ mod design_browser_history;
 mod design_parking_system;
 mod design_underground_system;
 mod difference_between_ones_and_zeros_in_row_and_column;
+mod distribute_coins_in_binary_tree;
 mod dp;
 mod encode_and_decode_tinyurl;
 mod equal_row_and_column_pairs;
