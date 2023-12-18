@@ -58,6 +58,7 @@ mod iterator_for_combination;
 mod jewels_and_stones;
 mod kids_with_the_greatest_number_of_candies;
 mod largest_combination_with_bitwise_and_greater_than_zero;
+mod largest_submatrix_with_rearrangements;
 mod letter_case_permutation;
 mod letter_tile_possibilities;
 mod lexicographically_smallest_equivalent_string;
