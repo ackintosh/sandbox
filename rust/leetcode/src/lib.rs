@@ -107,6 +107,7 @@ mod rearrange_array_elements_by_sign;
 mod remove_all_occurrences_of_a_substring;
 mod remove_outermost_parentheses;
 mod removing_stars_from_a_string;
+mod restore_the_array_from_adjacent_pairs;
 mod reveal_cards_in_increasing_order;
 mod reverse_odd_levels_of_binary_tree;
 mod richest_customer_wealth;
