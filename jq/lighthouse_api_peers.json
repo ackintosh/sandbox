@@ -1,0 +1,4150 @@
+[
+  {
+    "peer_id": "16Uiu2HAmDAiAx6N578Snhd3qcmTwq31gUe3x29bSo18eaRZCv8US",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 34,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QO_UmQ6Vk_dB5kFUlR5COIrWVKt1SEXYeVmuOzhq8-99cvX6l1A2KC7jLVOkJtGWjNG7YCvHdFrTUw6r-p4Kv7CGAYyHMcSYh2F0dG5ldHOIAAAAAAAAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhC4EO5qJc2VjcDI1NmsxoQMHnSGm6wNb7OYLxGfksuQ_S7B9Bg-hSGh1vT58OYL7q4hzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm1oEch6uXffoGZ32kPTiyjycfX9yDuBJSWtmagBSk9HTN",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 40,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-Ly4QGQJilUODEBrhFQeo263NeOfEA8XGiRrLJAF3_Ull9i0GN80_gtYBr1rbLGdUt9wWLvMvQdyd4RtE3VAFp6fQUwDh2F0dG5ldHOI__________-EZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhAN4aBKJc2VjcDI1NmsxoQJerDhsJ-KxZ8sHySMOCmTO6sHM3iCFQ6VMvLTe948MyYhzeW5jbmV0cw-DdGNwgiOMg3VkcIIjjA"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmDFMKhPKhTgmAvCWufmkhDWuVd8QogVu1mPUSFwti6C55",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 41,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QH2qit85fc3SjOK4-hB7Fe4w7JwrOIWYebW-IaQ7-rvzY3THXGivGlalFEGusLOtkERnWmsqskz3h-yhVPjy2WWGAY2GvGTdh2F0dG5ldHOIAAAAGAAAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhHTKpXmJc2VjcDI1NmsxoQMIzXYTZFtmTiekFhFwFpEiX8mgRESaWTT20AEP_SbOMIhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAkwzNAx6vANpzWMZCjCSzYnQicQXzi9UEePXAUDVYqoQ15",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Prysm",
+        "version": "bc9151d647e70cf5e0b6dbcee01998c430a96cb5",
+        "os_version": "unknown",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "Prysm/v4.1.1/bc9151d647e70cf5e0b6dbcee01998c430a96cb5"
+      },
+      "connection_status": {
+        "status": "connected",
+        "connections_in": 0,
+        "connections_out": 1,
+        "last_seen": 0
+      },
+      "listening_addresses": [
+        "/ip4/107.196.182.111/tcp/13000",
+        "/ip4/192.168.11.142/tcp/13000"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/107.196.182.111/tcp/13000/p2p/16Uiu2HAkwzNAx6vANpzWMZCjCSzYnQicQXzi9UEePXAUDVYqoQ15"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465762",
+            "head_root": "0xdc3baa7e6b0aa2dbf63a7089d547920600d0dba0a16fec51de8b100528a8afed",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 201,
+          "attnets": "0x0000000000040400",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [
+        {
+          "Attestation": "42"
+        },
+        {
+          "Attestation": "50"
+        }
+      ],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-MK4QCFbiUSVxP-oagFLmeiICQ_W8xyxTo-uVLwwtCpYIE8LBIvY-N6MnH85KOnLyFIuHwBC-fGoEPObDG55cXwDt66GAYuOE7q5h2F0dG5ldHOIAAAAAAAEBACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhGvEtm-Jc2VjcDI1NmsxoQImF2fILreX7f2XMrwEsu7SH9UD9DGoAozTo8BNxYJc0IhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAkzMCugCuLWzyQ8bt2DjBB4xxYs9X2v5s3upZZJRvXDHGP",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 25,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-LK4QI17DBLkK2t4BdL7sSfdIObM3mmdrftgdqwa1Q7Qgl5xElPz-Fpyach6nPYVFS8gQDjios3Tov7LXttuSflZKN8ah2F0dG5ldHOIYAAAAAAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhLmdoPaJc2VjcDI1NmsxoQJJJYCMamUWFZr_1mqRqXYwblzSdYidYwWWvETHSD5WHIN0Y3CCIyiDdWRwgiMo"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmEg4NJLDP1Gjc6c4FnYJbzYmWXn4z4ZvjdB8YJ2KM5YMC",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 34,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QD5kV_tNArMnDr-aenj8B5weN3GRsdooPyL56FrE3fN9DA89Z8rcP92mPhP8ADp5KF5vUDawHJ5INzra1rSpsiaGAY2z3bZth2F0dG5ldHOIAAAAAADAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhKI3XDKJc2VjcDI1NmsxoQMd_X9F9fX05vbp07nUR6Hg3pIEDPk8bK-w3joZew5kz4hzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm2oxrafFSNA2yKoy16F2sddQkFcYua8bCtgZfK9nMUuwh",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v23.9.0",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v23.9.0/linux-x86_64/-eclipseadoptium-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 13,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/0.0.0.0/tcp/9105/p2p/16Uiu2HAm2oxrafFSNA2yKoy16F2sddQkFcYua8bCtgZfK9nMUuwh"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/67.11.89.155/tcp/9105/p2p/16Uiu2HAm2oxrafFSNA2yKoy16F2sddQkFcYua8bCtgZfK9nMUuwh"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465764",
+            "head_root": "0x538ae107989a37e1f3df99176af9c271c8bb54c1c93aab1973ed5a1b5f4a63af",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 51,
+          "attnets": "0x0000000000000030",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-LS4QCR3rTAX4S0405r0m4x6-kXBkVTD2-zH1iA-8hTU00pBV6jRUBGWi0-Pix8QEPPgE7qJ7U3ZSUzreaND_OHyTm6CAUWHYXR0bmV0c4gAAAAAAAAAMIRldGgykLuk2pYDAAAA__________-CaWSCdjSCaXCEQwtZm4lzZWNwMjU2azGhAm23quqHkLqBGUxR3AQlcf07HySTcEM6OvtG87YGDYVMg3RjcIIjkYN1ZHCCI5E"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmCHeD7iq6utEUBB5MgQS2TGxMtNyJV9HeKiVH7AZbY2xy",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 23,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QArbldVblCMK9PqFJu8QfU9AIHZghpmOe7k82zA6KT0INHd3W3AlKn2QbJHe62isNI5MtwZg0O4kBbMTBv5ZiFCGAY1qLDYdh2F0dG5ldHOIAAAAAGAAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhJRxnxuJc2VjcDI1NmsxoQL6iAeUAZeXHqALfh0cVsA6D-Cnp3HVsN9-Z0o4UHM4CohzeW5jbmV0cwCDdGNwgnU7g3VkcIJ1PA"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmJUik8DmNSSPnY5Uv9k9tXX7C6TVDnsKvcPthoxG4V3H4",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v23.9.0",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v23.9.0/linux-x86_64/-eclipseadoptium-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 22,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/172.17.0.1/tcp/9000/p2p/16Uiu2HAmJUik8DmNSSPnY5Uv9k9tXX7C6TVDnsKvcPthoxG4V3H4"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/3.222.28.184/tcp/9000/p2p/16Uiu2HAmJUik8DmNSSPnY5Uv9k9tXX7C6TVDnsKvcPthoxG4V3H4"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465763",
+            "head_root": "0xce4268b485f6e4eb329222efa017205e71a6ec1114cae8049251653d7db641bf",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 177,
+          "attnets": "0x00c0000000000000",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-LS4QPGwWj1iOvqtCaveuQ1c1r9UdnAsnhh8eF3i7oy4_4nnDRfphidBCxqm1JYU2hxN0RNct9cK7-36P3U-Ht8evzqCAYmHYXR0bmV0c4gAwAAAAAAAAIRldGgykLuk2pYDAAAA__________-CaWSCdjSCaXCEA94cuIlzZWNwMjU2azGhA1aEqtmptYc8LHJgqkeQ4vmFiFuij5qSnxC1s7y0gxabg3RjcIIjKIN1ZHCCIyg"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmGjNAYZUmYTmCCfmY8cef3urNZAXYPokPbfFPSTB6shsD",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 41,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QJwgdFswRn_uQ3onFqRgVpWNwelwoVPgxNGwWr7UVbNVAwmf4mBMKpV7jnsKRCDKGhtAm7usfUCJvA9SsKvY1DeGAY2ddAeWh2F0dG5ldHOIAAAAGAAAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhLIUKluJc2VjcDI1NmsxoQM8jbyowF8zuktxCFbk7T9c0P8zmHVg3N8onDCNar_hYIhzeW5jbmV0cwCDdGNwgiMog3VkcIIjKA"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAkxmDUtHZu4Efmp3y4rqKAfr8jf1WSgDGqvRQnxeczYFXw",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 23,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QNzhs29x0QrGGSpcHF8z4rBWO--4makaLlmxre63GGQncreVeAGnYe2iyxtiAxI2AASU4QdBr65Q5M4YKTBRGaSGAYphsusIh2F0dG5ldHOIAAAAAAAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhDP_TwmJc2VjcDI1NmsxoQIxlLcQwpTlPktavTDdtXd4A_RvNm6AMY0dRmFVidrbAohzeW5jbmV0cwCDdGNwgjMvg3VkcIIvRw"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmD9eYcfX6KqVK2zKDkG7Xi9srLDouPzYcj5Zo28JddGbG",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v24.1.0",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v24.1.0/linux-x86_64/-privatebuild-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 5,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/192.168.4.50/tcp/9000/p2p/16Uiu2HAmD9eYcfX6KqVK2zKDkG7Xi9srLDouPzYcj5Zo28JddGbG"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/47.154.205.177/tcp/9000/p2p/16Uiu2HAmD9eYcfX6KqVK2zKDkG7Xi9srLDouPzYcj5Zo28JddGbG"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465765",
+            "head_root": "0xe46de2b00c83c63dc6a394648031ebeb7e56ffcf5193c36151b672112798849f",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 43,
+          "attnets": "0x000000000000000c",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-LS4QM2Jjyf3XJ8jisBFlcxNZXseTmiIEEtCgxM4o0oETtm_AFA8wwc1P4RrJdo2oeXh6lic35UDUQHXV9wAGPa9wbuCApyHYXR0bmV0c4gAAAAAAAAADIRldGgykLuk2pYDAAAA__________-CaWSCdjSCaXCEL5rNsYlzZWNwMjU2azGhAwdXcz91lxzUsKvNnGaGVy_UvN-MK7i8D3yLDibsMrSfg3RjcIIjKIN1ZHCCIyg"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmDetDTQzBW4sWjvHdkDn7tybrqeHp1mMPccwcY9a24UZQ",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v24.1.1",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v24.1.1/linux-x86_64/-privatebuild-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 13,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/172.17.0.1/tcp/9000/p2p/16Uiu2HAmDetDTQzBW4sWjvHdkDn7tybrqeHp1mMPccwcY9a24UZQ"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/54.81.172.224/tcp/9000/p2p/16Uiu2HAmDetDTQzBW4sWjvHdkDn7tybrqeHp1mMPccwcY9a24UZQ"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465764",
+            "head_root": "0x538ae107989a37e1f3df99176af9c271c8bb54c1c93aab1973ed5a1b5f4a63af",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 9,
+          "attnets": "0x0000000300000000",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-LK4QPuuweT07jDLgblTAgGxYkcTMe99iX4VIqlLASgtB5aJIyazNgzil4B-z4uk9JNvs5XDkgIXOuXOxRD4NFTSVNcNh2F0dG5ldHOIAAAAAwAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhDZRrOCJc2VjcDI1NmsxoQMO1L__Pzz9SmRM2I6ScEFaDauzhTywIkfYT41ZhuhJy4N0Y3CCIyiDdWRwgiMo"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmTEPo32PLBXzMjqrBdFydKiP3mCewrkN6SftZr6aYxZNu",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 14,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QDQdr5L9th-r3rwFe_fH0ccEFRfwO0eRuCCp1HetXa6QHn-HONMgelG6KCoeS4_wEsykIYERuPSnTq8SA_ZpQYKGAY2Qv3SBh2F0dG5ldHOIAAAAAAAAADCEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhFnpaCuJc2VjcDI1NmsxoQPYkkqxA8NBSrGCOXAsEHnynqf1tmLmknCI8x6a49oGXohzeW5jbmV0cwCDdGNwgiMpg3VkcIIjKQ"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmJASTCJYFzr5qqD9kAwrMQ83ZLUX4Sa8L2Dzj9qqmbfCA",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 23,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QIjEAcTeL9iLR_i9libhYJ3YjhA6bKHa4WxOsDxUA90RXzkCtYI0Jp95c1cz3uHeDW7SNcxq2JxlZKin4xXBH9eGAYqJFZnsh2F0dG5ldHOIAAAAAAAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhJUcLRWJc2VjcDI1NmsxoQNR1cqhK491tzWqJCm45nlG3u7PVa1_jYpqfquxfuU374hzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAkxY7dxXCAK4So8rX3pTsgLsfzWetmE9LJaVEBxjCmue7i",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 23,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QA35dk6COdAy-uRFEJX8u2aFBEsGd9ApUee5ko2fw8LmDQ3F-Bdint_Mhkct06sfnUc4H_M9_iEN7H16FuvQEXCGAY2VergWh2F0dG5ldHOIAMAAAAAAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhFvmnfmJc2VjcDI1NmsxoQIuOY6nGwJO9mIkE-26TJW1FqbAT_85BEI3MPgBX3qweYhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm44bYHcU4q1nVPtE9i1Ddohh8aN1Q5S7Dbi7j6t7JfeFj",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 34,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QAzeFUIPuF_TvrJ2QbMkHvKGZzFEwPY0cLlnq0xo0CfQZa1GOXdfd3gtofb36nP3PsdsqrY-muqdvxZiixGk5OuGAYtxvlDch2F0dG5ldHOIAAAAAAAAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhEFtU76Jc2VjcDI1NmsxoQKAUvcdOsG6hI0_adgTorDfe7gBClCd5ZTewUiNHBRYiohzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm9dM4wgxBbZ8JyjQL113VzRXFA3Ed8GekRzn33gPEuShb",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 41,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QH6xmYYqmmP0zAvX8JlcEuI7mdTiewVK_QHo_s26cZbdAow8zWi1BG1FtEaSwd7rH2fRj-Z39EZil8g7J4UMWx-GAY2ow2iah2F0dG5ldHOIAAAAGAAAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhEcZYPmJc2VjcDI1NmsxoQLTATQmej3e-qTV3S7422KjqmGy60DF0fr4WOgqXgu4JohzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm5GCe2teg81xNYLq2cL6i3pp2yP26w7xruU7rXPg68fFU",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 40,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MW4QDfJiWdzFYS8mA02wkeE2pMXWkeULUod5pafAjY0OaWgVjRxlmHVZrOH9lKpcQj2ImIhzFQbVpKqdyaGXvy8-XiB9IdhdHRuZXRziP__________hGV0aDKQ0x9hkZAAAHP__________4JpZIJ2NIJpcISHtbK1hHF1aWOCIymJc2VjcDI1NmsxoQKSJ7pOtG1U349_VpuYWr72RG1BmxwZ_K3bDVeSxI-n54hzeW5jbmV0cw-DdGNwgiMog3VkcIIjKA"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm7KYk6G8t3RoxunHy6X9UrJrny6F3351ENSai42rN7CvL",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v24.2.0",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v24.2.0/linux-x86_64/-privatebuild-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 33,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/10.10.0.14/tcp/9000/p2p/16Uiu2HAm7KYk6G8t3RoxunHy6X9UrJrny6F3351ENSai42rN7CvL"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/130.61.112.36/tcp/9000/p2p/16Uiu2HAm7KYk6G8t3RoxunHy6X9UrJrny6F3351ENSai42rN7CvL"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465763",
+            "head_root": "0xce4268b485f6e4eb329222efa017205e71a6ec1114cae8049251653d7db641bf",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 3,
+          "attnets": "0x6000000000000000",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-LS4QDUqzRAiIN4MZLYVDHJGfXuZHzhsLKngyNmqm3E3ASP3ZclkhDfDGw_W9bZ8AvJgVVfWCXsl5HDYLDmEVqCQ00mCAaOHYXR0bmV0c4hgAAAAAAAAAIRldGgykLuk2pYEAAAAAB0EAAAAAACCaWSCdjSCaXCEgj1wJIlzZWNwMjU2azGhArC6k4MAaJghRii495mHzNmBMtQ1TIXHH-HebvR3xrRBg3RjcIIjKIN1ZHCCIyg"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmLYNx29eVKteHeafy2Vjsc5nB6zcH2ZCJpXE9FgBwdZM3",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 14,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QHt8dXwcCYhE543GkGobXTQyb7zlvRbMHLarhhcVCNCQAs_7kpDNqPGWIE1hEleX0NdwUKfSYoyS-ouiPG6yxzaGAY3EnEhyh2F0dG5ldHOIAAAAAAAAADCEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhDSqAbGJc2VjcDI1NmsxoQN1K_t37slxjq36ImnfrvErpwmdXn46AVWz3UGsqlHRCohzeW5jbmV0cwCDdGNwgiMog3VkcIIjKA"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmH2TatbrYyLaMgYgDBZekmvN3nK39p64yvVoYPEkwk43E",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 6,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QJI8s2zgERrSw49WIs5wYmosjv5qWIUYRUTIWx4Fgqc5NonAVJMAuier46vEcIenPRH_1yfGIAmHyrkH8RU16cKGAYzfAUh_h2F0dG5ldHOIAAAAAAAAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhJBMYS-Jc2VjcDI1NmsxoQNA7r0kVsXxE-mL5UuQ3UCGXGH9gTIcXYMmSpkuAE8LJYhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAkytpf5xwHoRu13aCHPmqwFPF4YM5QT2jeGyiiKUc81c3F",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v23.12.1",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v23.12.1/linux-x86_64/-privatebuild-openjdk64bitservervm-java-19"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 49,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/4.196.214.4/tcp/9000/p2p/16Uiu2HAkytpf5xwHoRu13aCHPmqwFPF4YM5QT2jeGyiiKUc81c3F"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/4.196.214.4/tcp/9000"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465761",
+            "head_root": "0x0d45906399b2092420ec18e20fc59a845064bd44109da54c956fa8b5529a7491",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 35,
+          "attnets": "0x0000000000000300",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": null
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmVeR7YSwLghUi2iTeiv5QqikqHCJMfTUEXxJKnj3g2RPk",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 11,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-Ly4QGNssEnJv1bKRYCUZo8QQrPBBPKUHNlQr6ZcI626I4HCPDjkKsOOsP7RQcqbGzY14FZYiKfoNzCp5GFra86fQa4Dh2F0dG5ldHOI__________-EZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhMIhKEaJc2VjcDI1NmsxoQP8cRi2ivY36mN3ChF4SOFTgFYsSa1vzSDaPqmOQn7KX4hzeW5jbmV0cw-DdGNwgiMpg3VkcIIjKQ"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmG8SzGqmqN5wkfKPynhVwD3Af8uHap1KmRVwBjJuvNUDE",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 5,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QFFz-776aCQ1OHDDvvlNqcMdJZoAkMKIHKCju16dAktOZeAS6oJt3dPx-Ls2C0xs6Jol-QscD2SoxmGkVCq1Pg2GAY3AuH4Qh2F0dG5ldHOIAAAYAAAAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhF0mPL-Jc2VjcDI1NmsxoQMzm9ymp_OuUiaVFY3g7ZVzlqE96F0qXv0Q23xiWudc6YhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmVqUu4DBwS7wiNGbMnpnd84r2iLEDJSoVCiguGxLsDjZF",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "dialing",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 6
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-LK4QF9kmddNRR3tYeGavIqhRYseXflQbuxaqBOjUmNq116XEakMCbhLRJ2B1LDrLqUPtl8aQy1Q3RSvZTvBjhYGnfACh2F0dG5ldHOIAAAYAAAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhGMvdKeJc2VjcDI1NmsxoQP_RsPLPYJ7P7cDXjZ2WKHnzbzzHAwC_XxlJMQ78_lsVoN0Y3CCIymDdWRwgiMp"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmV6yk7mig23Z3kDvhuUUFyYDvxqQ7akgLcJ4HBibjtmez",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Lighthouse",
+        "version": "v4.5.0-441fc16",
+        "os_version": "x86_64-linux",
+        "protocol_version": "eth2/1.0.0",
+        "agent_string": "Lighthouse/v4.5.0-441fc16/x86_64-linux"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 4,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/10.8.0.2/tcp/9000",
+        "/ip4/65.21.94.7/tcp/9000",
+        "/ip4/127.0.0.1/udp/9001/quic-v1",
+        "/ip4/65.21.94.7/udp/9001/quic-v1",
+        "/ip4/127.0.0.1/tcp/9000",
+        "/ip4/10.8.0.2/udp/9001/quic-v1"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/65.21.94.7/tcp/9000/p2p/16Uiu2HAmV6yk7mig23Z3kDvhuUUFyYDvxqQ7akgLcJ4HBibjtmez"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465765",
+            "head_root": "0xe46de2b00c83c63dc6a394648031ebeb7e56ffcf5193c36151b672112798849f",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 413,
+          "attnets": "0xffffffffffffffff",
+          "syncnets": "0x0f"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-Ma4QJH6cbfMeNI0e74AMnVrjq3xQnK_Jnxx4hAAEC0MY5KSHVaj0pHptASF4QSsnRqyc4RLS6oTNwRgnNT5cqwaqHqCAaKHYXR0bmV0c4j__________4RldGgykLuk2pYDAAAA__________-CaWSCdjSCaXCEQRVeB4RxdWljgiMpiXNlY3AyNTZrMaED9GNn-zle_t4wOyem2VSBGUC-6YjJqVucRRz4Tq3rF-OIc3luY25ldHMPg3RjcIIjKIN1ZHCCIyg"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmEZesRBbb9JWDeiY56GDgdHDHcnjY8T7EWDoaCkJKVnbU",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 41,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QOwBYnZBDeusjfo2egQObPE7ZQBFo4w4AIoPN3zZU-fmAzyXD4roARv-WFQxoL3KK5Bg4kaHHNwXJYoDXZOL7r2GAYmrEWTKh2F0dG5ldHOIAAAAAAAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhHTKgl-Jc2VjcDI1NmsxoQMcWXFtXPgRMCgemLnGgFQtGQK0Ky63sJHHSZUBZOSjg4hzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmSEnAH3vNKThmcR8bPJhoV3Ljnrph2zvcJJvx1iFRVzMA",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 23,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QPNsggufQZD6-7rfR127mf3H7I4ReA1dCKRWleQKNMKiEtS4t3wV-iYhNUH_poLbNuS_MeGTmZ1Ik7qcW7OEvtyGAYkVC7HVh2F0dG5ldHOIAAAAAAAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhGsGo5KJc2VjcDI1NmsxoQPJz-T49ApqOtkXspG1YmR_DsAPfeFo0DMalYduSSMLdYhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm4dXiSLRKzK9VYjGCsyjanTThnH62uH9dxeCTAXWd29vK",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 42,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-LK4QKIJ4Ql4iwlM1P5Bi6MLEGvFzIZToK0FZcqVTUzNq9ZlF07RTxVFgeQMraXJIzeCrBPyww_tKdmguH72okHd8e4Nh2F0dG5ldHOIAACAAQAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhItE2RmJc2VjcDI1NmsxoQKIws6bNTn7p5Up_VlHsiDn3mwM6sAr_Q3Jrirw-LF2vIN0Y3CCIyiDdWRwgiMo"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmTostuperPiPHPbCHcFpzCti75vAtmDAzjMYkdPRQ5DRs",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v24.1.1",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v24.1.1/linux-x86_64/-privatebuild-openjdk64bitservervm-java-21"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 33,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/35.180.230.210/tcp/9000/p2p/16Uiu2HAmTostuperPiPHPbCHcFpzCti75vAtmDAzjMYkdPRQ5DRs"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/35.180.230.210/tcp/9000/p2p/16Uiu2HAmTostuperPiPHPbCHcFpzCti75vAtmDAzjMYkdPRQ5DRs"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465763",
+            "head_root": "0xce4268b485f6e4eb329222efa017205e71a6ec1114cae8049251653d7db641bf",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 11,
+          "attnets": "0x6000000000000000",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-LK4QAXhNfFk9nZcIZZjgNf_aIrkh-u73CiYT2m5P-wB2KjHHkY22CDAquYYMHIPLG0nYRXO0b0T2yl9LUAeloKtpVcUh2F0dG5ldHOIYAAAAAAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhCO05tKJc2VjcDI1NmsxoQPhJjuTCx9Ylqwu0QXBYqVOUp4LZZCDS8Ub6Rbo0HjD4oN0Y3CCIyiDdWRwgiMo"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm5i5s6M5Tgup4zjpewD1P6pKLdE8bNKkQCfz8daFnty8M",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 34,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QINH8LEZKYaTaaNW11ZCjGu6_cc1vJCxqNfUZswL2B-mS0SAD6NG5qcY_FTk-4HDpgvw1OEXEAgwbUNp9OBOFgyGAY2-cFDnh2F0dG5ldHOIAAAAAADAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhCNXb2WJc2VjcDI1NmsxoQKYySsgzK3mYTsIgmduJcG71YJzxIZUybIEZWH2ntDrUohzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmMWUk1h1Q41w3Sz4GiBv44AosxyzT3MeA4YyX7jEKGfxf",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 23,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QI64V9WoG6mF5HyyHOmR2yBpwlBJD30TK4MFJvfzuS7MOBwS9XaHpWdTRBiXUXtc11vIaOQeMJKuVQ_-ZamNmoGGAY2QACeYh2F0dG5ldHOIAMAAAAAAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhGVkoDuJc2VjcDI1NmsxoQODiw7HwdaRSa_nP0kVdRZvtF31fF_0iHBE78VvXjRkDIhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmMzFGnensSzyiztLfdYmbLaVmjDgwfy2N5Mth25WJ4CnG",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 6,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QIz8OHNhMuiZkvcST9FYwYZgldKJg2AhtFhqa1SV3nN7NmaiZSOzs8Q2n54mkKZGlSGmTIkFuMd3NMwRetLqPduGAY1jNz26h2F0dG5ldHOIAAAYAAAAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhEfKZTaJc2VjcDI1NmsxoQOKqBcq5utcfC8om5pNbXwMCYRmcaJQtPNLrSmRDa0z9YhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAkwkXEGjCcPLkcGNReMwrCTzC5LHoQwdxtQPiZpqa1uN3m",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": -1.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": -1.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v23.11.0",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v23.11.0/linux-x86_64/oracle-java-20"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 4,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/89.202.64.28/tcp/49018/p2p/16Uiu2HAkwkXEGjCcPLkcGNReMwrCTzC5LHoQwdxtQPiZpqa1uN3m"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/89.202.64.28/tcp/49018/p2p/16Uiu2HAkwkXEGjCcPLkcGNReMwrCTzC5LHoQwdxtQPiZpqa1uN3m"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465765",
+            "head_root": "0xe46de2b00c83c63dc6a394648031ebeb7e56ffcf5193c36151b672112798849f",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-L64QLyHHXQOrB11U36YTYDZjCLVozhJOHtH8zJca7GWtYNhRn1QZ6_N7CdqoDI0gxt_gCgCk7s2wXpKV3BMplEJUpiCi3OHYXR0bmV0c4j__________4RldGgykLuk2pYDAAAA__________-CaWSCdjSCaXCEWcpAHIlzZWNwMjU2azGhAiKLg-DKCDv9NLBUkNDjzg8GM1H1FP2wrrYJJBiLGTHUiHN5bmNuZXRzD4N0Y3CCv3qDdWRwgr96"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmNduZwhWjHvqfzkg8RnViXdTLESvj2vd4hKr9NpWqRujP",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": -10.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": -10.0
+        }
+      },
+      "client": {
+        "kind": "Prysm",
+        "version": "59b310a2216c57fcf67ea0fdec739dad07aeec8b",
+        "os_version": "unknown",
+        "protocol_version": "",
+        "agent_string": "Prysm/v4.2.1/59b310a2216c57fcf67ea0fdec739dad07aeec8b"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 4,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/109.173.126.42/tcp/13000",
+        "/ip4/192.168.1.65/tcp/13000"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/109.173.126.42/tcp/13000/p2p/16Uiu2HAmNduZwhWjHvqfzkg8RnViXdTLESvj2vd4hKr9NpWqRujP"
+      ],
+      "sync_status": "Unknown",
+      "meta_data": {
+        "V2": {
+          "seq_number": 19,
+          "attnets": "0x000000000000000c",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-MK4QG3CMYFqLYCCwEbSYjREBo0aOA_NVtx5TX8ocEtqPaBmOhqRLYvGFzPuxv5pr-z3sx1Gtnnrlc8HEesmvJMIg4WGAY1fy3Yqh2F0dG5ldHOIAAAAAAAAAAyEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhG2tfiqJc2VjcDI1NmsxoQOUTeGyLtpH3DZsa5owkOt3NLv2aNvd_3Yd3TFSc-RLCohzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmMqXqP9MfgGCempaLCAr2smrwABfzw8kEFnYg54zKjmgT",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v23.8.0+42-g906187ecf",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v23.8.0+42-g906187ecf/linux-x86_64/-privatebuild-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 4,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/172.20.0.1/tcp/9000/p2p/16Uiu2HAmMqXqP9MfgGCempaLCAr2smrwABfzw8kEFnYg54zKjmgT"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/134.122.55.242/tcp/9000/p2p/16Uiu2HAmMqXqP9MfgGCempaLCAr2smrwABfzw8kEFnYg54zKjmgT"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465765",
+            "head_root": "0xe46de2b00c83c63dc6a394648031ebeb7e56ffcf5193c36151b672112798849f",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 3,
+          "attnets": "0x000000000000000c",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-LS4QAhBn_rQ10Fs-t6IMoa96ktJOjG-bnnBOO3o2LAiykbKDVeedO9kTnoLhNyBf1WbJStIxpXl7JuJvcFte-s1a7aCCKqHYXR0bmV0c4gAAAAAAAAADIRldGgykLuk2pYDAAAA__________-CaWSCdjSCaXCEhno38olzZWNwMjU2azGhA4hslwP6IJIHj6lYaB3PsKGGNC0-sTLzfdXE0PmuKk8wg3RjcIIjKIN1ZHCCIyg"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmPqQtEaWdFjMTVaCiNmTzGGh2FDa14k21jq3cZuC9TtWt",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v23.10.0",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v23.10.0/linux-x86_64/-privatebuild-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 40,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/172.17.0.1/tcp/9000/p2p/16Uiu2HAmPqQtEaWdFjMTVaCiNmTzGGh2FDa14k21jq3cZuC9TtWt"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/174.167.92.165/tcp/9000/p2p/16Uiu2HAmPqQtEaWdFjMTVaCiNmTzGGh2FDa14k21jq3cZuC9TtWt"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465762",
+            "head_root": "0xdc3baa7e6b0aa2dbf63a7089d547920600d0dba0a16fec51de8b100528a8afed",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 31,
+          "attnets": "0x0000001800000000",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-LS4QKe_1srKxZKytXgJFcW7e7DAl6eAc7gKzgl48iiwbUvEJSOE3JNkP3eFmnN9OOWoBYMNI_ECMMvudEzJgkgXed-CAeeHYXR0bmV0c4gAAAAYAAAAAIRldGgykLuk2pYDAAAA__________-CaWSCdjSCaXCErqdcpYlzZWNwMjU2azGhA6YcGrxm0Nn30w_hK5J7HWAPsZmcu-XMRtRjS28W7f9hg3RjcIIjKIN1ZHCCIyg"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmRBvqvdsz8wVzvEkbg6GiKRULYQTh6GVKCUug4ADtB6gt",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 35,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-LK4QCa4yLGZ38qt5ZvQEYBOaL-kWThLzy8UpLAKMi9sdqojLJfpTdqJsAGooaMVnWPgILPVXYVVzjlvBI7zzkYJgqoGh2F0dG5ldHOIAAAAAAAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhLTeEiKJc2VjcDI1NmsxoQO6OUicKg-Ln5BVq4bfUd3W4R4W2wo1LJBbugrG85uYvYN0Y3CCIyiDdWRwgiMo"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmTp3b6ikYiBFEY9RyZnTSVcEEgSdr1o6pL1PsDmT7mTqj",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Prysm",
+        "version": "59b310a2216c57fcf67ea0fdec739dad07aeec8b",
+        "os_version": "unknown",
+        "protocol_version": "",
+        "agent_string": "Prysm/v4.2.1/59b310a2216c57fcf67ea0fdec739dad07aeec8b"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 13,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/18.141.22.133/tcp/13000",
+        "/ip4/18.141.22.133/tcp/13000",
+        "/ip4/172.31.27.141/tcp/13000"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/18.141.22.133/tcp/13000/p2p/16Uiu2HAmTp3b6ikYiBFEY9RyZnTSVcEEgSdr1o6pL1PsDmT7mTqj"
+      ],
+      "sync_status": "Unknown",
+      "meta_data": {
+        "V2": {
+          "seq_number": 1,
+          "attnets": "0x0000000060000000",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-MK4QCxSFQz5eeuxBL1kjPH-H155ULpjX2Jf2t9442c_P7SWIxjYd5hPqnRDsQO2NTtDnpzMomNxEeQBrI6tUDA6BXKGAY3ErEMSh2F0dG5ldHOIAAAAAGAAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhBKNFoWJc2VjcDI1NmsxoQPhMTFH6leT1W28Wws8FltUU2ylsrM6vid5igytxcTnMohzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmQpr2dEGodE5N5iMUrWbo4Pua3sD1csSFCyjkMQ1gVia5",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 23,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QBHQ1q2lpwmiDp24VpPQ9_RBe-s0BnoV3yFczoAsoov2WO3D8A47g8jqw5SJjXSBy20UAP6e-eVr8dsQITzo7pqGAY2W43s6h2F0dG5ldHOI3fvv_nf_ht2EZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhGwjsZyJc2VjcDI1NmsxoQO00qRHlModWzd4BtYSjh6eV973TfkvZP7m3KzIozXE0ohzeW5jbmV0cwKDdGNwgjMvg3VkcIIvRw"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmBv8UzaqtHbYx9rh6fYcGd9jg3FxzHPRUg8C182WULzRY",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v23.8.0",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v23.8.0/linux-x86_64/-eclipseadoptium-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 21,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/172.18.0.5/tcp/9001/p2p/16Uiu2HAmBv8UzaqtHbYx9rh6fYcGd9jg3FxzHPRUg8C182WULzRY"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/109.60.51.101/tcp/9001/p2p/16Uiu2HAmBv8UzaqtHbYx9rh6fYcGd9jg3FxzHPRUg8C182WULzRY"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465764",
+            "head_root": "0x538ae107989a37e1f3df99176af9c271c8bb54c1c93aab1973ed5a1b5f4a63af",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 14,
+          "attnets": "0x0000000000020000",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-LS4QEG6HwWMw4xfKAdfwVFDzERgw84AvAhnxFrCy2sqXzJadxOTKmkx9-R7ADMWdiqlTUyeuzpToE2ylR-sS-A_3ySCAZSHYXR0bmV0c4gAAAAAAAIAAIRldGgykLuk2pYDAAAA__________-CaWSCdjSCaXCEbTwzZYlzZWNwMjU2azGhAvUFOJTvCrOBRCrBwAQjF7GLmVzz4WjbMBBTA-kwxakbg3RjcIIjKYN1ZHCCIyk"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmFsotQLcEqxjygTYFAYLXVHqQCbgEhVfaGqzBF45MVpmT",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v23.9.0",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v23.9.0/linux-x86_64/-eclipseadoptium-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 4,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/0.0.0.0/tcp/9105/p2p/16Uiu2HAmFsotQLcEqxjygTYFAYLXVHqQCbgEhVfaGqzBF45MVpmT"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/62.195.159.165/tcp/9105/p2p/16Uiu2HAmFsotQLcEqxjygTYFAYLXVHqQCbgEhVfaGqzBF45MVpmT"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465765",
+            "head_root": "0xe46de2b00c83c63dc6a394648031ebeb7e56ffcf5193c36151b672112798849f",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 11,
+          "attnets": "0x000000000000000c",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-LO4QBhx_Q6tqFSAMWVjlCZdkXVvyWuGe-yXjbqahXyi2d_7eAv8LcUxz8q0uKdgFaJRl704xV45SaINmsnGsXT-w4yBsodhdHRuZXRziAAAAAAAAAAMhGV0aDKQu6TalgMAAAD__________4JpZIJ2NIJpcIQ-w5-liXNlY3AyNTZrMaEDL9vHtSq5qsEGnTQklvO7-cntKzXzT37QiQTkgI2gTY6DdGNwgiORg3VkcIIjkQ"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAkykpuXMehb5Ak7Stoe3aJsz4zAUp8oKYeuQVnRAJJ9Sdx",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": -1.9520635215524493,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": -1.9520635215524493
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v24.2.0",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v24.2.0/linux-x86_64/-eclipseadoptium-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 41,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/172.18.0.9/tcp/9000/p2p/16Uiu2HAkykpuXMehb5Ak7Stoe3aJsz4zAUp8oKYeuQVnRAJJ9Sdx"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/51.161.196.180/tcp/9000/p2p/16Uiu2HAkykpuXMehb5Ak7Stoe3aJsz4zAUp8oKYeuQVnRAJJ9Sdx"
+      ],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-L64QNcDcu_KkZoeZai9mODUCjMgfOCLkliGdKejrobaI5NEI0exAthv9gnv6VCRSDy5JAkoFnilNzj82__cuHAdZsmCAomHYXR0bmV0c4gAAIABAAAAAIRldGgykLuk2pYEAAAAAB0EAAAAAACCaWSCdjSCaXCEM6HEtIlzZWNwMjU2azGhAkBW4E1a1tZV16mMzcnISJgyY87T8qF6Y3ZrwFUlSjUTiHN5bmNuZXRzAIN0Y3CCIyiDdWRwgiMo"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmFY9wFR1XRTfvRwZUuKkAv8EnqXF89bAPLefpW4uTZqTE",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Nimbus",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "nimbus"
+      },
+      "connection_status": {
+        "status": "connected",
+        "connections_in": 0,
+        "connections_out": 1,
+        "last_seen": 0
+      },
+      "listening_addresses": [
+        "/ip4/0.0.0.0/tcp/9001"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/159.196.77.154/tcp/9001/p2p/16Uiu2HAmFY9wFR1XRTfvRwZUuKkAv8EnqXF89bAPLefpW4uTZqTE"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465765",
+            "head_root": "0xe46de2b00c83c63dc6a394648031ebeb7e56ffcf5193c36151b672112798849f",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 15,
+          "attnets": "0x000000000000000c",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [
+        {
+          "Attestation": "58"
+        },
+        {
+          "Attestation": "59"
+        }
+      ],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-LK4QPwi29_Y3_qG9UkMA0IoW1oRo-F6Ev0irKJY46s3yt-DJSNRXLxjkcuSWRkO9TIutyZjiCYEo9gG3fSLRyEdY7kQh2F0dG5ldHOIAAAAAAAAAAyEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhJ_ETZqJc2VjcDI1NmsxoQMq0tVfMmV8MjYpNObJOgzFTWB0_UbxomWpvCm7x1nUEYN0Y3CCIymDdWRwgiMp"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmBRBRNXt8ANpu1XcdxYDAte4P9RLu1VyB8VHaedhoxLVa",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 42,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-LK4QIvM5HYXFMpFBoe-eeL8WlHYhN-R_ytY73I3WrIiX65ICBCjsVivuKgjiPAhe1IQ2bu_1rQwaHRFI2OJ-67kufoDh2F0dG5ldHOIAACAAQAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhEs9pHCJc2VjcDI1NmsxoQLtmrL2ICslKNgdZXoShTGkLWDvw7OBWLUFyd3ijCdHHYN0Y3CCIymDdWRwgiMp"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmHhqSrfSsREqFtEs5gRECxCYqmLR67yjVwa6UVjoYtEpR",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v23.9.0",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v23.9.0/linux-x86_64/-eclipseadoptium-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 4,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/0.0.0.0/tcp/9105/p2p/16Uiu2HAmHhqSrfSsREqFtEs5gRECxCYqmLR67yjVwa6UVjoYtEpR"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/82.32.179.146/tcp/9105/p2p/16Uiu2HAmHhqSrfSsREqFtEs5gRECxCYqmLR67yjVwa6UVjoYtEpR"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465765",
+            "head_root": "0xe46de2b00c83c63dc6a394648031ebeb7e56ffcf5193c36151b672112798849f",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 51,
+          "attnets": "0x000000000000000c",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-LS4QFpwVCjcJInFzGDQFUY-SrUpxQL7D3ORLyLb3vhSOdf8YsgsDQxnXQix4i5MNhVorfkHbCprCoJiyvenX9C6x_iCAyqHYXR0bmV0c4gAAAAAAAAADIRldGgykLuk2pYDAAAA__________-CaWSCdjSCaXCEUiCzkolzZWNwMjU2azGhA0sFG_hcQIFyKnk3b6sdvgagty2qchZ040f_89RQegC6g3RjcIIjkYN1ZHCCI5E"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm2rXSXPbMMokrBndien1vkfvUYp1apaot9aQEx3W1rNMS",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 23,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QFVyZA8kiQofSwniOhzsRwWObMAUjpiQFZahwBk5UyTYdTUwcQhZwJ2TUiUnhBh9dVTxpkJsphTf8ebUveDMXZiGAY3EL9UKh2F0dG5ldHOIAMAAAAAAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhEoMF4WJc2VjcDI1NmsxoQJuX6xqnTATa_EyK1ODFfwhuO2WkEkY80NsE36LY0cyXYhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmQNtnE7mNmfDjZuh6TENoPAWzAKwEuLaLGVnWPujsxf6U",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 5,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [
+        "/ip4/84.128.62.213/tcp/9000/p2p/16Uiu2HAmQNtnE7mNmfDjZuh6TENoPAWzAKwEuLaLGVnWPujsxf6U"
+      ],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-MW4QBMfulo2EHSiBk4cc9EmpFp1JHZI_0C8y-PUJygB5x2SKkbgixVqHuuh77NwY7apVIOUUh98FPRV8tP00ejMZ4SBv4dhdHRuZXRziAAAGAAAAAAAhGV0aDKQu6TalgMAAAD__________4JpZIJ2NIJpcIRUgD7VhHF1aWOCIymJc2VjcDI1NmsxoQOuLKbvth-KBimOa9YJ_C-q0Vtp0ZTvSnz1_1mrw9U_jYhzeW5jbmV0cwCDdGNwgiMog3VkcIIjKA"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmSEewTQTam9GHU4nfxJ1e8pE9r27BrejubxNypdsqwQMQ",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 10,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QBPY65ZrUSBGKGydR81YiV8L6RU3NPeIB6K761M8Z5cqbG6965hmqSnjF4ZCMezx1jX5KBst2OzHzcA0zvNV7taGAY2lf8_ih2F0dG5ldHOIDLCJDgAAJhCEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhKL_WcGJc2VjcDI1NmsxoQPJx7rDeFJ9rjjEgxFhcqaMyPIBuli_J1FuLyfpaQuYC4hzeW5jbmV0cwCDdGNwgjMvg3VkcIIvRw"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm4AetXohrwU3HY8pc14C72LqxZhkATKdYTseu6vR9oozc",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v24.1.1",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v24.1.1/linux-x86_64/-privatebuild-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 34,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/172.17.0.1/tcp/9000/p2p/16Uiu2HAm4AetXohrwU3HY8pc14C72LqxZhkATKdYTseu6vR9oozc"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/34.230.42.151/tcp/9000/p2p/16Uiu2HAm4AetXohrwU3HY8pc14C72LqxZhkATKdYTseu6vR9oozc"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465762",
+            "head_root": "0xdc3baa7e6b0aa2dbf63a7089d547920600d0dba0a16fec51de8b100528a8afed",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 11,
+          "attnets": "0x0000000000c00000",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-LK4QFuuKDCatRto9zTGiMN9unR3OwjxT4fwTDIAFhRE_HbMF87ajthCega3pLjZgNlVV2RPK8ND4_4f8jZQdn0efw8Ph2F0dG5ldHOIAAAAAADAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhCLmKpeJc2VjcDI1NmsxoQKB4DynBnw5eG6C4Tiso4Lz0bTI6O_VRRGfy148nu9p9YN0Y3CCIyiDdWRwgiMo"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmM8Q1jvLMGQoiWLKBa5aJZcXZuBGYF485QgykXEXDbpSK",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 14,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QMPC4kkzMLjHOxhxaBTxW-gUnXXWnUt5AC8Q7uIWygxdZp0bIiQfA3PF-iAS8Ngnl-0IGsTckzdVw9zrQr4sKp-GAYlctlfeh2F0dG5ldHOIAAAAAAAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhJT7hq-Jc2VjcDI1NmsxoQN94u7baS049FpfirGz11DuSntP9mer9R0Y_udX6sipaIhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmNRyKvkPLtHR4SwGGXsMdmkLA7YMDTmVdVVKDAh7LGH6d",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 34,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QNjZhp9SVcTA6zP1LQS2ibwOqf-5VY38-SfR7ed4YyG5UOwhh1mui4tO7yw15sPAAhsEMfCq9AJBRvKeioL1DomGAYvy5qRxh2F0dG5ldHOIAAAAAAAAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhJBMSrWJc2VjcDI1NmsxoQORPylW7hpYBIr3pKv_Pih_BuyDE91rTV6aLtny3Ue-TohzeW5jbmV0cwCDdGNwglngg3VkcIJZ4Q"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmJvJHG8rnHCoHbDTTdHGtLAHqfdLT8PNcaFjGYu9H75oM",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 14,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QHs_gk2ovu5cSQbs6l5pYOd6UIMfgXfI6nWXGq9BWeYKAL5y3Tf6u0yb-xYg_j0jKhKFNVbHtVoxPHXJXOyHRyqGAYvUUqxah2F0dG5ldHOIAAAAAAAAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhFUKxjmJc2VjcDI1NmsxoQNdEhua28KVqYUKV9E05AAj9zZEJKj73sSK1EAYOYXngIhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm7wJgSMjNcJkYo8N8eKCrEUBie3YtiHw9sLmGFcYux7ye",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": -2.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": -2.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v23.3.1",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v23.3.1/linux-x86_64/-ubuntu-openjdk64bitservervm-java-11"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 20,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/192.168.1.192/tcp/9000/p2p/16Uiu2HAm7wJgSMjNcJkYo8N8eKCrEUBie3YtiHw9sLmGFcYux7ye"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/72.94.159.21/tcp/9000/p2p/16Uiu2HAm7wJgSMjNcJkYo8N8eKCrEUBie3YtiHw9sLmGFcYux7ye"
+      ],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-LS4QCh-rvWm2ajW3DbsL5CxdHKQm0_FQWIs9a9RAkOyj5gdUWRBRNIr-GOtKLNrqrMU3j197rPclnTfE5yH_CsgzYCCCjyHYXR0bmV0c4gIAAAIAAEAAIRldGgykLuk2pYDAAAA__________-CaWSCdjSCaXCESF6fFYlzZWNwMjU2azGhArnjlZKpukQhVDVDXCBYB13dY4vqbXUjH2FrCUUj0nClg3RjcIIjKIN1ZHCCIyg"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmKSatEYBAVgSDWYzTSrz1Yua12UoBH9c9Rg3wPc9Sbktz",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 14,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QE6AzxXSea93SkK5JygWFjj6Rc6iCnKhrLST6FXPqx_xcHA5cBeJh-kG3WR1o8ELoHAtU0LBmydygwsULB0aJp6GAYytSr-rh2F0dG5ldHOIAAAAAAAAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhMPJxmGJc2VjcDI1NmsxoQNk1E4eBpzLS1cgS5vQ4jE7CFLLPqPMSpNp4LAJFWX1c4hzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm2Mb2txXcD6LHYBK7x8ji1CYCBjpp65PuwU3hhapcGuK8",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v24.1.0",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v24.1.0/linux-x86_64/-eclipseadoptium-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 13,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/0.0.0.0/tcp/9000/p2p/16Uiu2HAm2Mb2txXcD6LHYBK7x8ji1CYCBjpp65PuwU3hhapcGuK8"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/100.38.242.57/tcp/9000/p2p/16Uiu2HAm2Mb2txXcD6LHYBK7x8ji1CYCBjpp65PuwU3hhapcGuK8"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465764",
+            "head_root": "0x538ae107989a37e1f3df99176af9c271c8bb54c1c93aab1973ed5a1b5f4a63af",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 13,
+          "attnets": "0x0000000300000000",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-LS4QAKyxcjwTidaUK101KuKe_TkOQFn8QQVYM9szzz68_cXYQsiZge1q7HXembkqAz8xjXnI5gsygeeZhgOk88lzQCCEZmHYXR0bmV0c4gAAAADAAAAAIRldGgykLuk2pYDAAAA__________-CaWSCdjSCaXCEZCbyOYlzZWNwMjU2azGhAmb15GjcY9ruLURnqjqA387uDcoP-anICB5LxF6ZE8OTg3RjcIIjKIN1ZHCCIyg"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmHZzSzH48NXKnmJLHirVS81SuSRhCpYrDQnBfEYoRdX2m",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": -24.670528671434248,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": -24.670528671434248
+        }
+      },
+      "client": {
+        "kind": "Lighthouse",
+        "version": "v4.5.0-441fc16",
+        "os_version": "aarch64-macos",
+        "protocol_version": "eth2/1.0.0",
+        "agent_string": "Lighthouse/v4.5.0-441fc16/aarch64-macos"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 0,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [
+        "/ip4/127.0.0.1/tcp/54682"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8831",
+            "head_root": "0x754da032a69fc0d1de1935599e460bca26aac3db3a356381d33d70e1a82bd419",
+            "finalized_epoch": "274",
+            "finalized_root": "0xe809102dabbaf7a7013c3dcde0011bfe6725a1508e3c0f9078aca24caf0b18ee"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 23,
+          "attnets": "0x0000000000000006",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Incoming",
+      "enr": null
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAkwkd6bJaEa4k8ccnHg2xwXaBMhkebdi5wtNREWgciuibb",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 42,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QBRANgG5_fDX_9mttg57jBXwlRiv1lHuLN2Y_ETk02sbeQHidz9paGrXdOnwIUWqgeUWfN2OS1iopyUQbUyrz2iGAY2_ZaPXh2F0dG5ldHOIAAAAGAAAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhCuj98iJc2VjcDI1NmsxoQIikiZPxxM6f4dolCjXwWHZze1NZLVNc_gzWvHn_eFMaohzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmV5NxAvULArpa8zfxfgxEuuGeuCTuY2AkzE9opdY2sZ23",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 14,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QKDemcrW4c_Bny3dAl1pit8biibRi4Gyz-gk2e-WM8iNSocKvNEUHHxkG6SRcB7cOkNHkJQ-oGL_V8mVI4666geGAY1pfCExh2F0dG5ldHOIAAAAAwAAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhDNP53CJc2VjcDI1NmsxoQPz-nxZbuE2x7sp0XqTEWe90s99_6pfDRbmM4VCJblkfIhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm3SndvUBr7QSvnPofksviUAp5gsfoUqjdcGrU9TJDHjMu",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v24.1.1",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v24.1.1/linux-x86_64/-eclipseadoptium-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 33,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/10.21.132.5/tcp/9000/p2p/16Uiu2HAm3SndvUBr7QSvnPofksviUAp5gsfoUqjdcGrU9TJDHjMu"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/144.76.103.140/tcp/9000/p2p/16Uiu2HAm3SndvUBr7QSvnPofksviUAp5gsfoUqjdcGrU9TJDHjMu"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465763",
+            "head_root": "0xce4268b485f6e4eb329222efa017205e71a6ec1114cae8049251653d7db641bf",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 50,
+          "attnets": "0x6000000000000000",
+          "syncnets": "0x0a"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-Ly4QDjHhA7xdOMxMkTCfx71HiBvEPcimLm3qYQ3CE62uqtIEvy-H2hziM3EgCU9k_i_f2s5VUoIIUC3XCnx5LOuMd9fh2F0dG5ldHOIAAAAADAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhJBMZ4yJc2VjcDI1NmsxoQJ3JpqQYWDZhpucrgGNXoV0tArSWDgyfxBd-l5kDL0bBIhzeW5jbmV0cwKDdGNwgiMog3VkcIIjKA"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm5gzVdFnSHRtUGFpAUTfGPNmNg4wgqeQz7nTFG1MPLbSn",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0018240768192708332,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0000021660912228841144
+        }
+      },
+      "client": {
+        "kind": "Nimbus",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "nimbus"
+      },
+      "connection_status": {
+        "status": "connected",
+        "connections_in": 0,
+        "connections_out": 1,
+        "last_seen": 0
+      },
+      "listening_addresses": [
+        "/ip4/0.0.0.0/tcp/9004"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/194.33.40.99/tcp/9004/p2p/16Uiu2HAm5gzVdFnSHRtUGFpAUTfGPNmNg4wgqeQz7nTFG1MPLbSn"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465762",
+            "head_root": "0xdc3baa7e6b0aa2dbf63a7089d547920600d0dba0a16fec51de8b100528a8afed",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 2,
+          "attnets": "0xffffffffffffffff",
+          "syncnets": "0x0f"
+        }
+      },
+      "subnets": [
+        {
+          "Attestation": "52"
+        },
+        {
+          "Attestation": "45"
+        },
+        {
+          "Attestation": "58"
+        },
+        {
+          "Attestation": "32"
+        },
+        {
+          "Attestation": "62"
+        },
+        {
+          "Attestation": "19"
+        },
+        {
+          "Attestation": "43"
+        },
+        {
+          "Attestation": "3"
+        },
+        {
+          "Attestation": "24"
+        },
+        {
+          "Attestation": "16"
+        },
+        {
+          "Attestation": "27"
+        },
+        {
+          "Attestation": "38"
+        },
+        {
+          "Attestation": "8"
+        },
+        {
+          "SyncCommittee": "0"
+        },
+        {
+          "Attestation": "30"
+        },
+        {
+          "Attestation": "11"
+        },
+        {
+          "Attestation": "18"
+        },
+        {
+          "Attestation": "51"
+        },
+        {
+          "Attestation": "48"
+        },
+        {
+          "Attestation": "60"
+        },
+        {
+          "Attestation": "9"
+        },
+        {
+          "Attestation": "46"
+        },
+        {
+          "Attestation": "13"
+        },
+        {
+          "Attestation": "53"
+        },
+        {
+          "Attestation": "34"
+        },
+        {
+          "Attestation": "12"
+        },
+        {
+          "Attestation": "5"
+        },
+        {
+          "Attestation": "29"
+        },
+        {
+          "Attestation": "41"
+        },
+        {
+          "Attestation": "37"
+        },
+        {
+          "Attestation": "47"
+        },
+        {
+          "Attestation": "55"
+        },
+        {
+          "Attestation": "31"
+        },
+        {
+          "Attestation": "33"
+        },
+        {
+          "Attestation": "36"
+        },
+        {
+          "Attestation": "28"
+        },
+        {
+          "Attestation": "61"
+        },
+        {
+          "Attestation": "6"
+        },
+        {
+          "Attestation": "22"
+        },
+        {
+          "Attestation": "59"
+        },
+        {
+          "Attestation": "4"
+        },
+        {
+          "Attestation": "57"
+        },
+        {
+          "Attestation": "1"
+        },
+        {
+          "Attestation": "7"
+        },
+        {
+          "Attestation": "20"
+        },
+        {
+          "SyncCommittee": "2"
+        },
+        {
+          "Attestation": "21"
+        },
+        {
+          "Attestation": "23"
+        },
+        {
+          "Attestation": "63"
+        },
+        {
+          "Attestation": "14"
+        },
+        {
+          "Attestation": "39"
+        },
+        {
+          "Attestation": "17"
+        },
+        {
+          "SyncCommittee": "1"
+        },
+        {
+          "Attestation": "25"
+        },
+        {
+          "Attestation": "56"
+        },
+        {
+          "Attestation": "15"
+        },
+        {
+          "Attestation": "42"
+        },
+        {
+          "Attestation": "35"
+        },
+        {
+          "Attestation": "44"
+        },
+        {
+          "Attestation": "50"
+        },
+        {
+          "Attestation": "49"
+        },
+        {
+          "Attestation": "0"
+        },
+        {
+          "Attestation": "40"
+        },
+        {
+          "Attestation": "2"
+        },
+        {
+          "Attestation": "54"
+        },
+        {
+          "SyncCommittee": "3"
+        },
+        {
+          "Attestation": "10"
+        },
+        {
+          "Attestation": "26"
+        }
+      ],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-Ly4QLdzEUktF-KWVpvaR0bq6hlSFsVrawrSxMaeWVp8EdmwA-q5CtNSm_Pn1j9z0oOuKLtGAFi6PCqSMFJQmGwZIWwDh2F0dG5ldHOI__________-EZXRoMpC7pNqWBAAAAAAdBAAAAAAAgmlkgnY0gmlwhMIhKGOJc2VjcDI1NmsxoQKYgYQBN3L27CIFXfWVMUiTwjZJ_eLhLcegXb1gYEWI94hzeW5jbmV0cw-DdGNwgiMsg3VkcIIjLA"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmGChmb9Qs6aDicq4EjSz2YGkcVrd2Wc6M3hgP3T5fGh9v",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 20,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QBtuhg8n9a3kq6GHlJusOq29T1ZdS0GfntxCp9oEJr_ecOU-J9B4r8n2h5tBr3dB8h2i2MYAtTmFJirxakaexeCGAYreDj2oh2F0dG5ldHOIJRAiBybiJEiEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhI4si3SJc2VjcDI1NmsxoQM0suX_UgWBArIbwezkKQLRmsBCbwUPJTjFjIUMxDhyXYhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmBPq6NUnS94QKjSJcojQJMXsiZUnpmrFQqAAQxcbBabDD",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 34,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QIdKiZ14mbVLT4pwo1HLcSKK1c5JM8Q395qd-Gdk9wGcOVCXf2YutcJHtOpzTDr8ft-1kx-o1rxUMVnASfLrETeGAY1Gz9E6h2F0dG5ldHOIUKDyaQLMQRmEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhKfrstKJc2VjcDI1NmsxoQLtQiI-fezLbGB-FiltRAaBspfsCDpLEiNYI8WUCA8z1IhzeW5jbmV0cwCDdGNwgjMvg3VkcIIvRw"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmTjneLuWdPqRELG7ZXJVRamUPwTprtChVJfF4pQhtZBEw",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 23,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QNyL7uDaSUUqaq7nCbiunkDuP82xhehpvuTvM63oLb5VHUQvTxjnKn0VM-Zb-h7dO6v-9M4dnP_HNyfur-fhr5KGAYyorWtNh2F0dG5ldHOIAAAAAAAAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhEFtY1qJc2VjcDI1NmsxoQPgGfjSwf72MHl9cmj4Rpc2CfKBaZDHmyzRubgIAXfzAIhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAkwQnUXaRCRfEb75T4YLW8vDhRN8cN1jzWkZFBPctyuMDg",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v23.10.0",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v23.10.0/linux-x86_64/-privatebuild-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 19,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/0.0.0.0/tcp/15301/p2p/16Uiu2HAkwQnUXaRCRfEb75T4YLW8vDhRN8cN1jzWkZFBPctyuMDg"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/195.140.213.34/tcp/15301/p2p/16Uiu2HAkwQnUXaRCRfEb75T4YLW8vDhRN8cN1jzWkZFBPctyuMDg"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465764",
+            "head_root": "0x538ae107989a37e1f3df99176af9c271c8bb54c1c93aab1973ed5a1b5f4a63af",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 5,
+          "attnets": "0xffffffffffffffff",
+          "syncnets": "0x0f"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-Ly4QLrlZUmUi8eQnoFvPSEbrRamDRVRs9pL68kH_sGKhGw-T1sVVyDIO5Kw9rhj3dNVF1-afe7h5rsIrYsRVlfAULcYh2F0dG5ldHOI__________-EZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhMOM1SKJc2VjcDI1NmsxoQIdfSMvT9EYbWU4tC-4TTiThoPMD-roQwLfOkc4zk9j74hzeW5jbmV0cw-DdGNwgjvFg3VkcII7xQ"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm7kGMzScAGuwuQz2nVNoMGcj3LnsvkYZpiZr7ARzyhvMS",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 41,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QNEiOg_IF_1uJSSjmXQxAsQOKJaW-z9qK1XYMBj1gO9rfq4Ek3bPQh_0HklC12cmKfW7Vz7LZIDaWVYLU3uy2kiGAYsXWB9sh2F0dG5ldHOIAAAAAAAAAAiEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhEEVzmiJc2VjcDI1NmsxoQK3D5MIKQjJSoywg2Ii0QfQEaOwiaZU1y3klIPatC9r9YhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm9tb45DSPc1Qw7QCoc4fuvMyDerTmPckyw89DTSfyUp43",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 14,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QJ-2ZAK1yGSbs4TM0ySBz7-eots8d5H57zZaKoo0vV0JLnbD3tLKm2sZk9HwbjnEhRTLifGsKrSSoyuy8YjOpaiGAYzLuOPdh2F0dG5ldHOIAAUAIAAAJACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhMPJqGqJc2VjcDI1NmsxoQLW6LqORG5CF85RkMIgh4PaElLE8WENXwayV-bYMVgTBIhzeW5jbmV0cwCDdGNwgiMog3VkcIIjKA"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm8yKekQtj4pNTJrB12MnB2W7VJ8K6EYkjv21pgj7xs7zS",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Prysm",
+        "version": "bc9151d647e70cf5e0b6dbcee01998c430a96cb5",
+        "os_version": "unknown",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "Prysm/v4.1.1/bc9151d647e70cf5e0b6dbcee01998c430a96cb5"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 3,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/173.174.192.173/tcp/13000",
+        "/ip4/192.168.1.6/tcp/13000"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/173.174.192.173/tcp/13000/p2p/16Uiu2HAm8yKekQtj4pNTJrB12MnB2W7VJ8K6EYkjv21pgj7xs7zS"
+      ],
+      "sync_status": "Unknown",
+      "meta_data": {
+        "V2": {
+          "seq_number": 1,
+          "attnets": "0x0000000000000000",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-MK4QEtk3HMAPIGJL91B7L6pKwh4778RtWDexvp9SV1w87RcRq1otEsteydiyurIRAs8fcS0c1KuMY1nGGtM9GusseqGAYzM0hHEh2F0dG5ldHOIAAAAAAAAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhK2uwK2Jc2VjcDI1NmsxoQLJQ4fVIp7hW4F6ONQwcD2VRa3DbkQwH2WXkHi6T4oi24hzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmBPnvHwSHWARUnxD6DszUm66i4tUMU3GzkMPFioCwCtpD",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 32,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-Ly4QLpCZgRjuZ9_xvlMie0IzYUEyuLVeymsy91y2Oo-_KnkS4sCd26FtFgSuYySw-jECR0nhidTDaSWkHYAWG7NiEESh2F0dG5ldHOIAAAAGAAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhA0wab6Jc2VjcDI1NmsxoQLtP60GuJl79pKccWNvEHNcYqnmMx1W0QGG1v_0vnon1ohzeW5jbmV0cwiDdGNwgnb_g3VkcIJ2_w"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmF9Upv6e4tBuFsZfirBwJz6nxCgqzTP1QyMWbvnkxaK3E",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v23.12.1",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v23.12.1/linux-x86_64/-privatebuild-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 40,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/192.168.7.134/tcp/9000/p2p/16Uiu2HAmF9Upv6e4tBuFsZfirBwJz6nxCgqzTP1QyMWbvnkxaK3E"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/108.26.231.81/tcp/9000/p2p/16Uiu2HAmF9Upv6e4tBuFsZfirBwJz6nxCgqzTP1QyMWbvnkxaK3E"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465762",
+            "head_root": "0xdc3baa7e6b0aa2dbf63a7089d547920600d0dba0a16fec51de8b100528a8afed",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 77,
+          "attnets": "0x0000001800000000",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-LK4QJpIvC70vHL3hL3OmPTwEgqc5DWxywSHEnY7gqa3Fj4GdxeDLNRr_GMVAP84yUBTzCTqS65uaHzQ81E-RVgrboVjh2F0dG5ldHOIAAAAGAAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhGwa51GJc2VjcDI1NmsxoQMlA9W0PmRZ_3RqMZTtYVVGChxntWnOoO3ZgqZStX0WQYN0Y3CCIyiDdWRwgiMo"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmUUJGYvMNRVM6jwq53bK7vgkTASFgiGd2T6emcWw3P1GQ",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v24.1.1",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v24.1.1/linux-x86_64/-eclipseadoptium-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 5,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/172.18.0.2/tcp/9001/p2p/16Uiu2HAmUUJGYvMNRVM6jwq53bK7vgkTASFgiGd2T6emcWw3P1GQ"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/119.224.65.76/tcp/9001/p2p/16Uiu2HAmUUJGYvMNRVM6jwq53bK7vgkTASFgiGd2T6emcWw3P1GQ"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465765",
+            "head_root": "0xe46de2b00c83c63dc6a394648031ebeb7e56ffcf5193c36151b672112798849f",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 9,
+          "attnets": "0x000000000000000c",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-LK4QFKenB3J_JT6zYAbAT7APX5r-v8e1rqMriIZtOk267FdQodwWlTI5KJJuVV5LWxybzhlg6HhKFJV4_OpuSPz5Soah2F0dG5ldHOIAAAAAAAAAAyEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhHfgQUyJc2VjcDI1NmsxoQPq_dy5hwZ2hEPmejUB5m4FSGzx_Ptu7Cki1L13CPAzjYN0Y3CCIymDdWRwgiMp"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm9Jq7A3iZxySfCrBPpS8S6Pdktxg16FTbJtBbCY4pyH6K",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Nimbus",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "nimbus"
+      },
+      "connection_status": {
+        "status": "connected",
+        "connections_in": 0,
+        "connections_out": 1,
+        "last_seen": 0
+      },
+      "listening_addresses": [
+        "/ip4/0.0.0.0/tcp/9001"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/178.17.255.40/tcp/9001/p2p/16Uiu2HAm9Jq7A3iZxySfCrBPpS8S6Pdktxg16FTbJtBbCY4pyH6K"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465765",
+            "head_root": "0xe46de2b00c83c63dc6a394648031ebeb7e56ffcf5193c36151b672112798849f",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 11,
+          "attnets": "0x000000000000000c",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [
+        {
+          "Attestation": "59"
+        },
+        {
+          "Attestation": "58"
+        }
+      ],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-LK4QKaUtHp75vjEE5NQgvI169d-duvjOTLChfBJquJGjGAOI_ecN8iqx_OgNDlTS1W1MJHE9GU9fXmKRFXBn_-xvN8Mh2F0dG5ldHOIAAAAAAAAAAyEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhLIR_yiJc2VjcDI1NmsxoQLOQt8F7P7cqthypz8iEy60lsbfRNVEk9EpDH7wCwTCRIN0Y3CCIymDdWRwgiMp"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmD5bKejVFBvengsgTcp25ExyfYAu8WMVfcqk3Gsj2e4nh",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 34,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QLhNqeJjDR_ZTxw2Wyv67KbkS46lelSEI2jHpHWvtZo8FYl7xZFbOn8m-MeZ0LrUP8yHDFwgOGBuMCo5wSWsMoeGAY2mmb0xh2F0dG5ldHOIAAAAAADAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhAMTQr-Jc2VjcDI1NmsxoQMGTXtrAu8COJcruR8L0AQ-lHfkQtOVKDaFuavJFTSg3ohzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm73zoCFfeFWE3okwTmdMXY9FfHK6TukRDi935RSZACtNP",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 42,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-LK4QOyT3OrYDKOEDSU1M6fR9zhtVij7j6XGiG4mZ3YJaDwxd289YMTU4-0oDyWFScku1UTo2mED6EYAZpq0_1rMNBMBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhMb0p0qJc2VjcDI1NmsxoQKsvr339mwNW5nQ9XVIpd33hMnvxBK1ba9Oh4Y_HvJkjIN0Y3CCIymDdWRwgiMp"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAkw949aUhLTe7QPCG9N8wfELtNVwzXXYXuuwknkA582bcX",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": -1.93410573428685,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": -1.93410573428685
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v23.12.1",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v23.12.1/linux-x86_64/-privatebuild-openjdk64bitservervm-java-19"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 49,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/4.157.240.54/tcp/9000/p2p/16Uiu2HAkw949aUhLTe7QPCG9N8wfELtNVwzXXYXuuwknkA582bcX"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/4.157.240.54/tcp/9000"
+      ],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": null
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm51hLMch2mCkbFTJh3izvnVGzFrtJBq4EceXuRSJy8QLo",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v24.1.1",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v24.1.1/linux-x86_64/-privatebuild-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 21,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/192.168.50.136/tcp/9000/p2p/16Uiu2HAm51hLMch2mCkbFTJh3izvnVGzFrtJBq4EceXuRSJy8QLo"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/92.34.142.30/tcp/9000/p2p/16Uiu2HAm51hLMch2mCkbFTJh3izvnVGzFrtJBq4EceXuRSJy8QLo"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465764",
+            "head_root": "0x538ae107989a37e1f3df99176af9c271c8bb54c1c93aab1973ed5a1b5f4a63af",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 19,
+          "attnets": "0x0000000060000000",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-LS4QLbQczfrpFddYlbs_Wj0X-K3nIKILHqSpfIb4ZB1npkXNsCCjK_Cy7PEmFglrO9Yh5vSlemMvYFM01yGvvMMr06CA46HYXR0bmV0c4gAAAAAYAAAAIRldGgykLuk2pYDAAAA__________-CaWSCdjSCaXCEXCKOHolzZWNwMjU2azGhAo5wdh922WnKw6LwraYnlV7PMvIuC5IXP8i04nrtKQkwg3RjcIIjKIN1ZHCCIyg"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmNnaMwQkewvmE9tvB4FfT4VK5y8itxm4w7nHVRbW1ZRTG",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 14,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QDMpUrBAdotHjsSccaFWSkfBT6dL7oORPKzR_fcbnNB-SNwbrcUOp2rhleZABSRYofXNfx4Xd1eU7SwaeWKUHxCGAYyhi3DXh2F0dG5ldHOIAAAAAAAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhMLpQ6uJc2VjcDI1NmsxoQOWhmQ5gdPG8koNMJNwHkrAgLHTUHXOUlmjHeCqnbpp84hzeW5jbmV0cwCDdGNwgoCcg3VkcIKAnA"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAkvWD5w5c5QzGp5L2QuPFJ9FejuVCgVLzsp7ckCmYFyZyo",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v23.10.0",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v23.10.0/linux-x86_64/-privatebuild-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 18,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/0.0.0.0/tcp/15301/p2p/16Uiu2HAkvWD5w5c5QzGp5L2QuPFJ9FejuVCgVLzsp7ckCmYFyZyo"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/195.206.169.175/tcp/15301/p2p/16Uiu2HAkvWD5w5c5QzGp5L2QuPFJ9FejuVCgVLzsp7ckCmYFyZyo"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465764",
+            "head_root": "0x538ae107989a37e1f3df99176af9c271c8bb54c1c93aab1973ed5a1b5f4a63af",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 5,
+          "attnets": "0xffffffffffffffff",
+          "syncnets": "0x0f"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-Ly4QIdGZMWYxZT0_QiOclDmKupcSG_VdaexeafV8Lnu-CVNQXylMmux4FP0my6PcxPv07Mmx-XCatFD1G2hBAxJNoskh2F0dG5ldHOI__________-EZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhMPOqa-Jc2VjcDI1NmsxoQIQBS6BvkyT8OgFdAN_4v00zFwZ9sxrvMPdwlGtwBqu3ohzeW5jbmV0cw-DdGNwgjvFg3VkcII7xQ"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmMp5K7TLGKnewa7QgVGatEh5UZaZC81iXfEUejDunbdYR",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 14,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QCc2GUJnG1KkfG-uaWnqJLqe6LrKl92Ce4rejsjCMNpbRhS-7lOdZCUZcrd-f4UYUm9OYhEz9rGllG15-lEM6FaGAY2lMHZPh2F0dG5ldHOIAAAAAAAAADCEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhK5YiOyJc2VjcDI1NmsxoQOIDQVLXT0T7PPh_Tsq-0a-HNM-PsjSK9mnJV3jkLaUzohzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm2hrwZqKAmF8oY1jL6Xpam6tmNtEwe4cjPMWdqQhQfy1g",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 34,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QDqpGwgKI_G87vamm8YHqTW7Ea8HzpHRt065lvo8lMSFVHrmpd08t3VmQj-uLK7snYAw4zzxO1e08HDloNhWLd2GAYyx9e4mh2F0dG5ldHOIAAAAAAAAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhCUbQ2uJc2VjcDI1NmsxoQJsJ37qPVWmuiejVncBUk3bb_Ts_7B7JGeJyvj2vtjNJ4hzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmMk4nMRUpJitccid7PDcu38wJaVUrn42m6r9wFSe5iMSv",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 14,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QK_xNhlKVKBlB66_QVALiYOWcsLb3Oua4uTKEYxuzBt9Utc-m89nxuDL1TsFlPXOmFV4b1Ip1JGAC4_tcYUTGkCGAY29_l0rh2F0dG5ldHOIAAAAAAAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhMGp9XaJc2VjcDI1NmsxoQOHBhkJTo_6hHcjH3ojWfs7kTJo_S5NmXeeAUdCqhYyt4hzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm3mbVXqAYMQiputPBY1poq5U7XcLfjV4ZSg5hTCp9GuvB",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v24.1.1",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v24.1.1/linux-x86_64/-eclipseadoptium-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 5,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/172.18.0.7/tcp/9001/p2p/16Uiu2HAm3mbVXqAYMQiputPBY1poq5U7XcLfjV4ZSg5hTCp9GuvB"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/75.142.51.24/tcp/9001/p2p/16Uiu2HAm3mbVXqAYMQiputPBY1poq5U7XcLfjV4ZSg5hTCp9GuvB"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465765",
+            "head_root": "0xe46de2b00c83c63dc6a394648031ebeb7e56ffcf5193c36151b672112798849f",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 19,
+          "attnets": "0x000000000000000c",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-L64QPSUMAxh8oEfkwB7EThptvVkKeoHSPzKFycXFshvfcPqCUbK7O3J67Ni3UxUFDpI4uN8VpYWG_2MinMJ4KjwcG6CAUWHYXR0bmV0c4gAAAAAAAAADIRldGgykLuk2pYDAAAA__________-CaWSCdjSCaXCES44zGIlzZWNwMjU2azGhAnv4Ca87GyYdlTyA4lEZVaiGErweyQBrZMYFnEgA92pUiHN5bmNuZXRzAIN0Y3CCIymDdWRwgiMp"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm8JRgCMpcj95sWYgvnPMnPsES1TQB9ooSFmNMHaGjpsBs",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 42,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-LK4QLMDKY2VN6UTTXf1fZuw3cOkGm6MKs7EmHdygIO2Rp0fVUBy7lpfELgIEHUUDFfYFkKOQm8a9R3Cyl5nHTCcTDsHh2F0dG5ldHOIAAAAGAAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhA_MiIiJc2VjcDI1NmsxoQK_TLEE0ktYPF4hzOHBH1q9aLEk-2yEwMoCtwAajNpmFoN0Y3CCk5KDdWRwgpOS"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAkymfzQpUehN8KSRdE8ZCTtCtoBJeA7d8upFXdmXYQUGFz",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v24.1.1",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v24.1.1/linux-x86_64/-eclipseadoptium-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 13,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/172.19.0.2/tcp/9000/p2p/16Uiu2HAkymfzQpUehN8KSRdE8ZCTtCtoBJeA7d8upFXdmXYQUGFz"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/71.202.43.14/tcp/9000/p2p/16Uiu2HAkymfzQpUehN8KSRdE8ZCTtCtoBJeA7d8upFXdmXYQUGFz"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465764",
+            "head_root": "0x538ae107989a37e1f3df99176af9c271c8bb54c1c93aab1973ed5a1b5f4a63af",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 9,
+          "attnets": "0x0000000300000000",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-LK4QD-5Jct51YXVQaHH_TOAon0HNshJgeGlvaF-9QG1YWFWBRz1v1bK3dFPLDCu8zWeLyBO6d81PNFk7XonB0Xl0Q8Nh2F0dG5ldHOIAAAAAwAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhEfKKw6Jc2VjcDI1NmsxoQJAjmA9NtqNfd--OEWD2UzyMSMoCOO-220FGL7IQn_fCYN0Y3CCIyiDdWRwgiMo"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAm9M3jzMrEXrLR5Bjo92Ry5g47sTR55GH4GDohEqMTgxoH",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 23,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QPm2HD9Ol_yD3UKH6tFhP4H-_gGDxyUxh7JtcAvVpwGUO2lPKPtX6anN5y5r5DkPDSgmgJ78_zZsJx6mX5h84rCGAY2fcLbTh2F0dG5ldHOIAAAAAGAAAACEZXRoMpC7pNqWBAAAAP__________gmlkgnY0gmlwhMb05wKJc2VjcDI1NmsxoQLO1FG9q5PCs4VDxYD0OnsnaGL435ued7qlD5f6_rGd8IhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmVP67KZXREZ3wr2NC1Yvp92PyWBA91Lx2C1SehgaWkAK3",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v23.10.0",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v23.10.0/linux-x86_64/-privatebuild-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 18,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/0.0.0.0/tcp/15301/p2p/16Uiu2HAmVP67KZXREZ3wr2NC1Yvp92PyWBA91Lx2C1SehgaWkAK3"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/198.244.229.118/tcp/15301/p2p/16Uiu2HAmVP67KZXREZ3wr2NC1Yvp92PyWBA91Lx2C1SehgaWkAK3"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465764",
+            "head_root": "0x538ae107989a37e1f3df99176af9c271c8bb54c1c93aab1973ed5a1b5f4a63af",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 5,
+          "attnets": "0xffffffffffffffff",
+          "syncnets": "0x0f"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-L64QCzao-urVmyDDM5dVG7JoiMwdsMVWyK33W1mp4R_9tUCIUnWkxyxJw1AZry9M8hOtsHxhIa8USaWt23bkt9vEi-CAW6HYXR0bmV0c4j__________4RldGgykLuk2pYDAAAA__________-CaWSCdjSCaXCExvTldolzZWNwMjU2azGhA_iD5Y4Xfhwhv2-DslXsYYonxMPUH3mUlwkeQLP2aZJCiHN5bmNuZXRzD4N0Y3CCO8WDdWRwgjvF"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmG6W1Z1oNrUghxfkgpnzr2Z3zXE6Wk82H481aVzKCBFbn",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v23.10.0",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v23.10.0/linux-x86_64/-privatebuild-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 48,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/0.0.0.0/tcp/15301/p2p/16Uiu2HAmG6W1Z1oNrUghxfkgpnzr2Z3zXE6Wk82H481aVzKCBFbn"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/198.244.253.86/tcp/15301/p2p/16Uiu2HAmG6W1Z1oNrUghxfkgpnzr2Z3zXE6Wk82H481aVzKCBFbn"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465761",
+            "head_root": "0x0d45906399b2092420ec18e20fc59a845064bd44109da54c956fa8b5529a7491",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 5,
+          "attnets": "0xffffffffffffffff",
+          "syncnets": "0x0f"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-Ly4QMQFJ3ylhUmfwrM1xk0zojcUylBLCETaORo9hS0a6LFCHgX9A1lyTYoRMgtykvE_ak8AIjZfYH42KWjBt2GQrjYSh2F0dG5ldHOI__________-EZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhMb0_VaJc2VjcDI1NmsxoQMzHB4KGDFExpEDgMS91vxjMjCWBXql3SJ5S-YWxJt5mYhzeW5jbmV0cw-DdGNwgjvFg3VkcII7xQ"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmTtG9W2eY4TuVFG4dEoDJPetTDfwsLAZmju7msn3tsJ36",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 25,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-Ly4QAinKeACQitiNheh_X0viQ5ESduEVTUab4k5dOzg59WGADUy8et4BV7raU2-69z4s7FJ6K78Rww0C04p8Q8_yPUQh2F0dG5ldHOIAAAAAADAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhExLUZOJc2VjcDI1NmsxoQPiRbdCNkUD1Fq5oduqz_vZBzkj2DG0AY9F6FHMdHWPXYhzeW5jbmV0cwCDdGNwgiMqg3VkcIIjKg"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmHxqHfsuMuG8PJq82TFVpGFCcu4ZyvSGcvRPKiQWkUzBe",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Teku",
+        "version": "v24.1.1",
+        "os_version": "linux-x86_64",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "teku/teku/v24.1.1/linux-x86_64/-eclipseadoptium-openjdk64bitservervm-java-17"
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 21,
+        "banned_ips": []
+      },
+      "listening_addresses": [
+        "/ip4/172.19.0.2/tcp/9001/p2p/16Uiu2HAmHxqHfsuMuG8PJq82TFVpGFCcu4ZyvSGcvRPKiQWkUzBe"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/85.7.9.125/tcp/9001/p2p/16Uiu2HAmHxqHfsuMuG8PJq82TFVpGFCcu4ZyvSGcvRPKiQWkUzBe"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "8465764",
+            "head_root": "0x538ae107989a37e1f3df99176af9c271c8bb54c1c93aab1973ed5a1b5f4a63af",
+            "finalized_epoch": "264553",
+            "finalized_root": "0x1d5323584db1d49694f039135469d72681770f24aa0286d5c7fed95737cfe0b3"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 21,
+          "attnets": "0x0000000060000000",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-LS4QJTMfP_djKOxlqLQfZE3SyW6y5kyB0iOOVADj1dVQlLgPNP1P8I-Iqw09alCcT6jkXo9rmuR22ZROHDUil-__cmCAXeHYXR0bmV0c4gAAAAAYAAAAIRldGgykLuk2pYDAAAA__________-CaWSCdjSCaXCEVQcJfYlzZWNwMjU2azGhA07cpG7Irn9kx-o7eCePpxxXQ6djvFOpZbwGY9nzovq1g3RjcIIjKYN1ZHCCIyk"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmThS3j543KHvdNEtKFEwMnZi6oLxCFMxXCgrmAuVDHfrC",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Prysm",
+        "version": "58df1f1ba5996d299c1c1d5874464884ee551be8",
+        "os_version": "unknown",
+        "protocol_version": "ipfs/0.1.0",
+        "agent_string": "Prysm/v4.0.7/58df1f1ba5996d299c1c1d5874464884ee551be8"
+      },
+      "connection_status": {
+        "status": "connected",
+        "connections_in": 0,
+        "connections_out": 1,
+        "last_seen": 0
+      },
+      "listening_addresses": [
+        "/ip4/65.108.110.99/tcp/13000"
+      ],
+      "seen_multiaddrs": [
+        "/ip4/65.108.110.99/tcp/13000/p2p/16Uiu2HAmThS3j543KHvdNEtKFEwMnZi6oLxCFMxXCgrmAuVDHfrC"
+      ],
+      "sync_status": {
+        "Advanced": {
+          "info": {
+            "head_slot": "7937827",
+            "head_root": "0xb972af39baabfa40efa6f7e87dd0fcc64c6e1705d12ec614294fa0d26b0ed2a1",
+            "finalized_epoch": "248055",
+            "finalized_root": "0x3ea3ef9f2688d7b5b5e5e8f717a271fcd898847985f6fa6f3dc5aea20588562d"
+          }
+        }
+      },
+      "meta_data": {
+        "V2": {
+          "seq_number": 1,
+          "attnets": "0x0000000000000000",
+          "syncnets": "0x00"
+        }
+      },
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": "Outgoing",
+      "enr": "enr:-MK4QD3ezC4TSQuyu5cHLbFceyfERempi6XfnJTU0bgm0OcrCywczkX0jrGdMNuSxvB7P6P2tFipeBe1N0sN8SWskleGAYmsPz-jh2F0dG5ldHOIAAAAAAAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhEFsbmOJc2VjcDI1NmsxoQPff4V6wsTAsnKbmIpEpAXcVASQfjARD4ElJOWM5VtYvYhzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmHqPpC7XNwsLk2B2K3m4GMCQpzTkaBSW3Fyt2aR4yCqg3",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 42,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-LK4QEuj0bO2w-zNGuDw_bLk8_L5c3SuMWgjs9MmJO3JxKPkXECwG_R-bFV020kUUYB16tX3B10q9wW4ehLK8hw7qO4Ph2F0dG5ldHOIAAAAGAAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhDZZB9KJc2VjcDI1NmsxoQNM9MX7Z2-Fo-JzrHfFiWYg3RznZ2br-2qHmlZydyzLMIN0Y3CCIyiDdWRwgiMo"
+    }
+  },
+  {
+    "peer_id": "16Uiu2HAmAfey3TCiZCPHQvifyn8KRv64jzaw5Z5ddv4V3wogUrPY",
+    "peer_info": {
+      "score": {
+        "Real": {
+          "lighthouse_score": 0.0,
+          "gossipsub_score": 0.0,
+          "ignore_negative_gossipsub_score": false,
+          "score": 0.0
+        }
+      },
+      "client": {
+        "kind": "Unknown",
+        "version": "unknown",
+        "os_version": "unknown",
+        "protocol_version": "unknown",
+        "agent_string": null
+      },
+      "connection_status": {
+        "status": "disconnected",
+        "connections_in": 0,
+        "connections_out": 0,
+        "last_seen": 14,
+        "banned_ips": []
+      },
+      "listening_addresses": [],
+      "seen_multiaddrs": [],
+      "sync_status": "Unknown",
+      "meta_data": null,
+      "subnets": [],
+      "is_trusted": false,
+      "connection_direction": null,
+      "enr": "enr:-MK4QEZZ375CDZiYxq9dgjoV4vwyZv4uXxvgEQR5gwRQ2ZurT807XPLvFy6y9NkWdcxiXdEE5Zj9iGEeHz5dEAJR5bCGAY1hN2puh2F0dG5ldHOIAAAAAAAAAACEZXRoMpC7pNqWAwAAAP__________gmlkgnY0gmlwhLI_E0qJc2VjcDI1NmsxoQLidEo2LcNxgFB8UCf1JBgIl3BBoezPactBLqYXLOqv54hzeW5jbmV0cwCDdGNwgjLIg3VkcIIu4A"
+    }
+  }
+]
