@@ -5,6 +5,7 @@ mod binary_heap;
 mod bitwise;
 mod borrowing;
 mod btreemap;
+mod bytes;
 mod cell_refcell;
 mod condvar;
 mod const_static;
