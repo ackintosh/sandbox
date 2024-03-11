@@ -42,3 +42,26 @@ fn check_bits() {
         println!("second bit of {n} is ... {result}");
     }
 }
+
+#[test]
+fn replace() {
+    // c++ - Bitwise replacing bits in two numbers - Stack Overflow
+    // https://stackoverflow.com/questions/48948962/bitwise-replacing-bits-in-two-numbers
+
+    // x
+    let x: u8 = 64; // 01000000
+    println!("x: {:#010b}", x);
+
+    // y
+    let y: u8 = 191; // 10111111
+    println!("y: {:#010b}", y);
+
+    // m
+    let m: u8 = 3 << 6; // 11000000 -> 先頭2bitをreplaceの対象とする
+    println!("m: {:#010b}", m);
+
+    // replaceを行う
+    //   -> xの先頭2bitを、yの先頭2bitで置き換える
+    let z = x ^ ((x ^ y) & m); // 10000000
+    println!("z: {:#010b}", z);
+}

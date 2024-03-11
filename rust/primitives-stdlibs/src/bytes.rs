@@ -3,7 +3,6 @@
 #[test]
 fn convert_number_to_bytes() {
     // from i32 to bytes (Big Endian)
-    let b = 10_i32.to_be_bytes();
     println!("{:?}", 10_i32.to_be_bytes()); // [0, 0, 0, 10]
     println!("{:?}", 256_i32.to_be_bytes()); // [0, 0, 1, 0]
 
