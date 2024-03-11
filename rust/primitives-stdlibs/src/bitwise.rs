@@ -49,19 +49,20 @@ fn replace() {
     // https://stackoverflow.com/questions/48948962/bitwise-replacing-bits-in-two-numbers
 
     // x
-    let x: u8 = 64; // 01000000
-    println!("x: {:#010b}", x);
+    let x: i32 = 64;
+    println!("x: {:#010b}", x); // 01000000
 
     // y
-    let y: u8 = 191; // 10111111
-    println!("y: {:#010b}", y);
+    let y: i32 = 191;
+    println!("y: {:#010b}", y); // 10111111
 
     // m
-    let m: u8 = 3 << 6; // 11000000 -> 先頭2bitをreplaceの対象とする
-    println!("m: {:#010b}", m);
+    let bits_to_replace: u8 = 2; // 先頭2bitを対象とする
+    let m = (2_i32.pow(bits_to_replace as u32) - 1) << (8 - bits_to_replace);
+    println!("m: {:#010b}", m); // 11000000
 
     // replaceを行う
     //   -> xの先頭2bitを、yの先頭2bitで置き換える
-    let z = x ^ ((x ^ y) & m); // 10000000
-    println!("z: {:#010b}", z);
+    let z = x ^ ((x ^ y) & m);
+    println!("z: {:#010b}", z); // 10000000
 }
