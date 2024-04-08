@@ -143,3 +143,8 @@ mod span {
         Ok(())
     }
 }
+
+// TODO: with_env_filter
+mod with_env_filter {
+
+}
