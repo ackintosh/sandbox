@@ -41,6 +41,9 @@ mod official_usage {
 // `#[tracing::instrument]`
 // ref https://github.com/tokio-rs/tracing?tab=readme-ov-file#in-libraries
 //
+// * 関数に対して指定できるマクロ
+// * これはスパンを扱うマクロで、関数にアトリビュートをつけておくと、裏でスパンに入るための処理を自動でつけ、関数全体をひとつのスパンとすることができるようになる
+//
 // 実行方法
 // cargo test instrument::instrument
 //    -> `#[tracing::instrument]` を追加したメソッドで、ログに、メソッド呼び出し時の引数が一緒に出力される
