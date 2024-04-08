@@ -1,8 +1,3 @@
-// https://github.com/tokio-rs/tracing
-
-// Rust: Into tracing world - Qiita
-// https://qiita.com/gemhung/items/bd4c4617b58250689f47
-
 // 実行方法
 // ```shell
 // $ RUST_LOG=info cargo test
@@ -17,7 +12,10 @@ fn test() {
     tracing::error!("crate-tracing. v{}", env!("CARGO_PKG_VERSION"));
 }
 
-// https://github.com/tokio-rs/tracing#usage
+// ref https://github.com/tokio-rs/tracing#usage
+//
+// 実行方法
+// cargo test official_usage::yak_shave
 mod official_usage {
     #[test]
     fn yak_shave() {
