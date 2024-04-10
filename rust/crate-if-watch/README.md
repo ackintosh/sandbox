@@ -1,5 +1,14 @@
+### linuxでexamplesを実行する(Docker)
 
-### 検証方法(Docker)
+```bash
+cd /Users/akihito/src/github.com/ackintosh/if-watch
+docker run --rm -it -v ./:/tmp rust bash
+cd /tmp
+cargo run --example if_watch --features="smol"
+```
+
+
+### IPアドレス変更検出をテストする方法(Docker)
 
 起動済みコンテナのIPアドレスを変更する。
 
