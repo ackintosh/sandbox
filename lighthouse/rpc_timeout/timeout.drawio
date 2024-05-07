@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="T8pmpTCMuDaPm9wjzUCa" name="Page-1">
-        <mxGraphModel dx="2542" dy="1088" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+        <mxGraphModel dx="2569" dy="1401" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -8,10 +8,10 @@
                     <mxGeometry x="10" y="10" width="410" height="100" as="geometry"/>
                 </mxCell>
                 <mxCell id="145" value="As-is" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="40" y="160" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="40" y="160" width="200" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="146" value="To-be" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
-                    <mxGeometry x="840" y="160" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="960" y="160" width="200" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="147" value="Requester" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0" vertex="1" parent="1">
                     <mxGeometry x="160" y="280" width="120" height="40" as="geometry"/>
@@ -21,13 +21,13 @@
                 </mxCell>
                 <mxCell id="149" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="147">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="220" y="800" as="sourcePoint"/>
+                        <mxPoint x="220" y="720" as="sourcePoint"/>
                         <mxPoint x="270" y="430" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="150" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="540" y="800" as="sourcePoint"/>
+                        <mxPoint x="540" y="720" as="sourcePoint"/>
                         <mxPoint x="539.5" y="320" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
@@ -85,10 +85,107 @@
                     <mxGeometry x="130" y="570" width="80" height="70" as="geometry"/>
                 </mxCell>
                 <mxCell id="170" value="We reset the timeout &lt;br&gt;on receiving new chunk." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="1">
-                    <mxGeometry x="-120" y="430" width="140" height="100" as="geometry"/>
+                    <mxGeometry x="-150" y="430" width="170" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="172" value="TTFP_TIMEOUT&lt;br&gt;is not implemented." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="1">
-                    <mxGeometry x="-120" y="270" width="140" height="100" as="geometry"/>
+                <mxCell id="172" value="TTFB_TIMEOUT&lt;br&gt;is not implemented." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="1">
+                    <mxGeometry x="-150" y="270" width="170" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="173" value="Requester" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="1120" y="280" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="174" value="Responder" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="1440" y="280" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="175" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="173">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1180" y="720" as="sourcePoint"/>
+                        <mxPoint x="1230" y="430" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="176" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1500" y="720" as="sourcePoint"/>
+                        <mxPoint x="1499.5" y="320" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="177" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1180" y="360" as="sourcePoint"/>
+                        <mxPoint x="1500" y="400" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="178" value="Request" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="177">
+                    <mxGeometry x="-0.1577" y="2" relative="1" as="geometry">
+                        <mxPoint x="15" y="-15" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="179" value="" style="endArrow=classic;html=1;dashed=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1500" y="440" as="sourcePoint"/>
+                        <mxPoint x="1180" y="480" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="180" value="Response chunk 1 : first byte (result code)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="179">
+                    <mxGeometry x="-0.1577" y="2" relative="1" as="geometry">
+                        <mxPoint x="-25" y="-15" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="181" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1500" y="525" as="sourcePoint"/>
+                        <mxPoint x="1180" y="565" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="182" value="Response chunk 2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="181">
+                    <mxGeometry x="-0.1577" y="2" relative="1" as="geometry">
+                        <mxPoint x="-25" y="-15" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="183" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1500" y="605" as="sourcePoint"/>
+                        <mxPoint x="1180" y="645" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="184" value="Response chunk 3" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="183">
+                    <mxGeometry x="-0.1577" y="2" relative="1" as="geometry">
+                        <mxPoint x="-25" y="-15" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="185" value="RESP_TIMEOUT" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="1090" y="490" width="80" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="186" value="TTFB_TIMEOUT" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="1090" y="360" width="80" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="188" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1500" y="470" as="sourcePoint"/>
+                        <mxPoint x="1180" y="510" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="189" value="Response chunk 1 : header and payload" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="188">
+                    <mxGeometry x="-0.1577" y="2" relative="1" as="geometry">
+                        <mxPoint x="-28" y="-9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="190" value="The requester MUST wait a maximum of TTFB_TIMEOUT for the first response byte to arrive (time to first byte—or TTFB—timeout)." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="1">
+                    <mxGeometry x="740" y="280" width="300" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="191" value="The requester allows a further RESP_TIMEOUT &lt;br&gt;for each subsequent response_chunk received." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="1">
+                    <mxGeometry x="740" y="450" width="300" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="192" value="End" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" vertex="1" parent="1">
+                    <mxGeometry x="180" y="720" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="193" value="End" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" vertex="1" parent="1">
+                    <mxGeometry x="500" y="720" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="194" value="End" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" vertex="1" parent="1">
+                    <mxGeometry x="1140" y="720" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="195" value="End" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" vertex="1" parent="1">
+                    <mxGeometry x="1460" y="720" width="80" height="30" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
