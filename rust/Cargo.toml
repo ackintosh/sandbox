@@ -92,6 +92,7 @@ exclude = [
   "crate-influxdb",
   "crate-rtnetlink",
   "crate-socket2",
+  "crate-thiserror",
   "crate-tokio-console",
   "crate-tokio-stream",
   "crate-tokio_framed",
