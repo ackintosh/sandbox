@@ -72,13 +72,14 @@ members = [
   "lru-time-cache",
   "primitives-stdlibs",
   "threading",
-  "tower-of-hanoi"
+  "tower-of-hanoi",
 ]
 
 # 単独のバイナリや、特定のチュートリアルを行う関係で Cargo.lock を共有したくないクレートを指定している
 exclude = [
   "book-proc-macro-workshop",
   "book-rust-tcp-book",
+  "crate-anyhow",
   "cargo-bench",
   "crate-arti",
   "crate-async-stream",
