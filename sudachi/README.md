@@ -42,7 +42,7 @@ $ echo 医薬品安全管理責任者 | java -jar sudachi-0.7.3.jar -m A
 者      接尾辞,名詞的,一般,*,*,*        者
 EOS
 
-# 正規化(Normalized Form)
+# 表記正規化(Normalized Form)
 # https://github.com/WorksApplications/Sudachi?tab=readme-ov-file#normalized-form
 # 例: 打込む → 打ち込む
 $ echo 打込む | java -jar sudachi-0.7.3.jar -m C
