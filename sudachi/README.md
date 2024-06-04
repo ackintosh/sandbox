@@ -7,6 +7,8 @@ https://github.com/WorksApplications/Sudachi/releases
 
 ## セットアップ
 
+※ sudachi.jsonをリポジトリに入れているが、デフォルトのまま
+
 ```bash
 # sudachiをダウンロード
 curl --output sudachi-0.7.3-executable.zip -L https://github.com/WorksApplications/Sudachi/releases/download/v0.7.3/sudachi-0.7.3-executable.zip
