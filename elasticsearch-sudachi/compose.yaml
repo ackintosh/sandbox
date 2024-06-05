@@ -1,0 +1,16 @@
+services:
+  elasticseach:
+    build: .
+    environment:
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=false
+      # `no new native processes can be started` エラー回避
+      # https://stackoverflow.com/questions/60182669/elastic-search-error-native-controller-process-has-stopped-no-new-native-pro
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
