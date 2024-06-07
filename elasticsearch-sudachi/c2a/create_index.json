@@ -1,0 +1,48 @@
+{
+    "settings": {
+        "analysis": {
+            "analyzer": {
+                "sudachi_split_c2a": {
+                    "type": "custom",
+                    "tokenizer": "sudachi_tokenizer_c",
+                    "filter": ["sudachi_split_extended"]
+                },
+                "sudachi_a": {
+                    "type": "custom",
+                    "tokenizer": "sudachi_tokenizer_a"
+                },
+                "sudachi_c": {
+                    "type": "custom",
+                    "tokenizer": "sudachi_tokenizer_c"
+                }
+            },
+            "tokenizer": {
+                "sudachi_tokenizer_c": {
+                    "type": "sudachi_tokenizer",
+                    "discard_punctuation": false
+                },
+                "sudachi_tokenizer_a": {
+                    "type": "sudachi_tokenizer",
+                    "split_mode": "a",
+                    "discard_punctuation": false
+                }
+            },
+            "filter": {
+                "sudachi_split_extended": {
+                    "type": "sudachi_split",
+                    "mode": "extended"
+                }
+            }
+        }
+    },
+    "mappings": {
+        "properties": {
+            "sentence": {
+                "type": "text",
+                "index": true,
+                "term_vector": "with_positions_offsets",
+                "analyzer": "sudachi_split_c2a"
+            }
+        }
+    }
+}
