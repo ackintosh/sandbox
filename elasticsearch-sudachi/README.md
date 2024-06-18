@@ -39,7 +39,9 @@ curl -X GET 'http://localhost:9200/sudachi_a/?pretty'
 curl -X POST -H "Content-Type: application/json" 'http://localhost:9200/sudachi_c2a/_bulk?refresh' -d '
 {"index":{"_id":"1","_index":"sudachi_c2a"}}
 {"sentence": "関西国際空港"}
-'
+{"index":{"_id":"2","_index":"sudachi_c2a"}}
+{"sentence": "成田国際空港"}
+' | jq
 
 <Aモード>
 curl -X POST -H "Content-Type: application/json" 'http://localhost:9200/sudachi_a/_bulk?refresh' -d '
@@ -70,7 +72,7 @@ curl -X GET -H "Content-Type: application/json" "http://localhost:9200/sudachi_c
     },
     "explain": true
 }
-'
+' | jq
 
 <Aモード>
 curl -X GET -H "Content-Type: application/json" "http://localhost:9200/sudachi_a/_search?pretty" \
