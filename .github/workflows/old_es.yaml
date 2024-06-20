@@ -19,6 +19,10 @@ jobs:
         shell: bash
         run: ls -la /etc/systemd/system
 
+      - name: systemctl
+        shell: bash
+        run: systemctl list-unit-files -t service
+
       - name: Up
         shell: bash
         env:
