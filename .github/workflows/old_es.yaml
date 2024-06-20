@@ -23,6 +23,10 @@ jobs:
         shell: bash
         run: systemctl list-unit-files -t service
 
+      - name: systemctl status
+        shell: bash
+        run: systemctl status docker -l
+
       - name: Up
         shell: bash
         env:
