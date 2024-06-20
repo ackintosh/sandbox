@@ -13,5 +13,7 @@ jobs:
 
       - name: Up
         shell: bash
+        env:
+          DOCKER_ENABLE_DEPRECATED_PULL_SCHEMA_1_IMAGE: 1
         run: docker compose -f elasticsearch-sudachi/compose-old-es.yaml up
 
