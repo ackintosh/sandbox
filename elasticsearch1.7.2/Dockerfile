@@ -1,34 +1,31 @@
-FROM openjdk:8
+FROM openjdk:8-slim
 
-# grab gosu for easy step-down from root
-#RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4
-
-#RUN export GNUPGHOME="$(mktemp -d)"; \
-#  gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4
+# *** Elasticsearch 1.7.2 ***
 #
-#RUN arch="$(dpkg --print-architecture)" \
-#	&& set -x \
-#	&& curl -o /usr/local/bin/gosu -fSL "https://github.com/tianon/gosu/releases/download/1.3/gosu-$arch" \
-#	&& curl -o /usr/local/bin/gosu.asc -fSL "https://github.com/tianon/gosu/releases/download/1.3/gosu-$arch.asc" \
-#	&& gpg --verify /usr/local/bin/gosu.asc \
-#	&& rm /usr/local/bin/gosu.asc \
-#	&& chmod +x /usr/local/bin/gosu
+# This file is based on:
+# https://github.com/docker-library/elasticsearch/blob/aadd13a371dc4226eba7409c59b9d6cffb227f78/1.7/Dockerfile
+# 
+# An official elasticsearch:1.7.2 image is here:
+# https://hub.docker.com/layers/library/elasticsearch/1.7.2/images/sha256-038a4d0b40feff96d5babea8d4f1dc4bd2d9f9d798bb168aeced84180291c3eb?context=explore
+#
+# However, the official image is too old, so you might encounter an error when pulling the image due to the image format:
+# https://docs.docker.com/engine/deprecated/#pushing-and-pulling-with-image-manifest-v2-schema-1
+#
+# That's why I created this file.
+
+RUN groupadd -r elasticsearch && useradd -r -g elasticsearch elasticsearch
 
 RUN apt-get update \
-  && apt-get install gosu
+  && apt-get install  -y --no-install-recommends gosu \
+  && apt-get install  -y --no-install-recommends wget \
+  && rm -rf /var/lib/apt/lists/*
 
-
-#RUN apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 46095ACC8548582C1A2699A9D27D666CD88E42B4
-
-ENV ELASTICSEARCH_MAJOR 1.7
-ENV ELASTICSEARCH_VERSION 1.7.2
-
-RUN echo "deb http://packages.elasticsearch.org/elasticsearch/$ELASTICSEARCH_MAJOR/debian stable main" > /etc/apt/sources.list.d/elasticsearch.list
-
-RUN set -x \
-	&& apt-get update \
-	&& apt-get install -y --no-install-recommends elasticsearch=$ELASTICSEARCH_VERSION \
-	&& rm -rf /var/lib/apt/lists/*
+# ref: https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html#install-deb
+RUN wget https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.2.deb \
+  && wget https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.2.deb.sha1.txt \
+  && SHA1_HASH=$(cat elasticsearch-1.7.2.deb.sha1.txt) \
+  sha1sum elasticsearch-1.7.2.deb | awk '{print $1}' | grep -q "$SHA1_HASH" && echo "SHA1 matches" || exit 1
+RUN dpkg -i elasticsearch-1.7.2.deb
 
 ENV PATH /usr/share/elasticsearch/bin:$PATH
 
