@@ -1,4 +1,4 @@
-FROM openjdk:8-slim
+FROM bellsoft/liberica-openjre-debian:8u412
 
 # *** Elasticsearch 1.7.2 ***
 #
