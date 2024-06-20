@@ -11,6 +11,10 @@ jobs:
         shell: bash
         run: docker version && docker compose version
 
+      - name: systemd
+        shell: bash
+        run: ls -la /etc/systemd/
+
       - name: Up
         shell: bash
         env:
