@@ -27,6 +27,10 @@ jobs:
         shell: bash
         run: systemctl status docker -l
 
+      - name: docker.service
+        shell: bash
+        run: ls -la /lib/systemd/system/docker.service && cat /lib/systemd/system/docker.service
+
       - name: Up
         shell: bash
         env:
