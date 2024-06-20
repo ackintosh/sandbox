@@ -1,0 +1,6 @@
+services:
+  es1.7.2:
+    image: elasticsearch:1.7.2
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+

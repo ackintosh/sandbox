@@ -5,7 +5,13 @@ jobs:
   docker-compose:
     runs-on: ubuntu-latest
     steps:
-      - name: "version"
+      - uses: actions/checkout@v4
+
+      - name: Print version
         shell: bash
         run: docker version && docker compose version
+
+      - name: Up
+        shell: bash
+        run: docker compose -f elasticsearch-sudachi/compose-old-es.yaml up
 
