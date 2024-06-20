@@ -1,0 +1,11 @@
+on:
+  push:
+
+jobs:
+  docker-compose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "version"
+        shell: bash
+        run: docker version && docker compose version
+
