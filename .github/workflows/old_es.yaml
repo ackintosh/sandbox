@@ -31,6 +31,10 @@ jobs:
         shell: bash
         run: ls -la /lib/systemd/system/docker.service && cat /lib/systemd/system/docker.service
 
+      - name: whoami
+        shell: bash
+        run: whoami
+
       - name: Up
         shell: bash
         env:
