@@ -11,33 +11,31 @@ jobs:
         shell: bash
         run: docker version && docker compose version
 
-      - name: systemd
-        shell: bash
-        run: ls -la /etc/systemd/
+        #- name: systemd
+        #  shell: bash
+        #  run: ls -la /etc/systemd/
 
-      - name: systemd2
-        shell: bash
-        run: ls -la /etc/systemd/system
+        #- name: systemd2
+        #  shell: bash
+        #  run: ls -la /etc/systemd/system
 
-      - name: systemctl
-        shell: bash
-        run: systemctl list-unit-files -t service
+        #- name: systemctl
+        #  shell: bash
+        #  run: systemctl list-unit-files -t service
 
-      - name: systemctl status
-        shell: bash
-        run: systemctl status docker -l
+        #- name: systemctl status
+        #  shell: bash
+        #  run: systemctl status docker -l
 
-      - name: docker.service
-        shell: bash
-        run: ls -la /lib/systemd/system/docker.service && cat /lib/systemd/system/docker.service
+        #- name: docker.service
+        #  shell: bash
+        #  run: ls -la /lib/systemd/system/docker.service && cat /lib/systemd/system/docker.service
 
-      - name: whoami
-        shell: bash
-        run: whoami
+        #- name: whoami
+        #  shell: bash
+        #  run: whoami
 
       - name: Up
         shell: bash
-        env:
-          DOCKER_ENABLE_DEPRECATED_PULL_SCHEMA_1_IMAGE: 1
         run: docker compose -f elasticsearch-sudachi/compose-old-es.yaml up
 
