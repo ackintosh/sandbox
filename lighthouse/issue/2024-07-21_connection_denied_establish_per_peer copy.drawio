@@ -1,0 +1,98 @@
+<mxfile host="65bd71144e">
+    <diagram id="T8pmpTCMuDaPm9wjzUCa" name="Page-1">
+        <mxGraphModel dx="1643" dy="1421" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="147" value="LH1" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0" parent="1" vertex="1">
+                    <mxGeometry x="160" y="280" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="148" value="LH2" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0" parent="1" vertex="1">
+                    <mxGeometry x="480" y="280" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="149" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0.5;exitDx=0;exitDy=-15;exitPerimeter=0;" parent="1" target="147" edge="1" source="192">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="220" y="720" as="sourcePoint"/>
+                        <mxPoint x="270" y="430" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="150" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0.5;exitDx=0;exitDy=-15;exitPerimeter=0;" parent="1" edge="1" source="193">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="540" y="720" as="sourcePoint"/>
+                        <mxPoint x="539.5" y="320" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="151" value="" style="endArrow=classic;html=1;fillColor=#d80073;strokeColor=#A50040;strokeWidth=3;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="220" y="480" as="sourcePoint"/>
+                        <mxPoint x="540" y="480" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="152" value="Dial udp 9001" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="151" vertex="1" connectable="0">
+                    <mxGeometry x="-0.1577" y="2" relative="1" as="geometry">
+                        <mxPoint x="15" y="-15" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="170" value="ConnectionDenied { inner: Exceeded { limit: 1, kind: EstablishedPerPeer } }" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" parent="1" vertex="1">
+                    <mxGeometry x="720" y="620" width="240" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="172" value="/ip4/172.16.0.15/udp/9001/quic-v1&lt;br&gt;/ip4/172.16.0.15/tcp/9000" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" parent="1" vertex="1">
+                    <mxGeometry x="97.5" y="170" width="235" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="192" value="End" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" parent="1" vertex="1">
+                    <mxGeometry x="180" y="960" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="193" value="End" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" parent="1" vertex="1">
+                    <mxGeometry x="500" y="960" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="198" value="/ip4/172.16.0.14/udp/9001/quic-v1&lt;br&gt;/ip4/172.16.0.14/tcp/9000" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="1">
+                    <mxGeometry x="430" y="160" width="235" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="199" value="Add LH2 to routing table&amp;nbsp;&lt;br&gt;on startup.&lt;br&gt;(config.boot_nodes_enr)" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="110" y="370" width="230" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="200" value="" style="endArrow=classic;html=1;fillColor=#60a917;strokeColor=#2D7600;fontStyle=1;strokeWidth=3;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="220" y="520" as="sourcePoint"/>
+                        <mxPoint x="540" y="520" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="201" value="Dial tcp 9000" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="200">
+                    <mxGeometry x="-0.1577" y="2" relative="1" as="geometry">
+                        <mxPoint x="15" y="-15" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="202" value="Connection established (tcp)" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" vertex="1" parent="1">
+                    <mxGeometry x="425" y="560" width="230" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="203" value="Failed incoming connection (udp)" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" vertex="1" parent="1">
+                    <mxGeometry x="430" y="680" width="230" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="204" value="" style="endArrow=none;dashed=1;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="170">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="660" y="710" as="sourcePoint"/>
+                        <mxPoint x="400" y="840" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="205" value="Failed to dial peer" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="750" width="230" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="206" value="Connection established (tcp)" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="560" width="230" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="207" value="Marking peer disconnected in DHT" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0;fillColor=#d80073;fontColor=#ffffff;strokeColor=#A50040;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="860" width="230" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="208" value="I think we shouldn't do this since a TCP connection has been established." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="1">
+                    <mxGeometry x="-187" y="871" width="240" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="209" value="" style="endArrow=none;dashed=1;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0;exitDx=240;exitDy=65;exitPerimeter=0;" edge="1" parent="1" source="208" target="207">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="670" y="720" as="sourcePoint"/>
+                        <mxPoint x="730" y="680" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
