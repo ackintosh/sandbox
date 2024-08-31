@@ -163,9 +163,7 @@ curl -H 'Content-Type: application/json' -XGET "localhost:9200/sudachi_split/_te
 ```
 
 
-## sudachi_c2a
-
-CモードとAモードを併用する。
+## CモードとAモードを併用して検索する（sudachi_c2a）
 
 参考：https://github.com/WorksApplications/elasticsearch-sudachi/issues/75#issuecomment-2134190251
 
@@ -177,8 +175,8 @@ curl -X PUT -H "Content-Type: application/json" 'http://localhost:9200/sudachi_c
 curl -X PUT -H "Content-Type: application/json" 'http://localhost:9200/sudachi_a/' -d @c2a/create_index_a.json
 
 # 作成したインデックスを確認
-curl -X GET 'http://localhost:9200/sudachi_c2a/?pretty'
-curl -X GET 'http://localhost:9200/sudachi_a/?pretty'
+curl -X GET 'http://localhost:9200/sudachi_c2a/?pretty' | jq
+curl -X GET 'http://localhost:9200/sudachi_a/?pretty' | jq
 
 # ドキュメントを追加
 <C & Aモード>
@@ -195,8 +193,7 @@ curl -X POST -H "Content-Type: application/json" 'http://localhost:9200/sudachi_
 {"sentence": "関西国際空港"}
 '
 
-# 検索
-<C & Aモード>
+# 検索 C & Aモード
 curl -X GET -H "Content-Type: application/json" "http://localhost:9200/sudachi_c2a/_search?pretty" \
  -d '
 {
@@ -220,23 +217,41 @@ curl -X GET -H "Content-Type: application/json" "http://localhost:9200/sudachi_c
 }
 ' | jq
 
-<Aモード>
-curl -X GET -H "Content-Type: application/json" "http://localhost:9200/sudachi_a/_search?pretty" \
+# 検索 Cモード
+#   -> 関西国際空港のみがヒット
+curl -X GET -H "Content-Type: application/json" "http://localhost:9200/sudachi_c2a/_search?pretty" \
  -d '
 {
     "query": {
-        "dis_max": { "queries": [
-            { "match": {
-                "sentence": {
-                    "query": "関西国際空港",
-                    "analyzer": "sudachi_a"
-                }
-            }}
-        ]}
+        "match": {
+            "sentence": {
+                "query": "関西国際空港",
+                "analyzer": "sudachi_c"
+            }
+        }
     },
     "explain": true
 }
-'
+' | jq
+
+# 検索 Aモード
+#   -> 関西国際空港, 成田国際空港の順で2件ヒット
+#     -> ドキュメント1(関西国際空港)は、関西, 国際, 空港 でヒット
+#     -> ドキュメント2(成田国際空港)は、国際, 空港 でヒット
+curl -X GET -H "Content-Type: application/json" "http://localhost:9200/sudachi_c2a/_search?pretty" \
+ -d '
+{
+    "query": {
+        "match": {
+            "sentence": {
+                "query": "関西国際空港",
+                "analyzer": "sudachi_a"
+            }
+        }
+    },
+    "explain": true
+}
+' | jq
 
 
 # インデックス削除
@@ -244,7 +259,7 @@ curl -X DELETE 'http://localhost:9200/sudachi_c2a?pretty=true'
 
 ```
 
-## 実験：CモードでインデックスしてAモードで検索
+## 実験：CモードでインデックスしてAモードで検索（c_index_a_search）
 
 ```bash
 # インデックスを作成
