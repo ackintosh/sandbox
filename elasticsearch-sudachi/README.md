@@ -243,3 +243,235 @@ curl -X GET -H "Content-Type: application/json" "http://localhost:9200/sudachi_a
 curl -X DELETE 'http://localhost:9200/sudachi_c2a?pretty=true'
 
 ```
+
+## 実験：CモードでインデックスしてAモードで検索
+
+```bash
+# インデックスを作成
+curl -X PUT -H "Content-Type: application/json" 'http://localhost:9200/c_index_a_search/' -d @c_index_a_search/create_index.json
+
+# ドキュメントを追加
+curl -X POST -H "Content-Type: application/json" 'http://localhost:9200/c_index_a_search/_bulk?refresh' -d '
+{"index":{"_id":"1","_index":"c_index_a_search"}}
+{"sentence": "関西国際空港"}
+{"index":{"_id":"2","_index":"c_index_a_search"}}
+{"sentence": "成田国際空港"}
+{"index":{"_id":"3","_index":"c_index_a_search"}}
+{"sentence": "売店"}
+' | jq
+
+# Term vectors APIでインデックスされている単語を確認する
+#  -> ドキュメントID:1
+#  -> Cモード
+curl -H 'Content-Type: application/json' -XGET "localhost:9200/c_index_a_search/_termvectors/1" | jq
+{
+  "_index": "c_index_a_search",
+  "_id": "1",
+  "_version": 1,
+  "found": true,
+  "took": 0,
+  "term_vectors": {
+    "sentence": {
+      "field_statistics": {
+        "sum_doc_freq": 2,
+        "doc_count": 2,
+        "sum_ttf": 2
+      },
+      "terms": {
+        "関西国際空港": {
+          "term_freq": 1,
+          "tokens": [
+            {
+              "position": 0,
+              "start_offset": 0,
+              "end_offset": 6
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+
+#  -> ドキュメントID:3
+#  -> Cモード
+curl -H 'Content-Type: application/json' -XGET "localhost:9200/c_index_a_search/_termvectors/3" | jq
+{
+  "_index": "c_index_a_search",
+  "_id": "3",
+  "_version": 2,
+  "found": true,
+  "took": 1,
+  "term_vectors": {
+    "sentence": {
+      "field_statistics": {
+        "sum_doc_freq": 6,
+        "doc_count": 6,
+        "sum_ttf": 6
+      },
+      "terms": {
+        "売店": {
+          "term_freq": 1,
+          "tokens": [
+            {
+              "position": 0,
+              "start_offset": 0,
+              "end_offset": 2
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+
+# 検索（Aモード） クエリ：関西国際空港
+curl -X GET -H "Content-Type: application/json" "http://localhost:9200/c_index_a_search/_search?pretty" \
+ -d '
+{
+    "query": {
+        "match": {
+            "sentence": {
+                "query": "関西国際空港",
+                "analyzer": "sudachi_a"
+            }
+        }
+    },
+    "explain": true
+}
+'
+## -> ノーヒット
+##   -> 関西国際空港のA単位は [関西, 国際, 空港] なので、ドキュメント1の 関西国際空港 にマッチしない
+{
+  "took" : 2,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 0,
+      "relation" : "eq"
+    },
+    "max_score" : null,
+    "hits" : [ ]
+  }
+}
+
+# 検索（Aモード） クエリ：売店
+curl -X GET -H "Content-Type: application/json" "http://localhost:9200/c_index_a_search/_search?pretty" \
+ -d '
+{
+    "query": {
+        "match": {
+            "sentence": {
+                "query": "売店",
+                "analyzer": "sudachi_a"
+            }
+        }
+    },
+    "explain": true
+}
+' | jq
+## -> ドキュメントID:3がヒット
+##  -> クエリ：売店のA単位は「売店」なのでドキュメントID3とマッチする
+{
+  "took" : 2,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 1,
+      "relation" : "eq"
+    },
+    "max_score" : 1.540445,
+    "hits" : [
+      {
+        "_shard" : "[c_index_a_search][0]",
+        "_node" : "cagRlSDmT9ydtCPn4CkSPQ",
+        "_index" : "c_index_a_search",
+        "_id" : "3",
+        "_score" : 1.540445,
+        "_source" : {
+          "sentence" : "売店"
+        },
+        "_explanation" : {
+          "value" : 1.540445,
+          "description" : "weight(sentence:売店 in 2) [PerFieldSimilarity], result of:",
+          "details" : [
+            {
+              "value" : 1.540445,
+              "description" : "score(freq=1.0), computed as boost * idf * tf from:",
+              "details" : [
+                {
+                  "value" : 2.2,
+                  "description" : "boost",
+                  "details" : [ ]
+                },
+                {
+                  "value" : 1.5404451,
+                  "description" : "idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:",
+                  "details" : [
+                    {
+                      "value" : 1,
+                      "description" : "n, number of documents containing term",
+                      "details" : [ ]
+                    },
+                    {
+                      "value" : 6,
+                      "description" : "N, total number of documents with field",
+                      "details" : [ ]
+                    }
+                  ]
+                },
+                {
+                  "value" : 0.45454544,
+                  "description" : "tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:",
+                  "details" : [
+                    {
+                      "value" : 1.0,
+                      "description" : "freq, occurrences of term within document",
+                      "details" : [ ]
+                    },
+                    {
+                      "value" : 1.2,
+                      "description" : "k1, term saturation parameter",
+                      "details" : [ ]
+                    },
+                    {
+                      "value" : 0.75,
+                      "description" : "b, length normalization parameter",
+                      "details" : [ ]
+                    },
+                    {
+                      "value" : 1.0,
+                      "description" : "dl, length of field",
+                      "details" : [ ]
+                    },
+                    {
+                      "value" : 1.0,
+                      "description" : "avgdl, average length of field",
+                      "details" : [ ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+
+```
+
+
