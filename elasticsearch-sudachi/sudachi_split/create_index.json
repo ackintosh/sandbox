@@ -1,0 +1,35 @@
+{
+    "settings": {
+        "analysis": {
+            "analyzer": {
+                "sudachi_split": {
+                    "type": "custom",
+                    "tokenizer": "sudachi_tokenizer_c",
+                    "filter": ["sudachi_split_extended"]
+                }
+            },
+            "tokenizer": {
+                "sudachi_tokenizer_c": {
+                    "type": "sudachi_tokenizer",
+                    "discard_punctuation": false
+                }
+            },
+            "filter": {
+                "sudachi_split_extended": {
+                    "type": "sudachi_split",
+                    "mode": "extended"
+                }
+            }
+        }
+    },
+    "mappings": {
+        "properties": {
+            "sentence": {
+                "type": "text",
+                "index": true,
+                "term_vector": "with_positions_offsets",
+                "analyzer": "sudachi_split"
+            }
+        }
+    }
+}
