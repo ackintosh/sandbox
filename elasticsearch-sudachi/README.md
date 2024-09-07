@@ -489,4 +489,39 @@ curl -X GET -H "Content-Type: application/json" "http://localhost:9200/c_index_a
 
 ```
 
+## N-gram (tokenizer)
 
+https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-ngram-tokenizer.html
+
+```bash
+
+# ngramトークナイザを試す
+curl -X POST "localhost:9200/_analyze?pretty" -H 'Content-Type: application/json' -d'
+{
+  "tokenizer": "ngram",
+  "text": "Quick Fox"
+}
+'
+
+# インデックス削除
+curl -X DELETE 'http://localhost:9200/ngram?pretty=true'
+
+# インデックス作成
+curl -X PUT -H "Content-Type: application/json" 'http://localhost:9200/ngram/' -d @ngram/create_index.json
+
+# 作成したインデックスを確認
+curl -X GET 'http://localhost:9200/ngram/?pretty'
+
+# ドキュメントを追加
+curl -X POST -H "Content-Type: application/json" 'http://localhost:9200/ngram/_bulk?refresh' -d '
+{"index":{"_id":"1","_index":"ngram"}}
+{"sentence": "関西国際空港"}
+{"index":{"_id":"2","_index":"ngram"}}
+{"sentence": "成田国際空港"}
+' | jq
+
+
+# Term vector
+curl -H 'Content-Type: application/json' -XGET "localhost:9200/ngram/_termvectors/1" | jq
+
+```
