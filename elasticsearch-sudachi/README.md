@@ -489,7 +489,7 @@ curl -X GET -H "Content-Type: application/json" "http://localhost:9200/c_index_a
 
 ```
 
-## N-gram (tokenizer)
+## N-gram (tokenizer) ※token filterではない
 
 https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-ngram-tokenizer.html
 
