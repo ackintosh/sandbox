@@ -525,3 +525,32 @@ curl -X POST -H "Content-Type: application/json" 'http://localhost:9200/ngram/_b
 curl -H 'Content-Type: application/json' -XGET "localhost:9200/ngram/_termvectors/1" | jq
 
 ```
+
+## Sudachi: analyzerのモードとsudachi_split
+
+```bash
+# インデックス作成
+curl -X PUT -H "Content-Type: application/json" 'http://localhost:9200/analyzer_sudachi_split/' -d @analyzer_sudachi_split/create_index.json
+
+# 作成したインデックスを確認
+curl -X GET 'http://localhost:9200/analyzer_sudachi_split/?pretty'
+
+# ドキュメントを追加
+curl -X POST -H "Content-Type: application/json" 'http://localhost:9200/analyzer_sudachi_split/_bulk?refresh' -d '
+{"index":{"_id":"1","_index":"analyzer_sudachi_split"}}
+{"sentence_a": "選挙管理委員会", "sentence_c": "選挙管理委員会"}
+{"index":{"_id":"2","_index":"analyzer_sudachi_split"}}
+{"sentence_a": "客室乗務員", "sentence_c": "客室乗務員"}
+' | jq
+
+# Term vector
+curl -H 'Content-Type: application/json' -XGET "localhost:9200/analyzer_sudachi_split/_termvectors/1" | jq
+curl -H 'Content-Type: application/json' -XGET "localhost:9200/analyzer_sudachi_split/_termvectors/2" | jq
+
+###################################################
+# token_filterでsudachi_splitを使っているとしても、
+# analyzerがA単位だと、A/C併用にはならない。
+#  → analyzerをC単位にしたうえで、sudachi_splitを使うことで、A/C併用した分割ができる。
+###################################################
+
+```
