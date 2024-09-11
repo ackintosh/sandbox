@@ -51,3 +51,38 @@ EOS
 
 ```
 
+## ユーザー辞書
+
+https://github.com/WorksApplications/Sudachi/blob/develop/docs/user_dict.md#%E3%83%90%E3%82%A4%E3%83%8A%E3%83%AA%E8%BE%9E%E6%9B%B8%E3%81%AE%E4%BD%9C%E6%88%90
+
+```bash
+# ユーザー辞書をコンパイル
+java -Dfile.encoding=UTF-8 -cp sudachi-0.7.3.jar com.worksap.nlp.sudachi.dictionary.UserDictionaryBuilder -o user.dic -s system_core.dic user.csv
+
+# ユーザー辞書を使用して形態素解析する
+## ユーザー辞書なし
+### A単位
+echo 透明マスク | java -jar sudachi-0.7.3.jar -m A --systemDict system_core.dic
+透明    形状詞,一般,*,*,*,*     透明
+マスク  名詞,普通名詞,一般,*,*,*        マスク
+EOS
+### C単位
+echo 透明マスク | java -jar sudachi-0.7.3.jar -m C --systemDict system_core.dic
+透明    形状詞,一般,*,*,*,*     透明
+マスク  名詞,普通名詞,一般,*,*,*        マスク
+EOS
+
+
+## ユーザー辞書あり  -> 固有名詞として分割される
+### A単位
+echo 透明マスク | java -jar sudachi-0.7.3.jar -m A --systemDict system_core.dic --userDict user.dic
+透明マスク      名詞,固有名詞,一般,*,*,*        透明マスク
+EOS
+
+### C単位
+echo 透明マスク | java -jar sudachi-0.7.3.jar -m C --systemDict system_core.dic --userDict user.dic
+透明マスク      名詞,固有名詞,一般,*,*,*        透明マスク
+EOS
+
+```
+
