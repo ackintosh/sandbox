@@ -554,3 +554,109 @@ curl -H 'Content-Type: application/json' -XGET "localhost:9200/analyzer_sudachi_
 ###################################################
 
 ```
+
+## boost
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-boosting-query.html
+
+※ mappingでboostを指定することもできるが非推奨（理由はドキュメントを参照）  
+https://www.elastic.co/guide/en/elasticsearch/reference/7.17/mapping-boost.html
+
+```bash
+# インデックス作成
+curl -X PUT -H "Content-Type: application/json" 'http://localhost:9200/boost/' -d @boost/create_index.json
+
+# ドキュメントを追加
+curl -X POST -H "Content-Type: application/json" 'http://localhost:9200/boost/_bulk?refresh' -d '
+{"index":{"_id":"1","_index":"boost"}}
+{"title": "吾輩は猫である", "content": "吾輩は猫である"}
+{"index":{"_id":"2","_index":"boost"}}
+{"title": "人間失格", "content": "人間失格"}
+'
+
+# 検索 (boostなし)
+curl -X GET -H "Content-Type: application/json" "http://localhost:9200/boost/_search?pretty" \
+ -d '
+{
+  "explain": true,
+  "query": {
+    "term": {
+      "title": { "value": "吾輩は猫である" }
+    }
+  }
+}
+'
+
+# 検索 (boostあり)
+#  -> boostなしと比べてscoreが倍になっている
+#  -> explainでboostが影響していることが確認できる
+curl -X GET -H "Content-Type: application/json" "http://localhost:9200/boost/_search?pretty" \
+ -d '
+{
+  "explain": true,
+  "query": {
+    "term": {
+      "title": { "value": "吾輩は猫である", "boost": "2" }
+    }
+  }
+}
+'
+
+# 検索 (boostゼロ)
+# -> ヒットはするが、titleによるスコアはゼロ
+curl -X GET -H "Content-Type: application/json" "http://localhost:9200/boost/_search?pretty" \
+ -d '
+{
+  "explain": true,
+  "query": {
+    "term": {
+      "title": { "value": "吾輩は猫である", "boost": "0" }
+    }
+  }
+}
+'
+
+# 検索 (title:boost 0, content:boost 2)
+# -> ヒットはするが、titleによるスコアはゼロ
+curl -X GET -H "Content-Type: application/json" "http://localhost:9200/boost/_search?pretty" \
+ -d '
+{
+  "explain": true,
+  "query": {
+    "bool": {
+      "should": [
+        {"term": {
+          "title": { "value": "吾輩は猫である", "boost": "0" }
+        }},
+        {"term": {
+          "content": { "value": "吾輩は猫である", "boost": "2" }
+        }}
+      ]
+    }
+  }
+}
+'
+
+# 検索 (title:吾輩は猫である boost 0, content:人間失格 boost 2)
+# -> 吾輩は猫であるもヒットはするが、スコアはゼロ
+curl -X GET -H "Content-Type: application/json" "http://localhost:9200/boost/_search?pretty" \
+ -d '
+{
+  "explain": true,
+  "query": {
+    "bool": {
+      "should": [
+        {"term": {
+          "title": { "value": "吾輩は猫である", "boost": "0" }
+        }},
+        {"term": {
+          "content": { "value": "人間失格", "boost": "2" }
+        }}
+      ]
+    }
+  }
+}
+'
+
+```
+
