@@ -2,6 +2,7 @@
 *.jar
 LICENSE-2.0.txt
 licenses
-sudachi-dictionary-20240409
+sudachi-dictionary-*
 system_core.dic
+system_full.dic
 

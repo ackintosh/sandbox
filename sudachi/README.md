@@ -14,13 +14,20 @@ https://github.com/WorksApplications/Sudachi/releases
 curl --output sudachi-0.7.3-executable.zip -L https://github.com/WorksApplications/Sudachi/releases/download/v0.7.3/sudachi-0.7.3-executable.zip
 unzip sudachi-0.7.3-executable.zip
 
-# 辞書をダウンロード
+# 辞書(core)をダウンロード
 curl --output sudachi-dictionary-latest-core.zip -L http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict/sudachi-dictionary-latest-core.zip
 unzip sudachi-dictionary-latest-core.zip
-
 # ダウンロードした辞書をsudachi実行ファイル(jar)と同一ディレクトリに移動する
 #  → ルートディレクトリに jar が展開されているのでひとつ上のディレクトリに移動する
 mv sudachi-dictionary-20240409/system_core.dic ./
+
+# 辞書(full)をダウンロード
+curl --output sudachi-dictionary-latest-full.zip -L http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict/sudachi-dictionary-latest-full.zip
+unzip sudachi-dictionary-latest-full.zip
+# ダウンロードした辞書をsudachi実行ファイル(jar)と同一ディレクトリに移動する
+#  → ルートディレクトリに jar が展開されているのでひとつ上のディレクトリに移動する
+mv sudachi-dictionary-20240109/system_full.dic ./
+
 ```
 
 ## 実行
