@@ -1,0 +1,16 @@
+{
+  "settings": {
+    "analysis": {
+      "tokenizer": {
+        "discard_punctuation_disabled": {
+          "type": "sudachi_tokenizer",
+          "discard_punctuation": false
+        },
+        "discard_punctuation_enabled": {
+          "type": "sudachi_tokenizer",
+          "discard_punctuation": true
+        }
+      }
+    }
+  }
+}

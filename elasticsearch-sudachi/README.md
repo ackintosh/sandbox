@@ -660,3 +660,19 @@ curl -X GET -H "Content-Type: application/json" "http://localhost:9200/boost/_se
 
 ```
 
+## discard_punctuationオプション
+
+```bash
+curl -X PUT -H "Content-Type: application/json" 'http://localhost:9200/discard_punctuation/' -d @discard_punctuation/create_index.json
+
+
+# discard_punctuation: false
+curl --silent -X GET "localhost:9200/discard_punctuation/_analyze?pretty" -H 'Content-Type: application/json' -d'{"tokenizer":"discard_punctuation_disabled", "text" : "コクヨ 修正テープ＜ケシピコ＞（詰め替え用テープ） TW-144 1個"}' | jq '.tokens[].token'
+
+
+# discard_punctuation: true
+curl --silent -X GET "localhost:9200/discard_punctuation/_analyze?pretty" -H 'Content-Type: application/json' -d'{"tokenizer":"discard_punctuation_enabled", "text" : "コクヨ 修正テープ＜ケシピコ＞（詰め替え用テープ） TW-144 1個"}' | jq '.tokens[].token'
+
+
+```
+
