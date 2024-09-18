@@ -69,12 +69,12 @@ java -Dfile.encoding=UTF-8 -cp sudachi-0.7.3.jar com.worksap.nlp.sudachi.diction
 # ユーザー辞書を使用して形態素解析する
 ## ユーザー辞書なし
 ### A単位
-echo 透明マスク | java -jar sudachi-0.7.3.jar -m A --systemDict system_core.dic
+echo 透明マスク | java -jar sudachi-0.7.3.jar -m A --systemDict system_full.dic
 透明    形状詞,一般,*,*,*,*     透明
 マスク  名詞,普通名詞,一般,*,*,*        マスク
 EOS
 ### C単位
-echo 透明マスク | java -jar sudachi-0.7.3.jar -m C --systemDict system_core.dic
+echo 透明マスク | java -jar sudachi-0.7.3.jar -m C --systemDict system_full.dic
 透明    形状詞,一般,*,*,*,*     透明
 マスク  名詞,普通名詞,一般,*,*,*        マスク
 EOS
@@ -82,12 +82,12 @@ EOS
 
 ## ユーザー辞書あり  -> 固有名詞として分割される
 ### A単位
-echo 透明マスク | java -jar sudachi-0.7.3.jar -m A --systemDict system_core.dic --userDict user.dic
+echo 透明マスク | java -jar sudachi-0.7.3.jar -m A --systemDict system_full.dic --userDict user.dic
 透明マスク      名詞,固有名詞,一般,*,*,*        透明マスク
 EOS
 
 ### C単位
-echo 透明マスク | java -jar sudachi-0.7.3.jar -m C --systemDict system_core.dic --userDict user.dic
+echo 透明マスク | java -jar sudachi-0.7.3.jar -m C --systemDict system_full.dic --userDict user.dic
 透明マスク      名詞,固有名詞,一般,*,*,*        透明マスク
 EOS
 
