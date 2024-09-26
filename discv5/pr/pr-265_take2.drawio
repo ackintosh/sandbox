@@ -125,7 +125,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="190" value="The seq has been increased to 2,&lt;br&gt;but Node B doesn't send FINDNODE(distance:[0]) &lt;br&gt;since Node B doesn't know Node A.&lt;br&gt;&amp;nbsp;(the entry has been removed from its routing table)" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="294.5" y="840" width="375" height="80" as="geometry"/>
+                    <mxGeometry x="294.5" y="840" width="375" height="107" as="geometry"/>
                 </mxCell>
                 <mxCell id="194" value="Session eslablished with Node A" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="375" y="-160" width="220" height="40" as="geometry"/>
@@ -145,8 +145,8 @@
                 <mxCell id="203" value="Remove the entry from local routing table" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="360" y="360" width="240" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="204" value="&lt;b&gt;&lt;font color=&quot;#ffff00&quot;&gt;The updated ENR doesn’t get into Node B’s routing table&lt;br&gt;&amp;nbsp;unless the session has expired.&lt;/font&gt;&lt;/b&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="1">
-                    <mxGeometry x="540" y="950" width="350" height="100" as="geometry"/>
+                <mxCell id="204" value="&lt;b&gt;&lt;font color=&quot;#ffff00&quot;&gt;The updated ENR doesn’t get back into Node B’s routing table&lt;br&gt;&amp;nbsp;unless the session has expired.&lt;/font&gt;&lt;/b&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="1">
+                    <mxGeometry x="632" y="920" width="431" height="100" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
