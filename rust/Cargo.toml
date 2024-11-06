@@ -89,6 +89,7 @@ exclude = [
   "crate-futures",
   "crate-if-addrs",
   "crate-influxdb",
+  "crate-native-tls",
   "crate-reqwest",
   "crate-rtnetlink",
   "crate-socket2",
