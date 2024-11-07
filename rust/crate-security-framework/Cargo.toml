@@ -1,0 +1,8 @@
+[package]
+name = "crate-security-framework"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+#security-framework = "3.0.0"
+security-framework = { path = "/Users/akihito/src/github.com/kornelski/rust-security-framework/security-framework" }

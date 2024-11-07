@@ -5,3 +5,4 @@ edition = "2021"
 
 [dependencies]
 native-tls = "0.2.12"
+#native-tls = { path = "/Users/akihito/src/github.com/sfackler/rust-native-tls" }

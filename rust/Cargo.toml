@@ -92,6 +92,7 @@ exclude = [
   "crate-native-tls",
   "crate-reqwest",
   "crate-rtnetlink",
+  "crate-security-framework",
   "crate-socket2",
   "crate-thiserror",
   "crate-tokio-console",

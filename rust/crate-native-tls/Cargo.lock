@@ -25,9 +25,9 @@ checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
 name = "core-foundation"
-version = "0.9.4"
+version = "0.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "91e195e091a93c46f7102ec7818a2aa394e1e1771c3ab4825963fa03e45afb8f"
+checksum = "b55271e5c8c478ad3f38ad24ef34923091e0548492a266d19b3c0b4d82574c63"
 dependencies = [
  "core-foundation-sys",
  "libc",
@@ -98,8 +98,6 @@ checksum = "a7a70ba024b9dc04c27ea2f0c0548feb474ec5c54bba33a7f72f873a39d07b24"
 [[package]]
 name = "native-tls"
 version = "0.2.12"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a8614eb2c83d59d1c8cc974dd3f920198647674a0a035e1af1fa58707e317466"
 dependencies = [
  "libc",
  "log",
@@ -108,7 +106,7 @@ dependencies = [
  "openssl-sys",
  "schannel",
  "security-framework",
- "security-framework-sys",
+ "security-framework-sys 2.12.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "tempfile",
 ]
 
@@ -211,14 +209,20 @@ dependencies = [
 [[package]]
 name = "security-framework"
 version = "2.11.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "897b2245f0b511c87893af39b033e5ca9cce68824c4d7e7630b5a1d339658d02"
 dependencies = [
  "bitflags",
  "core-foundation",
  "core-foundation-sys",
  "libc",
- "security-framework-sys",
+ "security-framework-sys 2.12.0",
+]
+
+[[package]]
+name = "security-framework-sys"
+version = "2.12.0"
+dependencies = [
+ "core-foundation-sys",
+ "libc",
 ]
 
 [[package]]

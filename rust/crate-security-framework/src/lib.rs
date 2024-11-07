@@ -4,7 +4,7 @@ mod tests {
     use std::fs::File;
     use std::io::Read;
     use std::path::PathBuf;
-    use native_tls::Identity;
+    use security_framework::import_export::Pkcs12ImportOptions;
 
     #[test]
     fn it_works() {
@@ -14,13 +14,16 @@ mod tests {
             .unwrap()
             .read_to_end(&mut buf)
             .unwrap();
-        let password = "bark";
-
-        let result = Identity::from_pkcs12(&buf, password);
-        if result.is_ok() {
-            println!("ok");
-        } else {
-            println!("!!!!!!!!!!!!! ng !!!!!!!!!!!!!!");
+        
+        let mut import_opts = Pkcs12ImportOptions::new();
+        let imports = import_opts.passphrase("bark").import(&buf);
+        match imports {
+            Ok(imported_identity) => {
+                println!("ok");
+            }
+            Err(error) => {
+                println!("{:?}", error);
+            }
         }
     }
 }
