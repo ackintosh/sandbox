@@ -14,11 +14,14 @@ mod tests {
     // openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
     // # 4. PKCS#12ファイルの作成
     // openssl pkcs12 -export -out server.p12 -inkey server.key -in server.crt -password pass:bark
-    //
+    // # 4-2. PKCS#12ファイルの作成 (-legacyオプション)
+    // # -legacyオプションの必要性 https://github.com/kornelski/rust-security-framework/issues/216#issuecomment-2466496614
+    // openssl pkcs12 -legacy -export -out server_legacy.p12 -inkey server.key -in server.crt -password pass:bark
     //
     #[test]
     fn test() {
-        let path = PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap()).join("server.p12");
+        // let path = PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap()).join("server.p12");
+        let path = PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap()).join("server_legacy.p12");
         let mut buf = Vec::new();
         File::open(path)
             .unwrap()
