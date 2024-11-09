@@ -6,8 +6,18 @@ mod tests {
     use std::path::PathBuf;
     use security_framework::import_export::Pkcs12ImportOptions;
 
+    // # 1. 秘密鍵の生成
+    // openssl genrsa -out server.key 2048
+    // # 2. CSRの作成
+    // openssl req -new -key server.key -out server.csr
+    // # 3. 自己署名証明書の作成
+    // openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+    // # 4. PKCS#12ファイルの作成
+    // openssl pkcs12 -export -out server.p12 -inkey server.key -in server.crt -password pass:bark
+    //
+    //
     #[test]
-    fn it_works() {
+    fn test() {
         let path = PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap()).join("server.p12");
         let mut buf = Vec::new();
         File::open(path)
@@ -18,7 +28,7 @@ mod tests {
         let mut import_opts = Pkcs12ImportOptions::new();
         let imports = import_opts.passphrase("bark").import(&buf);
         match imports {
-            Ok(imported_identity) => {
+            Ok(_) => {
                 println!("ok");
             }
             Err(error) => {
