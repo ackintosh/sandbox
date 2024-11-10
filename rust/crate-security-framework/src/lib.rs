@@ -31,7 +31,11 @@ mod tests {
         let mut import_opts = Pkcs12ImportOptions::new();
         let imports = import_opts.passphrase("bark").import(&buf);
         match imports {
-            Ok(_) => {
+            Ok(i) => {
+                for identity in i {
+                    println!("label: {:?}", identity.label);
+                    println!("trust: {}", identity.trust.is_some());
+                }
                 println!("ok");
             }
             Err(error) => {
