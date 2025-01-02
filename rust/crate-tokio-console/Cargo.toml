@@ -9,7 +9,7 @@ edition = "2021"
 # featuresに "rt-multi-thread" を入れないと下記コンパイルエラー
 # error: The default runtime flavor is `multi_thread`, but the `rt-multi-thread` feature is disabled.
 # -> flavor を変えればエラーは変わるかもしれない
-tokio = { version = "1.23", features = ["sync", "time", "macros", "tracing", "rt-multi-thread"] }
-console-subscriber = "0.1.8"
-futures = "0.3.21"
-num_cpus = "1.15"
+tokio = { version = "1.42.0", features = ["sync", "time", "macros", "tracing", "rt-multi-thread"] }
+console-subscriber = "0.4.1"
+futures = "0.3.31"
+num_cpus = "1.16.0"

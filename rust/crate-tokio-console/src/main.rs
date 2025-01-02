@@ -23,6 +23,16 @@
 // - tokio-consoleツールをインストールする
 //   - `cargo install tokio-console`
 
+// *** 実行方法 ***
+// tokio-consoleを実行
+// ```
+// $ tokio-console
+// ```
+// 別のターミナルで main.rs を実行
+// ```
+// $ cargo run
+// ```
+
 use std::time::Duration;
 
 // *** tokioはデフォルトで論理CPU数分のワーカースレッドを生成する ***
@@ -78,8 +88,15 @@ async fn main() {
                         i,
                         std::thread::current().id()
                     );
+
                     // ブロッキングの sleep (標準ライブラリの sleep)
+                    // CPUサイクルを消費する時間がかかる処理のイメージ
                     std::thread::sleep(Duration::from_secs(5));
+
+                    // ノンブロッキングの sleep (tokio::time の sleep)
+                    // これを入れないと、Task BがyieldせずCPUリソースを掴みっぱなしになってしまう
+                    tokio::time::sleep(Duration::from_secs(5)).await;
+
                     println!("#Task B-{} woke up.", i);
                 }
             })
