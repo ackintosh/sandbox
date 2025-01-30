@@ -2,6 +2,9 @@
 
 Redis と Valkey でパケット数やサイズに違いがあるか確認。
 
+Valkey : Documentation: Serialization protocol specification  
+https://valkey.io/topics/protocol/
+
 ```bash
 # Redis
 docker run --rm -p 6379:6379 redis:6.2
