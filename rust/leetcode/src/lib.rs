@@ -44,6 +44,7 @@ mod find_elements_in_a_contaminated_binary_tree;
 mod find_n_unique_integers_sum_up_to_zero;
 mod find_the_original_array_of_prefix_xor;
 mod find_the_prefix_common_array_of_two_arrays;
+mod find_the_punishment_number_of_an_integer;
 mod find_the_winner_of_the_circular_game;
 mod find_triangular_sum_of_an_array;
 mod find_valid_matrix_given_row_and_column_sums;

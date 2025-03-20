@@ -241,6 +241,19 @@ mod string {
         assert_eq!(s, "aaa".to_owned());
     }
 
+    // 文字列をインデックス指定で分割する
+    #[test]
+    fn string_split() {
+        let s = "abcd".to_owned();
+        let (s1, s2) = s.split_at(0);
+        assert_eq!("", s1);
+        assert_eq!("abcd", s2);
+
+        let (s1, s2) = s.split_at(1);
+        assert_eq!("a", s1);
+        assert_eq!("bcd", s2);
+    }
+
     // 任意の位置の文字にアクセスする
     #[test]
     #[allow(clippy::iter_nth_zero)]
