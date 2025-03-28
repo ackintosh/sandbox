@@ -3,6 +3,8 @@ from sklearn.model_selection import train_test_split
 import pandas as pd
 import matplotlib.pyplot as plt
 import mglearn
+import numpy as np
+from sklearn.neighbors import KNeighborsClassifier
 
 # ######################################################################################################################
 # 1.7 最初のアプリケーション:アイリスのクラス分類
@@ -91,9 +93,40 @@ def main():
     # iris_dataset.feature_namesの文字列を使ってカラムに名前を付ける。
     iris_dataframe = pd.DataFrame(X_train, columns=iris_dataset.feature_names)
     # データフレームからscatter matrixを作成し、y_trainに従って色を付ける。
-    grr = pd.scatter_matrix(iris_dataframe, c=y_train, figsize=(15, 15), marker='o',
+    grr = pd.plotting.scatter_matrix(iris_dataframe, c=y_train, figsize=(15, 15), marker='o',
                               hist_kwds={'bins': 20}, s=60, alpha=.8, cmap=mglearn.cm3)
-    print("aaa")
+    # plt.show()
+
+
+    # ##################################################################################################################
+    # 1.7.4 最初のモデル: k-最近傍法
+    # ##################################################################################################################
+    knn = KNeighborsClassifier(n_neighbors=1)
+    knn.fit(X_train, y_train)
+
+    # ##################################################################################################################
+    # 1.7.5 予測を行う
+    # ##################################################################################################################
+    X_new = np.array([[5, 2.9, 1, 0.2]])
+    prediction = knn.predict(X_new)
+    print("Prediction: {}".format(prediction))
+    # Prediction: [0]
+    print("Predicted target name: {}".format(iris_dataset['target_names'][prediction]))
+    # Predicted target name: ['setosa']
+
+
+    # ##################################################################################################################
+    # 1.7.6 モデルの評価
+    # ##################################################################################################################
+    y_pred = knn.predict(X_test)
+    print("Test set predictions:\n {}".format(y_pred))
+    # Test set predictions:
+    # [2 1 0 2 0 2 0 1 1 1 2 1 1 1 1 0 1 1 0 0 2 1 0 0 2 0 0 1 1 0 2 1 0 2 2 1 0
+    #  2]
+    print("Test set score: {:.2f}".format(np.mean(y_pred == y_test)))
+    print("Test set score: {:.2f}".format(knn.score(X_test, y_test))) # scoreメソッドでも良い
+    # Test set score: 0.97
+
 
 if __name__ == "__main__":
     main()
