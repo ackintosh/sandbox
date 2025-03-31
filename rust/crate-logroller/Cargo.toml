@@ -5,3 +5,6 @@ edition = "2024"
 
 [dependencies]
 logroller = "0.1.6"
+
+# https://github.com/trayvonpan/logroller/pull/6
+#logroller = { git = "https://github.com/macladson/logroller.git", rev = "b1a1c5d8ca33590e3807a2bfc9aaca2d16f88afc" }
