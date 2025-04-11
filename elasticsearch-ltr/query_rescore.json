@@ -1,0 +1,22 @@
+{
+  "profile": true,
+  "explain": true,
+  "query": {
+    "match": {
+      "title": "hardware"
+    }
+  },
+  "rescore": {
+    "window_size": 1000,
+    "query": {
+      "rescore_query": {
+        "sltr": {
+          "params": {
+            "keyword": "hardware"
+          },
+          "model": "my_model"
+        }
+      }
+    }
+  }
+}

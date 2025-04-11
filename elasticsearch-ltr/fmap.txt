@@ -1,0 +1,3 @@
+0 title_relevance q
+1 popularity_value q
+2 product_of_relevance_and_popularity q

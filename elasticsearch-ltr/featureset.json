@@ -1,0 +1,38 @@
+{
+  "featureset": {
+    "features": [
+      {
+        "name": "title_relevance",
+        "params": ["keyword"],
+        "template_language": "mustache",
+        "template": {
+          "match": {
+            "title": "{{keyword}}"
+          }
+        }
+      },
+      {
+        "name": "popularity_value",
+        "params": [],
+        "template_language": "mustache",
+        "template": {
+          "function_score": {
+            "query": {
+              "match_all": {}
+            },
+            "field_value_factor": {
+              "field": "popularity",
+              "missing": 0
+            }
+          }
+        }
+      },
+      {
+        "name": "product_of_relevance_and_popularity",
+        "params": [],
+        "template_language": "derived_expression",
+        "template": "title_relevance * popularity_value"
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "query": {
+    "match": {
+      "title": "hardware"
+    }
+  },
+  "rescore": {
+    "query": {
+      "rescore_query": {
+        "sltr": {
+          "params": {
+            "keyword": "hardware"
+          },
+          "featureset": "my_featureset"
+        }
+      },
+      "rescore_query_weight": 0.0
+    },
+    "window_size": 100
+  },
+  "ext": {
+    "ltr_log": {
+      "log_specs": {
+        "name": "log_entry0",
+        "rescore_index": 0
+      }
+    }
+  }
+}
