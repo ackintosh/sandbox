@@ -1,7 +1,6 @@
-version: '3.7'
 services:
   postgres:
-    image: postgres:13-alpine
+    image: postgres:16-alpine
     container_name: postgres-sandbox
     ports:
       - "5432:5432"
@@ -13,7 +12,14 @@ services:
     command: -c max_connections=14
     volumes:
       - postgresql-data:/var/lib/postgresql/data
-      - ./init-db/*:/docker-entrypoint-initdb.d/
+      - ./init_db/:/docker-entrypoint-initdb.d/
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
 volumes:
   postgresql-data:
     driver: local
