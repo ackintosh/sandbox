@@ -28,7 +28,11 @@ sandbox_db=# SHOW TRANSACTION ISOLATION LEVEL;
 
 ## Repeatable read
 
-#### ファントムリードが発生しない
+※PostgreSQLの場合は、ファントムリードが発生しない。
+
+#### ファントムリードが発生しない (※PostgreSQLの場合)
+
+SQL標準では、Repeatable readではファントムリードが「発生する」。PostgreSQLが特殊。
 
 ```sql
 # 分離レベルを REPEATABLE READ に変更
