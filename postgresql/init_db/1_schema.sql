@@ -9,3 +9,12 @@ CREATE TABLE sandbox_schema.weather (
     prcp            real,          -- 降水量
     date            date
 );
+
+CREATE TABLE sandbox_schema.item (
+    id BIGSERIAL PRIMARY KEY,
+    category_id INTEGER,
+    name TEXT,
+    description TEXT,
+    created_at TIMESTAMP WITHOUT TIME ZONE
+);
+

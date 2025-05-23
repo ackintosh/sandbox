@@ -4,67 +4,30 @@
 
 ```bash
 # adminer
-open http://localhost:8080
+open http://localhost:8080/?pgsql=postgres&username=sandbox_user&db=sandbox_db&ns=sandbox_schema
 
 # psql
 psql -h localhost sandbox_db -U sandbox_user
+
+# DBを削除する
+docker compose down
+docker volume rm postgresql_postgresql-data
 ```
 
-## 分離レベル 確認
+- [トランザクション分離レベル](./isolation_levels.md)
+- [インデックス作成](create_index.md)
+
+## データ投入
 
 ```sql
-sandbox_db=# SHOW TRANSACTION ISOLATION LEVEL;
- transaction_isolation
------------------------
- read committed
-(1 row)
+# itemテーブルに1,000万件投入する
+INSERT INTO sandbox_schema.item (category_id, name, description, created_at)
+SELECT
+    (random() * 1000)::int,
+    md5(random()::text),
+    md5(random()::text) || md5(random()::text),
+    now() - (random() * interval '365 days')
+FROM generate_series(1, 10000000);
 ```
 
-## Read uncommitted
-
-- PostgreSQLではこのレベルを指定しても、`Read committed` として扱う
-
-## Read committed (デフォルト)
-
-## Repeatable read
-
-※PostgreSQLの場合は、ファントムリードが発生しない。
-
-#### ファントムリードが発生しない (※PostgreSQLの場合)
-
-SQL標準では、Repeatable readではファントムリードが「発生する」。PostgreSQLが特殊。
-
-```sql
-# 分離レベルを REPEATABLE READ に変更
-BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ;
-
-# weatherテーブルにはレコード無し
-select * from sandbox_schema.weather;
- city | temp_lo | temp_hi | prcp | date
-------+---------+---------+------+------
-(0 rows)
-
-# 別のターミナルで新規レコードを挿入する
-begin;
-insert into sandbox_schema.weather values ('c', 99, 999, 999, '2025-05-06');
-commit;
-
-# 元のターミナルで再度selectしてもレコードは無し
-select * from sandbox_schema.weather;
- city | temp_lo | temp_hi | prcp | date
-------+---------+---------+------+------
-(0 rows)
-
-# トランザクションをロールバックしてから再度selectすると、
-# 別ターミナルで挿入したレコードが見れるようになる。
-#  → ファントムリードが発生していない
-rollback;
-select * from sandbox_schema.weather;
- city | temp_lo | temp_hi | prcp |    date
-------+---------+---------+------+------------
- c    |      99 |     999 |  999 | 2025-05-06
-(1 row)
-```
-
-## Serializable
 
