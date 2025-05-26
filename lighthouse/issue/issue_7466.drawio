@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="T8pmpTCMuDaPm9wjzUCa" name="Page-1">
-        <mxGraphModel dx="2062" dy="1612" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+        <mxGraphModel dx="2462" dy="1612" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -124,8 +124,8 @@
                 </mxCell>
                 <mxCell id="265" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="540" y="795" as="sourcePoint"/>
-                        <mxPoint x="220" y="811" as="targetPoint"/>
+                        <mxPoint x="538" y="795" as="sourcePoint"/>
+                        <mxPoint x="218" y="811" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="266" value="" style="shape=curlyBracket;whiteSpace=wrap;html=1;rounded=1;labelPosition=left;verticalLabelPosition=middle;align=right;verticalAlign=middle;" vertex="1" parent="1">
@@ -134,7 +134,7 @@
                 <mxCell id="267" value="Rate limiting wait_time_ms=2850" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="444" y="708" width="194" height="74" as="geometry"/>
                 </mxCell>
-                <mxCell id="268" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 51, 51));&quot;&gt;2860ms&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1;fontColor=light-dark(#000000,#FF3333);" vertex="1" connectable="0" parent="1">
+                <mxCell id="268" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 51, 51));&quot;&gt;2860ms&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1;fontColor=light-dark(#000000,#FF3333);fontSize=14;" vertex="1" connectable="0" parent="1">
                     <mxGeometry x="154.9999248302988" y="735.0017477995159" as="geometry">
                         <mxPoint x="-8" y="-1" as="offset"/>
                     </mxGeometry>
@@ -156,6 +156,24 @@
                 </mxCell>
                 <mxCell id="275" value="3s" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
                     <mxGeometry x="682" y="683.5" width="31" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="277" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fillColor=none;strokeColor=light-dark(#000000,#FF3333);" vertex="1" parent="1">
+                    <mxGeometry x="121" y="601" width="524" height="96" as="geometry"/>
+                </mxCell>
+                <mxCell id="279" value="&lt;font color=&quot;#121212&quot;&gt;Due to some latency here, the measurement result on the sender side ended up being shorter.&lt;/font&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="1">
+                    <mxGeometry x="-318" y="631" width="335" height="146" as="geometry"/>
+                </mxCell>
+                <mxCell id="280" value="" style="endArrow=none;dashed=1;html=1;entryX=-0.004;entryY=0.406;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="277">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="18" y="712" as="sourcePoint"/>
+                        <mxPoint x="-157" y="442" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="281" value="" style="endArrow=none;dashed=1;html=1;exitX=1;exitY=0.562;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="279">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="28" y="722" as="sourcePoint"/>
+                        <mxPoint x="113" y="732" as="targetPoint"/>
+                    </mxGeometry>
                 </mxCell>
             </root>
         </mxGraphModel>
