@@ -15,7 +15,8 @@ docker volume rm postgresql_postgresql-data
 ```
 
 - [トランザクション分離レベル](./isolation_levels.md)
-- [インデックス作成](create_index.md)
+- [インデックス作成](./create_index.md)
+- [TRUCATE TABLE](./trucate_table.md)
 
 ## データ投入
 
