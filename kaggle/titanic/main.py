@@ -109,3 +109,61 @@ for tr_idx, va_idx in kf.split(train_x):
 logloss = np.mean(scores_logloss)
 accuracy = np.mean(scores_accuracy)
 print(f'logloss: {logloss:.4f}, accuracy: {accuracy:.4f}')
+
+# ############################################
+# モデルチューニング
+# ############################################
+import itertools
+
+# チューニング対象のパラメータを準備する
+param_space = {
+    'max_depth': [3, 5, 7],  # 木の深さ
+    'min_child_weight': [1.0, 2.0, 4.0],  # 葉の最小重み
+}
+
+# 探索するハイパーパラメータの組み合わせ
+param_conbinations = itertools.product(*param_space.values())
+
+# 各パラメータの組み合わせ、それに対するスコアを保存するリスト
+params = []
+scores = []
+
+# 各パラメータの組み合わせごとに、クロスバリデーションで評価する
+for max_depth, min_child_weight in param_conbinations:
+    score_folds = []
+    # クロスバリデーションを行う
+    # 学習データを4分割し 1つをバリデーションデータとすることを、バリデーションデータを変えて繰り返す
+    kf = KFold(n_splits=4, shuffle=True, random_state=12345)
+    for tr_idx, va_idx in kf.split(train_x):
+        # 学習データを、学習データとバリデーションデータに分割
+        tr_x, va_x = train_x.iloc[tr_idx], train_x.iloc[va_idx]
+        tr_y, va_y = train_y.iloc[tr_idx], train_y.iloc[va_idx]
+
+        # モデルの学習を行う
+        model = XGBClassifier(
+            n_estimators=20,  # 木の数
+            random_state=71,  # 乱数シード
+            max_depth=max_depth,  # 木の深さ
+            min_child_weight=min_child_weight,  # 葉の最小重み
+        )
+        model.fit(tr_x, tr_y)
+
+        # バリデーションデータの予測を確率で出力する
+        va_pred = model.predict_proba(va_x)[:, 1]
+        # バリデーションデータでのスコアを計算する
+        logloss = log_loss(va_y, va_pred)
+        score_folds.append(logloss)
+
+    # 各foldのスコアの平均を計算する
+    score_mean = np.mean(score_folds)
+    # パラメータとスコアを保存する
+    params.append((max_depth, min_child_weight))
+    scores.append(score_mean)
+
+# 最もスコアが良いものをベストなパラメータとする
+best_idx = np.argmin(scores)
+print('scores', scores)
+print('best_idx', best_idx)
+best_param = params[best_idx]
+print(f'Best parameters: max_depth={best_param[0]}, min_child_weight={best_param[1]}')
+print(f'Best logloss: {scores[best_idx]:.4f}')
