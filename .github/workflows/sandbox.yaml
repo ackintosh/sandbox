@@ -9,6 +9,14 @@
 
 # 必須項目は `on` と `runs-on` の2つ
 
+# =============================================================================================================
+# =============================================================================================================
+# =============================================================================================================
+# 長時間走っていた？ようなのでコメントアウト
+# https://github.com/ackintosh/sandbox/actions/runs/15819582550
+# =============================================================================================================
+# =============================================================================================================
+# =============================================================================================================
 
 # ワークフロー名
 name: Workflow for sandbox
@@ -155,51 +163,51 @@ jobs:
   #####################################################################
   # ジョブの依存関係を指定していないので `sandboxJob` と並列に実行される
   #####################################################################
-  runsConcurrently:
-    name: this job shows that the jobs are run concurrently
-    runs-on: ubuntu-18.04
-    steps:
-      - name: name for step1
-        run: echo $MESSAGE1
-      - name: name for step2
-        run: sleep 3
-      - name: name for step3
-        run: echo $MESSAGE2 from "runsConcurrently"
+  #runsConcurrently:
+  #  name: this job shows that the jobs are run concurrently
+  #  runs-on: ubuntu-18.04
+  #  steps:
+  #    - name: name for step1
+  #      run: echo $MESSAGE1
+  #    - name: name for step2
+  #      run: sleep 3
+  #    - name: name for step3
+  #      run: echo $MESSAGE2 from "runsConcurrently"
 
   #####################################################################
   # `needs` で依存関係を指定したジョブ
   #####################################################################
-  dependsOnSandboxJob:
-    name: depends on sandboxJob
-    needs: sandboxJob # `sandboxJob` に依存する
-    runs-on: ubuntu-18.04
-    steps:
-      - name: name for step1
-        # 複数行のコマンドを実行する場合はYAMLのブロックスタイル式 `|` の記述をする
-        run: |
-          echo Hello \
-               from \
-               dependsOnSandboxJob
+  #dependsOnSandboxJob:
+  #  name: depends on sandboxJob
+  #  needs: sandboxJob # `sandboxJob` に依存する
+  #  runs-on: ubuntu-18.04
+  #  steps:
+  #    - name: name for step1
+  #      # 複数行のコマンドを実行する場合はYAMLのブロックスタイル式 `|` の記述をする
+  #      run: |
+  #        echo Hello \
+  #             from \
+  #             dependsOnSandboxJob
 
   #####################################################################
   # ジョブ全体を特定のコンテナで実行する
   # * `jobs.＜ジョブID＞.container` でコンテナを指定する
   #####################################################################
-  runInContainer:
-    name: this job runs in container that specified in the `container` parameter
-    runs-on: ubuntu-18.04
-    # コンテナを指定する
-    # * 各ステップで明示的にコンテナが指定されない限り、ここで指定したコンテナ内で各ステップの処理が実行される
-    container:
-      image: busybox:latest
-      env:
-        MESSAGE: Hello from busybox
-      # ports:
-      # volumes:
-      # options: 
-    steps:
-      - name: greetings
-        run: echo $MESSAGE # `container.env` で設定した環境変数を出力する
+  #runInContainer:
+  #  name: this job runs in container that specified in the `container` parameter
+  #  runs-on: ubuntu-18.04
+  #  # コンテナを指定する
+  #  # * 各ステップで明示的にコンテナが指定されない限り、ここで指定したコンテナ内で各ステップの処理が実行される
+  #  container:
+  #    image: busybox:latest
+  #    env:
+  #      MESSAGE: Hello from busybox
+  #    # ports:
+  #    # volumes:
+  #    # options: 
+  #  steps:
+  #    - name: greetings
+  #      run: echo $MESSAGE # `container.env` で設定した環境変数を出力する
 
   #####################################################################
   # 各ステップとは並列に動作するコンテナを起動する
@@ -218,24 +226,24 @@ jobs:
   # * 各種ストレージのserviceを使っている例
   # https://github.com/symfony/symfony/blob/5.x/.github/workflows/tests.yml
   #####################################################################
-  runServices:
-    name: A job using Redis service
-    runs-on: ubuntu-18.04
-    services:
-      redis-service: # サービス名
-        # 以下のパラメータは `container` と同じ
-        image: redis:latest
-    steps:
-      - name: set a greeting message to the Redis server
-        uses: docker://redis:latest
-        with:
-          # usersで指定したDockerコンテナからアクセスするので、`redis-service` で名前解決できる
-          # -> Dockerコンテナを使わず、直接ランナーマシン上で実行する場合は `localhost` でアクセスする
-          args: sh -c "echo 'SET greetings Hello!' | redis-cli -h redis-service -p 6379"
-      - name: get the greeting message which is set by the previous step
-        uses: docker://redis:latest
-        with:
-          args: sh -c "echo 'GET greetings' | redis-cli -h redis-service -p 6379"
+  #runServices:
+  #  name: A job using Redis service
+  #  runs-on: ubuntu-18.04
+  #  services:
+  #    redis-service: # サービス名
+  #      # 以下のパラメータは `container` と同じ
+  #      image: redis:latest
+  #  steps:
+  #    - name: set a greeting message to the Redis server
+  #      uses: docker://redis:latest
+  #      with:
+  #        # usersで指定したDockerコンテナからアクセスするので、`redis-service` で名前解決できる
+  #        # -> Dockerコンテナを使わず、直接ランナーマシン上で実行する場合は `localhost` でアクセスする
+  #        args: sh -c "echo 'SET greetings Hello!' | redis-cli -h redis-service -p 6379"
+  #    - name: get the greeting message which is set by the previous step
+  #      uses: docker://redis:latest
+  #      with:
+  #        args: sh -c "echo 'GET greetings' | redis-cli -h redis-service -p 6379"
 
   #####################################################################
   # 実行時の情報を利用する
@@ -243,68 +251,68 @@ jobs:
   # * 利用できる情報は下記のドキュメントを参照
   #   * https://help.github.com/en/actions/automating-your-workflow-with-github-actions/contexts-and-expression-syntax-for-github-actions
   #####################################################################
-  useContexts:
-    name: use contexts
-    runs-on: ubuntu-18.04
-    steps:
-      - name: print contexts
-        run: |
-          echo ${{ github.workflow }} &&
-          echo ${{ github.repository }} &&
-          echo ${{ github.sha }}
+  #useContexts:
+  #  name: use contexts
+  #  runs-on: ubuntu-18.04
+  #  steps:
+  #    - name: print contexts
+  #      run: |
+  #        echo ${{ github.workflow }} &&
+  #        echo ${{ github.repository }} &&
+  #        echo ${{ github.sha }}
 
   #####################################################################
   # プラットフォームやバージョンを変えながら同じ処理を実行する
   # * build matrix
   #####################################################################
-  buildMatrix:
-    name: use build matrix
-    runs-on: ubuntu-18.04
-    strategy:
-      matrix:
-        version: [1, 2, 3]
-    steps:
-      - name: print the version
-        run: echo version ${{ matrix.version }}
-  buildMatrixCombination:
-    name: build matrix combination
-    runs-on: ubuntu-18.04
-    strategy:
-      matrix:
-        os: [ubuntu-16.04, ubuntu-18.04]
-        version: [1, 2, 3]
-    steps:
-      - name: print the combination
-        run: echo os ${{ matrix.os }}  version ${{ matrix.version }}
+  #buildMatrix:
+  #  name: use build matrix
+  #  runs-on: ubuntu-18.04
+  #  strategy:
+  #    matrix:
+  #      version: [1, 2, 3]
+  #  steps:
+  #    - name: print the version
+  #      run: echo version ${{ matrix.version }}
+  #buildMatrixCombination:
+  #  name: build matrix combination
+  #  runs-on: ubuntu-18.04
+  #  strategy:
+  #    matrix:
+  #      os: [ubuntu-16.04, ubuntu-18.04]
+  #      version: [1, 2, 3]
+  #  steps:
+  #    - name: print the combination
+  #      run: echo os ${{ matrix.os }}  version ${{ matrix.version }}
 
   #####################################################################
   # リポジトリのenvファイルから環境変数を設定する
   # https://docs.github.com/ja/actions/reference/workflow-commands-for-github-actions#setting-an-environment-variable
   #####################################################################
-  setEnvironmentVariableFromFile:
-    name: set env var
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2
+  #setEnvironmentVariableFromFile:
+  #  name: set env var
+  #  runs-on: ubuntu-18.04
+  #  steps:
+  #    - uses: actions/checkout@v2
 
-      - name: print empty values
-        run: echo "before -> " && echo "$foo $bar $baz" && echo "."
-      - name: set env var
-        run: cat sandbox.env | grep -v '^#' >> $GITHUB_ENV
-      - name: print the env var
-        run: echo "after -> " && echo "$foo $bar $baz" && echo "."
+  #    - name: print empty values
+  #      run: echo "before -> " && echo "$foo $bar $baz" && echo "."
+  #    - name: set env var
+  #      run: cat sandbox.env | grep -v '^#' >> $GITHUB_ENV
+  #    - name: print the env var
+  #      run: echo "after -> " && echo "$foo $bar $baz" && echo "."
 
-  workingDirectory:
-    name: working-directory
-    runs-on: ubuntu-18.04
-    strategy:
-      matrix:
-        dir: [discv5]
-    defaults:
-      run:
-        working-directory: ${{ matrix.dir }}
-    steps:
-      - uses: actions/checkout@v2
-      - name: ls
-        run: ls -l .
+  #workingDirectory:
+  #  name: working-directory
+  #  runs-on: ubuntu-18.04
+  #  strategy:
+  #    matrix:
+  #      dir: [discv5]
+  #  defaults:
+  #    run:
+  #      working-directory: ${{ matrix.dir }}
+  #  steps:
+  #    - uses: actions/checkout@v2
+  #    - name: ls
+  #      run: ls -l .
 
