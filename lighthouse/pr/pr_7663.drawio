@@ -1,0 +1,127 @@
+<mxfile host="65bd71144e">
+    <diagram id="T8pmpTCMuDaPm9wjzUCa" name="Page-1">
+        <mxGraphModel dx="2223" dy="1040" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="147" value="Node A" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="248" y="156" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="148" value="Node B" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="568" y="156" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="149" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0.5;exitDx=0;exitDy=-15;exitPerimeter=0;" parent="1" source="250" target="147" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="307" y="756" as="sourcePoint"/>
+                        <mxPoint x="357" y="466" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="150" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0.5;exitDx=0;exitDy=-15;exitPerimeter=0;" parent="1" source="193" target="148" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="627" y="756" as="sourcePoint"/>
+                        <mxPoint x="626.5" y="356" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="192" value="End" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" parent="1" vertex="1">
+                    <mxGeometry x="267" y="1169" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="193" value="End" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" parent="1" vertex="1">
+                    <mxGeometry x="587" y="1166" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="210" value="" style="endArrow=classic;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" edge="1" target="250">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="627" y="253" as="sourcePoint"/>
+                        <mxPoint x="424" y="296" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="221" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="67" y="386" width="44" height="333" as="geometry"/>
+                </mxCell>
+                <mxCell id="233" value="Request&lt;div&gt;e.g. BlocksByRange&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="421" y="240" width="152" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="241" value="" style="endArrow=none;dashed=1;html=1;entryX=0;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="268" target="266" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="703" y="655" as="sourcePoint"/>
+                        <mxPoint x="753" y="605" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="248" value="" style="endArrow=classic;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="256">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="627" y="381" as="sourcePoint"/>
+                        <mxPoint x="347" y="424" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="251" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0.5;exitDx=0;exitDy=-15;exitPerimeter=0;" edge="1" parent="1" source="192" target="250">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="307" y="1169" as="sourcePoint"/>
+                        <mxPoint x="308" y="196" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="250" value="Start processing BlocksByRange request" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="232" y="283" width="152" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="252" value="" style="endArrow=classic;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="250" target="221">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="107" y="335" as="sourcePoint"/>
+                        <mxPoint x="-207" y="386" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="254" value="Disconnect" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="413" y="395" width="152" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="256" value="Process disconnected event" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="213" y="444" width="152" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="257" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="209" y="533" width="44" height="333" as="geometry"/>
+                </mxCell>
+                <mxCell id="258" value="" style="endArrow=classic;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="256" target="257">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="581" y="611" as="sourcePoint"/>
+                        <mxPoint x="319" y="694" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="259" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="626" y="589" as="sourcePoint"/>
+                        <mxPoint x="320" y="687" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="260" value="Connect" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="415" y="614" width="152" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="261" value="Remove active requests" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="160" y="595" width="152" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="262" value="BeaconProcessor" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="59" y="427" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="263" value="Network and RPC" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="166" y="557" width="128" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="264" value="Process request" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="13" y="509" width="152" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="265" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="221" target="266">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="280" y="333" as="sourcePoint"/>
+                        <mxPoint x="175" y="767" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="266" value="Active requset not found" style="rounded=0;whiteSpace=wrap;html=1;fontColor=light-dark(#000000,#FF3333);fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="151" y="770" width="152" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="267" value="Send response" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="15" y="658" width="152" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="268" value="At this point, Node A is connected to Node B, but the active request has already been removed." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="1">
+                    <mxGeometry x="-104" y="862" width="289" height="139" as="geometry"/>
+                </mxCell>
+                <mxCell id="269" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 0));&quot;&gt;We need to check not just whether Node B is online, but also if the &lt;b&gt;ConnectionId&lt;/b&gt; still live?&lt;/font&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="1">
+                    <mxGeometry x="-30" y="974" width="299" height="116" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
