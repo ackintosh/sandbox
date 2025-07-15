@@ -59,7 +59,7 @@ ls -i /media/akihito/writable/mvtest2
 # 出力例: 12 /media/akihito/writable/mvtest2
 
 # mv コマンドで上書き
-mv /media/akihito/writable/mvtest2 /tmp/mvtest1
+sudo mv /media/akihito/writable/mvtest2 /tmp/mvtest1
 echo 'mvコマンドで上書き完了'
 
 echo 'inode番号を再確認'
@@ -68,7 +68,7 @@ ls -i /tmp/mvtest1
 #  → mvコマンドの前とinode番号が同じ = 同一inodeが上書きされた
 
 # 後片付け
-rm /tmp/mvtest1
+sudo rm /tmp/mvtest1
 echo 'テスト2完了'
 echo ''
 
