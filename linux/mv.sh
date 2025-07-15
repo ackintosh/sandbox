@@ -47,7 +47,7 @@ echo -n '/tmp/mvtest1: '
 cat /tmp/mvtest1
 # sudo echo b >> mvtest2 だと、echoにはsudoが効くが、リダイレクトには聞かないのでPermission Deniedになってしまう
 # なので、代わりに tee を使っている
-echo b | sudo tee /media/akihito/writable/mvtest2
+echo b | sudo tee /media/akihito/writable/mvtest2 > /dev/null
 echo -n '/media/akihito/writable/mvtest2: '
 cat /media/akihito/writable/mvtest2
 
