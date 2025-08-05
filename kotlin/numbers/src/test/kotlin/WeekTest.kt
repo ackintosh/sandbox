@@ -1,13 +1,7 @@
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
-import java.math.BigDecimal
-import java.time.Clock
 import java.time.DayOfWeek
 import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.ZoneId
 import java.time.temporal.WeekFields
-import java.util.Locale
 
 class WeekTest {
     @Test
@@ -32,20 +26,22 @@ class WeekTest {
         val weekFields = WeekFields.of(DayOfWeek.MONDAY, 1)  // 週の開始：月曜日、最小週番号：1
 
         val weekOfYear = date.get(weekFields.weekOfYear())
-//        val weekOfMonth = date.get(weekFields.weekOfMonth())
-
         val prevDate = date.minusWeeks(1)
         val prevWeekOfYear = prevDate.get(weekFields.weekOfYear())
-//        val prevWeekOfMonth = prevDate.get(weekFields.weekOfMonth())
+
+        // 直近の過去の土曜日を計算
+        val nearestPastSaturday = date.with(java.time.temporal.TemporalAdjusters.previousOrSame(DayOfWeek.SATURDAY))
+        val nearestPastSaturdayWeekOfYear = nearestPastSaturday.get(weekFields.weekOfYear())
 
         println("==================================")
-        println("日付: $date")
+        println("日付: $date (${date.dayOfWeek.getDisplayName(java.time.format.TextStyle.FULL, java.util.Locale.JAPANESE)})")
         println("年の第 $weekOfYear 週")
-//        println("月の第 $weekOfMonth 週")
         println()
-        println("前の週の日付: $prevDate")
+        println("前の週の日付: $prevDate (${prevDate.dayOfWeek.getDisplayName(java.time.format.TextStyle.FULL, java.util.Locale.JAPANESE)})")
         println("年の第 $prevWeekOfYear 週")
-//        println("月の第 $prevWeekOfMonth 週")
+        println()
+        println("直近の土曜日: $nearestPastSaturday (${nearestPastSaturday.dayOfWeek.getDisplayName(java.time.format.TextStyle.FULL, java.util.Locale.JAPANESE)})")
+        println("年の第 $nearestPastSaturdayWeekOfYear 週")
         println()
     }
 }
