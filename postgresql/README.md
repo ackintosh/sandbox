@@ -4,7 +4,7 @@
 
 ```bash
 # adminer
-open http://localhost:8080/?pgsql=postgres&username=sandbox_user&db=sandbox_db&ns=sandbox_schema
+open 'http://localhost:8080/?pgsql=postgres&username=sandbox_user&db=sandbox_db&ns=sandbox_schema'
 
 # psql
 psql -h localhost sandbox_db -U sandbox_user
@@ -16,7 +16,8 @@ docker volume rm postgresql_postgresql-data
 
 - [トランザクション分離レベル](./isolation_levels.md)
 - [インデックス作成](./create_index.md)
-- [TRUCATE TABLE](./trucate_table.md)
+- [TRUCATE TABLE](./truncate_table.md)
+- [DELETE](./delete.md)
 
 ## データ投入
 
