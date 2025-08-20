@@ -90,6 +90,7 @@ exclude = [
   "crate-influxdb",
   "crate-logroller",
   "crate-native-tls",
+  "crate-opentelemetry",
   "crate-reqwest",
   "crate-rtnetlink",
   "crate-security-framework",
