@@ -8,6 +8,13 @@ distributor:
         grpc:
         http:
 
+ingester:
+  lifecycler:
+    ring:
+      kvstore:
+        store: memberlist      # 単一/同一プロセスならこれでOK
+memberlist: {}                 # 追加設定不要
+
 storage:
   trace:
     backend: local
