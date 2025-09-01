@@ -4,6 +4,15 @@ use opentelemetry_otlp::WithExportConfig;
 use tracing_opentelemetry::OpenTelemetryLayer;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 
+// cd sandbox/grafana-tempo
+// docker compose up
+// open http://localhost:3000
+//    -> admin/admin
+
+// TraceQL
+// {}
+// { resource.service.name = "service_name_sandbox"}
+
 pub fn init_telemetry() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
 
     let exporter = opentelemetry_otlp::SpanExporter::builder()
@@ -33,6 +42,7 @@ pub fn init_telemetry() -> Result<(), Box<dyn std::error::Error + Send + Sync>> 
 #[instrument]
 pub fn add(left: u64, right: u64) -> u64 {
     info!("Adding {} + {}", left, right);
+    println!("Adding {} + {}", left, right);
     left + right
 }
 
@@ -49,6 +59,7 @@ mod tests {
         assert_eq!(result, 6);
 
         // Give some time for traces to be exported
-        tokio::time::sleep(std::time::Duration::from_millis(100)).await;
+        tokio::time::sleep(std::time::Duration::from_millis(500)).await;
+        println!("Done");
     }
 }
