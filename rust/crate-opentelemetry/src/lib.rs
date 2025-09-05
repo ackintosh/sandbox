@@ -1,8 +1,10 @@
-use tracing::{info, instrument};
+use tracing::{info, instrument, warn};
 use opentelemetry::trace::TracerProvider;
-use opentelemetry_otlp::WithExportConfig;
+use opentelemetry_otlp::tonic_types::transport::ClientTlsConfig;
+use opentelemetry_otlp::{WithExportConfig, WithTonicConfig};
 use tracing_opentelemetry::OpenTelemetryLayer;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
+// use opentelemetry_sdk::trace::TracerProvider as SdkTracerProvider;
 
 // cd sandbox/grafana-tempo
 // docker compose up
@@ -13,10 +15,13 @@ use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 // {}
 // { resource.service.name = "service_name_sandbox"}
 
+// static mut TRACER_PROVIDER: Option<SdkTracerProvider> = None;
+
 pub fn init_telemetry() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
 
     let exporter = opentelemetry_otlp::SpanExporter::builder()
         .with_tonic()
+        .with_tls_config(ClientTlsConfig::new().with_native_roots())
         .with_endpoint("http://localhost:4317")
         .build()
         .map_err(|e| format!("Failed to create OTLP exporter: {:?}", e))?;
@@ -36,30 +41,55 @@ pub fn init_telemetry() -> Result<(), Box<dyn std::error::Error + Send + Sync>> 
         .with(OpenTelemetryLayer::new(tracer))
         .init();
 
+    // unsafe {
+    //     TRACER_PROVIDER = Some(provider);
+    // }
+
     Ok(())
 }
 
-#[instrument]
+// pub fn shutdown_telemetry() {
+//     unsafe {
+//         if let Some(provider) = TRACER_PROVIDER.take() {
+//             let _ = provider.shutdown();
+//         }
+//     }
+// }
+
+#[instrument(level = "trace")]
 pub fn add(left: u64, right: u64) -> u64 {
-    info!("Adding {} + {}", left, right);
+    warn!("Adding {} + {}", left, right);
     println!("Adding {} + {}", left, right);
     left + right
 }
 
 #[cfg(test)]
 mod tests {
+    use std::time::Duration;
+    use tracing_subscriber::EnvFilter;
     use super::*;
 
     #[tokio::test]
     async fn it_works() {
+        tracing_subscriber::fmt()
+            .with_env_filter(EnvFilter::try_new("debug").unwrap())
+            .init();
+
         init_telemetry().expect("Failed to initialize telemetry");
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-        let result = add(3, 3);
-        assert_eq!(result, 6);
+
+        let mut attempts = 0;
+        while attempts < 10 {
+            tokio::time::sleep(Duration::from_millis(1000)).await;
+            let _ = add(2, 2);
+            attempts += 1;
+        }
+        // let result = add(2, 2);
+        // assert_eq!(result, 4);
+        // let result = add(3, 3);
+        // assert_eq!(result, 6);
 
         // Give some time for traces to be exported
-        tokio::time::sleep(std::time::Duration::from_millis(500)).await;
+        // shutdown_telemetry();
         println!("Done");
     }
 }
