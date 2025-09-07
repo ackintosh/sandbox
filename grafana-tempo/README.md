@@ -1,6 +1,14 @@
 # Grafana + Tempo
 
+Docs
+
+- https://github.com/grafana/tempo
+- [Example setups | Grafana Tempo documentation](https://grafana.com/docs/tempo/latest/getting-started/example-demo-app/)
+- [Best practices for traces | Grafana Tempo documentation](https://grafana.com/docs/tempo/latest/getting-started/best-practices/)
+
+
 ```bash
+# lighthouse
  RUST_MIN_STACK=4194304 lighthouse bn \
   --execution-endpoint http://127.0.0.1:8551 \
   --execution-jwt /tmp/mock-el-jwt.secret \
