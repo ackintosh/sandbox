@@ -1,7 +1,6 @@
-use tracing::{info, instrument, warn};
+use tracing::{instrument, warn};
 use opentelemetry::trace::TracerProvider;
-use opentelemetry_otlp::tonic_types::transport::ClientTlsConfig;
-use opentelemetry_otlp::{WithExportConfig, WithTonicConfig};
+use opentelemetry_otlp::WithExportConfig;
 use tracing_opentelemetry::OpenTelemetryLayer;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt, Layer};
 
@@ -19,7 +18,6 @@ pub fn init_telemetry() -> Result<(), Box<dyn std::error::Error + Send + Sync>> 
 
     let exporter = opentelemetry_otlp::SpanExporter::builder()
         .with_tonic()
-        // .with_tls_config(ClientTlsConfig::new().with_native_roots())
         .with_endpoint("http://127.0.0.1:4317")
         .build()
         .map_err(|e| format!("Failed to create OTLP exporter: {:?}", e))?;
@@ -68,10 +66,6 @@ mod tests {
             let _ = add(2, 2);
             attempts += 1;
         }
-        // let result = add(2, 2);
-        // assert_eq!(result, 4);
-        // let result = add(3, 3);
-        // assert_eq!(result, 6);
 
         println!("Done");
     }
