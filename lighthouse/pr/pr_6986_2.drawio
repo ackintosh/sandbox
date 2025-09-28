@@ -1,0 +1,112 @@
+<mxfile host="65bd71144e">
+    <diagram id="T8pmpTCMuDaPm9wjzUCa" name="Page-1">
+        <mxGraphModel dx="2303" dy="1213" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="147" value="Sender" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="-129" y="159" width="300" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="148" value="Receiver" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="800" y="159" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="150" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" target="148" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="860" y="800" as="sourcePoint"/>
+                        <mxPoint x="858.5" y="359" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="210" value="" style="endArrow=classic;html=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="20" y="220" as="sourcePoint"/>
+                        <mxPoint x="860" y="270" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="254" value="Invalid BlocksByRange request" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="540" y="240" width="190" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="268" value="&lt;b&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;x. The handler doesn&#39;t send&amp;nbsp;&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;b&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;`EndOfStream` since it has already been shut down.&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" parent="1" vertex="1">
+                    <mxGeometry x="500.5" y="680" width="269" height="130.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="270" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" target="147" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="21" y="280" as="sourcePoint"/>
+                        <mxPoint x="340" y="196.5" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="271" value="Bans the Sender" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="783" y="300" width="152" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="272" value="&lt;b&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Disconnect the Sender&lt;/font&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="758" y="360" width="206" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="273" value="RPC Behaviour" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="-39" y="320" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="274" value="RPC Handler" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="280" y="320" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="276" value="" style="endArrow=none;dashed=1;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.004;entryY=0.448;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="287" target="296" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="165" y="1449" as="sourcePoint"/>
+                        <mxPoint x="425" y="1319" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="279" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="21" y="800" as="sourcePoint"/>
+                        <mxPoint x="20.5" y="360" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="282" value="NetworkService" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="-300" y="320" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="286" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="340" y="800" as="sourcePoint"/>
+                        <mxPoint x="339.5" y="360" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="287" value="Behaviour handles SwarmEvent&lt;div&gt;FromSwarm::ConnectionClosed&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-86" y="450" width="202" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="288" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" target="282" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-240" y="800" as="sourcePoint"/>
+                        <mxPoint x="30.5" y="370" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="291" value="" style="endArrow=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="282" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="31" y="290" as="sourcePoint"/>
+                        <mxPoint x="20" y="280" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="292" value="" style="endArrow=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" target="273" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="21" y="280" as="sourcePoint"/>
+                        <mxPoint x="30" y="290" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="293" value="" style="endArrow=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" target="274" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="20" y="280" as="sourcePoint"/>
+                        <mxPoint x="31" y="330" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="294" value="Handler shuts down due to the disconect" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="246" y="450" width="202" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="295" value="" style="endArrow=none;dashed=1;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="294" target="296" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="137" y="1504" as="sourcePoint"/>
+                        <mxPoint x="535" y="1369" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="296" value="&lt;b&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;1. IIUC, the Swarm emits the `FromSwarm::ConnectionClosed` and then shuts down the Handler.&lt;/font&gt;&lt;/b&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" parent="1" vertex="1">
+                    <mxGeometry x="465" y="510" width="354" height="130.5" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
