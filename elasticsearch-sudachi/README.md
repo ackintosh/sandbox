@@ -676,3 +676,66 @@ curl --silent -X GET "localhost:9200/discard_punctuation/_analyze?pretty" -H 'Co
 
 ```
 
+## sudachi_readingform TokenFilter
+
+https://github.com/WorksApplications/elasticsearch-sudachi?tab=readme-ov-file#sudachi_readingform
+
+*インデックスを作成*
+
+```bash
+curl -X PUT -H "Content-Type: application/json" "http://localhost:9200/sudachireadingform/" \
+ -d '
+{
+  "settings": {
+    "index": {
+      "analysis": {
+        "filter": {
+          "romaji_readingform": {
+            "type": "sudachi_readingform",
+            "use_romaji": true
+          },
+          "katakana_readingform": {
+            "type": "sudachi_readingform",
+            "use_romaji": false
+          }
+        },
+        "tokenizer": {
+          "sudachi_tokenizer": {
+            "type": "sudachi_tokenizer"
+          }
+        },
+        "analyzer": {
+          "romaji_analyzer": {
+            "tokenizer": "sudachi_tokenizer",
+            "filter": ["romaji_readingform"]
+          },
+          "katakana_analyzer": {
+            "tokenizer": "sudachi_tokenizer",
+            "filter": ["katakana_readingform"]
+          }
+        }
+      }
+    }
+  }
+}
+' | jq
+```
+
+```bash
+# 漢字 → カタカナ
+curl --silent -X POST -H "Content-Type: application/json" 'http://localhost:9200/sudachireadingform/_analyze' -d \
+'
+{
+  "analyzer": "katakana_analyzer",
+  "text": "寿司"
+} ' | jq
+
+# 複雑な文章 → カタカナ
+curl --silent -X POST -H "Content-Type: application/json" 'http://localhost:9200/sudachireadingform/_analyze' -d \
+'
+{
+  "analyzer": "katakana_analyzer",
+  "text": "SMC MXQ12ー50CーM9BAL3ーX11 1個（直送品）"
+} ' | jq -r '.tokens[].token' 
+```
+
