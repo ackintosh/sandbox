@@ -680,7 +680,7 @@ curl --silent -X GET "localhost:9200/discard_punctuation/_analyze?pretty" -H 'Co
 
 https://github.com/WorksApplications/elasticsearch-sudachi?tab=readme-ov-file#sudachi_readingform
 
-*インデックスを作成*
+**インデックスを作成**
 
 ```bash
 curl -X PUT -H "Content-Type: application/json" "http://localhost:9200/sudachireadingform/" \
@@ -720,6 +720,8 @@ curl -X PUT -H "Content-Type: application/json" "http://localhost:9200/sudachire
 }
 ' | jq
 ```
+
+**readingformフィルタを試す**
 
 ```bash
 # 漢字 → カタカナ
