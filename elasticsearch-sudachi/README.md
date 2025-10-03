@@ -12,7 +12,7 @@
 curl -X GET 'http://localhost:9200/_nodes/plugins?pretty' | jq '.nodes[] | .plugins'
 
 # インデックス sudachi_test を作成
-curl -X PUT -H "Content-Type: application/json" 'http://localhost:9200/sudachi_test/' -d @analysis_sudachi_settings.json
+curl -X PUT -H "Content-Type: application/json" 'http://localhost:9200/sudachi_test/' -d @create_index_analysis_sudachi_settings.json
 
 # 作成したインデックスを確認
 curl -X GET 'http://localhost:9200/sudachi_test/?pretty'
