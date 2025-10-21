@@ -676,7 +676,7 @@ curl --silent -X GET "localhost:9200/discard_punctuation/_analyze?pretty" -H 'Co
 
 ```
 
-## sudachi_readingform TokenFilter
+## sudachi_readingform (token filter)
 
 https://github.com/WorksApplications/elasticsearch-sudachi?tab=readme-ov-file#sudachi_readingform
 
@@ -740,4 +740,13 @@ curl --silent -X POST -H "Content-Type: application/json" 'http://localhost:9200
   "text": "SMC MXQ12ー50CーM9BAL3ーX11 1個（直送品）"
 } ' | jq -r '.tokens[].token' 
 ```
+
+## icu_normalizer (token filter)
+
+https://www.elastic.co/docs/reference/elasticsearch/plugins/analysis-icu-normalization-charfilter
+
+
+
+
+
 

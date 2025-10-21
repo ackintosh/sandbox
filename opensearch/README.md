@@ -9,7 +9,7 @@ Bundled plugins: https://docs.opensearch.org/latest/install-and-configure/plugin
 _cat/plugins
 
 ```bash
-$ curl --silent -X GET "https://localhost:9200/_cat/plugins?v" -ku admin:Super-secret1
+$ curl --silent -X GET "http://localhost:9200/_cat/plugins?v" -ku admin:Super-secret1
 
 name         component                            version
 8a379a97a4c4 opensearch-alerting                  2.19.3.0
@@ -85,4 +85,64 @@ $ curl -XPUT "https://localhost:9200/_ltr" -ku admin:Super-secret1
 }
 
 ```
+
+## icu_normalizer (token filter)
+
+※要インストール (Dockerfileを参照)
+
+```bash
+curl --silent -H "Content-Type: application/json" -X POST 'http://localhost:9200/_analyze' -d '
+
+{
+  "tokenizer": "standard",
+  "filter": [
+    {
+      "type": "icu_normalizer",
+      "name": "nfkc_cf"
+    }
+  ],
+  "text": "ＡＢＣ①ｶﾀｶﾅé・㍉Ⅲ㎏"
+}' | jq
+
+{
+  "tokens": [
+    {
+      "token": "abc",
+      "start_offset": 0,
+      "end_offset": 3,
+      "type": "<ALPHANUM>",
+      "position": 0
+    },
+    {
+      "token": "カタカナ",
+      "start_offset": 4,
+      "end_offset": 8,
+      "type": "<KATAKANA>",
+      "position": 1
+    },
+    {
+      "token": "é",
+      "start_offset": 8,
+      "end_offset": 9,
+      "type": "<ALPHANUM>",
+      "position": 2
+    },
+    {
+      "token": "ミリ",
+      "start_offset": 10,
+      "end_offset": 11,
+      "type": "<KATAKANA>",
+      "position": 3
+    },
+    {
+      "token": "iii",
+      "start_offset": 11,
+      "end_offset": 12,
+      "type": "<ALPHANUM>",
+      "position": 4
+    }
+  ]
+}
+```
+
 

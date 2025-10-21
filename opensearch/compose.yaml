@@ -1,7 +1,8 @@
 services:
   # https://hub.docker.com/r/opensearchproject/opensearch
   opensearch:
-    image: opensearchproject/opensearch:2.19.3
+    build: .
+    #image: opensearchproject/opensearch:2.19.3
     environment:
       #- bootstrap.memory_lock=true
       #- "ES_JAVA_OPTS=-Xms512m -Xmx512m"
@@ -12,6 +13,12 @@ services:
       # https://hub.docker.com/r/opensearchproject/opensearch#how-to-use-this-image
       # > Note: For OpenSearch 2.12 and later, a custom password for the admin user is required to be passed to set-up and utilize demo configuration.
       - OPENSEARCH_INITIAL_ADMIN_PASSWORD=Super-secret1
+      #
+      - plugins.security.disabled=true
+    entrypoint: bash -c " /usr/share/opensearch/tmp/entrypoint.sh "
+    volumes:
+      - ./entrypoint.sh:/usr/share/opensearch/tmp/entrypoint.sh
+
     #ulimits:
     #  memlock:
     #    soft: -1
