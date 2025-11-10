@@ -2,6 +2,8 @@
 
 ### TRUCATE TABLE中はテーブルロックが発生する
 
+※ [DELETEの場合はテーブルロックが発生しない](https://github.com/ackintosh/sandbox/blob/master/postgresql/delete.md)
+
 ```sql
 -- *** セッションA ***
 -- トランザクションを開始して TRUNCATE TABLE を実行する

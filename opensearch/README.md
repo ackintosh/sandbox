@@ -90,6 +90,8 @@ $ curl -XPUT "https://localhost:9200/_ltr" -ku admin:Super-secret1
 
 ※要インストール (Dockerfileを参照)
 
+[ICU normalization character filter | Reference](https://www.elastic.co/docs/reference/elasticsearch/plugins/analysis-icu-normalization-charfilter)
+
 ```bash
 curl --silent -H "Content-Type: application/json" -X POST 'http://localhost:9200/_analyze' -d '
 
