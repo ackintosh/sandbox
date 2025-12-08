@@ -1,0 +1,136 @@
+<mxfile host="65bd71144e">
+    <diagram id="T8pmpTCMuDaPm9wjzUCa" name="Page-1">
+        <mxGraphModel dx="2706" dy="872" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="147" value="Lighthouse" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="-598" y="332" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="148" value="Peer" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="-278" y="332" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="149" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0.5;exitDx=0;exitDy=-15;exitPerimeter=0;" parent="1" source="192" target="147" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-538" y="764" as="sourcePoint"/>
+                        <mxPoint x="-533" y="659" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="192" value="End" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" parent="1" vertex="1">
+                    <mxGeometry x="-578" y="823" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="193" value="End" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" parent="1" vertex="1">
+                    <mxGeometry x="-256" y="823" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="213" value="" style="endArrow=classic;html=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-217" y="410" as="sourcePoint"/>
+                        <mxPoint x="-531" y="421" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="244" value="" style="endArrow=classic;html=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-534" y="761" as="sourcePoint"/>
+                        <mxPoint x="-221" y="797" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="249" value="&lt;font color=&quot;#121212&quot;&gt;Response&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="244" vertex="1" connectable="0">
+                    <mxGeometry x="-0.77" y="2" relative="1" as="geometry">
+                        <mxPoint x="85" y="-5" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="253" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0.5;exitDx=0;exitDy=-15;exitPerimeter=0;" parent="1" source="193" target="148" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-219" y="760" as="sourcePoint"/>
+                        <mxPoint x="-213" y="659" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="282" value="&lt;font color=&quot;#121212&quot;&gt;https://chat.sigmapri.me/sigmaprime/pl/gmn51rihx3nmmcbw3hchsxu1gr&lt;/font&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="1">
+                    <mxGeometry x="-720" y="30" width="533" height="112" as="geometry"/>
+                </mxCell>
+                <mxCell id="284" value="&lt;font color=&quot;#121212&quot;&gt;&lt;b&gt;ResponseLimiter&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;font color=&quot;#121212&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#121212&quot;&gt;Rate limiter for our responses.&lt;/font&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="1">
+                    <mxGeometry x="-537" y="200" width="303" height="64" as="geometry"/>
+                </mxCell>
+                <mxCell id="285" value="&lt;div&gt;&lt;b style=&quot;background-color: transparent;&quot;&gt;ResponseLimiter&lt;/b&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt; manages rate limiting for outbound RPC responses&amp;nbsp;&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-650" y="658" width="228" height="74" as="geometry"/>
+                </mxCell>
+                <mxCell id="288" value="&lt;font color=&quot;#121212&quot;&gt;Request&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="-375.0042189221568" y="398.0042761663809" as="geometry"/>
+                </mxCell>
+                <mxCell id="290" value="A request is accepted as long as it is within the spec-defined limits" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-641" y="449" width="194" height="74" as="geometry"/>
+                </mxCell>
+                <mxCell id="292" value="Each RPC protocol can process up to two concurrent inbound requests" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-653" y="552" width="222" height="74" as="geometry"/>
+                </mxCell>
+                <mxCell id="293" value="Lighthouse" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="168" y="332" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="294" value="Peer" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="488" y="332" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="295" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0.5;exitDx=0;exitDy=-15;exitPerimeter=0;" edge="1" parent="1" source="296" target="293">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="228" y="764" as="sourcePoint"/>
+                        <mxPoint x="233" y="659" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="296" value="End" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" vertex="1" parent="1">
+                    <mxGeometry x="188" y="823" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="297" value="End" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" vertex="1" parent="1">
+                    <mxGeometry x="510" y="823" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="298" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="545" y="629" as="sourcePoint"/>
+                        <mxPoint x="231" y="640" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="299" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="233" y="504" as="sourcePoint"/>
+                        <mxPoint x="546" y="540" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="300" value="&lt;font color=&quot;#121212&quot;&gt;Request&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="299">
+                    <mxGeometry x="-0.77" y="2" relative="1" as="geometry">
+                        <mxPoint x="85" y="-5" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="301" value="" style="endArrow=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0.5;exitDx=0;exitDy=-15;exitPerimeter=0;" edge="1" parent="1" source="297" target="294">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="547" y="760" as="sourcePoint"/>
+                        <mxPoint x="553" y="659" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="302" value="&lt;font color=&quot;#121212&quot;&gt;&lt;b&gt;SelfLimiter&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;font color=&quot;#121212&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#121212&quot;&gt;Rate limiter for our requests.&lt;/font&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" vertex="1" parent="1">
+                    <mxGeometry x="242" y="207" width="303" height="64" as="geometry"/>
+                </mxCell>
+                <mxCell id="303" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;b&gt;SelfLimiter&lt;/b&gt; manages rate limiting for outbound RPC requests&amp;nbsp;&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="102" y="406" width="237" height="74" as="geometry"/>
+                </mxCell>
+                <mxCell id="304" value="&lt;font color=&quot;#121212&quot;&gt;Response&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="355.9957810778432" y="621.0042761663809" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="310" style="edgeStyle=none;html=1;exitX=0;exitY=0;exitDx=113;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;endArrow=none;endFill=0;dashed=1;" edge="1" parent="1" source="307" target="285">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="307" value="&lt;font color=&quot;#121212&quot;&gt;&lt;span&gt;ResponseLimiter uses&amp;nbsp;&lt;/span&gt;&lt;/font&gt;&lt;div&gt;&lt;font color=&quot;#121212&quot;&gt;&lt;span&gt;InboundRateLimiterConfig&amp;nbsp;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="-871" y="756" width="241" height="64" as="geometry"/>
+                </mxCell>
+                <mxCell id="311" value="&lt;font color=&quot;#121212&quot;&gt;&lt;span&gt;SelfLimiter uses&amp;nbsp;&lt;/span&gt;&lt;/font&gt;&lt;div&gt;&lt;font color=&quot;#121212&quot;&gt;&lt;span&gt;OutboundRateLimiterConfig&amp;nbsp;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fontStyle=0" vertex="1" parent="1">
+                    <mxGeometry x="-30" y="539" width="241" height="64" as="geometry"/>
+                </mxCell>
+                <mxCell id="312" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;strokeColor=default;endArrow=none;endFill=0;dashed=1;" edge="1" parent="1" source="311" target="303">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-628" y="766" as="sourcePoint"/>
+                        <mxPoint x="-520" y="705" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
