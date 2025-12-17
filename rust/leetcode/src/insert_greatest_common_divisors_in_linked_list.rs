@@ -9,6 +9,7 @@ pub struct ListNode {
 
 impl ListNode {
     #[inline]
+    #[allow(dead_code)]
     fn new(val: i32) -> Self {
         ListNode { next: None, val }
     }
@@ -18,9 +19,7 @@ struct Solution;
 
 impl Solution {
     // ref: https://leetcode.com/problems/insert-greatest-common-divisors-in-linked-list/solutions/4128719/clean-rust-solution/
-    pub fn insert_greatest_common_divisors(
-        mut head: Option<Box<ListNode>>,
-    ) -> Option<Box<ListNode>> {
+    pub fn insert_greatest_common_divisors(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
         if head.is_none() {
             return head;
         }

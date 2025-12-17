@@ -132,6 +132,7 @@ mod subtract_the_product_and_sum_of_digits_of_an_integer;
 mod sum_of_nodes_with_even_valued_grandparent;
 mod the_k_th_lexicographical_string_of_all_happy_strings_of_length_n;
 mod truncate_sentence;
+mod two_sum;
 mod unique_number_of_occurrences;
 mod water_bottles;
 mod watering_plants;

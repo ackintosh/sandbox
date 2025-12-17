@@ -3,7 +3,7 @@
 struct Solution;
 
 impl Solution {
-    pub fn build_array(target: Vec<i32>, n: i32) -> Vec<String> {
+    pub fn build_array(target: Vec<i32>, _n: i32) -> Vec<String> {
         let mut answer = vec![];
 
         let mut prev_t = 0;
