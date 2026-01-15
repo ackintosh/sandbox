@@ -114,6 +114,7 @@ mod restore_the_array_from_adjacent_pairs;
 mod reveal_cards_in_increasing_order;
 mod reverse_odd_levels_of_binary_tree;
 mod richest_customer_wealth;
+mod roman_to_integer;
 mod rotate_image;
 mod running_sum_of_1d_array;
 mod score_after_flipping_matrix;
