@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "protobufjs": "^6.10.2",
-    "three": "^0.126.1",
+    "three": "^0.137.0",
     "@types/three": "^0.126.1",
     "@arwes/design": "^1.0.0-alpha.5",
     "@arwes/animation": "^1.0.0-alpha.5",
