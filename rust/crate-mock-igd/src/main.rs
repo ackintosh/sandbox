@@ -3,7 +3,10 @@ use mock_igd::{Action, MockIgdServer, Protocol, Responder};
 #[tokio::main]
 async fn main() {
     // Start the mock IGD server
-    let server = MockIgdServer::start().await.unwrap();
+    let server = MockIgdServer::builder()
+        // Enable SSDP
+        .with_ssdp()
+        .start().await.unwrap();
 
     println!("Mock IGD server started!");
     println!("  Root URL: {}", server.url());
