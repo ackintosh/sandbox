@@ -89,6 +89,7 @@ exclude = [
   "crate-if-addrs",
   "crate-influxdb",
   "crate-logroller",
+  "crate-mock-igd",
   "crate-multiaddr",
   "crate-native-tls",
   "crate-opentelemetry",

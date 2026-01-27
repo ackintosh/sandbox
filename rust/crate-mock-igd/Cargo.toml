@@ -1,0 +1,10 @@
+[package]
+name = "crate-mock-igd"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+mock-igd = { path = "/Users/akihito/src/github.com/ackintosh/mock-igd" }
+
+# Async runtime
+tokio = { version = "1", features = ["net", "sync", "rt-multi-thread", "macros", "signal"] }
