@@ -45,4 +45,5 @@ async fn main() {
         .expect("Failed to listen for Ctrl+C");
 
     println!("Shutting down...");
+    server.shutdown();
 }
