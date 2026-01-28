@@ -37,6 +37,14 @@ async fn main() {
         )
         .await;
 
+    server.mock(
+        Action::GetStatusInfo,
+        Responder::success()
+            .with_connection_status("Connected")
+            .with_last_connection_error("ERROR_NONE")
+            .with_uptime(86400)  // 1日 = 86400秒
+    ).await;
+
     println!("Server is running. Press Ctrl+C to stop.");
 
     // Wait for Ctrl+C to keep the server running
@@ -44,6 +52,16 @@ async fn main() {
         .await
         .expect("Failed to listen for Ctrl+C");
 
+    println!();
+    println!("Received Requests:");
+    for req in server.received_requests().await.iter() {
+        println!("-------------------------------------------------------------");
+        println!("action_name: {:?}", req.action_name);
+        println!("service_type: {:?}", req.service_type);
+        println!("body: {:?}", req.body);
+        println!("timestamp: {:?}", req.timestamp);
+    }
+    println!("-------------------------------------------------------------");
     println!("Shutting down...");
     server.shutdown();
 }
