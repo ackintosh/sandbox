@@ -8,3 +8,5 @@ mock-igd = { path = "/Users/akihito/src/github.com/ackintosh/mock-igd" }
 
 # Async runtime
 tokio = { version = "1", features = ["net", "sync", "rt-multi-thread", "macros", "signal"] }
+tracing = "0.1"
+tracing-subscriber = "0.3"
