@@ -1,0 +1,16 @@
+services:
+  php:
+    build: .
+    volumes:
+      - .:/app
+    working_dir: /app
+    entrypoint: php
+  redis:
+    image: redis:4.0.6
+    container_name: redis
+  composer:
+    image: composer:latest
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: install

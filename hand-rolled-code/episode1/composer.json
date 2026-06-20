@@ -1,0 +1,5 @@
+{
+    "require": {
+        "ackintosh/ganesha": "^3.0"
+    }
+}

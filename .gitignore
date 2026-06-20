@@ -31,3 +31,5 @@ rust/crate-rust-protobuf/person.log
 # https://github.com/mozilla/grcov#example-how-to-generate-source-based-coverage-for-a-rust-project
 default.profraw
 *.profdata
+
+hand-rolled-code/episode1/vendor
