@@ -52,8 +52,8 @@ docker compose run --rm php demo.php
 <?php
 require 'vendor/autoload.php';
 
-$redis = new Redis();
-$redis->connect('redis');
+$memcached = new \Memcached();
+$memcached->addServer('memcached', 11211);
 
 $ganesha = Ackintosh\Ganesha\Builder::withCountStrategy()
 ```
@@ -62,13 +62,13 @@ $ganesha = Ackintosh\Ganesha\Builder::withCountStrategy()
 
 ```php
 $ganesha = Ackintosh\Ganesha\Builder::withCountStrategy()
-    ->adapter(new Ackintosh\Ganesha\Storage\Adapter\Redis($redis))
+    ->adapter(new Ackintosh\Ganesha\Storage\Adapter\Memcached($memcached))
     ->failureCountThreshold(3)
     ->intervalToHalfOpen(10)
     ->build();
 ```
 
-> All right, the adapter is how Ganesha persists its state. Here I'm using Redis. Ganesha supports multiple storage adapters — Redis and Memcached are the ones I'd recommend."
+> All right, the adapter is how Ganesha persists its state. Here I'm using Memcached. Ganesha supports multiple storage adapters — Memcached and Redis are the ones I'd recommend."
 
 > "let me walk through the options:
 >
