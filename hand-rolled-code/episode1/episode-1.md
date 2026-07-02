@@ -135,7 +135,7 @@ var_dump($ganesha->isAvailable($service)); // bool(false)
 
 ## Scene 5 — Subscribing to events
 
-> "All right. Ganesha also publishes events when the circuit state changes. This is useful for logging or alerting."
+> All right. Ganesha also publishes events when the circuit state changes.
 
 ```php
 $ganesha->subscribe(function (string $event, string $service, string $message): void {
@@ -143,6 +143,7 @@ $ganesha->subscribe(function (string $event, string $service, string $message): 
 });
 ```
 
+> This is useful for logging or alerting.
 > It's a good idea to use different log levels depending on the event type 
 
 ```php
@@ -168,7 +169,7 @@ $ganesha->subscribe(function (string $event, string $service, string $message): 
 
 > "All right, let me add a quick note about the strategy. 
 
-*Open the README, navigate to the Rate strategy.*
+*Show [./4.md](4.md)*
 
 > I mentioned there's a second strategy — the **Rate strategy**. Instead of counting failures, it tracks the failure rate as a percentage over a sliding time window. This is better for high-traffic services where a fixed count doesn't scale.
 
