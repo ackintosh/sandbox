@@ -24,18 +24,22 @@ docker compose run --rm php demo.php
 
 ## Scene 1 — What is the circuit breaker pattern?
 
-*Show [./scene1.md](scene1.md)*
+*Show [./1.md](1.md)*
 
 > "All right, let me start with the concept, because the code makes a lot more sense once you understand what problem we're solving.
 >
 > Imagine you have a web application that calls an external payment API. If that API is slow or down, your app starts accumulating requests waiting for a response. Those requests pile up, consuming threads and memory. Eventually your entire application grinds to a halt — not because of your own code, but because of a dependency that's failing. This is called a **cascading failure**.
->
+
+*Show [./2.md](2.md)*
+
 > Okay. So the **circuit breaker** is a way to prevent this. It works just like the electrical circuit breaker in your home. When something goes wrong — too many failures — the circuit 'trips' and you stop sending requests to the broken service. Instead of waiting for a timeout every time, you fail fast and return an error immediately. After some time, you let a test request to see if the service has recovered. Cool.
 >
 > There are three states:
 > - **Closed** — everything is normal, requests go through
 > - **Open** — failures exceeded the threshold, requests are blocked
 > - **Half-Open** — a trial period, one request is allowed to test recovery
+
+*Show [./3.md](3.md)*
 
 > "This pattern was popularized by Michael Nygard in his 2007 book *Release It!*.
 > and Martin Fowler wrote a well-known article about it on his website. If you want to go deeper on the concept, Fowler's article is a great starting point — I'll link it in the description.
@@ -68,9 +72,9 @@ $ganesha = Ackintosh\Ganesha\Builder::withCountStrategy()
     ->build();
 ```
 
-> All right, the adapter is how Ganesha persists its state. Here I'm using Memcached. Ganesha supports multiple storage adapters — Memcached and Redis are the ones I'd recommend."
+> All right, the adapter is how Ganesha persists its state. Here I'm using Memcached. Ganesha supports multiple storage adapters — Memcached and Redis are the ones I'd recommend.
 
-> "let me walk through the options:
+> let me walk through the options:
 >
 > - `failureCountThreshold(3)` — the circuit trips after 3 consecutive failures
 > - `intervalToHalfOpen(10)` — 10 seconds after tripping, Ganesha allows one trial request through
@@ -125,7 +129,7 @@ var_dump($ganesha->isAvailable($service)); // bool(false)
 
 > "All right, let me run this and see what happens."
 
-> "Cool, after the third failure, `isAvailable()` returns false. The circuit is open. Cool. Any further calls are blocked immediately — no waiting for timeouts, no wasted resources."
+> "Cool, the first `isAvailable()` call returns true — the circuit is closed and traffic flows normally. But after the third failure, `isAvailable()` returns false. The circuit is open. Cool. Any further calls are blocked immediately — no waiting for timeouts, no wasted resources."
 
 ---
 
